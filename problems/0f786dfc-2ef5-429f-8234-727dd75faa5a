@@ -1,0 +1,26 @@
+---
+title: Convergence of the series of 1/n²
+category: analysis
+level: l1
+difficulty: 3
+tags: series, comparison
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that the series $\displaystyle\sum_{n\ge1}\frac1{n^2}$ converges.
+
+## Hint
+
+For $n\ge2$, compare $\frac1{n^2}$ with $\frac1{n(n-1)}=\frac1{n-1}-\frac1n$.
+
+## Solution
+
+For $n\ge2$ we have $n^2\ge n(n-1)$, so
+$$\frac1{n^2}\le\frac1{n(n-1)}=\frac1{n-1}-\frac1n.$$
+
+Let $S_N=\sum_{n=1}^N\frac1{n^2}$. For $N\ge2$, the sum telescopes:
+$$S_N\le1+\sum_{n=2}^N\left(\frac1{n-1}-\frac1n\right)=1+1-\frac1N<2.$$
+
+The sequence $(S_N)$ is increasing (the terms are positive) and bounded above by $2$, so it converges. Hence the series converges.

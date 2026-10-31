@@ -1,0 +1,26 @@
+---
+title: A triangle with a 60° angle
+category: geometry
+level: lycee
+difficulty: 2
+tags: law of cosines, area
+date: 2026-10-31
+---
+
+## Statement
+
+A triangle has sides $5$, $7$ and $8$. Show that one of its angles is $60^\circ$ and compute its area.
+
+## Hint
+
+Apply the law of cosines to the angle opposite the side $7$.
+
+## Solution
+
+Let $\theta$ be the angle opposite the side $7$, between the sides $5$ and $8$. The law of cosines gives
+$$7^2=5^2+8^2-2\cdot5\cdot8\cos\theta\quad\Longrightarrow\quad49=89-80\cos\theta\quad\Longrightarrow\quad\cos\theta=\frac12.$$
+So $\theta=60^\circ$.
+
+The area is $\dfrac12\cdot5\cdot8\cdot\sin60^\circ=20\cdot\dfrac{\sqrt3}2=10\sqrt3$.
+
+Check with Heron's formula: $s=10$ and the area is $\sqrt{10\cdot5\cdot3\cdot2}=\sqrt{300}=10\sqrt3$.

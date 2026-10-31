@@ -1,0 +1,95 @@
+# Maths Workshop (public site)
+
+A static website: every problem has its own page with its own address, so search engines can index it and Google AdSense can review it. No database, no server code. The finished site is in `dist/` and is ready to upload.
+
+The site comes with 65 original problems (all eight categories), a random-problem page and search through statements.
+
+## 1. Look at it on your computer
+
+You need Node.js (free, nodejs.org, version 18 or newer).
+
+```
+npm install
+npm run build
+npm run preview
+```
+
+Then open http://localhost:8080.
+
+## 2. Add a problem
+
+Create a file in `problems/`, for example `problems/my-new-problem.md`. The file name becomes the page address.
+
+```
+---
+title: My new problem
+category: analysis
+level: l2
+difficulty: 3
+tags: series, convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Write the statement here. Inline math: $x^2$. Display math: $$\int_0^1 x\,dx$$
+
+## Hint
+
+Optional.
+
+## Solution
+
+Write the full solution here.
+```
+
+- `category`: algebra, analysis, linear, proba, geometry, number, combi, logic
+- `level`: lycee, l1, l2, l3, m1, olympiad
+- `difficulty`: 1 to 5
+- Add `draft: true` to keep a file out of the site while you work on it.
+- Blank line = new paragraph. Lines starting with `- ` make a list. `**bold**` works.
+
+Then run `npm run build` again. Only `dist/` changes.
+
+### Using the Maths Workshop editor instead
+
+If you prefer the form with the live preview: write your problems there, use "Export / import", save the text as `export.json` and run
+
+```
+npm run import -- export.json
+npm run build
+```
+
+This creates one file per problem in `problems/` (the built-in examples are skipped).
+
+## 3. Before going public: edit `site.config.json`
+
+- `url`: your real domain, for example `https://www.mathsworkshop.com` (no slash at the end). Needed for the sitemap and for Google.
+- `owner` and `email`: shown on the About, Contact and Privacy pages and in the footer.
+- `adsenseClient`: leave empty for now. After AdSense approves you, put your publisher id here, like `ca-pub-1234567890123456`, and rebuild.
+
+## 4. Put it online
+
+Easiest: upload the `dist/` folder to a free host.
+
+- **Netlify**: drag and drop the `dist` folder onto app.netlify.com/drop.
+- **Cloudflare Pages** or **GitHub Pages**: upload the folder or connect a repository.
+- To publish new problems without a computer that has Node, put this project in a GitHub repository and connect it to Netlify or Cloudflare Pages with build command `npm run build` and publish folder `dist`. Then adding a file in `problems/` on the GitHub website rebuilds the site by itself.
+
+Use a custom domain at the root (not a sub-folder address), because the pages link to `/assets/...` and `/problems/...`.
+
+## 5. Google Search Console and AdSense
+
+1. Buy a domain and connect it to your host.
+2. In Google Search Console, add the site and submit `https://your-domain/sitemap.xml`.
+3. Write at least 30 good, original problems first. AdSense rejects thin or copied sites.
+4. Apply at adsense.google.com. Add your site, and keep the About, Contact and Privacy pages (they are already included).
+5. When approved, set `adsenseClient` in `site.config.json`, run `npm run build`, upload again. The build then adds the AdSense script to every page and creates `ads.txt`.
+6. In AdSense, open Privacy & messaging and turn on the European regulations message (consent banner). It is required for visitors from the European Economic Area and the UK.
+7. Turn on Auto ads in AdSense. Google places the ads for you.
+
+## Notes
+
+- The privacy policy is a plain template. Read it, and have it checked if you need legal certainty for your country.
+- Fonts and math fonts are included in `assets/`, so pages do not call Google Fonts or any other outside service.
+- Write your own problems and solutions. Do not copy exercises from books, courses or other websites.

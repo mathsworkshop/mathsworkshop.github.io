@@ -1,0 +1,25 @@
+---
+title: A 3×3 determinant
+category: linear
+level: l1
+difficulty: 1
+tags: determinants, matrices
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the determinant of
+$$M=\begin{pmatrix}1&2&3\\0&4&5\\1&0&6\end{pmatrix}.$$
+
+## Hint
+
+Expand along the first row.
+
+## Solution
+
+Expanding along the first row,
+$$\det M=1\begin{vmatrix}4&5\\0&6\end{vmatrix}-2\begin{vmatrix}0&5\\1&6\end{vmatrix}+3\begin{vmatrix}0&4\\1&0\end{vmatrix}.$$
+
+The three $2\times2$ determinants are $24$, $-5$ and $-4$. So
+$$\det M=24-2(-5)+3(-4)=24+10-12=22.$$

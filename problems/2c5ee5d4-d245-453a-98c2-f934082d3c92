@@ -1,0 +1,26 @@
+---
+title: An equation with absolute values
+category: algebra
+level: lycee
+difficulty: 2
+tags: absolute value, equations
+date: 2026-10-31
+---
+
+## Statement
+
+Solve in $\mathbb{R}$ the equation $|x-1|+|x+2|=5$.
+
+## Hint
+
+Split $\mathbb{R}$ into three intervals according to the signs of $x-1$ and $x+2$.
+
+## Solution
+
+**Case $x\ge1$.** The equation becomes $(x-1)+(x+2)=5$, that is $2x+1=5$, so $x=2$, which is in the interval.
+
+**Case $-2\le x<1$.** The equation becomes $(1-x)+(x+2)=3=5$, which is impossible.
+
+**Case $x<-2$.** The equation becomes $(1-x)+(-x-2)=5$, that is $-2x-1=5$, so $x=-3$, which is in the interval.
+
+The solution set is $\{-3,\,2\}$.

@@ -1,0 +1,26 @@
+---
+title: The centroid of a triangle
+category: geometry
+level: lycee
+difficulty: 3
+tags: vectors, medians
+date: 2026-10-31
+---
+
+## Statement
+
+In a triangle $ABC$, show that the three medians meet at one point $G$, and that $G$ lies at two thirds of each median from its vertex.
+
+## Hint
+
+Work with position vectors and look at the point $G=\frac13(A+B+C)$.
+
+## Solution
+
+Identify points with their position vectors. Let $M=\frac12(B+C)$ be the midpoint of $BC$, so $AM$ is the median from $A$.
+
+Define $G=\dfrac{A+B+C}3$. Then
+$$A+\frac23(M-A)=\frac A3+\frac{2M}3=\frac A3+\frac{B+C}3=G.$$
+So $G$ lies on the median $AM$, at two thirds of the way from $A$ to $M$.
+
+The expression $\frac{A+B+C}3$ is symmetric in $A,B,C$, so the same computation shows $G$ lies on the other two medians, also at two thirds from the vertex. Hence the three medians are concurrent at $G$.

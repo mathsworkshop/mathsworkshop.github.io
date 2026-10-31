@@ -1,0 +1,24 @@
+---
+title: The handshake lemma
+category: combi
+level: l1
+difficulty: 2
+tags: graphs, parity
+date: 2026-10-31
+---
+
+## Statement
+
+At a party, some pairs of people shake hands (each pair at most once). Show that the number of people who shake an odd number of hands is even.
+
+## Hint
+
+Count the total number of hands shaken in two ways.
+
+## Solution
+
+Let $d_i$ be the number of hands shaken by person $i$. Each handshake involves two people, so
+$$\sum_id_i=2h,$$
+where $h$ is the total number of handshakes. This sum is even.
+
+Modulo $2$, each $d_i$ is $0$ or $1$, so the sum is congruent to the number of people with $d_i$ odd. Since the sum is even, that number is even.

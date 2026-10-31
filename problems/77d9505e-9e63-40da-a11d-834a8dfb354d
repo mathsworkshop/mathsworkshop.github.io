@@ -1,0 +1,25 @@
+---
+title: The last digit of 7^2026
+category: number
+level: lycee
+difficulty: 2
+tags: congruences, periodicity
+date: 2026-10-31
+---
+
+## Statement
+
+What is the last digit of $7^{2026}$?
+
+## Hint
+
+Write out the last digits of the first few powers of $7$ and look for a cycle.
+
+## Solution
+
+The last digits of $7^1,7^2,7^3,7^4$ are $7,9,3,1$, and $7^4\equiv1\pmod{10}$, so the pattern repeats with period $4$.
+
+Since $2026=4\cdot506+2$,
+$$7^{2026}=\left(7^4\right)^{506}\cdot7^2\equiv49\equiv9\pmod{10}.$$
+
+The last digit is $9$.
