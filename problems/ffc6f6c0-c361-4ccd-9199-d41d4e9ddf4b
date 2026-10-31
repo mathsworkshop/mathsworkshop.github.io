@@ -1,0 +1,22 @@
+---
+title: Sums of two squares modulo 4
+category: number
+level: l1
+difficulty: 2
+tags: congruences, squares
+date: 2026-10-31
+---
+
+## Statement
+
+Show that no integer of the form $4k+3$ is a sum of two squares of integers.
+
+## Hint
+
+Find the possible remainders of a square modulo $4$.
+
+## Solution
+
+Let $m$ be an integer. If $m=2j$, then $m^2=4j^2\equiv0\pmod4$. If $m=2j+1$, then $m^2=4j(j+1)+1\equiv1\pmod4$. So a square is $\equiv0$ or $1\pmod4$.
+
+A sum of two squares is therefore congruent to $0+0=0$, $0+1=1$ or $1+1=2$ modulo $4$, never to $3$. Hence $4k+3$ is never a sum of two squares.

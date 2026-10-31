@@ -1,0 +1,21 @@
+---
+title: A power of 1 + i
+category: algebra
+level: l1
+difficulty: 1
+tags: complex numbers
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $(1+i)^{20}$.
+
+## Hint
+
+Compute $(1+i)^2$ first.
+
+## Solution
+
+We have $(1+i)^2=1+2i+i^2=2i$. Therefore
+$$(1+i)^{20}=\left((1+i)^2\right)^{10}=(2i)^{10}=2^{10}\,i^{10}=1024\cdot(i^2)^5=1024\cdot(-1)^5=-1024.$$

@@ -1,0 +1,28 @@
+---
+title: Negating convergence
+category: logic
+level: l1
+difficulty: 2
+tags: quantifiers, sequences
+date: 2026-10-31
+---
+
+## Statement
+
+Write with quantifiers the statement "the real sequence $(u_n)$ converges to $\ell$". Then write its negation, and the negation of "$(u_n)$ converges".
+
+## Hint
+
+Swap each $\forall$ with $\exists$ (and the other way round) and negate the final inequality.
+
+## Solution
+
+**Convergence to $\ell$.**
+$$\forall\varepsilon>0,\ \exists N\in\mathbb{N},\ \forall n\ge N,\ |u_n-\ell|<\varepsilon.$$
+
+**Negation.**
+$$\exists\varepsilon>0,\ \forall N\in\mathbb{N},\ \exists n\ge N,\ |u_n-\ell|\ge\varepsilon.$$
+In words: from some fixed distance $\varepsilon$, infinitely many terms stay at least $\varepsilon$ away from $\ell$.
+
+**Negation of "$(u_n)$ converges".** The sequence converges if there exists some $\ell$ with the property above. Its negation is
+$$\forall\ell\in\mathbb{R},\ \exists\varepsilon>0,\ \forall N\in\mathbb{N},\ \exists n\ge N,\ |u_n-\ell|\ge\varepsilon.$$

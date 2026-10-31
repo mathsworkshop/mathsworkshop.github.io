@@ -1,0 +1,27 @@
+---
+title: Divergence of the harmonic series
+category: analysis
+level: l1
+difficulty: 3
+tags: series, divergence
+date: 2026-10-31
+---
+
+## Statement
+
+Let $H_n=\displaystyle\sum_{k=1}^n\frac1k$. Show that $H_n\to+\infty$.
+
+## Hint
+
+Compare $H_{2^{k+1}}$ and $H_{2^k}$: the terms between them are all at least $\frac1{2^{k+1}}$.
+
+## Solution
+
+For $k\ge0$,
+$$H_{2^{k+1}}-H_{2^k}=\sum_{j=2^k+1}^{2^{k+1}}\frac1j\ge2^k\cdot\frac1{2^{k+1}}=\frac12,$$
+because the sum has $2^k$ terms, each at least $\frac1{2^{k+1}}$.
+
+Adding these inequalities for $0,1,\dots,k-1$ and using $H_1=1$ gives
+$$H_{2^k}\ge1+\frac k2.$$
+
+The sequence $(H_n)$ is increasing and has a subsequence going to $+\infty$, so it is unbounded and $H_n\to+\infty$.
