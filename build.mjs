@@ -249,7 +249,157 @@ function copyDir(from, to) {
     e.isDirectory() ? copyDir(a, b) : fs.copyFileSync(a, b);
   }
 }
-copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
+
+// Assets are produced during the build: fonts and KaTeX come from node_modules (installed by npm),
+// the stylesheet is the one below unless you add your own assets/style.css.
+const STYLE = String.raw`/* Maths Workshop: school-paper sheets, red pencil for corrections. */
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/newsreader-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/newsreader-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Newsreader';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/newsreader-latin-400-italic.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/ibm-plex-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/ibm-plex-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/ibm-plex-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/ibm-plex-mono-latin-400-normal.woff2) format('woff2')}
+
+:root{
+  color-scheme:light dark;
+  --bg:#edf1f7; --surface:#ffffff; --ink:#111c36; --muted:#56637d; --line:#d3dbe8;
+  --accent:#1d3fa8; --on-accent:#ffffff; --pencil:#b8322a; --grid:rgba(29,63,168,.08); --soft:#e3e9f4;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0c1322; --surface:#131c31; --ink:#e8edf8; --muted:#9aa7c2; --line:#27334f;
+  --accent:#9db3ff; --on-accent:#0c1322; --pencil:#ff8f82; --grid:rgba(157,179,255,.07); --soft:#1b2640}}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);margin:0;min-height:100vh;display:flex;flex-direction:column}
+body>.layout,body>.page{flex:1 0 auto;width:100%}
+a{color:var(--accent)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header + footer */
+.top{background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:10px 24px;flex-wrap:wrap;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);margin-right:auto}
+.brand svg{width:30px;height:30px;flex:none}
+.brand b{font:600 21px/1 var(--serif);letter-spacing:-.01em}
+.brand small{display:block;font:500 10.5px/1.2 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.nav{display:flex;gap:20px}
+.nav a{color:var(--ink);text-decoration:none;font-weight:500}
+.nav a:hover{color:var(--accent);text-decoration:underline}
+.foot{border-top:1px solid var(--line);background:var(--surface);color:var(--muted);font-size:13px}
+.foot .wrap{display:flex;justify-content:space-between;gap:8px 20px;flex-wrap:wrap;padding-block:18px}
+.foot nav{display:flex;gap:18px;flex-wrap:wrap}
+.foot a{color:var(--muted)}
+
+/* list layout */
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;padding-block:24px 56px;align-items:start}
+.side h2{font:600 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.cats{display:flex;flex-direction:column;gap:1px}
+.cat{display:flex;justify-content:space-between;gap:8px;padding:7px 10px;border-radius:5px;text-decoration:none;color:var(--ink)}
+.cat span:last-child{color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
+.cat:hover{background:var(--soft)}
+.cat[aria-current="page"]{background:var(--ink);color:var(--surface)}
+.cat[aria-current="page"] span:last-child{color:inherit;opacity:.7}
+.head{margin-bottom:14px}
+h1{font:600 clamp(28px,4vw,38px)/1.1 var(--serif);letter-spacing:-.015em;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:6px 0 0;max-width:70ch}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.filters input{flex:1 1 220px;max-width:380px;padding:8px 12px;border:1px solid var(--line);background:var(--surface);border-radius:6px}
+.filters select{padding:8px 10px;border:1px solid var(--line);background:var(--surface);border-radius:6px}
+.rows{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 150px 96px 84px;gap:6px 16px;align-items:center;padding:13px 16px;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.rows>:first-child{border-top:0}
+.row:hover{background:var(--soft)}
+.r-title{font:600 18px/1.25 var(--serif);display:flex;gap:10px;align-items:baseline;min-width:0}
+.r-title .num{font:500 12px var(--mono);color:var(--pencil);flex:none}
+.r-title span:last-child{min-width:0;overflow-wrap:anywhere}
+.r-tags{font-size:12.5px;color:var(--muted);margin-top:2px}
+.chip{display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:99px;font-size:12px;color:var(--muted);white-space:nowrap}
+.dots{display:inline-flex;gap:3px;vertical-align:middle}
+.dots i{width:7px;height:7px;border-radius:50%;border:1px solid var(--muted);display:block}
+.dots i.on{background:var(--accent);border-color:var(--accent)}
+.empty{padding:40px 20px;text-align:center;color:var(--muted);border-top:1px solid var(--line)}
+.meta-m{display:none;gap:8px;align-items:center;flex-wrap:wrap;grid-column:1/-1}
+
+/* problem page */
+.page{padding-block:24px 56px}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:12px}
+.crumbs a{color:var(--muted)}
+.eyebrow{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted);margin-bottom:8px}
+.eyebrow .ex-n{font:500 13px var(--mono);color:var(--pencil)}
+.tagline{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.sheet{position:relative;background-color:var(--surface);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;border:1px solid var(--line);border-radius:4px;padding:22px 26px 22px 58px;margin-top:20px}
+.sheet::before{content:"";position:absolute;left:40px;top:0;bottom:0;width:1px;background:var(--pencil);opacity:.55}
+.sheet.sol::before{opacity:.9}
+.label{font:600 11px/1 var(--sans);letter-spacing:.11em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.sheet.sol .label{color:var(--pencil)}
+.body{font:19px/1.65 var(--serif);max-width:68ch;overflow-wrap:anywhere}
+.body p{margin:0 0 .8em}
+.body p:last-child{margin-bottom:0}
+.body ul,.body ol{margin:0 0 .8em;padding-left:1.3em}
+.katex{font-size:1.08em}
+.katex-display{overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 0}
+.hint{margin-top:14px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.hint summary{cursor:pointer;padding:10px 14px;font-weight:500}
+.hint .body{padding:0 14px 12px;font-size:17px}
+.solution{margin-top:20px}
+.solution>summary{display:inline-flex;list-style:none;cursor:pointer;padding:9px 16px;border-radius:6px;background:var(--accent);color:var(--on-accent);font-weight:500}
+.solution>summary::-webkit-details-marker{display:none}
+.solution[open]>summary{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.solution[open] .s-show,.solution:not([open]) .s-hide{display:none}
+.faint{color:var(--muted);font-style:italic}
+.related{margin-top:44px}
+.related h2{font:600 22px/1.2 var(--serif);margin:0 0 12px}
+.pn{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+.pn a{max-width:48%}
+
+/* info pages */
+.prose{max-width:68ch}
+.prose h2{font:600 22px/1.2 var(--serif);margin:28px 0 8px}
+.prose p,.prose li{font-size:16px}
+.prose h1{margin-bottom:16px}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:16px}
+  .cats{flex-direction:row;flex-wrap:wrap;gap:6px}
+  .cat{border:1px solid var(--line);border-radius:99px;padding:5px 12px}
+  .row{grid-template-columns:minmax(0,1fr)}
+  .row .c-lvl,.row .c-dif{display:none}
+  .meta-m{display:flex}
+  .row .c-cat{grid-column:1}
+}
+@media (max-width:520px){
+  .sheet{padding:18px 14px 18px 40px}
+  .sheet::before{left:26px}
+  .body{font-size:17.5px}
+  .pn a{max-width:100%}
+}
+@media (prefers-reduced-motion:no-preference){.row,.cat{transition:background-color .12s,color .12s}}
+`;
+function copyFonts(pkg, files, to) {
+  fs.mkdirSync(to, { recursive: true });
+  for (const f of files) fs.copyFileSync(path.join(ROOT, 'node_modules', pkg, 'files', f), path.join(to, f));
+}
+fs.mkdirSync(path.join(DIST, 'assets', 'fonts'), { recursive: true });
+fs.mkdirSync(path.join(DIST, 'assets', 'katex', 'fonts'), { recursive: true });
+const userCss = path.join(ROOT, 'assets', 'style.css');
+fs.writeFileSync(path.join(DIST, 'assets', 'style.css'), fs.existsSync(userCss) ? fs.readFileSync(userCss, 'utf8') : STYLE);
+copyFonts('@fontsource/newsreader', ['newsreader-latin-400-normal.woff2', 'newsreader-latin-600-normal.woff2', 'newsreader-latin-400-italic.woff2'], path.join(DIST, 'assets', 'fonts'));
+copyFonts('@fontsource/ibm-plex-sans', ['ibm-plex-sans-latin-400-normal.woff2', 'ibm-plex-sans-latin-500-normal.woff2', 'ibm-plex-sans-latin-600-normal.woff2'], path.join(DIST, 'assets', 'fonts'));
+copyFonts('@fontsource/ibm-plex-mono', ['ibm-plex-mono-latin-400-normal.woff2'], path.join(DIST, 'assets', 'fonts'));
+const KATEX_DIST = path.join(ROOT, 'node_modules', 'katex', 'dist');
+for (const f of fs.readdirSync(path.join(KATEX_DIST, 'fonts')).filter(f => f.endsWith('.woff2')))
+  fs.copyFileSync(path.join(KATEX_DIST, 'fonts', f), path.join(DIST, 'assets', 'katex', 'fonts', f));
+fs.writeFileSync(path.join(DIST, 'assets', 'katex', 'katex.min.css'), fs.readFileSync(path.join(KATEX_DIST, 'katex.min.css'), 'utf8')
+  .replace(/,url\(fonts\/[^)]+\.woff\) format\("woff"\)/g, '').replace(/,url\(fonts\/[^)]+\.ttf\) format\("truetype"\)/g, ''));
 
 const urls = [{ loc: '/', lastmod: newestFirst[0]?.date }];
 write('index.html', listPage({
