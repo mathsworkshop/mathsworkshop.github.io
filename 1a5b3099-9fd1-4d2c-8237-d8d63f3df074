@@ -1,0 +1,25 @@
+---
+title: Distance from a point to a line
+category: geometry
+level: lycee
+difficulty: 2
+tags: lines, projection
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the distance from the point $M(1,2)$ to the line $\mathcal D:\ 3x+4y-5=0$.
+
+## Hint
+
+The vector $\vec n=(3,4)$ is normal to $\mathcal D$. Project $M$ onto $\mathcal D$ along $\vec n$.
+
+## Solution
+
+The foot $H$ of the perpendicular from $M$ has the form $H=M-t\,\vec n$. Requiring $H\in\mathcal D$:
+$$3(1-3t)+4(2-4t)-5=0\quad\Longrightarrow\quad6-25t=0\quad\Longrightarrow\quad t=\frac6{25}.$$
+
+Then $MH=|t|\,\|\vec n\|=\dfrac6{25}\cdot5=\dfrac65$.
+
+This agrees with the general formula $d=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}=\dfrac{|3+8-5|}{5}=\dfrac65$.

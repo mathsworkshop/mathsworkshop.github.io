@@ -1,0 +1,23 @@
+---
+title: Two dice, conditioned on a six
+category: proba
+level: lycee
+difficulty: 2
+tags: conditional probability, dice
+date: 2026-10-29
+---
+
+## Statement
+
+Two fair six-sided dice are rolled. Given that at least one die shows a $6$, what is the probability that the sum is $8$?
+
+## Hint
+
+Count the outcomes in the conditioned sample space first.
+
+## Solution
+
+There are $36$ equally likely outcomes. Those with at least one $6$ number $36-25=11$.
+
+Among them, the sum is $8$ only for $(6,2)$ and $(2,6)$. The probability is
+$$P(S=8\mid \text{at least one }6)=\frac{2}{11}.$$

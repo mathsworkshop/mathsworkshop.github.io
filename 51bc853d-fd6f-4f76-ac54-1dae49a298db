@@ -1,0 +1,21 @@
+---
+title: Integral of sine squared
+category: analysis
+level: l1
+difficulty: 1
+tags: integrals, trigonometry
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\displaystyle\int_0^\pi\sin^2x\,dx$.
+
+## Hint
+
+Linearise using $\cos2x=1-2\sin^2x$.
+
+## Solution
+
+Since $\sin^2x=\dfrac{1-\cos2x}{2}$,
+$$\int_0^\pi\sin^2x\,dx=\left[\frac x2-\frac{\sin2x}{4}\right]_0^\pi=\frac\pi2.$$

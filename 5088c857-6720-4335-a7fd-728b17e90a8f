@@ -1,0 +1,23 @@
+---
+title: Sum of cubes of the roots
+category: algebra
+level: lycee
+difficulty: 2
+tags: vieta, polynomials
+date: 2026-10-31
+---
+
+## Statement
+
+Let $x_1$ and $x_2$ be the roots of $x^2-3x+1=0$. Compute $x_1^3+x_2^3$ without computing the roots.
+
+## Hint
+
+Write $x_1^3+x_2^3$ using the sum $s=x_1+x_2$ and the product $p=x_1x_2$.
+
+## Solution
+
+By Vieta's formulas, $s=x_1+x_2=3$ and $p=x_1x_2=1$.
+
+Since $(x_1+x_2)^3=x_1^3+x_2^3+3x_1x_2(x_1+x_2)$, we get
+$$x_1^3+x_2^3=s^3-3ps=27-9=18.$$

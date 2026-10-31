@@ -1,0 +1,24 @@
+---
+title: A classic inequality
+category: algebra
+level: lycee
+difficulty: 1
+tags: inequalities, AM-GM
+date: 2026-10-31
+---
+
+## Statement
+
+For $a,b>0$, prove that
+$$(a+b)\left(\frac1a+\frac1b\right)\ge 4,$$
+with equality if and only if $a=b$.
+
+## Hint
+
+Expand the product, then set $t=a/b$.
+
+## Solution
+
+Expanding gives $(a+b)\left(\frac1a+\frac1b\right)=2+\dfrac ab+\dfrac ba$.
+
+Let $t=a/b>0$. Then $t+\dfrac1t-2=\dfrac{(t-1)^2}{t}\ge0$, so the product is at least $4$, with equality iff $t=1$, that is $a=b$.

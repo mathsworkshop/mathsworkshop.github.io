@@ -1,0 +1,25 @@
+---
+title: Kernel of a matrix
+category: linear
+level: l1
+difficulty: 2
+tags: kernel, rank
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A=\begin{pmatrix}1&2&3\\2&4&6\end{pmatrix}$. Find the rank of $A$, and a basis of its kernel.
+
+## Hint
+
+Compare the two rows.
+
+## Solution
+
+The second row is twice the first, so the rows span a line and $\operatorname{rank}A=1$.
+
+The kernel is the set of $(x,y,z)\in\mathbb{R}^3$ with $x+2y+3z=0$ (the second equation is a multiple of the first). Writing $x=-2y-3z$,
+$$(x,y,z)=y\,(-2,1,0)+z\,(-3,0,1).$$
+
+So $\{(-2,1,0),(-3,0,1)\}$ is a basis of $\ker A$, which has dimension $2=3-\operatorname{rank}A$, as the rank–nullity theorem predicts.

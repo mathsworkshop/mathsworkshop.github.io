@@ -1,0 +1,22 @@
+---
+title: A limit with the exponential
+category: analysis
+level: l1
+difficulty: 2
+tags: limits, taylor
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\displaystyle\lim_{x\to0}\frac{e^x-1-x}{x^2}$.
+
+## Hint
+
+Use the Taylor expansion of $e^x$ at $0$ up to order $2$.
+
+## Solution
+
+As $x\to0$, $e^x=1+x+\dfrac{x^2}{2}+o(x^2)$.
+
+Therefore $\dfrac{e^x-1-x}{x^2}=\dfrac12+o(1)$, and the limit is $\dfrac12$.
