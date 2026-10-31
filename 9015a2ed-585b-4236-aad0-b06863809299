@@ -1,0 +1,15 @@
+{
+  "name": "maths-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Static site generator for Maths Workshop: maths problems with solutions.",
+  "scripts": {
+    "build": "node build.mjs",
+    "preview": "node serve.mjs",
+    "import": "node import.mjs"
+  },
+  "dependencies": {
+    "katex": "0.16.11"
+  }
+}

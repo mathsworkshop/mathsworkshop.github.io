@@ -1,0 +1,24 @@
+---
+title: Thales' theorem
+category: geometry
+level: lycee
+difficulty: 2
+tags: circles, angles
+date: 2026-10-31
+---
+
+## Statement
+
+Let $[AB]$ be a diameter of a circle with centre $O$, and let $M$ be a point of the circle different from $A$ and $B$. Prove that the angle $\widehat{AMB}$ is a right angle.
+
+## Hint
+
+Triangles $OAM$ and $OBM$ are isosceles.
+
+## Solution
+
+Since $OA=OM=OB$, the triangles $OAM$ and $OBM$ are isosceles at $O$. Let $\alpha=\widehat{OAM}=\widehat{OMA}$ and $\beta=\widehat{OBM}=\widehat{OMB}$.
+
+The angle $\widehat{AMB}$ equals $\widehat{OMA}+\widehat{OMB}=\alpha+\beta$.
+
+The angles of triangle $ABM$ are $\alpha$ (at $A$), $\beta$ (at $B$) and $\alpha+\beta$ (at $M$). Their sum is $180^\circ$, so $2(\alpha+\beta)=180^\circ$, hence $\widehat{AMB}=\alpha+\beta=90^\circ$.

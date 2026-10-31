@@ -1,0 +1,25 @@
+---
+title: The exponential lies above its tangent
+category: analysis
+level: l1
+difficulty: 1
+tags: inequalities, derivatives
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that $e^x\ge1+x$ for every real $x$, with equality only for $x=0$.
+
+## Hint
+
+Study the function $f(x)=e^x-1-x$.
+
+## Solution
+
+Let $f(x)=e^x-1-x$. Then $f'(x)=e^x-1$.
+
+- For $x<0$ we have $e^x<1$, so $f'(x)<0$ and $f$ is strictly decreasing on $(-\infty,0]$.
+- For $x>0$ we have $e^x>1$, so $f'(x)>0$ and $f$ is strictly increasing on $[0,+\infty)$.
+
+So $f$ has a strict minimum at $0$, where $f(0)=0$. Therefore $f(x)>0$ for $x\ne0$, which gives $e^x\ge1+x$ with equality only at $x=0$.

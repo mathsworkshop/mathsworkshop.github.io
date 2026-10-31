@@ -1,0 +1,27 @@
+---
+title: The Euclidean algorithm and Bézout
+category: number
+level: l1
+difficulty: 2
+tags: gcd, bezout
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\gcd(252,198)$ with the Euclidean algorithm, then find integers $u,v$ with $252u+198v=\gcd(252,198)$.
+
+## Hint
+
+Run the divisions, then substitute backwards from the last non-zero remainder.
+
+## Solution
+
+**Algorithm.**
+$$252=1\cdot198+54,\qquad198=3\cdot54+36,\qquad54=1\cdot36+18,\qquad36=2\cdot18+0.$$
+The last non-zero remainder is $18$, so $\gcd(252,198)=18$.
+
+**Bézout.** Working backwards,
+$$18=54-36=54-(198-3\cdot54)=4\cdot54-198=4(252-198)-198=4\cdot252-5\cdot198.$$
+
+So $u=4$ and $v=-5$. Check: $4\cdot252-5\cdot198=1008-990=18$.

@@ -1,0 +1,25 @@
+---
+title: The hat check problem
+category: proba
+level: l2
+difficulty: 3
+tags: expectation, linearity
+date: 2026-10-31
+---
+
+## Statement
+
+$n$ people leave their hats at a cloakroom. The hats are returned in a uniformly random order. Show that the expected number of people who get their own hat is $1$, whatever $n$ is.
+
+## Hint
+
+Write the number of matches as a sum of indicator variables and use linearity of expectation.
+
+## Solution
+
+Let $X_i=1$ if person $i$ gets their own hat and $X_i=0$ otherwise. The number of matches is $X=X_1+\cdots+X_n$.
+
+By symmetry, person $i$ is equally likely to receive any of the $n$ hats, so $E[X_i]=P(X_i=1)=\dfrac1n$.
+
+Linearity of expectation (which does not need the $X_i$ to be independent) gives
+$$E[X]=\sum_{i=1}^nE[X_i]=n\cdot\frac1n=1.$$

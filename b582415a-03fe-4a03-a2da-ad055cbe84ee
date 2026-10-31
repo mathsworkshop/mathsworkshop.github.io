@@ -1,0 +1,26 @@
+---
+title: The integers are countable
+category: logic
+level: l1
+difficulty: 2
+tags: bijection, countability
+date: 2026-10-31
+---
+
+## Statement
+
+Show that there is a bijection from $\mathbb{N}$ to $\mathbb{Z}$.
+
+## Hint
+
+Send even numbers to non-negative integers and odd numbers to negative integers.
+
+## Solution
+
+Define $f:\mathbb{N}\to\mathbb{Z}$ by
+$$f(n)=\begin{cases}\dfrac n2&\text{if }n\text{ is even},\\[2mm]-\dfrac{n+1}{2}&\text{if }n\text{ is odd}.\end{cases}$$
+The values start $0,-1,1,-2,2,-3,\dots$
+
+On even numbers $n=2k$ we have $f(n)=k$, which takes every non-negative integer exactly once. On odd numbers $n=2k+1$ we have $f(n)=-(k+1)$, which takes every negative integer exactly once.
+
+The two sets of values are disjoint and together cover $\mathbb{Z}$, so $f$ is a bijection.

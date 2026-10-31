@@ -1,0 +1,28 @@
+---
+title: Powers of a 2×2 matrix with eigenvalues 1 and 2
+category: linear
+level: l2
+difficulty: 3
+tags: diagonalisation, matrices
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A=\begin{pmatrix}0&1\\-2&3\end{pmatrix}$. Find its eigenvalues and eigenvectors, then compute $A^n$ for every $n\in\mathbb{N}$.
+
+## Hint
+
+The characteristic polynomial is $X^2-\operatorname{tr}(A)X+\det A$.
+
+## Solution
+
+$\operatorname{tr}A=3$ and $\det A=2$, so $\chi_A(X)=X^2-3X+2=(X-1)(X-2)$. The eigenvalues are $1$ and $2$.
+
+- For $\lambda=1$: $(A-I)v=0$ gives $-x+y=0$, so $v_1=(1,1)$.
+- For $\lambda=2$: $(A-2I)v=0$ gives $-2x+y=0$, so $v_2=(1,2)$.
+
+Let $P=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, $D=\operatorname{diag}(1,2)$. Then $\det P=1$ and $P^{-1}=\begin{pmatrix}2&-1\\-1&1\end{pmatrix}$, and $A=PDP^{-1}$. Hence
+$$A^n=PD^nP^{-1}=\begin{pmatrix}1&2^n\\1&2^{n+1}\end{pmatrix}\begin{pmatrix}2&-1\\-1&1\end{pmatrix}=\begin{pmatrix}2-2^n&2^n-1\\2-2^{n+1}&2^{n+1}-1\end{pmatrix}.$$
+
+Check: $n=0$ gives the identity and $n=1$ gives $A$.

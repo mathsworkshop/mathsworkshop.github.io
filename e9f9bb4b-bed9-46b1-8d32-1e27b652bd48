@@ -1,0 +1,23 @@
+---
+title: A limit with sine
+category: analysis
+level: l1
+difficulty: 2
+tags: limits, taylor
+date: 2026-10-27
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to 0}\frac{\sin x - x}{x^3}.$$
+
+## Hint
+
+Use the Taylor expansion of $\sin$ at $0$ up to order $3$.
+
+## Solution
+
+As $x\to0$, $\sin x = x-\dfrac{x^3}{6}+o(x^3)$.
+
+Hence $\dfrac{\sin x-x}{x^3}=-\dfrac16+o(1)$, and the limit is $-\dfrac16$.
