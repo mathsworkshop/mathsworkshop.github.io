@@ -1,0 +1,21 @@
+---
+title: Area from coordinates
+category: geometry
+level: lycee
+difficulty: 1
+tags: vectors, area
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the area of the triangle with vertices $A(1,2)$, $B(5,3)$ and $C(2,7)$.
+
+## Hint
+
+The area is half the absolute value of the determinant of $\overrightarrow{AB}$ and $\overrightarrow{AC}$.
+
+## Solution
+
+We have $\overrightarrow{AB}=(4,1)$ and $\overrightarrow{AC}=(1,5)$. Then
+$$\text{Area}=\frac12\left|\begin{vmatrix}4&1\\1&5\end{vmatrix}\right|=\frac12|20-1|=\frac{19}2.$$

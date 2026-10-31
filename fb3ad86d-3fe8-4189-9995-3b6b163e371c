@@ -1,0 +1,24 @@
+---
+title: De Morgan's law for sets
+category: logic
+level: l1
+difficulty: 1
+tags: sets, proofs
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A$ and $B$ be subsets of a set $E$. Prove that
+$$E\setminus(A\cup B)=(E\setminus A)\cap(E\setminus B).$$
+
+## Hint
+
+Take an element $x$ of $E$ and translate "$x\notin A\cup B$" using logic.
+
+## Solution
+
+Let $x\in E$. Then
+$$x\in E\setminus(A\cup B)\iff x\notin A\cup B\iff \text{not}\,(x\in A\text{ or }x\in B)\iff x\notin A\text{ and }x\notin B.$$
+
+The last statement means $x\in E\setminus A$ and $x\in E\setminus B$, that is $x\in(E\setminus A)\cap(E\setminus B)$. The two sets have the same elements, so they are equal.

@@ -1,0 +1,22 @@
+---
+title: Pigeonhole modulo 4
+category: combi
+level: l1
+difficulty: 2
+tags: pigeonhole, congruences
+date: 2026-10-31
+---
+
+## Statement
+
+Show that among any five integers, there are two whose difference is divisible by $4$.
+
+## Hint
+
+Sort the integers by their remainder when divided by $4$.
+
+## Solution
+
+Every integer has a remainder in $\{0,1,2,3\}$ when divided by $4$. These are $4$ possible remainders ("boxes") for $5$ integers.
+
+By the pigeonhole principle, two of the integers have the same remainder. If $a=4q+r$ and $b=4q'+r$, then $a-b=4(q-q')$ is divisible by $4$.

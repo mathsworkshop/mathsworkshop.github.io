@@ -1,0 +1,26 @@
+---
+title: A limit giving e²
+category: analysis
+level: l1
+difficulty: 2
+tags: limits, exponential
+date: 2026-10-31
+---
+
+## Statement
+
+Show that $\displaystyle\lim_{n\to\infty}\left(1+\frac2n\right)^n=e^2$.
+
+## Hint
+
+Write the expression as $\exp\!\big(n\ln(1+\tfrac2n)\big)$ and use $\ln(1+u)\sim u$ as $u\to0$.
+
+## Solution
+
+For $n\ge1$,
+$$\left(1+\frac2n\right)^n=\exp\!\left(n\ln\!\left(1+\frac2n\right)\right).$$
+
+As $u\to0$, $\ln(1+u)=u+o(u)$. With $u=\frac2n\to0$ this gives
+$$n\ln\!\left(1+\frac2n\right)=n\left(\frac2n+o\!\left(\frac1n\right)\right)=2+o(1)\longrightarrow2.$$
+
+Since $\exp$ is continuous, the original expression tends to $e^2$.

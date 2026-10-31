@@ -1,0 +1,23 @@
+---
+title: A large power modulo 7
+category: number
+level: lycee
+difficulty: 2
+tags: congruences, periodicity
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the remainder of $2^{100}$ when divided by $7$.
+
+## Hint
+
+Find the smallest $k$ with $2^k\equiv1\pmod7$.
+
+## Solution
+
+We have $2^3=8\equiv1\pmod7$. Since $100=3\cdot33+1$,
+$$2^{100}=\left(2^3\right)^{33}\cdot2\equiv1^{33}\cdot2=2\pmod7.$$
+
+The remainder is $2$.

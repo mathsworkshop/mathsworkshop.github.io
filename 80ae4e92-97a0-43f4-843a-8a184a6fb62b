@@ -1,0 +1,23 @@
+---
+title: A nested radical
+category: algebra
+level: lycee
+difficulty: 1
+tags: radicals, identities
+date: 2026-10-31
+---
+
+## Statement
+
+Simplify $\sqrt{3+2\sqrt2}$.
+
+## Hint
+
+Look for integers $a,b$ with $(a+b\sqrt2)^2=3+2\sqrt2$.
+
+## Solution
+
+We compute $(1+\sqrt2)^2=1+2\sqrt2+2=3+2\sqrt2$.
+
+Since $1+\sqrt2>0$, the square root of $(1+\sqrt2)^2$ is $1+\sqrt2$. Hence
+$$\sqrt{3+2\sqrt2}=1+\sqrt2.$$

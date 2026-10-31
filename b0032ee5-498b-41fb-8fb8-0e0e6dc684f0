@@ -1,0 +1,26 @@
+---
+title: Congruence is an equivalence relation
+category: logic
+level: l1
+difficulty: 1
+tags: relations, modular arithmetic
+date: 2026-10-31
+---
+
+## Statement
+
+Let $n\ge2$ be an integer. For $a,b\in\mathbb{Z}$, write $a\equiv b\pmod n$ when $n$ divides $a-b$. Prove that $\equiv$ is an equivalence relation on $\mathbb{Z}$, and say how many equivalence classes it has.
+
+## Hint
+
+Check reflexivity, symmetry and transitivity, then use division with remainder.
+
+## Solution
+
+**Reflexive.** $a-a=0$ is divisible by $n$.
+
+**Symmetric.** If $n\mid a-b$ then $n\mid b-a=-(a-b)$.
+
+**Transitive.** If $n\mid a-b$ and $n\mid b-c$, then $n$ divides the sum $(a-b)+(b-c)=a-c$.
+
+**Classes.** Every integer $a$ can be written $a=qn+r$ with $0\le r<n$, so $a\equiv r$. Two different remainders $r\ne r'$ in $\{0,\dots,n-1\}$ differ by less than $n$ and are not $0$, so they are not congruent. There are exactly $n$ classes.

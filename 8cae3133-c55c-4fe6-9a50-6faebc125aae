@@ -1,0 +1,27 @@
+---
+title: Sum of squares by induction
+category: logic
+level: lycee
+difficulty: 2
+tags: induction, sums
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for every integer $n\ge1$,
+$$1^2+2^2+\cdots+n^2=\frac{n(n+1)(2n+1)}{6}.$$
+
+## Hint
+
+Prove it for $n=1$, then show that if it holds for $n$ it holds for $n+1$.
+
+## Solution
+
+**Base case.** For $n=1$, the left side is $1$ and the right side is $\frac{1\cdot2\cdot3}{6}=1$.
+
+**Induction step.** Assume the formula holds for some $n\ge1$. Then
+$$\sum_{k=1}^{n+1}k^2=\frac{n(n+1)(2n+1)}{6}+(n+1)^2=\frac{(n+1)\left[n(2n+1)+6(n+1)\right]}{6}.$$
+Since $n(2n+1)+6(n+1)=2n^2+7n+6=(n+2)(2n+3)$, this equals $\dfrac{(n+1)(n+2)(2n+3)}{6}$, which is the formula for $n+1$.
+
+By induction, the formula holds for all $n\ge1$.

@@ -1,0 +1,24 @@
+---
+title: Remainder of a polynomial
+category: algebra
+level: l1
+difficulty: 2
+tags: polynomials, euclidean division
+date: 2026-10-31
+---
+
+## Statement
+
+Find the remainder of the division of $P(x)=x^{100}+x+1$ by $x^2-1$.
+
+## Hint
+
+The remainder has degree at most $1$. Evaluate $P$ at the roots of $x^2-1$.
+
+## Solution
+
+Write $P(x)=(x^2-1)Q(x)+ax+b$, where $a,b$ are real numbers.
+
+Evaluating at $x=1$ gives $P(1)=3=a+b$. Evaluating at $x=-1$ gives $P(-1)=1-1+1=1=-a+b$.
+
+Adding the two equations gives $2b=4$, so $b=2$ and $a=1$. The remainder is $x+2$.
