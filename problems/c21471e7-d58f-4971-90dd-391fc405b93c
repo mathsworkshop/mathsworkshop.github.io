@@ -1,0 +1,25 @@
+---
+title: Inradius of a right triangle
+category: geometry
+level: lycee
+difficulty: 3
+tags: incircle, right triangle
+date: 2026-10-31
+---
+
+## Statement
+
+A right triangle has legs $a$ and $b$ and hypotenuse $c$. Show that the radius of its inscribed circle is $r=\dfrac{a+b-c}{2}$. What is $r$ for the $3$-$4$-$5$ triangle?
+
+## Hint
+
+Use the fact that the two tangent segments from a vertex to a circle have equal length.
+
+## Solution
+
+Let the right angle be at $C$, with $CB=a$ and $CA=b$. The incircle touches the legs at two points. Together with $C$ and the centre $I$, these points form a square of side $r$ (all four angles are right angles and two adjacent sides equal $r$). So the tangent length from $C$ is $r$.
+
+Hence the tangent length from $B$ is $a-r$ and from $A$ is $b-r$. The hypotenuse $AB$ is split by its point of tangency into these two lengths, so
+$$(a-r)+(b-r)=c\quad\Longrightarrow\quad r=\frac{a+b-c}{2}.$$
+
+For the $3$-$4$-$5$ triangle, $r=\dfrac{3+4-5}{2}=1$.

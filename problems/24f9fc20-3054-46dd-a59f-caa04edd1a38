@@ -1,0 +1,28 @@
+---
+title: Cantor's theorem
+category: logic
+level: l3
+difficulty: 4
+tags: diagonal argument, sets
+date: 2026-10-31
+---
+
+## Statement
+
+Let $E$ be a set and $\mathcal{P}(E)$ the set of its subsets. Prove that there is no surjective map from $E$ onto $\mathcal{P}(E)$.
+
+## Hint
+
+Given $f:E\to\mathcal{P}(E)$, consider $A=\{x\in E : x\notin f(x)\}$.
+
+## Solution
+
+Let $f:E\to\mathcal{P}(E)$ be any map and define
+$$A=\{x\in E:\ x\notin f(x)\}\in\mathcal{P}(E).$$
+
+Suppose $f$ is surjective. Then $A=f(a)$ for some $a\in E$.
+
+- If $a\in A$, then by the definition of $A$ we have $a\notin f(a)=A$, a contradiction.
+- If $a\notin A$, then $a\notin f(a)$ fails, so $a\in f(a)=A$, a contradiction.
+
+Both cases are impossible, so $f$ is not surjective. Since $f$ was arbitrary, no surjection $E\to\mathcal{P}(E)$ exists.

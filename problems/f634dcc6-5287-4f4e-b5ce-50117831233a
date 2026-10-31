@@ -1,0 +1,23 @@
+---
+title: Inverting I − A
+category: linear
+level: l2
+difficulty: 2
+tags: matrices, nilpotent
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A$ be a square matrix with $A^2=0$. Show that $I-A$ is invertible and give its inverse.
+
+## Hint
+
+Multiply $I-A$ by $I+A$.
+
+## Solution
+
+Using $A^2=0$,
+$$(I-A)(I+A)=I-A^2=I\qquad\text{and}\qquad(I+A)(I-A)=I-A^2=I.$$
+
+So $I-A$ is invertible and $(I-A)^{-1}=I+A$.

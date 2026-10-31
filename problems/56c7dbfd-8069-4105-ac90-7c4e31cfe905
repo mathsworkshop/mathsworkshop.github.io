@@ -1,0 +1,24 @@
+---
+title: Radius of convergence
+category: analysis
+level: l2
+difficulty: 2
+tags: power series, ratio test
+date: 2026-10-31
+---
+
+## Statement
+
+Find the radius of convergence of the power series $\displaystyle\sum_{n\ge1}\frac{n}{2^n}x^n$, and study its behaviour at the endpoints of the interval of convergence.
+
+## Hint
+
+Use d'Alembert's ratio test on $a_n=\dfrac n{2^n}$.
+
+## Solution
+
+Let $a_n=\dfrac n{2^n}$. Then
+$$\frac{a_{n+1}}{a_n}=\frac{n+1}{2n}\longrightarrow\frac12,$$
+so the radius of convergence is $R=2$.
+
+At $x=\pm2$ the general term is $n\,(\pm1)^n$, whose absolute value $n$ does not tend to $0$. The series diverges at both endpoints, so the interval of convergence is the open interval $(-2,2)$.

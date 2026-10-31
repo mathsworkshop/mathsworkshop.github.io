@@ -1,0 +1,24 @@
+---
+title: Irrationality of √2
+category: number
+level: l1
+difficulty: 2
+tags: proof, irrational
+date: 2026-10-26
+---
+
+## Statement
+
+Prove that $\sqrt{2}$ is irrational.
+
+## Hint
+
+Assume $\sqrt{2}=p/q$ with $p,q$ coprime integers, then look at the parity of $p$ and $q$.
+
+## Solution
+
+Suppose $\sqrt2=\dfrac pq$ with $p,q\in\mathbb{N}^*$ coprime.
+
+Then $p^2=2q^2$, so $p^2$ is even, hence $p$ is even: $p=2k$. Substituting gives $4k^2=2q^2$, that is $q^2=2k^2$, so $q$ is even too.
+
+Both $p$ and $q$ are divisible by 2, which contradicts coprimality. Therefore $\sqrt2\notin\mathbb{Q}$.

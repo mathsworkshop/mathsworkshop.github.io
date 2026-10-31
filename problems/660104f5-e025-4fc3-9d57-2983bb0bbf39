@@ -1,0 +1,21 @@
+---
+title: Integration by parts
+category: analysis
+level: l1
+difficulty: 1
+tags: integrals, by parts
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\displaystyle\int_0^1 x\,e^x\,dx$.
+
+## Hint
+
+Differentiate $x$ and integrate $e^x$.
+
+## Solution
+
+Take $u=x$ and $v'=e^x$, so $u'=1$ and $v=e^x$. Then
+$$\int_0^1xe^x\,dx=\Big[xe^x\Big]_0^1-\int_0^1e^x\,dx=e-(e-1)=1.$$

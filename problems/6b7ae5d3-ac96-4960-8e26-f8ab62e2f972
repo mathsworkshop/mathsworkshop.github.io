@@ -1,0 +1,21 @@
+---
+title: Derangements of four objects
+category: combi
+level: l2
+difficulty: 3
+tags: inclusion-exclusion, permutations
+date: 2026-10-31
+---
+
+## Statement
+
+How many permutations of $\{1,2,3,4\}$ have no fixed point?
+
+## Hint
+
+Use the inclusion–exclusion principle on the sets $A_i$ of permutations fixing $i$.
+
+## Solution
+
+Let $A_i$ be the set of permutations with $\sigma(i)=i$. A permutation with no fixed point lies in none of the $A_i$. For any $j$ indices, the permutations fixing all of them number $(4-j)!$. By inclusion–exclusion, the number of derangements is
+$$4!-\binom41\,3!+\binom42\,2!-\binom43\,1!+\binom44\,0!=24-24+12-4+1=9.$$

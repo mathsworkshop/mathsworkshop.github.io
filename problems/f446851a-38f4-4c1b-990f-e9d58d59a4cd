@@ -1,0 +1,25 @@
+---
+title: Squares and pairwise products
+category: algebra
+level: lycee
+difficulty: 1
+tags: inequalities, squares
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for all real numbers $a,b,c$,
+$$a^2+b^2+c^2\ge ab+bc+ca,$$
+with equality if and only if $a=b=c$.
+
+## Hint
+
+Look at $(a-b)^2+(b-c)^2+(c-a)^2$.
+
+## Solution
+
+Expanding each square,
+$$(a-b)^2+(b-c)^2+(c-a)^2=2\left(a^2+b^2+c^2-ab-bc-ca\right).$$
+
+A sum of squares is non-negative, so $a^2+b^2+c^2-ab-bc-ca\ge0$. It equals $0$ exactly when all three squares are $0$, that is when $a=b=c$.
