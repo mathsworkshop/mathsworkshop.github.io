@@ -1,0 +1,22 @@
+---
+title: Sum of binomial coefficients
+category: combi
+level: l1
+difficulty: 2
+tags: binomial, counting
+date: 2026-10-30
+---
+
+## Statement
+
+Prove that $\displaystyle\sum_{k=0}^{n}\binom nk=2^n$ in two ways: by computation, then by a counting argument.
+
+## Hint
+
+Expand $(1+1)^n$. For counting, think of subsets of an $n$-element set.
+
+## Solution
+
+**Computation.** By the binomial theorem, $2^n=(1+1)^n=\sum_{k=0}^n\binom nk$.
+
+**Counting.** $\binom nk$ is the number of $k$-element subsets of an $n$-element set. Summing over $k$ counts all subsets. Each element is either in or out of a subset, which gives $2^n$ subsets.

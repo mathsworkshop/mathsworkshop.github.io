@@ -1,0 +1,24 @@
+---
+title: Waiting for the first six
+category: proba
+level: l1
+difficulty: 3
+tags: expectation, geometric distribution
+date: 2026-10-31
+---
+
+## Statement
+
+A fair die is rolled repeatedly until a six appears. What is the expected number of rolls?
+
+## Hint
+
+Condition on the first roll: either you are done, or you start again.
+
+## Solution
+
+Let $T$ be the number of rolls and $E=E[T]$, which is finite because $T$ has a geometric distribution. With probability $\frac16$ the first roll is a six and we stop after $1$ roll. Otherwise, with probability $\frac56$, we have used one roll and are back to the start. So
+$$E=1+\frac56E\quad\Longrightarrow\quad\frac16E=1\quad\Longrightarrow\quad E=6.$$
+
+**Check with the distribution.** $P(T=k)=\left(\frac56\right)^{k-1}\frac16$, and with $q=\frac56$,
+$$E[T]=\frac16\sum_{k\ge1}kq^{k-1}=\frac16\cdot\frac1{(1-q)^2}=\frac16\cdot36=6.$$

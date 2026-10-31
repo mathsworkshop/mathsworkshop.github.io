@@ -1,0 +1,26 @@
+---
+title: An improper integral
+category: analysis
+level: l2
+difficulty: 2
+tags: improper integrals, integration by parts
+date: 2026-10-31
+---
+
+## Statement
+
+Show that $\displaystyle\int_0^{+\infty}x\,e^{-x}\,dx$ converges and compute its value.
+
+## Hint
+
+Find an antiderivative by parts, then let the upper bound go to infinity.
+
+## Solution
+
+An antiderivative of $xe^{-x}$ is $F(x)=-(x+1)e^{-x}$, because
+$$F'(x)=-e^{-x}+(x+1)e^{-x}=xe^{-x}.$$
+
+For $A>0$,
+$$\int_0^Axe^{-x}\,dx=F(A)-F(0)=1-(A+1)e^{-A}.$$
+
+As $A\to+\infty$, $(A+1)e^{-A}\to0$ (exponential beats polynomial). So the integral converges and equals $1$.

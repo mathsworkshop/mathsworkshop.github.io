@@ -1,0 +1,23 @@
+---
+title: Arrangements of MISSISSIPPI
+category: combi
+level: lycee
+difficulty: 2
+tags: counting, arrangements
+date: 2026-10-31
+---
+
+## Statement
+
+How many different words (not necessarily meaningful) can be made by rearranging all the letters of MISSISSIPPI?
+
+## Hint
+
+Count arrangements as if all letters were different, then divide by the repeated letters.
+
+## Solution
+
+MISSISSIPPI has $11$ letters: $1$ M, $4$ I, $4$ S and $2$ P.
+
+If all letters were different there would be $11!$ arrangements. Swapping identical letters does not change the word, so divide by the number of orderings of each repeated letter:
+$$\frac{11!}{1!\,4!\,4!\,2!}=\frac{39\,916\,800}{1152}=34\,650.$$

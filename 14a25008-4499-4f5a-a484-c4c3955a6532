@@ -1,0 +1,23 @@
+---
+title: Pascal's rule
+category: combi
+level: l1
+difficulty: 2
+tags: binomial, counting
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that $\binom nk=\binom{n-1}k+\binom{n-1}{k-1}$ for $1\le k\le n-1$, first by computation, then by a counting argument.
+
+## Hint
+
+For the counting argument, fix one element of the set and ask whether a subset contains it.
+
+## Solution
+
+**Computation.**
+$$\binom{n-1}k+\binom{n-1}{k-1}=\frac{(n-1)!}{k!\,(n-1-k)!}+\frac{(n-1)!}{(k-1)!\,(n-k)!}=\frac{(n-1)!}{k!\,(n-k)!}\big[(n-k)+k\big]=\frac{n!}{k!\,(n-k)!}.$$
+
+**Counting.** Let $E$ have $n$ elements and fix $x\in E$. The $k$-element subsets of $E$ split into two groups: those not containing $x$, which are $k$-element subsets of $E\setminus\{x\}$, so $\binom{n-1}k$ of them; and those containing $x$, obtained by adding $x$ to a $(k-1)$-element subset of $E\setminus\{x\}$, so $\binom{n-1}{k-1}$ of them. Together there are $\binom nk$.

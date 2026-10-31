@@ -1,0 +1,25 @@
+---
+title: AM-GM for three numbers
+category: algebra
+level: l1
+difficulty: 3
+tags: inequalities, AM-GM
+date: 2026-10-31
+---
+
+## Statement
+
+Let $a,b,c>0$ with $abc=1$. Prove that $a+b+c\ge3$, and find when equality holds.
+
+## Hint
+
+First prove that $x^3+y^3+z^3\ge3xyz$ for $x,y,z\ge0$, using a factorisation. Then take cube roots of $a,b,c$.
+
+## Solution
+
+For $x,y,z\ge0$ we have the identity
+$$x^3+y^3+z^3-3xyz=\tfrac12(x+y+z)\left[(x-y)^2+(y-z)^2+(z-x)^2\right]\ge0.$$
+
+Apply it to $x=a^{1/3}$, $y=b^{1/3}$, $z=c^{1/3}$. Then $xyz=(abc)^{1/3}=1$ and $x^3+y^3+z^3=a+b+c$, so $a+b+c\ge3$.
+
+Equality holds exactly when $x=y=z$, that is $a=b=c$, and with $abc=1$ this gives $a=b=c=1$.

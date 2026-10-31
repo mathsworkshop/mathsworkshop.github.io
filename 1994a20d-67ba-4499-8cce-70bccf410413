@@ -1,0 +1,23 @@
+---
+title: Stars and bars
+category: combi
+level: l1
+difficulty: 2
+tags: counting, equations
+date: 2026-10-31
+---
+
+## Statement
+
+How many triples $(x,y,z)$ of non-negative integers satisfy $x+y+z=10$? How many if $x,y,z$ must be positive?
+
+## Hint
+
+Represent a solution as $10$ stars separated by $2$ bars.
+
+## Solution
+
+A solution corresponds to a row of $10$ stars and $2$ bars: the stars before the first bar count $x$, those between the bars count $y$, those after the second bar count $z$. A row has $12$ positions, and we choose which $2$ are bars. The number of non-negative solutions is
+$$\binom{12}{2}=66.$$
+
+For positive solutions, set $x'=x-1$, $y'=y-1$, $z'=z-1\ge0$. Then $x'+y'+z'=7$, which has $\binom{9}{2}=36$ non-negative solutions.

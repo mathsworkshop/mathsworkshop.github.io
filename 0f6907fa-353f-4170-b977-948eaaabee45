@@ -1,0 +1,25 @@
+---
+title: There are infinitely many primes
+category: number
+level: l1
+difficulty: 2
+tags: primes, proof by contradiction
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that there are infinitely many prime numbers.
+
+## Hint
+
+Suppose there are finitely many, multiply them all and add $1$.
+
+## Solution
+
+Suppose there are only finitely many primes $p_1,\dots,p_k$. Let
+$$N=p_1p_2\cdots p_k+1>1.$$
+
+Then $N$ has a prime divisor $p$. This prime must be one of the $p_i$, by assumption. But $p_i$ divides $p_1\cdots p_k$ and divides $N$, so it divides their difference $N-p_1\cdots p_k=1$, which is impossible.
+
+This contradiction shows that the list of primes cannot be finite.

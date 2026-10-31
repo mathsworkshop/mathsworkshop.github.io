@@ -1,0 +1,24 @@
+// Tiny local preview server for the built site: npm run preview, then open http://localhost:8080
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), 'dist');
+const TYPES = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.xml': 'application/xml', '.txt': 'text/plain' };
+const port = Number(process.env.PORT) || 8080;
+
+http.createServer((req, res) => {
+  let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+  if (p.endsWith('/')) p += 'index.html';
+  const file = path.normalize(path.join(DIST, p));
+  if (!file.startsWith(DIST)) { res.writeHead(403); return res.end(); }
+  fs.readFile(file, (err, data) => {
+    if (err) {
+      fs.readFile(path.join(DIST, '404.html'), (_, nf) => { res.writeHead(404, { 'Content-Type': TYPES['.html'] }); res.end(nf || 'Not found'); });
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
+    res.end(data);
+  });
+}).listen(port, () => console.log(`Preview: http://localhost:${port}  (Ctrl+C to stop)`));

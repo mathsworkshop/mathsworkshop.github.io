@@ -1,0 +1,10 @@
+{
+  "name": "Maths Workshop",
+  "tagline": "Maths problems with full solutions",
+  "description": "A growing collection of original maths problems with hints and complete solutions: algebra, analysis, linear algebra, probability, number theory and more.",
+  "url": "https://www.example.com",
+  "owner": "Your Name",
+  "email": "you@example.com",
+  "adsenseClient": "",
+  "language": "en"
+}

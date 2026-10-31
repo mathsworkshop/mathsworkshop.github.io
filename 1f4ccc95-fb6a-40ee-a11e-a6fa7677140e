@@ -1,0 +1,28 @@
+---
+title: Irrationality of √2 + √3
+category: number
+level: l1
+difficulty: 3
+tags: irrational, proof by contradiction
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that $\sqrt2+\sqrt3$ is irrational.
+
+## Hint
+
+Compute $(\sqrt3-\sqrt2)(\sqrt3+\sqrt2)$.
+
+## Solution
+
+Suppose $r=\sqrt2+\sqrt3$ is rational. Since $r>0$ and
+$$(\sqrt3-\sqrt2)(\sqrt3+\sqrt2)=3-2=1,$$
+we get $\sqrt3-\sqrt2=\dfrac1r$, which is rational.
+
+Then $\sqrt3=\dfrac12\left(r+\dfrac1r\right)$ would be rational.
+
+But $\sqrt3$ is irrational. Indeed, if $\sqrt3=\frac pq$ with $p,q$ coprime, then $p^2=3q^2$, so $3\mid p^2$ and, $3$ being prime, $3\mid p$. Writing $p=3k$ gives $q^2=3k^2$, so $3\mid q$, contradicting coprimality.
+
+Hence $\sqrt2+\sqrt3$ is irrational.
