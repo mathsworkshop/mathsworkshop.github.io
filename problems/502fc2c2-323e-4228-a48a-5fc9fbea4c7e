@@ -1,0 +1,21 @@
+---
+title: Five heads in ten tosses
+category: proba
+level: lycee
+difficulty: 1
+tags: binomial distribution
+date: 2026-10-31
+---
+
+## Statement
+
+A fair coin is tossed $10$ times. What is the probability of getting exactly $5$ heads?
+
+## Hint
+
+The number of heads follows a binomial distribution $\mathcal{B}(10,\tfrac12)$.
+
+## Solution
+
+The number of heads $X$ follows $\mathcal{B}(10,\tfrac12)$, so
+$$P(X=5)=\binom{10}5\left(\frac12\right)^{10}=\frac{252}{1024}=\frac{63}{256}\approx0.246.$$

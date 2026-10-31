@@ -1,0 +1,24 @@
+---
+title: Injective or surjective?
+category: logic
+level: l1
+difficulty: 1
+tags: maps, bijection
+date: 2026-10-31
+---
+
+## Statement
+
+Let $f:\mathbb{R}\to\mathbb{R}$ be defined by $f(x)=x^2$. Is $f$ injective? Surjective? Restrict $f$ to get a bijection.
+
+## Hint
+
+Compare $f(1)$ and $f(-1)$, and ask whether $-1$ is a value of $f$.
+
+## Solution
+
+**Not injective.** $f(-1)=f(1)=1$ although $-1\ne1$.
+
+**Not surjective.** $f(x)=x^2\ge0$ for every $x$, so $-1$ has no preimage.
+
+**A bijection.** Let $g:[0,+\infty)\to[0,+\infty)$ be the restriction $g(x)=x^2$. For $y\ge0$, the equation $x^2=y$ has exactly one solution in $[0,+\infty)$, namely $x=\sqrt y$. So $g$ is bijective, with inverse $y\mapsto\sqrt y$.

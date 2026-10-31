@@ -1,0 +1,28 @@
+---
+title: A medical test
+category: proba
+level: l1
+difficulty: 3
+tags: bayes, conditional probability
+date: 2026-10-31
+---
+
+## Statement
+
+A disease affects $1\%$ of a population. A test is positive for $99\%$ of the sick people and also for $5\%$ of the healthy people. A person tests positive. What is the probability that this person is sick?
+
+## Hint
+
+Use Bayes' formula with the events "sick" and "positive".
+
+## Solution
+
+Let $S$ be "sick" and $+$ be "positive". We know $P(S)=0.01$, $P(+\mid S)=0.99$ and $P(+\mid\bar S)=0.05$.
+
+By the law of total probability,
+$$P(+)=0.99\cdot0.01+0.05\cdot0.99=0.0099+0.0495=0.0594.$$
+
+By Bayes' formula,
+$$P(S\mid+)=\frac{P(+\mid S)P(S)}{P(+)}=\frac{0.0099}{0.0594}=\frac16\approx16.7\%.$$
+
+Even with a good test, a positive result for a rare disease is far from certain, because healthy people are so much more numerous.

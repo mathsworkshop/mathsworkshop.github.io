@@ -1,0 +1,24 @@
+---
+title: Two balls of the same colour
+category: proba
+level: lycee
+difficulty: 1
+tags: counting, draws
+date: 2026-10-31
+---
+
+## Statement
+
+A bag contains $3$ red balls and $2$ blue balls. Two balls are drawn at random without replacement. What is the probability that they have the same colour?
+
+## Hint
+
+Count the pairs of balls: all pairs, then the pairs of the same colour.
+
+## Solution
+
+There are $\binom52=10$ equally likely pairs of balls.
+
+Pairs of the same colour: $\binom32=3$ red pairs and $\binom22=1$ blue pair, so $4$ in total.
+
+The probability is $\dfrac4{10}=\dfrac25$.

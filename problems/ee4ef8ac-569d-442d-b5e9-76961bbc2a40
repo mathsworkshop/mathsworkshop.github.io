@@ -1,0 +1,26 @@
+---
+title: Bernoulli's inequality
+category: logic
+level: l1
+difficulty: 2
+tags: induction, inequalities
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for every real $x\ge-1$ and every integer $n\ge0$,
+$$(1+x)^n\ge1+nx.$$
+
+## Hint
+
+Use induction on $n$, and remember that $1+x\ge0$.
+
+## Solution
+
+**Base case.** For $n=0$ both sides equal $1$.
+
+**Induction step.** Assume $(1+x)^n\ge1+nx$. Since $1+x\ge0$, multiplying by $1+x$ keeps the inequality:
+$$(1+x)^{n+1}\ge(1+nx)(1+x)=1+(n+1)x+nx^2\ge1+(n+1)x.$$
+
+So the statement holds for $n+1$, and by induction for all $n\ge0$.
