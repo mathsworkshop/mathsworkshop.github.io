@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "id": "algebra",
+      "name": "Algebra",
+      "description": "Equations, inequalities, polynomials and algebraic identities.",
+      "subcategories": []
+    },
+    {
+      "id": "analysis",
+      "name": "Analysis",
+      "description": "Limits, sequences, series, derivatives and integrals.",
+      "subcategories": []
+    },
+    {
+      "id": "linear",
+      "name": "Linear algebra",
+      "description": "Matrices, vector spaces, determinants and diagonalisation.",
+      "subcategories": []
+    },
+    {
+      "id": "proba",
+      "name": "Probability",
+      "description": "Counting outcomes, conditional probability and random variables.",
+      "subcategories": []
+    },
+    {
+      "id": "geometry",
+      "name": "Geometry",
+      "description": "Plane and space geometry, triangles, circles and transformations.",
+      "subcategories": []
+    },
+    {
+      "id": "number",
+      "name": "Number theory",
+      "description": "Divisibility, primes, congruences and irrationality proofs.",
+      "subcategories": []
+    },
+    {
+      "id": "combi",
+      "name": "Combinatorics",
+      "description": "Counting arguments, binomial coefficients and bijections.",
+      "subcategories": []
+    },
+    {
+      "id": "logic",
+      "name": "Logic & sets",
+      "description": "Proof techniques, quantifiers, sets and maps.",
+      "subcategories": []
+    }
+  ]
+}

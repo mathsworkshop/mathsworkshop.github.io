@@ -5,22 +5,54 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import katex from 'katex';
 
+process.on('uncaughtException', e => { console.error('\nBUILD ERROR: ' + e.message + '\n'); process.exit(1); });
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
 const config = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.config.json'), 'utf8'));
 const SITE_URL = config.url.replace(/\/+$/, '');
 
 /* ---------- vocabulary ---------- */
-const CATS = {
-  algebra:  ['Algebra', 'Equations, inequalities, polynomials and algebraic identities.'],
-  analysis: ['Analysis', 'Limits, sequences, series, derivatives and integrals.'],
-  linear:   ['Linear algebra', 'Matrices, vector spaces, determinants and diagonalisation.'],
-  proba:    ['Probability', 'Counting outcomes, conditional probability and random variables.'],
-  geometry: ['Geometry', 'Plane and space geometry, triangles, circles and transformations.'],
-  number:   ['Number theory', 'Divisibility, primes, congruences and irrationality proofs.'],
-  combi:    ['Combinatorics', 'Counting arguments, binomial coefficients and bijections.'],
-  logic:    ['Logic & sets', 'Proof techniques, quantifiers, sets and maps.']
-};
+const DEFAULT_CATEGORIES = [
+  { id: 'algebra', name: 'Algebra', description: 'Equations, inequalities, polynomials and algebraic identities.' },
+  { id: 'analysis', name: 'Analysis', description: 'Limits, sequences, series, derivatives and integrals.' },
+  { id: 'linear', name: 'Linear algebra', description: 'Matrices, vector spaces, determinants and diagonalisation.' },
+  { id: 'proba', name: 'Probability', description: 'Counting outcomes, conditional probability and random variables.' },
+  { id: 'geometry', name: 'Geometry', description: 'Plane and space geometry, triangles, circles and transformations.' },
+  { id: 'number', name: 'Number theory', description: 'Divisibility, primes, congruences and irrationality proofs.' },
+  { id: 'combi', name: 'Combinatorics', description: 'Counting arguments, binomial coefficients and bijections.' },
+  { id: 'logic', name: 'Logic & sets', description: 'Proof techniques, quantifiers, sets and maps.' }
+];
+// Categories and subcategories come from categories.json when that file exists, otherwise from the list above.
+function loadCategories() {
+  const file = path.join(ROOT, 'categories.json');
+  let list = DEFAULT_CATEGORIES;
+  if (fs.existsSync(file)) {
+    let data;
+    try { data = JSON.parse(fs.readFileSync(file, 'utf8')); }
+    catch (e) { throw new Error('categories.json is not valid JSON (' + e.message + '). Check the commas, quotes and brackets near that spot.'); }
+    list = Array.isArray(data) ? data : data.categories;
+    if (!Array.isArray(list)) throw new Error('categories.json must contain a "categories" list.');
+  }
+  const idRe = /^[a-z][a-z0-9-]*$/;
+  const cats = {}, subs = {};
+  for (const c of list) {
+    const cid = c && c.id;
+    if (!idRe.test(cid || '')) throw new Error(`categories.json: every category needs an "id" made of lowercase letters, digits and hyphens, starting with a letter (found ${JSON.stringify(cid)}).`);
+    if (cats[cid]) throw new Error(`categories.json: the category id "${cid}" appears twice.`);
+    if (!c.name) throw new Error(`categories.json: the category "${cid}" has no "name".`);
+    cats[cid] = [c.name, c.description || `${c.name} problems with hints and full solutions.`];
+    subs[cid] = {};
+    for (const s of c.subcategories || []) {
+      if (!idRe.test((s && s.id) || '')) throw new Error(`categories.json: every subcategory of "${cid}" needs an "id" made of lowercase letters, digits and hyphens (found ${JSON.stringify(s && s.id)}).`);
+      if (subs[cid][s.id]) throw new Error(`categories.json: the subcategory id "${s.id}" appears twice in "${cid}".`);
+      if (!s.name) throw new Error(`categories.json: the subcategory "${s.id}" in "${cid}" has no "name".`);
+      subs[cid][s.id] = s.name;
+    }
+  }
+  if (!Object.keys(cats).length) throw new Error('categories.json must define at least one category.');
+  return { cats, subs };
+}
+const { cats: CATS, subs: SUBS } = loadCategories();
 const LEVELS = { lycee: 'High school', l1: 'L1', l2: 'L2', l3: 'L3', m1: 'M1', olympiad: 'Olympiad' };
 
 /* ---------- helpers ---------- */
@@ -79,7 +111,7 @@ function parseProblem(file) {
   const get = k => (sections[k] || []).join('\n').trim();
   const p = {
     slug: slugify(path.basename(file, '.md')),
-    title: meta.title, cat: meta.category, level: meta.level,
+    title: meta.title, cat: meta.category, sub: meta.subcategory || '', level: meta.level,
     diff: Math.min(5, Math.max(1, parseInt(meta.difficulty, 10) || 2)),
     tags: (meta.tags || '').split(',').map(t => t.trim()).filter(Boolean),
     date: /^\d{4}-\d{2}-\d{2}$/.test(meta.date || '') ? meta.date : new Date().toISOString().slice(0, 10),
@@ -88,7 +120,8 @@ function parseProblem(file) {
   };
   const bad = [];
   if (!p.title) bad.push('title is missing');
-  if (!CATS[p.cat]) bad.push(`category "${p.cat}" is not one of: ${Object.keys(CATS).join(', ')}`);
+  if (!CATS[p.cat]) bad.push(`category "${p.cat}" does not exist. Use one of: ${Object.keys(CATS).join(', ')} (or add it to categories.json, or change the category in this file)`);
+  else if (p.sub && !SUBS[p.cat][p.sub]) bad.push(`subcategory "${p.sub}" does not exist in the category "${p.cat}". ${Object.keys(SUBS[p.cat]).length ? 'Available: ' + Object.keys(SUBS[p.cat]).join(', ') : 'This category has no subcategories yet'} (add it in categories.json, or remove the subcategory line from this file)`);
   if (!LEVELS[p.level]) bad.push(`level "${p.level}" is not one of: ${Object.keys(LEVELS).join(', ')}`);
   if (!p.statement) bad.push('the "## Statement" section is empty');
   if (bad.length) throw new Error(`${name}: ${bad.join('; ')}`);
@@ -145,20 +178,27 @@ ${body}
 }
 
 /* ---------- list pages ---------- */
-function side(activeCat) {
-  const counts = {}; problems.forEach(p => { counts[p.cat] = (counts[p.cat] || 0) + 1; });
+function side(activeCat, activeSub) {
+  const counts = {}, subCounts = {};
+  problems.forEach(p => { counts[p.cat] = (counts[p.cat] || 0) + 1; if (p.sub) { const k = p.cat + '/' + p.sub; subCounts[k] = (subCounts[k] || 0) + 1; } });
   let h = '<aside class="side"><div><h2>Categories</h2><nav class="cats" aria-label="Categories">';
   h += `<a class="cat" href="/"${!activeCat ? ' aria-current="page"' : ''}><span>All</span><span>${problems.length}</span></a>`;
   for (const [id, [name]] of Object.entries(CATS)) {
     if (!counts[id] && id !== activeCat) continue;
-    h += `<a class="cat" href="/category/${id}/"${activeCat === id ? ' aria-current="page"' : ''}><span>${esc(name)}</span><span>${counts[id] || 0}</span></a>`;
+    h += `<a class="cat" href="/category/${id}/"${activeCat === id && !activeSub ? ' aria-current="page"' : ''}><span>${esc(name)}</span><span>${counts[id] || 0}</span></a>`;
+    if (activeCat === id) {
+      const open = Object.entries(SUBS[id]).filter(([sid]) => subCounts[id + '/' + sid]);
+      if (open.length) {
+        h += '<div class="subcats">' + open.map(([sid, sname]) => `<a class="cat subcat" href="/category/${id}/${sid}/"${activeSub === sid ? ' aria-current="page"' : ''}><span>${esc(sname)}</span><span>${subCounts[id + '/' + sid]}</span></a>`).join('') + '</div>';
+      }
+    }
   }
   return h + '</nav></div></aside>';
 }
 
 function row(p) {
   const tags = p.tags.length ? `<div class="r-tags">${p.tags.map(t => '#' + esc(t)).join('  ')}</div>` : '';
-  const search = `${p.title} ${p.tags.join(' ')} ${CATS[p.cat][0]} ${LEVELS[p.level]} ${plain(p.statement)}`.toLowerCase();
+  const search = `${p.title} ${p.tags.join(' ')} ${CATS[p.cat][0]} ${p.sub ? SUBS[p.cat][p.sub] : ''} ${LEVELS[p.level]} ${plain(p.statement)}`.toLowerCase();
   return `<a class="row" href="/problems/${p.slug}/" data-s="${esc(search)}" data-l="${p.level}"><div><div class="r-title"><span class="num">Ex.${p.num}</span><span>${esc(p.title)}</span></div>${tags}</div>`
     + `<div class="c-cat"><span class="chip">${esc(CATS[p.cat][0])}</span></div><div class="c-lvl">${esc(LEVELS[p.level])}</div><div class="c-dif">${dots(p.diff)}</div>`
     + `<div class="meta-m"><span>${esc(LEVELS[p.level])}</span>${dots(p.diff)}</div></a>`;
@@ -166,12 +206,13 @@ function row(p) {
 
 const FILTER_JS = `(function(){var q=document.getElementById('q'),l=document.getElementById('lvl'),rows=[].slice.call(document.querySelectorAll('.row')),c=document.getElementById('count'),n=document.getElementById('none');function f(){var s=q.value.trim().toLowerCase(),lv=l.value,k=0;rows.forEach(function(r){var ok=(!s||r.getAttribute('data-s').indexOf(s)>-1)&&(lv==='all'||r.getAttribute('data-l')===lv);r.hidden=!ok;if(ok)k++});c.textContent=k+(k===1?' problem':' problems');n.hidden=k>0}q.addEventListener('input',f);l.addEventListener('change',f)})();`;
 
-function listPage({ heading, intro, list, activeCat, urlPath, desc, title }) {
+function listPage({ heading, intro, list, activeCat, activeSub, subLinks = [], urlPath, desc, title }) {
   const levelsUsed = Object.keys(LEVELS).filter(k => list.some(p => p.level === k));
   const body = `<div class="wrap layout">
-${side(activeCat)}
+${side(activeCat, activeSub)}
 <main>
   <div class="head"><div><h1>${esc(heading)}</h1><p class="sub"><span id="count">${list.length} ${list.length === 1 ? 'problem' : 'problems'}</span> · ${esc(intro)}</p></div></div>
+  ${subLinks.length ? `<nav class="subchips" aria-label="Subcategories">${subLinks.map(s => `<a class="chip" href="${s.href}">${esc(s.name)} · ${s.count}</a>`).join('')}</nav>` : ''}
   <div class="filters">
     <label class="sr" for="q">Search problems</label><input id="q" type="search" placeholder="Search problems…" autocomplete="off">
     <label class="sr" for="lvl">Level</label><select id="lvl"><option value="all">All levels</option>${levelsUsed.map(k => `<option value="${k}">${esc(LEVELS[k])}</option>`).join('')}</select>
@@ -185,14 +226,15 @@ ${side(activeCat)}
 /* ---------- problem page ---------- */
 function problemPage(p) {
   const [catName] = CATS[p.cat];
+  const subName = p.sub ? SUBS[p.cat][p.sub] : '';
   const related = newestFirst.filter(q => q.cat === p.cat && q.slug !== p.slug).slice(0, 4);
   const idx = problems.findIndex(q => q.slug === p.slug);
   const prev = problems[idx - 1], next = problems[idx + 1];
   const desc = `${catName} problem (${LEVELS[p.level]}): ${p.title}. Read the statement, take a hint and check the full solution.`;
   const body = `<div class="wrap page">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Problems</a> › <a href="/category/${p.cat}/">${esc(catName)}</a></nav>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">Problems</a> › <a href="/category/${p.cat}/">${esc(catName)}</a>${subName ? ` › <a href="/category/${p.cat}/${p.sub}/">${esc(subName)}</a>` : ''}</nav>
 <article>
-<div class="eyebrow"><span class="ex-n">Exercise ${p.num}</span><span>${esc(catName)}</span><span>${esc(LEVELS[p.level])}</span>${dots(p.diff)}<span>Added ${fmtDate(p.date)}</span></div>
+<div class="eyebrow"><span class="ex-n">Exercise ${p.num}</span><span>${esc(catName)}${subName ? ' · ' + esc(subName) : ''}</span><span>${esc(LEVELS[p.level])}</span>${dots(p.diff)}<span>Added ${fmtDate(p.date)}</span></div>
 <h1>${esc(p.title)}</h1>
 ${p.tags.length ? `<div class="tagline">${p.tags.map(t => `<span class="chip">#${esc(t)}</span>`).join('')}</div>` : ''}
 <section class="sheet"><h2 class="label">Statement</h2><div class="body">${rich(p.statement)}</div></section>
@@ -382,6 +424,13 @@ h1{font:600 clamp(28px,4vw,38px)/1.1 var(--serif);letter-spacing:-.015em;margin:
   .body{font-size:17.5px}
   .pn a{max-width:100%}
 }
+/* subcategories */
+.subcats{display:flex;flex-direction:column;gap:1px;margin:2px 0 6px 14px;padding-left:8px;border-left:1px solid var(--line)}
+.subcat{font-size:14px;padding:5px 10px}
+.subchips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.subchips .chip{text-decoration:none;color:var(--ink);padding:4px 11px;font-size:13px}
+.subchips .chip:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:860px){.subcats{display:contents}.subcat{font-size:15px}}
 @media (prefers-reduced-motion:no-preference){.row,.cat{transition:background-color .12s,color .12s}}
 `;
 function copyFonts(pkg, files, to) {
@@ -409,11 +458,21 @@ write('index.html', listPage({
 for (const [id, [name, intro]] of Object.entries(CATS)) {
   const list = newestFirst.filter(p => p.cat === id);
   if (!list.length) continue;
+  const subLinks = Object.entries(SUBS[id]).map(([sid, sname]) => ({ href: `/category/${id}/${sid}/`, name: sname, count: list.filter(p => p.sub === sid).length })).filter(s => s.count);
   write(`category/${id}/index.html`, listPage({
-    heading: `${name} problems`, intro, list, activeCat: id, urlPath: `/category/${id}/`,
+    heading: `${name} problems`, intro, list, activeCat: id, subLinks, urlPath: `/category/${id}/`,
     title: `${name} problems with solutions`, desc: `${list.length} ${name.toLowerCase()} problems with hints and full solutions. ${intro}`
   }));
   urls.push({ loc: `/category/${id}/`, lastmod: list[0].date });
+  for (const s of subLinks) {
+    const sl = list.filter(p => p.sub === s.href.split('/')[3]);
+    const sid = s.href.split('/')[3];
+    write(`category/${id}/${sid}/index.html`, listPage({
+      heading: `${s.name} (${name})`, intro: `${name} problems about ${s.name.toLowerCase()}.`, list: sl, activeCat: id, activeSub: sid, urlPath: s.href,
+      title: `${s.name}: ${name.toLowerCase()} problems with solutions`, desc: `${sl.length} ${s.name.toLowerCase()} problems in ${name.toLowerCase()}, with hints and full solutions.`
+    }));
+    urls.push({ loc: s.href, lastmod: sl[0].date });
+  }
 }
 for (const p of problems) {
   write(`problems/${p.slug}/index.html`, problemPage(p));
