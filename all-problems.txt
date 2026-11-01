@@ -1,0 +1,1713 @@
+@@@ a-3x3-determinant.md
+---
+title: A 3×3 determinant
+category: linear
+level: l1
+difficulty: 1
+tags: determinants, matrices
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the determinant of
+$$M=\begin{pmatrix}1&2&3\\0&4&5\\1&0&6\end{pmatrix}.$$
+
+## Hint
+
+Expand along the first row.
+
+## Solution
+
+Expanding along the first row,
+$$\det M=1\begin{vmatrix}4&5\\0&6\end{vmatrix}-2\begin{vmatrix}0&5\\1&6\end{vmatrix}+3\begin{vmatrix}0&4\\1&0\end{vmatrix}.$$
+
+The three $2\times2$ determinants are $24$, $-5$ and $-4$. So
+$$\det M=24-2(-5)+3(-4)=24+10-12=22.$$
+
+@@@ a-classic-inequality.md
+---
+title: A classic inequality
+category: algebra
+level: lycee
+difficulty: 1
+tags: inequalities, AM-GM
+date: 2026-10-31
+---
+
+## Statement
+
+For $a,b>0$, prove that
+$$(a+b)\left(\frac1a+\frac1b\right)\ge 4,$$
+with equality if and only if $a=b$.
+
+## Hint
+
+Expand the product, then set $t=a/b$.
+
+## Solution
+
+Expanding gives $(a+b)\left(\frac1a+\frac1b\right)=2+\dfrac ab+\dfrac ba$.
+
+Let $t=a/b>0$. Then $t+\dfrac1t-2=\dfrac{(t-1)^2}{t}\ge0$, so the product is at least $4$, with equality iff $t=1$, that is $a=b$.
+
+@@@ a-cubic-with-exactly-one-real-root.md
+---
+title: A cubic with exactly one real root
+category: analysis
+level: l1
+difficulty: 2
+tags: intermediate value theorem, monotonicity
+date: 2026-10-31
+---
+
+## Statement
+
+Show that the equation $x^3+x-1=0$ has exactly one real solution, and that it lies in $(0,1)$.
+
+## Hint
+
+Use the intermediate value theorem for existence and the derivative for uniqueness.
+
+## Solution
+
+Let $f(x)=x^3+x-1$. It is continuous, with $f(0)=-1<0$ and $f(1)=1>0$. By the intermediate value theorem, $f$ vanishes at some point of $(0,1)$.
+
+Its derivative $f'(x)=3x^2+1$ is positive everywhere, so $f$ is strictly increasing on $\mathbb{R}$. A strictly increasing function takes each value at most once, so the root is unique.
+
+@@@ a-large-power-modulo-7.md
+---
+title: A large power modulo 7
+category: number
+level: lycee
+difficulty: 2
+tags: congruences, periodicity
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the remainder of $2^{100}$ when divided by $7$.
+
+## Hint
+
+Find the smallest $k$ with $2^k\equiv1\pmod7$.
+
+## Solution
+
+We have $2^3=8\equiv1\pmod7$. Since $100=3\cdot33+1$,
+$$2^{100}=\left(2^3\right)^{33}\cdot2\equiv1^{33}\cdot2=2\pmod7.$$
+
+The remainder is $2$.
+
+@@@ a-limit-giving-e-squared.md
+---
+title: A limit giving e²
+category: analysis
+level: l1
+difficulty: 2
+tags: limits, exponential
+date: 2026-10-31
+---
+
+## Statement
+
+Show that $\displaystyle\lim_{n\to\infty}\left(1+\frac2n\right)^n=e^2$.
+
+## Hint
+
+Write the expression as $\exp\!\big(n\ln(1+\tfrac2n)\big)$ and use $\ln(1+u)\sim u$ as $u\to0$.
+
+## Solution
+
+For $n\ge1$,
+$$\left(1+\frac2n\right)^n=\exp\!\left(n\ln\!\left(1+\frac2n\right)\right).$$
+
+As $u\to0$, $\ln(1+u)=u+o(u)$. With $u=\frac2n\to0$ this gives
+$$n\ln\!\left(1+\frac2n\right)=n\left(\frac2n+o\!\left(\frac1n\right)\right)=2+o(1)\longrightarrow2.$$
+
+Since $\exp$ is continuous, the original expression tends to $e^2$.
+
+@@@ a-limit-with-sine.md
+---
+title: A limit with sine
+category: analysis
+level: l1
+difficulty: 2
+tags: limits, taylor
+date: 2026-10-27
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to 0}\frac{\sin x - x}{x^3}.$$
+
+## Hint
+
+Use the Taylor expansion of $\sin$ at $0$ up to order $3$.
+
+## Solution
+
+As $x\to0$, $\sin x = x-\dfrac{x^3}{6}+o(x^3)$.
+
+Hence $\dfrac{\sin x-x}{x^3}=-\dfrac16+o(1)$, and the limit is $-\dfrac16$.
+
+@@@ a-limit-with-the-exponential.md
+---
+title: A limit with the exponential
+category: analysis
+level: l1
+difficulty: 2
+tags: limits, taylor
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\displaystyle\lim_{x\to0}\frac{e^x-1-x}{x^2}$.
+
+## Hint
+
+Use the Taylor expansion of $e^x$ at $0$ up to order $2$.
+
+## Solution
+
+As $x\to0$, $e^x=1+x+\dfrac{x^2}{2}+o(x^2)$.
+
+Therefore $\dfrac{e^x-1-x}{x^2}=\dfrac12+o(1)$, and the limit is $\dfrac12$.
+
+@@@ a-medical-test.md
+---
+title: A medical test
+category: proba
+level: l1
+difficulty: 3
+tags: bayes, conditional probability
+date: 2026-10-31
+---
+
+## Statement
+
+A disease affects $1\%$ of a population. A test is positive for $99\%$ of the sick people and also for $5\%$ of the healthy people. A person tests positive. What is the probability that this person is sick?
+
+## Hint
+
+Use Bayes' formula with the events "sick" and "positive".
+
+## Solution
+
+Let $S$ be "sick" and $+$ be "positive". We know $P(S)=0.01$, $P(+\mid S)=0.99$ and $P(+\mid\bar S)=0.05$.
+
+By the law of total probability,
+$$P(+)=0.99\cdot0.01+0.05\cdot0.99=0.0099+0.0495=0.0594.$$
+
+By Bayes' formula,
+$$P(S\mid+)=\frac{P(+\mid S)P(S)}{P(+)}=\frac{0.0099}{0.0594}=\frac16\approx16.7\%.$$
+
+Even with a good test, a positive result for a rare disease is far from certain, because healthy people are so much more numerous.
+
+@@@ a-nested-radical.md
+---
+title: A nested radical
+category: algebra
+level: lycee
+difficulty: 1
+tags: radicals, identities
+date: 2026-10-31
+---
+
+## Statement
+
+Simplify $\sqrt{3+2\sqrt2}$.
+
+## Hint
+
+Look for integers $a,b$ with $(a+b\sqrt2)^2=3+2\sqrt2$.
+
+## Solution
+
+We compute $(1+\sqrt2)^2=1+2\sqrt2+2=3+2\sqrt2$.
+
+Since $1+\sqrt2>0$, the square root of $(1+\sqrt2)^2$ is $1+\sqrt2$. Hence
+$$\sqrt{3+2\sqrt2}=1+\sqrt2.$$
+
+@@@ a-plane-as-a-subspace.md
+---
+title: A plane as a subspace
+category: linear
+level: l1
+difficulty: 2
+tags: subspaces, basis
+date: 2026-10-31
+---
+
+## Statement
+
+Let $F=\{(x,y,z)\in\mathbb{R}^3:\ x+y+z=0\}$. Show that $F$ is a subspace of $\mathbb{R}^3$, and find a basis and the dimension of $F$.
+
+## Hint
+
+Check that $F$ contains $0$ and is stable under sums and scalar multiples. Then solve for $z$.
+
+## Solution
+
+**Subspace.** $(0,0,0)\in F$. If $(x,y,z),(x',y',z')\in F$ and $\lambda\in\mathbb{R}$, then
+$$(x+\lambda x')+(y+\lambda y')+(z+\lambda z')=(x+y+z)+\lambda(x'+y'+z')=0,$$
+so $(x,y,z)+\lambda(x',y',z')\in F$.
+
+**Basis.** A vector of $F$ has $z=-x-y$, so
+$$(x,y,z)=x\,(1,0,-1)+y\,(0,1,-1).$$
+The vectors $(1,0,-1)$ and $(0,1,-1)$ span $F$ and are linearly independent (neither is a multiple of the other). They form a basis, and $\dim F=2$.
+
+@@@ a-recursive-sequence-converging-to-2.md
+---
+title: A recursive sequence converging to 2
+category: analysis
+level: l1
+difficulty: 3
+tags: sequences, monotone convergence
+date: 2026-10-31
+---
+
+## Statement
+
+Let $u_0=0$ and $u_{n+1}=\sqrt{2+u_n}$. Show that $(u_n)$ converges and find its limit.
+
+## Hint
+
+Show by induction that $0\le u_n<2$, then that $(u_n)$ is increasing.
+
+## Solution
+
+**Bounded.** We show $0\le u_n<2$ by induction. It holds for $n=0$. If $0\le u_n<2$, then $2\le2+u_n<4$, so $\sqrt2\le u_{n+1}<2$.
+
+**Increasing.** Since all terms are non-negative,
+$$u_{n+1}^2-u_n^2=2+u_n-u_n^2=(2-u_n)(1+u_n)>0,$$
+so $u_{n+1}>u_n$.
+
+**Limit.** An increasing sequence bounded above converges, say to $L$ with $0\le L\le2$. Passing to the limit in $u_{n+1}=\sqrt{2+u_n}$ gives $L=\sqrt{2+L}$, so $L^2-L-2=0$, that is $(L-2)(L+1)=0$. Since $L\ge0$, $L=2$.
+
+@@@ a-triangle-with-a-60-degree-angle.md
+---
+title: A triangle with a 60° angle
+category: geometry
+level: lycee
+difficulty: 2
+tags: law of cosines, area
+date: 2026-10-31
+---
+
+## Statement
+
+A triangle has sides $5$, $7$ and $8$. Show that one of its angles is $60^\circ$ and compute its area.
+
+## Hint
+
+Apply the law of cosines to the angle opposite the side $7$.
+
+## Solution
+
+Let $\theta$ be the angle opposite the side $7$, between the sides $5$ and $8$. The law of cosines gives
+$$7^2=5^2+8^2-2\cdot5\cdot8\cos\theta\quad\Longrightarrow\quad49=89-80\cos\theta\quad\Longrightarrow\quad\cos\theta=\frac12.$$
+So $\theta=60^\circ$.
+
+The area is $\dfrac12\cdot5\cdot8\cdot\sin60^\circ=20\cdot\dfrac{\sqrt3}2=10\sqrt3$.
+
+Check with Heron's formula: $s=10$ and the area is $\sqrt{10\cdot5\cdot3\cdot2}=\sqrt{300}=10\sqrt3$.
+
+@@@ am-gm-for-three-numbers.md
+---
+title: AM-GM for three numbers
+category: algebra
+level: l1
+difficulty: 3
+tags: inequalities, AM-GM
+date: 2026-10-31
+---
+
+## Statement
+
+Let $a,b,c>0$ with $abc=1$. Prove that $a+b+c\ge3$, and find when equality holds.
+
+## Hint
+
+First prove that $x^3+y^3+z^3\ge3xyz$ for $x,y,z\ge0$, using a factorisation. Then take cube roots of $a,b,c$.
+
+## Solution
+
+For $x,y,z\ge0$ we have the identity
+$$x^3+y^3+z^3-3xyz=\tfrac12(x+y+z)\left[(x-y)^2+(y-z)^2+(z-x)^2\right]\ge0.$$
+
+Apply it to $x=a^{1/3}$, $y=b^{1/3}$, $z=c^{1/3}$. Then $xyz=(abc)^{1/3}=1$ and $x^3+y^3+z^3=a+b+c$, so $a+b+c\ge3$.
+
+Equality holds exactly when $x=y=z$, that is $a=b=c$, and with $abc=1$ this gives $a=b=c=1$.
+
+@@@ an-equation-with-absolute-values.md
+---
+title: An equation with absolute values
+category: algebra
+level: lycee
+difficulty: 2
+tags: absolute value, equations
+date: 2026-10-31
+---
+
+## Statement
+
+Solve in $\mathbb{R}$ the equation $|x-1|+|x+2|=5$.
+
+## Hint
+
+Split $\mathbb{R}$ into three intervals according to the signs of $x-1$ and $x+2$.
+
+## Solution
+
+**Case $x\ge1$.** The equation becomes $(x-1)+(x+2)=5$, that is $2x+1=5$, so $x=2$, which is in the interval.
+
+**Case $-2\le x<1$.** The equation becomes $(1-x)+(x+2)=3=5$, which is impossible.
+
+**Case $x<-2$.** The equation becomes $(1-x)+(-x-2)=5$, that is $-2x-1=5$, so $x=-3$, which is in the interval.
+
+The solution set is $\{-3,\,2\}$.
+
+@@@ an-improper-integral.md
+---
+title: An improper integral
+category: analysis
+level: l2
+difficulty: 2
+tags: improper integrals, integration by parts
+date: 2026-10-31
+---
+
+## Statement
+
+Show that $\displaystyle\int_0^{+\infty}x\,e^{-x}\,dx$ converges and compute its value.
+
+## Hint
+
+Find an antiderivative by parts, then let the upper bound go to infinity.
+
+## Solution
+
+An antiderivative of $xe^{-x}$ is $F(x)=-(x+1)e^{-x}$, because
+$$F'(x)=-e^{-x}+(x+1)e^{-x}=xe^{-x}.$$
+
+For $A>0$,
+$$\int_0^Axe^{-x}\,dx=F(A)-F(0)=1-(A+1)e^{-A}.$$
+
+As $A\to+\infty$, $(A+1)e^{-A}\to0$ (exponential beats polynomial). So the integral converges and equals $1$.
+
+@@@ area-from-coordinates.md
+---
+title: Area from coordinates
+category: geometry
+level: lycee
+difficulty: 1
+tags: vectors, area
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the area of the triangle with vertices $A(1,2)$, $B(5,3)$ and $C(2,7)$.
+
+## Hint
+
+The area is half the absolute value of the determinant of $\overrightarrow{AB}$ and $\overrightarrow{AC}$.
+
+## Solution
+
+We have $\overrightarrow{AB}=(4,1)$ and $\overrightarrow{AC}=(1,5)$. Then
+$$\text{Area}=\frac12\left|\begin{vmatrix}4&1\\1&5\end{vmatrix}\right|=\frac12|20-1|=\frac{19}2.$$
+
+@@@ arrangements-of-mississippi.md
+---
+title: Arrangements of MISSISSIPPI
+category: combi
+level: lycee
+difficulty: 2
+tags: counting, arrangements
+date: 2026-10-31
+---
+
+## Statement
+
+How many different words (not necessarily meaningful) can be made by rearranging all the letters of MISSISSIPPI?
+
+## Hint
+
+Count arrangements as if all letters were different, then divide by the repeated letters.
+
+## Solution
+
+MISSISSIPPI has $11$ letters: $1$ M, $4$ I, $4$ S and $2$ P.
+
+If all letters were different there would be $11!$ arrangements. Swapping identical letters does not change the word, so divide by the number of orderings of each repeated letter:
+$$\frac{11!}{1!\,4!\,4!\,2!}=\frac{39\,916\,800}{1152}=34\,650.$$
+
+@@@ bernoulli-inequality.md
+---
+title: Bernoulli's inequality
+category: logic
+level: l1
+difficulty: 2
+tags: induction, inequalities
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for every real $x\ge-1$ and every integer $n\ge0$,
+$$(1+x)^n\ge1+nx.$$
+
+## Hint
+
+Use induction on $n$, and remember that $1+x\ge0$.
+
+## Solution
+
+**Base case.** For $n=0$ both sides equal $1$.
+
+**Induction step.** Assume $(1+x)^n\ge1+nx$. Since $1+x\ge0$, multiplying by $1+x$ keeps the inequality:
+$$(1+x)^{n+1}\ge(1+nx)(1+x)=1+(n+1)x+nx^2\ge1+(n+1)x.$$
+
+So the statement holds for $n+1$, and by induction for all $n\ge0$.
+
+@@@ cantors-theorem.md
+---
+title: Cantor's theorem
+category: logic
+level: l3
+difficulty: 4
+tags: diagonal argument, sets
+date: 2026-10-31
+---
+
+## Statement
+
+Let $E$ be a set and $\mathcal{P}(E)$ the set of its subsets. Prove that there is no surjective map from $E$ onto $\mathcal{P}(E)$.
+
+## Hint
+
+Given $f:E\to\mathcal{P}(E)$, consider $A=\{x\in E : x\notin f(x)\}$.
+
+## Solution
+
+Let $f:E\to\mathcal{P}(E)$ be any map and define
+$$A=\{x\in E:\ x\notin f(x)\}\in\mathcal{P}(E).$$
+
+Suppose $f$ is surjective. Then $A=f(a)$ for some $a\in E$.
+
+- If $a\in A$, then by the definition of $A$ we have $a\notin f(a)=A$, a contradiction.
+- If $a\notin A$, then $a\notin f(a)$ fails, so $a\in f(a)=A$, a contradiction.
+
+Both cases are impossible, so $f$ is not surjective. Since $f$ was arbitrary, no surjection $E\to\mathcal{P}(E)$ exists.
+
+@@@ congruence-is-an-equivalence-relation.md
+---
+title: Congruence is an equivalence relation
+category: logic
+level: l1
+difficulty: 1
+tags: relations, modular arithmetic
+date: 2026-10-31
+---
+
+## Statement
+
+Let $n\ge2$ be an integer. For $a,b\in\mathbb{Z}$, write $a\equiv b\pmod n$ when $n$ divides $a-b$. Prove that $\equiv$ is an equivalence relation on $\mathbb{Z}$, and say how many equivalence classes it has.
+
+## Hint
+
+Check reflexivity, symmetry and transitivity, then use division with remainder.
+
+## Solution
+
+**Reflexive.** $a-a=0$ is divisible by $n$.
+
+**Symmetric.** If $n\mid a-b$ then $n\mid b-a=-(a-b)$.
+
+**Transitive.** If $n\mid a-b$ and $n\mid b-c$, then $n$ divides the sum $(a-b)+(b-c)=a-c$.
+
+**Classes.** Every integer $a$ can be written $a=qn+r$ with $0\le r<n$, so $a\equiv r$. Two different remainders $r\ne r'$ in $\{0,\dots,n-1\}$ differ by less than $n$ and are not $0$, so they are not congruent. There are exactly $n$ classes.
+
+@@@ convergence-of-the-series-of-1-over-n-squared.md
+---
+title: Convergence of the series of 1/n²
+category: analysis
+level: l1
+difficulty: 3
+tags: series, comparison
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that the series $\displaystyle\sum_{n\ge1}\frac1{n^2}$ converges.
+
+## Hint
+
+For $n\ge2$, compare $\frac1{n^2}$ with $\frac1{n(n-1)}=\frac1{n-1}-\frac1n$.
+
+## Solution
+
+For $n\ge2$ we have $n^2\ge n(n-1)$, so
+$$\frac1{n^2}\le\frac1{n(n-1)}=\frac1{n-1}-\frac1n.$$
+
+Let $S_N=\sum_{n=1}^N\frac1{n^2}$. For $N\ge2$, the sum telescopes:
+$$S_N\le1+\sum_{n=2}^N\left(\frac1{n-1}-\frac1n\right)=1+1-\frac1N<2.$$
+
+The sequence $(S_N)$ is increasing (the terms are positive) and bounded above by $2$, so it converges. Hence the series converges.
+
+@@@ de-morgan-for-sets.md
+---
+title: De Morgan's law for sets
+category: logic
+level: l1
+difficulty: 1
+tags: sets, proofs
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A$ and $B$ be subsets of a set $E$. Prove that
+$$E\setminus(A\cup B)=(E\setminus A)\cap(E\setminus B).$$
+
+## Hint
+
+Take an element $x$ of $E$ and translate "$x\notin A\cup B$" using logic.
+
+## Solution
+
+Let $x\in E$. Then
+$$x\in E\setminus(A\cup B)\iff x\notin A\cup B\iff \text{not}\,(x\in A\text{ or }x\in B)\iff x\notin A\text{ and }x\notin B.$$
+
+The last statement means $x\in E\setminus A$ and $x\in E\setminus B$, that is $x\in(E\setminus A)\cap(E\setminus B)$. The two sets have the same elements, so they are equal.
+
+@@@ derangements-of-four-objects.md
+---
+title: Derangements of four objects
+category: combi
+level: l2
+difficulty: 3
+tags: inclusion-exclusion, permutations
+date: 2026-10-31
+---
+
+## Statement
+
+How many permutations of $\{1,2,3,4\}$ have no fixed point?
+
+## Hint
+
+Use the inclusion–exclusion principle on the sets $A_i$ of permutations fixing $i$.
+
+## Solution
+
+Let $A_i$ be the set of permutations with $\sigma(i)=i$. A permutation with no fixed point lies in none of the $A_i$. For any $j$ indices, the permutations fixing all of them number $(4-j)!$. By inclusion–exclusion, the number of derangements is
+$$4!-\binom41\,3!+\binom42\,2!-\binom43\,1!+\binom44\,0!=24-24+12-4+1=9.$$
+
+@@@ distance-from-a-point-to-a-line.md
+---
+title: Distance from a point to a line
+category: geometry
+level: lycee
+difficulty: 2
+tags: lines, projection
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the distance from the point $M(1,2)$ to the line $\mathcal D:\ 3x+4y-5=0$.
+
+## Hint
+
+The vector $\vec n=(3,4)$ is normal to $\mathcal D$. Project $M$ onto $\mathcal D$ along $\vec n$.
+
+## Solution
+
+The foot $H$ of the perpendicular from $M$ has the form $H=M-t\,\vec n$. Requiring $H\in\mathcal D$:
+$$3(1-3t)+4(2-4t)-5=0\quad\Longrightarrow\quad6-25t=0\quad\Longrightarrow\quad t=\frac6{25}.$$
+
+Then $MH=|t|\,\|\vec n\|=\dfrac6{25}\cdot5=\dfrac65$.
+
+This agrees with the general formula $d=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}=\dfrac{|3+8-5|}{5}=\dfrac65$.
+
+@@@ divergence-of-the-harmonic-series.md
+---
+title: Divergence of the harmonic series
+category: analysis
+level: l1
+difficulty: 3
+tags: series, divergence
+date: 2026-10-31
+---
+
+## Statement
+
+Let $H_n=\displaystyle\sum_{k=1}^n\frac1k$. Show that $H_n\to+\infty$.
+
+## Hint
+
+Compare $H_{2^{k+1}}$ and $H_{2^k}$: the terms between them are all at least $\frac1{2^{k+1}}$.
+
+## Solution
+
+For $k\ge0$,
+$$H_{2^{k+1}}-H_{2^k}=\sum_{j=2^k+1}^{2^{k+1}}\frac1j\ge2^k\cdot\frac1{2^{k+1}}=\frac12,$$
+because the sum has $2^k$ terms, each at least $\frac1{2^{k+1}}$.
+
+Adding these inequalities for $0,1,\dots,k-1$ and using $H_1=1$ gives
+$$H_{2^k}\ge1+\frac k2.$$
+
+The sequence $(H_n)$ is increasing and has a subsequence going to $+\infty$, so it is unbounded and $H_n\to+\infty$.
+
+@@@ euclidean-algorithm-and-bezout.md
+---
+title: The Euclidean algorithm and Bézout
+category: number
+level: l1
+difficulty: 2
+tags: gcd, bezout
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\gcd(252,198)$ with the Euclidean algorithm, then find integers $u,v$ with $252u+198v=\gcd(252,198)$.
+
+## Hint
+
+Run the divisions, then substitute backwards from the last non-zero remainder.
+
+## Solution
+
+**Algorithm.**
+$$252=1\cdot198+54,\qquad198=3\cdot54+36,\qquad54=1\cdot36+18,\qquad36=2\cdot18+0.$$
+The last non-zero remainder is $18$, so $\gcd(252,198)=18$.
+
+**Bézout.** Working backwards,
+$$18=54-36=54-(198-3\cdot54)=4\cdot54-198=4(252-198)-198=4\cdot252-5\cdot198.$$
+
+So $u=4$ and $v=-5$. Check: $4\cdot252-5\cdot198=1008-990=18$.
+
+@@@ exponential-lies-above-its-tangent.md
+---
+title: The exponential lies above its tangent
+category: analysis
+level: l1
+difficulty: 1
+tags: inequalities, derivatives
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that $e^x\ge1+x$ for every real $x$, with equality only for $x=0$.
+
+## Hint
+
+Study the function $f(x)=e^x-1-x$.
+
+## Solution
+
+Let $f(x)=e^x-1-x$. Then $f'(x)=e^x-1$.
+
+- For $x<0$ we have $e^x<1$, so $f'(x)<0$ and $f$ is strictly decreasing on $(-\infty,0]$.
+- For $x>0$ we have $e^x>1$, so $f'(x)>0$ and $f$ is strictly increasing on $[0,+\infty)$.
+
+So $f$ has a strict minimum at $0$, where $f(0)=0$. Therefore $f(x)>0$ for $x\ne0$, which gives $e^x\ge1+x$ with equality only at $x=0$.
+
+@@@ five-heads-in-ten-tosses.md
+---
+title: Five heads in ten tosses
+category: proba
+level: lycee
+difficulty: 1
+tags: binomial distribution
+date: 2026-10-31
+---
+
+## Statement
+
+A fair coin is tossed $10$ times. What is the probability of getting exactly $5$ heads?
+
+## Hint
+
+The number of heads follows a binomial distribution $\mathcal{B}(10,\tfrac12)$.
+
+## Solution
+
+The number of heads $X$ follows $\mathcal{B}(10,\tfrac12)$, so
+$$P(X=5)=\binom{10}5\left(\frac12\right)^{10}=\frac{252}{1024}=\frac{63}{256}\approx0.246.$$
+
+@@@ four-digit-numbers-with-distinct-digits.md
+---
+title: Four-digit numbers with distinct digits
+category: combi
+level: lycee
+difficulty: 1
+tags: counting, arrangements
+date: 2026-10-31
+---
+
+## Statement
+
+How many four-digit numbers (from $1000$ to $9999$) have four different digits?
+
+## Hint
+
+Choose the digits one at a time, starting with the first.
+
+## Solution
+
+- The first digit can be any of $1,\dots,9$: $9$ choices (it cannot be $0$).
+- The second digit can be any digit except the first, including $0$: $9$ choices.
+- The third digit: $8$ choices.
+- The fourth digit: $7$ choices.
+
+By the multiplication principle, there are $9\cdot9\cdot8\cdot7=4536$ such numbers.
+
+@@@ infinitely-many-primes.md
+---
+title: There are infinitely many primes
+category: number
+level: l1
+difficulty: 2
+tags: primes, proof by contradiction
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that there are infinitely many prime numbers.
+
+## Hint
+
+Suppose there are finitely many, multiply them all and add $1$.
+
+## Solution
+
+Suppose there are only finitely many primes $p_1,\dots,p_k$. Let
+$$N=p_1p_2\cdots p_k+1>1.$$
+
+Then $N$ has a prime divisor $p$. This prime must be one of the $p_i$, by assumption. But $p_i$ divides $p_1\cdots p_k$ and divides $N$, so it divides their difference $N-p_1\cdots p_k=1$, which is impossible.
+
+This contradiction shows that the list of primes cannot be finite.
+
+@@@ injective-or-surjective.md
+---
+title: Injective or surjective?
+category: logic
+level: l1
+difficulty: 1
+tags: maps, bijection
+date: 2026-10-31
+---
+
+## Statement
+
+Let $f:\mathbb{R}\to\mathbb{R}$ be defined by $f(x)=x^2$. Is $f$ injective? Surjective? Restrict $f$ to get a bijection.
+
+## Hint
+
+Compare $f(1)$ and $f(-1)$, and ask whether $-1$ is a value of $f$.
+
+## Solution
+
+**Not injective.** $f(-1)=f(1)=1$ although $-1\ne1$.
+
+**Not surjective.** $f(x)=x^2\ge0$ for every $x$, so $-1$ has no preimage.
+
+**A bijection.** Let $g:[0,+\infty)\to[0,+\infty)$ be the restriction $g(x)=x^2$. For $y\ge0$, the equation $x^2=y$ has exactly one solution in $[0,+\infty)$, namely $x=\sqrt y$. So $g$ is bijective, with inverse $y\mapsto\sqrt y$.
+
+@@@ inradius-of-a-right-triangle.md
+---
+title: Inradius of a right triangle
+category: geometry
+level: lycee
+difficulty: 3
+tags: incircle, right triangle
+date: 2026-10-31
+---
+
+## Statement
+
+A right triangle has legs $a$ and $b$ and hypotenuse $c$. Show that the radius of its inscribed circle is $r=\dfrac{a+b-c}{2}$. What is $r$ for the $3$-$4$-$5$ triangle?
+
+## Hint
+
+Use the fact that the two tangent segments from a vertex to a circle have equal length.
+
+## Solution
+
+Let the right angle be at $C$, with $CB=a$ and $CA=b$. The incircle touches the legs at two points. Together with $C$ and the centre $I$, these points form a square of side $r$ (all four angles are right angles and two adjacent sides equal $r$). So the tangent length from $C$ is $r$.
+
+Hence the tangent length from $B$ is $a-r$ and from $A$ is $b-r$. The hypotenuse $AB$ is split by its point of tangency into these two lengths, so
+$$(a-r)+(b-r)=c\quad\Longrightarrow\quad r=\frac{a+b-c}{2}.$$
+
+For the $3$-$4$-$5$ triangle, $r=\dfrac{3+4-5}{2}=1$.
+
+@@@ integral-of-sine-squared.md
+---
+title: Integral of sine squared
+category: analysis
+level: l1
+difficulty: 1
+tags: integrals, trigonometry
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\displaystyle\int_0^\pi\sin^2x\,dx$.
+
+## Hint
+
+Linearise using $\cos2x=1-2\sin^2x$.
+
+## Solution
+
+Since $\sin^2x=\dfrac{1-\cos2x}{2}$,
+$$\int_0^\pi\sin^2x\,dx=\left[\frac x2-\frac{\sin2x}{4}\right]_0^\pi=\frac\pi2.$$
+
+@@@ integration-by-parts-x-exp-x.md
+---
+title: Integration by parts
+category: analysis
+level: l1
+difficulty: 1
+tags: integrals, by parts
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\displaystyle\int_0^1 x\,e^x\,dx$.
+
+## Hint
+
+Differentiate $x$ and integrate $e^x$.
+
+## Solution
+
+Take $u=x$ and $v'=e^x$, so $u'=1$ and $v=e^x$. Then
+$$\int_0^1xe^x\,dx=\Big[xe^x\Big]_0^1-\int_0^1e^x\,dx=e-(e-1)=1.$$
+
+@@@ inverse-of-a-2x2-matrix.md
+---
+title: Inverse of a 2×2 matrix
+category: linear
+level: lycee
+difficulty: 1
+tags: inverse, determinants
+date: 2026-10-31
+---
+
+## Statement
+
+Show that $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$ is invertible and compute $A^{-1}$.
+
+## Hint
+
+For $\begin{pmatrix}a&b\\c&d\end{pmatrix}$ with determinant $\Delta=ad-bc\ne0$, the inverse is $\frac1\Delta\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$.
+
+## Solution
+
+$\det A=1\cdot4-2\cdot3=-2\ne0$, so $A$ is invertible, and
+$$A^{-1}=\frac1{-2}\begin{pmatrix}4&-2\\-3&1\end{pmatrix}=\begin{pmatrix}-2&1\\\tfrac32&-\tfrac12\end{pmatrix}.$$
+
+Check: $A A^{-1}$ has first row $(1\cdot(-2)+2\cdot\tfrac32,\ 1\cdot1+2\cdot(-\tfrac12))=(1,0)$ and second row $(3\cdot(-2)+4\cdot\tfrac32,\ 3\cdot1+4\cdot(-\tfrac12))=(0,1)$.
+
+@@@ inverting-i-minus-a.md
+---
+title: Inverting I − A
+category: linear
+level: l2
+difficulty: 2
+tags: matrices, nilpotent
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A$ be a square matrix with $A^2=0$. Show that $I-A$ is invertible and give its inverse.
+
+## Hint
+
+Multiply $I-A$ by $I+A$.
+
+## Solution
+
+Using $A^2=0$,
+$$(I-A)(I+A)=I-A^2=I\qquad\text{and}\qquad(I+A)(I-A)=I-A^2=I.$$
+
+So $I-A$ is invertible and $(I-A)^{-1}=I+A$.
+
+@@@ irrationality-of-sqrt2-plus-sqrt3.md
+---
+title: Irrationality of √2 + √3
+category: number
+level: l1
+difficulty: 3
+tags: irrational, proof by contradiction
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that $\sqrt2+\sqrt3$ is irrational.
+
+## Hint
+
+Compute $(\sqrt3-\sqrt2)(\sqrt3+\sqrt2)$.
+
+## Solution
+
+Suppose $r=\sqrt2+\sqrt3$ is rational. Since $r>0$ and
+$$(\sqrt3-\sqrt2)(\sqrt3+\sqrt2)=3-2=1,$$
+we get $\sqrt3-\sqrt2=\dfrac1r$, which is rational.
+
+Then $\sqrt3=\dfrac12\left(r+\dfrac1r\right)$ would be rational.
+
+But $\sqrt3$ is irrational. Indeed, if $\sqrt3=\frac pq$ with $p,q$ coprime, then $p^2=3q^2$, so $3\mid p^2$ and, $3$ being prime, $3\mid p$. Writing $p=3k$ gives $q^2=3k^2$, so $3\mid q$, contradicting coprimality.
+
+Hence $\sqrt2+\sqrt3$ is irrational.
+
+@@@ irrationality-of-sqrt2.md
+---
+title: Irrationality of √2
+category: number
+level: l1
+difficulty: 2
+tags: proof, irrational
+date: 2026-10-26
+---
+
+## Statement
+
+Prove that $\sqrt{2}$ is irrational.
+
+## Hint
+
+Assume $\sqrt{2}=p/q$ with $p,q$ coprime integers, then look at the parity of $p$ and $q$.
+
+## Solution
+
+Suppose $\sqrt2=\dfrac pq$ with $p,q\in\mathbb{N}^*$ coprime.
+
+Then $p^2=2q^2$, so $p^2$ is even, hence $p$ is even: $p=2k$. Substituting gives $4k^2=2q^2$, that is $q^2=2k^2$, so $q$ is even too.
+
+Both $p$ and $q$ are divisible by 2, which contradicts coprimality. Therefore $\sqrt2\notin\mathbb{Q}$.
+
+@@@ kernel-of-a-matrix.md
+---
+title: Kernel of a matrix
+category: linear
+level: l1
+difficulty: 2
+tags: kernel, rank
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A=\begin{pmatrix}1&2&3\\2&4&6\end{pmatrix}$. Find the rank of $A$, and a basis of its kernel.
+
+## Hint
+
+Compare the two rows.
+
+## Solution
+
+The second row is twice the first, so the rows span a line and $\operatorname{rank}A=1$.
+
+The kernel is the set of $(x,y,z)\in\mathbb{R}^3$ with $x+2y+3z=0$ (the second equation is a multiple of the first). Writing $x=-2y-3z$,
+$$(x,y,z)=y\,(-2,1,0)+z\,(-3,0,1).$$
+
+So $\{(-2,1,0),(-3,0,1)\}$ is a basis of $\ker A$, which has dimension $2=3-\operatorname{rank}A$, as the rank–nullity theorem predicts.
+
+@@@ negating-convergence.md
+---
+title: Negating convergence
+category: logic
+level: l1
+difficulty: 2
+tags: quantifiers, sequences
+date: 2026-10-31
+---
+
+## Statement
+
+Write with quantifiers the statement "the real sequence $(u_n)$ converges to $\ell$". Then write its negation, and the negation of "$(u_n)$ converges".
+
+## Hint
+
+Swap each $\forall$ with $\exists$ (and the other way round) and negate the final inequality.
+
+## Solution
+
+**Convergence to $\ell$.**
+$$\forall\varepsilon>0,\ \exists N\in\mathbb{N},\ \forall n\ge N,\ |u_n-\ell|<\varepsilon.$$
+
+**Negation.**
+$$\exists\varepsilon>0,\ \forall N\in\mathbb{N},\ \exists n\ge N,\ |u_n-\ell|\ge\varepsilon.$$
+In words: from some fixed distance $\varepsilon$, infinitely many terms stay at least $\varepsilon$ away from $\ell$.
+
+**Negation of "$(u_n)$ converges".** The sequence converges if there exists some $\ell$ with the property above. Its negation is
+$$\forall\ell\in\mathbb{R},\ \exists\varepsilon>0,\ \forall N\in\mathbb{N},\ \exists n\ge N,\ |u_n-\ell|\ge\varepsilon.$$
+
+@@@ pascals-rule.md
+---
+title: Pascal's rule
+category: combi
+level: l1
+difficulty: 2
+tags: binomial, counting
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that $\binom nk=\binom{n-1}k+\binom{n-1}{k-1}$ for $1\le k\le n-1$, first by computation, then by a counting argument.
+
+## Hint
+
+For the counting argument, fix one element of the set and ask whether a subset contains it.
+
+## Solution
+
+**Computation.**
+$$\binom{n-1}k+\binom{n-1}{k-1}=\frac{(n-1)!}{k!\,(n-1-k)!}+\frac{(n-1)!}{(k-1)!\,(n-k)!}=\frac{(n-1)!}{k!\,(n-k)!}\big[(n-k)+k\big]=\frac{n!}{k!\,(n-k)!}.$$
+
+**Counting.** Let $E$ have $n$ elements and fix $x\in E$. The $k$-element subsets of $E$ split into two groups: those not containing $x$, which are $k$-element subsets of $E\setminus\{x\}$, so $\binom{n-1}k$ of them; and those containing $x$, obtained by adding $x$ to a $(k-1)$-element subset of $E\setminus\{x\}$, so $\binom{n-1}{k-1}$ of them. Together there are $\binom nk$.
+
+@@@ pigeonhole-modulo-4.md
+---
+title: Pigeonhole modulo 4
+category: combi
+level: l1
+difficulty: 2
+tags: pigeonhole, congruences
+date: 2026-10-31
+---
+
+## Statement
+
+Show that among any five integers, there are two whose difference is divisible by $4$.
+
+## Hint
+
+Sort the integers by their remainder when divided by $4$.
+
+## Solution
+
+Every integer has a remainder in $\{0,1,2,3\}$ when divided by $4$. These are $4$ possible remainders ("boxes") for $5$ integers.
+
+By the pigeonhole principle, two of the integers have the same remainder. If $a=4q+r$ and $b=4q'+r$, then $a-b=4(q-q')$ is divisible by $4$.
+
+@@@ power-of-1-plus-i.md
+---
+title: A power of 1 + i
+category: algebra
+level: l1
+difficulty: 1
+tags: complex numbers
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $(1+i)^{20}$.
+
+## Hint
+
+Compute $(1+i)^2$ first.
+
+## Solution
+
+We have $(1+i)^2=1+2i+i^2=2i$. Therefore
+$$(1+i)^{20}=\left((1+i)^2\right)^{10}=(2i)^{10}=2^{10}\,i^{10}=1024\cdot(i^2)^5=1024\cdot(-1)^5=-1024.$$
+
+@@@ powers-of-a-companion-matrix.md
+---
+title: Powers of a 2×2 matrix with eigenvalues 1 and 2
+category: linear
+level: l2
+difficulty: 3
+tags: diagonalisation, matrices
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A=\begin{pmatrix}0&1\\-2&3\end{pmatrix}$. Find its eigenvalues and eigenvectors, then compute $A^n$ for every $n\in\mathbb{N}$.
+
+## Hint
+
+The characteristic polynomial is $X^2-\operatorname{tr}(A)X+\det A$.
+
+## Solution
+
+$\operatorname{tr}A=3$ and $\det A=2$, so $\chi_A(X)=X^2-3X+2=(X-1)(X-2)$. The eigenvalues are $1$ and $2$.
+
+- For $\lambda=1$: $(A-I)v=0$ gives $-x+y=0$, so $v_1=(1,1)$.
+- For $\lambda=2$: $(A-2I)v=0$ gives $-2x+y=0$, so $v_2=(1,2)$.
+
+Let $P=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, $D=\operatorname{diag}(1,2)$. Then $\det P=1$ and $P^{-1}=\begin{pmatrix}2&-1\\-1&1\end{pmatrix}$, and $A=PDP^{-1}$. Hence
+$$A^n=PD^nP^{-1}=\begin{pmatrix}1&2^n\\1&2^{n+1}\end{pmatrix}\begin{pmatrix}2&-1\\-1&1\end{pmatrix}=\begin{pmatrix}2-2^n&2^n-1\\2-2^{n+1}&2^{n+1}-1\end{pmatrix}.$$
+
+Check: $n=0$ gives the identity and $n=1$ gives $A$.
+
+@@@ powers-of-a-matrix.md
+---
+title: Powers of a matrix
+category: linear
+level: l2
+difficulty: 3
+tags: diagonalisation, matrices
+date: 2026-10-28
+---
+
+## Statement
+
+Let $A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$. Compute $A^n$ for every $n\in\mathbb{N}$.
+
+## Hint
+
+Find the eigenvalues of $A$ and a basis of eigenvectors.
+
+## Solution
+
+The characteristic polynomial is $(X-2)^2-1=(X-1)(X-3)$. The vector $(1,-1)$ is an eigenvector for $1$ and $(1,1)$ is one for $3$.
+
+With $P=\begin{pmatrix}1&1\\-1&1\end{pmatrix}$, $D=\operatorname{diag}(1,3)$ and $P^{-1}=\dfrac12\begin{pmatrix}1&-1\\1&1\end{pmatrix}$ we have $A=PDP^{-1}$, so
+$$A^n=PD^nP^{-1}=\frac12\begin{pmatrix}3^n+1&3^n-1\\3^n-1&3^n+1\end{pmatrix}.$$
+
+@@@ radius-of-convergence.md
+---
+title: Radius of convergence
+category: analysis
+level: l2
+difficulty: 2
+tags: power series, ratio test
+date: 2026-10-31
+---
+
+## Statement
+
+Find the radius of convergence of the power series $\displaystyle\sum_{n\ge1}\frac{n}{2^n}x^n$, and study its behaviour at the endpoints of the interval of convergence.
+
+## Hint
+
+Use d'Alembert's ratio test on $a_n=\dfrac n{2^n}$.
+
+## Solution
+
+Let $a_n=\dfrac n{2^n}$. Then
+$$\frac{a_{n+1}}{a_n}=\frac{n+1}{2n}\longrightarrow\frac12,$$
+so the radius of convergence is $R=2$.
+
+At $x=\pm2$ the general term is $n\,(\pm1)^n$, whose absolute value $n$ does not tend to $0$. The series diverges at both endpoints, so the interval of convergence is the open interval $(-2,2)$.
+
+@@@ remainder-of-a-polynomial.md
+---
+title: Remainder of a polynomial
+category: algebra
+level: l1
+difficulty: 2
+tags: polynomials, euclidean division
+date: 2026-10-31
+---
+
+## Statement
+
+Find the remainder of the division of $P(x)=x^{100}+x+1$ by $x^2-1$.
+
+## Hint
+
+The remainder has degree at most $1$. Evaluate $P$ at the roots of $x^2-1$.
+
+## Solution
+
+Write $P(x)=(x^2-1)Q(x)+ax+b$, where $a,b$ are real numbers.
+
+Evaluating at $x=1$ gives $P(1)=3=a+b$. Evaluating at $x=-1$ gives $P(-1)=1-1+1=1=-a+b$.
+
+Adding the two equations gives $2b=4$, so $b=2$ and $a=1$. The remainder is $x+2$.
+
+@@@ six-divides-n-cubed-minus-n.md
+---
+title: 6 divides n³ − n
+category: number
+level: lycee
+difficulty: 2
+tags: divisibility, factorisation
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for every integer $n$, the number $n^3-n$ is divisible by $6$.
+
+## Hint
+
+Factor $n^3-n$.
+
+## Solution
+
+We have $n^3-n=(n-1)\,n\,(n+1)$, a product of three consecutive integers.
+
+- Among three consecutive integers, one is a multiple of $3$.
+- Among them, at least one is even.
+
+So the product is divisible by $2$ and by $3$. Since $2$ and $3$ are coprime, it is divisible by $6$.
+
+@@@ squares-and-pairwise-products.md
+---
+title: Squares and pairwise products
+category: algebra
+level: lycee
+difficulty: 1
+tags: inequalities, squares
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for all real numbers $a,b,c$,
+$$a^2+b^2+c^2\ge ab+bc+ca,$$
+with equality if and only if $a=b=c$.
+
+## Hint
+
+Look at $(a-b)^2+(b-c)^2+(c-a)^2$.
+
+## Solution
+
+Expanding each square,
+$$(a-b)^2+(b-c)^2+(c-a)^2=2\left(a^2+b^2+c^2-ab-bc-ca\right).$$
+
+A sum of squares is non-negative, so $a^2+b^2+c^2-ab-bc-ca\ge0$. It equals $0$ exactly when all three squares are $0$, that is when $a=b=c$.
+
+@@@ stars-and-bars.md
+---
+title: Stars and bars
+category: combi
+level: l1
+difficulty: 2
+tags: counting, equations
+date: 2026-10-31
+---
+
+## Statement
+
+How many triples $(x,y,z)$ of non-negative integers satisfy $x+y+z=10$? How many if $x,y,z$ must be positive?
+
+## Hint
+
+Represent a solution as $10$ stars separated by $2$ bars.
+
+## Solution
+
+A solution corresponds to a row of $10$ stars and $2$ bars: the stars before the first bar count $x$, those between the bars count $y$, those after the second bar count $z$. A row has $12$ positions, and we choose which $2$ are bars. The number of non-negative solutions is
+$$\binom{12}{2}=66.$$
+
+For positive solutions, set $x'=x-1$, $y'=y-1$, $z'=z-1\ge0$. Then $x'+y'+z'=7$, which has $\binom{9}{2}=36$ non-negative solutions.
+
+@@@ sum-of-binomial-coefficients.md
+---
+title: Sum of binomial coefficients
+category: combi
+level: l1
+difficulty: 2
+tags: binomial, counting
+date: 2026-10-30
+---
+
+## Statement
+
+Prove that $\displaystyle\sum_{k=0}^{n}\binom nk=2^n$ in two ways: by computation, then by a counting argument.
+
+## Hint
+
+Expand $(1+1)^n$. For counting, think of subsets of an $n$-element set.
+
+## Solution
+
+**Computation.** By the binomial theorem, $2^n=(1+1)^n=\sum_{k=0}^n\binom nk$.
+
+**Counting.** $\binom nk$ is the number of $k$-element subsets of an $n$-element set. Summing over $k$ counts all subsets. Each element is either in or out of a subset, which gives $2^n$ subsets.
+
+@@@ sum-of-cubes-of-roots.md
+---
+title: Sum of cubes of the roots
+category: algebra
+level: lycee
+difficulty: 2
+tags: vieta, polynomials
+date: 2026-10-31
+---
+
+## Statement
+
+Let $x_1$ and $x_2$ be the roots of $x^2-3x+1=0$. Compute $x_1^3+x_2^3$ without computing the roots.
+
+## Hint
+
+Write $x_1^3+x_2^3$ using the sum $s=x_1+x_2$ and the product $p=x_1x_2$.
+
+## Solution
+
+By Vieta's formulas, $s=x_1+x_2=3$ and $p=x_1x_2=1$.
+
+Since $(x_1+x_2)^3=x_1^3+x_2^3+3x_1x_2(x_1+x_2)$, we get
+$$x_1^3+x_2^3=s^3-3ps=27-9=18.$$
+
+@@@ sum-of-squares-by-induction.md
+---
+title: Sum of squares by induction
+category: logic
+level: lycee
+difficulty: 2
+tags: induction, sums
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for every integer $n\ge1$,
+$$1^2+2^2+\cdots+n^2=\frac{n(n+1)(2n+1)}{6}.$$
+
+## Hint
+
+Prove it for $n=1$, then show that if it holds for $n$ it holds for $n+1$.
+
+## Solution
+
+**Base case.** For $n=1$, the left side is $1$ and the right side is $\frac{1\cdot2\cdot3}{6}=1$.
+
+**Induction step.** Assume the formula holds for some $n\ge1$. Then
+$$\sum_{k=1}^{n+1}k^2=\frac{n(n+1)(2n+1)}{6}+(n+1)^2=\frac{(n+1)\left[n(2n+1)+6(n+1)\right]}{6}.$$
+Since $n(2n+1)+6(n+1)=2n^2+7n+6=(n+2)(2n+3)$, this equals $\dfrac{(n+1)(n+2)(2n+3)}{6}$, which is the formula for $n+1$.
+
+By induction, the formula holds for all $n\ge1$.
+
+@@@ sums-of-two-squares-mod-4.md
+---
+title: Sums of two squares modulo 4
+category: number
+level: l1
+difficulty: 2
+tags: congruences, squares
+date: 2026-10-31
+---
+
+## Statement
+
+Show that no integer of the form $4k+3$ is a sum of two squares of integers.
+
+## Hint
+
+Find the possible remainders of a square modulo $4$.
+
+## Solution
+
+Let $m$ be an integer. If $m=2j$, then $m^2=4j^2\equiv0\pmod4$. If $m=2j+1$, then $m^2=4j(j+1)+1\equiv1\pmod4$. So a square is $\equiv0$ or $1\pmod4$.
+
+A sum of two squares is therefore congruent to $0+0=0$, $0+1=1$ or $1+1=2$ modulo $4$, never to $3$. Hence $4k+3$ is never a sum of two squares.
+
+@@@ thales-theorem.md
+---
+title: Thales' theorem
+category: geometry
+level: lycee
+difficulty: 2
+tags: circles, angles
+date: 2026-10-31
+---
+
+## Statement
+
+Let $[AB]$ be a diameter of a circle with centre $O$, and let $M$ be a point of the circle different from $A$ and $B$. Prove that the angle $\widehat{AMB}$ is a right angle.
+
+## Hint
+
+Triangles $OAM$ and $OBM$ are isosceles.
+
+## Solution
+
+Since $OA=OM=OB$, the triangles $OAM$ and $OBM$ are isosceles at $O$. Let $\alpha=\widehat{OAM}=\widehat{OMA}$ and $\beta=\widehat{OBM}=\widehat{OMB}$.
+
+The angle $\widehat{AMB}$ equals $\widehat{OMA}+\widehat{OMB}=\alpha+\beta$.
+
+The angles of triangle $ABM$ are $\alpha$ (at $A$), $\beta$ (at $B$) and $\alpha+\beta$ (at $M$). Their sum is $180^\circ$, so $2(\alpha+\beta)=180^\circ$, hence $\widehat{AMB}=\alpha+\beta=90^\circ$.
+
+@@@ the-centroid-of-a-triangle.md
+---
+title: The centroid of a triangle
+category: geometry
+level: lycee
+difficulty: 3
+tags: vectors, medians
+date: 2026-10-31
+---
+
+## Statement
+
+In a triangle $ABC$, show that the three medians meet at one point $G$, and that $G$ lies at two thirds of each median from its vertex.
+
+## Hint
+
+Work with position vectors and look at the point $G=\frac13(A+B+C)$.
+
+## Solution
+
+Identify points with their position vectors. Let $M=\frac12(B+C)$ be the midpoint of $BC$, so $AM$ is the median from $A$.
+
+Define $G=\dfrac{A+B+C}3$. Then
+$$A+\frac23(M-A)=\frac A3+\frac{2M}3=\frac A3+\frac{B+C}3=G.$$
+So $G$ lies on the median $AM$, at two thirds of the way from $A$ to $M$.
+
+The expression $\frac{A+B+C}3$ is symmetric in $A,B,C$, so the same computation shows $G$ lies on the other two medians, also at two thirds from the vertex. Hence the three medians are concurrent at $G$.
+
+@@@ the-handshake-lemma.md
+---
+title: The handshake lemma
+category: combi
+level: l1
+difficulty: 2
+tags: graphs, parity
+date: 2026-10-31
+---
+
+## Statement
+
+At a party, some pairs of people shake hands (each pair at most once). Show that the number of people who shake an odd number of hands is even.
+
+## Hint
+
+Count the total number of hands shaken in two ways.
+
+## Solution
+
+Let $d_i$ be the number of hands shaken by person $i$. Each handshake involves two people, so
+$$\sum_id_i=2h,$$
+where $h$ is the total number of handshakes. This sum is even.
+
+Modulo $2$, each $d_i$ is $0$ or $1$, so the sum is congruent to the number of people with $d_i$ odd. Since the sum is even, that number is even.
+
+@@@ the-hat-check-problem.md
+---
+title: The hat check problem
+category: proba
+level: l2
+difficulty: 3
+tags: expectation, linearity
+date: 2026-10-31
+---
+
+## Statement
+
+$n$ people leave their hats at a cloakroom. The hats are returned in a uniformly random order. Show that the expected number of people who get their own hat is $1$, whatever $n$ is.
+
+## Hint
+
+Write the number of matches as a sum of indicator variables and use linearity of expectation.
+
+## Solution
+
+Let $X_i=1$ if person $i$ gets their own hat and $X_i=0$ otherwise. The number of matches is $X=X_1+\cdots+X_n$.
+
+By symmetry, person $i$ is equally likely to receive any of the $n$ hats, so $E[X_i]=P(X_i=1)=\dfrac1n$.
+
+Linearity of expectation (which does not need the $X_i$ to be independent) gives
+$$E[X]=\sum_{i=1}^nE[X_i]=n\cdot\frac1n=1.$$
+
+@@@ the-integers-are-countable.md
+---
+title: The integers are countable
+category: logic
+level: l1
+difficulty: 2
+tags: bijection, countability
+date: 2026-10-31
+---
+
+## Statement
+
+Show that there is a bijection from $\mathbb{N}$ to $\mathbb{Z}$.
+
+## Hint
+
+Send even numbers to non-negative integers and odd numbers to negative integers.
+
+## Solution
+
+Define $f:\mathbb{N}\to\mathbb{Z}$ by
+$$f(n)=\begin{cases}\dfrac n2&\text{if }n\text{ is even},\\[2mm]-\dfrac{n+1}{2}&\text{if }n\text{ is odd}.\end{cases}$$
+The values start $0,-1,1,-2,2,-3,\dots$
+
+On even numbers $n=2k$ we have $f(n)=k$, which takes every non-negative integer exactly once. On odd numbers $n=2k+1$ we have $f(n)=-(k+1)$, which takes every negative integer exactly once.
+
+The two sets of values are disjoint and together cover $\mathbb{Z}$, so $f$ is a bijection.
+
+@@@ the-last-digit-of-7-to-the-2026.md
+---
+title: The last digit of 7^2026
+category: number
+level: lycee
+difficulty: 2
+tags: congruences, periodicity
+date: 2026-10-31
+---
+
+## Statement
+
+What is the last digit of $7^{2026}$?
+
+## Hint
+
+Write out the last digits of the first few powers of $7$ and look for a cycle.
+
+## Solution
+
+The last digits of $7^1,7^2,7^3,7^4$ are $7,9,3,1$, and $7^4\equiv1\pmod{10}$, so the pattern repeats with period $4$.
+
+Since $2026=4\cdot506+2$,
+$$7^{2026}=\left(7^4\right)^{506}\cdot7^2\equiv49\equiv9\pmod{10}.$$
+
+The last digit is $9$.
+
+@@@ the-logarithm-lies-below-the-line.md
+---
+title: The logarithm lies below its tangent
+category: analysis
+level: l1
+difficulty: 2
+tags: inequalities, derivatives
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that $\ln(1+x)\le x$ for every $x>-1$.
+
+## Hint
+
+Study $f(x)=x-\ln(1+x)$ on $(-1,+\infty)$.
+
+## Solution
+
+Let $f(x)=x-\ln(1+x)$ for $x>-1$. Then
+$$f'(x)=1-\frac1{1+x}=\frac{x}{1+x}.$$
+
+Since $1+x>0$, $f'(x)<0$ on $(-1,0)$ and $f'(x)>0$ on $(0,+\infty)$. So $f$ has its minimum at $0$, where $f(0)=0$. Hence $f(x)\ge0$, that is $\ln(1+x)\le x$.
+
+@@@ thirty-divides-n-to-the-fifth-minus-n.md
+---
+title: 30 divides n⁵ − n
+category: number
+level: olympiad
+difficulty: 3
+tags: divisibility, factorisation
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that $n^5-n$ is divisible by $30$ for every integer $n$.
+
+## Hint
+
+Factor $n^5-n=n(n-1)(n+1)(n^2+1)$ and check divisibility by $2$, $3$ and $5$ separately.
+
+## Solution
+
+We have $n^5-n=(n-1)\,n\,(n+1)\,(n^2+1)$.
+
+- **By 2 and 3.** The product $(n-1)n(n+1)$ of three consecutive integers is divisible by $2$ and by $3$.
+- **By 5.** Look at $n$ modulo $5$. If $n\equiv0,1$ or $4$, one of $n$, $n-1$, $n+1$ is divisible by $5$. If $n\equiv2$ or $3$, then $n^2\equiv4$, so $n^2+1\equiv0\pmod5$.
+
+The numbers $2,3,5$ are pairwise coprime, so $n^5-n$ is divisible by $2\cdot3\cdot5=30$.
+
+@@@ two-colours-from-a-bag.md
+---
+title: Two balls of the same colour
+category: proba
+level: lycee
+difficulty: 1
+tags: counting, draws
+date: 2026-10-31
+---
+
+## Statement
+
+A bag contains $3$ red balls and $2$ blue balls. Two balls are drawn at random without replacement. What is the probability that they have the same colour?
+
+## Hint
+
+Count the pairs of balls: all pairs, then the pairs of the same colour.
+
+## Solution
+
+There are $\binom52=10$ equally likely pairs of balls.
+
+Pairs of the same colour: $\binom32=3$ red pairs and $\binom22=1$ blue pair, so $4$ in total.
+
+The probability is $\dfrac4{10}=\dfrac25$.
+
+@@@ two-dice-conditioned-on-a-six.md
+---
+title: Two dice, conditioned on a six
+category: proba
+level: lycee
+difficulty: 2
+tags: conditional probability, dice
+date: 2026-10-29
+---
+
+## Statement
+
+Two fair six-sided dice are rolled. Given that at least one die shows a $6$, what is the probability that the sum is $8$?
+
+## Hint
+
+Count the outcomes in the conditioned sample space first.
+
+## Solution
+
+There are $36$ equally likely outcomes. Those with at least one $6$ number $36-25=11$.
+
+Among them, the sum is $8$ only for $(6,2)$ and $(2,6)$. The probability is
+$$P(S=8\mid \text{at least one }6)=\frac{2}{11}.$$
+
+@@@ waiting-for-the-first-six.md
+---
+title: Waiting for the first six
+category: proba
+level: l1
+difficulty: 3
+tags: expectation, geometric distribution
+date: 2026-10-31
+---
+
+## Statement
+
+A fair die is rolled repeatedly until a six appears. What is the expected number of rolls?
+
+## Hint
+
+Condition on the first roll: either you are done, or you start again.
+
+## Solution
+
+Let $T$ be the number of rolls and $E=E[T]$, which is finite because $T$ has a geometric distribution. With probability $\frac16$ the first roll is a six and we stop after $1$ roll. Otherwise, with probability $\frac56$, we have used one roll and are back to the start. So
+$$E=1+\frac56E\quad\Longrightarrow\quad\frac16E=1\quad\Longrightarrow\quad E=6.$$
+
+**Check with the distribution.** $P(T=k)=\left(\frac56\right)^{k-1}\frac16$, and with $q=\frac56$,
+$$E[T]=\frac16\sum_{k\ge1}kq^{k-1}=\frac16\cdot\frac1{(1-q)^2}=\frac16\cdot36=6.$$

@@ -96,10 +96,10 @@ function dots(n) {
 }
 
 /* ---------- read problems ---------- */
-function parseProblem(file) {
-  const raw = fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+function parseProblem(file) { return parseProblemText(fs.readFileSync(file, 'utf8'), path.basename(file)); }
+function parseProblemText(rawText, name) {
+  const raw = rawText.replace(/\r\n/g, '\n').replace(/^\uFEFF/, '');
   const m = /^---\n([\s\S]*?)\n---\n?([\s\S]*)$/.exec(raw);
-  const name = path.basename(file);
   if (!m) throw new Error(`${name}: the file must start with a --- front matter block`);
   const meta = {};
   m[1].split('\n').forEach(l => { const i = l.indexOf(':'); if (i > 0) meta[l.slice(0, i).trim().toLowerCase()] = l.slice(i + 1).trim(); });
@@ -110,7 +110,7 @@ function parseProblem(file) {
   });
   const get = k => (sections[k] || []).join('\n').trim();
   const p = {
-    slug: slugify(path.basename(file, '.md')),
+    slug: slugify(name.replace(/\.md$/i, '')),
     title: meta.title, cat: meta.category, sub: meta.subcategory || '', level: meta.level,
     diff: Math.min(5, Math.max(1, parseInt(meta.difficulty, 10) || 2)),
     tags: (meta.tags || '').split(',').map(t => t.trim()).filter(Boolean),
@@ -128,8 +128,20 @@ function parseProblem(file) {
   return p;
 }
 
-const files = fs.readdirSync(path.join(ROOT, 'problems')).filter(f => f.endsWith('.md')).sort();
-let problems = files.map(f => parseProblem(path.join(ROOT, 'problems', f))).filter(p => !p.draft);
+// Problems come from the problems/ folder (one .md file each) and/or from one file, all-problems.txt, where each
+// problem starts with a line "@@@ file-name.md" followed by the usual header and sections.
+const problemsDir = path.join(ROOT, 'problems');
+const files = fs.existsSync(problemsDir) ? fs.readdirSync(problemsDir).filter(f => f.toLowerCase().endsWith('.md')).sort() : [];
+let all = files.map(f => parseProblem(path.join(problemsDir, f)));
+const bundle = path.join(ROOT, 'all-problems.txt');
+if (fs.existsSync(bundle)) {
+  const parts = fs.readFileSync(bundle, 'utf8').replace(/\r\n/g, '\n').replace(/^\uFEFF/, '').split(/^@@@[ \t]+(\S+)[ \t]*\n/m);
+  for (let i = 1; i < parts.length; i += 2) { const nm = parts[i].toLowerCase().endsWith('.md') ? parts[i] : parts[i] + '.md'; all.push(parseProblemText(parts[i + 1], nm)); }
+}
+const seen = new Set();
+for (const p of all) { if (seen.has(p.slug)) throw new Error(`two problems have the same file name "${p.slug}" (check problems/ and all-problems.txt)`); seen.add(p.slug); }
+let problems = all.filter(p => !p.draft);
+if (!problems.length) console.warn('Warning: no problems were found. Add .md files to problems/ or an all-problems.txt file.');
 problems.sort((a, b) => a.date.localeCompare(b.date) || a.slug.localeCompare(b.slug));
 problems.forEach((p, i) => { p.num = i + 1; });
 const newestFirst = [...problems].reverse();
