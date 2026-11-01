@@ -1,0 +1,1014 @@
+@@@ limits-of-rational-functions-at-infinity.md
+---
+title: Limits of rational functions at infinity
+category: calculus/single-variable/limits
+level: lycee
+difficulty: 1
+tags: limits at infinity, rational functions
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to+\infty}\frac{3x^2+x}{2x^2-5}.$$
+
+## Hint
+
+When $x$ is very large, the terms of highest degree dominate. Divide the numerator and the denominator by $x^2$.
+
+## Solution
+
+**Idea.** For large $x$, $3x^2$ is much bigger than $x$, and $2x^2$ is much bigger than $5$. We make this visible by dividing everything by the highest power of $x$.
+
+**Computation.** For $x\neq0$,
+$$\frac{3x^2+x}{2x^2-5}=\frac{3+\frac1x}{2-\frac5{x^2}}.$$
+As $x\to+\infty$ we have $\frac1x\to0$ and $\frac5{x^2}\to0$, so the numerator tends to $3$ and the denominator to $2$. Hence the limit is $\dfrac32$.
+
+**Remark.** This recipe works for every rational function. If the numerator has the smaller degree, the limit is $0$. If the degrees are equal, the limit is the ratio of the leading coefficients (here $\frac32$). If the numerator has the larger degree, the quotient tends to $\pm\infty$.
+@@@ limit-by-factoring.md
+---
+title: A limit by factoring
+category: calculus/single-variable/limits
+level: lycee
+difficulty: 1
+tags: indeterminate forms, factoring
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to2}\frac{x^2-4}{x-2}.$$
+
+## Hint
+
+If you replace $x$ by $2$ you get $\frac00$. Factor the numerator.
+
+## Solution
+
+**Idea.** The expression $\frac00$ tells us nothing: it is an *indeterminate form*. We must rewrite the quotient so that the troublesome factor $x-2$ disappears.
+
+**Computation.** Since $x^2-4=(x-2)(x+2)$, for every $x\neq2$,
+$$\frac{x^2-4}{x-2}=x+2.$$
+The limit as $x\to2$ only looks at values of $x$ close to $2$ but different from $2$, so we may use this simplification. Therefore the limit is $2+2=4$.
+
+**Remark.** The function is not even defined at $x=2$, and yet the limit exists. A limit describes what happens *near* a point, not *at* the point.
+@@@ conjugate-trick-at-zero.md
+---
+title: The conjugate trick at zero
+category: calculus/single-variable/limits
+level: lycee
+difficulty: 2
+tags: conjugate, square roots, indeterminate forms
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{\sqrt{1+x}-1}{x}.$$
+
+## Hint
+
+Multiply the numerator and the denominator by $\sqrt{1+x}+1$, the *conjugate* of the numerator.
+
+## Solution
+
+**Idea.** The numerator $\sqrt{1+x}-1$ and the denominator $x$ both tend to $0$. The identity $(A-B)(A+B)=A^2-B^2$ removes the square root and creates a factor $x$ that we can cancel.
+
+**Computation.** For $x>-1$, $x\neq0$,
+$$\frac{\sqrt{1+x}-1}{x}=\frac{(\sqrt{1+x}-1)(\sqrt{1+x}+1)}{x\,(\sqrt{1+x}+1)}=\frac{(1+x)-1}{x\,(\sqrt{1+x}+1)}=\frac1{\sqrt{1+x}+1}.$$
+As $x\to0$, $\sqrt{1+x}\to1$, so the limit is $\dfrac1{1+1}=\dfrac12$.
+
+**Remark.** This limit is the derivative of $t\mapsto\sqrt t$ at $t=1$, which is $\frac1{2\sqrt1}=\frac12$. Recognising a derivative is often the fastest way to compute a limit.
+@@@ conjugate-trick-at-infinity.md
+---
+title: The conjugate trick at infinity
+category: calculus/single-variable/limits
+level: l1
+difficulty: 2
+tags: conjugate, square roots, infinity minus infinity
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to+\infty}\left(\sqrt{x^2+x}-x\right).$$
+
+## Hint
+
+This is an "$\infty-\infty$" form. Multiply and divide by the conjugate $\sqrt{x^2+x}+x$, then divide by $x$.
+
+## Solution
+
+**A tempting mistake.** "For large $x$, $\sqrt{x^2+x}\approx x$, so the limit is $0$." This is wrong: the error in the approximation $\sqrt{x^2+x}\approx x$ is not small compared with the quantity we are measuring.
+
+**Computation.** For $x>0$,
+$$\sqrt{x^2+x}-x=\frac{(x^2+x)-x^2}{\sqrt{x^2+x}+x}=\frac{x}{\sqrt{x^2+x}+x}.$$
+Divide the numerator and the denominator by $x$ (note $\sqrt{x^2+x}=x\sqrt{1+\frac1x}$ for $x>0$):
+$$\frac{x}{\sqrt{x^2+x}+x}=\frac1{\sqrt{1+\frac1x}+1}\ \longrightarrow\ \frac1{1+1}=\frac12.$$
+
+**Remark.** Geometrically, $\sqrt{x^2+x}$ is the distance $x+\tfrac12-\varepsilon$ with a tiny $\varepsilon$: the curve $y=\sqrt{x^2+x}$ has the line $y=x+\tfrac12$ as an asymptote. This is why a gap of $\tfrac12$ remains.
+@@@ one-sided-limits-of-abs-x-over-x.md
+---
+title: One-sided limits of |x|/x
+category: calculus/single-variable/limits
+level: lycee
+difficulty: 1
+tags: one-sided limits, absolute value
+date: 2026-11-01
+---
+
+## Statement
+
+Let $f(x)=\dfrac{|x|}{x}$ for $x\neq0$. Compute the limit of $f$ as $x\to0^+$ and as $x\to0^-$. Does $\lim_{x\to0}f(x)$ exist?
+
+## Hint
+
+Replace $|x|$ by $x$ or $-x$ according to the sign of $x$.
+
+## Solution
+
+**Right of $0$.** If $x>0$ then $|x|=x$, so $f(x)=1$. Hence $\lim_{x\to0^+}f(x)=1$.
+
+**Left of $0$.** If $x<0$ then $|x|=-x$, so $f(x)=-1$. Hence $\lim_{x\to0^-}f(x)=-1$.
+
+**Conclusion.** The two one-sided limits exist but are different, so $\lim_{x\to0}f(x)$ does **not** exist.
+
+**Key fact.** A limit at a point exists if and only if both one-sided limits exist and are equal. This is the first thing to check when a function has a jump.
+@@@ sine-over-x-at-infinity.md
+---
+title: Sine over x at infinity
+category: calculus/single-variable/limits
+level: lycee
+difficulty: 1
+tags: squeeze theorem, limits at infinity
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to+\infty}\frac{\sin x}{x}.$$
+
+## Hint
+
+You cannot say that $\sin x$ has a limit, but you know a bound for it.
+
+## Solution
+
+**Idea.** The numerator oscillates and has no limit, but it is *bounded*: $-1\le\sin x\le1$. The denominator grows without bound, which crushes the quotient. The tool for this is the squeeze (or sandwich) theorem.
+
+**Computation.** For every $x>0$,
+$$-\frac1x\le\frac{\sin x}{x}\le\frac1x.$$
+Both bounds tend to $0$ as $x\to+\infty$, so by the squeeze theorem $\dfrac{\sin x}{x}\to0$.
+
+**Remark.** "Bounded divided by something tending to infinity tends to $0$" is a rule worth remembering.
+@@@ x-times-sine-of-one-over-x.md
+---
+title: x times sin(1/x)
+category: calculus/single-variable/limits
+level: l1
+difficulty: 2
+tags: squeeze theorem, oscillation
+date: 2026-11-01
+---
+
+## Statement
+
+Show that
+$$\lim_{x\to0}x\sin\frac1x=0.$$
+
+## Hint
+
+Use the bound $|\sin t|\le1$ for every real $t$.
+
+## Solution
+
+**Idea.** As $x\to0$, the factor $\sin\frac1x$ oscillates faster and faster between $-1$ and $1$, but the factor $x$ shrinks to $0$ and wins.
+
+**Computation.** For every $x\neq0$, $\left|\sin\frac1x\right|\le1$, so
+$$0\le\left|x\sin\frac1x\right|\le|x|.$$
+Since $|x|\to0$ as $x\to0$, the squeeze theorem gives $\left|x\sin\frac1x\right|\to0$, hence $x\sin\frac1x\to0$.
+
+**Remark.** Compare with the next problem: $\sin\frac1x$ alone has no limit at $0$. Multiplying by $x$ is enough to repair that.
+@@@ sine-of-one-over-x-has-no-limit.md
+---
+title: sin(1/x) has no limit at 0
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: sequences, non-existence of limits
+date: 2026-11-01
+---
+
+## Statement
+
+Prove that $f(x)=\sin\dfrac1x$ has no limit as $x\to0$.
+
+## Hint
+
+If $f$ had a limit $L$, then $f(x_n)\to L$ for **every** sequence $x_n\to0$ with $x_n\neq0$. Find two sequences that give different values.
+
+## Solution
+
+**The method.** To show that a limit does not exist, it is enough to find two sequences tending to $0$ along which $f$ has different limits.
+
+**First sequence.** Let $a_n=\dfrac1{n\pi}$. Then $a_n\to0$ and $f(a_n)=\sin(n\pi)=0$ for all $n$. So if the limit exists, it equals $0$.
+
+**Second sequence.** Let $b_n=\dfrac1{\frac\pi2+2n\pi}$. Then $b_n\to0$ and $f(b_n)=\sin\left(\frac\pi2+2n\pi\right)=1$ for all $n$. So if the limit exists, it equals $1$.
+
+**Conclusion.** The limit would have to equal both $0$ and $1$, which is impossible. Hence $\sin\frac1x$ has no limit at $0$.
+
+**Remark.** On every interval $(0,\varepsilon)$ the function takes every value in $[-1,1]$ infinitely often, which is why it cannot settle down.
+@@@ sine-3x-over-5x.md
+---
+title: sin(3x) over 5x
+category: calculus/single-variable/limits
+level: lycee
+difficulty: 1
+tags: fundamental trigonometric limit, change of variable
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{\sin(3x)}{5x}.$$
+
+## Hint
+
+You know that $\dfrac{\sin u}{u}\to1$ as $u\to0$. Make $3x$ appear in the denominator.
+
+## Solution
+
+**Idea.** Adjust the expression so that the argument of the sine and the denominator are the same.
+
+**Computation.** For $x\neq0$,
+$$\frac{\sin(3x)}{5x}=\frac35\cdot\frac{\sin(3x)}{3x}.$$
+Set $u=3x$. When $x\to0$, $u\to0$, so $\dfrac{\sin u}{u}\to1$. Hence the limit is $\dfrac35\cdot1=\dfrac35$.
+
+**Remark.** In general $\dfrac{\sin(ax)}{bx}\to\dfrac ab$ as $x\to0$.
+@@@ one-minus-cosine-over-x-squared.md
+---
+title: One minus cosine over x squared
+category: calculus/single-variable/limits
+level: l1
+difficulty: 2
+tags: trigonometric limits, half-angle formula
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{1-\cos x}{x^2}.$$
+
+## Hint
+
+Use the identity $1-\cos x=2\sin^2\frac x2$.
+
+## Solution
+
+**Idea.** Turn the cosine into a sine, so that we can use $\frac{\sin u}u\to1$.
+
+**Computation.** From $\cos x=1-2\sin^2\frac x2$ we get
+$$\frac{1-\cos x}{x^2}=\frac{2\sin^2\frac x2}{x^2}=\frac12\left(\frac{\sin\frac x2}{\frac x2}\right)^2.$$
+As $x\to0$, $\frac x2\to0$ and $\frac{\sin(x/2)}{x/2}\to1$. So the limit is $\dfrac12\cdot1^2=\dfrac12$.
+
+**Remark.** This tells us that $\cos x\approx1-\dfrac{x^2}2$ near $0$, the beginning of the Taylor expansion of cosine. We will use this limit many times.
+@@@ tangent-minus-sine-over-x-cubed.md
+---
+title: Tangent minus sine over x cubed
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: trigonometric limits, factoring
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{\tan x-\sin x}{x^3}.$$
+
+## Hint
+
+Write $\sin x=\tan x\cos x$ and factor $\tan x$.
+
+## Solution
+
+**Idea.** Both $\tan x$ and $\sin x$ behave like $x$, so their difference is much smaller than $x$. Factoring reveals the two basic limits we know.
+
+**Computation.** Since $\sin x=\tan x\cos x$,
+$$\tan x-\sin x=\tan x\,(1-\cos x),$$
+and therefore
+$$\frac{\tan x-\sin x}{x^3}=\frac{\tan x}{x}\cdot\frac{1-\cos x}{x^2}.$$
+We know $\dfrac{\tan x}{x}=\dfrac{\sin x}{x}\cdot\dfrac1{\cos x}\to1\cdot1=1$ and $\dfrac{1-\cos x}{x^2}\to\dfrac12$. The limit is $1\cdot\dfrac12=\dfrac12$.
+
+**Remark.** Splitting a quotient into a product of known limits works because the limit of a product is the product of the limits, as long as each factor has a limit.
+@@@ exponential-of-2x-minus-1-over-x.md
+---
+title: (e^(2x) − 1) over x
+category: calculus/single-variable/limits
+level: l1
+difficulty: 1
+tags: exponential, change of variable
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{e^{2x}-1}{x}.$$
+
+## Hint
+
+Recall that $\dfrac{e^u-1}{u}\to1$ as $u\to0$.
+
+## Solution
+
+**Idea.** Same trick as for $\sin(3x)$: make the exponent appear in the denominator.
+
+**Computation.** For $x\neq0$,
+$$\frac{e^{2x}-1}{x}=2\cdot\frac{e^{2x}-1}{2x}.$$
+With $u=2x\to0$, $\dfrac{e^u-1}{u}\to1$. The limit is $2$.
+
+**Why $\frac{e^u-1}u\to1$?** It is exactly the derivative of $\exp$ at $0$: $\frac{e^u-e^0}{u-0}\to\exp'(0)=e^0=1$.
+@@@ two-to-the-x-minus-1-over-x.md
+---
+title: (2^x − 1) over x
+category: calculus/single-variable/limits
+level: l1
+difficulty: 2
+tags: exponential, logarithm, derivative
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{2^x-1}{x}.$$
+
+## Hint
+
+Write $2^x=e^{x\ln2}$.
+
+## Solution
+
+**Idea.** Every exponential $a^x$ is secretly $e^{x\ln a}$, and we know how to handle $e^u$ near $0$.
+
+**Computation.** Since $2^x=e^{x\ln2}$,
+$$\frac{2^x-1}{x}=\ln2\cdot\frac{e^{x\ln2}-1}{x\ln2}.$$
+With $u=x\ln2\to0$, the fraction tends to $1$. The limit is $\ln2$.
+
+**Remark.** More generally $\dfrac{a^x-1}{x}\to\ln a$ for every $a>0$. It also says that the derivative of $a^x$ at $0$ is $\ln a$, which is how the natural logarithm shows up in the derivative of $a^x$.
+@@@ x-times-log-of-1-plus-1-over-x.md
+---
+title: x ln(1 + 1/x) at infinity
+category: calculus/single-variable/limits
+level: l1
+difficulty: 2
+tags: logarithm, number e, limits at infinity
+date: 2026-11-01
+---
+
+## Statement
+
+1. Compute $\displaystyle\lim_{x\to+\infty}x\ln\left(1+\frac1x\right)$.
+2. Deduce that $\displaystyle\lim_{x\to+\infty}\left(1+\frac1x\right)^x=e$.
+
+## Hint
+
+For the first part, set $u=\frac1x$. For the second part, write the power as an exponential.
+
+## Solution
+
+**1.** Put $u=\frac1x$. When $x\to+\infty$, $u\to0^+$ and
+$$x\ln\left(1+\frac1x\right)=\frac{\ln(1+u)}{u}\longrightarrow1,$$
+because $\dfrac{\ln(1+u)}u$ is the quotient $\dfrac{\ln(1+u)-\ln1}{u}$, which tends to the derivative of $\ln$ at $1$, equal to $1$.
+
+**2.** For $x>0$,
+$$\left(1+\frac1x\right)^x=\exp\!\left(x\ln\left(1+\frac1x\right)\right).$$
+The exponent tends to $1$ and $\exp$ is continuous, so the expression tends to $e^1=e$.
+
+**Remark.** The same method gives $\left(1+\frac ax\right)^x\to e^a$ for any constant $a$.
+@@@ one-plus-sine-to-the-power-one-over-x.md
+---
+title: (1 + sin x)^(1/x)
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: exponential form, indeterminate forms, composition
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}(1+\sin x)^{1/x}.$$
+
+## Hint
+
+This is a "$1^\infty$" form. Write $a^b=e^{b\ln a}$ and study the exponent.
+
+## Solution
+
+**Idea.** A power whose base tends to $1$ and whose exponent tends to infinity is indeterminate. Taking logarithms moves the difficulty to a product, which is easier to analyse.
+
+**Computation.** For $x$ near $0$, $1+\sin x>0$, so
+$$(1+\sin x)^{1/x}=\exp\!\left(\frac{\ln(1+\sin x)}{x}\right).$$
+For $x\neq0$ small, $\sin x\neq0$, and we can write
+$$\frac{\ln(1+\sin x)}{x}=\frac{\ln(1+\sin x)}{\sin x}\cdot\frac{\sin x}{x}.$$
+As $x\to0$: $u=\sin x\to0$ so $\dfrac{\ln(1+u)}u\to1$, and $\dfrac{\sin x}x\to1$. The exponent tends to $1$, and since $\exp$ is continuous the limit is $e$.
+
+**Remark.** The only subtle point is to make sure the quantity we divide by, $\sin x$, is not $0$ near $x=0$ (apart from $x=0$ itself).
+@@@ polynomials-versus-the-exponential.md
+---
+title: Polynomials versus the exponential
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: growth comparison, exponential, squeeze theorem
+date: 2026-11-01
+---
+
+## Statement
+
+Prove that for every integer $n\ge0$,
+$$\lim_{x\to+\infty}\frac{x^n}{e^x}=0.$$
+
+## Hint
+
+For $x\ge0$, the series $e^x=\sum_{k\ge0}\frac{x^k}{k!}$ has only non-negative terms. Keep just one of them.
+
+## Solution
+
+**Idea.** The exponential eventually beats every power of $x$, however large the power. To prove it, we find a lower bound for $e^x$ that is itself a power of $x$, but of higher degree.
+
+**A lower bound.** For $x\ge0$, $e^x=\sum_{k=0}^{\infty}\dfrac{x^k}{k!}$ is a sum of non-negative terms, so it is at least any single term. Keeping the term of index $n+1$,
+$$e^x\ge\frac{x^{n+1}}{(n+1)!}.$$
+
+**Squeeze.** For $x>0$,
+$$0<\frac{x^n}{e^x}\le\frac{(n+1)!\,x^n}{x^{n+1}}=\frac{(n+1)!}{x}\longrightarrow0.$$
+By the squeeze theorem, $\dfrac{x^n}{e^x}\to0$.
+
+**Remark.** Exponential, powers, logarithms form a hierarchy at $+\infty$: $\ln x\ll x^a\ll e^x$. The next problem handles the logarithm.
+@@@ logarithm-versus-powers.md
+---
+title: The logarithm is slower than any power
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: growth comparison, logarithm, inequalities
+date: 2026-11-01
+---
+
+## Statement
+
+1. Prove that $\displaystyle\lim_{x\to+\infty}\frac{\ln x}{x}=0$.
+2. Deduce that for every $a>0$, $\displaystyle\lim_{x\to+\infty}\frac{\ln x}{x^a}=0$.
+
+## Hint
+
+For part 1, use $\ln t\le t-1$ for all $t>0$ with $t=\sqrt x$, after writing $\ln x=2\ln\sqrt x$.
+
+## Solution
+
+**1.** The inequality $\ln t\le t-1$ (the graph of $\ln$ lies under its tangent at $1$) holds for all $t>0$. For $x>1$,
+$$\ln x=2\ln\sqrt x\le2\left(\sqrt x-1\right)<2\sqrt x.$$
+Dividing by $x$,
+$$0<\frac{\ln x}{x}<\frac{2}{\sqrt x}\longrightarrow0,$$
+so $\dfrac{\ln x}x\to0$ by the squeeze theorem.
+
+**2.** Let $a>0$ and set $y=x^a$. As $x\to+\infty$, $y\to+\infty$. Since $\ln x=\frac1a\ln y$,
+$$\frac{\ln x}{x^a}=\frac1a\cdot\frac{\ln y}{y}\longrightarrow\frac1a\cdot0=0$$
+by part 1.
+
+**Why the clever step?** Applying $\ln t\le t-1$ directly to $t=x$ would only give $\ln x<x$, which is not enough. Using $t=\sqrt x$ gains a square root, and that is exactly what we need.
+@@@ x-log-x-at-zero.md
+---
+title: x ln x at zero, and x^x
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: indeterminate forms, change of variable, logarithm
+date: 2026-11-01
+---
+
+## Statement
+
+1. Compute $\displaystyle\lim_{x\to0^+}x\ln x$.
+2. Deduce $\displaystyle\lim_{x\to0^+}x^x$.
+
+## Hint
+
+Set $y=\frac1x$ and use the previous problem.
+
+## Solution
+
+**1.** The product $x\ln x$ has the form $0\times(-\infty)$, which is indeterminate. Put $y=\frac1x$; when $x\to0^+$, $y\to+\infty$, and
+$$x\ln x=\frac1y\ln\frac1y=-\frac{\ln y}{y}\longrightarrow0.$$
+
+**2.** For $x>0$, $x^x=e^{x\ln x}$. The exponent tends to $0$, and $\exp$ is continuous, so
+$$\lim_{x\to0^+}x^x=e^0=1.$$
+
+**Remark.** This is why one defines $0^0=1$ in many contexts: the function $x^x$ extends continuously to $0$ with the value $1$.
+@@@ exponential-minus-cosine-over-sine.md
+---
+title: (e^x − cos x) over sin x
+category: calculus/single-variable/limits
+level: l1
+difficulty: 2
+tags: combining known limits, indeterminate forms
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{e^x-\cos x}{\sin x}.$$
+
+## Hint
+
+Divide the numerator and the denominator by $x$, and split the numerator into two known limits.
+
+## Solution
+
+**Idea.** Divide top and bottom by $x$ to make familiar quotients appear.
+
+**Numerator.** For $x\neq0$,
+$$\frac{e^x-\cos x}{x}=\frac{e^x-1}{x}+\frac{1-\cos x}{x}.$$
+The first quotient tends to $1$. For the second, write $\dfrac{1-\cos x}{x}=x\cdot\dfrac{1-\cos x}{x^2}\to0\cdot\dfrac12=0$. So the numerator divided by $x$ tends to $1+0=1$.
+
+**Denominator.** $\dfrac{\sin x}{x}\to1$.
+
+**Conclusion.**
+$$\frac{e^x-\cos x}{\sin x}=\frac{(e^x-\cos x)/x}{(\sin x)/x}\longrightarrow\frac11=1.$$
+@@@ sine-minus-x-cosine-over-x-cubed.md
+---
+title: sin x − x cos x over x cubed
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: Taylor expansion, little-o notation, cancellation
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{\sin x-x\cos x}{x^3}.$$
+
+## Hint
+
+Expand $\sin x$ and $x\cos x$ up to order $3$. The terms of order $1$ cancel, so you must go further.
+
+## Solution
+
+**Idea.** Taylor expansions replace functions by polynomials plus a negligible remainder. The question is how far to expand: the denominator is $x^3$, so we need the numerator up to $x^3$.
+
+**Expansions.** As $x\to0$,
+$$\sin x=x-\frac{x^3}6+o(x^3),\qquad \cos x=1-\frac{x^2}2+o(x^2).$$
+Multiplying the second one by $x$,
+$$x\cos x=x-\frac{x^3}2+o(x^3).$$
+
+**Computation.**
+$$\sin x-x\cos x=\left(-\frac16+\frac12\right)x^3+o(x^3)=\frac{x^3}3+o(x^3).$$
+Dividing by $x^3$ gives $\frac13+o(1)$, so the limit is $\dfrac13$.
+
+**Rule of thumb.** Expand numerator and denominator until the first term that does not cancel appears. If you stop too early (at order $1$ here), you get $0-0$ and learn nothing.
+@@@ difference-of-two-infinite-reciprocals.md
+---
+title: Difference of two infinite reciprocals
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: infinity minus infinity, Taylor expansion
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\left(\frac1{\sin x}-\frac1x\right).$$
+
+## Hint
+
+Put everything over a common denominator and expand $x-\sin x$.
+
+## Solution
+
+**Idea.** As $x\to0^+$ both $\frac1{\sin x}$ and $\frac1x$ tend to $+\infty$. Their difference is an "$\infty-\infty$" form: we do not know in advance who wins. A common denominator makes the competition visible.
+
+**Computation.**
+$$\frac1{\sin x}-\frac1x=\frac{x-\sin x}{x\sin x}.$$
+We know $x-\sin x=\dfrac{x^3}6+o(x^3)$, and $x\sin x=x^2+o(x^2)$. Hence
+$$\frac{x-\sin x}{x\sin x}=\frac{\frac{x^3}6+o(x^3)}{x^2+o(x^2)}=\frac{x}{6}\cdot\frac{1+o(1)}{1+o(1)}\longrightarrow0.$$
+
+**Conclusion.** The limit is $0$: the two infinite quantities are so close to each other that their difference vanishes.
+@@@ reciprocal-squares-of-x-and-tangent.md
+---
+title: Reciprocal squares of x and tangent
+category: calculus/single-variable/limits
+level: l2
+difficulty: 4
+tags: Taylor expansion, infinity minus infinity, tangent
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\left(\frac1{x^2}-\frac1{\tan^2x}\right).$$
+
+## Hint
+
+Combine the fractions and factor $\tan^2x-x^2=(\tan x-x)(\tan x+x)$. You need the expansion of $\tan x$ up to order $3$.
+
+## Solution
+
+**Step 1: the expansion of $\tan x$.** As $x\to0$,
+$$\tan x=\frac{\sin x}{\cos x}=\frac{x-\frac{x^3}6+o(x^3)}{1-\frac{x^2}2+o(x^2)}=\left(x-\frac{x^3}6\right)\left(1+\frac{x^2}2\right)+o(x^3)=x+\frac{x^3}3+o(x^3).$$
+
+**Step 2: combine.**
+$$\frac1{x^2}-\frac1{\tan^2x}=\frac{\tan^2x-x^2}{x^2\tan^2x}=\frac{(\tan x-x)(\tan x+x)}{x^2\tan^2x}.$$
+
+**Step 3: orders of magnitude.** From Step 1:
+- $\tan x-x=\dfrac{x^3}3+o(x^3)$,
+- $\tan x+x=2x+o(x)$,
+- $x^2\tan^2x=x^4+o(x^4)$.
+
+So the numerator is $\dfrac{2x^4}3+o(x^4)$ and the quotient is
+$$\frac{\frac23x^4+o(x^4)}{x^4+o(x^4)}\longrightarrow\frac23.$$
+
+**Remark.** The naive attempt "$\tan x\approx x$, so the difference is $0$" gives the wrong answer: the information is hidden in the $x^3$ term of $\tan x$.
+@@@ gap-between-two-exponentials-at-infinity.md
+---
+title: The gap between two exponentials at infinity
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: exponential, limits at infinity, change of variable
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to+\infty}x^2\left(e^{1/x}-e^{1/(x+1)}\right).$$
+
+## Hint
+
+Let $u=\frac1x$ and $v=\frac1{x+1}$. Factor out $e^v$, and note that $u-v=\frac1{x(x+1)}$.
+
+## Solution
+
+**Idea.** The two exponentials are very close to each other, since $\frac1x$ and $\frac1{x+1}$ are close. The gap is of order $\frac1{x^2}$, which $x^2$ compensates.
+
+**Computation.** With $u=\frac1x$, $v=\frac1{x+1}$ and $w=u-v=\dfrac1{x(x+1)}>0$,
+$$e^u-e^v=e^v\left(e^{w}-1\right).$$
+Then
+$$x^2\left(e^u-e^v\right)=e^v\cdot\frac{e^w-1}{w}\cdot x^2w=e^v\cdot\frac{e^w-1}{w}\cdot\frac{x}{x+1}.$$
+As $x\to+\infty$: $v\to0$ so $e^v\to1$; $w\to0$ so $\dfrac{e^w-1}w\to1$; and $\dfrac x{x+1}\to1$. The limit is $1$.
+
+**Remark.** This is the idea behind the mean value theorem: $e^{u}-e^{v}\approx e^{v}(u-v)$ when $u$ and $v$ are close.
+@@@ limit-of-power-means.md
+---
+title: Where power means lead
+category: calculus/single-variable/limits
+level: l2
+difficulty: 4
+tags: power mean, geometric mean, logarithm, expansions
+date: 2026-11-01
+---
+
+## Statement
+
+Let $a,b>0$. Compute
+$$\lim_{x\to0}\left(\frac{a^x+b^x}{2}\right)^{1/x}.$$
+
+## Hint
+
+Take the logarithm. Use $a^x=1+x\ln a+o(x)$ and $\ln(1+h)=h+o(h)$.
+
+## Solution
+
+**Idea.** For $x=1$ the expression is the arithmetic mean $\frac{a+b}2$. For $x=-1$ it is related to the harmonic mean. What happens when $x\to0$? Let us compute.
+
+**Step 1: an expansion.** Since $\dfrac{e^{x\ln a}-1}{x}\to\ln a$, we have $a^x=1+x\ln a+o(x)$, and similarly for $b^x$. Hence
+$$\frac{a^x+b^x}{2}=1+h,\qquad h=x\,\frac{\ln a+\ln b}{2}+o(x)=x\ln\sqrt{ab}+o(x).$$
+
+**Step 2: the logarithm.** As $h\to0$, $\ln(1+h)=h+o(h)=x\ln\sqrt{ab}+o(x)$. Therefore
+$$\frac1x\ln\!\left(\frac{a^x+b^x}2\right)\longrightarrow\ln\sqrt{ab}.$$
+
+**Step 3: the exponential.** By continuity of $\exp$, the original expression tends to $e^{\ln\sqrt{ab}}=\sqrt{ab}$.
+
+**Conclusion.** The limit is the **geometric mean** $\sqrt{ab}$.
+
+**A numerical check** with $a=1$, $b=4$ (so $\sqrt{ab}=2$):
+
+- $x=1$: $2.5$
+- $x=0.1$: $2.0486$
+- $x=0.01$: $2.0048$
+- $x=0.001$: $2.0005$
+
+The values slide from the arithmetic mean $2.5$ towards the geometric mean $2$.
+@@@ error-in-the-limit-defining-e.md
+---
+title: How fast does (1 + x)^(1/x) reach e?
+category: calculus/single-variable/limits
+level: l2
+difficulty: 4
+tags: number e, Taylor expansion, order of convergence
+date: 2026-11-01
+---
+
+## Statement
+
+We know that $(1+x)^{1/x}\to e$ as $x\to0$. Compute
+$$\lim_{x\to0}\frac{(1+x)^{1/x}-e}{x}.$$
+
+## Hint
+
+Write $(1+x)^{1/x}=\exp\!\left(\frac{\ln(1+x)}{x}\right)$ and expand $\ln(1+x)$ up to order $2$.
+
+## Solution
+
+**Idea.** The limit tells us the *size of the error* when we replace $(1+x)^{1/x}$ by $e$. We need a more precise expansion than the one that only proves convergence.
+
+**Step 1: the exponent.** As $x\to0$, $\ln(1+x)=x-\dfrac{x^2}2+o(x^2)$, so
+$$\frac{\ln(1+x)}{x}=1-\frac x2+o(x)=1+h,\qquad h=-\frac x2+o(x).$$
+
+**Step 2: the exponential.** Since $h\to0$, $e^h=1+h+o(h)=1-\dfrac x2+o(x)$. Hence
+$$(1+x)^{1/x}=e\cdot e^h=e-\frac{e}{2}\,x+o(x).$$
+
+**Step 3: conclusion.**
+$$\frac{(1+x)^{1/x}-e}{x}=-\frac e2+o(1)\longrightarrow-\frac e2.$$
+
+**Numerical check.** $-\frac e2\approx-1.3591$, and the quotient equals $-1.2454$ for $x=0.1$, $-1.3468$ for $x=0.01$, $-1.3579$ for $x=0.001$.
+
+**Meaning.** For small $x$, $(1+x)^{1/x}\approx e\left(1-\frac x2\right)$: the convergence to $e$ is only *linear* in $x$.
+@@@ epsilon-delta-for-a-linear-function.md
+---
+title: Epsilon-delta for a linear function
+category: calculus/single-variable/limits
+level: l1
+difficulty: 2
+tags: epsilon-delta, definition of limit
+date: 2026-11-01
+---
+
+## Statement
+
+Using the definition of a limit, prove that $\displaystyle\lim_{x\to2}(3x-1)=5$.
+
+## Hint
+
+Compute $|f(x)-5|$ and express it with $|x-2|$.
+
+## Solution
+
+**The definition.** $\lim_{x\to a}f(x)=\ell$ means: for every $\varepsilon>0$ there exists $\delta>0$ such that for all $x$ with $|x-a|<\delta$ (and $x\ne a$), $|f(x)-\ell|<\varepsilon$.
+
+**Scratch work.** We want to make $|(3x-1)-5|$ small. We have
+$$|(3x-1)-5|=|3x-6|=3|x-2|.$$
+This is smaller than $\varepsilon$ as soon as $|x-2|<\frac\varepsilon3$. So $\delta=\frac\varepsilon3$ should work.
+
+**Proof.** Let $\varepsilon>0$ and set $\delta=\dfrac\varepsilon3$. If $|x-2|<\delta$, then
+$$|(3x-1)-5|=3|x-2|<3\delta=\varepsilon.$$
+This proves that $\lim_{x\to2}(3x-1)=5$.
+
+**Remark.** The scratch work (finding $\delta$) and the proof (checking that it works) are different things. In a written proof, you only present the second one, starting with "Let $\varepsilon>0$".
+@@@ epsilon-delta-for-x-squared.md
+---
+title: Epsilon-delta for x squared
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: epsilon-delta, definition of limit, restricting delta
+date: 2026-11-01
+---
+
+## Statement
+
+Using the definition of a limit, prove that $\displaystyle\lim_{x\to3}x^2=9$.
+
+## Hint
+
+Factor $|x^2-9|=|x-3|\,|x+3|$ and first restrict $x$ to $|x-3|<1$ to bound $|x+3|$.
+
+## Solution
+
+**Scratch work.** We have $|x^2-9|=|x-3|\,|x+3|$. The factor $|x-3|$ is the one we control. The factor $|x+3|$ is not constant, but it is bounded if $x$ stays near $3$.
+
+If $|x-3|<1$, then $2<x<4$, hence $5<x+3<7$ and $|x+3|<7$. So under this restriction,
+$$|x^2-9|<7\,|x-3|.$$
+We want this to be at most $\varepsilon$, so we ask for $|x-3|<\frac\varepsilon7$ as well.
+
+**Proof.** Let $\varepsilon>0$ and choose $\delta=\min\!\left(1,\dfrac\varepsilon7\right)$. If $|x-3|<\delta$, then $|x-3|<1$, so $|x+3|<7$, and
+$$|x^2-9|=|x-3|\,|x+3|<\delta\cdot7\le\frac\varepsilon7\cdot7=\varepsilon.$$
+
+**Remark.** Choosing $\delta$ as a minimum of two requirements is a standard technique. Here the first one ($\delta\le1$) controls a factor, the second one ($\delta\le\varepsilon/7$) makes the product small.
+@@@ x-sine-x-has-no-limit.md
+---
+title: x sin x has no limit at infinity
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: sequences, non-existence of limits, infinite limits
+date: 2026-11-01
+---
+
+## Statement
+
+Let $f(x)=x\sin x$. Show that $f$ has no limit as $x\to+\infty$, not even an infinite one.
+
+## Hint
+
+Find a sequence $x_n\to+\infty$ with $f(x_n)\to+\infty$ and another sequence $y_n\to+\infty$ with $f(y_n)=0$.
+
+## Solution
+
+**Idea.** The factor $x$ makes $f$ unbounded, which suggests $f\to+\infty$. But $\sin x$ keeps vanishing at the multiples of $\pi$. Two different sequences will show the contradiction.
+
+**First sequence.** Let $x_n=2n\pi+\frac\pi2$. Then $x_n\to+\infty$ and $f(x_n)=x_n\cdot1=x_n\to+\infty$.
+
+**Second sequence.** Let $y_n=n\pi$. Then $y_n\to+\infty$ and $f(y_n)=n\pi\cdot\sin(n\pi)=0$ for all $n$, so $f(y_n)\to0$.
+
+**Conclusion.** If $f$ had a limit (finite or infinite) at $+\infty$, it would be the limit along every sequence tending to $+\infty$. But the two sequences give $+\infty$ and $0$. So $f$ has no limit at $+\infty$.
+
+**Remark.** The function is unbounded, yet it does not tend to infinity. This is a good example showing that "unbounded" and "tends to infinity" are different properties.
+@@@ the-dirichlet-function.md
+---
+title: The Dirichlet function has no limit anywhere
+category: calculus/single-variable/limits
+level: l1
+difficulty: 4
+tags: sequences, density, non-existence of limits, pathological functions
+date: 2026-11-01
+---
+
+## Statement
+
+The Dirichlet function is $D:\mathbb{R}\to\mathbb{R}$, with $D(x)=1$ if $x$ is rational and $D(x)=0$ if $x$ is irrational. Prove that for every real number $a$, $D$ has no limit at $a$.
+
+## Hint
+
+Between any two distinct real numbers there is a rational number and an irrational number. Use this to build two sequences converging to $a$.
+
+## Solution
+
+**Idea.** Near any point, the function keeps jumping between $0$ and $1$ in an extremely dense way. Two sequences, one made of rationals and one of irrationals, will reveal it.
+
+**Two sequences.** Fix $a\in\mathbb{R}$. For every $n\ge1$, the interval $\left(a,a+\frac1n\right)$ contains a rational number $r_n$ and an irrational number $s_n$. Then $r_n\to a$ and $s_n\to a$, with $r_n\ne a$ and $s_n\ne a$.
+
+**Values.** $D(r_n)=1$ for all $n$, so $D(r_n)\to1$. And $D(s_n)=0$ for all $n$, so $D(s_n)\to0$.
+
+**Conclusion.** If $D$ had a limit $\ell$ at $a$, both $1$ and $0$ would equal $\ell$. This is impossible, so $D$ has no limit at any point $a$.
+
+**Remark.** In particular $D$ is not continuous anywhere. The next problem shows how multiplying by $x$ changes this.
+@@@ x-times-dirichlet-function.md
+---
+title: x times the Dirichlet function
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: squeeze theorem, pathological functions, continuity
+date: 2026-11-01
+---
+
+## Statement
+
+Let $g(x)=x\,D(x)$, where $D$ is the Dirichlet function (see the previous problem). Show that $\lim_{x\to0}g(x)=0$, and that $g$ has no limit at any point $a\ne0$.
+
+## Hint
+
+At $0$, use the bound $0\le D(x)\le1$. At $a\ne0$, use the same two sequences as before.
+
+## Solution
+
+**At $0$.** For every $x$, $0\le|g(x)|=|x|\,D(x)\le|x|$. By the squeeze theorem, $g(x)\to0$ as $x\to0$. Since $g(0)=0$, the function $g$ is continuous at $0$.
+
+**At $a\ne0$.** Take the sequences $r_n\to a$ (rationals) and $s_n\to a$ (irrationals, with $r_n,s_n\ne a$) as in the previous problem. Then
+$$g(r_n)=r_n\longrightarrow a,\qquad g(s_n)=0\longrightarrow0.$$
+Since $a\ne0$, these two limits are different, so $g$ has no limit at $a$.
+
+**Remark.** The function $g$ is continuous at exactly one point, $0$. Continuity at a single point is possible, and it comes from the factor $x$ squeezing $D$.
+@@@ cosine-to-the-power-one-over-x-squared.md
+---
+title: Cosine to the power 1/x²
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+tags: exponential form, Taylor expansion, indeterminate forms
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}(\cos x)^{1/x^2}.$$
+
+## Hint
+
+Write it as $\exp\!\left(\frac{\ln\cos x}{x^2}\right)$ and expand $\cos x$, then $\ln(1+h)$.
+
+## Solution
+
+**Idea.** Another "$1^\infty$" form: the base tends to $1$ and the exponent to $+\infty$. We take the logarithm to turn the power into a product.
+
+**Computation.** For $x$ near $0$, $\cos x>0$ and
+$$(\cos x)^{1/x^2}=\exp\!\left(\frac{\ln\cos x}{x^2}\right).$$
+Write $\cos x=1+h$ with $h=-\frac{x^2}2+o(x^2)$. Then $h\to0$ and
+$$\ln\cos x=\ln(1+h)=h+o(h)=-\frac{x^2}2+o(x^2).$$
+Hence $\dfrac{\ln\cos x}{x^2}\to-\dfrac12$, and by continuity of $\exp$ the limit is $e^{-1/2}=\dfrac1{\sqrt e}$.
+
+**Remark.** The pattern is general: if $u(x)\to1$, then $u(x)^{1/x^2}$ is governed by the limit of $\dfrac{u(x)-1}{x^2}$.
+@@@ the-nth-root-of-n.md
+---
+title: The n-th root of n
+category: calculus/single-variable/limits
+level: l1
+difficulty: 2
+tags: sequences, logarithm, growth comparison
+date: 2026-11-01
+---
+
+## Statement
+
+Compute $\displaystyle\lim_{n\to\infty}n^{1/n}$.
+
+## Hint
+
+Write $n^{1/n}=e^{(\ln n)/n}$ and use the result on the logarithm versus powers.
+
+## Solution
+
+**Idea.** The base $n$ grows, while the exponent $\frac1n$ shrinks. Who wins? Taking the logarithm shows that the exponent wins.
+
+**Computation.** For $n\ge1$,
+$$n^{1/n}=\exp\!\left(\frac{\ln n}{n}\right).$$
+We know that $\dfrac{\ln x}x\to0$ as $x\to+\infty$ (see the problem *The logarithm is slower than any power*), in particular along the integers. By continuity of $\exp$, $n^{1/n}\to e^0=1$.
+
+**Numerical feeling.** $10^{1/10}\approx1.259$, $100^{1/100}\approx1.047$, $10000^{1/10000}\approx1.0009$: the values decrease slowly towards $1$.
+@@@ tangent-of-sine-minus-sine-of-tangent.md
+---
+title: Tangent of sine minus sine of tangent
+category: calculus/single-variable/limits
+level: l2
+difficulty: 5
+tags: Taylor expansion, composition, high order, challenge
+date: 2026-11-01
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{\tan(\sin x)-\sin(\tan x)}{x^7}.$$
+
+## Hint
+
+Both functions have the same expansion up to order $5$, so everything happens at order $7$. You need the expansions of $\sin u$ and $\tan u$ up to order $7$, and the powers $u^3,u^5,u^7$ for $u=\sin x$ and $u=\tan x$.
+
+## Solution
+
+**Idea.** For small $x$, $\tan(\sin x)$ and $\sin(\tan x)$ are both close to $x$, and, surprisingly, they agree up to order $5$. The limit measures how they differ at order $7$. This is a challenge in careful bookkeeping.
+
+**Step 1: the building blocks.** As $u\to0$,
+$$\sin u=u-\frac{u^3}6+\frac{u^5}{120}-\frac{u^7}{5040}+o(u^7),\qquad \tan u=u+\frac{u^3}3+\frac{2u^5}{15}+\frac{17u^7}{315}+o(u^7).$$
+
+**Step 2: powers of $\sin x$ and $\tan x$, up to order $7$.** Using $\sin x=x-\frac{x^3}6+\frac{x^5}{120}-\frac{x^7}{5040}$ and $\tan x=x+\frac{x^3}3+\frac{2x^5}{15}+\frac{17x^7}{315}$ and expanding:
+
+For $u=\sin x$:
+- $u^3=x^3-\frac{x^5}2+\frac{13x^7}{120}$,
+- $u^5=x^5-\frac{5x^7}6$,
+- $u^7=x^7$.
+
+For $u=\tan x$:
+- $u^3=x^3+x^5+\frac{11x^7}{15}$,
+- $u^5=x^5+\frac{5x^7}3$,
+- $u^7=x^7$.
+
+**Step 3: $\tan(\sin x)$.** Put $u=\sin x$ in $u+\frac{u^3}3+\frac{2u^5}{15}+\frac{17u^7}{315}$ and collect:
+- order $3$: $-\frac16+\frac13=\frac16$,
+- order $5$: $\frac1{120}-\frac16+\frac2{15}=-\frac1{40}$,
+- order $7$: $-\frac1{5040}+\frac{13}{360}-\frac19+\frac{17}{315}=-\frac{107}{5040}$.
+
+So $\tan(\sin x)=x+\frac{x^3}6-\frac{x^5}{40}-\frac{107\,x^7}{5040}+o(x^7)$.
+
+**Step 4: $\sin(\tan x)$.** Put $u=\tan x$ in $u-\frac{u^3}6+\frac{u^5}{120}-\frac{u^7}{5040}$:
+- order $3$: $\frac13-\frac16=\frac16$,
+- order $5$: $\frac2{15}-\frac16+\frac1{120}=-\frac1{40}$,
+- order $7$: $\frac{17}{315}-\frac{11}{90}+\frac1{72}-\frac1{5040}=-\frac{275}{5040}$.
+
+So $\sin(\tan x)=x+\frac{x^3}6-\frac{x^5}{40}-\frac{275\,x^7}{5040}+o(x^7)$.
+
+**Step 5: the difference.** The terms up to order $5$ cancel, and
+$$\tan(\sin x)-\sin(\tan x)=\frac{-107+275}{5040}\,x^7+o(x^7)=\frac{168}{5040}\,x^7+o(x^7)=\frac{x^7}{30}+o(x^7).$$
+
+**Conclusion.** The limit is $\dfrac1{30}$.
+
+**Remark.** This example is famous because a naive approach ("both are $\approx x$") or even a computation up to order $5$ gives $0$. It was used by Arnold to illustrate how deep the order of contact between two functions can be.

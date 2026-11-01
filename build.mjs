@@ -148,13 +148,13 @@ function parseProblemText(rawText, name) {
 const problemsDir = path.join(ROOT, 'problems');
 const files = fs.existsSync(problemsDir) ? fs.readdirSync(problemsDir).filter(f => f.toLowerCase().endsWith('.md')).sort() : [];
 let all = files.map(f => parseProblem(path.join(problemsDir, f)));
-const bundle = path.join(ROOT, 'all-problems.txt');
-if (fs.existsSync(bundle)) {
-  const parts = fs.readFileSync(bundle, 'utf8').replace(/\r\n/g, '\n').replace(/^\uFEFF/, '').split(/^@@@[ \t]+(\S+)[ \t]*\n/m);
+const bundles = fs.readdirSync(ROOT).filter(f => /^all-problems\.txt$|-problems\.txt$/i.test(f)).sort();
+for (const bf of bundles) {
+  const parts = fs.readFileSync(path.join(ROOT, bf), 'utf8').replace(/\r\n/g, '\n').replace(/^\uFEFF/, '').split(/^@@@[ \t]+(\S+)[ \t]*\n/m);
   for (let i = 1; i < parts.length; i += 2) { const nm = parts[i].toLowerCase().endsWith('.md') ? parts[i] : parts[i] + '.md'; all.push(parseProblemText(parts[i + 1], nm)); }
 }
 const seen = new Set();
-for (const p of all) { if (seen.has(p.slug)) throw new Error(`two problems have the same file name "${p.slug}" (check problems/ and all-problems.txt)`); seen.add(p.slug); }
+for (const p of all) { if (seen.has(p.slug)) throw new Error(`two problems have the same file name "${p.slug}" (check problems/ and the *-problems.txt files)`); seen.add(p.slug); }
 let problems = all.filter(p => !p.draft);
 if (!problems.length) console.warn('Warning: no problems were found. Add .md files to problems/ or an all-problems.txt file.');
 problems.sort((a, b) => a.date.localeCompare(b.date) || a.slug.localeCompare(b.slug));
