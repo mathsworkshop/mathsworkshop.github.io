@@ -1,52 +1,424 @@
 {
   "categories": [
     {
-      "id": "algebra",
-      "name": "Algebra",
-      "description": "Equations, inequalities, polynomials and algebraic identities.",
-      "subcategories": []
+      "id": "calculus",
+      "name": "Calculus",
+      "description": "Limits, continuity, derivatives, integrals, series and differential equations, in one and several variables.",
+      "subcategories": [
+        {
+          "id": "single-variable",
+          "name": "Single-variable calculus",
+          "description": "Functions of one real variable.",
+          "subcategories": [
+            {
+              "id": "limits",
+              "name": "Limits",
+              "description": "Limits of functions, equivalents and expansions.",
+              "subcategories": []
+            },
+            {
+              "id": "continuity",
+              "name": "Continuity of functions",
+              "description": "Continuous functions and their main theorems.",
+              "subcategories": [
+                {
+                  "id": "intermediate-value-theorem",
+                  "name": "Intermediate Value Theorem",
+                  "description": "Existence of solutions and of zeros.",
+                  "subcategories": []
+                },
+                {
+                  "id": "mean-value-theorem",
+                  "name": "Mean Value Theorem",
+                  "description": "Rolle's theorem, the mean value theorem and its consequences.",
+                  "subcategories": []
+                },
+                {
+                  "id": "uniform-continuity",
+                  "name": "Uniform continuity",
+                  "description": "Uniform continuity and the Heine theorem.",
+                  "subcategories": []
+                }
+              ]
+            },
+            {
+              "id": "differentiation",
+              "name": "Differentiation",
+              "description": "Derivatives, variations, convexity and inequalities from derivatives.",
+              "subcategories": [
+                {
+                  "id": "taylor-expansions",
+                  "name": "Taylor expansions",
+                  "description": "Taylor formulas and local expansions.",
+                  "subcategories": []
+                },
+                {
+                  "id": "optimisation",
+                  "name": "Optimisation and curve sketching",
+                  "description": "Extrema and the study of functions.",
+                  "subcategories": []
+                }
+              ]
+            },
+            {
+              "id": "integration",
+              "name": "Integration",
+              "description": "Integrals of functions of one variable.",
+              "subcategories": [
+                {
+                  "id": "techniques",
+                  "name": "Integration techniques",
+                  "description": "Substitution, integration by parts and linearisation.",
+                  "subcategories": []
+                },
+                {
+                  "id": "improper-integrals",
+                  "name": "Improper integrals",
+                  "description": "Integrals on unbounded intervals or with unbounded integrands.",
+                  "subcategories": []
+                }
+              ]
+            },
+            {
+              "id": "sequences",
+              "name": "Sequences",
+              "description": "Convergence of real sequences and recursive sequences.",
+              "subcategories": []
+            },
+            {
+              "id": "series",
+              "name": "Series",
+              "description": "Numerical series and power series.",
+              "subcategories": [
+                {
+                  "id": "convergence-tests",
+                  "name": "Convergence tests",
+                  "description": "Comparison, ratio test and other criteria.",
+                  "subcategories": []
+                },
+                {
+                  "id": "power-series",
+                  "name": "Power series",
+                  "description": "Radius of convergence and sums of power series.",
+                  "subcategories": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "multivariable",
+          "name": "Multivariable calculus",
+          "description": "Functions of several real variables.",
+          "subcategories": [
+            {
+              "id": "partial-derivatives",
+              "name": "Partial derivatives",
+              "description": "Partial derivatives, gradients and the chain rule.",
+              "subcategories": []
+            },
+            {
+              "id": "multiple-integrals",
+              "name": "Multiple integrals",
+              "description": "Double and triple integrals and changes of variables.",
+              "subcategories": []
+            },
+            {
+              "id": "vector-calculus",
+              "name": "Vector calculus",
+              "description": "Line integrals, surface integrals and the classical theorems.",
+              "subcategories": []
+            },
+            {
+              "id": "constrained-optimisation",
+              "name": "Optimisation in several variables",
+              "description": "Extrema and Lagrange multipliers.",
+              "subcategories": []
+            }
+          ]
+        },
+        {
+          "id": "differential-equations",
+          "name": "Differential equations",
+          "description": "Ordinary differential equations.",
+          "subcategories": [
+            {
+              "id": "first-order",
+              "name": "First-order equations",
+              "subcategories": []
+            },
+            {
+              "id": "second-order",
+              "name": "Linear equations of order two",
+              "subcategories": []
+            },
+            {
+              "id": "linear-systems",
+              "name": "Linear systems",
+              "subcategories": []
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": "analysis",
-      "name": "Analysis",
-      "description": "Limits, sequences, series, derivatives and integrals.",
-      "subcategories": []
+      "id": "real-analysis",
+      "name": "Real analysis",
+      "description": "Rigorous analysis in the second year: topology, metric spaces and functions.",
+      "subcategories": [
+        {
+          "id": "topology",
+          "name": "Topology and metric spaces",
+          "subcategories": []
+        },
+        {
+          "id": "function-sequences",
+          "name": "Sequences and series of functions",
+          "subcategories": []
+        },
+        {
+          "id": "riemann-integral",
+          "name": "The Riemann integral",
+          "subcategories": []
+        }
+      ]
     },
     {
       "id": "linear",
       "name": "Linear algebra",
-      "description": "Matrices, vector spaces, determinants and diagonalisation.",
-      "subcategories": []
+      "description": "Matrices, vector spaces, linear maps, determinants and diagonalisation.",
+      "subcategories": [
+        {
+          "id": "matrices",
+          "name": "Matrices and linear systems",
+          "subcategories": []
+        },
+        {
+          "id": "vector-spaces",
+          "name": "Vector spaces and subspaces",
+          "subcategories": []
+        },
+        {
+          "id": "linear-maps",
+          "name": "Linear maps",
+          "description": "Kernel, image and rank.",
+          "subcategories": []
+        },
+        {
+          "id": "determinants",
+          "name": "Determinants",
+          "subcategories": []
+        },
+        {
+          "id": "eigenvalues",
+          "name": "Eigenvalues and diagonalisation",
+          "subcategories": []
+        },
+        {
+          "id": "inner-products",
+          "name": "Inner product spaces",
+          "description": "Orthogonality and projections.",
+          "subcategories": []
+        },
+        {
+          "id": "quadratic-forms",
+          "name": "Quadratic forms",
+          "subcategories": []
+        }
+      ]
+    },
+    {
+      "id": "algebra",
+      "name": "Algebra",
+      "description": "Equations, inequalities, polynomials, complex numbers and algebraic structures.",
+      "subcategories": [
+        {
+          "id": "inequalities",
+          "name": "Inequalities",
+          "subcategories": []
+        },
+        {
+          "id": "equations",
+          "name": "Equations and radicals",
+          "subcategories": []
+        },
+        {
+          "id": "polynomials",
+          "name": "Polynomials",
+          "subcategories": []
+        },
+        {
+          "id": "complex-numbers",
+          "name": "Complex numbers",
+          "subcategories": []
+        },
+        {
+          "id": "groups",
+          "name": "Groups",
+          "subcategories": []
+        },
+        {
+          "id": "rings-and-fields",
+          "name": "Rings and fields",
+          "subcategories": []
+        }
+      ]
     },
     {
       "id": "proba",
-      "name": "Probability",
-      "description": "Counting outcomes, conditional probability and random variables.",
-      "subcategories": []
-    },
-    {
-      "id": "geometry",
-      "name": "Geometry",
-      "description": "Plane and space geometry, triangles, circles and transformations.",
-      "subcategories": []
+      "name": "Probability and statistics",
+      "description": "Finite and discrete probability, random variables and statistics.",
+      "subcategories": [
+        {
+          "id": "finite-probability",
+          "name": "Finite probability",
+          "subcategories": []
+        },
+        {
+          "id": "conditional-probability",
+          "name": "Conditional probability",
+          "subcategories": []
+        },
+        {
+          "id": "random-variables",
+          "name": "Random variables and expectation",
+          "subcategories": []
+        },
+        {
+          "id": "distributions",
+          "name": "Common distributions",
+          "subcategories": []
+        },
+        {
+          "id": "limit-theorems",
+          "name": "Limit theorems",
+          "subcategories": []
+        },
+        {
+          "id": "statistics",
+          "name": "Statistics",
+          "subcategories": []
+        }
+      ]
     },
     {
       "id": "number",
       "name": "Number theory",
       "description": "Divisibility, primes, congruences and irrationality proofs.",
-      "subcategories": []
+      "subcategories": [
+        {
+          "id": "divisibility",
+          "name": "Divisibility and gcd",
+          "subcategories": []
+        },
+        {
+          "id": "congruences",
+          "name": "Congruences",
+          "subcategories": []
+        },
+        {
+          "id": "primes",
+          "name": "Primes",
+          "subcategories": []
+        },
+        {
+          "id": "irrationality",
+          "name": "Irrationality",
+          "subcategories": []
+        }
+      ]
     },
     {
       "id": "combi",
       "name": "Combinatorics",
-      "description": "Counting arguments, binomial coefficients and bijections.",
-      "subcategories": []
+      "description": "Counting arguments, binomial coefficients, graphs and bijections.",
+      "subcategories": [
+        {
+          "id": "counting",
+          "name": "Counting principles",
+          "subcategories": []
+        },
+        {
+          "id": "binomial",
+          "name": "Binomial coefficients",
+          "subcategories": []
+        },
+        {
+          "id": "pigeonhole",
+          "name": "Pigeonhole principle",
+          "subcategories": []
+        },
+        {
+          "id": "inclusion-exclusion",
+          "name": "Inclusion-exclusion",
+          "subcategories": []
+        },
+        {
+          "id": "graphs",
+          "name": "Graph theory",
+          "subcategories": []
+        }
+      ]
+    },
+    {
+      "id": "geometry",
+      "name": "Geometry",
+      "description": "Plane and space geometry, triangles, circles and analytic geometry.",
+      "subcategories": [
+        {
+          "id": "plane",
+          "name": "Plane geometry",
+          "subcategories": []
+        },
+        {
+          "id": "analytic",
+          "name": "Analytic geometry",
+          "subcategories": []
+        },
+        {
+          "id": "space",
+          "name": "Geometry in space",
+          "subcategories": []
+        }
+      ]
     },
     {
       "id": "logic",
-      "name": "Logic & sets",
-      "description": "Proof techniques, quantifiers, sets and maps.",
-      "subcategories": []
+      "name": "Logic, sets and proofs",
+      "description": "Proof techniques, quantifiers, sets, maps and cardinality.",
+      "subcategories": [
+        {
+          "id": "proof-techniques",
+          "name": "Proof techniques",
+          "subcategories": [
+            {
+              "id": "induction",
+              "name": "Induction",
+              "subcategories": []
+            }
+          ]
+        },
+        {
+          "id": "quantifiers",
+          "name": "Quantifiers and negation",
+          "subcategories": []
+        },
+        {
+          "id": "sets-and-maps",
+          "name": "Sets and maps",
+          "subcategories": []
+        },
+        {
+          "id": "relations",
+          "name": "Relations",
+          "subcategories": []
+        },
+        {
+          "id": "cardinality",
+          "name": "Countability and cardinality",
+          "subcategories": []
+        }
+      ]
     }
   ]
 }
