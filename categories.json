@@ -316,6 +316,12 @@
           "description": "Conditional probability, independence, law of total probability and Bayes' rule.",
           "subcategories": []
         },
+            {
+          "id": "finite-probability",
+          "name": "Finite probability",
+          "description": "Finite probability.",
+          "subcategories": []
+        },
         {
           "id": "moments",
           "name": "Moments",
