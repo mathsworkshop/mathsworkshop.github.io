@@ -311,7 +311,7 @@
           "subcategories": []
         },
         {
-          "id": "conditional",
+          "id": "conditional-probability",
           "name": "Conditional probability",
           "description": "Conditional probability, independence, law of total probability and Bayes' rule.",
           "subcategories": []
