@@ -165,9 +165,9 @@
       ]
     },
     {
-      "id": "real-analysis",
+      "id": "analysis",
       "name": "Real analysis",
-      "description": "Rigorous analysis in the second year: topology, metric spaces and functions.",
+      "description": "Topology, metric spaces and functions.",
       "subcategories": [
         {
           "id": "topology",
