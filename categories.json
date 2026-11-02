@@ -322,6 +322,12 @@
           "description": "Expectation, variance, covariance, correlation and moment-generating functions.",
           "subcategories": []
         },
+          {
+          "id": "random-variables",
+          "name": "Random variables",
+          "description": " Random variables.",
+          "subcategories": []
+        },
         {
           "id": "limit-theorems",
           "name": "Limit theorems",
