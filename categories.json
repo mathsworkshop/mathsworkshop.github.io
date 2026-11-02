@@ -293,7 +293,7 @@
           "subcategories": []
         },
         {
-          "id": "discrete-distributions",
+          "id": "distributions",
           "name": "Discrete distributions",
           "description": "Uniform, Binomial, Poisson, Geometric and Hypergeometric distributions.",
           "subcategories": []
