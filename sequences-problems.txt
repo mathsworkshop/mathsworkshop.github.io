@@ -1,0 +1,969 @@
+@@@ arithmetic-and-geometric-sequences-basics.md
+---
+title: Arithmetic and geometric sequences
+category: calculus/single-variable/sequences
+level: lycee
+difficulty: 1
+tags: arithmetic sequence, geometric sequence, sums
+date: 2026-11-02
+---
+
+## Statement
+
+1. Let $(u_n)$ be arithmetic with $u_0=2$ and common difference $4$. Compute $u_{10}$ and $S_n=\sum_{k=0}^nu_k$.
+2. Let $(v_n)$ be geometric with $v_0=3$ and common ratio $\frac12$. Compute $v_5$, $T_n=\sum_{k=0}^nv_k$, and $\lim_{n\to\infty}T_n$.
+
+## Hint
+
+Arithmetic: $u_n=u_0+nr$ and $\sum_{k=0}^nu_k=(n+1)\frac{u_0+u_n}2$. Geometric: $v_n=v_0q^n$ and $\sum_{k=0}^nv_k=v_0\frac{1-q^{n+1}}{1-q}$ for $q\ne1$.
+
+## Solution
+
+**1.** $u_n=2+4n$, so $u_{10}=42$ and
+$$S_n=(n+1)\frac{2+(2+4n)}2=(n+1)(2+2n)=2(n+1)^2.$$
+(Check: $S_1=2+6=8=2\cdot4$.)
+
+**2.** $v_n=3\left(\frac12\right)^n$, so $v_5=\frac3{32}$ and
+$$T_n=3\cdot\frac{1-2^{-(n+1)}}{1-\frac12}=6\left(1-2^{-(n+1)}\right).$$
+Since $2^{-(n+1)}\to0$, $T_n\to6$.
+
+**Remark.** Adding infinitely many positive numbers can give a finite sum: this is the first example of a convergent series.
+@@@ a-recurrence-and-a-proof-by-induction.md
+---
+title: A recurrence and a proof by induction
+category: calculus/single-variable/sequences
+level: lycee
+difficulty: 1
+tags: induction, recurrence, closed form
+date: 2026-11-02
+---
+
+## Statement
+
+Let $u_0=1$ and $u_{n+1}=u_n+n+2$.
+
+1. Compute $u_1,u_2,u_3$. Is $(u_n)$ arithmetic?
+2. Prove by induction that $u_n=\dfrac{(n+1)(n+2)}2$ for all $n\ge0$.
+
+## Hint
+
+For part 1, look at the differences $u_{n+1}-u_n$. For part 2, check the base case, then plug the formula into the recurrence.
+
+## Solution
+
+**1.** $u_1=3$, $u_2=6$, $u_3=10$. The differences are $2,3,4,\dots$, not constant, so the sequence is not arithmetic.
+
+**2. Base case.** $u_0=1=\frac{1\cdot2}2$.
+
+**Inductive step.** Assume $u_n=\frac{(n+1)(n+2)}2$. Then
+$$u_{n+1}=\frac{(n+1)(n+2)}2+(n+2)=\frac{(n+2)\bigl[(n+1)+2\bigr]}2=\frac{(n+2)(n+3)}2,$$
+which is the formula at rank $n+1$.
+
+**Remark.** The numbers $1,3,6,10,\dots$ are the triangular numbers: $u_n=\binom{n+2}2$ counts pairs among $n+2$ objects.
+@@@ an-arithmetico-geometric-sequence.md
+---
+title: An arithmetico-geometric sequence
+category: calculus/single-variable/sequences
+level: l1
+difficulty: 2
+tags: recurrence, fixed point, geometric sequence
+date: 2026-11-02
+---
+
+## Statement
+
+Let $u_0=0$ and $u_{n+1}=\frac12u_n+1$.
+
+1. Find the fixed point $\ell$ with $\ell=\frac12\ell+1$.
+2. Show that $v_n=u_n-\ell$ is geometric.
+3. Deduce an explicit formula for $u_n$ and its limit.
+
+## Hint
+
+Subtract the fixed-point equation from the recurrence.
+
+## Solution
+
+**1.** $\ell=\frac12\ell+1\iff\ell=2$.
+
+**2.** Subtracting $\ell=\frac12\ell+1$ from $u_{n+1}=\frac12u_n+1$ gives
+$$v_{n+1}=u_{n+1}-2=\frac12(u_n-2)=\frac12v_n.$$
+So $(v_n)$ is geometric with ratio $\frac12$.
+
+**3.** $v_0=-2$, so $v_n=-2\cdot2^{-n}=-2^{1-n}$ and
+$$u_n=2-2^{1-n}\longrightarrow2.$$
+
+**Remark.** The trick of subtracting the fixed point works for every recurrence $u_{n+1}=au_n+b$ with $a\ne1$: it turns it into a geometric sequence of ratio $a$.
+@@@ a-telescoping-sum.md
+---
+title: A telescoping sum
+category: calculus/single-variable/sequences
+level: l1
+difficulty: 1
+tags: telescoping, series, partial sums
+date: 2026-11-02
+---
+
+## Statement
+
+Let $u_n=\dfrac1{n+1}-\dfrac1{n+2}$ for $n\ge0$. Compute $S_n=\sum_{k=0}^nu_k$ and deduce the limit of $S_n$.
+
+## Hint
+
+Write out the first few terms and watch what cancels.
+
+## Solution
+
+$$S_n=\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\dots+\left(\frac1{n+1}-\frac1{n+2}\right)=1-\frac1{n+2},$$
+because every intermediate term appears once with each sign. As $n\to\infty$, $S_n\to1$.
+
+**Remark.** Note that $u_n=\frac1{(n+1)(n+2)}$: this is how one sums series whose terms are rational functions, by splitting them into partial fractions that cancel in pairs.
+@@@ a-linear-recurrence-of-order-two.md
+---
+title: A linear recurrence of order two
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 2
+tags: linear recurrence, characteristic equation
+date: 2026-11-02
+---
+
+## Statement
+
+Find the general term of $(u_n)$ with $u_0=3$, $u_1=5$ and $u_{n+2}=3u_{n+1}-2u_n$.
+
+## Hint
+
+Look for solutions $u_n=r^n$. This leads to the characteristic equation $r^2-3r+2=0$.
+
+## Solution
+
+**Characteristic equation.** $r^2-3r+2=(r-1)(r-2)=0$, so $r_1=1$ and $r_2=2$.
+
+**General solution.** Both $1^n$ and $2^n$ satisfy the recurrence, and so does every combination $u_n=A+B2^n$.
+
+**Initial conditions.** $A+B=3$ and $A+2B=5$, so $B=2$ and $A=1$.
+
+**Answer.** $u_n=1+2^{n+1}$.
+
+**Check.** $u_2=3\cdot5-2\cdot3=9=1+2^3$ ✓.
+@@@ three-cases-of-order-two-recurrences.md
+---
+title: Three cases of order-two recurrences
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 3
+tags: linear recurrence, double root, complex roots
+date: 2026-11-02
+---
+
+## Statement
+
+Find the general term of each sequence.
+
+1. $u_0=1$, $u_1=0$, $u_{n+2}=5u_{n+1}-6u_n$.
+2. $u_0=1$, $u_1=0$, $u_{n+2}=4u_{n+1}-4u_n$.
+3. $u_0=0$, $u_1=1$, $u_{n+2}=2u_{n+1}-2u_n$.
+
+## Hint
+
+Solve the characteristic equation $r^2=ar+b$. Distinct real roots give $A r_1^n+Br_2^n$; a double root $r$ gives $(A+Bn)r^n$; complex roots $\rho e^{\pm i\theta}$ give $\rho^n(A\cos n\theta+B\sin n\theta)$.
+
+## Solution
+
+**1. Two real roots.** $r^2-5r+6=0$ gives $r=2,3$. So $u_n=A2^n+B3^n$ with $A+B=1$ and $2A+3B=0$, hence $B=-2$, $A=3$:
+$$u_n=3\cdot2^n-2\cdot3^n.$$
+
+**2. Double root.** $r^2-4r+4=(r-2)^2$, so $u_n=(A+Bn)2^n$. $u_0=1$ gives $A=1$ and $u_1=2(1+B)=0$ gives $B=-1$:
+$$u_n=(1-n)2^n.$$
+
+**3. Complex roots.** $r^2-2r+2=0$ has roots $1\pm i=\sqrt2\,e^{\pm i\pi/4}$. So $u_n=2^{n/2}\left(A\cos\frac{n\pi}4+B\sin\frac{n\pi}4\right)$. $u_0=0$ gives $A=0$, and $u_1=\sqrt2B\sin\frac\pi4=B=1$:
+$$u_n=2^{n/2}\sin\frac{n\pi}4.$$
+
+**Checks.** (1) $u_2=-6=12-18$. (2) $u_2=-4=(1-2)\cdot4$. (3) $u_2=2=2\sin\frac\pi2$ and $u_3=4-2=2=2^{3/2}\sin\frac{3\pi}4$.
+
+**Remark.** In case 3 the sequence rotates and grows at the same time: it oscillates with an amplitude $2^{n/2}$.
+@@@ binet-formula-for-fibonacci.md
+---
+title: Binet's formula for the Fibonacci numbers
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 3
+tags: Fibonacci, golden ratio, linear recurrence, limits
+date: 2026-11-02
+---
+
+## Statement
+
+Let $F_0=0$, $F_1=1$ and $F_{n+2}=F_{n+1}+F_n$.
+
+1. Find a closed formula for $F_n$.
+2. Show that $\dfrac{F_{n+1}}{F_n}\to\varphi=\dfrac{1+\sqrt5}2$.
+
+## Hint
+
+The characteristic equation is $r^2=r+1$. Write $\psi=\frac{1-\sqrt5}2$ for the other root and note that $|\psi|<1$.
+
+## Solution
+
+**1.** The roots of $r^2-r-1=0$ are $\varphi=\frac{1+\sqrt5}2$ and $\psi=\frac{1-\sqrt5}2$. So $F_n=A\varphi^n+B\psi^n$. From $F_0=0$: $B=-A$. From $F_1=1$: $A(\varphi-\psi)=A\sqrt5=1$. Hence
+$$F_n=\frac{\varphi^n-\psi^n}{\sqrt5}.$$
+
+**2.** Since $|\psi|<1<\varphi$, we have $\left(\frac\psi\varphi\right)^n\to0$ and
+Dividing numerator and denominator by $\varphi^n$:
+$$\frac{F_{n+1}}{F_n}=\frac{\varphi-\psi\left(\frac\psi\varphi\right)^n}{1-\left(\frac\psi\varphi\right)^n}\longrightarrow\varphi.$$
+
+**Remark.** Since $\psi^n\to0$, $F_n$ is the integer closest to $\frac{\varphi^n}{\sqrt5}$: for instance $\frac{\varphi^{10}}{\sqrt5}\approx55.004$ and $F_{10}=55$.
+@@@ sum-of-squares-and-induction.md
+---
+title: The sum of the first n squares
+category: calculus/single-variable/sequences
+level: lycee
+difficulty: 1
+tags: induction, sums, limits
+date: 2026-11-02
+---
+
+## Statement
+
+1. Prove by induction that $\displaystyle\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}6$.
+2. Deduce $\displaystyle\lim_{n\to\infty}\frac1{n^3}\sum_{k=1}^nk^2$.
+
+## Hint
+
+In the inductive step, add $(n+1)^2$ to the formula and factor.
+
+## Solution
+
+**1. Base case.** $n=1$: $1=\frac{1\cdot2\cdot3}6$.
+
+**Inductive step.** Assume the formula for $n$. Then
+$$\sum_{k=1}^{n+1}k^2=\frac{n(n+1)(2n+1)}6+(n+1)^2=\frac{(n+1)\bigl[n(2n+1)+6(n+1)\bigr]}6=\frac{(n+1)(2n^2+7n+6)}6.$$
+Since $2n^2+7n+6=(n+2)(2n+3)$, this equals $\frac{(n+1)(n+2)(2n+3)}6$, the formula at rank $n+1$.
+
+**2.**
+$$\frac1{n^3}\cdot\frac{n(n+1)(2n+1)}6=\frac16\cdot\frac{n+1}n\cdot\frac{2n+1}n\longrightarrow\frac16\cdot1\cdot2=\frac13.$$
+
+**Remark.** This is the Riemann sum for $\int_0^1x^2\,dx=\frac13$: the same result obtained from an algebraic formula.
+@@@ a-telescoping-sum-with-factorials.md
+---
+title: A telescoping sum with factorials
+category: calculus/single-variable/sequences
+level: l1
+difficulty: 2
+tags: telescoping, factorials
+date: 2026-11-02
+---
+
+## Statement
+
+Let $S_n=\displaystyle\sum_{k=1}^n\frac k{(k+1)!}$. Compute $S_n$ and its limit.
+
+## Hint
+
+Write $k=(k+1)-1$ and split the fraction.
+
+## Solution
+
+**Splitting.**
+$$\frac k{(k+1)!}=\frac{(k+1)-1}{(k+1)!}=\frac1{k!}-\frac1{(k+1)!}.$$
+
+**Telescoping.**
+$$S_n=\sum_{k=1}^n\left(\frac1{k!}-\frac1{(k+1)!}\right)=1-\frac1{(n+1)!}\longrightarrow1.$$
+
+**Check.** $S_5=\frac12+\frac26+\frac3{24}+\frac4{120}+\frac5{720}=0.99861=1-\frac1{720}$ ✓.
+@@@ a-telescoping-product.md
+---
+title: A telescoping product
+category: calculus/single-variable/sequences
+level: l1
+difficulty: 2
+tags: telescoping, products, factoring
+date: 2026-11-02
+---
+
+## Statement
+
+Let $P_n=\displaystyle\prod_{k=2}^n\left(1-\frac1{k^2}\right)$. Compute $P_n$ and its limit.
+
+## Hint
+
+Factor $1-\frac1{k^2}=\frac{(k-1)(k+1)}{k^2}$ and write out the product.
+
+## Solution
+
+**Factoring.**
+$$P_n=\prod_{k=2}^n\frac{k-1}k\cdot\prod_{k=2}^n\frac{k+1}k.$$
+
+**First product.** $\frac12\cdot\frac23\cdots\frac{n-1}n=\frac1n$.
+
+**Second product.** $\frac32\cdot\frac43\cdots\frac{n+1}n=\frac{n+1}2$.
+
+**Result.**
+$$P_n=\frac{n+1}{2n}\longrightarrow\frac12.$$
+
+**Check.** For $n=10$: $\frac{11}{20}=0.55$, matching the direct product.
+@@@ the-epsilon-n-definition-of-a-limit.md
+---
+title: The ε–N definition of a limit
+category: calculus/single-variable/sequences
+level: l1
+difficulty: 2
+tags: definition of a limit, epsilon-N, divergence
+date: 2026-11-02
+---
+
+## Statement
+
+1. Using the definition, prove that $\dfrac{3n+1}{n+2}\to3$ and find an explicit $N$ for each $\varepsilon>0$.
+2. Prove that $u_n=(-1)^n$ does not converge.
+
+## Hint
+
+For part 1, compute $\left|u_n-3\right|$. For part 2, assume a limit $\ell$ exists and apply the definition with $\varepsilon=1$.
+
+## Solution
+
+**Definition.** $u_n\to\ell$ means: for every $\varepsilon>0$ there exists $N$ such that $n\ge N\Rightarrow|u_n-\ell|<\varepsilon$.
+
+**1.** $\left|\dfrac{3n+1}{n+2}-3\right|=\dfrac{5}{n+2}<\dfrac5n$. Given $\varepsilon>0$ take $N=\lceil5/\varepsilon\rceil+1$; for $n\ge N$ we get $\frac5n<\varepsilon$.
+
+**2.** Suppose $(-1)^n\to\ell$. With $\varepsilon=1$ there is $N$ such that $|(-1)^n-\ell|<1$ for $n\ge N$. Then for $n\ge N$,
+$$2=\left|(-1)^{n+1}-(-1)^n\right|\le\left|(-1)^{n+1}-\ell\right|+\left|\ell-(-1)^n\right|<1+1=2,$$
+which is absurd. So the sequence diverges.
+
+**Remark.** In part 2 the contradiction arises because the terms stay at distance $2$ from each other forever, whereas convergent sequences have terms that eventually cluster.
+@@@ limits-by-the-squeeze-theorem.md
+---
+title: Three limits by the squeeze theorem
+category: calculus/single-variable/sequences
+level: l1
+difficulty: 2
+tags: squeeze theorem, sums, n-th roots
+date: 2026-11-02
+---
+
+## Statement
+
+Compute:
+1. $A_n=\displaystyle\sum_{k=1}^n\frac n{n^2+k}$,
+2. $B_n=\left(1+2^n+3^n\right)^{1/n}$,
+3. $C_n=\left(a_1^n+\dots+a_p^n\right)^{1/n}$ for fixed positive numbers $a_1,\dots,a_p$.
+
+## Hint
+
+Bound every term of a sum by the smallest and the largest one.
+
+## Solution
+
+**1.** Each term satisfies $\frac n{n^2+n}\le\frac n{n^2+k}\le\frac n{n^2+1}$. Summing the $n$ terms:
+$$\frac{n^2}{n^2+n}\le A_n\le\frac{n^2}{n^2+1}.$$
+Both bounds tend to $1$, so $A_n\to1$.
+
+**2.** $3^n\le1+2^n+3^n\le3\cdot3^n$, so taking $n$-th roots, $3\le B_n\le3\cdot3^{1/n}$, and $3^{1/n}\to1$. So $B_n\to3$.
+
+**3.** Let $M=\max a_i$. Then $M^n\le a_1^n+\dots+a_p^n\le p\,M^n$, so $M\le C_n\le p^{1/n}M$ and $p^{1/n}\to1$. Hence $C_n\to M$.
+
+**Remark.** The result in 3 says that a sum of powers behaves, to the $n$-th root, like its largest term: the same idea underlies the $\ell^p$ norms tending to the maximum norm as $p\to\infty$.
+@@@ the-hierarchy-of-growth-for-sequences.md
+---
+title: The hierarchy of growth
+category: calculus/single-variable/sequences
+level: l1
+difficulty: 3
+tags: growth comparison, ratio test, factorial
+date: 2026-11-02
+---
+
+## Statement
+
+1. Prove: if $u_n>0$ and $\dfrac{u_{n+1}}{u_n}\to L<1$, then $u_n\to0$.
+2. Deduce that for $k\in\mathbb{N}$ and $a>1$: $\dfrac{n^k}{a^n}\to0$, $\dfrac{a^n}{n!}\to0$ and $\dfrac{n!}{n^n}\to0$.
+
+## Hint
+
+For part 1, choose $q$ with $L<q<1$: eventually $u_{n+1}\le qu_n$. For part 2, compute the ratio of consecutive terms.
+
+## Solution
+
+**1.** Pick $q\in(L,1)$. There is $N$ such that $u_{n+1}\le qu_n$ for $n\ge N$. By induction $u_n\le u_Nq^{n-N}\to0$.
+
+**2.**
+- For $u_n=\frac{n^k}{a^n}$: $\frac{u_{n+1}}{u_n}=\left(1+\frac1n\right)^k\frac1a\to\frac1a<1$.
+- For $u_n=\frac{a^n}{n!}$: $\frac{u_{n+1}}{u_n}=\frac a{n+1}\to0<1$.
+- For $u_n=\frac{n!}{n^n}$: $\frac{u_{n+1}}{u_n}=\frac{(n+1)n^n}{(n+1)^{n+1}}=\left(1+\frac1n\right)^{-n}\to\frac1e<1$.
+
+**Conclusion.** For large $n$,
+$$\ln n\ll n^k\ll a^n\ll n!\ll n^n.$$
+
+**Warning.** If $L=1$ the test says nothing: $u_n=\frac1n$ tends to $0$, while $u_n=n$ diverges, though both have ratio $\to1$.
+@@@ supremum-infimum-limsup-and-liminf.md
+---
+title: Supremum, infimum, limsup and liminf
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 3
+tags: supremum, limsup, liminf, bounded sequences
+date: 2026-11-02
+---
+
+## Statement
+
+For each sequence ($n\ge1$), find $\sup$, $\inf$, $\limsup$, $\liminf$, and say whether the sup and inf are attained.
+
+1. $u_n=(-1)^n\dfrac n{n+1}$
+2. $v_n=(-1)^n+\dfrac1n$
+
+## Hint
+
+Treat even and odd indices separately: they form two monotone subsequences.
+
+## Solution
+
+**1.** For even $n$: $u_n=\frac n{n+1}$ increases to $1$ without reaching it. For odd $n$: $u_n=-\frac n{n+1}$ decreases to $-1$ without reaching it. Hence
+$$\sup u_n=1,\ \inf u_n=-1\ \text{(not attained)},\qquad\limsup u_n=1,\ \liminf u_n=-1.$$
+
+**2.** For even $n$: $v_n=1+\frac1n$ decreases to $1$, with maximum $v_2=\frac32$. For odd $n$: $v_n=-1+\frac1n$ is $0$ at $n=1$ and then decreases to $-1$ without reaching it. Hence
+$$\sup v_n=\frac32\ \text{(attained)},\quad\inf v_n=-1\ \text{(not attained)},\qquad\limsup v_n=1,\ \liminf v_n=-1.$$
+
+**Remark.** The supremum describes the *whole* sequence, whereas $\limsup$ only describes its behaviour at the tail. In example 2 they differ ($\frac32$ versus $1$) because the largest value occurs early. A bounded sequence converges iff $\limsup=\liminf$.
+@@@ sine-of-n-has-no-limit.md
+---
+title: The sequence sin(n) does not converge
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 4
+tags: divergence, trigonometry, subsequences, contradiction
+date: 2026-11-02
+---
+
+## Statement
+
+Prove that the sequence $(\sin n)_{n\ge1}$ has no limit.
+
+## Hint
+
+If $\sin n\to\ell$, use $\sin(n+1)-\sin(n-1)=2\sin1\cos n$ to find the limit of $\cos n$, then use $\sin2n=2\sin n\cos n$.
+
+## Solution
+
+**Suppose** $\sin n\to\ell$. Then $\sin(n+1)\to\ell$ and $\sin(n-1)\to\ell$, so
+$$2\sin1\cos n=\sin(n+1)-\sin(n-1)\longrightarrow0.$$
+Since $\sin1\ne0$, we get $\cos n\to0$.
+
+**Two consequences.**
+- From $\sin^2n+\cos^2n=1$ we get $\ell^2=1$.
+- The sequence $\sin2n=2\sin n\cos n$ tends to $2\ell\cdot0=0$. But $(\sin2n)$ is a subsequence of $(\sin n)$, so it tends to $\ell$. Hence $\ell=0$.
+
+**Contradiction.** $\ell^2=1$ and $\ell=0$ cannot both hold. So $(\sin n)$ does not converge.
+
+**Remark.** In fact, the set $\{n\bmod2\pi\}$ is dense in $[0,2\pi]$ and every value in $[-1,1]$ is a limit point of $\sin n$.
+@@@ the-alternating-harmonic-sequence.md
+---
+title: The alternating harmonic sums converge
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 4
+tags: adjacent subsequences, alternating series, ln 2
+date: 2026-11-02
+---
+
+## Statement
+
+Let $S_n=\displaystyle\sum_{k=1}^n\frac{(-1)^{k+1}}k$. Show that $(S_{2n})$ and $(S_{2n+1})$ are adjacent sequences, and deduce that $(S_n)$ converges.
+
+## Hint
+
+Compute $S_{2n+2}-S_{2n}$, $S_{2n+3}-S_{2n+1}$ and $S_{2n+1}-S_{2n}$.
+
+## Solution
+
+**Monotonicity.**
+$$S_{2n+2}-S_{2n}=\frac1{2n+1}-\frac1{2n+2}>0,\qquad S_{2n+3}-S_{2n+1}=-\frac1{2n+2}+\frac1{2n+3}<0.$$
+So $(S_{2n})$ is increasing and $(S_{2n+1})$ is decreasing.
+
+**Difference.** $S_{2n+1}-S_{2n}=\frac1{2n+1}\to0$.
+
+**Adjacent sequences.** They converge to the same limit $\ell$. Since both the even and the odd subsequences tend to $\ell$, the whole sequence $(S_n)$ converges to $\ell$.
+
+**Remark.** The limit is $\ln2\approx0.6931$ ($S_{2000}\approx0.6929$). The bounds $S_{2n}\le\ln2\le S_{2n+1}$ give an error estimate of $\frac1{2n+1}$ for free.
+@@@ adjacent-sequences-and-the-irrationality-of-e.md
+---
+title: Adjacent sequences and the irrationality of e
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 4
+tags: adjacent sequences, number e, irrationality
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a_n=\displaystyle\sum_{k=0}^n\frac1{k!}$ and $b_n=a_n+\dfrac1{n\cdot n!}$ for $n\ge1$.
+
+1. Show that $(a_n)$ is strictly increasing and $(b_n)$ strictly decreasing.
+2. Show that $b_n-a_n\to0$, and deduce that both sequences have the same limit $e$.
+3. Deduce that $e$ is irrational.
+
+## Hint
+
+For part 3, suppose $e=\frac pq$ and multiply the inequality $a_q<e<b_q$ by $q!$.
+
+## Solution
+
+**1.** $a_{n+1}-a_n=\frac1{(n+1)!}>0$. For $b$:
+$$b_{n+1}-b_n=\frac1{(n+1)!}+\frac1{(n+1)(n+1)!}-\frac1{n\,n!}=\frac1{(n+1)!}\left(\frac{n+2}{n+1}-\frac{n+1}n\right)=-\frac1{n(n+1)(n+1)!}<0.$$
+
+**2.** $b_n-a_n=\frac1{n\,n!}\to0$. The sequence $(a_n)$ is increasing and bounded above by $b_1$, so it converges, say to $\ell$; $(b_n)$ is decreasing and bounded below by $a_1$, so it converges to the same $\ell$, since the difference tends to $0$. This common limit is $e=\sum\frac1{k!}$.
+
+**3.** Strict monotonicity gives $a_q<e<b_q$ for every $q\ge1$. Suppose $e=\frac pq$ with integers $p,q\ge1$. Multiplying $a_q<\frac pq<a_q+\frac1{q\cdot q!}$ by $q!$:
+$$q!\,a_q<p\,(q-1)!<q!\,a_q+\frac1q.$$
+Here $q!\,a_q=\sum_{k=0}^q\frac{q!}{k!}$ and $p\,(q-1)!$ are integers, and the integer $p(q-1)!$ lies strictly between the integer $q!\,a_q$ and that integer plus $\frac1q\le1$. Impossible.
+
+**Conclusion.** $e$ is irrational.
+
+**Remark.** A famous argument, due to Fourier. It uses nothing but adjacent sequences.
+@@@ the-sequence-defining-e-is-monotone.md
+---
+title: Monotonicity of (1 + 1/n)^n
+category: calculus/single-variable/sequences
+level: l1
+difficulty: 4
+tags: number e, AM-GM inequality, monotone convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a_n=\left(1+\frac1n\right)^n$ and $b_n=\left(1+\frac1n\right)^{n+1}$.
+
+1. Show that $(a_n)$ is increasing and $(b_n)$ is decreasing.
+2. Deduce that both converge to the same limit (which is $e$).
+
+## Hint
+
+Apply the AM-GM inequality $\sqrt[m]{x_1\cdots x_m}\le\frac{x_1+\dots+x_m}m$ to well-chosen $n+1$ (resp. $n+2$) numbers.
+
+## Solution
+
+**1. $(a_n)$ increases.** Apply AM-GM to the $n+1$ numbers $\underbrace{1+\frac1n,\dots,1+\frac1n}_{n},\,1$. Their mean is $\frac{n+1+1}{n+1}=1+\frac1{n+1}$, so
+$$\left(1+\frac1n\right)^{n/(n+1)}\le1+\frac1{n+1}\ \Longrightarrow\ a_n\le a_{n+1}.$$
+
+**$(b_n)$ decreases.** Apply AM-GM to the $n+2$ numbers $\underbrace{\frac n{n+1},\dots,\frac n{n+1}}_{n+1},\,1$. Their mean is $\frac{n+1}{n+2}$, so
+$$\left(\frac n{n+1}\right)^{(n+1)/(n+2)}\le\frac{n+1}{n+2}\ \Longrightarrow\ \left(\frac{n}{n+1}\right)^{n+1}\le\left(\frac{n+1}{n+2}\right)^{n+2}.$$
+Taking inverses, $\left(\frac{n+1}n\right)^{n+1}\ge\left(\frac{n+2}{n+1}\right)^{n+2}$, i.e. $b_n\ge b_{n+1}$.
+
+**2.** $a_n\le b_n$ for all $n$, and $b_n-a_n=\frac1n a_n\le\frac{b_1}n\to0$ (since $a_n\le b_n\le b_1=4$). So $a_n$ increasing and bounded above by $b_1$ converges, $b_n$ decreasing and bounded below by $a_1$ converges, and they have the same limit, which is called $e$.
+
+**Remark.** This gives the bounds $2\le a_n<e<b_n\le4$, and in fact $2.59<e<2.86$ already for $n=10$.
+@@@ the-cauchy-criterion.md
+---
+title: The Cauchy criterion
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 4
+tags: Cauchy sequences, completeness, series
+date: 2026-11-02
+---
+
+## Statement
+
+A sequence is **Cauchy** if for every $\varepsilon>0$ there is $N$ with $|u_m-u_n|<\varepsilon$ for all $m,n\ge N$. In $\mathbb{R}$, a sequence converges if and only if it is Cauchy.
+
+1. Show that $u_n=\sum_{k=1}^n\frac1{k^2}$ is Cauchy, hence converges.
+2. Show that $H_n=\sum_{k=1}^n\frac1k$ is not Cauchy, hence diverges.
+
+## Hint
+
+For part 1, compare $\frac1{k^2}$ with $\frac1{k(k-1)}=\frac1{k-1}-\frac1k$. For part 2, look at $H_{2n}-H_n$.
+
+## Solution
+
+**1.** For $m>n\ge1$,
+$$|u_m-u_n|=\sum_{k=n+1}^m\frac1{k^2}\le\sum_{k=n+1}^m\left(\frac1{k-1}-\frac1k\right)=\frac1n-\frac1m<\frac1n.$$
+Given $\varepsilon$, take $N>\frac1\varepsilon$: for $m>n\ge N$, $|u_m-u_n|<\varepsilon$. The sequence is Cauchy, hence converges.
+
+**2.** $H_{2n}-H_n=\sum_{k=n+1}^{2n}\frac1k\ge n\cdot\frac1{2n}=\frac12$. So no matter how large $N$ is, taking $n\ge N$ and $m=2n$ gives $|H_m-H_n|\ge\frac12$: the sequence is not Cauchy, hence diverges.
+
+**Remark.** The Cauchy criterion is powerful because it proves convergence *without knowing the limit*. (Here the limit of $u_n$ is $\frac{\pi^2}6$, which is much harder to find.) Note that in part 2, consecutive terms $H_{n+1}-H_n=\frac1{n+1}\to0$, yet the sequence diverges: the criterion needs *all* pairs $m,n$.
+@@@ the-arithmetic-geometric-mean.md
+---
+title: The arithmetic–geometric mean
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 4
+tags: adjacent sequences, AM-GM, means
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a_0=1$, $b_0=2$ and for $n\ge0$,
+$$a_{n+1}=\frac{a_n+b_n}2,\qquad b_{n+1}=\sqrt{a_nb_n}.$$
+Show that both sequences converge to the same limit.
+
+## Hint
+
+By AM-GM, $b_n\le a_n$ from $n=1$ on. Then compare $a_{n+1}$ with $a_n$, $b_{n+1}$ with $b_n$, and bound $a_{n+1}-b_{n+1}$ by $\frac12(a_n-b_n)$.
+
+## Solution
+
+**Ordering.** For $x,y>0$, $\sqrt{xy}\le\frac{x+y}2$. So $b_{n+1}\le a_{n+1}$ for all $n\ge0$, i.e. $b_n\le a_n$ for all $n\ge1$.
+
+**Monotonicity.** For $n\ge1$:
+- $a_{n+1}=\frac{a_n+b_n}2\le a_n$, so $(a_n)_{n\ge1}$ is decreasing;
+- $b_{n+1}=\sqrt{a_nb_n}\ge\sqrt{b_n^2}=b_n$, so $(b_n)_{n\ge1}$ is increasing.
+
+**Contracting gap.** For $x\ge y>0$,
+$$\frac{x+y}2-\sqrt{xy}=\frac{(\sqrt x-\sqrt y)^2}2\le\frac{(\sqrt x-\sqrt y)(\sqrt x+\sqrt y)}2=\frac{x-y}2.$$
+So $0\le a_{n+1}-b_{n+1}\le\frac12(a_n-b_n)$, hence $a_n-b_n\le2^{-n}(a_1-b_1)\to0$.
+
+**Conclusion.** The sequences are adjacent, so they converge to a common limit $M(1,2)$, the **arithmetic–geometric mean** of $1$ and $2$.
+
+**Numerics.**
+- $n=1$: $a_1=1.5$, $b_1=1.41421$
+- $n=2$: $a_2=1.45711$, $b_2=1.45648$
+- $n=3$: $a_3=1.4567910$, $b_3=1.4567910$
+
+So $M(1,2)\approx1.4567910$. Convergence is extremely fast (the number of correct digits doubles).
+@@@ heron-s-method-for-the-square-root.md
+---
+title: Heron's method for √2
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 3
+tags: Newton's method, quadratic convergence, square roots
+date: 2026-11-02
+---
+
+## Statement
+
+Let $u_0=1$ and $u_{n+1}=\dfrac12\left(u_n+\dfrac2{u_n}\right)$.
+
+1. Show that $u_{n+1}-\sqrt2=\dfrac{(u_n-\sqrt2)^2}{2u_n}$.
+2. Show that $u_n\ge\sqrt2$ for $n\ge1$, that $(u_n)_{n\ge1}$ is decreasing, and that $u_n\to\sqrt2$.
+3. Show that the error is roughly squared at each step.
+
+## Hint
+
+For part 1, put everything over the common denominator $2u_n$.
+
+## Solution
+
+**1.**
+$$u_{n+1}-\sqrt2=\frac{u_n^2+2-2\sqrt2u_n}{2u_n}=\frac{(u_n-\sqrt2)^2}{2u_n}.$$
+
+**2.** By part 1 and $u_n>0$, $u_{n+1}\ge\sqrt2$ for all $n$. For $n\ge1$,
+$$u_{n+1}-u_n=\frac{2-u_n^2}{2u_n}\le0,$$
+so $(u_n)$ is decreasing and bounded below by $\sqrt2$: it converges to some $\ell\ge\sqrt2$ with $\ell=\frac12\left(\ell+\frac2\ell\right)$, i.e. $\ell^2=2$, so $\ell=\sqrt2$.
+
+**3.** With $\varepsilon_n=u_n-\sqrt2$: $\varepsilon_{n+1}=\frac{\varepsilon_n^2}{2u_n}\le\frac{\varepsilon_n^2}{2\sqrt2}\le\varepsilon_n^2$. This is **quadratic convergence**.
+
+**Numerics.**
+- $u_1=1.5$
+- $u_2=1.41667$
+- $u_3=1.414216$
+- $u_4=1.41421356237\dots$
+
+The number of correct decimals roughly doubles at each step: this is Newton's method applied to $x^2-2=0$.
+@@@ speed-of-convergence-of-a-sequence.md
+---
+title: Speed of convergence
+category: calculus/single-variable/sequences
+level: l3
+difficulty: 4
+tags: speed of convergence, fixed point, mean value theorem
+date: 2026-11-02
+---
+
+## Statement
+
+Let $u_n\to\ell$ with $u_n\ne\ell$ for all $n$, and suppose $v_n=\left|\dfrac{u_{n+1}-\ell}{u_n-\ell}\right|\to a$.
+
+1. Show that $a\le1$.
+2. Give examples with $a=1$ (slow), $0<a<1$ (geometric) and $a=0$ (fast).
+3. If $u_{n+1}=f(u_n)$ with $f$ of class $\mathcal C^1$ and $f(\ell)=\ell$, show that $a=|f'(\ell)|$.
+
+## Hint
+
+For part 1, if $a>1$ the distance to $\ell$ would eventually increase geometrically. For part 3, apply the mean value theorem to $f(u_n)-f(\ell)$.
+
+## Solution
+
+**1.** If $a>1$, choose $\rho\in(1,a)$. For large $n$, $v_n>\rho$, so $|u_{n+1}-\ell|>\rho|u_n-\ell|$, and $|u_n-\ell|$ grows like $\rho^n$, contradicting $u_n\to\ell$. So $a\le1$.
+
+**2.**
+- Slow: $u_n=\frac1n$, $\ell=0$, $v_n=\frac n{n+1}\to1$.
+- Geometric: $u_n=q^n$ with $0<q<1$, $v_n=q$.
+- Fast: $u_n=2^{-2^n}$, $v_n=2^{-2^n}\to0$ (since $u_{n+1}=u_n^2$).
+
+**3.** By the mean value theorem there is $\xi_n$ between $u_n$ and $\ell$ with
+$$u_{n+1}-\ell=f(u_n)-f(\ell)=f'(\xi_n)(u_n-\ell).$$
+Since $\xi_n\to\ell$ and $f'$ is continuous, $v_n=|f'(\xi_n)|\to|f'(\ell)|$.
+
+**Interpretation.** $f'(\ell)=0$ gives fast (superlinear) convergence, as in Newton's method; $0<|f'(\ell)|<1$ gives geometric convergence; $|f'(\ell)|=1$ gives slow convergence (for instance $u_{n+1}=\sin u_n$ tends to $0$ like $\sqrt{3/n}$).
+@@@ a-recurrent-sequence-and-a-contraction.md
+---
+title: A recurrent sequence and its fixed point
+category: calculus/single-variable/sequences
+level: m1
+difficulty: 3
+tags: fixed point, contraction, mean value theorem
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f(x)=\dfrac{x+2}{x+1}$ and $u_0=1$, $u_{n+1}=f(u_n)$.
+
+1. Show that $f$ has a unique fixed point $\alpha>0$.
+2. Show that $u_n\ge1$ for all $n$ and $|f'(x)|\le\frac14$ for $x\ge1$. Deduce that $u_n\to\alpha$.
+3. Find the speed of convergence.
+
+## Hint
+
+Write $f(x)=1+\frac1{x+1}$. Then $f'(x)=-\frac1{(x+1)^2}$.
+
+## Solution
+
+**1.** $x=\frac{x+2}{x+1}\iff x^2+x=x+2\iff x^2=2$. So $\alpha=\sqrt2$.
+
+**2.** $f(x)=1+\frac1{x+1}>1$ for $x\ge0$, so $u_n\ge1$ for $n\ge1$ and $u_0=1$. On $[1,+\infty)$, $|f'(x)|=\frac1{(x+1)^2}\le\frac14$. By the mean value theorem,
+$$|u_{n+1}-\alpha|=|f(u_n)-f(\alpha)|\le\frac14|u_n-\alpha|,$$
+so $|u_n-\alpha|\le4^{-n}|u_0-\alpha|\to0$.
+
+**3.** $f'(\sqrt2)=-\frac1{(\sqrt2+1)^2}=-(\sqrt2-1)^2\approx-0.1716$. Since $0<|f'(\alpha)|<1$, convergence is geometric with ratio $\approx0.17$. The errors alternate in sign: $u_1=1.5$, $u_2=1.4$, $u_3=1.41667$, $u_4=1.41379$, ...
+
+**Remark.** This is the continued fraction $\sqrt2=1+\cfrac1{2+\cfrac1{2+\cdots}}$.
+@@@ continued-fraction-of-the-golden-ratio.md
+---
+title: Convergence to the golden ratio
+category: calculus/single-variable/sequences
+level: m1
+difficulty: 3
+tags: golden ratio, contraction, fixed point
+date: 2026-11-02
+---
+
+## Statement
+
+Let $x_0=1$ and $x_{n+1}=1+\dfrac1{x_n}$.
+
+1. Show that $x_n\in\left[\frac32,2\right]$ for all $n\ge1$.
+2. Show that $|x_{n+1}-\varphi|\le\frac49|x_n-\varphi|$ for $n\ge1$, where $\varphi=\frac{1+\sqrt5}2$, and deduce $x_n\to\varphi$.
+
+## Hint
+
+The map $f(x)=1+\frac1x$ is decreasing, with $f'(x)=-\frac1{x^2}$.
+
+## Solution
+
+**1.** $x_1=2$. If $x\in\left[\frac32,2\right]$, then by monotonicity $f(x)\in\left[f(2),f\!\left(\frac32\right)\right]=\left[\frac32,\frac53\right]\subset\left[\frac32,2\right]$. By induction $x_n\in\left[\frac32,2\right]$ for $n\ge1$.
+
+**2.** The fixed point satisfies $\varphi=1+\frac1\varphi$, i.e. $\varphi^2=\varphi+1$, and $\varphi\approx1.618\in\left[\frac32,2\right]$. For $x\ge\frac32$, $|f'(x)|=\frac1{x^2}\le\frac49$. The mean value theorem gives
+$$|x_{n+1}-\varphi|=|f(x_n)-f(\varphi)|\le\frac49|x_n-\varphi|.$$
+Hence $|x_n-\varphi|\le\left(\frac49\right)^{n-1}|x_1-\varphi|\to0$.
+
+**Sharper rate.** Near $\varphi$ the ratio is $|f'(\varphi)|=\frac1{\varphi^2}\approx0.382$.
+
+**Remark.** The terms are $x_n=\frac{F_{n+1}}{F_n}$, ratios of consecutive Fibonacci numbers: $1,2,\frac32,\frac53,\frac85,\dots$ (see Binet's formula).
+@@@ a-double-fixed-point.md
+---
+title: A recurrence with a double fixed point
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 4
+tags: fixed points, monotone sequences, parameter dependence
+date: 2026-11-02
+---
+
+## Statement
+
+Let $u_{n+1}=u_n^2+\frac14$. Determine, depending on $u_0$, whether $(u_n)$ converges and find its limit.
+
+## Hint
+
+Compute $u_{n+1}-u_n$ and write it as a square. Then split into cases $|u_0|\le\frac12$ and $|u_0|>\frac12$.
+
+## Solution
+
+**Key identity.** $u_{n+1}-u_n=u_n^2-u_n+\frac14=\left(u_n-\frac12\right)^2\ge0$. The sequence is **always non-decreasing**.
+
+**Case $|u_0|\le\frac12$.** If $|u_n|\le\frac12$, then $u_{n+1}=u_n^2+\frac14\in\left[\frac14,\frac12\right]$, so by induction $u_n\le\frac12$ for all $n\ge1$. Non-decreasing and bounded above: it converges to a limit $\ell$ with $\ell=\ell^2+\frac14$, i.e. $\left(\ell-\frac12\right)^2=0$, so $\ell=\frac12$.
+
+**Case $|u_0|>\frac12$.** Then $u_1=u_0^2+\frac14>\frac12$, and the sequence is non-decreasing from $u_1>\frac12$. If it converged, the limit $\ell\ge u_1>\frac12$ would be a fixed point, but the only fixed point is $\frac12$. So $u_n\to+\infty$.
+
+**Summary.** $u_n\to\frac12$ if $|u_0|\le\frac12$, and $u_n\to+\infty$ otherwise.
+
+**Remark.** The fixed point is "double": $f(x)=x^2+\frac14$ has $f'\left(\frac12\right)=1$. Setting $e_n=\frac12-u_n$ gives $e_{n+1}=e_n(1-e_n)$, the sequence of the next problem, so the convergence is slow, like $\frac1n$.
+@@@ the-cesaro-lemma.md
+---
+title: The Cesàro lemma
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 4
+tags: Cesaro mean, epsilon-N, averages
+date: 2026-11-02
+---
+
+## Statement
+
+1. Prove that if $u_n\to\ell$ then $\dfrac{u_1+\dots+u_n}n\to\ell$.
+2. Deduce that if $u_{n+1}-u_n\to\ell$ then $\dfrac{u_n}n\to\ell$.
+3. Show that the converse of part 1 is false.
+
+## Hint
+
+For part 1, assume $\ell=0$ (subtract $\ell$ from every term). Split the average into the first $N$ terms and the others.
+
+## Solution
+
+**1.** Replace $u_n$ by $u_n-\ell$: we may assume $\ell=0$. Let $\varepsilon>0$ and choose $N$ with $|u_k|<\varepsilon$ for $k>N$. Then
+$$\left|\frac{u_1+\dots+u_n}n\right|\le\frac{|u_1|+\dots+|u_N|}n+\frac{n-N}n\varepsilon\le\frac C n+\varepsilon,$$
+with $C=\sum_{k\le N}|u_k|$ fixed. For $n$ large, $\frac Cn<\varepsilon$, so the average is below $2\varepsilon$.
+
+**2.** Write $u_n=u_0+\sum_{k=0}^{n-1}(u_{k+1}-u_k)$. Then
+$$\frac{u_n}n=\frac{u_0}n+\frac1n\sum_{k=0}^{n-1}(u_{k+1}-u_k)\longrightarrow0+\ell$$
+by part 1 applied to the sequence $u_{k+1}-u_k$.
+
+**3.** $u_n=(-1)^n$ does not converge, yet its averages are $0$ or $-\frac1n$, which tend to $0$.
+
+**Remark.** Cesàro averaging "smooths" oscillations: it is the first example of a *summation method* for divergent sequences.
+@@@ the-logistic-sequence-decays-like-one-over-n.md
+---
+title: The logistic sequence decays like 1/n
+category: calculus/single-variable/sequences
+level: m1
+difficulty: 5
+tags: Cesaro lemma, asymptotic equivalent, recurrence
+date: 2026-11-02
+---
+
+## Statement
+
+Let $u_0\in(0,1)$ and $u_{n+1}=u_n(1-u_n)$. Show that $u_n\to0$ and that $n\,u_n\to1$.
+
+## Hint
+
+Look at $\dfrac1{u_{n+1}}-\dfrac1{u_n}$ and apply the Cesàro lemma to it.
+
+## Solution
+
+**Step 1: convergence to $0$.** If $u_n\in(0,1)$, then $u_{n+1}=u_n(1-u_n)\in(0,1)$, so all terms lie in $(0,1)$. Also $u_{n+1}-u_n=-u_n^2<0$: the sequence is decreasing and bounded below, hence converges to some $L\ge0$ with $L=L(1-L)$, so $L=0$.
+
+**Step 2: a clever quantity.**
+$$\frac1{u_{n+1}}-\frac1{u_n}=\frac{u_n-u_{n+1}}{u_nu_{n+1}}=\frac{u_n^2}{u_n\cdot u_n(1-u_n)}=\frac1{1-u_n}\longrightarrow1.$$
+
+**Step 3: Cesàro.** By the Cesàro lemma (part 2), since the differences of $w_n=\frac1{u_n}$ tend to $1$, $\frac{w_n}n\to1$, i.e. $\frac1{nu_n}\to1$.
+
+**Conclusion.** $nu_n\to1$, i.e. $u_n\sim\frac1n$.
+
+**Numerics.** For $u_0=\frac12$: $nu_n=0.69$ at $n=10$, $0.94$ at $n=100$, $0.991$ at $n=1000$, $0.9999$ at $n=10^5$.
+
+**Remark.** The convergence to $0$ is slow (like $\frac1n$) because $f(x)=x(1-x)$ has $f'(0)=1$: this is the borderline case of the speed-of-convergence classification.
+@@@ the-nth-root-of-a-sequence-and-the-ratio.md
+---
+title: From the ratio to the n-th root
+category: calculus/single-variable/sequences
+level: m1
+difficulty: 4
+tags: Cesaro lemma, n-th root, ratio, Stirling
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a_n>0$ with $\dfrac{a_{n+1}}{a_n}\to L\in(0,+\infty)$. Prove that $a_n^{1/n}\to L$. Apply this to compute
+$$\lim_{n\to\infty}\frac{(n!)^{1/n}}n\qquad\text{and}\qquad\lim_{n\to\infty}\binom{2n}n^{1/n}.$$
+
+## Hint
+
+Take logarithms: $\ln a_n=\ln a_1+\sum_{k=1}^{n-1}\ln\frac{a_{k+1}}{a_k}$, and use the Cesàro lemma.
+
+## Solution
+
+**Proof.** Let $w_n=\ln a_n$. Then $w_{n+1}-w_n=\ln\frac{a_{n+1}}{a_n}\to\ln L$. By the Cesàro lemma (part 2), $\frac{w_n}n\to\ln L$, so $a_n^{1/n}=e^{w_n/n}\to L$.
+
+**First limit.** Let $a_n=\frac{n!}{n^n}$. Then
+$$\frac{a_{n+1}}{a_n}=\frac{(n+1)\,n^n}{(n+1)^{n+1}}=\left(1+\frac1n\right)^{-n}\to\frac1e.$$
+So $a_n^{1/n}=\frac{(n!)^{1/n}}n\to\frac1e$.
+
+**Second limit.** For $a_n=\binom{2n}n$,
+$$\frac{a_{n+1}}{a_n}=\frac{(2n+2)(2n+1)}{(n+1)^2}=\frac{2(2n+1)}{n+1}\to4.$$
+So $\binom{2n}n^{1/n}\to4$.
+
+**Numerics.** For $n=50$: $\frac{(50!)^{1/50}}{50}=0.3897$, close to $\frac1e=0.3679$.
+
+**Remark.** The converse is false in general (the ratio can oscillate while the root converges), and this is why the root test for series is more powerful than the ratio test.
+@@@ an-implicitly-defined-sequence.md
+---
+title: The root of x^n + x = 1
+category: calculus/single-variable/sequences
+level: l2
+difficulty: 5
+tags: implicit sequences, monotonicity, intermediate value theorem
+date: 2026-11-02
+---
+
+## Statement
+
+For $n\ge1$, show that the equation $x^n+x=1$ has a unique solution $x_n$ in $(0,1)$. Show that $(x_n)$ is increasing and that $x_n\to1$.
+
+## Hint
+
+Study $f_n(x)=x^n+x-1$. To compare $x_n$ and $x_{n+1}$, evaluate $f_{n+1}(x_n)$. To find the limit, argue by contradiction.
+
+## Solution
+
+**Existence and uniqueness.** $f_n$ is continuous and strictly increasing on $[0,1]$, with $f_n(0)=-1<0<1=f_n(1)$. By the intermediate value theorem and strict monotonicity there is exactly one root $x_n\in(0,1)$.
+
+**Monotonicity.** Since $x_n^n=1-x_n$,
+$$f_{n+1}(x_n)=x_n^{n+1}+x_n-1=x_n^{n+1}-x_n^n=x_n^n(x_n-1)<0=f_{n+1}(x_{n+1}).$$
+As $f_{n+1}$ is increasing, $x_n<x_{n+1}$.
+
+**Limit.** The sequence is increasing and bounded by $1$, so it converges to some $L\le1$. Suppose $L<1$. Then $x_n\le L$ for all $n$, so $x_n^n\le L^n\to0$, and $x_n=1-x_n^n\to1$. This contradicts $x_n\le L<1$. Hence $L=1$.
+
+**Numerics.** $x_5=0.7549$, $x_{10}=0.8351$, $x_{100}=0.9666$, $x_{1000}=0.99476$.
+
+**Remark.** One can show that $1-x_n\sim\frac{\ln n}n$, but the ratio approaches $1$ very slowly (about $0.76$ for $n=1000$). Such implicitly defined sequences are typical in analysis exams: you never get a formula, only properties.
+@@@ interlaced-arithmetic-and-geometric-progressions.md
+---
+title: Interlacing an arithmetic and a geometric progression
+category: calculus/single-variable/sequences
+level: olympiad
+difficulty: 5
+tags: arithmetic progression, geometric progression, inequalities, construction
+date: 2026-11-02
+---
+
+## Statement
+
+Prove that for every integer $n\ge3$ there exist positive integers $a_1<\dots<a_n$ in arithmetic progression and positive integers $b_1<\dots<b_n$ in geometric progression such that
+$$b_1<a_1<b_2<a_2<\cdots<b_n<a_n.$$
+Give an explicit example with $n=5$.
+
+## Hint
+
+Take a geometric progression with ratio $\frac{c+1}c$ for a large even integer $c$, namely $b_k=c^{n-k}(c+1)^{k-1}$, and an arithmetic progression with common difference $\frac12c^{n-2}$.
+
+## Solution
+
+**Construction.** Let $c$ be an even integer with $c>2(n-1)^2$ (for example $c=2n^2$) and set, for $k=1,\dots,n$,
+$$b_k=c^{n-k}(c+1)^{k-1},\qquad a_k=c^{n-1}+\left(k-\tfrac12\right)c^{n-2}.$$
+All $b_k$ are integers, in geometric progression with ratio $\frac{c+1}c$. The $a_k$ are in arithmetic progression with difference $c^{n-2}$, and they are integers because $c$ is even and $n\ge3$, so $\frac12c^{n-2}$ is an integer.
+
+**Normalising.** Dividing by $c^{n-1}$: the claim $b_k<a_k<b_{k+1}$ becomes, with $x=\frac1c$,
+$$(1+x)^{k-1}<1+\left(k-\tfrac12\right)x<(1+x)^k.$$
+
+**Right inequality.** By Bernoulli, $(1+x)^k\ge1+kx>1+\left(k-\frac12\right)x$.
+
+**Left inequality.** Let $m=k-1\le n-1$, so $mx\le\frac{n-1}c\le1$. Using $1+t\le e^t$ and $e^t\le1+t+t^2$ for $t\le1$:
+$$(1+x)^m\le e^{mx}\le1+mx+m^2x^2.$$
+We need $m^2x^2<\frac x2$, that is $c>2m^2$. Since $c>2(n-1)^2\ge2m^2$, the left inequality holds.
+
+**Example.** The values of $c$ below are smaller than the one used in the proof, but they work, as one checks directly. For $n=3$ and $c=4$: $b=(16,20,25)$ and $a=(18,22,26)$, giving
+$$16<18<20<22<25<26.$$
+For $n=5$ and $c=14$: $b=(38416,\ 41160,\ 44100,\ 47250,\ 50625)$ and $a=(39788,\ 42532,\ 45276,\ 48020,\ 50764)$, and one checks
+$$38416<39788<41160<42532<44100<45276<47250<48020<50625<50764.$$
+
+**Remark.** Both sequences have a similar size, but the geometric one eventually overtakes any arithmetic one. The construction makes them dance around each other for exactly $n$ steps by choosing a ratio very close to $1$.
