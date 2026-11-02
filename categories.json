@@ -266,27 +266,37 @@
     },
     {
       "id": "proba",
-      "name": "Probability and statistics",
-      "description": "Finite and discrete probability, random variables and statistics.",
+      "name": "Probability",
+      "description": "Finite and discrete probability.",
       "subcategories": [
         {
-          "id": "finite-probability",
-          "name": "Finite probability",
+          "id": "basics",
+          "name": "basic probability",
           "subcategories": []
         },
         {
-          "id": "conditional-probability",
+          "id": "discrete-distributions",
+          "name": "Discrete Distributions",
+          "subcategories": []
+        },
+         {
+          "id": "continuous",
+          "name": "Continuous Distributions",
+          "subcategories": []
+        },
+        {
+          "id": "combinatorics",
+          "name": "Combinatorics",
+          "subcategories": []
+        },
+        {
+          "id": "conditional",
           "name": "Conditional probability",
           "subcategories": []
         },
         {
-          "id": "random-variables",
-          "name": "Random variables and expectation",
-          "subcategories": []
-        },
-        {
-          "id": "distributions",
-          "name": "Common distributions",
+          "id": "moments",
+          "name": "Moments",
           "subcategories": []
         },
         {
@@ -295,10 +305,48 @@
           "subcategories": []
         },
         {
-          "id": "statistics",
-          "name": "Statistics",
+        "id": "generating-functions",
+          "name": "Generating functions",
           "subcategories": []
-        }
+        },
+      ]
+    },
+          {
+      "id": "stat",
+      "name": "Statistics",
+      "description": "Finite and discrete probability.",
+      "subcategories": [
+         {
+          "id": "sampling",
+          "name": "Sampling",
+          "subcategories": []
+        },
+        {
+          "id": "estimation",
+          "name": "Estimation",
+          "subcategories": []
+        },
+       
+         {
+          "id": "confidence-intervals",
+          "name": "Confidence Intervals",
+          "subcategories": []
+        },
+        {
+           "id": "hypothesis-testing",
+          "name": "Hypothesis Testing",
+          "subcategories": []
+        },
+        {
+           "id": "regression",
+          "name": "Regression",
+          "subcategories": []
+        },
+        {
+           "id": "bayesian",
+          "name": "Bayesian statistic",
+          "subcategories": []
+        },
       ]
     },
     {
