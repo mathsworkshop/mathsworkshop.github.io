@@ -1,0 +1,1014 @@
+@@@ continuity-with-parameters.md
+---
+title: Continuity with parameters
+category: calculus/single-variable/continuity
+level: lycee
+difficulty: 1
+tags: continuity, piecewise functions, parameters
+date: 2026-11-02
+---
+
+## Statement
+
+Find the real numbers $a$ and $b$ for which the function
+$$f(x)=\begin{cases}x+1&\text{if }x\le1,\\ ax+b&\text{if }1<x<3,\\ x^2-4&\text{if }x\ge3\end{cases}$$
+is continuous on $\mathbb{R}$.
+
+## Hint
+
+Each piece is continuous on its own. Only the two points where the formula changes need attention: $x=1$ and $x=3$.
+
+## Solution
+
+**Idea.** A function defined by several formulas is continuous inside each interval, because every formula is a polynomial. The only danger is at the junctions, where the pieces must connect without a jump.
+
+**At $x=1$.** The left value is $f(1)=2$, and the right limit is $a+b$. We need $a+b=2$.
+
+**At $x=3$.** The left limit is $3a+b$ and $f(3)=3^2-4=5$, which equals the right limit. We need $3a+b=5$.
+
+**Solving.** Subtracting the two equations gives $2a=3$, so $a=\frac32$ and $b=2-\frac32=\frac12$.
+
+**Remark.** With these values the graph is made of pieces glued end to end. The function is continuous but not differentiable at $1$ and $3$: the slopes are $1$, $\frac32$ and $6$.
+@@@ where-is-one-over-ln-abs-x-continuous.md
+---
+title: Where is 1/ln|x| continuous?
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 2
+tags: continuity, limits, logarithm
+date: 2026-11-02
+---
+
+## Statement
+
+Let $g(x)=\dfrac1{\ln|x|}$ for $x\notin\{-1,0,1\}$, and $g(-1)=g(0)=g(1)=0$. At which points is $g$ continuous?
+
+## Hint
+
+At each of the three special points, ask whether the limit exists and equals $0$.
+
+## Solution
+
+**Away from the special points.** On each of the intervals $(-\infty,-1)$, $(-1,0)$, $(0,1)$, $(1,+\infty)$, the function is built from $|\cdot|$, $\ln$ and $x\mapsto\frac1x$ (the logarithm does not vanish there), so it is continuous.
+
+**At $0$.** As $x\to0$, $\ln|x|\to-\infty$, hence $g(x)=\frac1{\ln|x|}\to0=g(0)$. So $g$ is continuous at $0$.
+
+**At $1$ and $-1$.** As $x\to1$, $\ln|x|\to0$, so $|g(x)|=\frac1{|\ln|x||}\to+\infty$. The function is unbounded near $1$ and cannot have limit $g(1)=0$. The same happens at $-1$.
+
+**Conclusion.** $g$ is continuous on $\mathbb{R}\setminus\{-1,1\}$ and discontinuous at $-1$ and $1$.
+
+**Remark.** Defining a function "by $0$" at a bad point repairs it only when the limit there really is $0$. Here it works at $0$ but not at $\pm1$, where the blow-up is genuine.
+@@@ floor-plus-square-root-of-the-fractional-part.md
+---
+title: Floor plus square root of the fractional part
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 3
+tags: continuity, floor function, one-sided limits
+date: 2026-11-02
+---
+
+## Statement
+
+For real $x$, let $\lfloor x\rfloor$ be the integer part and $\{x\}=x-\lfloor x\rfloor\in[0,1)$ the fractional part. Study the continuity of
+$$f(x)=\lfloor x\rfloor+\sqrt{\{x\}}.$$
+
+## Hint
+
+On each interval $(n,n+1)$ the integer part is constant. The only question is what happens at the integers: compute the left and right limits.
+
+## Solution
+
+**Inside $(n,n+1)$.** Here $\lfloor x\rfloor=n$ and $\{x\}=x-n$, so $f(x)=n+\sqrt{x-n}$, which is continuous.
+
+**At an integer $n$, from the right.** For $x\to n^+$ (with $x<n+1$), $f(x)=n+\sqrt{x-n}\to n=f(n)$.
+
+**At an integer $n$, from the left.** For $x\to n^-$ (with $x>n-1$), $\lfloor x\rfloor=n-1$ and $\{x\}=x-(n-1)\to1$. So $f(x)\to(n-1)+\sqrt1=n=f(n)$.
+
+**Conclusion.** The two one-sided limits equal $f(n)$, so $f$ is continuous at every integer, hence on all of $\mathbb{R}$.
+
+**Remark.** The floor function alone jumps by $1$ at each integer, and the square root of the fractional part climbs from $0$ to $1$ just in time to compensate. In fact $f$ is also strictly increasing.
+@@@ a-continuous-function-vanishing-on-the-rationals.md
+---
+title: A continuous function that vanishes on the rationals
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 2
+tags: density, continuity, sequences
+date: 2026-11-02
+---
+
+## Statement
+
+1. Let $f:\mathbb{R}\to\mathbb{R}$ be continuous with $f(q)=0$ for every rational $q$. Prove that $f=0$.
+2. Deduce that two continuous functions $f,g$ which agree on $\mathbb{Q}$ are equal.
+
+## Hint
+
+Every real number is a limit of rational numbers (for instance its decimal truncations). Use the sequential characterisation of continuity.
+
+## Solution
+
+**1.** Let $x\in\mathbb{R}$. Take $q_n=\dfrac{\lfloor 10^nx\rfloor}{10^n}$, a rational number with $x-10^{-n}<q_n\le x$, so $q_n\to x$. Since $f$ is continuous at $x$, $f(q_n)\to f(x)$. But $f(q_n)=0$ for all $n$, so $f(x)=0$.
+
+**2.** Apply part 1 to the continuous function $f-g$, which vanishes on $\mathbb{Q}$.
+
+**Remark.** A continuous function is entirely determined by its values on a dense set. This is the principle used to define $a^x$ for real $x$: we know $a^q$ for rational $q$, and there is only one continuous way to fill the gaps. Without continuity the statement is false: the Dirichlet-type function $\mathbf 1_{\mathbb{R}\setminus\mathbb{Q}}$ vanishes on $\mathbb{Q}$ without being $0$.
+@@@ glued-along-rationals-and-irrationals.md
+---
+title: Glued along the rationals and the irrationals
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 3
+tags: continuity, density, sequences, pathological functions
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f,g:\mathbb{R}\to\mathbb{R}$ be continuous, and define $h(x)=f(x)$ if $x$ is rational, $h(x)=g(x)$ if $x$ is irrational. Prove that $h$ is continuous at a point $x_0$ if and only if $f(x_0)=g(x_0)$.
+
+## Hint
+
+($\Rightarrow$) Approach $x_0$ along rationals and along irrationals. ($\Leftarrow$) Use the definition with $\varepsilon$ and take the smaller of two $\delta$.
+
+## Solution
+
+**($\Rightarrow$)** Suppose $h$ is continuous at $x_0$. Take rationals $r_n\to x_0$ and irrationals $s_n\to x_0$ (possible by density). Then $h(r_n)=f(r_n)\to f(x_0)$ and $h(s_n)=g(s_n)\to g(x_0)$. By continuity of $h$ at $x_0$, both sequences $h(r_n)$ and $h(s_n)$ tend to $h(x_0)$. So $f(x_0)=h(x_0)=g(x_0)$.
+
+**($\Leftarrow$)** Suppose $f(x_0)=g(x_0)=:\ell$. Then $h(x_0)=\ell$ whichever kind of number $x_0$ is. Let $\varepsilon>0$. By continuity of $f$ and $g$ at $x_0$ there exist $\delta_1,\delta_2>0$ with $|f(x)-\ell|<\varepsilon$ when $|x-x_0|<\delta_1$, and $|g(x)-\ell|<\varepsilon$ when $|x-x_0|<\delta_2$. With $\delta=\min(\delta_1,\delta_2)$, for $|x-x_0|<\delta$ the value $h(x)$ is either $f(x)$ or $g(x)$, so $|h(x)-\ell|<\varepsilon$.
+
+**Example.** If $f(x)=x$ and $g(x)=x^2$, then $h$ is continuous exactly at $0$ and $1$, where $x=x^2$.
+@@@ the-popcorn-function.md
+---
+title: The popcorn function
+category: calculus/single-variable/continuity
+level: l2
+difficulty: 5
+tags: continuity, rationals, density, pathological functions
+date: 2026-11-02
+---
+
+## Statement
+
+Define $f:\mathbb{R}\to\mathbb{R}$ by $f(x)=0$ if $x$ is irrational, $f(0)=1$, and $f\!\left(\dfrac pq\right)=\dfrac1q$ if $\frac pq$ is a non-zero rational written in lowest terms with $q\ge1$. Prove that $f$ is continuous at every irrational number and discontinuous at every rational number.
+
+## Hint
+
+At an irrational $a$ and for a given $\varepsilon$, only finitely many rationals near $a$ have denominator at most $\frac1\varepsilon$. Shrink the neighbourhood to avoid all of them.
+
+## Solution
+
+**Rational points.** Let $a=\frac pq$ be rational. Then $f(a)=\frac1q>0$. Every neighbourhood of $a$ contains irrational numbers, where $f=0$, so $f$ cannot tend to $f(a)>0$. Hence $f$ is discontinuous at $a$.
+
+**Irrational points.** Let $a$ be irrational and $\varepsilon>0$. Choose an integer $N>\frac1\varepsilon$.
+
+*Finitely many bad rationals.* Consider the rationals in $[a-1,a+1]$ whose denominator (in lowest terms) is at most $N$. For each fixed denominator $q\le N$ there are only finitely many such fractions $\frac pq$ in a bounded interval, so the set $B$ of all of them is finite. Since $a$ is irrational, $a\notin B$, so
+$$\delta=\min\Bigl(1,\ \min_{b\in B}|a-b|\Bigr)>0.$$
+
+*Checking.* Let $|x-a|<\delta$. If $x$ is irrational, $f(x)=0$. If $x=\frac pq$ is rational, then $x\notin B$, so $q>N$ and $f(x)=\frac1q<\frac1N<\varepsilon$. In both cases $|f(x)-f(a)|=f(x)<\varepsilon$.
+
+**Conclusion.** $f$ is continuous exactly at the irrational numbers.
+
+**Remark.** A function can be continuous at infinitely many points and discontinuous at infinitely many others, with both sets dense. The graph looks like popcorn: tall kernels $\frac12,\frac13,\dots$ above each rational, flattening toward $0$. The reverse is impossible: there is no function continuous exactly at the rationals.
+@@@ the-absolute-value-of-a-continuous-function.md
+---
+title: The absolute value of a continuous function
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 2
+tags: continuity, absolute value, counterexamples
+date: 2026-11-02
+---
+
+## Statement
+
+1. Show that if $f$ is continuous at $a$, then $|f|$ is continuous at $a$.
+2. Show that the converse is false.
+
+## Hint
+
+For part 1, use the reverse triangle inequality $\bigl||u|-|v|\bigr|\le|u-v|$. For part 2, try a function that only takes the values $1$ and $-1$.
+
+## Solution
+
+**1.** For all $x$, $\bigl||f(x)|-|f(a)|\bigr|\le|f(x)-f(a)|$. Given $\varepsilon>0$, continuity of $f$ gives $\delta>0$ with $|f(x)-f(a)|<\varepsilon$ when $|x-a|<\delta$; the same $\delta$ works for $|f|$.
+
+**2.** Let $f(x)=1$ if $x$ is rational and $f(x)=-1$ if $x$ is irrational. Then $|f|=1$ is constant, hence continuous. But $f$ is discontinuous at every point: near any $a$ there are rationals (where $f=1$) and irrationals (where $f=-1$).
+
+**Remark.** Taking the absolute value can only destroy sign jumps, never create new discontinuities. That is why $|f|$ is "more continuous" than $f$.
+@@@ maximum-and-minimum-of-two-continuous-functions.md
+---
+title: Maximum and minimum of two continuous functions
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 2
+tags: continuity, absolute value, algebra of continuous functions
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f,g:I\to\mathbb{R}$ be continuous. Show that $\max(f,g)$ and $\min(f,g)$ are continuous.
+
+## Hint
+
+Express the maximum and the minimum with an absolute value: $\max(u,v)=\frac{u+v+|u-v|}{2}$.
+
+## Solution
+
+**The formulas.** For real numbers $u,v$,
+$$\max(u,v)=\frac{u+v+|u-v|}2,\qquad \min(u,v)=\frac{u+v-|u-v|}2.$$
+To check the first one, distinguish $u\ge v$ (then $|u-v|=u-v$ and the right side is $u$) and $u<v$ (then it is $v$). The second is similar.
+
+**Conclusion.** The functions $f+g$ and $f-g$ are continuous (sums of continuous functions), so $|f-g|$ is continuous (previous problem). Hence $\max(f,g)=\frac12(f+g+|f-g|)$ and $\min(f,g)=\frac12(f+g-|f-g|)$ are continuous.
+
+**Application.** Setting $f^+=\max(f,0)$ and $f^-=\max(-f,0)$ shows that the positive and negative parts of a continuous function are continuous, and $f=f^+-f^-$.
+@@@ extending-a-rational-function-by-continuity.md
+---
+title: Extending a rational function by continuity
+category: calculus/single-variable/continuity
+level: lycee
+difficulty: 1
+tags: extension by continuity, factoring, removable singularity
+date: 2026-11-02
+---
+
+## Statement
+
+Show that $f(x)=\dfrac{1+x}{x^3+1}$, defined for $x\neq-1$, can be extended by continuity at $-1$, and find the value of the extension.
+
+## Hint
+
+Factor $x^3+1=(x+1)(x^2-x+1)$.
+
+## Solution
+
+**Idea.** A function defined on $\mathbb{R}\setminus\{a\}$ can be extended by continuity at $a$ exactly when it has a finite limit at $a$. The extension is then defined by that limit.
+
+**Computation.** For $x\neq-1$,
+$$f(x)=\frac{1+x}{(x+1)(x^2-x+1)}=\frac1{x^2-x+1}.$$
+The denominator $x^2-x+1$ has no real root (its discriminant is $-3<0$), and at $x=-1$ it equals $1+1+1=3$. Hence $\lim_{x\to-1}f(x)=\dfrac13$.
+
+**Conclusion.** Setting $f(-1)=\frac13$ gives a continuous function on $\mathbb{R}$, namely $x\mapsto\frac1{x^2-x+1}$.
+@@@ which-of-these-functions-extend-by-continuity.md
+---
+title: Which of these functions extend by continuity?
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 3
+tags: extension by continuity, one-sided limits, exponential
+date: 2026-11-02
+---
+
+## Statement
+
+Decide whether each function can be extended by continuity at the indicated point.
+
+1. $f_1(x)=e^{-1/x^2}$ at $0$.
+2. $f_2(x)=e^{-1/x}$ at $0$.
+3. $f_3(x)=\sin(x+1)\,\ln|1+x|$ at $-1$.
+
+## Hint
+
+Compute the limit, or the two one-sided limits, at the point. Remember $t\ln|t|\to0$ as $t\to0$.
+
+## Solution
+
+**1.** As $x\to0$, $\frac1{x^2}\to+\infty$ so $-\frac1{x^2}\to-\infty$ and $e^{-1/x^2}\to0$. The limit is $0$, so $f_1$ extends continuously with $f_1(0)=0$.
+
+**2.** The two sides behave differently.
+- For $x\to0^+$, $-\frac1x\to-\infty$ and $e^{-1/x}\to0$.
+- For $x\to0^-$, $-\frac1x\to+\infty$ and $e^{-1/x}\to+\infty$.
+
+There is no finite limit at $0$, so $f_2$ cannot be extended.
+
+**3.** Put $t=x+1\to0$. Then $f_3=\sin t\,\ln|t|=\dfrac{\sin t}{t}\cdot t\ln|t|$. We know $\frac{\sin t}t\to1$ and $t\ln|t|\to0$, so the limit is $0$. Hence $f_3$ extends continuously with value $0$ at $-1$.
+
+**Remark.** Always test both sides: a function like $e^{-1/x}$ is perfectly well behaved on the right of $0$ yet explodes on the left.
+@@@ extensions-by-continuity-and-oscillation.md
+---
+title: Extensions by continuity and oscillation
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 2
+tags: extension by continuity, oscillation, squeeze theorem
+date: 2026-11-02
+---
+
+## Statement
+
+For each function, decide whether it can be extended by continuity at $0$.
+
+1. $\sin\dfrac1x$
+2. $\sin x\,\sin\dfrac1x$
+3. $\cos x\,\cos\dfrac1x$
+
+## Hint
+
+For a negative answer, use two sequences tending to $0$ along which the values differ. For a positive answer, use the squeeze theorem.
+
+## Solution
+
+**1. No.** Along $a_n=\frac1{n\pi}$ the values are $0$; along $b_n=\frac1{\pi/2+2n\pi}$ the values are $1$. Both sequences tend to $0$, so there is no limit.
+
+**2. Yes.** Since $\bigl|\sin x\sin\frac1x\bigr|\le|\sin x|\to0$, the limit is $0$. The extension is defined by the value $0$ at $x=0$.
+
+**3. No.** Take $a_n=\frac1{2n\pi}$ and $b_n=\frac1{(2n+1)\pi}$. Both tend to $0$, and $\cos a_n\cos\frac1{a_n}=\cos a_n\to1$ while $\cos b_n\cos\frac1{b_n}=-\cos b_n\to-1$. So there is no limit.
+
+**Rule of thumb.** An oscillating factor is harmless when it is multiplied by something tending to $0$, and fatal when it is multiplied by something tending to a non-zero number.
+@@@ a-continuous-periodic-function-is-bounded.md
+---
+title: A continuous periodic function is bounded
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 3
+tags: extreme value theorem, periodic functions, boundedness
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:\mathbb{R}\to\mathbb{R}$ be continuous and periodic with period $T>0$. Show that $f$ is bounded and attains its maximum and its minimum on $\mathbb{R}$.
+
+## Hint
+
+The extreme value theorem applies on a closed bounded interval. Which interval contains one full period?
+
+## Solution
+
+**Idea.** The theorem we need is the *extreme value theorem*: a continuous function on a closed bounded interval $[a,b]$ is bounded and attains its maximum and minimum. The function $f$ lives on all of $\mathbb{R}$, but periodicity lets us reduce to one period.
+
+**Reduction.** On $[0,T]$, $f$ is continuous, so there exist $x_{\min},x_{\max}\in[0,T]$ with $f(x_{\min})\le f(t)\le f(x_{\max})$ for all $t\in[0,T]$.
+
+**Extension.** Any $x\in\mathbb{R}$ can be written $x=t+kT$ with $t\in[0,T)$ and $k\in\mathbb{Z}$, and $f(x)=f(t)$. Therefore $f(x_{\min})\le f(x)\le f(x_{\max})$ for every real $x$.
+
+**Remark.** Compare with $x\mapsto x\sin x$, which is continuous but not periodic and unbounded. Periodicity is exactly what allows the "compactness" of $[0,T]$ to spread over the whole line.
+@@@ limit-of-an-iterated-sequence-is-a-fixed-point.md
+---
+title: The limit of an iterated sequence is a fixed point
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 3
+tags: sequences, fixed points, continuity, golden ratio
+date: 2026-11-02
+---
+
+## Statement
+
+1. Let $f$ be continuous on an interval $I$, let $(x_n)$ be a sequence in $I$ with $x_{n+1}=f(x_n)$, and suppose $x_n\to L\in I$. Show that $f(L)=L$.
+2. Let $x_0=1$ and $x_{n+1}=1+\dfrac1{x_n}$. Assuming that $(x_n)$ converges, find its limit.
+
+## Hint
+
+Take the limit of both sides of $x_{n+1}=f(x_n)$. Where is continuity needed?
+
+## Solution
+
+**1.** Since $x_n\to L$ and $f$ is continuous at $L$, $f(x_n)\to f(L)$. But $f(x_n)=x_{n+1}$, which also tends to $L$ (it is the same sequence shifted). By uniqueness of limits, $f(L)=L$.
+
+**2.** The function $f(x)=1+\frac1x$ is continuous on $(0,+\infty)$. All terms satisfy $x_n\ge1$ (indeed $x_0=1$ and $x_{n+1}=1+\frac1{x_n}>1$), so the limit satisfies $L\ge1$, in particular $L\ne0$ and $L$ lies in the domain. Then $L=1+\frac1L$, that is $L^2-L-1=0$, whose positive root is
+$$L=\frac{1+\sqrt5}2.$$
+
+**Check.** The first terms are $1,\,2,\,1.5,\,1.667,\,1.6,\,1.625,\dots$ and the golden ratio is $1.618\dots$
+
+**Warning.** Part 1 does *not* prove that the sequence converges: it only says that *if* it converges, the limit must be a fixed point. Convergence has to be established separately. For this sequence, the terms alternate around $L$ and get closer.
+@@@ continuous-injective-functions-are-monotone.md
+---
+title: Continuous injective functions are monotone
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l2
+difficulty: 4
+tags: intermediate value theorem, injectivity, monotonicity
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:I\to\mathbb{R}$ be continuous and injective on an interval $I$. Prove that $f$ is strictly monotone.
+
+## Hint
+
+Take two pairs $x_1<y_1$ and $x_2<y_2$ and slide continuously from one pair to the other. Look at the difference of the values along this path.
+
+## Solution
+
+**Idea.** We want to show that the sign of $f(y)-f(x)$ is the same for all pairs $x<y$. A continuous function that never vanishes keeps a constant sign (intermediate value theorem), so we build one.
+
+**Construction.** Let $x_1<y_1$ and $x_2<y_2$ be points of $I$. For $t\in[0,1]$ put
+$$x_t=(1-t)x_1+tx_2,\qquad y_t=(1-t)y_1+ty_2,$$
+which lie in $I$ because $I$ is an interval. We have $y_t-x_t=(1-t)(y_1-x_1)+t(y_2-x_2)>0$, so $x_t<y_t$ for all $t$.
+
+Define $\varphi(t)=f(y_t)-f(x_t)$. It is continuous on $[0,1]$. Since $x_t\neq y_t$ and $f$ is injective, $\varphi(t)\ne0$ for all $t$.
+
+**Sign argument.** A continuous function on $[0,1]$ that never vanishes has a constant sign, otherwise the intermediate value theorem would produce a zero. So $\varphi(0)=f(y_1)-f(x_1)$ and $\varphi(1)=f(y_2)-f(x_2)$ have the same sign.
+
+**Conclusion.** The sign of $f(y)-f(x)$ is the same for all pairs $x<y$: either always positive (strictly increasing) or always negative (strictly decreasing).
+
+**Remark.** The hypothesis "interval" is essential. On $[0,1]\cup[2,3]$ define $f(x)=x$ on $[0,1]$ and $f(x)=x-3$ on $[2,3]$ (values in $[-1,0]$). It is continuous and injective, but not monotone.
+@@@ a-functional-equation-with-f-of-2x.md
+---
+title: A functional equation with f(2x)
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 3
+tags: functional equations, continuity at a point, sequences
+date: 2026-11-02
+---
+
+## Statement
+
+1. Let $f:\mathbb{R}\to\mathbb{R}$ be continuous at $0$ with $f(2x)=f(x)$ for all $x$. Prove that $f$ is constant.
+2. Find all functions $f$, continuous at $0$, such that $f(2x)-f(x)=x$ for all real $x$.
+
+## Hint
+
+Repeat the relation to get $f(x)=f\!\left(\frac x{2^n}\right)$ and let $n\to\infty$. For part 2, look for a correction $g(x)=f(x)-\lambda x$ that satisfies the equation of part 1.
+
+## Solution
+
+**1.** From $f(2y)=f(y)$ with $y=\frac x2$ we get $f(x)=f\!\left(\frac x2\right)$, and by induction $f(x)=f\!\left(\frac x{2^n}\right)$ for every $n$. As $n\to\infty$, $\frac x{2^n}\to0$ and by continuity at $0$, $f\!\left(\frac x{2^n}\right)\to f(0)$. Since the left side does not depend on $n$, $f(x)=f(0)$ for all $x$.
+
+**2.** Put $g(x)=f(x)-x$. Then
+$$g(2x)-g(x)=\bigl(f(2x)-2x\bigr)-\bigl(f(x)-x\bigr)=\bigl(f(2x)-f(x)\bigr)-x=0.$$
+So $g$ satisfies $g(2x)=g(x)$ and is continuous at $0$. By part 1, $g$ is a constant $c$. Hence $f(x)=x+c$.
+
+**Check.** If $f(x)=x+c$ then $f(2x)-f(x)=(2x+c)-(x+c)=x$.
+
+**Answer.** The solutions are exactly $f(x)=x+c$ with $c\in\mathbb{R}$.
+
+**Remark.** Continuity at $0$ is crucial. Without it, there exist wild solutions of $f(2x)=f(x)$ built from a choice of representatives modulo powers of $2$.
+@@@ cauchy-functional-equation.md
+---
+title: Cauchy's functional equation
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 4
+tags: functional equations, density, rational numbers
+date: 2026-11-02
+---
+
+## Statement
+
+Find all continuous functions $f:\mathbb{R}\to\mathbb{R}$ such that $f(x+y)=f(x)+f(y)$ for all real $x,y$.
+
+## Hint
+
+Work step by step: first integers, then rationals, then all real numbers by density. Set $a=f(1)$.
+
+## Solution
+
+**Step 1: basic values.** Taking $x=y=0$ gives $f(0)=2f(0)$, so $f(0)=0$. Taking $y=-x$ gives $0=f(x)+f(-x)$, so $f$ is odd.
+
+**Step 2: integers.** By induction $f(nx)=nf(x)$ for every integer $n\ge1$, and by oddness for every integer $n$. With $x=1$: $f(n)=na$.
+
+**Step 3: rationals.** Let $\frac pq$ with $p\in\mathbb{Z}$, $q\ge1$. Then $q\,f\!\left(\frac pq\right)=f(p)=pa$, so $f\!\left(\frac pq\right)=a\,\frac pq$.
+
+**Step 4: all reals.** The functions $x\mapsto f(x)$ and $x\mapsto ax$ are continuous and agree on $\mathbb{Q}$. By the problem *A continuous function that vanishes on the rationals* they agree everywhere.
+
+**Answer.** $f(x)=ax$ with $a=f(1)$. Conversely every such function works.
+
+**Remark.** Without continuity there are many weird (non-measurable) solutions, built with the axiom of choice. So here a single hypothesis, continuity, turns a "vast" family of solutions into just the lines through the origin.
+@@@ the-midpoint-functional-equation.md
+---
+title: The midpoint functional equation
+category: calculus/single-variable/continuity
+level: l1
+difficulty: 4
+tags: functional equations, affine functions
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:\mathbb{R}\to\mathbb{R}$ be continuous and satisfy
+$$f\!\left(\frac{x+y}2\right)=\frac{f(x)+f(y)}2\quad\text{for all }x,y.$$
+Prove that $f$ is affine, that is $f(x)=ax+b$.
+
+## Hint
+
+Subtract the constant $f(0)$ and reduce to Cauchy's functional equation.
+
+## Solution
+
+**Reduction.** Put $g(x)=f(x)-f(0)$. Then $g(0)=0$, $g$ is continuous, and $g$ satisfies the same midpoint equation (the constants cancel).
+
+**Halving.** Taking $y=0$: $g\!\left(\frac x2\right)=\frac{g(x)}2$, i.e. $g(x)=2g\!\left(\frac x2\right)$.
+
+**Additivity.** For any $x,y$,
+$$g(x+y)=2g\!\left(\frac{x+y}2\right)=2\cdot\frac{g(x)+g(y)}2=g(x)+g(y).$$
+
+**Conclusion.** $g$ is continuous and additive, so by Cauchy's equation $g(x)=ax$ with $a=g(1)$. Therefore $f(x)=ax+b$ with $b=f(0)$.
+
+**Remark.** The equation says that the value at the midpoint is the average of the values: the graph over every interval is "flat", and that characterises straight lines among continuous functions.
+@@@ locating-the-roots-of-a-cubic.md
+---
+title: Locating the roots of a cubic
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: lycee
+difficulty: 2
+tags: intermediate value theorem, polynomial roots, bracketing
+date: 2026-11-02
+---
+
+## Statement
+
+Show that the equation $x^3+x^2-4x+1=0$ has exactly three real solutions, and find three disjoint intervals of length $1$ containing them.
+
+## Hint
+
+Evaluate $P(x)=x^3+x^2-4x+1$ at the integers $-3,-2,0,1,2$ and look at the signs.
+
+## Solution
+
+**Values.** $P(-3)=-5$, $P(-2)=5$, $P(0)=1$, $P(1)=-1$, $P(2)=5$.
+
+**Applying the intermediate value theorem.** $P$ is continuous, and its sign changes:
+- between $-3$ and $-2$ ($-5<0<5$): a root in $(-3,-2)$,
+- between $0$ and $1$ ($1>0>-1$): a root in $(0,1)$,
+- between $1$ and $2$ ($-1<0<5$): a root in $(1,2)$.
+
+These three intervals are disjoint, so we have found three distinct roots.
+
+**No more roots.** A polynomial of degree $3$ has at most $3$ roots. Hence there are exactly three, and each of the intervals contains exactly one.
+
+**Numerical values.** The roots are approximately $-2.651$, $0.274$ and $1.377$.
+@@@ counting-solutions-depending-on-a-parameter.md
+---
+title: Counting solutions depending on a parameter
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l1
+difficulty: 3
+tags: intermediate value theorem, monotonicity, parameters
+date: 2026-11-02
+---
+
+## Statement
+
+For each real number $a$, determine the number of real solutions of $x^3-3x^2-1=a$.
+
+## Hint
+
+Study the variations of $g(x)=x^3-3x^2-1$, then count how many times the horizontal line at height $a$ meets the graph.
+
+## Solution
+
+**Variations.** $g'(x)=3x^2-6x=3x(x-2)$. So $g$ is increasing on $(-\infty,0]$, decreasing on $[0,2]$ and increasing on $[2,+\infty)$. We have $g(0)=-1$ (local maximum) and $g(2)=8-12-1=-5$ (local minimum), with $g\to-\infty$ at $-\infty$ and $g\to+\infty$ at $+\infty$.
+
+**Ranges of the three monotone pieces.**
+- on $(-\infty,0]$, $g$ takes each value of $(-\infty,-1]$ exactly once,
+- on $[0,2]$, each value of $[-5,-1]$ exactly once,
+- on $[2,+\infty)$, each value of $[-5,+\infty)$ exactly once.
+
+This uses the intermediate value theorem (every value in the range is reached) and strict monotonicity (reached only once).
+
+**Counting.**
+- $a>-1$: only the third piece reaches $a$, one solution.
+- $a=-1$: $x=0$ and one solution in $(2,+\infty)$, two solutions.
+- $-5<a<-1$: each piece contributes one, three solutions.
+- $a=-5$: $x=2$ and one in $(-\infty,0)$, two solutions.
+- $a<-5$: only the first piece, one solution.
+
+**Remark.** The count changes exactly when $a$ crosses the local extreme values $-1$ and $-5$.
+@@@ how-many-solutions-does-ln-x-equal-a-x-have.md
+---
+title: How many solutions does ln x = ax have?
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l1
+difficulty: 4
+tags: intermediate value theorem, parameters, logarithm
+date: 2026-11-02
+---
+
+## Statement
+
+For each real number $a$, determine the number of solutions of $\ln x=ax$ in $(0,+\infty)$.
+
+## Hint
+
+Rewrite the equation as $h(x)=a$ with $h(x)=\dfrac{\ln x}{x}$, and study $h$.
+
+## Solution
+
+**Study of $h$.** For $x>0$, $h'(x)=\dfrac{1-\ln x}{x^2}$, so $h$ increases on $(0,e]$ and decreases on $[e,+\infty)$, with maximum $h(e)=\frac1e$. Limits: $h(x)\to-\infty$ as $x\to0^+$ and $h(x)\to0$ as $x\to+\infty$. Also $h(x)<0$ on $(0,1)$, $h(1)=0$, and $h(x)>0$ for $x>1$.
+
+**Ranges.**
+- On $(0,e]$, $h$ is continuous and strictly increasing from $-\infty$ to $\frac1e$, so it takes each value in $(-\infty,\frac1e]$ exactly once.
+- On $[e,+\infty)$, $h$ is continuous and strictly decreasing from $\frac1e$ to $0$ (not reached), so it takes each value in $(0,\frac1e]$ exactly once.
+
+**Counting.**
+- $a>\frac1e$: no solution.
+- $a=\frac1e$: one solution, $x=e$.
+- $0<a<\frac1e$: two solutions, one in $(1,e)$ and one in $(e,+\infty)$.
+- $a\le0$: one solution, found on $(0,e]$ (for $a=0$ it is $x=1$).
+
+**Meaning.** The line $y=ax$ is tangent to the curve $y=\ln x$ exactly when $a=\frac1e$, at the point $x=e$.
+@@@ cosine-equals-one-over-x.md
+---
+title: cos x = 1/x has infinitely many solutions
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l1
+difficulty: 3
+tags: intermediate value theorem, infinitely many solutions
+date: 2026-11-02
+---
+
+## Statement
+
+Show that the equation $\cos x=\dfrac1x$ has infinitely many solutions in $(0,+\infty)$.
+
+## Hint
+
+Turn it into $x\cos x-1=0$ and find a sign change in $(2k\pi,(2k+1)\pi)$ for each $k\ge1$.
+
+## Solution
+
+**Idea.** One sign change gives one root. To get infinitely many roots, find one in each of infinitely many disjoint intervals.
+
+**Setup.** For $x>0$ the equation is equivalent to $\varphi(x)=x\cos x-1=0$. The function $\varphi$ is continuous.
+
+**Sign change.** For an integer $k\ge1$:
+- $\varphi(2k\pi)=2k\pi-1>0$,
+- $\varphi((2k+1)\pi)=-(2k+1)\pi-1<0$.
+
+By the intermediate value theorem there is $x_k\in(2k\pi,(2k+1)\pi)$ with $\varphi(x_k)=0$.
+
+**Conclusion.** The intervals $(2k\pi,(2k+1)\pi)$ are pairwise disjoint, so the $x_k$ are pairwise distinct. The equation has infinitely many solutions.
+
+**Picture.** The curve $y=\cos x$ keeps crossing the decreasing curve $y=\frac1x$, which becomes flat near $0$ while the cosine goes on oscillating between $-1$ and $1$.
+@@@ exactly-one-solution-of-tan-x-equals-x-on-each-branch.md
+---
+title: tan x = x on each branch
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l1
+difficulty: 3
+tags: intermediate value theorem, tangent, monotonicity
+date: 2026-11-02
+---
+
+## Statement
+
+For $k\ge1$ let $I_k=\left(k\pi-\frac\pi2,\,k\pi+\frac\pi2\right)$. Show that the equation $\tan x=x$ has exactly one solution in each interval $I_k$.
+
+## Hint
+
+Study $\varphi(x)=\tan x-x$ on $I_k$: its derivative is $\tan^2x$, and its limits at the endpoints are infinite.
+
+## Solution
+
+**Monotonicity.** On $I_k$, $\tan$ is differentiable and $\varphi'(x)=\frac1{\cos^2x}-1=\tan^2x\ge0$, with equality only at $x=k\pi$ (a single point). So $\varphi$ is strictly increasing on $I_k$.
+
+**Limits at the endpoints.** As $x\to\left(k\pi-\frac\pi2\right)^+$, $\tan x\to-\infty$, so $\varphi\to-\infty$. As $x\to\left(k\pi+\frac\pi2\right)^-$, $\tan x\to+\infty$, so $\varphi\to+\infty$.
+
+**Conclusion.** $\varphi$ is continuous and strictly increasing from $-\infty$ to $+\infty$ on $I_k$. By the intermediate value theorem it vanishes at least once, and by strict monotonicity at most once. So there is exactly one solution $x_k\in I_k$.
+
+**More precisely.** Since $\varphi(k\pi)=-k\pi<0$, we have $x_k\in\left(k\pi,\,k\pi+\frac\pi2\right)$.
+@@@ every-continuous-self-map-of-an-interval-has-a-fixed-point.md
+---
+title: A fixed point for every continuous self-map of [0,1]
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: lycee
+difficulty: 2
+tags: fixed points, intermediate value theorem
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:[0,1]\to[0,1]$ be continuous. Prove that there exists $c\in[0,1]$ with $f(c)=c$.
+
+## Hint
+
+Apply the intermediate value theorem to $g(x)=f(x)-x$.
+
+## Solution
+
+**Idea.** A fixed point is a point where the graph of $f$ meets the diagonal $y=x$. The graph starts above (or on) the diagonal and ends below (or on) it, so it must cross.
+
+**Proof.** Let $g(x)=f(x)-x$, which is continuous on $[0,1]$. Since $f$ takes values in $[0,1]$:
+- $g(0)=f(0)\ge0$,
+- $g(1)=f(1)-1\le0$.
+
+If $g(0)=0$ or $g(1)=0$, we are done. Otherwise $g(0)>0>g(1)$ and the intermediate value theorem gives $c\in(0,1)$ with $g(c)=0$, that is $f(c)=c$.
+
+**Remark.** Both hypotheses matter. Continuity: $f(x)=1$ on $[0,\frac12)$ and $f(x)=0$ on $[\frac12,1]$ has no fixed point. The interval being closed: $f(x)=\frac x2$ maps $(0,1]$ to itself with no fixed point. This is the one-dimensional case of Brouwer's fixed point theorem.
+@@@ the-horizontal-chord-theorem.md
+---
+title: The horizontal chord of length one half
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l2
+difficulty: 4
+tags: intermediate value theorem, chords, clever auxiliary function
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:[0,1]\to\mathbb{R}$ be continuous with $f(0)=f(1)$. Prove that there exists $x\in\left[0,\frac12\right]$ such that $f\!\left(x+\frac12\right)=f(x)$.
+
+## Hint
+
+Consider $g(x)=f\!\left(x+\frac12\right)-f(x)$ on $\left[0,\frac12\right]$ and compare $g(0)$ with $g\!\left(\frac12\right)$.
+
+## Solution
+
+**Idea.** The statement says that the graph has a horizontal chord of length $\frac12$. It is not obvious at all, because we do not know where this chord sits. The trick is to introduce the function that measures the height difference of a chord.
+
+**Auxiliary function.** For $x\in\left[0,\frac12\right]$, let $g(x)=f\!\left(x+\frac12\right)-f(x)$. It is continuous. We compute
+$$g(0)=f\!\left(\tfrac12\right)-f(0),\qquad g\!\left(\tfrac12\right)=f(1)-f\!\left(\tfrac12\right)=f(0)-f\!\left(\tfrac12\right)=-g(0).$$
+
+**Conclusion.** The numbers $g(0)$ and $g\!\left(\frac12\right)$ are opposite, so they are either both zero or of opposite signs. By the intermediate value theorem $g$ vanishes somewhere in $\left[0,\frac12\right]$, which is the claim.
+
+**Real-life version.** If the temperature at midnight is the same on two consecutive days, then at some moment the temperature equals the temperature twelve hours later.
+
+**Remark.** The same proof gives chords of length $\frac1n$ for every integer $n$, but not of every length: for length $\frac25$ the statement is false in general.
+@@@ the-monk-on-the-mountain.md
+---
+title: The monk on the mountain
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: lycee
+difficulty: 3
+tags: intermediate value theorem, classic puzzle
+date: 2026-11-02
+---
+
+## Statement
+
+A monk climbs a mountain path from the foot to the summit, leaving at 7:00 and arriving at 19:00. He spends the night there. The next day he comes down the same path, leaving at 7:00 and arriving at the foot at 19:00. He may walk fast or slowly, and even stop or turn back at times, on either day.
+
+Prove that there is a point on the path where he is at exactly the same time of day on both days.
+
+## Hint
+
+Superimpose both days. Introduce the functions $u(t)$ and $d(t)$ giving his distance from the foot at time $t$ on the way up and on the way down.
+
+## Solution
+
+**Model.** Measure the time $t$ in hours after 7:00, so $t\in[0,12]$, and the position as the distance $s$ along the path from the foot. Let $u(t)$ be the position on the first day and $d(t)$ the position on the second day. Walking is continuous, so $u$ and $d$ are continuous.
+
+**Values at the ends.** Let $L$ be the length of the path.
+- $u(0)=0$ and $u(12)=L$,
+- $d(0)=L$ and $d(12)=0$.
+
+**Auxiliary function.** Let $h(t)=u(t)-d(t)$, continuous on $[0,12]$. Then $h(0)=0-L=-L<0$ and $h(12)=L-0=L>0$.
+
+**Conclusion.** By the intermediate value theorem there is $t_0\in(0,12)$ with $h(t_0)=0$, that is $u(t_0)=d(t_0)$: at the same time of day $t_0$ the monk is at the same point on both days.
+
+**Picture.** Draw the two graphs $u$ and $d$ in the same $(t,s)$ plane: one goes from the bottom-left to the top-right, the other from the top-left to the bottom-right. They must cross.
+
+**Remark.** Equivalently, two walkers starting at opposite ends of a path on the same day and walking towards each other's end must meet.
+@@@ an-odd-degree-polynomial-has-a-real-root.md
+---
+title: Odd degree polynomials have a real root
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l1
+difficulty: 2
+tags: intermediate value theorem, polynomials, limits at infinity
+date: 2026-11-02
+---
+
+## Statement
+
+Let $P(x)=a_nx^n+\dots+a_1x+a_0$ be a real polynomial with $a_n\ne0$ and $n$ odd. Prove that $P$ has at least one real root. Give an example showing that this can fail when $n$ is even.
+
+## Hint
+
+Look at the limits of $P$ at $+\infty$ and $-\infty$. Factor $x^n$.
+
+## Solution
+
+**Limits.** For $x\ne0$,
+$$P(x)=x^n\left(a_n+\frac{a_{n-1}}x+\dots+\frac{a_0}{x^n}\right),$$
+and the bracket tends to $a_n$ when $x\to\pm\infty$. Assume for instance $a_n>0$ (otherwise replace $P$ by $-P$). Since $n$ is odd, $x^n\to+\infty$ as $x\to+\infty$ and $x^n\to-\infty$ as $x\to-\infty$. Hence $P(x)\to+\infty$ at $+\infty$ and $P(x)\to-\infty$ at $-\infty$.
+
+**Sign change.** There exist $A$ and $B$ with $P(A)<0<P(B)$. Since $P$ is continuous, the intermediate value theorem gives a root between $A$ and $B$.
+
+**Even degree.** The polynomial $x^2+1$ has even degree and no real root: it tends to $+\infty$ at both ends and never changes sign.
+
+**Remark.** Compare with the previous roots problems: here we do not know any explicit interval, but we know that one exists.
+@@@ the-bisection-method.md
+---
+title: The bisection method in practice
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l1
+difficulty: 2
+tags: bisection, numerical methods, intermediate value theorem
+date: 2026-11-02
+---
+
+## Statement
+
+1. Show that $\cos x=x$ has exactly one solution $\alpha$ in $[0,1]$.
+2. Perform ten steps of the bisection method starting from $[0,1]$.
+3. How many steps are needed to locate $\alpha$ within $10^{-6}$?
+
+## Hint
+
+Study $g(x)=\cos x-x$. At each step, cut the interval in half and keep the half where $g$ changes sign.
+
+## Solution
+
+**1. Existence and uniqueness.** $g(x)=\cos x-x$ is continuous with $g(0)=1>0$ and $g(1)=\cos1-1<0$, so a root exists by the intermediate value theorem. Moreover $g'(x)=-\sin x-1\le0$, and it vanishes only at isolated points, so $g$ is strictly decreasing and the root is unique.
+
+**2. Bisection.** At each step compute the midpoint $m$ of $[a,b]$; keep $[a,m]$ if $g(a)$ and $g(m)$ have opposite signs, else keep $[m,b]$.
+
+- Step 1: $[0.5,\ 1]$
+- Step 2: $[0.5,\ 0.75]$
+- Step 3: $[0.625,\ 0.75]$
+- Step 4: $[0.6875,\ 0.75]$
+- Step 5: $[0.71875,\ 0.75]$
+- Step 6: $[0.734375,\ 0.75]$
+- Step 7: $[0.734375,\ 0.7421875]$
+- Step 8: $[0.73828125,\ 0.7421875]$
+- Step 9: $[0.73828125,\ 0.740234375]$
+- Step 10: $[0.73828125,\ 0.7392578125]$
+
+The true value is $\alpha\approx0.7390851$, inside the last interval.
+
+**3. Number of steps.** After $n$ steps the interval has length $2^{-n}$. We need $2^{-n}\le10^{-6}$, that is $n\ge6\ln10/\ln2\approx19.9$. So $20$ steps are enough.
+
+**Remark.** The method is slow (about three steps per decimal digit) but it is guaranteed to converge as soon as the function is continuous and changes sign.
+@@@ the-concentration-of-a-drug.md
+---
+title: How long is the drug effective?
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: lycee
+difficulty: 2
+tags: applications, intermediate value theorem, bracketing
+date: 2026-11-02
+---
+
+## Statement
+
+After a patient takes a drug, its concentration in the blood (in mg/L) after $t$ hours is $f(t)=4t\,e^{-t/2}$. The drug is effective while the concentration is at least $1$ mg/L. Show that this period is a single interval $[t_1,t_2]$, and find $t_1$ and $t_2$ to one decimal place.
+
+## Hint
+
+Compute $f'$ to find when the concentration is maximal. On each side of the maximum, $f$ is monotone: apply the intermediate value theorem on each side.
+
+## Solution
+
+**Variations.** $f'(t)=4e^{-t/2}\left(1-\frac t2\right)$, positive for $t<2$ and negative for $t>2$. So $f$ increases on $[0,2]$, then decreases on $[2,+\infty)$. The maximum is $f(2)=\frac8e\approx2.94>1$. Also $f(0)=0$ and $f(t)\to0$ as $t\to+\infty$.
+
+**Two crossings.**
+- On $[0,2]$, $f$ is continuous and strictly increasing from $0$ to $2.94$: it takes the value $1$ exactly once, at some $t_1$.
+- On $[2,+\infty)$, $f$ is continuous and strictly decreasing from $2.94$ to $0$: it takes the value $1$ exactly once, at some $t_2$.
+
+Hence $f(t)\ge1$ exactly for $t\in[t_1,t_2]$.
+
+**Locating $t_1$.** $f(0.25)=e^{-0.125}\approx0.88<1$ and $f(0.3)=1.2e^{-0.15}\approx1.03>1$, so $t_1\in(0.25,0.3)$, i.e. $t_1\approx0.3$.
+
+**Locating $t_2$.** $f(6)=24e^{-3}\approx1.19>1$ and $f(7)=28e^{-3.5}\approx0.85<1$. Refining, $t_2\approx6.5$.
+
+**Answer.** The drug is effective from about $0.3$ h (18 minutes) to about $6.5$ h after intake, a window of about $6.2$ hours.
+@@@ a-continuous-function-with-rational-values-is-constant.md
+---
+title: A continuous function with rational values is constant
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l1
+difficulty: 3
+tags: intermediate value theorem, rational numbers, proof by contradiction
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:[0,1]\to\mathbb{R}$ be continuous and suppose $f(x)$ is rational for every $x$. Prove that $f$ is constant.
+
+## Hint
+
+Argue by contradiction. If $f(a)\ne f(b)$, what does the intermediate value theorem say about the values between them?
+
+## Solution
+
+**Idea.** A continuous function cannot skip any value between two of its values. But the rational numbers have gaps: between two rationals there are irrational numbers.
+
+**Proof.** Suppose $f(a)\neq f(b)$ for some $a,b\in[0,1]$, say $f(a)<f(b)$. The interval $\bigl(f(a),f(b)\bigr)$ contains an irrational number $y$ (for example $f(a)+\frac{\sqrt2}{2}\,\bigl(f(b)-f(a)\bigr)$, which lies strictly between since $0<\frac{\sqrt2}2<1$, and is irrational because $f(b)-f(a)$ is a non-zero rational).
+
+By the intermediate value theorem on the interval between $a$ and $b$, there is $c$ with $f(c)=y$. But $f(c)$ is rational and $y$ is not. Contradiction.
+
+**Conclusion.** $f(a)=f(b)$ for all $a,b$, so $f$ is constant.
+
+**Remark.** The same argument shows that a continuous function with values in $\mathbb{Z}$ is constant, and more generally that a continuous function on an interval cannot take only values in a countable set unless it is constant.
+@@@ lipschitz-functions-are-uniformly-continuous.md
+---
+title: Lipschitz functions are uniformly continuous
+category: calculus/single-variable/continuity/uniform-continuity
+level: l1
+difficulty: 2
+tags: Lipschitz, uniform continuity, epsilon-delta
+date: 2026-11-02
+---
+
+## Statement
+
+A function $f:I\to\mathbb{R}$ is **$K$-Lipschitz** if $|f(x)-f(y)|\le K|x-y|$ for all $x,y\in I$. Prove that a Lipschitz function is uniformly continuous. Give two examples.
+
+## Hint
+
+Given $\varepsilon$, find a $\delta$ that depends only on $\varepsilon$ and $K$, not on the point.
+
+## Solution
+
+**Definition reminder.** $f$ is uniformly continuous if for every $\varepsilon>0$ there is $\delta>0$ such that for **all** $x,y$ with $|x-y|<\delta$, $|f(x)-f(y)|<\varepsilon$. The difference with ordinary continuity is that $\delta$ must work for all points at once.
+
+**Proof.** Assume $K>0$ (the case $K=0$ is trivial since $f$ is constant). Let $\varepsilon>0$ and set $\delta=\frac\varepsilon K$. If $|x-y|<\delta$, then
+$$|f(x)-f(y)|\le K|x-y|<K\delta=\varepsilon.$$
+
+**Examples.**
+- $x\mapsto\sin x$ is $1$-Lipschitz on $\mathbb{R}$, by the mean value theorem since $|\cos|\le1$.
+- $x\mapsto|x|$ is $1$-Lipschitz by the reverse triangle inequality, although it is not differentiable at $0$.
+
+**Remark.** On an interval, a differentiable function with bounded derivative $|f'|\le K$ is $K$-Lipschitz (mean value theorem). That is the most common way to prove uniform continuity in practice.
+@@@ square-root-is-uniformly-continuous-but-not-lipschitz.md
+---
+title: The square root: uniformly continuous, not Lipschitz
+category: calculus/single-variable/continuity/uniform-continuity
+level: l1
+difficulty: 3
+tags: uniform continuity, Lipschitz, square root
+date: 2026-11-02
+---
+
+## Statement
+
+1. Prove that $|\sqrt x-\sqrt y|\le\sqrt{|x-y|}$ for all $x,y\ge0$.
+2. Deduce that $x\mapsto\sqrt x$ is uniformly continuous on $[0,+\infty)$.
+3. Show that it is not Lipschitz on $[0,1]$.
+
+## Hint
+
+For part 1, assume $x\ge y$ and square the inequality $\sqrt x\le\sqrt y+\sqrt{x-y}$.
+
+## Solution
+
+**1.** By symmetry assume $x\ge y\ge0$. We want $\sqrt x\le\sqrt y+\sqrt{x-y}$. Both sides are non-negative, so it is equivalent to the inequality of squares:
+$$x\le y+(x-y)+2\sqrt{y(x-y)}=x+2\sqrt{y(x-y)},$$
+which is true. Hence $\sqrt x-\sqrt y\le\sqrt{x-y}$, and the left side is $\ge0$.
+
+**2.** Let $\varepsilon>0$ and $\delta=\varepsilon^2$. If $|x-y|<\delta$, then $|\sqrt x-\sqrt y|\le\sqrt{|x-y|}<\sqrt\delta=\varepsilon$. The choice of $\delta$ does not depend on the point.
+
+**3.** If $\sqrt x$ were $K$-Lipschitz on $[0,1]$, then taking $y=0$ gives $\sqrt x\le Kx$, i.e. $\frac1{\sqrt x}\le K$ for all $x\in(0,1]$. But $\frac1{\sqrt x}\to+\infty$ as $x\to0^+$. Contradiction.
+
+**Remark.** So Lipschitz is strictly stronger than uniformly continuous. The problem is the vertical tangent of the graph of $\sqrt x$ at $0$: the slope is unbounded, but the function still moves slowly enough that $\delta=\varepsilon^2$ works.
+@@@ x-squared-is-not-uniformly-continuous.md
+---
+title: x² is not uniformly continuous on the real line
+category: calculus/single-variable/continuity/uniform-continuity
+level: l1
+difficulty: 3
+tags: uniform continuity, sequences, counterexamples
+date: 2026-11-02
+---
+
+## Statement
+
+Show that $f(x)=x^2$ is continuous on $\mathbb{R}$ but not uniformly continuous on $\mathbb{R}$. Show that it is uniformly continuous on $[0,5]$.
+
+## Hint
+
+To negate uniform continuity, find two sequences $(x_n)$, $(y_n)$ with $x_n-y_n\to0$ but $f(x_n)-f(y_n)\not\to0$. For the second part, factor $x^2-y^2$.
+
+## Solution
+
+**Negation.** $f$ is *not* uniformly continuous if there is an $\varepsilon_0>0$ such that for every $\delta>0$ one can find $x,y$ with $|x-y|<\delta$ and $|f(x)-f(y)|\ge\varepsilon_0$.
+
+**On $\mathbb{R}$.** Take $x_n=n+\frac1n$ and $y_n=n$. Then $|x_n-y_n|=\frac1n\to0$, but
+$$x_n^2-y_n^2=2+\frac1{n^2}\ge2.$$
+So $\varepsilon_0=2$ works: however small $\delta$ is, for $n>\frac1\delta$ the points $x_n,y_n$ are $\delta$-close with values at least $2$ apart.
+
+**On $[0,5]$.** For $x,y\in[0,5]$, $|x^2-y^2|=|x-y|\,|x+y|\le10|x-y|$. So $f$ is $10$-Lipschitz on $[0,5]$, hence uniformly continuous.
+
+**Moral.** The faster the graph climbs, the smaller $\delta$ must be. On the whole line the slope $2x$ is unbounded, so no single $\delta$ can do. On a bounded interval it is bounded.
+@@@ one-over-x-on-the-open-interval.md
+---
+title: 1/x on (0,1] is not uniformly continuous
+category: calculus/single-variable/continuity/uniform-continuity
+level: l1
+difficulty: 3
+tags: uniform continuity, open intervals, Heine theorem
+date: 2026-11-02
+---
+
+## Statement
+
+1. Show that $f(x)=\frac1x$ is continuous on $(0,1]$ but not uniformly continuous there.
+2. Is it uniformly continuous on $[\frac1{10},1]$? Which theorem explains the difference?
+
+## Hint
+
+Take two sequences tending to $0$ and getting closer to each other, while their images move apart.
+
+## Solution
+
+**1. Not uniformly continuous.** Take $x_n=\frac1n$ and $y_n=\frac1{2n}$ in $(0,1]$. Then $|x_n-y_n|=\frac1{2n}\to0$, but
+$$|f(x_n)-f(y_n)|=|n-2n|=n\ge1.$$
+Thus $\varepsilon_0=1$ defeats every $\delta$.
+
+**2. On $[\frac1{10},1]$.** For $x,y\ge\frac1{10}$,
+$$\left|\frac1x-\frac1y\right|=\frac{|x-y|}{xy}\le100\,|x-y|,$$
+so $f$ is $100$-Lipschitz, hence uniformly continuous.
+
+**The theorem.** Heine's theorem states that a continuous function on a **closed bounded** interval $[a,b]$ is automatically uniformly continuous. The problem on $(0,1]$ is that the interval is not closed: the function misbehaves near the missing endpoint $0$.
+
+**Remark.** A continuous function on $(0,1]$ is uniformly continuous if and only if it has a finite limit at $0$, that is, if and only if it extends continuously to $[0,1]$.
