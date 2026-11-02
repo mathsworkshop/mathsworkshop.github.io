@@ -1,0 +1,1117 @@
+@@@ geometric-series.md
+---
+title: Geometric Series
+category: calculus/single-variable/series
+level: lycee
+difficulty: 1
+tags: geometric series, convergence, summation
+date: 2026-11-02
+---
+
+## Statement
+
+Determine whether each series converges, and if so compute its sum:
+\[
+\sum_{k=0}^{+\infty}\frac{(-1)^k}{2^k},\qquad
+\sum_{k=0}^{+\infty}\left(\frac{a}{1+a}\right)^k,\qquad
+\sum_{k=0}^{+\infty}(1-x^2)^k.
+\]
+
+## Hint
+
+All are geometric series $\sum r^k$; converge iff $|r|<1$, sum
+$\frac{1}{1-r}$.
+
+## Solution
+
+**Idea.** A geometric series is the simplest series: we know exactly when it converges and what it sums to. The only work is to identify the ratio and check the condition $|r|<1$.
+
+**First series.** Here $r=-\frac12$, and $|r|=\frac12<1$, so the series converges with sum
+$$\frac{1}{1-(-1/2)}=\frac{1}{3/2}=\frac23.$$
+
+**Second series.** Here $r=\frac{a}{1+a}$. The convergence condition $|r|<1$ means
+$$\left|\frac{a}{1+a}\right|<1.$$
+Since $1+a$ must be nonzero (otherwise $r$ is undefined), we solve: $|a|<|1+a|$. Squaring both sides, $a^2<(1+a)^2=1+2a+a^2$, so $0<1+2a$, i.e. $a>-\frac12$. Under this condition the sum is
+$$\frac{1}{1-\frac{a}{1+a}}=1+a.$$
+
+**Third series.** Here $r=1-x^2$. Convergence requires $|1-x^2|<1$, i.e. $-1<1-x^2<1$. The left inequality gives $x^2<2$, the right gives $x^2>0$. So the series converges exactly for $x\in\,]0,\sqrt2[\,\cup\,]-\sqrt2,0[$. Its sum is
+$$\frac{1}{1-(1-x^2)}=\frac{1}{x^2}.$$
+
+**Remark.** In all three cases the answer is a *function* of the parameter: the sum of a geometric series depends continuously on $r$ on the interval $|r|<1$, and blows up as $r\to1^-$.
+
+@@@ telescoping-series.md
+---
+title: A telescoping series
+category: calculus/single-variable/series
+level: lycee
+difficulty: 2
+tags: telescoping, partial fractions, convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Show that the series $\displaystyle\sum_{k=1}^{+\infty}\frac{1}{k(k+p)}$ converges (for fixed $p\in\mathbb{N}^*$) and compute its sum.
+
+## Hint
+
+Use partial fractions: $\frac{1}{k(k+p)}=\frac1p\left(\frac1k-\frac1{k+p}\right)$. Write the partial sums and observe the cancellation.
+
+## Solution
+
+**Idea.** A *telescoping* series is one where consecutive terms cancel. The partial sum collapses to a handful of terms, and the limit is then easy to read off.
+
+**Convergence.** For every $k\ge1$, $\frac{1}{k(k+p)}\le\frac{1}{k^2}$, and $\sum\frac1{k^2}$ converges (Riemann with $\alpha=2>1$). By comparison, the series converges.
+
+**Partial sums.** Decompose:
+$$\frac{1}{k(k+p)}=\frac1p\left(\frac1k-\frac1{k+p}\right).$$
+Therefore
+$$S_n=\sum_{k=1}^{n}\frac{1}{k(k+p)}=\frac1p\sum_{k=1}^{n}\left(\frac1k-\frac1{k+p}\right).$$
+Writing out the terms, everything cancels except the first $p$ terms and the last $p$ terms:
+$$S_n=\frac1p\left(\sum_{k=1}^{p}\frac1k-\sum_{k=n+1}^{n+p}\frac1k\right).$$
+
+**Limit.** As $n\to+\infty$, each of the $p$ terms $\frac{1}{n+1},\ldots,\frac{1}{n+p}$ tends to $0$. Hence
+$$\boxed{\sum_{k=1}^{+\infty}\frac{1}{k(k+p)}=\frac1p\sum_{k=1}^{p}\frac1k.}$$
+
+**Check.** For $p=1$: $\sum\frac{1}{k(k+1)}=1$, which is correct since $\frac{1}{k(k+1)}=\frac1k-\frac1{k+1}$ and the sum telescopes to $1$.
+
+@@@ divergence-test-first-examples.md
+---
+title: The divergence test and three divergent series
+category: calculus/single-variable/series
+level: lycee
+difficulty: 1
+tags: divergence test, necessary condition, counterexamples
+date: 2026-11-02
+---
+
+## Statement
+
+Show that if $\sum u_n$ converges then $u_n\to0$. Deduce that $\sum\frac{n}{n+1}$, $\sum(-1)^n$, and $\sum\cos\frac1n$ diverge.
+
+## Hint
+
+The partial sums $S_n$ converge, hence $u_n=S_n-S_{n-1}\to0$. Check the contrapositive.
+
+## Solution
+
+**The theorem.** Let $S_n=\sum_{k=1}^{n}u_k$. If $\sum u_n$ converges, then $S_n\to S$ for some real $S$. Since $S_n-S_{n-1}=u_n$ and both $S_n$ and $S_{n-1}$ tend to the same limit $S$, we get
+$$u_n=S_n-S_{n-1}\longrightarrow S-S=0.$$
+
+**The contrapositive.** If $u_n$ does not tend to $0$, the series *cannot* converge. This is the **divergence test**, and it is always the first thing to check.
+
+**Application to the three series.**
+- $\frac{n}{n+1}=\frac{1}{1+1/n}\to1\ne0$, so $\sum\frac{n}{n+1}$ diverges.
+- $(-1)^n$ takes the values $1,-1,1,-1,\ldots$ and has no limit, so $\sum(-1)^n$ diverges.
+- $\cos\frac1n\to\cos0=1\ne0$, so $\sum\cos\frac1n$ diverges.
+
+**Warning.** The converse is false: $u_n\to0$ does **not** imply that $\sum u_n$ converges. The harmonic series $\sum\frac1n$ has $u_n\to0$ but diverges. The divergence test is only a one-way tool: it can prove divergence, never convergence.
+
+@@@ geometric-type-sums-with-shifts.md
+---
+title: Splitting into geometric series
+category: calculus/single-variable/series
+level: lycee
+difficulty: 2
+tags: geometric series, derivative of geometric series, linear terms
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\displaystyle\sum_{n=1}^{+\infty}\frac{3^n+2^n}{6^n}$ and $\displaystyle\sum_{n=0}^{+\infty}\frac{2n+1}{3^n}$.
+
+## Hint
+
+Split into geometric series. For the second, use $\sum_{n\ge0} n r^n=\frac{r}{(1-r)^2}$ for $|r|<1$.
+
+## Solution
+
+**First sum.** Split the fraction:
+$$\frac{3^n+2^n}{6^n}=\frac{3^n}{6^n}+\frac{2^n}{6^n}=\frac{1}{2^n}+\frac{1}{3^n}.$$
+Both are geometric with ratio $\frac12$ and $\frac13$, and
+$$\sum_{n=1}^{+\infty}\frac{1}{2^n}=1,\qquad \sum_{n=1}^{+\infty}\frac{1}{3^n}=\frac{1/3}{1-1/3}=\frac12.$$
+Hence the first sum equals $1+\frac12=\frac32$.
+
+**Second sum.** Write $2n+1=2n+1$ and split:
+$$\sum_{n=0}^{+\infty}\frac{2n+1}{3^n}=2\sum_{n=0}^{+\infty}\frac{n}{3^n}+\sum_{n=0}^{+\infty}\frac{1}{3^n}.$$
+The second is geometric: $\frac{1}{1-1/3}=\frac32$. For the first, use the formula $\sum_{n\ge0}nr^n=\frac{r}{(1-r)^2}$ with $r=\frac13$:
+$$\sum_{n=0}^{+\infty}\frac{n}{3^n}=\frac{1/3}{(2/3)^2}=\frac{1/3}{4/9}=\frac34.$$
+Therefore the second sum equals $2\cdot\frac34+\frac32=\frac32+\frac32=3$.
+
+**Remark.** The identity $\sum n r^n=\frac{r}{(1-r)^2}$ is obtained by differentiating $\sum r^n=\frac{1}{1-r}$ term by term (legitimate for $|r|<1$).
+
+@@@ telescoping-with-square-roots.md
+---
+title: A telescoping series with square roots
+category: calculus/single-variable/series
+level: lycee
+difficulty: 2
+tags: telescoping, square roots, rationalization, Riemann series
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}\left(\sqrt{n+1}-\sqrt n\right)$.
+
+## Hint
+
+Rationalize: $\sqrt{n+1}-\sqrt n=\frac{1}{\sqrt{n+1}+\sqrt n}$. Alternatively, compute the partial sum directly.
+
+## Solution
+
+**Direct telescoping.** The partial sum is
+$$S_N=\sum_{n=1}^{N}\left(\sqrt{n+1}-\sqrt n\right)=\sqrt{N+1}-\sqrt1=\sqrt{N+1}-1.$$
+As $N\to+\infty$, $\sqrt{N+1}\to+\infty$, so $S_N\to+\infty$. The series **diverges**.
+
+**Comparison viewpoint.** Rationalizing gives
+$$\sqrt{n+1}-\sqrt n=\frac{(\sqrt{n+1}-\sqrt n)(\sqrt{n+1}+\sqrt n)}{\sqrt{n+1}+\sqrt n}=\frac{1}{\sqrt{n+1}+\sqrt n}.$$
+Since $\sqrt{n+1}+\sqrt n\sim 2\sqrt n$, the general term is $\sim\frac{1}{2\sqrt n}$, which is comparable to a Riemann series with $\alpha=\frac12\le1$. This confirms divergence.
+
+**Remark.** The two methods agree, but the direct telescoping is more informative: it shows that the partial sums grow like $\sqrt N$. This is the same growth rate as the integral $\int_1^N\frac{dt}{2\sqrt t}=\sqrt N-1$.
+
+@@@ comparison-test-basic.md
+---
+title: The comparison test on three series
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: comparison test, equivalences, trigonometric limits
+date: 2026-11-02
+---
+
+## Statement
+
+Determine the nature of
+\[
+\text{(a) }\sum_{n\ge1}\left(1-\cos\frac{\pi}{n}\right),\qquad
+\text{(b) }\sum_{n\ge1}\ln\left(1+\frac1n\right),\qquad
+\text{(c) }\sum_{n\ge1}\frac{(-1)^n+n}{n^2+1}.
+\]
+
+## Hint
+
+(a) Use $1-\cos x\sim\frac{x^2}{2}$ as $x\to0$. (b) Use $\ln(1+x)\sim x$ as $x\to0$. (c) Find an equivalent of the general term.
+
+## Solution
+
+**General principle.** For positive-term series, if $u_n\sim v_n$ (i.e. $u_n/v_n\to1$), then $\sum u_n$ and $\sum v_n$ have the same nature. This is the **equivalence test**, a consequence of the comparison test.
+
+**(a)** As $n\to+\infty$, $\frac{\pi}{n}\to0$, so
+$$1-\cos\frac{\pi}{n}\sim\frac{1}{2}\left(\frac{\pi}{n}\right)^2=\frac{\pi^2}{2n^2}.$$
+The series $\sum\frac{1}{n^2}$ converges (Riemann, $\alpha=2>1$), so the given series **converges**.
+
+**(b)** As $n\to+\infty$, $\frac1n\to0$, so
+$$\ln\left(1+\frac1n\right)\sim\frac1n.$$
+The harmonic series diverges, so the given series **diverges**.
+
+**(c)** The general term is positive for $n\ge2$ (the numerator $n+(-1)^n$ is positive). Moreover
+$$\frac{(-1)^n+n}{n^2+1}\sim\frac{n}{n^2}=\frac1n.$$
+The harmonic series diverges, so the given series **diverges**.
+
+**Remark.** In (c), the $(-1)^n$ in the numerator is negligible compared with $n$. Do not be misled by the alternating-looking sign: the series is *not* alternating in the usual sense, and it diverges.
+
+@@@ riemann-series-recognition.md
+---
+title: Recognizing a Riemann series
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: Riemann series, equivalences, exponential decay
+date: 2026-11-02
+---
+
+## Statement
+
+Study the nature of $\displaystyle\sum_{n\ge1}\frac{1}{n^2+n+1}$ and $\displaystyle\sum_{n\ge1}ne^{-\sqrt n}$.
+
+## Hint
+
+First: find an equivalent of the general term. Second: compare with $\frac{1}{n^2}$ using the fact that exponential growth dominates polynomial growth.
+
+## Solution
+
+**First series.** The denominator behaves like $n^2$:
+$$n^2+n+1=n^2\left(1+\frac1n+\frac1{n^2}\right)\sim n^2.$$
+Hence
+$$\frac{1}{n^2+n+1}\sim\frac{1}{n^2}.$$
+Since $\sum\frac{1}{n^2}$ converges (Riemann, $\alpha=2>1$), the series **converges**.
+
+**Second series.** Write
+$$ne^{-\sqrt n}=\exp(\ln n-\sqrt n).$$
+For large $n$, $\frac{\ln n}{\sqrt n}\to0$, so $\ln n-\sqrt n\sim-\sqrt n\to-\infty$. In particular, for large $n$, $\ln n-\sqrt n\le-2\ln n$, i.e.
+$$ne^{-\sqrt n}\le e^{-2\ln n}=\frac{1}{n^2}.$$
+Comparison with the convergent Riemann series $\sum\frac{1}{n^2}$ shows that the series **converges**.
+
+**Remark.** The hierarchy $n^a\ll e^{n^b}$ (for $a,b>0$) means that any polynomial factor is crushed by the exponential. Here the exponent is only $\sqrt n$, but it is enough to beat the factor $n$.
+
+@@@ comparison-with-harmonic.md
+---
+title: The logarithm is smaller than the identity
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: comparison test, logarithm, harmonic series
+date: 2026-11-02
+---
+
+## Statement
+
+Show that $\displaystyle\sum_{n\ge2}\frac{1}{\ln n}$ diverges.
+
+## Hint
+
+Compare with $\frac1n$: for large $n$, $\ln n\le n$, hence $\frac{1}{\ln n}\ge\frac1n$.
+
+## Solution
+
+**Idea.** The logarithm grows, but very slowly: it is eventually smaller than the identity. Hence its reciprocal is eventually *larger* than $\frac1n$, and the harmonic series pushes everything to divergence.
+
+**Computation.** For $n\ge2$, we have $\ln n\le n$ (this follows from $\ln t\le t-1$ for $t>0$, applied at $t=n$). Therefore
+$$\frac{1}{\ln n}\ge\frac1n.$$
+Since $\sum_{n\ge2}\frac1n$ diverges (harmonic series), the comparison test gives that $\sum_{n\ge2}\frac{1}{\ln n}$ **diverges**.
+
+**Remark.** This is a good illustration of how weak the divergence of the harmonic series is: even replacing $n$ by the much smaller quantity $\ln n$ does not save the series. To get convergence with a logarithmic factor, one needs $\sum\frac{1}{n(\ln n)^\beta}$ with $\beta>1$.
+
+@@@ integral-test-for-logarithmic-series.md
+---
+title: The integral test on two logarithmic series
+category: calculus/single-variable/series
+level: l1
+difficulty: 3
+tags: integral test, logarithm, Bertrand series
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge2}\frac{1}{n(\ln n)^2}$ and $\displaystyle\sum_{n\ge2}\frac{1}{n\ln n}$.
+
+## Hint
+
+Use the integral test with $f(x)=\frac{1}{x(\ln x)^\beta}$: substitute $u=\ln x$.
+
+## Solution
+
+**The integral test.** If $f:[1,+\infty)\to\mathbb{R}$ is positive, continuous, and decreasing, then $\sum f(n)$ converges if and only if $\int_1^{+\infty}f(x)\,dx$ converges. Here $f(x)=\frac{1}{x(\ln x)^\beta}$ satisfies these hypotheses for $x$ large enough (the function is positive and decreasing on $[2,+\infty)$).
+
+**Substitution.** Let $u=\ln x$, so $du=\frac{dx}{x}$. Then
+$$\int_2^{+\infty}\frac{dx}{x(\ln x)^\beta}=\int_{\ln2}^{+\infty}\frac{du}{u^\beta}.$$
+This is a Riemann integral at $+\infty$ with exponent $\beta$. It converges if and only if $\beta>1$.
+
+**Conclusion.**
+- For $\beta=2>1$: $\sum\frac{1}{n(\ln n)^2}$ **converges**.
+- For $\beta=1$: $\sum\frac{1}{n\ln n}$ **diverges**.
+
+**Remark.** For $\beta=1$, one can also compute the partial sums explicitly: $\sum_{n=2}^{N}\frac{1}{n\ln n}\approx\ln(\ln N)$, which tends to $+\infty$.
+
+@@@ equivalence-sine-minus-x.md
+---
+title: A Taylor equivalence: 1/n ? sin(1/n)
+category: calculus/single-variable/series
+level: l1
+difficulty: 3
+tags: Taylor expansion, equivalence, Riemann series
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}\left(\frac1n-\sin\frac1n\right)$.
+
+## Hint
+
+Use the Taylor expansion $\sin x=x-\frac{x^3}{6}+o(x^3)$.
+
+## Solution
+
+**Idea.** The two terms $\frac1n$ and $\sin\frac1n$ almost cancel: their difference is much smaller than either term. The Taylor expansion reveals the true order of magnitude.
+
+**Computation.** As $n\to+\infty$, $x=\frac1n\to0$, and
+$$\sin x=x-\frac{x^3}{6}+o(x^3).$$
+Therefore
+$$\frac1n-\sin\frac1n=\frac1n-\left(\frac1n-\frac{1}{6n^3}+o\left(\frac{1}{n^3}\right)\right)=\frac{1}{6n^3}+o\left(\frac{1}{n^3}\right).$$
+So the general term is positive for large $n$ and
+$$\frac1n-\sin\frac1n\sim\frac{1}{6n^3}.$$
+
+**Conclusion.** Since $\sum\frac{1}{n^3}$ converges (Riemann, $\alpha=3>1$), the given series **converges**.
+
+**Remark.** Without the Taylor expansion, one might incorrectly conclude divergence by comparing $\frac1n-\sin\frac1n$ with $\frac1n$. The cancellation is the whole point: it makes the series converge much faster than the harmonic series.
+
+@@@ splitting-with-partial-fractions.md
+---
+title: A sum by partial fractions
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: telescoping, partial fractions, summation
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\displaystyle\sum_{n=1}^{+\infty}\frac{1}{n(n+1)(n+2)}$.
+
+## Hint
+
+Partial fractions: $\frac{1}{n(n+1)(n+2)}=\frac12\left(\frac{1}{n(n+1)}-\frac{1}{(n+1)(n+2)}\right)$.
+
+## Solution
+
+**Idea.** The decomposition is designed to make the series telescope *twice*: each term is a difference of consecutive terms of a simpler sequence.
+
+**Decomposition.** We claim
+$$\frac{1}{n(n+1)(n+2)}=\frac12\left(\frac{1}{n(n+1)}-\frac{1}{(n+1)(n+2)}\right).$$
+Verification: the right-hand side equals
+$$\frac12\cdot\frac{(n+2)-n}{n(n+1)(n+2)}=\frac12\cdot\frac{2}{n(n+1)(n+2)}=\frac{1}{n(n+1)(n+2)}.$$
+
+**Partial sums.** With $v_n=\frac{1}{n(n+1)}$, the general term is $\frac12(v_n-v_{n+1})$, so
+$$S_N=\frac12\sum_{n=1}^{N}(v_n-v_{n+1})=\frac12(v_1-v_{N+1}).$$
+Since $v_1=\frac12$ and $v_{N+1}=\frac{1}{(N+1)(N+2)}\to0$, we get
+$$\boxed{\sum_{n=1}^{+\infty}\frac{1}{n(n+1)(n+2)}=\frac12\cdot\frac12=\frac14.}$$
+
+**Remark.** This is the case $p=1$ of the general decomposition into two consecutive terms. One could also decompose directly into $\frac{1/2}{n}-\frac{1}{n+1}+\frac{1/2}{n+2}$.
+
+@@@ square-root-over-quadratic.md
+---
+title: A square root over a quadratic
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: Riemann series, equivalence, exponents
+date: 2026-11-02
+---
+
+## Statement
+
+Study the nature of $\displaystyle\sum_{n\ge1}\frac{\sqrt n}{n^2+1}$.
+
+## Hint
+
+$\frac{\sqrt n}{n^2+1}\sim\frac{1}{n^{3/2}}$.
+
+## Solution
+
+**Computation.** The denominator is equivalent to $n^2$:
+$$n^2+1=n^2\left(1+\frac{1}{n^2}\right)\sim n^2.$$
+Hence
+$$\frac{\sqrt n}{n^2+1}\sim\frac{\sqrt n}{n^2}=\frac{1}{n^{3/2}}.$$
+
+**Conclusion.** The series is comparable to a Riemann series with exponent $\alpha=\frac32>1$, so it **converges**.
+
+**General rule.** For a rational-like general term $\frac{n^a}{n^b+\ldots}$, the exponent to remember is $\alpha=b-a$. Here $a=\frac12$ and $b=2$, so $\alpha=\frac32>1$: convergence. The threshold $\alpha=1$ is the harmonic case.
+
+@@@ ratio-test-dalembert.md
+---
+title: d'Alembert's ratio test with a parameter
+category: calculus/single-variable/series
+level: l2
+difficulty: 2
+tags: ratio test, factorials, parameter, number e
+date: 2026-11-02
+---
+
+## Statement
+
+Study, depending on $a>0$, the series $\displaystyle\sum_{n\ge1}\frac{n!\,a^n}{n^n}$.
+
+## Hint
+
+Compute $\frac{u_{n+1}}{u_n}$ and find its limit.
+
+## Solution
+
+**Ratio computation.** With $u_n=\frac{n!\,a^n}{n^n}$,
+$$\frac{u_{n+1}}{u_n}=\frac{(n+1)!\,a^{n+1}}{(n+1)^{n+1}}\cdot\frac{n^n}{n!\,a^n}=a\cdot\frac{(n+1)!}{n!}\cdot\frac{n^n}{(n+1)^{n+1}}=a\cdot(n+1)\cdot\frac{n^n}{(n+1)^{n+1}}.$$
+Simplify: $(n+1)\cdot n^n/(n+1)^{n+1}=n^n/(n+1)^n=(n/(n+1))^n=(1+1/n)^{-n}$. Hence
+$$\frac{u_{n+1}}{u_n}=a\left(1+\frac1n\right)^{-n}\longrightarrow a\cdot e^{-1}=\frac{a}{e}.$$
+
+**Conclusion (d'Alembert's test).** If $\frac{a}{e}<1$, i.e. $a<e$, the series converges. If $\frac{a}{e}>1$, i.e. $a>e$, the series diverges.
+
+**The critical case $a=e$.** The ratio test is inconclusive. Stirling's formula gives $n!\sim\sqrt{2\pi n}\,(n/e)^n$, hence
+$$u_n=\frac{n!\,e^n}{n^n}\sim\sqrt{2\pi n}\longrightarrow+\infty,$$
+so the series diverges.
+
+**Conclusion.** The series converges if and only if $0<a<e$.
+
+@@@ ratio-test-with-central-binomial.md
+---
+title: A ratio test with central binomial coefficients
+category: calculus/single-variable/series
+level: l2
+difficulty: 3
+tags: ratio test, factorials, Stirling formula, Wallis
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}\frac{(2n)!}{(n!)^2\,4^n}$.
+
+## Hint
+
+Compute $\frac{u_{n+1}}{u_n}$. The ratio test is inconclusive; use Stirling's formula to find an equivalent of $u_n$.
+
+## Solution
+
+**Ratio.** With $u_n=\frac{(2n)!}{(n!)^2\,4^n}$,
+$$\frac{u_{n+1}}{u_n}=\frac{(2n+2)!}{((n+1)!)^2\,4^{n+1}}\cdot\frac{(n!)^2\,4^n}{(2n)!}=\frac{(2n+2)(2n+1)}{4(n+1)^2}=\frac{(2n+1)}{2(n+1)}.$$
+As $n\to+\infty$, this ratio tends to $1$. d'Alembert's test is inconclusive.
+
+**Stirling's formula.** $n!\sim\sqrt{2\pi n}\,(n/e)^n$. Then
+$$(2n)!\sim\sqrt{4\pi n}\left(\frac{2n}{e}\right)^{2n},\qquad (n!)^2\sim 2\pi n\left(\frac{n}{e}\right)^{2n}.$$
+Hence
+$$u_n=\frac{(2n)!}{(n!)^2\,4^n}\sim\frac{\sqrt{4\pi n}\,(2n/e)^{2n}}{2\pi n\,(n/e)^{2n}\,4^n}=\frac{2\sqrt{\pi n}}{2\pi n}\cdot\frac{4^n}{4^n}=\frac{1}{\sqrt{\pi n}}.$$
+
+**Conclusion.** Since $u_n\sim\frac{1}{\sqrt{\pi n}}$, the series is comparable to the harmonic series, so it **diverges**.
+
+**Remark.** This is a classic: the central binomial coefficient $\binom{2n}{n}\sim\frac{4^n}{\sqrt{\pi n}}$, so $u_n=\binom{2n}{n}/4^n\sim 1/\sqrt{\pi n}$.
+
+@@@ cauchy-root-test.md
+---
+title: Cauchy's root test
+category: calculus/single-variable/series
+level: l2
+difficulty: 2
+tags: root test, n-th powers, limit
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}\left(\frac{n}{2n+1}\right)^n$.
+
+## Hint
+
+$(u_n)^{1/n}=\frac{n}{2n+1}\to\frac12$.
+
+## Solution
+
+**Computation.** With $u_n=\left(\frac{n}{2n+1}\right)^n$, the $n$-th root is
+$$\sqrt[n]{u_n}=\frac{n}{2n+1}=\frac{1}{2+1/n}\longrightarrow\frac12.$$
+
+**Conclusion (Cauchy's root test).** Since $\sqrt[n]{u_n}\to\frac12<1$, the series **converges**.
+
+**Remark.** The root test is often convenient when the general term is a *power* $n$. Here the ratio test would work too: $\frac{u_{n+1}}{u_n}=\frac{(n+1)^{n+1}}{(2n+3)^{n+1}}\cdot\frac{(2n+1)^n}{n^n}\to\frac12$ as well, but the root test is more direct.
+
+@@@ logarithmic-comparison.md
+---
+title: (ln n)^(ln n) in the denominator
+category: calculus/single-variable/series
+level: l2
+difficulty: 3
+tags: logarithm, exponential form, comparison test
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge2}\frac{1}{(\ln n)^{\ln n}}$.
+
+## Hint
+
+$(\ln n)^{\ln n}=n^{\ln\ln n}$.
+
+## Solution
+
+**Rewrite.** Using $a^b=e^{b\ln a}$ with $a=\ln n$ and $b=\ln n$:
+$$(\ln n)^{\ln n}=\exp(\ln n\cdot\ln\ln n)=n^{\ln\ln n}.$$
+The general term is therefore
+$$u_n=\frac{1}{n^{\ln\ln n}}.$$
+
+**Comparison.** As $n\to+\infty$, $\ln\ln n\to+\infty$. In particular, for $n$ large enough, $\ln\ln n\ge2$. For such $n$,
+$$u_n\le\frac{1}{n^2}.$$
+Since $\sum\frac{1}{n^2}$ converges (Riemann, $\alpha=2>1$), the given series **converges**.
+
+**Remark.** This is a Bertrand-type series in disguise: the exponent $\ln\ln n$ is not constant, but it is eventually larger than any fixed exponent $>1$. Here it suffices that it eventually exceeds $2$.
+
+@@@ alternating-series-basic.md
+---
+title: An alternating series with a logarithmic denominator
+category: calculus/single-variable/series
+level: l2
+difficulty: 2
+tags: alternating series test, absolute convergence, conditional convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Show that $\displaystyle\sum_{n\ge2}\frac{(-1)^n}{\ln n}$ converges.
+
+## Hint
+
+The alternating series test applies: $\frac{1}{\ln n}$ is positive, decreasing for $n\ge2$, and tends to $0$.
+
+## Solution
+
+**The alternating series test (AST).** If $(b_n)$ is positive, decreasing, and tends to $0$, then $\sum(-1)^n b_n$ converges.
+
+**Verification of the hypotheses.** With $b_n=\frac{1}{\ln n}$:
+- $b_n>0$ for $n\ge2$.
+- $\ln$ is increasing, so $\ln n$ is increasing, so $b_n$ is decreasing for $n\ge2$.
+- $b_n\to0$ since $\ln n\to+\infty$.
+
+By the AST, the series **converges**.
+
+**Absolute convergence.** The series $\sum\frac{1}{\ln n}$ diverges (compare with the harmonic series: $\frac{1}{\ln n}\ge\frac1n$). Hence the convergence is **conditional**, not absolute.
+
+**Remark.** The AST also gives an error estimate: the remainder after $N$ terms is bounded in absolute value by the first omitted term, here $\frac{1}{\ln(N+1)}$.
+
+@@@ alternating-absolute-vs-conditional.md
+---
+title: Absolute versus conditional convergence
+category: calculus/single-variable/series
+level: l2
+difficulty: 3
+tags: alternating series, absolute convergence, conditional convergence, Riemann series
+date: 2026-11-02
+---
+
+## Statement
+
+Study absolute and conditional convergence of
+\[
+\sum_{n\ge1}\frac{(-1)^n}{n^3+2},\qquad \sum_{n\ge1}\frac{(-1)^n}{\sqrt n}.
+\]
+
+## Hint
+
+First: absolute convergence via Riemann $\alpha=3$. Second: AST but $\sum 1/\sqrt n$ diverges.
+
+## Solution
+
+**First series.** The absolute value of the general term is
+$$\left|\frac{(-1)^n}{n^3+2}\right|=\frac{1}{n^3+2}\sim\frac{1}{n^3}.$$
+Since $\sum\frac{1}{n^3}$ converges (Riemann, $\alpha=3>1$), the series is **absolutely convergent** (hence convergent).
+
+**Second series.** The sequence $b_n=\frac{1}{\sqrt n}$ is positive, decreasing, and tends to $0$. By the AST, $\sum\frac{(-1)^n}{\sqrt n}$ **converges**. However, the series of absolute values is $\sum\frac{1}{\sqrt n}$, a Riemann series with $\alpha=\frac12\le1$, which diverges. Hence the series is **conditionally convergent**.
+
+**Summary.**
+- $\sum\frac{(-1)^n}{n^3+2}$: absolutely convergent.
+- $\sum\frac{(-1)^n}{\sqrt n}$: conditionally convergent.
+
+@@@ integral-test-quadratic.md
+---
+title: The integral test on 1/(n²+1)
+category: calculus/single-variable/series
+level: l2
+difficulty: 3
+tags: integral test, arctangent, comparison
+date: 2026-11-02
+---
+
+## Statement
+
+Using the integral test, study $\displaystyle\sum_{n\ge1}\frac{1}{n^2+1}$.
+
+## Hint
+
+Compare with $\int_1^{+\infty}\frac{dx}{x^2+1}$, and compute that integral with $\arctan$.
+
+## Solution
+
+**Hypotheses.** The function $f(x)=\frac{1}{x^2+1}$ is positive, continuous, and decreasing on $[1,+\infty)$ (its derivative is $-\frac{2x}{(x^2+1)^2}<0$ for $x>0$). The integral test applies.
+
+**Integral.** An antiderivative of $f$ is $\arctan x$, so
+$$\int_1^{+\infty}\frac{dx}{x^2+1}=\lim_{R\to+\infty}\left[\arctan x\right]_1^R=\frac{\pi}{2}-\frac{\pi}{4}=\frac{\pi}{4}.$$
+This is finite, so the integral converges.
+
+**Conclusion.** By the integral test, the series $\sum\frac{1}{n^2+1}$ **converges**.
+
+**Bonus (not required).** One can show with the cotangent expansion that
+$$\sum_{n=1}^{+\infty}\frac{1}{n^2+1}=\frac{\pi\coth\pi-1}{2}\approx1.0767.$$
+This is not needed for the convergence question, but it is a nice confirmation.
+
+@@@ bertrand-series.md
+---
+title: The Bertrand series
+category: calculus/single-variable/series
+level: l3
+difficulty: 4
+tags: Bertrand series, parameters, integral test, comparison
+date: 2026-11-02
+---
+
+## Statement
+
+Determine the nature of $\displaystyle\sum_{n\ge2}\frac{1}{n^\alpha(\ln n)^\beta}$ depending on the real parameters $\alpha$ and $\beta$.
+
+## Hint
+
+Split into the cases $\alpha>1$, $\alpha<1$, and $\alpha=1$. In the last case, use the integral test.
+
+## Solution
+
+**Case $\alpha>1$.** Choose $\alpha'$ with $1<\alpha'<\alpha$. Since $\frac{\ln n}{n^{\alpha-\alpha'}}\to0$, we have $(\ln n)^\beta\ge1$ for large $n$, hence
+$$\frac{1}{n^\alpha(\ln n)^\beta}\le\frac{1}{n^\alpha}\le\frac{1}{n^{\alpha'}}$$
+for large $n$. Since $\sum\frac{1}{n^{\alpha'}}$ converges (Riemann, $\alpha'>1$), the series **converges**.
+
+**Case $\alpha<1$.** Choose $\alpha'$ with $\alpha<\alpha'<1$. For large $n$, $(\ln n)^\beta\le n^{\alpha'-\alpha}$ (the logarithm grows slower than any positive power), hence
+$$\frac{1}{n^\alpha(\ln n)^\beta}\ge\frac{1}{n^{\alpha'}}.$$
+Since $\sum\frac{1}{n^{\alpha'}}$ diverges (Riemann, $\alpha'\le1$), the series **diverges**.
+
+**Case $\alpha=1$.** The series becomes $\sum\frac{1}{n(\ln n)^\beta}$. Apply the integral test to $f(x)=\frac{1}{x(\ln x)^\beta}$, which is positive and decreasing for $x$ large enough. With $u=\ln x$:
+$$\int_2^{+\infty}\frac{dx}{x(\ln x)^\beta}=\int_{\ln2}^{+\infty}\frac{du}{u^\beta}.$$
+This converges iff $\beta>1$. So the series **converges iff $\beta>1$**, and **diverges iff $\beta\le1$**.
+
+**Conclusion.** The Bertrand series converges if and only if
+$$\alpha>1,\quad\text{or}\quad \bigl(\alpha=1\text{ and }\beta>1\bigr).$$
+It diverges in all other cases.
+
+@@@ absolute-convergence-via-expansion.md
+---
+title: Absolute convergence via a Taylor expansion
+category: calculus/single-variable/series
+level: l3
+difficulty: 4
+tags: Taylor expansion, absolute convergence, conditional convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Study the convergence of $\displaystyle\sum_{n\ge1}\sin\left(\frac{(-1)^n}{n}\right)$.
+
+## Hint
+
+Expand $\sin\left(\frac{(-1)^n}{n}\right)$ using $\sin x=x-\frac{x^3}{6}+o(x^3)$.
+
+## Solution
+
+**Expansion.** Let $x_n=\frac{(-1)^n}{n}$. As $n\to+\infty$, $x_n\to0$, and
+$$\sin x_n=x_n-\frac{x_n^3}{6}+o(x_n^3)=\frac{(-1)^n}{n}-\frac{(-1)^{3n}}{6n^3}+o\left(\frac{1}{n^3}\right).$$
+Since $(-1)^{3n}=(-1)^n$,
+$$\sin\left(\frac{(-1)^n}{n}\right)=\frac{(-1)^n}{n}-\frac{(-1)^n}{6n^3}+o\left(\frac{1}{n^3}\right).$$
+
+**Convergence.** The series $\sum\frac{(-1)^n}{n}$ converges (alternating harmonic series). The series $\sum\frac{(-1)^n}{6n^3}$ is absolutely convergent (Riemann $\alpha=3$). The remainder is $o(1/n^3)$, hence absolutely convergent. Therefore the given series **converges**.
+
+**Absolute convergence.** We have
+$$\left|\sin\left(\frac{(-1)^n}{n}\right)\right|=\left|\sin\frac1n\right|\sim\frac1n.$$
+Since the harmonic series diverges, the series is **not absolutely convergent**. It is **conditionally convergent**.
+
+@@@ abel-summation-dirichlet.md
+---
+title: Abel summation and Dirichlet's test
+category: calculus/single-variable/series
+level: l3
+difficulty: 4
+tags: Abel summation, Dirichlet test, bounded partial sums, conditional convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Show that $\displaystyle\sum_{n\ge1}\frac{\sin n}{n}$ converges.
+
+## Hint
+
+The partial sums of $\sin n$ are bounded; $\frac1n$ decreases to $0$. Apply Dirichlet's test (Abel summation).
+
+## Solution
+
+**Bounded partial sums.** For every $n\ge1$,
+$$\sum_{k=1}^{n}\sin k=\operatorname{Im}\left(\sum_{k=1}^{n}e^{ik}\right)=\operatorname{Im}\left(e^{i}\frac{1-e^{in}}{1-e^{i}}\right).$$
+Therefore
+$$\left|\sum_{k=1}^{n}\sin k\right|\le\frac{2}{|1-e^{i}|}=\frac{1}{\sin(1/2)}.$$
+So the partial sums of $(\sin n)$ are bounded by $M=\frac{1}{\sin(1/2)}$.
+
+**Dirichlet's test.** The sequence $v_n=\frac1n$ is positive, decreasing, and tends to $0$. By Dirichlet's test (a consequence of Abel summation), the series $\sum u_nv_n$ converges whenever the partial sums of $(u_n)$ are bounded and $(v_n)$ decreases to $0$. Hence $\sum\frac{\sin n}{n}$ **converges**.
+
+**Absolute convergence.** We have
+$$\left|\frac{\sin n}{n}\right|\ge\frac{\sin^2 n}{n}=\frac{1-\cos 2n}{2n}.$$
+The series $\sum\frac{1}{2n}$ diverges (harmonic), while $\sum\frac{\cos 2n}{2n}$ converges by Dirichlet's test (partial sums of $\cos 2n$ are bounded, $\frac{1}{2n}\to0$ decreasing). Hence $\sum\left|\frac{\sin n}{n}\right|$ diverges. The series is **conditionally convergent**.
+
+@@@ product-general-term-cosine.md
+---
+title: An alternating series with a cosine factor
+category: calculus/single-variable/series
+level: l3
+difficulty: 3
+tags: alternating series, Taylor expansion, conditional convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}\frac{(-1)^n}{n}\cos\frac1n$.
+
+## Hint
+
+Expand $\cos\frac1n=1-\frac{1}{2n^2}+o\left(\frac{1}{n^2}\right)$.
+
+## Solution
+
+**Expansion.** As $n\to+\infty$,
+$$\cos\frac1n=1-\frac{1}{2n^2}+o\left(\frac{1}{n^2}\right).$$
+Hence
+$$\frac{(-1)^n}{n}\cos\frac1n=\frac{(-1)^n}{n}-\frac{(-1)^n}{2n^3}+o\left(\frac{1}{n^3}\right).$$
+
+**Convergence.** The series $\sum\frac{(-1)^n}{n}$ converges (alternating harmonic). The series $\sum\frac{(-1)^n}{2n^3}$ is absolutely convergent (Riemann $\alpha=3$). The remainder is $o(1/n^3)$, absolutely convergent. Hence the given series **converges**.
+
+**Absolute convergence.** We have
+$$\left|\frac{(-1)^n}{n}\cos\frac1n\right|=\frac{\cos(1/n)}{n}\sim\frac1n.$$
+Since the harmonic series diverges, the series is **not absolutely convergent**. It is **conditionally convergent**.
+
+@@@ logarithmic-alternating-series.md
+---
+title: An alternating series with a logarithmic factor
+category: calculus/single-variable/series
+level: l3
+difficulty: 3
+tags: alternating series, monotonicity, conditional convergence, Bertrand series
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}(-1)^n\frac{\ln n}{n}$.
+
+## Hint
+
+Show that $\frac{\ln n}{n}$ decreases for $n\ge3$ and tends to $0$; apply the alternating series test.
+
+## Solution
+
+**Monotonicity.** Consider $f(x)=\frac{\ln x}{x}$ for $x>0$. Then
+$$f'(x)=\frac{1-\ln x}{x^2}.$$
+So $f'(x)<0$ for $x>e$, i.e. $f$ is decreasing on $]e,+\infty[$. Hence the sequence $\left(\frac{\ln n}{n}\right)_{n\ge3}$ is decreasing.
+
+**Limit.** $\frac{\ln n}{n}\to0$ (logarithm slower than any power).
+
+**Alternating series test.** The sequence $b_n=\frac{\ln n}{n}$ is positive, decreasing for $n\ge3$, and tends to $0$. By the AST, the series $\sum(-1)^n\frac{\ln n}{n}$ **converges**.
+
+**Absolute convergence.** The series $\sum\frac{\ln n}{n}$ diverges (Bertrand series with $\alpha=1$, $\beta=-1$). Hence the convergence is **conditional**.
+
+@@@ alternating-polynomial-denominator.md
+---
+title: An alternating series with a polynomial denominator
+category: calculus/single-variable/series
+level: l3
+difficulty: 3
+tags: alternating series, monotonicity, conditional convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}\frac{(-1)^n n}{n^2+1}$.
+
+## Hint
+
+Check the monotonicity of $\frac{n}{n^2+1}$ for $n\ge1$.
+
+## Solution
+
+**Monotonicity.** Let $f(x)=\frac{x}{x^2+1}$ for $x\ge1$. Then
+$$f'(x)=\frac{(x^2+1)-x\cdot2x}{(x^2+1)^2}=\frac{1-x^2}{(x^2+1)^2}\le0$$
+for $x\ge1$. So $f$ is decreasing on $[1,+\infty[$, hence $\left(\frac{n}{n^2+1}\right)_{n\ge1}$ is decreasing.
+
+**Limit.** $\frac{n}{n^2+1}\sim\frac1n\to0$.
+
+**Alternating series test.** The sequence $b_n=\frac{n}{n^2+1}$ is positive, decreasing, and tends to $0$. By the AST, the series $\sum(-1)^n\frac{n}{n^2+1}$ **converges**.
+
+**Absolute convergence.** We have
+$$\left|\frac{(-1)^n n}{n^2+1}\right|=\frac{n}{n^2+1}\sim\frac1n.$$
+Since the harmonic series diverges, the series is **not absolutely convergent**. It is **conditionally convergent**.
+
+@@@ exponential-parameter-series.md
+---
+title: A parameter series with an exponential
+category: calculus/single-variable/series
+level: m1
+difficulty: 3
+tags: parameter, exponential decay, geometric comparison
+date: 2026-11-02
+---
+
+## Statement
+
+Study, depending on $a>0$, $\displaystyle\sum_{n\ge1}e^{-an^2}$.
+
+## Hint
+
+Compare with a geometric series: $e^{-an^2}\le e^{-an}$ for $n\ge1$.
+
+## Solution
+
+**Upper bound.** For $n\ge1$ and $a>0$, we have $n^2\ge n$, hence $an^2\ge an$, hence
+$$e^{-an^2}\le e^{-an}=(e^{-a})^n.$$
+
+**Comparison.** Since $a>0$, $r=e^{-a}\in\,]0,1[$, so the geometric series $\sum r^n$ converges. By comparison, $\sum e^{-an^2}$ **converges for every $a>0$**.
+
+**Remark.** The convergence is extremely fast (faster than any geometric series), since $e^{-an^2}$ decays like a Gaussian. For all practical purposes, only the first few terms matter.
+
+@@@ power-parameter-series.md
+---
+title: A parameter series with a power
+category: calculus/single-variable/series
+level: m1
+difficulty: 3
+tags: parameter, d'Alembert, Riemann series, radius of convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Study, depending on $x>0$, $\displaystyle\sum_{n\ge1}\frac{x^n}{n^2}$.
+
+## Hint
+
+d'Alembert gives radius $1$; study $x=1$, $x>1$, and $0<x<1$ separately.
+
+## Solution
+
+**Ratio.** With $u_n=\frac{x^n}{n^2}$,
+$$\frac{u_{n+1}}{u_n}=\frac{x^{n+1}}{(n+1)^2}\cdot\frac{n^2}{x^n}=x\left(\frac{n}{n+1}\right)^2\longrightarrow x.$$
+
+**Cases.**
+- If $0<x<1$: the ratio tends to $x<1$, so by d'Alembert the series **converges**.
+- If $x=1$: the series becomes $\sum\frac{1}{n^2}$, which **converges** (Riemann $\alpha=2>1$).
+- If $x>1$: the general term $\frac{x^n}{n^2}\to+\infty$, so it does not tend to $0$; the series **diverges**.
+
+**Conclusion.** The series converges if and only if $0<x\le1$. This is consistent with the fact that the radius of convergence of $\sum\frac{x^n}{n^2}$ is $1$, and the boundary point $x=1$ gives convergence (Riemann $\alpha=2$).
+
+@@@ asymptotic-expansion-square-root.md
+---
+title: An asymptotic expansion in a square root
+category: calculus/single-variable/series
+level: m1
+difficulty: 3
+tags: asymptotic expansion, divergence test, square roots
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}\left(\sqrt{n^2+n+1}-n\right)$.
+
+## Hint
+
+Factor: $\sqrt{n^2+n+1}-n=\frac{n+1}{\sqrt{n^2+n+1}+n}\sim\frac12$.
+
+## Solution
+
+**Rationalization.**
+$$\sqrt{n^2+n+1}-n=\frac{(\sqrt{n^2+n+1}-n)(\sqrt{n^2+n+1}+n)}{\sqrt{n^2+n+1}+n}=\frac{n+1}{\sqrt{n^2+n+1}+n}.$$
+
+**Asymptotic behaviour.** As $n\to+\infty$,
+$$\sqrt{n^2+n+1}=n\sqrt{1+\frac1n+\frac1{n^2}}=n\left(1+\frac{1}{2n}+O\left(\frac1{n^2}\right)\right)=n+\frac12+O\left(\frac1n\right).$$
+Hence
+$$\sqrt{n^2+n+1}+n=2n+\frac12+O\left(\frac1n\right)\sim2n.$$
+Therefore
+$$\sqrt{n^2+n+1}-n=\frac{n+1}{2n+O(1)}\longrightarrow\frac12.$$
+
+**Conclusion.** The general term tends to $\frac12\neq0$. By the divergence test, the series **diverges**.
+
+@@@ series-of-functions-pointwise.md
+---
+title: Pointwise convergence of a series of functions
+category: calculus/single-variable/series
+level: m1
+difficulty: 4
+tags: series of functions, pointwise convergence, comparison test
+date: 2026-11-02
+---
+
+## Statement
+
+For $x\ge0$, study the pointwise convergence of $\displaystyle\sum_{n\ge1}\frac{x}{n(1+nx)}$.
+
+## Hint
+
+For $x>0$, the term is $\sim\frac{x}{n^2x}=\frac1{n^2}$; for $x=0$, every term is $0$.
+
+## Solution
+
+**Case $x=0$.** Every term is $\frac{0}{n(1+0)}=0$, so the series **converges** (to $0$).
+
+**Case $x>0$.** For $n\ge1$,
+$$\frac{x}{n(1+nx)}=\frac{1}{n}\cdot\frac{x}{1+nx}.$$
+Since $1+nx\ge nx$, we have $\frac{x}{1+nx}\le\frac{x}{nx}=\frac1n$, hence
+$$0\le\frac{x}{n(1+nx)}\le\frac{1}{n^2}.$$
+Since $\sum\frac{1}{n^2}$ converges (Riemann $\alpha=2$), the series **converges** for every $x>0$.
+
+**Conclusion.** The series converges pointwise on $[0,+\infty)$.
+
+**Remark.** The convergence is even normal on $[0,+\infty)$, since $\left|\frac{x}{n(1+nx)}\right|\le\frac{1}{n^2}$ uniformly in $x$. So the sum is a continuous function on $[0,+\infty)$.
+
+@@@ logarithmic-sum-constant.md
+---
+title: A series related to the Euler–Mascheroni constant
+category: calculus/single-variable/series
+level: m1
+difficulty: 4
+tags: Euler–Mascheroni constant, harmonic series, telescoping, logarithm
+date: 2026-11-02
+---
+
+## Statement
+
+Show that the series $\displaystyle\sum_{n\ge1}\left(\frac1n-\ln\left(1+\frac1n\right)\right)$ converges, and identify its sum.
+
+## Hint
+
+Use $\ln\left(1+\frac1n\right)=\frac1n-\frac{1}{2n^2}+O\left(\frac{1}{n^3}\right)$. For the sum, use the telescoping identity involving $H_N-\ln(N+1)$.
+
+## Solution
+
+**Convergence.** As $n\to+\infty$,
+$$\ln\left(1+\frac1n\right)=\frac1n-\frac{1}{2n^2}+O\left(\frac{1}{n^3}\right),$$
+hence
+$$\frac1n-\ln\left(1+\frac1n\right)=\frac{1}{2n^2}+O\left(\frac{1}{n^3}\right)\sim\frac{1}{2n^2}.$$
+Since $\sum\frac{1}{n^2}$ converges, the series **converges**.
+
+**Sum.** Let $H_N=\sum_{n=1}^{N}\frac1n$ be the $N$-th harmonic number. Then
+$$\sum_{n=1}^{N}\left(\frac1n-\ln\left(1+\frac1n\right)\right)=H_N-\sum_{n=1}^{N}\ln\left(\frac{n+1}{n}\right)=H_N-\ln(N+1),$$
+because the logarithms telescope: $\sum_{n=1}^{N}\ln\left(\frac{n+1}{n}\right)=\ln(N+1)$.
+
+**Limit.** By definition of the Euler–Mascheroni constant,
+$$\gamma=\lim_{N\to+\infty}(H_N-\ln N)\approx0.5772.$$
+Since $\ln(N+1)-\ln N=\ln\left(1+\frac1N\right)\to0$, we also have $H_N-\ln(N+1)\to\gamma$.
+
+**Conclusion.**
+$$\boxed{\sum_{n=1}^{+\infty}\left(\frac1n-\ln\left(1+\frac1n\right)\right)=\gamma.}$$
+
+@@@ arctangent-telescoping.md
+---
+title: An arctangent telescoping series
+category: calculus/single-variable/series
+level: olympiad
+difficulty: 4
+tags: telescoping, arctangent, subtraction formula
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\displaystyle\sum_{n=0}^{+\infty}\arctan\frac{1}{n^2+n+1}$.
+
+## Hint
+
+$\frac{1}{n^2+n+1}=\frac{(n+1)-n}{1+n(n+1)}$, and $\arctan a-\arctan b=\arctan\frac{a-b}{1+ab}$.
+
+## Solution
+
+**Key identity.** For $a,b\ge0$ with $ab<1$ (or more generally when $a-b$ and $1+ab$ have the right signs),
+$$\arctan a-\arctan b=\arctan\frac{a-b}{1+ab}.$$
+Here we apply it with $a=n+1$ and $b=n$, both nonnegative:
+$$\frac{a-b}{1+ab}=\frac{1}{1+n(n+1)}=\frac{1}{n^2+n+1}.$$
+Hence
+$$\arctan\frac{1}{n^2+n+1}=\arctan(n+1)-\arctan n.$$
+
+**Telescoping.** The partial sum is
+$$S_N=\sum_{n=0}^{N}\left(\arctan(n+1)-\arctan n\right)=\arctan(N+1)-\arctan0=\arctan(N+1).$$
+
+**Limit.** As $N\to+\infty$, $\arctan(N+1)\to\frac{\pi}{2}$. Therefore
+$$\boxed{\sum_{n=0}^{+\infty}\arctan\frac{1}{n^2+n+1}=\frac{\pi}{2}.}$$
+
+@@@ zeta-type-telescoping.md
+---
+title: A zeta-type telescoping sum
+category: calculus/single-variable/series
+level: olympiad
+difficulty: 3
+tags: telescoping, partial fractions, zeta function
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\displaystyle\sum_{n=2}^{+\infty}\frac{1}{n^2-1}$ and deduce that $\displaystyle\sum_{n=1}^{+\infty}\frac{1}{n^2}$ is finite (without computing it).
+
+## Hint
+
+$\frac{1}{n^2-1}=\frac12\left(\frac{1}{n-1}-\frac{1}{n+1}\right)$.
+
+## Solution
+
+**Partial fractions.**
+$$\frac{1}{n^2-1}=\frac{1}{(n-1)(n+1)}=\frac12\left(\frac{1}{n-1}-\frac{1}{n+1}\right).$$
+
+**Partial sums.** For $N\ge3$,
+$$S_N=\sum_{n=2}^{N}\frac{1}{n^2-1}=\frac12\sum_{n=2}^{N}\left(\frac{1}{n-1}-\frac{1}{n+1}\right).$$
+The terms telescope with a step of $2$: the surviving terms are $\frac11+\frac12-\frac1N-\frac{1}{N+1}$. Hence
+$$S_N=\frac12\left(1+\frac12-\frac1N-\frac1{N+1}\right).$$
+
+**Limit.** As $N\to+\infty$, $\frac1N\to0$ and $\frac{1}{N+1}\to0$, so
+$$\boxed{\sum_{n=2}^{+\infty}\frac{1}{n^2-1}=\frac12\cdot\frac32=\frac34.}$$
+
+**Consequence for $\zeta(2)$.** For $n\ge2$, we have $n^2-1<n^2$, so $\frac{1}{n^2}<\frac{1}{n^2-1}$. Hence
+$$\sum_{n=1}^{+\infty}\frac{1}{n^2}=1+\sum_{n=2}^{+\infty}\frac{1}{n^2}<1+\frac34=\frac74.$$
+The partial sums are increasing and bounded above by $\frac74$, so the series $\sum\frac{1}{n^2}$ **converges**. (Its value is $\frac{\pi^2}{6}\approx1.6449$, a famous result of Euler.)
+
+@@@ integral-comparison-riemann.md
+---
+title: Comparing a series with an integral
+category: calculus/single-variable/series
+level: olympiad
+difficulty: 4
+tags: integral comparison, Riemann sum, harmonic series, logarithm
+date: 2026-11-02
+---
+
+## Statement
+
+For $n\ge1$, let $H_n=\sum_{k=1}^{n}\frac1k$. Show that
+$$\ln(n+1)\le H_n\le1+\ln n.$$
+Deduce the behaviour of $H_n$ as $n\to+\infty$.
+
+## Hint
+
+Compare $\frac1k$ with the integrals $\int_k^{k+1}\frac{dx}{x}$ and $\int_{k-1}^{k}\frac{dx}{x}$.
+
+## Solution
+
+**Lower bound.** For $x\in[k,k+1]$, we have $\frac1x\le\frac1k$, so
+$$\int_k^{k+1}\frac{dx}{x}\le\frac1k.$$
+Summing from $k=1$ to $n$:
+$$\int_1^{n+1}\frac{dx}{x}\le\sum_{k=1}^{n}\frac1k=H_n,$$
+i.e. $\ln(n+1)\le H_n$.
+
+**Upper bound.** For $x\in[k-1,k]$ (with $k\ge2$), we have $\frac1x\ge\frac1k$, so
+$$\frac1k\le\int_{k-1}^{k}\frac{dx}{x}.$$
+For $k=1$, we simply bound $\frac11=1$. Summing:
+$$H_n=1+\sum_{k=2}^{n}\frac1k\le1+\int_1^{n}\frac{dx}{x}=1+\ln n.$$
+
+**Conclusion.** We have
+$$\ln(n+1)\le H_n\le1+\ln n.$$
+Since $\ln(n+1)\to+\infty$, the harmonic series **diverges**, and $H_n\sim\ln n$. More precisely, $H_n-\ln n\to\gamma$ (the Euler–Mascheroni constant).
+
+@@@ accelerated-harmonic-subseries.md
+---
+title: An accelerated harmonic subseries
+category: calculus/single-variable/series
+level: olympiad
+difficulty: 5
+tags: subseries, harmonic series, divergence, blocks
+date: 2026-11-02
+---
+
+## Statement
+
+Show that the series
+$$\sum_{n\ge1}\frac{1}{n}$$
+restricted to the integers $n$ whose decimal expansion contains no digit $9$ converges, while the full harmonic series diverges.
+
+## Hint
+
+Count how many integers with $k$ digits contain no digit $9$, and bound the sum over that block.
+
+## Solution
+
+**Counting.** Among the $k$-digit integers (from $10^{k-1}$ to $10^k-1$), those whose decimal expansion contains no digit $9$ are formed by choosing the first digit among $1,\ldots,8$ (8 choices) and each of the remaining $k-1$ digits among $0,\ldots,8$ (9 choices each). So there are $8\cdot9^{k-1}$ such integers.
+
+**Bounding the block.** Every $k$-digit integer is $\ge10^{k-1}$, so for each such integer $n$,
+$$\frac1n\le\frac{1}{10^{k-1}}.$$
+The sum over the $k$-digit integers without digit $9$ is therefore at most
+$$8\cdot9^{k-1}\cdot\frac{1}{10^{k-1}}=8\left(\frac{9}{10}\right)^{k-1}.$$
+
+**Summing over blocks.** The total sum $S$ over all integers without digit $9$ satisfies
+$$S\le\sum_{k\ge1}8\left(\frac{9}{10}\right)^{k-1}=8\cdot\frac{1}{1-9/10}=80.$$
+So the restricted series **converges**.
+
+**Contrast.** The full harmonic series diverges (by comparison with $\ln n$). So removing the integers that contain a $9$ is enough to make the series converge: the "density" of integers without a $9$ decays exponentially in the number of digits, which kills the harmonic divergence.
+
+**Remark.** The same argument works with any forbidden digit, or with any finite set of forbidden digits. This is a classical illustration of the subtlety of the harmonic series: even a very sparse subseries can diverge or converge depending on the density of the selected indices.
