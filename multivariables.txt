@@ -1,0 +1,649 @@
+@@@ partial-derivatives-basic.md
+---
+title: Partial derivatives and the gradient
+category: multivariable/partial-derivatives
+level: l1
+difficulty: 2
+tags: partial derivatives, gradient, chain rule
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f(x,y) = x^2 y + e^{xy}$. Compute the partial derivatives $\frac{\partial f}{\partial x}$ and $\frac{\partial f}{\partial y}$, then the gradient $\nabla f(1,0)$.
+
+## Hint
+
+Differentiate with respect to $x$ treating $y$ as a constant, and vice versa.
+
+## Solution
+
+**Partial derivative in $x$.**
+$$\frac{\partial f}{\partial x} = 2xy + y e^{xy}.$$
+
+**Partial derivative in $y$.**
+$$\frac{\partial f}{\partial y} = x^2 + x e^{xy}.$$
+
+**Gradient at $(1,0)$.** With $x=1, y=0$:
+$$\frac{\partial f}{\partial x}(1,0) = 0 + 0 \cdot e^0 = 0, \qquad \frac{\partial f}{\partial y}(1,0) = 1 + 1 \cdot e^0 = 2.$$
+Hence
+$$\nabla f(1,0) = (0, 2).$$
+
+**Remark.** The gradient points in the direction of steepest increase of $f$ at the given point.
+
+@@@ partial-derivatives-chain-rule.md
+---
+title: The chain rule for a composition
+category: multivariable/partial-derivatives
+level: l2
+difficulty: 3
+tags: chain rule, composition, directional derivative
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f(x,y) = x^2 y$ and $\gamma(t) = (\cos t, \sin t)$. Compute $\frac{d}{dt} f(\gamma(t))$ in two ways: by direct composition, then by the chain rule.
+
+## Hint
+
+The chain rule gives $\frac{d}{dt}f(\gamma(t)) = \nabla f(\gamma(t)) \cdot \gamma'(t)$.
+
+## Solution
+
+**Method 1: direct composition.**
+$$f(\gamma(t)) = \cos^2 t \cdot \sin t.$$
+Differentiating:
+$$\frac{d}{dt}(\cos^2 t \sin t) = 2\cos t (-\sin t)\sin t + \cos^2 t \cos t = -2\cos t \sin^2 t + \cos^3 t.$$
+
+**Method 2: chain rule.**
+$$\nabla f(x,y) = (2xy, x^2), \qquad \gamma'(t) = (-\sin t, \cos t).$$
+Hence
+$$\frac{d}{dt}f(\gamma(t)) = 2\cos t \sin t \cdot (-\sin t) + \cos^2 t \cdot \cos t = -2\cos t \sin^2 t + \cos^3 t.$$
+
+**Conclusion.** Both methods give the same result, illustrating the chain rule.
+
+@@@ partial-derivatives-c1-check.md
+---
+title: Is a function $C^1$ on $\mathbb{R}^2$?
+category: multivariable/partial-derivatives
+level: l2
+difficulty: 4
+tags: continuity, partial derivatives, class C1
+date: 2026-11-02
+---
+
+## Statement
+
+Let
+$$f(x,y) = \begin{cases} \dfrac{x^3 y}{x^2+y^2} & \text{if } (x,y) \neq (0,0), \\[2mm] 0 & \text{if } (x,y) = (0,0). \end{cases}$$
+Show that $f$ is of class $C^1$ on $\mathbb{R}^2$.
+
+## Hint
+
+Compute the partial derivatives on $\mathbb{R}^2 \setminus \{(0,0)\}$, then study their continuity at $(0,0)$ by bounding with $\|(x,y)\|$.
+
+## Solution
+
+**Partial derivatives away from the origin.** For $(x,y) \neq (0,0)$,
+$$\frac{\partial f}{\partial x} = \frac{(3x^2 y)(x^2+y^2) - (x^3 y)(2x)}{(x^2+y^2)^2} = \frac{x^2 y(x^2+3y^2)}{(x^2+y^2)^2}.$$
+Similarly,
+$$\frac{\partial f}{\partial y} = \frac{x^3(x^2+y^2) - x^3 y(2y)}{(x^2+y^2)^2} = \frac{x^3(x^2-y^2)}{(x^2+y^2)^2}.$$
+
+**Partial derivatives at $(0,0)$.** By definition,
+$$\frac{\partial f}{\partial x}(0,0) = \lim_{h\to0} \frac{f(h,0)-f(0,0)}{h} = \lim_{h\to0} \frac{0}{h} = 0.$$
+Similarly, $\frac{\partial f}{\partial y}(0,0) = 0$.
+
+**Continuity at $(0,0)$.** Using $|x| \le \|(x,y)\|$ and $|y| \le \|(x,y)\|$,
+$$\left|\frac{\partial f}{\partial x}(x,y)\right| \le \frac{\|(x,y)\|^3 \cdot \|(x,y)\| \cdot 4\|(x,y)\|^2}{\|(x,y)\|^4} = 4\|(x,y)\| \to 0.$$
+So $\frac{\partial f}{\partial x}$ is continuous at $(0,0)$, and similarly for $\frac{\partial f}{\partial y}$.
+
+**Conclusion.** The partial derivatives exist and are continuous on $\mathbb{R}^2$, so $f$ is $C^1$.
+
+@@@ partial-derivatives-jacobian.md
+---
+title: Jacobian matrix of a map
+category: multivariable/partial-derivatives
+level: l2
+difficulty: 3
+tags: Jacobian matrix, differential, vector-valued map
+date: 2026-11-02
+---
+
+## Statement
+
+Let $F: \mathbb{R}^2 \to \mathbb{R}^3$ be defined by
+$$F(x,y) = (x \cos y, \sin x, x^2 y).$$
+Compute the Jacobian matrix $J_F(x,y)$.
+
+## Hint
+
+The Jacobian matrix has as columns the partial derivatives of $F$ with respect to $x$ and $y$.
+
+## Solution
+
+**Partial derivatives.**
+$$\frac{\partial F}{\partial x} = (\cos y, \cos x, 2xy), \qquad \frac{\partial F}{\partial y} = (-x \sin y, 0, x^2).$$
+
+**Jacobian matrix.**
+$$J_F(x,y) = \begin{pmatrix} \cos y & -x \sin y \\ \cos x & 0 \\ 2xy & x^2 \end{pmatrix}.$$
+
+**Remark.** This matrix represents the differential of $F$ at $(x,y)$ in the canonical bases.
+
+@@@ multiple-integrals-rectangle.md
+---
+title: Double integral over a triangular domain
+category: multivariable/multiple-integrals
+level: l1
+difficulty: 2
+tags: double integral, iterated integration, triangular domain
+date: 2026-11-02
+---
+
+## Statement
+
+Let $D = \{(x,y) \in \mathbb{R}^2 : x \ge 0, y \ge 0, x+y \le 1\}$. Compute
+$$\iint_D (x^2 + y^2) \, dx \, dy.$$
+
+## Hint
+
+Integrate first in $y$ for fixed $x$, with $0 \le y \le 1-x$, then in $x$ on $[0,1]$.
+
+## Solution
+
+**Setup.**
+$$\iint_D (x^2+y^2) \, dx \, dy = \int_0^1 \left( \int_0^{1-x} (x^2+y^2) \, dy \right) dx.$$
+
+**Integration in $y$.**
+$$\int_0^{1-x} (x^2+y^2) \, dy = x^2(1-x) + \frac{(1-x)^3}{3}.$$
+
+**Integration in $x$.**
+$$\int_0^1 \left( x^2(1-x) + \frac{(1-x)^3}{3} \right) dx = \left[ \frac{x^3}{3} - \frac{x^4}{4} - \frac{(1-x)^4}{12} \right]_0^1.$$
+At $x=1$: $\frac13 - \frac14 - 0 = \frac{1}{12}$. At $x=0$: $0 - 0 - \frac{1}{12} = -\frac{1}{12}$. Hence
+$$\iint_D (x^2+y^2) \, dx \, dy = \frac{1}{12} - \left(-\frac{1}{12}\right) = \frac16.$$
+
+**Remark.** This is consistent with the area of the triangle ($1/2$) and the symmetry of the domain.
+
+@@@ multiple-integrals-polar.md
+---
+title: Double integral in polar coordinates
+category: multivariable/multiple-integrals
+level: l2
+difficulty: 3
+tags: polar coordinates, double integral, Jacobian
+date: 2026-11-02
+---
+
+## Statement
+
+Compute
+$$\iint_D e^{-(x^2+y^2)} \, dx \, dy$$
+where $D = \{(x,y) : x^2+y^2 \le 1\}$.
+
+## Hint
+
+Switch to polar coordinates: $x = r\cos\theta$, $y = r\sin\theta$, $dx\,dy = r\,dr\,d\theta$.
+
+## Solution
+
+**Change of variables.**
+$$x = r\cos\theta, \quad y = r\sin\theta, \quad dx\,dy = r\,dr\,d\theta.$$
+The domain becomes $0 \le r \le 1$, $0 \le \theta \le 2\pi$.
+
+**Computation.**
+$$\iint_D e^{-(x^2+y^2)} \, dx \, dy = \int_0^{2\pi} \int_0^1 e^{-r^2} r \, dr \, d\theta.$$
+The $r$-integral:
+$$\int_0^1 r e^{-r^2} \, dr = \left[ -\frac12 e^{-r^2} \right]_0^1 = \frac12(1-e^{-1}).$$
+Hence
+$$\iint_D e^{-(x^2+y^2)} \, dx \, dy = 2\pi \cdot \frac12(1-e^{-1}) = \pi(1-e^{-1}).$$
+
+**Remark.** This computation is the basis for proving $\int_{-\infty}^{+\infty} e^{-x^2}dx = \sqrt{\pi}$.
+
+@@@ multiple-integrals-triple.md
+---
+title: Triple integral over a simplex
+category: multivariable/multiple-integrals
+level: l2
+difficulty: 3
+tags: triple integral, iterated integration, simplex
+date: 2026-11-02
+---
+
+## Statement
+
+Compute
+$$I = \iiint_D x \, dx \, dy \, dz$$
+where $D = \{(x,y,z) : x>0, y>0, z>0, x+y+z<1\}$.
+
+## Hint
+
+Integrate first in $z$ for fixed $(x,y)$, with $0 < z < 1-x-y$, then in $y$ and $x$.
+
+## Solution
+
+**Setup.**
+$$I = \int_0^1 \int_0^{1-x} \int_0^{1-x-y} x \, dz \, dy \, dx.$$
+
+**Integration in $z$.**
+$$\int_0^{1-x-y} x \, dz = x(1-x-y).$$
+
+**Integration in $y$.**
+$$\int_0^{1-x} x(1-x-y) \, dy = x\left[ (1-x)y - \frac{y^2}{2} \right]_0^{1-x} = x \cdot \frac{(1-x)^2}{2}.$$
+
+**Integration in $x$.**
+$$I = \frac12 \int_0^1 x(1-x)^2 \, dx = \frac12 \int_0^1 (x - 2x^2 + x^3) \, dx = \frac12 \left( \frac12 - \frac23 + \frac14 \right) = \frac12 \cdot \frac{1}{12} = \frac{1}{24}.$$
+
+**Remark.** The volume of the simplex is $1/6$, and the mean $x$-coordinate is $1/4$, consistent by symmetry.
+
+@@@ multiple-integrals-change-variables.md
+---
+title: Affine change of variables
+category: multivariable/multiple-integrals
+level: l2
+difficulty: 4
+tags: change of variables, Jacobian, parallelogram
+date: 2026-11-02
+---
+
+## Statement
+
+Compute the area of the parallelogram $P$ bounded by the lines $y = 3x$, $y = x$, $y = 3x - 1$ and $y = x + 4$, using a change of variables.
+
+## Hint
+
+Set $u = y - x$ and $v = 3x - y$. Determine the image domain and the Jacobian.
+
+## Solution
+
+**Change of variables.** Set
+$$u = y - x, \quad v = 3x - y.$$
+The lines become $u = 0$, $u = 4$, $v = 0$, $v = 1$. The image domain is the rectangle $T = [0,4] \times [0,1]$.
+
+**Jacobian.** The determinant of the Jacobian matrix of $(x,y) \mapsto (u,v)$ is
+$$\det \begin{pmatrix} -1 & 1 \\ 3 & -1 \end{pmatrix} = 1 - 3 = -2.$$
+So $|J| = 2$, and $dx\,dy = \frac{1}{2} du\,dv$.
+
+**Area.**
+$$\text{Area}(P) = \iint_P dx\,dy = \iint_T \frac12 \, du\,dv = \frac12 \cdot 4 \cdot 1 = 2.$$
+
+**Remark.** One can check geometrically that the parallelogram has base of length $\sqrt{2}$ and height $\sqrt{2}$, hence area $2$.
+
+@@@ vector-calculus-line-integral.md
+---
+title: Line integral of a differential form
+category: multivariable/vector-calculus
+level: l2
+difficulty: 3
+tags: line integral, differential form, parametrization
+date: 2026-11-02
+---
+
+## Statement
+
+Compute the line integral of $\omega = (x+y)dx + (x-y)dy$ along the segment from $A(0,0)$ to $B(1,1)$.
+
+## Hint
+
+Parametrize the segment: $\gamma(t) = (t,t)$ for $t \in [0,1]$.
+
+## Solution
+
+**Parametrization.** $\gamma(t) = (t,t)$, $\gamma'(t) = (1,1)$, $t \in [0,1]$.
+
+**Substitution.**
+$$\int_\gamma \omega = \int_0^1 \left[ (t+t)\cdot 1 + (t-t)\cdot 1 \right] dt = \int_0^1 2t \, dt = [t^2]_0^1 = 1.$$
+
+**Remark.** If $\omega$ were exact, the integral would depend only on the endpoints. Here, $\omega$ is closed since $\frac{\partial}{\partial y}(x+y) = 1 = \frac{\partial}{\partial x}(x-y)$, and the domain is simply connected, so $\omega$ is exact. A primitive is $F(x,y) = \frac{x^2}{2} + xy - \frac{y^2}{2}$, giving $F(1,1)-F(0,0) = \frac12 + 1 - \frac12 = 1$.
+
+@@@ vector-calculus-green.md
+---
+title: Green-Riemann formula
+category: multivariable/vector-calculus
+level: l3
+difficulty: 4
+tags: Green-Riemann, line integral, double integral
+date: 2026-11-02
+---
+
+## Statement
+
+Let $C$ be the unit circle oriented counterclockwise. Compute
+$$\int_C (x^2 - y)dx + (y^2 + x)dy$$
+using the Green-Riemann formula.
+
+## Hint
+
+Apply Green-Riemann: $\int_C Pdx + Qdy = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dx\,dy$.
+
+## Solution
+
+**Identification.** $P(x,y) = x^2 - y$, $Q(x,y) = y^2 + x$.
+
+**Partial derivatives.**
+$$\frac{\partial Q}{\partial x} = 1, \qquad \frac{\partial P}{\partial y} = -1.$$
+Hence
+$$\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 1 - (-1) = 2.$$
+
+**Green-Riemann.**
+$$\int_C Pdx + Qdy = \iint_D 2 \, dx\,dy = 2 \cdot \text{Area}(D) = 2\pi.$$
+
+**Remark.** One can also compute directly by parametrizing the circle, but Green-Riemann avoids trigonometric computation.
+
+@@@ vector-calculus-divergence.md
+---
+title: Divergence theorem (Ostrogradsky)
+category: multivariable/vector-calculus
+level: l3
+difficulty: 4
+tags: divergence theorem, flux, surface
+date: 2026-11-02
+---
+
+## Statement
+
+Let $S$ be the sphere of radius $R$ centered at the origin, oriented outward. Compute the flux of the field $F(x,y,z) = (x,y,z)$ through $S$.
+
+## Hint
+
+Apply the divergence theorem: $\iint_S F \cdot n \, dS = \iiint_V \operatorname{div} F \, dV$.
+
+## Solution
+
+**Divergence.**
+$$\operatorname{div} F = \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y} + \frac{\partial z}{\partial z} = 3.$$
+
+**Divergence theorem.**
+$$\iint_S F \cdot n \, dS = \iiint_V 3 \, dV = 3 \cdot \frac43 \pi R^3 = 4\pi R^3.$$
+
+**Remark.** This result is also the product of the area of the sphere ($4\pi R^2$) and the mean normal component of the field ($R$), giving $4\pi R^3$.
+
+@@@ vector-calculus-stokes.md
+---
+title: Stokes' theorem
+category: multivariable/vector-calculus
+level: l3
+difficulty: 4
+tags: Stokes, curl, surface integral
+date: 2026-11-02
+---
+
+## Statement
+
+Let $S$ be the planar surface $z = 0$ bounded by the circle $x^2+y^2 = 1$, and $C$ its oriented boundary. Compute $\int_C F \cdot dr$ for $F(x,y,z) = (-y, x, 0)$.
+
+## Hint
+
+Apply Stokes: $\int_C F \cdot dr = \iint_S (\nabla \times F) \cdot n \, dS$.
+
+## Solution
+
+**Curl.**
+$$\nabla \times F = \left( \frac{\partial}{\partial y}(0) - \frac{\partial}{\partial z}(x), \frac{\partial}{\partial z}(-y) - \frac{\partial}{\partial x}(0), \frac{\partial}{\partial x}(x) - \frac{\partial}{\partial y}(-y) \right) = (0, 0, 2).$$
+
+**Normal.** $n = (0,0,1)$ for the upward-oriented surface.
+
+**Stokes.**
+$$\int_C F \cdot dr = \iint_S 2 \, dS = 2 \cdot \text{Area}(S) = 2\pi.$$
+
+**Remark.** Directly, $F$ along the unit circle is $(-y,x,0)$, and $\int_C (-y dx + x dy) = \int_0^{2\pi} (\sin^2 t + \cos^2 t)dt = 2\pi$, confirming the result.
+
+@@@ constrained-optimisation-lagrange-basic.md
+---
+title: Lagrange multipliers on a circle
+category: multivariable/constrained-optimisation
+level: l2
+difficulty: 3
+tags: Lagrange, multipliers, equality constraint
+date: 2026-11-02
+---
+
+## Statement
+
+Find the extrema of $f(x,y) = 3x - y$ under the constraint $x^2 + y^2 = 5$.
+
+## Hint
+
+Apply Lagrange: $\nabla f = \lambda \nabla g$ with $g(x,y) = x^2+y^2-5$.
+
+## Solution
+
+**Lagrange system.**
+$$\begin{cases} 3 = 2\lambda x \\ -1 = 2\lambda y \\ x^2 + y^2 = 5 \end{cases}$$
+
+**Resolution.** From the first two equations, $x = \frac{3}{2\lambda}$ and $y = -\frac{1}{2\lambda}$, so $y = -\frac{x}{3}$. Substituting into the constraint:
+$$x^2 + \frac{x^2}{9} = 5 \implies \frac{10x^2}{9} = 5 \implies x^2 = \frac{9}{2} \implies x = \pm \frac{3}{\sqrt{2}}.$$
+The critical points are $\left(\frac{3}{\sqrt2}, -\frac{1}{\sqrt2}\right)$ and $\left(-\frac{3}{\sqrt2}, \frac{1}{\sqrt2}\right)$.
+
+**Evaluation.**
+$$f\left(\frac{3}{\sqrt2}, -\frac{1}{\sqrt2}\right) = \frac{9}{\sqrt2} + \frac{1}{\sqrt2} = \frac{10}{\sqrt2} = 5\sqrt2.$$
+$$f\left(-\frac{3}{\sqrt2}, \frac{1}{\sqrt2}\right) = -\frac{9}{\sqrt2} - \frac{1}{\sqrt2} = -5\sqrt2.$$
+
+**Conclusion.** Global maximum $5\sqrt2$ at the first point, global minimum $-5\sqrt2$ at the second. The constraint is a compact circle, so the extrema exist and are attained at these points.
+
+@@@ constrained-optimisation-lagrange-compact.md
+---
+title: Constrained extrema and a compactness argument
+category: multivariable/constrained-optimisation
+level: l3
+difficulty: 4
+tags: Lagrange, compactness, global maximum
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f(x,y) = e^{axy}$ with $a>0$, under the constraint $g(x,y) = x^3 + y^3 + x + y - 4 = 0$. Show that $f$ has a global maximum at $(1,1)$.
+
+## Hint
+
+Apply Lagrange to identify the only possible critical point, then use a compactness argument and the behaviour at infinity.
+
+## Solution
+
+**Lagrange system.**
+$$\frac{\partial f}{\partial x} = ay e^{axy}, \quad \frac{\partial g}{\partial x} = 3x^2+1,$$
+$$\frac{\partial f}{\partial y} = ax e^{axy}, \quad \frac{\partial g}{\partial y} = 3y^2+1.$$
+The condition $\nabla f = \lambda \nabla g$ gives
+$$\frac{ay e^{axy}}{3x^2+1} = \frac{ax e^{axy}}{3y^2+1}.$$
+Simplifying by $a e^{axy} > 0$:
+$$\frac{y}{3x^2+1} = \frac{x}{3y^2+1} \implies y(3y^2+1) = x(3x^2+1).$$
+The function $t \mapsto 3t^3+t$ is strictly increasing, so $x = y$.
+
+**Critical point.** Substituting $x=y$ into the constraint:
+$$2x^3 + 2x - 4 = 0 \implies x^3 + x - 2 = 0.$$
+The only real root is $x=1$ (since $x^3+x-2 = (x-1)(x^2+x+2)$ and the discriminant of $x^2+x+2$ is negative). So the only possible critical point is $(1,1)$.
+
+**Compactness argument.** On the curve $G$, if $\|(x,y)\| \to +\infty$, then $x$ and $y$ have opposite signs (since $x^3+y^3$ must stay bounded), so $axy \to -\infty$ and $f(x,y) \to 0$. The function $f$ is continuous on $G$ (which is closed), and $f(1,1) = e^a > 0$. Hence $f$ attains its maximum on a compact set, and this maximum cannot be at infinity (where $f \to 0$). The only candidate is $(1,1)$, so it is the global maximum.
+
+@@@ constrained-optimisation-lagrange-rectangle.md
+---
+title: Optimisation under a linear constraint
+category: multivariable/constrained-optimisation
+level: l2
+difficulty: 3
+tags: Lagrange, linear constraint, minimum
+date: 2026-11-02
+---
+
+## Statement
+
+Minimize $f(x,y) = x^2 + y^2$ under the constraint $x + 2y = 5$.
+
+## Hint
+
+Lagrange with $g(x,y) = x+2y-5$. The Lagrangian $L = x^2+y^2 - \lambda(x+2y-5)$ is convex, so the critical point is a global minimum.
+
+## Solution
+
+**Lagrange system.**
+$$\begin{cases} 2x = \lambda \\ 2y = 2\lambda \\ x + 2y = 5 \end{cases}$$
+
+**Resolution.** From the first equation, $\lambda = 2x$. From the second, $2y = 4x$, so $y = 2x$. Substituting into the constraint:
+$$x + 4x = 5 \implies 5x = 5 \implies x = 1, \quad y = 2.$$
+
+**Conclusion.** The minimum is at $(1,2)$, with $f(1,2) = 1 + 4 = 5$. It is indeed a global minimum because the Lagrangian is convex (sum of squares and a linear form).
+
+@@@ constrained-optimisation-lagrange-produit.md
+---
+title: Maximizing a product under a linear constraint
+category: multivariable/constrained-optimisation
+level: l3
+difficulty: 4
+tags: Lagrange, product, linear constraint
+date: 2026-11-02
+---
+
+## Statement
+
+Maximize $f(x,y) = (xy)^a$ for $x,y \ge 0$ and $a>0$, under the constraint $2x + 3y = 12$.
+
+## Hint
+
+Apply Lagrange on the open set $x,y > 0$, then check the boundary.
+
+## Solution
+
+**Lagrange.**
+$$\begin{cases} a x^{a-1} y^a = 2\lambda \\ a x^a y^{a-1} = 3\lambda \\ 2x + 3y = 12 \end{cases}$$
+
+**Resolution.** Dividing the first equation by the second:
+$$\frac{y}{x} = \frac{2}{3} \implies 3y = 2x.$$
+Substituting into the constraint:
+$$2x + 2x = 12 \implies 4x = 12 \implies x = 3, \quad y = 2.$$
+
+**Boundary check.** On the boundary $x=0$ or $y=0$, $f = 0$. At $(3,2)$, $f = 6^a > 0$. Hence this is the global maximum.
+
+@@@ constrained-optimisation-least-squares.md
+---
+title: Least squares as an optimisation problem
+category: multivariable/constrained-optimisation
+level: l3
+difficulty: 4
+tags: least squares, optimisation, regression
+date: 2026-11-02
+---
+
+## Statement
+
+Let $(x_1,y_1),\ldots,(x_n,y_n)$ be points. Minimize
+$$F(m,p) = \sum_{k=1}^n (y_k - m x_k - p)^2$$
+over $\mathbb{R}^2$.
+
+## Hint
+
+Compute the partial derivatives $\frac{\partial F}{\partial m}$ and $\frac{\partial F}{\partial p}$, set them to zero, and solve the system.
+
+## Solution
+
+**Partial derivatives.**
+$$\frac{\partial F}{\partial m} = -2 \sum_{k=1}^n x_k(y_k - m x_k - p) = 0,$$
+$$\frac{\partial F}{\partial p} = -2 \sum_{k=1}^n (y_k - m x_k - p) = 0.$$
+
+**Normal system.** Dividing by $-2$:
+$$\sum x_k y_k = m \sum x_k^2 + p \sum x_k, \qquad \sum y_k = m \sum x_k + n p.$$
+From the second equation, $p = \bar y - m \bar x$. Substituting into the first:
+$$\sum x_k y_k = m \sum x_k^2 + (\bar y - m \bar x) n \bar x = m \left( \sum x_k^2 - n \bar x^2 \right) + n \bar x \bar y.$$
+Hence
+$$m = \frac{\sum x_k y_k - n \bar x \bar y}{\sum x_k^2 - n \bar x^2} = \frac{\sum (x_k - \bar x)(y_k - \bar y)}{\sum (x_k - \bar x)^2}.$$
+This is the slope of the least-squares line.
+
+**Global minimum.** $F$ is a convex quadratic function (sum of squares of affine forms), so the critical point is a global minimum.
+
+@@@ constrained-optimisation-inequality-amgm.md
+---
+title: The AM-GM inequality via optimisation
+category: multivariable/constrained-optimisation
+level: olympiad
+difficulty: 5
+tags: inequality, AM-GM, optimisation, proof
+date: 2026-11-02
+---
+
+## Statement
+
+Using Lagrange multipliers, prove that for all $x_1,\ldots,x_n > 0$,
+$$\sqrt[n]{x_1 \cdots x_n} \le \frac{x_1 + \cdots + x_n}{n}.$$
+
+## Hint
+
+Maximize the product $P = x_1 \cdots x_n$ under the constraint $x_1 + \cdots + x_n = S$ fixed. The maximum is attained at $x_1 = \cdots = x_n = S/n$.
+
+## Solution
+
+**Lagrange.** Maximize $\ln P = \sum \ln x_i$ under the constraint $\sum x_i = S$. The system is
+$$\frac{1}{x_i} = \lambda \quad \text{for all } i.$$
+So all $x_i$ are equal to $1/\lambda$, and the constraint gives $x_i = S/n$ for all $i$.
+
+**Maximum.** At this point, $P = (S/n)^n$. Since the domain $x_i > 0$, $\sum x_i = S$ is bounded and the product tends to $0$ on the boundary (if some $x_i \to 0$), the maximum is indeed attained at this point.
+
+**Conclusion.** For all $x_i > 0$ with sum $S$,
+$$x_1 \cdots x_n \le \left(\frac{S}{n}\right)^n = \left(\frac{x_1+\cdots+x_n}{n}\right)^n.$$
+Taking the $n$-th root gives the AM-GM inequality.
+
+@@@ constrained-optimisation-eigenvalue.md
+---
+title: Rayleigh quotient and eigenvalues
+category: multivariable/constrained-optimisation
+level: olympiad
+difficulty: 5
+tags: Rayleigh quotient, eigenvalues, optimisation on the sphere
+date: 2026-11-02
+---
+
+## Statement
+
+Let $A$ be a real symmetric $n \times n$ matrix. Show that the maximum of
+$$R(x) = \frac{x^T A x}{x^T x}$$
+over $\mathbb{R}^n \setminus \{0\}$ is the largest eigenvalue of $A$, attained at an associated eigenvector.
+
+## Hint
+
+Apply Lagrange to $f(x) = x^T A x$ under the constraint $x^T x = 1$. The condition $\nabla f = \lambda \nabla g$ gives $Ax = \lambda x$.
+
+## Solution
+
+**Lagrange.** Maximize $f(x) = x^T A x$ under $g(x) = x^T x = 1$. The gradients are
+$$\nabla f = 2Ax, \qquad \nabla g = 2x.$$
+The condition $\nabla f = \lambda \nabla g$ gives
+$$Ax = \lambda x.$$
+So $x$ is an eigenvector of $A$ associated with the eigenvalue $\lambda$.
+
+**Value at a critical point.** If $Ax = \lambda x$, then
+$$f(x) = x^T A x = x^T (\lambda x) = \lambda x^T x = \lambda.$$
+So the maximum of $f$ on the sphere is the largest eigenvalue $\lambda_{\max}$.
+
+**Rayleigh quotient.** For $x \neq 0$, $R(x) = f(x/\|x\|)$, so the maximum of $R$ over $\mathbb{R}^n \setminus \{0\}$ is also $\lambda_{\max}$.
+
+**Conclusion.** The maximum is attained at a unit eigenvector associated with $\lambda_{\max}$.
+
+@@@ constrained-optimisation-cauchy-schwarz.md
+---
+title: Cauchy-Schwarz inequality via optimisation
+category: multivariable/constrained-optimisation
+level: olympiad
+difficulty: 4
+tags: Cauchy-Schwarz, optimisation, proof
+date: 2026-11-02
+---
+
+## Statement
+
+Prove the Cauchy-Schwarz inequality:
+$$|x \cdot y| \le \|x\| \, \|y\|$$
+for all $x,y \in \mathbb{R}^n$, using an optimisation method.
+
+## Hint
+
+For fixed nonzero $y$, maximize $f(x) = x \cdot y$ under the constraint $\|x\| = 1$. The maximum is $\|y\|$.
+
+## Solution
+
+**Lagrange.** Maximize $f(x) = \sum x_i y_i$ under $g(x) = \sum x_i^2 = 1$. The gradients are $\nabla f = y$ and $\nabla g = 2x$. The condition $\nabla f = \lambda \nabla g$ gives
+$$y = 2\lambda x \implies x = \frac{y}{2\lambda}.$$
+Imposing $\|x\| = 1$:
+$$\left\| \frac{y}{2\lambda} \right\| = 1 \implies |2\lambda| = \|y\| \implies x = \pm \frac{y}{\|y\|}.$$
+
+**Value.** At $x = y/\|y\|$, $f(x) = \frac{y \cdot y}{\|y\|} = \|y\|$. At $x = -y/\|y\|$, $f(x) = -\|y\|$. So the maximum is $\|y\|$, and the minimum is $-\|y\|$.
+
+**Conclusion.** For all $x$ with $\|x\|=1$, we have $|x \cdot y| \le \|y\|$. For arbitrary nonzero $x$, setting $u = x/\|x\|$ gives
+$$|x \cdot y| = \|x\| \, |u \cdot y| \le \|x\| \, \|y\|.$$
