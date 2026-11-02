@@ -1,0 +1,1041 @@
+@@@ tangent-line-to-a-cubic.md
+---
+title: Derivative and tangent line of a cubic
+category: calculus/single-variable/differentiation
+level: lycee
+difficulty: 1
+tags: derivative, tangent line, polynomials
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f(x)=5x^3+7x^2-4x+1$. Compute $f'(x)$ and find the equation of the tangent line to the graph of $f$ at the point with abscissa $a=2$.
+
+## Hint
+
+Use $(x^n)'=nx^{n-1}$ and the tangent line equation $y=f'(a)(x-a)+f(a)$.
+
+## Solution
+
+**Derivative.** Differentiating term by term, $f'(x)=15x^2+14x-4$.
+
+**At $a=2$.**
+$$f'(2)=60+28-4=84,\qquad f(2)=40+28-8+1=61.$$
+
+**Tangent line.** $y=84(x-2)+61$, that is
+$$y=84x-107.$$
+
+**Meaning.** Near $x=2$ the curve is almost indistinguishable from this line: $f(2+h)\approx61+84h$ for small $h$. Derivatives are, above all, slopes of best linear approximations.
+@@@ derivative-of-a-quotient.md
+---
+title: Derivative of a quotient
+category: calculus/single-variable/differentiation
+level: lycee
+difficulty: 1
+tags: derivative, quotient rule
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f(x)=\dfrac{1-x}{4+x}$. Compute $f'(x)$ and give its domain of definition.
+
+## Hint
+
+Use $\left(\dfrac uv\right)'=\dfrac{u'v-uv'}{v^2}$ with $u=1-x$ and $v=4+x$.
+
+## Solution
+
+We have $u'=-1$ and $v'=1$, so
+$$f'(x)=\frac{(-1)(4+x)-(1-x)(1)}{(4+x)^2}=\frac{-4-x-1+x}{(4+x)^2}=\frac{-5}{(4+x)^2}.$$
+The function $f$ is defined on $\mathbb{R}\setminus\{-4\}$, and $f'$ is defined on the same set.
+
+**Remark.** Since $f'<0$ everywhere on its domain, $f$ is decreasing on each of the intervals $(-\infty,-4)$ and $(-4,+\infty)$. Be careful: it is *not* decreasing on the union, as $f(-5)=-6$ is smaller than $f(0)=\frac14$.
+@@@ tangent-lines-through-an-external-point.md
+---
+title: Tangent lines through an external point
+category: calculus/single-variable/differentiation
+level: lycee
+difficulty: 2
+tags: tangent line, parabola, geometry
+date: 2026-11-02
+---
+
+## Statement
+
+Find all tangent lines to the parabola $y=x^2$ that pass through the point $A=(1,-3)$.
+
+## Hint
+
+Write the tangent at an unknown abscissa $a$, then require that it passes through $A$. The unknown is $a$, not the slope.
+
+## Solution
+
+**Tangent at $a$.** For $f(x)=x^2$, $f'(a)=2a$, so the tangent at the point of abscissa $a$ is
+$$y=a^2+2a(x-a)=2ax-a^2.$$
+
+**Passing through $A$.** We need $-3=2a-a^2$, that is $a^2-2a-3=0$, i.e. $(a-3)(a+1)=0$. Hence $a=3$ or $a=-1$.
+
+**The two tangents.**
+- $a=3$: $y=6x-9$,
+- $a=-1$: $y=-2x-1$.
+
+**Check.** At $x=1$: $6-9=-3$ and $-2-1=-3$.
+
+**Remark.** The point $A$ lies below the parabola, outside the "bowl", and two tangents can be drawn from it. From a point inside the bowl, there would be none, and from a point on the curve there is exactly one.
+@@@ differentiability-and-gluing-two-pieces.md
+---
+title: Differentiability when gluing two pieces
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 2
+tags: differentiability, piecewise functions, one-sided derivatives
+date: 2026-11-02
+---
+
+## Statement
+
+Find $\alpha,\beta\in\mathbb{R}$ such that
+$$f(x)=\begin{cases}x^2-x+3&\text{if }x\le1,\\ \alpha x+\beta&\text{if }x>1\end{cases}$$
+is differentiable on all of $\mathbb{R}$.
+
+## Hint
+
+Differentiability at $1$ requires first continuity at $1$, then equality of the left and right derivatives.
+
+## Solution
+
+**Continuity at $1$.** The left limit is $1-1+3=3=f(1)$ and the right limit is $\alpha+\beta$. So $\alpha+\beta=3$. (1)
+
+**One-sided derivatives at $1$.**
+$$f'_-(1)=\lim_{x\to1^-}\frac{x^2-x+3-3}{x-1}=\lim_{x\to1^-}\frac{x(x-1)}{x-1}=1,$$
+$$f'_+(1)=\lim_{x\to1^+}\frac{\alpha x+\beta-3}{x-1}=\lim_{x\to1^+}\frac{\alpha(x-1)}{x-1}=\alpha,$$
+where we used $\beta-3=-\alpha$ from (1). So $\alpha=1$, and then $\beta=2$.
+
+**Answer.** $\alpha=1$ and $\beta=2$.
+
+**Remark.** Geometrically, the line $y=x+2$ is the tangent to the parabola at the point $(1,3)$: we have glued the parabola to its own tangent.
+@@@ the-derivative-from-the-definition.md
+---
+title: The derivative from the definition
+category: calculus/single-variable/differentiation
+level: lycee
+difficulty: 1
+tags: definition of the derivative, difference quotient, square root
+date: 2026-11-02
+---
+
+## Statement
+
+Using only the definition $f'(a)=\lim_{h\to0}\dfrac{f(a+h)-f(a)}h$:
+
+1. compute the derivative of $f(x)=\dfrac1x$ at $a\ne0$,
+2. compute the derivative of $g(x)=\sqrt x$ at $a>0$,
+3. explain what goes wrong for $g$ at $a=0$.
+
+## Hint
+
+For part 1, put the numerator over a common denominator. For part 2, multiply by the conjugate.
+
+## Solution
+
+**1.**
+$$\frac{\frac1{a+h}-\frac1a}h=\frac{a-(a+h)}{h\,a(a+h)}=\frac{-1}{a(a+h)}\xrightarrow[h\to0]{}-\frac1{a^2}.$$
+
+**2.**
+$$\frac{\sqrt{a+h}-\sqrt a}h=\frac{(a+h)-a}{h\left(\sqrt{a+h}+\sqrt a\right)}=\frac1{\sqrt{a+h}+\sqrt a}\xrightarrow[h\to0]{}\frac1{2\sqrt a}.$$
+
+**3.** At $a=0$ the difference quotient is $\dfrac{\sqrt h}h=\dfrac1{\sqrt h}$ for $h>0$, which tends to $+\infty$. There is no finite limit: $\sqrt x$ is not differentiable at $0$. Its graph has a **vertical tangent** there.
+@@@ derivative-with-an-absolute-value.md
+---
+title: Derivative with an absolute value
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 2
+tags: differentiability, absolute value, one-sided derivatives
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f(x)=|x|+e^x$. Determine where $f$ is differentiable and compute $f'$ there.
+
+## Hint
+
+The absolute value is not differentiable at $0$. Treat $x>0$ and $x<0$ separately, then examine $0$ with the difference quotient.
+
+## Solution
+
+**For $x>0$:** $f(x)=x+e^x$, so $f'(x)=1+e^x$.
+
+**For $x<0$:** $f(x)=-x+e^x$, so $f'(x)=-1+e^x$.
+
+**At $0$.** The difference quotient is $\dfrac{|h|+e^h-1}h=\dfrac{|h|}h+\dfrac{e^h-1}h$. The second term tends to $1$. The first term is $+1$ for $h>0$ and $-1$ for $h<0$. So the right derivative is $1+1=2$ and the left derivative is $-1+1=0$. They differ, so $f$ is not differentiable at $0$.
+
+**Answer.** $f$ is differentiable on $\mathbb{R}^*$, with $f'(x)=e^x+1$ for $x>0$ and $f'(x)=e^x-1$ for $x<0$.
+
+**Remark.** The sum of a differentiable function and a function with a corner has a corner at the same place: the exponential only changes the slopes on both sides.
+@@@ three-ways-to-fail-to-be-differentiable.md
+---
+title: Three ways to fail to be differentiable
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 2
+tags: differentiability, corner, vertical tangent, oscillation
+date: 2026-11-02
+---
+
+## Statement
+
+Each of the following functions is continuous at $0$. Show that none is differentiable at $0$, and explain why in each case.
+
+1. $f_1(x)=|x|$
+2. $f_2(x)=\sqrt[3]{x}$
+3. $f_3(x)=x\sin\dfrac1x$ for $x\ne0$, $f_3(0)=0$
+
+## Hint
+
+Write the difference quotient $\dfrac{f(h)-f(0)}h$ in each case and study its behaviour as $h\to0$.
+
+## Solution
+
+**1. A corner.** The quotient is $\frac{|h|}h$, equal to $1$ for $h>0$ and $-1$ for $h<0$. The two one-sided derivatives exist but differ.
+
+**2. A vertical tangent.** The quotient is $\dfrac{h^{1/3}}h=h^{-2/3}\to+\infty$ as $h\to0$ (from both sides). The slope of the secants becomes infinite.
+
+**3. Wild oscillations.** The quotient is $\dfrac{h\sin(1/h)}h=\sin\dfrac1h$, which has no limit as $h\to0$: it takes the values $0$ and $1$ along suitable sequences $h\to0$. The secants through $(0,0)$ keep oscillating in slope between $-1$ and $1$.
+
+**Moral.** Differentiability is a strictly stronger property than continuity, and it can fail in three different ways: left and right slopes differ, the slope blows up, or the slope has no limit at all.
+@@@ x-squared-sine-one-over-x.md
+---
+title: Differentiable but not continuously differentiable
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 4
+tags: differentiability, continuity of the derivative, counterexamples
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f(x)=x^2\sin\dfrac1x$ for $x\ne0$ and $f(0)=0$.
+
+1. Show that $f$ is differentiable on $\mathbb{R}$ and compute $f'$.
+2. Show that $f'$ is not continuous at $0$.
+
+## Hint
+
+Away from $0$ use the usual rules. At $0$ you must use the definition, with the squeeze theorem.
+
+## Solution
+
+**1. For $x\ne0$,** by the product and chain rules,
+$$f'(x)=2x\sin\frac1x-\cos\frac1x.$$
+**At $0$,** the difference quotient is
+$$\frac{f(h)-f(0)}h=h\sin\frac1h,$$
+and $|h\sin\frac1h|\le|h|\to0$. So $f'(0)=0$ and $f$ is differentiable everywhere.
+
+**2.** As $x\to0$, the term $2x\sin\frac1x\to0$, but $\cos\frac1x$ has no limit: it equals $1$ along $x_n=\frac1{2n\pi}$ and $-1$ along $y_n=\frac1{(2n+1)\pi}$. So $f'(x)$ has no limit at $0$, and in particular $f'$ is not continuous at $0$, although $f'(0)$ exists.
+
+**Remark.** A derivative can be discontinuous. It cannot however have a jump discontinuity (see the problem on the limit of the derivative): its discontinuities are always of this oscillating kind.
+@@@ derivative-of-an-inverse-hyperbolic-function.md
+---
+title: A surprisingly simple derivative
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 2
+tags: chain rule, composition, square roots
+date: 2026-11-02
+---
+
+## Statement
+
+Compute the derivative of $f(x)=\ln\!\left(x+\sqrt{1+x^2}\right)$ on $\mathbb{R}$.
+
+## Hint
+
+Apply the chain rule to $\ln u$, then simplify. Notice that $u'=1+\frac x{\sqrt{1+x^2}}$ is related to $u$.
+
+## Solution
+
+**Domain.** Since $\sqrt{1+x^2}>|x|\ge-x$, we have $u(x)=x+\sqrt{1+x^2}>0$ for every $x$, so $f$ is well defined and differentiable on $\mathbb{R}$.
+
+**Derivative of $u$.** $u'(x)=1+\dfrac x{\sqrt{1+x^2}}=\dfrac{\sqrt{1+x^2}+x}{\sqrt{1+x^2}}=\dfrac{u(x)}{\sqrt{1+x^2}}$.
+
+**Chain rule.**
+$$f'(x)=\frac{u'(x)}{u(x)}=\frac1{\sqrt{1+x^2}}.$$
+
+**Remark.** This function is the inverse hyperbolic sine $\operatorname{arsinh}$, and the result explains why $\int\frac{dx}{\sqrt{1+x^2}}=\ln\left(x+\sqrt{1+x^2}\right)$.
+@@@ logarithmic-differentiation.md
+---
+title: Logarithmic differentiation
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 2
+tags: derivative, exponential form, powers with variable exponent
+date: 2026-11-02
+---
+
+## Statement
+
+Compute the derivatives of
+$$f(x)=x^x\ (x>0),\qquad g(x)=x^{\sin x}\ (x>0).$$
+
+## Hint
+
+Write $u^v=e^{v\ln u}$ and apply the chain rule.
+
+## Solution
+
+**Idea.** The rule $(x^n)'=nx^{n-1}$ is only for constant exponents. When the exponent varies, rewrite the function as an exponential.
+
+**For $f$.** $f(x)=e^{x\ln x}$, so
+$$f'(x)=e^{x\ln x}\cdot(x\ln x)'=x^x(\ln x+1).$$
+
+**For $g$.** $g(x)=e^{\sin x\ln x}$, so
+$$g'(x)=x^{\sin x}\left(\cos x\,\ln x+\frac{\sin x}x\right).$$
+
+**Remark.** $f'(x)=0$ exactly when $\ln x=-1$, i.e. $x=\frac1e$: the function $x^x$ has its minimum on $(0,+\infty)$ at $x=\frac1e$, with value $e^{-1/e}\approx0.692$.
+@@@ derivative-of-an-inverse-function.md
+---
+title: Derivative of an inverse function
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 2
+tags: inverse function, implicit differentiation, arcsine
+date: 2026-11-02
+---
+
+## Statement
+
+1. Let $f(x)=x^3+x$. Show that $f$ is a bijection from $\mathbb{R}$ to $\mathbb{R}$ and compute $(f^{-1})'(2)$.
+2. Show that $\arcsin'(y)=\dfrac1{\sqrt{1-y^2}}$ for $y\in(-1,1)$.
+
+## Hint
+
+Differentiate the identity $f(f^{-1}(y))=y$. This gives $(f^{-1})'(y)=\dfrac1{f'(f^{-1}(y))}$.
+
+## Solution
+
+**1.** $f'(x)=3x^2+1>0$, so $f$ is strictly increasing, and $f(x)\to\pm\infty$ at $\pm\infty$, so $f$ is a continuous bijection onto $\mathbb{R}$. We cannot easily write $f^{-1}$ explicitly, but we can find where it takes the value $2$: $f(1)=2$, so $f^{-1}(2)=1$. Then
+$$(f^{-1})'(2)=\frac1{f'(1)}=\frac14.$$
+
+**2.** Let $x=\arcsin y\in(-\frac\pi2,\frac\pi2)$, so $y=\sin x$ and $\cos x>0$. Then
+$$\arcsin'(y)=\frac1{\cos x}=\frac1{\sqrt{1-\sin^2x}}=\frac1{\sqrt{1-y^2}}.$$
+
+**Remark.** The geometric meaning: the graph of $f^{-1}$ is the mirror image of that of $f$ across the line $y=x$, so slopes are inverted.
+@@@ the-nth-derivative-of-x-squared-exponential.md
+---
+title: The n-th derivative of x² e^x
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 3
+tags: higher derivatives, Leibniz formula, induction
+date: 2026-11-02
+---
+
+## Statement
+
+Compute the $n$-th derivative of $f(x)=x^2e^x$.
+
+## Hint
+
+Use the Leibniz formula $(uv)^{(n)}=\sum_{k=0}^n\binom nk u^{(k)}v^{(n-k)}$. Most of the terms vanish because $u=x^2$ is a polynomial of degree $2$.
+
+## Solution
+
+**Idea.** The Leibniz formula is the "binomial theorem for derivatives". With $u=x^2$ we have $u'=2x$, $u''=2$ and $u^{(k)}=0$ for $k\ge3$. Also $v=e^x$ satisfies $v^{(j)}=e^x$ for all $j$.
+
+**Computation.** Only $k=0,1,2$ survive:
+$$f^{(n)}(x)=\binom n0x^2e^x+\binom n1\,2x\,e^x+\binom n2\,2\,e^x=e^x\left(x^2+2nx+n(n-1)\right).$$
+
+**Check.** For $n=1$: $e^x(x^2+2x)$, which is the product rule. For $n=2$: $e^x(x^2+4x+2)$.
+
+**Remark.** The same method shows that the $n$-th derivative of $P(x)e^x$, with $P$ a polynomial, is $e^x$ times a polynomial of the same degree.
+@@@ the-nth-derivative-of-a-rational-function.md
+---
+title: The n-th derivative of 1/(x² − 1)
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 3
+tags: higher derivatives, partial fractions
+date: 2026-11-02
+---
+
+## Statement
+
+Compute the $n$-th derivative of $f(x)=\dfrac1{x^2-1}$ on $\mathbb{R}\setminus\{-1,1\}$.
+
+## Hint
+
+Decompose into partial fractions. What is the $n$-th derivative of $\dfrac1{x-a}$?
+
+## Solution
+
+**Step 1: the building block.** For $g(x)=\frac1{x-a}=(x-a)^{-1}$, successive derivatives are $-(x-a)^{-2}$, then $2(x-a)^{-3}$, then $-6(x-a)^{-4}$, and by induction
+$$g^{(n)}(x)=\frac{(-1)^nn!}{(x-a)^{n+1}}.$$
+
+**Step 2: partial fractions.**
+$$\frac1{x^2-1}=\frac12\left(\frac1{x-1}-\frac1{x+1}\right).$$
+
+**Step 3: conclusion.**
+$$f^{(n)}(x)=\frac{(-1)^nn!}2\left(\frac1{(x-1)^{n+1}}-\frac1{(x+1)^{n+1}}\right).$$
+
+**Check.** For $n=1$: $-\frac12\left(\frac1{(x-1)^2}-\frac1{(x+1)^2}\right)=-\frac12\cdot\frac{4x}{(x^2-1)^2}=-\frac{2x}{(x^2-1)^2}$, which is indeed $f'$.
+@@@ rolle-on-a-quartic.md
+---
+title: Rolle's theorem on a quartic
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 1
+tags: Rolle's theorem, polynomials
+date: 2026-11-02
+---
+
+## Statement
+
+Let $P(x)=3x^4-11x^3+12x^2-4x+2$. Show that $P'$ vanishes at least once in $(0,1)$.
+
+## Hint
+
+Compute $P(0)$ and $P(1)$.
+
+## Solution
+
+We have $P(0)=2$ and $P(1)=3-11+12-4+2=2$. So $P(0)=P(1)$.
+
+$P$ is a polynomial, hence continuous on $[0,1]$ and differentiable on $(0,1)$. By **Rolle's theorem** there exists $c\in(0,1)$ with $P'(c)=0$.
+
+**Remark.** We found the existence of a root of $P'$ without being able to compute it: $P'(x)=12x^3-33x^2+24x-4$ is a cubic with no pleasant root. Rolle's theorem is an *existence* theorem.
+@@@ rolle-and-the-roots-of-legendre-polynomials.md
+---
+title: Legendre polynomials have all their roots in (-1, 1)
+category: calculus/single-variable/differentiation
+level: m1
+difficulty: 5
+tags: Rolle's theorem, polynomials, induction, Legendre
+date: 2026-11-02
+---
+
+## Statement
+
+Let $n\ge1$ and $Q_k=\dfrac{d^k}{dx^k}\bigl((x^2-1)^n\bigr)$. Prove that $Q_n$ (the polynomial that defines the Legendre polynomial $P_n$ up to a constant) has $n$ distinct real roots, all in $(-1,1)$.
+
+## Hint
+
+Show by induction on $k\le n$ that $Q_k=(x^2-1)^{n-k}R_k$ where $R_k$ has $k$ distinct roots in $(-1,1)$. Rolle's theorem creates one new root between two consecutive roots.
+
+## Solution
+
+**Claim.** For $0\le k\le n$, $Q_k=(x^2-1)^{n-k}R_k$, where $R_k$ is a polynomial of degree $k$ with $k$ distinct roots in $(-1,1)$.
+
+**Degree check.** $Q_k$ has degree $2n-k$, so $\deg R_k=2n-k-2(n-k)=k$. Hence the $k$ roots are all the roots of $R_k$, and they are simple.
+
+**Start.** $k=0$: $Q_0=(x^2-1)^n$ and $R_0=1$ has $0$ roots.
+
+**Inductive step.** Suppose the claim holds for some $k<n$. Then $Q_k=(x-1)^{n-k}(x+1)^{n-k}R_k$ vanishes at the $k+2$ distinct points
+$$-1<r_1<\dots<r_k<1,$$
+because $n-k\ge1$. By Rolle's theorem applied to $Q_k$ on each of the $k+1$ intervals between consecutive points, $Q_{k+1}=Q_k'$ vanishes at some point in each of them: that gives $k+1$ distinct roots in $(-1,1)$.
+
+Moreover, differentiating a product $(x^2-1)^{m}R$ with $m=n-k\ge1$ leaves a factor $(x^2-1)^{m-1}$, so $Q_{k+1}=(x^2-1)^{n-k-1}R_{k+1}$ for a polynomial $R_{k+1}$. By the degree count, $R_{k+1}$ has degree $k+1$, so the $k+1$ roots found are all its roots.
+
+**Conclusion.** For $k=n$, $Q_n=R_n$ has $n$ distinct roots in $(-1,1)$.
+
+**Remark.** A degree $n$ polynomial cannot have more than $n$ roots, so these are all of them. This is the key property of the Legendre polynomials in numerical integration (Gauss quadrature).
+@@@ mean-value-theorem-and-an-arctangent-inequality.md
+---
+title: The mean value theorem and an arctangent inequality
+category: calculus/single-variable/differentiation
+level: l2
+difficulty: 2
+tags: mean value theorem, inequalities, arctangent
+date: 2026-11-02
+---
+
+## Statement
+
+Using the mean value theorem on $\arctan$, prove that
+$$\forall t>0,\qquad\arctan t>\frac t{1+t^2}.$$
+
+## Hint
+
+Apply the theorem on $[0,t]$. For $c\in(0,t)$ compare $1+c^2$ with $1+t^2$.
+
+## Solution
+
+Fix $t>0$. The function $\arctan$ is continuous on $[0,t]$ and differentiable on $(0,t)$ with derivative $\frac1{1+x^2}$. By the mean value theorem there exists $c\in(0,t)$ with
+$$\arctan t-\arctan0=\frac1{1+c^2}(t-0),\qquad\text{i.e.}\qquad\arctan t=\frac t{1+c^2}.$$
+Since $0<c<t$, we have $1+c^2<1+t^2$, so $\frac1{1+c^2}>\frac1{1+t^2}$. Multiplying by $t>0$,
+$$\arctan t=\frac t{1+c^2}>\frac t{1+t^2}.$$
+
+**Remark.** The inequality is *strict* precisely because $c<t$ strictly. The mean value theorem is the standard tool for turning information on $f'$ (here: $f'$ is decreasing in $|x|$) into information on $f$.
+@@@ mean-value-theorem-and-logarithm-bounds.md
+---
+title: Two-sided bounds for the logarithm
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 2
+tags: mean value theorem, inequalities, logarithm
+date: 2026-11-02
+---
+
+## Statement
+
+Prove that for all $x>0$,
+$$\frac x{1+x}<\ln(1+x)<x.$$
+Deduce that for every integer $n\ge1$,
+$$\left(1+\frac1n\right)^n<e<\left(1+\frac1n\right)^{n+1}.$$
+
+## Hint
+
+Apply the mean value theorem to $\ln$ on $[1,1+x]$.
+
+## Solution
+
+**The inequalities.** By the mean value theorem there is $c\in(1,1+x)$ with
+$$\ln(1+x)-\ln1=\frac1c\,x.$$
+Since $1<c<1+x$, we have $\frac1{1+x}<\frac1c<1$. Multiplying by $x>0$,
+$$\frac x{1+x}<\ln(1+x)<x.$$
+
+**Deduction.** Take $x=\frac1n$. Then $\frac x{1+x}=\frac1{n+1}$ and
+$$\frac1{n+1}<\ln\!\left(1+\frac1n\right)<\frac1n.$$
+Multiplying by $n$ in the right inequality: $n\ln(1+\frac1n)<1$, so $\left(1+\frac1n\right)^n<e$. Multiplying by $n+1$ in the left inequality: $1<(n+1)\ln(1+\frac1n)$, so $e<\left(1+\frac1n\right)^{n+1}$.
+
+**Remark.** These bounds squeeze $e$ between two sequences that converge to it: for $n=10$ we get $2.5937<e<2.8531$.
+@@@ if-the-derivative-has-a-limit-then-differences-do.md
+---
+title: If f′ tends to ℓ, then f(x+1) − f(x) tends to ℓ
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 3
+tags: mean value theorem, limits at infinity
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f$ be differentiable on $\mathbb{R}$ with $f'(x)\to\ell$ as $x\to+\infty$.
+
+1. Show that $f(x+1)-f(x)\to\ell$.
+2. Deduce the limit of $\sqrt{x+1}-\sqrt x$ and of $\ln(x+1)-\ln x$ as $x\to+\infty$.
+3. Is the converse true?
+
+## Hint
+
+Apply the mean value theorem on $[x,x+1]$ and note that the intermediate point goes to infinity with $x$.
+
+## Solution
+
+**1.** For each $x$ there exists $c_x\in(x,x+1)$ with $f(x+1)-f(x)=f'(c_x)$. Since $c_x>x\to+\infty$, we have $f'(c_x)\to\ell$.
+
+**2.** For $f=\sqrt\cdot$, $f'(x)=\frac1{2\sqrt x}\to0$, so $\sqrt{x+1}-\sqrt x\to0$. For $f=\ln$, $f'(x)=\frac1x\to0$, so $\ln(x+1)-\ln x\to0$.
+
+**3. No.** Let $f(x)=\dfrac{\sin(x^2)}x$ for $x\ge1$. Then $|f(x+1)-f(x)|\le\frac1{x+1}+\frac1x\to0$, so the differences tend to $0$, but
+$$f'(x)=2\cos(x^2)-\frac{\sin(x^2)}{x^2}$$
+oscillates between nearly $-2$ and $2$: it has no limit.
+
+**Remark.** Information on a derivative always gives information on differences (through the mean value theorem). The converse requires extra hypotheses.
+@@@ functions-whose-derivative-is-proportional-to-themselves.md
+---
+title: Functions whose derivative is proportional to themselves
+category: calculus/single-variable/differentiation
+level: l1
+difficulty: 3
+tags: exponential function, differential equation, functional equations
+date: 2026-11-02
+---
+
+## Statement
+
+1. Let $f:\mathbb{R}\to\mathbb{R}$ be differentiable with $f'=f$. Show that $f(x)=Ce^x$ for some constant $C$.
+2. Let $f:\mathbb{R}\to\mathbb{R}$ be differentiable, not identically $0$, with $f(x+y)=f(x)f(y)$ for all $x,y$. Show that $f(x)=e^{ax}$ for some real $a$.
+
+## Hint
+
+For part 1 consider $g(x)=f(x)e^{-x}$. For part 2, differentiate the functional equation with respect to $x$ and set $y=0$.
+
+## Solution
+
+**1.** Let $g(x)=f(x)e^{-x}$. Then $g'(x)=f'(x)e^{-x}-f(x)e^{-x}=0$. A function with zero derivative on an interval is constant (mean value theorem), so $g=C$ and $f(x)=Ce^x$.
+
+**2.** First, $f(0)=1$: choose $x_0$ with $f(x_0)\ne0$; then $f(x_0)=f(x_0+0)=f(x_0)f(0)$ gives $f(0)=1$.
+
+Fix $y$ and differentiate $f(x+y)=f(x)f(y)$ in $x$:
+$$f'(x+y)=f'(x)f(y).$$
+Taking $x=0$: $f'(y)=f'(0)f(y)$. Let $a=f'(0)$. Then $f'=af$.
+
+Apply part 1 to $x\mapsto f(x/a)$ if $a\ne0$, or directly: $g(x)=f(x)e^{-ax}$ has $g'=af e^{-ax}-af e^{-ax}=0$, so $g$ is constant, equal to $g(0)=1$. Hence $f(x)=e^{ax}$. (If $a=0$, $f'=0$ and $f=f(0)=1=e^{0\cdot x}$.)
+
+**Remark.** The exponential is characterised by $f'=f$, $f(0)=1$, or by the functional equation: three faces of the same function.
+@@@ the-limit-of-the-derivative.md
+---
+title: The limit of the derivative theorem
+category: calculus/single-variable/differentiation
+level: l2
+difficulty: 3
+tags: mean value theorem, derivative at a point, extension
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f$ be continuous on $[a,b)$ and differentiable on $(a,b)$, and suppose $f'(x)\to\ell\in\mathbb{R}$ as $x\to a^+$. Prove that $f$ is differentiable at $a$ from the right, with $f'_+(a)=\ell$.
+
+Then apply this to $f(x)=e^{-1/x^2}$ for $x\ne0$, $f(0)=0$, to show that $f$ is differentiable at $0$ with $f'(0)=0$.
+
+## Hint
+
+The difference quotient $\dfrac{f(x)-f(a)}{x-a}$ is exactly what the mean value theorem handles.
+
+## Solution
+
+**Proof.** For $x\in(a,b)$, the mean value theorem on $[a,x]$ gives $c_x\in(a,x)$ with
+$$\frac{f(x)-f(a)}{x-a}=f'(c_x).$$
+As $x\to a^+$, $c_x\to a^+$ so $f'(c_x)\to\ell$. Hence the right derivative at $a$ exists and equals $\ell$.
+
+**Application.** $f$ is continuous at $0$ because $e^{-1/x^2}\to0$. For $x\ne0$,
+$$f'(x)=\frac2{x^3}e^{-1/x^2}.$$
+With $u=\frac1{x^2}\to+\infty$, $|f'(x)|=2|x|^{-3}e^{-u}=2u^{3/2}e^{-u}\to0$ (the exponential beats powers). So $f'(x)\to0$ at $0^\pm$, and by the theorem (applied on each side) $f'(0)=0$.
+
+**Remark.** This function is very flat at $0$: all its derivatives vanish there. It is a famous example of a smooth function that is not equal to its Taylor series.
+@@@ lhopitals-rule-twice.md
+---
+title: L'Hôpital's rule, twice
+category: calculus/single-variable/differentiation
+level: m1
+difficulty: 3
+tags: L'Hôpital's rule, indeterminate forms
+date: 2026-11-02
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0}\frac{x-x\cos x}{x-\sin x}.$$
+
+## Hint
+
+This is a $\frac00$ form: apply L'Hôpital's rule, and apply it again if needed. You can check the answer with Taylor expansions.
+
+## Solution
+
+**First application.** The numerator and denominator vanish at $0$ and are differentiable:
+$$\frac{(x-x\cos x)'}{(x-\sin x)'}=\frac{1-\cos x+x\sin x}{1-\cos x}.$$
+This is again a $\frac00$ form.
+
+**Second application.**
+$$\frac{(1-\cos x+x\sin x)'}{(1-\cos x)'}=\frac{\sin x+\sin x+x\cos x}{\sin x}=2+\frac x{\sin x}\cos x\longrightarrow2+1\cdot1=3.$$
+
+**Conclusion.** The limit is $3$, since each application preserves the limit once the new limit exists.
+
+**Check by Taylor.** $x-x\cos x=\frac{x^3}2+o(x^3)$ and $x-\sin x=\frac{x^3}6+o(x^3)$, so the quotient tends to $\frac{1/2}{1/6}=3$.
+@@@ when-lhopitals-rule-does-not-apply.md
+---
+title: When L'Hôpital's rule gives no answer
+category: calculus/single-variable/differentiation
+level: m1
+difficulty: 3
+tags: L'Hôpital's rule, counterexamples, squeeze theorem
+date: 2026-11-02
+---
+
+## Statement
+
+Consider $f(x)=x+\sin x$ and $g(x)=x$.
+
+1. Show that $\dfrac{f(x)}{g(x)}$ has a limit as $x\to+\infty$ and compute it.
+2. Show that $\dfrac{f'(x)}{g'(x)}$ has no limit as $x\to+\infty$.
+3. What does this say about L'Hôpital's rule?
+
+## Hint
+
+For part 1, divide by $x$ and use $|\sin x|\le1$.
+
+## Solution
+
+**1.** $\dfrac{x+\sin x}x=1+\dfrac{\sin x}x\to1$, because $\left|\frac{\sin x}x\right|\le\frac1x\to0$.
+
+**2.** $\dfrac{f'}{g'}=\dfrac{1+\cos x}1=1+\cos x$, which oscillates between $0$ and $2$ and has no limit.
+
+**3.** L'Hôpital's rule says: *if* $\frac{f'}{g'}$ has a limit, *then* $\frac fg$ has the same limit. The converse is false: $\frac fg$ may have a limit while $\frac{f'}{g'}$ does not. So failure of the second limit to exist proves nothing, and one must use another method (here the squeeze theorem).
+
+**Remark.** In an exam, the correct way to use the rule is to make sure the limit of the derivative quotient exists. A careless "$\frac{f'}{g'}$ doesn't converge, so neither does $\frac fg$" is a classic mistake.
+@@@ convexity-and-continuity-of-the-derivative.md
+---
+title: Convexity forces the derivative to be continuous
+category: calculus/single-variable/differentiation
+level: m1
+difficulty: 4
+tags: convexity, Darboux theorem, monotone functions, continuity
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:I\to\mathbb{R}$ be convex and differentiable on an interval $I$. Prove that $f'$ is continuous.
+
+## Hint
+
+Use that $f'$ is non-decreasing for a convex function, and Darboux's theorem: a derivative takes all the intermediate values. Show that a monotone function cannot have a jump if it takes all intermediate values.
+
+## Solution
+
+**Tools.**
+- If $f$ is convex and differentiable, $f'$ is non-decreasing.
+- **Darboux's theorem:** the derivative of a differentiable function satisfies the intermediate value property, even if it is not continuous.
+
+**Proof.** Suppose $f'$ is discontinuous at some point $x_0\in I$. Since $f'$ is monotone, it has one-sided limits at $x_0$, with
+$$f'(x_0^-)\le f'(x_0)\le f'(x_0^+),$$
+and at least one of the two inequalities is strict. Say $f'(x_0)<f'(x_0^+)$ (the other case is symmetric). Pick $y$ with $f'(x_0)<y<f'(x_0^+)$.
+
+- For $x>x_0$ we have $f'(x)\ge f'(x_0^+)>y$ (monotone and $f'(x_0^+)$ is the infimum of the values to the right).
+- For $x\le x_0$ we have $f'(x)\le f'(x_0)<y$.
+
+So $f'$ never takes the value $y$. But Darboux's theorem, applied on $[x_0,x_1]$ with $x_1>x_0$ close enough that $f'(x_1)>y$, says that $y$, which lies between $f'(x_0)$ and $f'(x_1)$, is attained. Contradiction.
+
+**Conclusion.** $f'$ is continuous on $I$.
+
+**Remark.** So a convex differentiable function is automatically $C^1$. In general, derivatives can be discontinuous (see $x^2\sin\frac1x$), but never with jumps.
+@@@ convex-function-and-asymptotic-behaviour.md
+---
+title: A convex function and its asymptote
+category: calculus/single-variable/differentiation
+level: m1
+difficulty: 4
+tags: convexity, slopes, asymptotes
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:\mathbb{R}\to\mathbb{R}$ be convex. Assume $\dfrac{f(x)-f(0)}x\to\ell\in\mathbb{R}$ as $x\to+\infty$. Show that $\dfrac{f(x)}x\to\ell$ and that $x\mapsto f(x)-\ell x$ is non-increasing.
+
+## Hint
+
+For a convex function, the slope $\dfrac{f(z)-f(y)}{z-y}$ is non-decreasing in $z$ for fixed $y$. Let $z\to+\infty$.
+
+## Solution
+
+**First claim.**
+$$\frac{f(x)}x=\frac{f(x)-f(0)}x+\frac{f(0)}x\longrightarrow\ell+0=\ell.$$
+
+**Slopes at infinity.** Fix $y\in\mathbb{R}$. For $z>y$,
+$$\frac{f(z)-f(y)}{z-y}=\frac z{z-y}\cdot\frac{f(z)}z-\frac{f(y)}{z-y}\longrightarrow1\cdot\ell-0=\ell\quad(z\to+\infty).$$
+
+**Convexity.** For fixed $y$, the slope $z\mapsto\frac{f(z)-f(y)}{z-y}$ is non-decreasing on $(y,+\infty)$, so every slope is at most its limit $\ell$. Therefore for $x>y$,
+$$\frac{f(x)-f(y)}{x-y}\le\ell\ \Longrightarrow\ f(x)-\ell x\le f(y)-\ell y.$$
+
+**Conclusion.** $x\mapsto f(x)-\ell x$ is non-increasing.
+
+**Remark.** So the graph of $f$ stays *above* its asymptotic line $y=\ell x+c$, where $c=\lim(f(x)-\ell x)$ if it is finite. Geometrically: a convex curve with a slanted asymptote approaches it from above.
+@@@ a-functional-equation-solved-with-derivatives.md
+---
+title: A functional equation solved with derivatives
+category: calculus/single-variable/differentiation
+level: olympiad
+difficulty: 4
+tags: functional equations, differentiation, polynomials
+date: 2026-11-02
+---
+
+## Statement
+
+Find all differentiable functions $f:\mathbb{R}\to\mathbb{R}$ such that
+$$f(x+y)=f(x)+f(y)+xy\qquad\text{for all }x,y\in\mathbb{R}.$$
+
+## Hint
+
+First find $f(0)$. Then differentiate the identity with respect to $x$, with $y$ fixed.
+
+## Solution
+
+**Step 1.** Taking $x=y=0$: $f(0)=2f(0)$, so $f(0)=0$.
+
+**Step 2: differentiating in $x$.** For fixed $y$, $f'(x+y)=f'(x)+y$. With $x=0$: $f'(y)=f'(0)+y$. Let $a=f'(0)$.
+
+**Step 3: integrating.** $f'(y)=a+y$ means $f(y)=ay+\frac{y^2}2+C$, and $f(0)=0$ gives $C=0$. So $f(x)=\frac{x^2}2+ax$.
+
+**Step 4: verification.**
+$$f(x+y)=\frac{(x+y)^2}2+a(x+y)=\frac{x^2}2+xy+\frac{y^2}2+ax+ay=f(x)+f(y)+xy.$$
+
+**Answer.** The solutions are exactly the functions $f(x)=\dfrac{x^2}2+ax$, $a\in\mathbb{R}$.
+
+**Remark.** Another route: $g(x)=f(x)-\frac{x^2}2$ satisfies Cauchy's equation $g(x+y)=g(x)+g(y)$, whose differentiable solutions are the linear functions.
+@@@ a-contraction-has-a-unique-fixed-point.md
+---
+title: Fixed point and a derivative bounded by one
+category: calculus/single-variable/differentiation
+level: l2
+difficulty: 3
+tags: fixed points, mean value theorem, intermediate value theorem
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:[0,1]\to[0,1]$ be differentiable with $|f'(x)|<1$ for all $x\in[0,1]$. Show that $f$ has exactly one fixed point in $[0,1]$.
+
+## Hint
+
+Existence: apply the intermediate value theorem to $g(x)=f(x)-x$. Uniqueness: apply the mean value theorem to two fixed points.
+
+## Solution
+
+**Existence.** $g(x)=f(x)-x$ is continuous with $g(0)=f(0)\ge0$ and $g(1)=f(1)-1\le0$. If one of them is $0$ we are done; otherwise $g(0)>0>g(1)$ and the intermediate value theorem gives $c\in(0,1)$ with $g(c)=0$, i.e. $f(c)=c$.
+
+**Uniqueness.** Suppose $u<v$ are two fixed points. By the mean value theorem there exists $\xi\in(u,v)$ with $f(v)-f(u)=f'(\xi)(v-u)$. Since $f(u)=u$ and $f(v)=v$, this reads $v-u=f'(\xi)(v-u)$, so $f'(\xi)=1$, contradicting $|f'|<1$.
+
+**Remark.** The hypothesis can be weakened to "$|f'|\le k<1$": the map is then a *contraction*, and for any starting point $x_0$ the sequence $x_{n+1}=f(x_n)$ converges to the fixed point (Banach's fixed point theorem).
+@@@ taylor-lagrange-and-an-approximation-of-e.md
+---
+title: Approximating e with a guaranteed error
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 3
+tags: Taylor-Lagrange, error bound, number e
+date: 2026-11-02
+---
+
+## Statement
+
+1. Write the Taylor–Lagrange formula for $e^x$ at $0$ and $x=1$, at order $n$.
+2. Find the smallest $n$ such that $\sum_{k=0}^n\frac1{k!}$ approximates $e$ with an error below $10^{-6}$. Use $e<3$.
+3. Compute this approximation.
+
+## Hint
+
+The remainder is $\dfrac{e^\theta}{(n+1)!}$ for some $\theta\in(0,1)$.
+
+## Solution
+
+**1.** For some $\theta\in(0,1)$,
+$$e=\sum_{k=0}^n\frac1{k!}+\frac{e^\theta}{(n+1)!}.$$
+
+**2. Error bound.** Since $0<\theta<1$, $e^\theta<e<3$, so the error satisfies
+$$0<e-\sum_{k=0}^n\frac1{k!}<\frac3{(n+1)!}.$$
+- For $n=8$: $\frac3{9!}\approx8.3\cdot10^{-6}$, not small enough.
+- For $n=9$: $\frac3{10!}\approx8.3\cdot10^{-7}<10^{-6}$.
+
+So $n=9$ guarantees the precision (and it is the first $n$ for which this *bound* does).
+
+**3.** $\sum_{k=0}^9\frac1{k!}=2.7182815255\dots$, while $e=2.7182818284\dots$; the actual error is $3.0\cdot10^{-7}$, indeed below the bound.
+
+**Remark.** The factorials in the denominator make this series converge extremely fast: ten terms give six correct digits. The same reasoning is how calculators compute $e^x$.
+@@@ polynomial-inequalities-for-sine-and-cosine.md
+---
+title: Polynomial bounds for sine and cosine
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 3
+tags: inequalities, monotonicity, Taylor polynomials
+date: 2026-11-02
+---
+
+## Statement
+
+Prove that for all $x\ge0$:
+$$\sin x\le x,\qquad\cos x\ge1-\frac{x^2}2,\qquad\sin x\ge x-\frac{x^3}6.$$
+
+## Hint
+
+Chain the three inequalities: each one is obtained by studying the sign of the derivative of a function that is $0$ at $x=0$.
+
+## Solution
+
+**Step 1: $\sin x\le x$.** Let $g_1(x)=x-\sin x$. Then $g_1'(x)=1-\cos x\ge0$, so $g_1$ is non-decreasing on $[0,+\infty)$ and $g_1(x)\ge g_1(0)=0$.
+
+**Step 2: $\cos x\ge1-\frac{x^2}2$.** Let $g_2(x)=\cos x-1+\frac{x^2}2$. Then $g_2'(x)=x-\sin x=g_1(x)\ge0$ by Step 1, and $g_2(0)=0$, so $g_2\ge0$ on $[0,+\infty)$.
+
+**Step 3: $\sin x\ge x-\frac{x^3}6$.** Let $g_3(x)=\sin x-x+\frac{x^3}6$. Then $g_3'(x)=\cos x-1+\frac{x^2}2=g_2(x)\ge0$ by Step 2, and $g_3(0)=0$, so $g_3\ge0$ on $[0,+\infty)$.
+
+**Pattern.** Each step integrates the previous inequality from $0$: the polynomials $x$, $1-\frac{x^2}2$, $x-\frac{x^3}6$ are the Taylor polynomials of $\sin$, $\cos$, $\sin$, and the inequalities alternate in direction.
+
+**Application.** Together they give $1-\frac{x^2}6\le\frac{\sin x}x\le1$ for $x>0$, which re-proves $\frac{\sin x}x\to1$ by squeezing.
+@@@ classifying-critical-points-with-taylor-expansions.md
+---
+title: Classifying a critical point when f″(0) = 0
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 3
+tags: local extrema, Taylor expansion, second derivative test
+date: 2026-11-02
+---
+
+## Statement
+
+Each function below has a critical point at $0$ where the second derivative also vanishes. Decide, with Taylor expansions, whether $0$ is a local minimum, a local maximum, or neither.
+
+1. $f_1(x)=\cos x-1+\dfrac{x^2}2$
+2. $f_2(x)=\sin x-x+\dfrac{x^3}6$
+3. $f_3(x)=x\sin x-x^2$
+
+## Hint
+
+Find the first non-zero term in the expansion at $0$. If it is $c\,x^m$ with $m$ even, the sign of $c$ decides; if $m$ is odd, there is no extremum.
+
+## Solution
+
+**Rule.** If $f(x)=c\,x^m+o(x^m)$ with $c\ne0$, then near $0$ the function $f$ has the sign of $cx^m$.
+
+**1.** $\cos x=1-\frac{x^2}2+\frac{x^4}{24}-\dots$, so $f_1(x)=\dfrac{x^4}{24}+o(x^4)$. The exponent $4$ is even and the coefficient is positive: $f_1\ge0$ near $0=f_1(0)$. **Local minimum.**
+
+**2.** $\sin x=x-\frac{x^3}6+\frac{x^5}{120}-\dots$, so $f_2(x)=\dfrac{x^5}{120}+o(x^5)$. The exponent $5$ is odd: $f_2$ changes sign at $0$. **No extremum** (an inflection point).
+
+**3.** $x\sin x=x^2-\frac{x^4}6+\dots$, so $f_3(x)=-\dfrac{x^4}6+o(x^4)$. The exponent is even and the coefficient is negative: **local maximum.**
+
+**Remark.** The second derivative test ($f''(0)>0$ or $<0$) is silent in these three cases because $f''(0)=0$. Taylor expansions give the complete picture.
+@@@ the-most-economical-can.md
+---
+title: The most economical can
+category: calculus/single-variable/differentiation/optimisation
+level: lycee
+difficulty: 2
+tags: optimisation, cylinder, applications
+date: 2026-11-02
+---
+
+## Statement
+
+A closed cylindrical can must have volume $V=1000\text{ cm}^3$. What radius $r$ and height $h$ minimise the amount of metal (the total surface area)? Show more generally that the optimal height is twice the radius.
+
+## Hint
+
+Express $h$ in terms of $r$ with the volume constraint, so that the surface area becomes a function of $r$ alone.
+
+## Solution
+
+**Setting up.** Volume: $\pi r^2h=V$, so $h=\dfrac V{\pi r^2}$. Surface: $S=2\pi r^2+2\pi rh$. Substituting,
+$$S(r)=2\pi r^2+\frac{2V}r,\qquad r>0.$$
+
+**Critical point.** $S'(r)=4\pi r-\dfrac{2V}{r^2}=0\iff r^3=\dfrac V{2\pi}$. Then
+$$h=\frac V{\pi r^2}=\frac{2\pi r^3}{\pi r^2}=2r.$$
+
+**It is a minimum.** $S'$ is negative before $r_0$ and positive after (the sign of $4\pi r^3-2V$), and $S\to+\infty$ at both ends $0^+$ and $+\infty$. So $r_0$ is the global minimum.
+
+**Numerical answer.** For $V=1000$: $r=\left(\frac{500}\pi\right)^{1/3}\approx5.42$ cm and $h\approx10.84$ cm, with $S\approx553.6\text{ cm}^2$.
+
+**Remark.** The optimal can has a square side view (height equals diameter). Real cans are usually taller than this, because of other constraints such as the cost of sealing the edges.
+@@@ the-closest-point-on-a-parabola.md
+---
+title: The closest point on a parabola
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: optimisation, distance, parabola
+date: 2026-11-02
+---
+
+## Statement
+
+Find the point of the parabola $y=x^2$ closest to $A=(0,1)$ and the minimal distance.
+
+## Hint
+
+Minimise the square of the distance, which has the same minimiser and is a polynomial.
+
+## Solution
+
+**The function.** For the point $(x,x^2)$,
+$$d^2=x^2+(x^2-1)^2=x^4-x^2+1.$$
+
+**Substitution.** Put $u=x^2\ge0$. Then $d^2=u^2-u+1$, a quadratic in $u$ minimised at $u=\frac12$ (the derivative $2u-1$ vanishes there, and is negative before and positive after). Hence $x=\pm\frac1{\sqrt2}$ and
+$$d^2=\frac14-\frac12+1=\frac34,\qquad d=\frac{\sqrt3}2\approx0.866.$$
+
+**Answer.** The closest points are $\left(\pm\frac1{\sqrt2},\frac12\right)$, at distance $\frac{\sqrt3}2$.
+
+**Remark.** The vertex $(0,0)$ is at distance $1$, which is *not* the closest: it is a local maximum of $d^2$ on the parabola, since $d^2=x^4-x^2+1$ decreases when $|x|$ increases slightly from $0$. At the optimum the segment from $A$ is perpendicular to the tangent of the parabola.
+@@@ e-to-the-pi-versus-pi-to-the-e.md
+---
+title: Which is larger, e^π or π^e?
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: optimisation, inequalities, logarithm
+date: 2026-11-02
+---
+
+## Statement
+
+1. Study the variations of $h(x)=\dfrac{\ln x}x$ on $(0,+\infty)$.
+2. Deduce that $x^{1/x}\le e^{1/e}$ for all $x>0$.
+3. Which is larger, $e^\pi$ or $\pi^e$? Give a proof without a calculator.
+
+## Hint
+
+Compare $h(\pi)$ with $h(e)$ and take care that taking logarithms preserves inequalities.
+
+## Solution
+
+**1.** $h'(x)=\dfrac{1-\ln x}{x^2}$, positive on $(0,e)$ and negative on $(e,+\infty)$. So $h$ increases up to $x=e$ and then decreases, with maximum $h(e)=\frac1e$.
+
+**2.** For all $x>0$, $\ln\!\left(x^{1/x}\right)=h(x)\le\frac1e=\ln\!\left(e^{1/e}\right)$. Since $\exp$ is increasing, $x^{1/x}\le e^{1/e}$, with equality only at $x=e$.
+
+**3.** Since $\pi>e$ and $h$ is strictly decreasing on $[e,+\infty)$, $h(\pi)<h(e)$, that is
+$$\frac{\ln\pi}\pi<\frac1e\iff e\ln\pi<\pi\iff\ln\left(\pi^e\right)<\ln\left(e^\pi\right).$$
+Therefore $\pi^e<e^\pi$.
+
+**Numerically.** $\pi^e\approx22.46$ while $e^\pi\approx23.14$: they are close, but the order is clear.
+
+**Remark.** The same reasoning shows that $a^b>b^a$ whenever $e\le a<b$. For example $3^4=81>4^3=64$.
+@@@ the-longest-ladder-around-a-corner.md
+---
+title: The longest ladder around a corner
+category: calculus/single-variable/differentiation/optimisation
+level: l2
+difficulty: 4
+tags: optimisation, trigonometry, geometry, applications
+date: 2026-11-02
+---
+
+## Statement
+
+Two corridors, of widths $a$ and $b$, meet at a right angle. What is the length of the longest ladder that can be carried horizontally around the corner?
+
+## Hint
+
+When the ladder touches the inner corner and makes an angle $\theta\in(0,\frac\pi2)$ with the walls of the corridor of width $a$, its length is $L(\theta)=\dfrac a{\sin\theta}+\dfrac b{\cos\theta}$. The longest ladder that fits is the *minimum* of $L$.
+
+## Solution
+
+**Idea.** For each angle $\theta$, the ladder wedged between the two outer walls and touching the inner corner has length $L(\theta)$. A ladder passes the corner if it is shorter than $L(\theta)$ for *every* $\theta$, so the answer is $\min L$.
+
+**Derivative.**
+$$L'(\theta)=-\frac{a\cos\theta}{\sin^2\theta}+\frac{b\sin\theta}{\cos^2\theta}=0\iff\tan^3\theta=\frac ab.$$
+$L'$ is negative for small $\theta$ and positive near $\frac\pi2$, and $L\to+\infty$ at both ends, so this critical point is the global minimum.
+
+**Value.** Let $t=\tan\theta=(a/b)^{1/3}$. Then $\sin\theta=\frac t{\sqrt{1+t^2}}$ and $\cos\theta=\frac1{\sqrt{1+t^2}}$, so
+$$L=\sqrt{1+t^2}\left(\frac at+b\right).$$
+With $\frac at=a^{2/3}b^{1/3}$ and $\sqrt{1+t^2}=\dfrac{\sqrt{a^{2/3}+b^{2/3}}}{b^{1/3}}$, this simplifies to
+$$L_{\min}=\left(a^{2/3}+b^{2/3}\right)^{3/2}.$$
+
+**Check.** For $a=b=1$: $L_{\min}=2^{3/2}=2\sqrt2\approx2.83$. For $a=8$, $b=1$: $\tan\theta=2$ and $L=\frac8{2/\sqrt5}+\sqrt5=5\sqrt5\approx11.18$, and $(4+1)^{3/2}=5\sqrt5$ as well.
+@@@ the-largest-rectangle-in-a-semicircle.md
+---
+title: The largest rectangle in a semicircle
+category: calculus/single-variable/differentiation/optimisation
+level: lycee
+difficulty: 2
+tags: optimisation, geometry, area
+date: 2026-11-02
+---
+
+## Statement
+
+A rectangle is inscribed in a half-disc of radius $R$: one side lies on the diameter and the two upper vertices are on the arc. What is the largest possible area?
+
+## Hint
+
+Place the centre at the origin. The upper vertices are $(\pm x,\sqrt{R^2-x^2})$ for $0<x<R$. Maximise $A^2$ to avoid the square root.
+
+## Solution
+
+**Area.** The rectangle has width $2x$ and height $\sqrt{R^2-x^2}$, so
+$$A(x)=2x\sqrt{R^2-x^2},\qquad A(x)^2=4x^2(R^2-x^2)=4R^2x^2-4x^4.$$
+
+**Maximising.** As $A>0$, $A$ and $A^2$ have the same maximiser. The derivative of $A^2$ is $8R^2x-16x^3=8x(R^2-2x^2)$, positive for $x<\frac R{\sqrt2}$ and negative after. So the maximum is at $x=\dfrac R{\sqrt2}$, where the height equals $\dfrac R{\sqrt2}$ too.
+
+**Answer.**
+$$A_{\max}=2\cdot\frac R{\sqrt2}\cdot\frac R{\sqrt2}=R^2.$$
+
+**Remark.** The optimal rectangle is twice as wide as it is tall. Its area is $\frac{R^2}{\pi R^2/2}=\frac2\pi\approx64\%$ of the half-disc.
