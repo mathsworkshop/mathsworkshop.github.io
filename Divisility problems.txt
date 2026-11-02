@@ -1,0 +1,905 @@
+@@@ divisibility-basic.md
+---
+title: Basic divisibility and linear combinations
+category: number/divisibility
+level: lycee
+difficulty: 1
+tags: divisibility, linear combinations, divisors
+date: 2026-11-02
+---
+
+## Statement
+
+1. Show that if $d\mid a$ and $d\mid b$, then $d\mid a+b$ and $d\mid a-b$.
+2. More generally, show that $d\mid ax+by$ for all integers $x,y$.
+3. Find all positive divisors of $60$.
+
+## Hint
+
+For (1) and (2), write $a=dk$ and $b=d\ell$. For (3), factor $60$ or test divisibility systematically.
+
+## Solution
+
+**1.** If $d\mid a$ and $d\mid b$, there exist integers $k,\ell$ with $a=dk$, $b=d\ell$. Then
+$$a+b=d(k+\ell),\qquad a-b=d(k-\ell),$$
+so $d\mid a+b$ and $d\mid a-b$.
+
+**2.** With the same notation, $ax+by=dkx+d\ell y=d(kx+\ell y)$, so $d\mid ax+by$.
+
+**3.** $60=2^2\cdot3\cdot5$. The positive divisors are
+$$1,2,3,4,5,6,10,12,15,20,30,60.$$
+There are $(2+1)(1+1)(1+1)=12$ of them.
+
+**Remark.** Part (2) is the fundamental tool for all divisibility problems: any common divisor of $a$ and $b$ divides every integer linear combination of $a$ and $b$.
+
+@@@ divisibility-linear-expression.md
+---
+title: When does $n-4$ divide $3n-17$?
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: divisibility, linear combination, case analysis
+date: 2026-11-02
+---
+
+## Statement
+
+Find all integers $n$ such that $n-4$ divides $3n-17$.
+
+## Hint
+
+Write $3n-17=3(n-4)-5$ and factor.
+
+## Solution
+
+**Reduction.** We have
+$$3n-17=3(n-4)-5.$$
+So $n-4\mid 3n-17$ if and only if $n-4\mid 5$.
+
+**Case analysis.** The divisors of $5$ are $\pm1,\pm5$. Hence
+$$n-4\in\{-5,-1,1,5\},$$
+giving
+$$n\in\{-1,3,5,9\}.$$
+
+**Verification.** For $n=-1$: $n-4=-5$ and $3n-17=-20$, and $-5\mid-20$. For $n=3$: $-1\mid-8$. For $n=5$: $1\mid-2$. For $n=9$: $5\mid10$. All work.
+
+**Remark.** This is the standard technique for divisibility of linear expressions: reduce the dividend modulo the divisor to obtain a constant remainder.
+
+@@@ divisibility-fraction-integer.md
+---
+title: When is $(6n+12)/(2n+1)$ an integer?
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: divisibility, fraction, case analysis
+date: 2026-11-02
+---
+
+## Statement
+
+Find all integers $n$ such that $\dfrac{6n+12}{2n+1}$ is an integer.
+
+## Hint
+
+The fraction is an integer iff $2n+1\mid 6n+12$. Reduce: $6n+12=3(2n+1)+9$.
+
+## Solution
+
+**Reduction.**
+$$6n+12=3(2n+1)+9.$$
+So $2n+1\mid 6n+12$ iff $2n+1\mid 9$.
+
+**Case analysis.** The divisors of $9$ are $\pm1,\pm3,\pm9$. Hence
+$$2n+1\in\{-9,-3,-1,1,3,9\}.$$
+Solving for $n$:
+$$n\in\{-5,-2,-1,0,1,4\}.$$
+
+**Remark.** This is a standard exercise from a Terminale Spécialité devoir.
+
+@@@ divisibility-n-squared-minus-one.md
+---
+title: $n^2-1$ is divisible by 8 for odd $n$
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: divisibility, parity, consecutive integers
+date: 2026-11-02
+---
+
+## Statement
+
+Show that if $n$ is an odd integer, then $8\mid n^2-1$.
+
+## Hint
+
+Factor $n^2-1=(n-1)(n+1)$ and observe that $n-1$ and $n+1$ are consecutive even integers.
+
+## Solution
+
+**Factorization.** $n^2-1=(n-1)(n+1)$.
+
+**Parity argument.** Since $n$ is odd, both $n-1$ and $n+1$ are even. They are consecutive even integers, so one of them is divisible by $2$ and the other by $4$. Hence their product is divisible by $8$.
+
+More formally, there exists $k$ such that $\{n-1,n+1\}=\{2k,2k+2\}=2\{k,k+1\}$. Among $k$ and $k+1$, one is even, so $4\mid (n-1)(n+1)$. Together with the factor $2$ from each, we get $8\mid n^2-1$.
+
+**Remark.** This is a classical parity result.
+
+@@@ divisibility-euclidean-algorithm.md
+---
+title: The Euclidean algorithm and Bézout identity
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: Euclidean algorithm, Bézout identity, divisibility computation
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\divisibility(8303,2717)$ using the Euclidean algorithm, and find integers $u,v$ such that
+$$8303u+2717v=\divisibility(8303,2717).$$
+
+## Hint
+
+Perform successive Euclidean divisions and back-substitute.
+
+## Solution
+
+**Euclidean algorithm.**
+\begin{align*}
+8303 &= 3\cdot2717+152,\\
+2717 &= 17\cdot152+133,\\
+152 &= 1\cdot133+19,\\
+133 &= 7\cdot19+0.
+\end{align*}
+The last nonzero remainder is $19$, so $\divisibility(8303,2717)=19$.
+
+**Back-substitution.**
+\begin{align*}
+19 &= 152-133\\
+&=152-(2717-17\cdot152)=18\cdot152-2717\\
+&=18(8303-3\cdot2717)-2717\\
+&=18\cdot8303-55\cdot2717.
+\end{align*}
+So $u=18$, $v=-55$.
+
+**Remark.** This is the corrected exercise from Université Lyon 1.
+
+@@@ divisibility-bezout-1001-315.md
+---
+title: Bézout identity for 1001 and 315
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: Euclidean algorithm, Bézout identity
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\divisibility(1001,315)$ and find a Bézout identity.
+
+## Hint
+
+Apply the Euclidean algorithm and back-substitute.
+
+## Solution
+
+**Euclidean algorithm.**
+\begin{align*}
+1001 &= 3\cdot315+56,\\
+315 &= 5\cdot56+35,\\
+56 &= 1\cdot35+21,\\
+35 &= 1\cdot21+14,\\
+21 &= 1\cdot14+7,\\
+14 &= 2\cdot7+0.
+\end{align*}
+So $\divisibility(1001,315)=7$.
+
+**Back-substitution.**
+\begin{align*}
+7 &= 21-14\\
+&=21-(35-21)=2\cdot21-35\\
+&=2(56-35)-35=2\cdot56-3\cdot35\\
+&=2\cdot56-3(315-5\cdot56)=17\cdot56-3\cdot315\\
+&=17(1001-3\cdot315)-3\cdot315\\
+&=17\cdot1001-54\cdot315.
+\end{align*}
+So $17\cdot1001-54\cdot315=7$.
+
+@@@ divisibility-coprime-consecutive.md
+---
+title: Consecutive integers are coprime
+category: number/divisibility
+level: lycee
+difficulty: 1
+tags: coprime, consecutive integers, Euclidean algorithm
+date: 2026-11-02
+---
+
+## Statement
+
+Show that for every integer $n$, $\divisibility(n,n+1)=1$.
+
+## Hint
+
+Any common divisor divides their difference.
+
+## Solution
+
+Let $d=\divisibility(n,n+1)$. Then $d\mid n$ and $d\mid n+1$, so $d\mid (n+1)-n=1$. Hence $d=1$.
+
+**Remark.** This is the simplest example of the Euclidean algorithm: $n+1=1\cdot n+1$ and $n=1\cdot n+0$, so the last nonzero remainder is $1$.
+
+@@@ divisibility-coprime-2n-3n1.md
+---
+title: When are $2n$ and $3n+1$ coprime?
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: divisibility, linear combination, coprimality
+date: 2026-11-02
+---
+
+## Statement
+
+For which integers $n$ are $2n$ and $3n+1$ coprime?
+
+## Hint
+
+Find a linear combination of $2n$ and $3n+1$ that is constant.
+
+## Solution
+
+**Linear combination.**
+$$2(3n+1)-3(2n)=6n+2-6n=2.$$
+So $d=\divisibility(2n,3n+1)$ divides $2$, hence $d\in\{1,2\}$.
+
+**When is $d=2$?** Since $2n$ is always even, $d=2$ iff $3n+1$ is even, i.e. $n$ is odd.
+
+**Conclusion.** $\divisibility(2n,3n+1)=1$ if $n$ is even, and $2$ if $n$ is odd. The numbers are coprime exactly when $n$ is even.
+
+@@@ divisibility-linear-combination-43.md
+---
+title: A common divisor divides 43
+category: number/divisibility
+level: lycee
+difficulty: 4
+tags: divisibility, linear combination, prime number
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a=4k+3$ and $b=5k-7$. Show that any common divisor of $a$ and $b$ divides $43$.
+
+## Hint
+
+Eliminate $k$ by forming a suitable linear combination.
+
+## Solution
+
+**Elimination.** Multiply $a$ by $5$ and $b$ by $4$:
+$$5a=20k+15,\qquad 4b=20k-28.$$
+Subtracting:
+$$5a-4b=15-(-28)=43.$$
+
+**Conclusion.** Any common divisor $d$ of $a$ and $b$ divides $5a-4b=43$. Since $43$ is prime, $d\in\{\pm1,\pm43\}$.
+
+@@@ divisibility-ppcm-relation.md
+---
+title: The relation between divisibility and lcm
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: divisibility, lcm, product relation
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a,b$ be positive integers. Show that
+$$\divisibility(a,b)\cdot\operatorname{lcm}(a,b)=ab.$$
+
+## Hint
+
+Write $a=\delta a'$ and $b=\delta b'$ with $\divisibility(a',b')=1$, where $\delta=\divisibility(a,b)$.
+
+## Solution
+
+**Setup.** Let $\delta=\divisibility(a,b)$, $a=\delta a'$, $b=\delta b'$ with $\divisibility(a',b')=1$.
+
+**LCM.** Any common multiple $M$ of $a$ and $b$ satisfies $M=\alpha a=\beta b$, so $\alpha\delta a'=\beta\delta b'$, i.e. $\alpha a'=\beta b'$. Since $\divisibility(a',b')=1$, $a'\mid\beta$, say $\beta=ka'$. Then
+$$M=k b'\delta a'=k\,ab/\delta.$$
+The smallest positive such $M$ is for $k=1$, so
+$$\operatorname{lcm}(a,b)=\frac{ab}{\delta}.$$
+
+**Conclusion.** Multiplying by $\delta$:
+$$\divisibility(a,b)\cdot\operatorname{lcm}(a,b)=ab.$$
+
+**Remark.** If $\divisibility(a,b)=1$, then $\operatorname{lcm}(a,b)=ab$.
+
+@@@ divisibility-ppcm-sum-equation.md
+---
+title: Solving $\divisibility(a,b)+\operatorname{lcm}(a,b)=9+b$
+category: number/divisibility
+level: lycee
+difficulty: 4
+tags: divisibility, lcm, Diophantine equation
+date: 2026-11-02
+---
+
+## Statement
+
+Find all positive integers $a,b$ such that
+$$\divisibility(a,b)+\operatorname{lcm}(a,b)=9+b.$$
+
+## Hint
+
+Let $\delta=\divisibility(a,b)$, $a=\delta a'$, $b=\delta b'$ with $\divisibility(a',b')=1$. Show that $\delta\mid9$.
+
+## Solution
+
+**Reduction.** Let $\delta=\divisibility(a,b)$, $a=\delta a'$, $b=\delta b'$, with $\divisibility(a',b')=1$. Then $\operatorname{lcm}(a,b)=\delta a'b'$, and the equation becomes
+$$\delta+\delta a'b'=9+\delta b',$$
+i.e.
+$$\delta(1+a'b'-b')=9.$$
+So $\delta\mid9$.
+
+**Case analysis.** $\delta\in\{1,3,9\}$.
+
+- $\delta=1$: $1+a'b'-b'=9$, so $a'b'-b'=8$, i.e. $b'(a'-1)=8$. With $\divisibility(a',b')=1$, solve the divisor cases.
+- $\delta=3$: $3(1+a'b'-b')=9$, so $a'b'-b'=2$, i.e. $b'(a'-1)=2$.
+- $\delta=9$: $1+a'b'-b'=1$, so $a'b'=b'$, i.e. $b'(a'-1)=0$, hence $a'=1$ (since $b'>0$). Then $a=\delta=9$ and $b=9b'$ arbitrary.
+
+**Conclusion.** The full solution set is obtained by checking the finitely many divisor cases for each $\delta$. For $\delta=9$, the solutions are $a=9$, $b\equiv0\pmod9$.
+
+@@@ divisibility-divisors-of-product.md
+---
+title: Divisors of a product
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: divisibility, coprime, product divisibility
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a,b,c$ be integers with $\divisibility(a,b)=1$. Show that if $a\mid bc$, then $a\mid c$.
+
+## Hint
+
+Use Bézout: there exist $u,v$ with $au+bv=1$. Multiply by $c$.
+
+## Solution
+
+**Bézout.** Since $\divisibility(a,b)=1$, there exist integers $u,v$ such that
+$$au+bv=1.$$
+Multiplying by $c$:
+$$acu+bcv=c.$$
+
+**Divisibility.** $a\mid acu$ trivially, and $a\mid bcv$ since $a\mid bc$. Hence $a$ divides the sum, i.e. $a\mid c$.
+
+**Remark.** This is Gauss's lemma, a fundamental tool in number.
+
+@@@ divisibility-coprime-powers.md
+---
+title: Coprime powers remain coprime
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: coprime, powers, Bézout
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a,b$ be coprime positive integers. Show that $a^n$ and $b^n$ are coprime for every $n\ge1$.
+
+## Hint
+
+Use Bézout and raise to a suitable power, or use prime factorizations.
+
+## Solution
+
+**Prime factorization approach.** Since $\divisibility(a,b)=1$, no prime divides both $a$ and $b$. The prime factors of $a^n$ are exactly those of $a$, and similarly for $b^n$. Hence no prime divides both $a^n$ and $b^n$, so $\divisibility(a^n,b^n)=1$.
+
+**Bézout approach.** From $au+bv=1$, raise to the power $2n-1$:
+$$1=(au+bv)^{2n-1}=\sum_{k=0}^{2n-1}\binom{2n-1}{k}(au)^k(bv)^{2n-1-k}.$$
+Every term contains either $a^n$ or $b^n$ as a factor (since $k\ge n$ or $2n-1-k\ge n$). So $1$ is a linear combination of $a^n$ and $b^n$, hence they are coprime.
+
+@@@ divisibility-linear-diophantine.md
+---
+title: Solving a linear Diophantine equation
+category: number/diophantine
+level: l1
+difficulty: 4
+tags: Diophantine equation, Bézout, particular solution
+date: 2026-11-02
+---
+
+## Statement
+
+Solve in integers the equation
+$$1263x+420y=21.$$
+
+## Hint
+
+Compute $\divisibility(1263,420)$ and find a particular solution using Bézout, then add the general solution of the homogeneous equation.
+
+## Solution
+
+**divisibility.** Euclidean algorithm:
+\begin{align*}
+1263 &= 3\cdot420+3,\\
+420 &= 3\cdot140+0.
+\end{align*}
+So $\divisibility(1263,420)=3$, which divides $21$, so solutions exist.
+
+**Bézout.** From the first line, $3=1263-3\cdot420$. Multiplying by $7$:
+$$21=7\cdot1263-21\cdot420.$$
+So $(x_0,y_0)=(7,-21)$ is a particular solution.
+
+**General solution.** The homogeneous equation $1263x+420y=0$ gives $x=140m$, $y=-421m$ (after dividing by $\divisibility=3$). Hence
+$$(x,y)=(7+140m,\,-21-421m),\qquad m\in\mathbb{Z}.$$
+
+**Remark.** This is the corrected partiel exercise from Paris Diderot.
+
+@@@ divisibility-chinese-remainder.md
+---
+title: A Chinese remainder system
+category: number/congruences
+level: l1
+difficulty: 4
+tags: Chinese remainder theorem, congruences, Bézout
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the system
+$$\begin{cases}x\equiv2\pmod{17}\\x\equiv3\pmod{33}\end{cases}$$
+
+## Hint
+
+Write $x=2+17h=3+33k$ and solve $17h-33k=1$.
+
+## Solution
+
+**Reformulation.** We need $17h-33k=1$ for some integers $h,k$.
+
+**Bézout.** $\divisibility(17,33)=1$, and $2\cdot17-33=1$. So $h=2$, $k=1$ works.
+
+**Particular solution.**
+$$x_0=2+17\cdot2=36.$$
+
+**General solution.** By the Chinese remainder theorem,
+$$x\equiv36\pmod{17\cdot33=561}.$$
+So $x=36+561m$, $m\in\mathbb{Z}$.
+
+@@@ divisibility-incompatible-chinese.md
+---
+title: An incompatible congruence system
+category: number/congruences
+level: l1
+difficulty: 3
+tags: Chinese remainder, compatibility condition
+date: 2026-11-02
+---
+
+## Statement
+
+Show that the system
+$$\begin{cases}x\equiv5\pmod{35}\\x\equiv8\pmod{133}\end{cases}$$
+has no solution.
+
+## Hint
+
+The system is compatible iff $\divisibility(35,133)\mid(8-5)$.
+
+## Solution
+
+**divisibility.**
+$$133=3\cdot35+28,\quad 35=1\cdot28+7,\quad 28=4\cdot7.$$
+So $\divisibility(35,133)=7$.
+
+**Compatibility.** For solutions to exist, we need $7\mid(8-5)=3$. This is false, so there is no solution.
+
+@@@ divisibility-euclid-proof.md
+---
+title: Why the Euclidean algorithm works
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: Euclidean algorithm, proof, division
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a=bq+r$ with $0\le r<b$. Prove that $\divisibility(a,b)=\divisibility(b,r)$.
+
+## Hint
+
+Show that the set of common divisors of $(a,b)$ equals the set of common divisors of $(b,r)$.
+
+## Solution
+
+**Inclusion 1.** If $d\mid a$ and $d\mid b$, then $d\mid a-bq=r$. So $d$ is a common divisor of $b$ and $r$.
+
+**Inclusion 2.** If $d\mid b$ and $d\mid r$, then $d\mid bq+r=a$. So $d$ is a common divisor of $a$ and $b$.
+
+**Conclusion.** The two pairs have the same common divisors, hence the same greatest one. The Euclidean algorithm terminates because the remainders strictly decrease: $r<b$, and each new remainder is strictly smaller than the previous one. It stops when the remainder is $0$, and the last nonzero remainder is the divisibility.
+
+@@@ divisibility-bezout-existence.md
+---
+title: Existence of a Bézout identity
+category: number/divisibility
+level: l1
+difficulty: 4
+tags: Bézout, existence, well-ordering
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a,b$ be nonzero integers, and $d=\divisibility(a,b)$. Show that there exist integers $u,v$ such that $au+bv=d$.
+
+## Hint
+
+Consider the set $S=\{ax+by:x,y\in\mathbb{Z},\,ax+by>0\}$ and let $d'$ be its minimum.
+
+## Solution
+
+**Well-ordering.** $S$ is a nonempty set of positive integers (for example, $a^2+b^2\in S$). Let $d'$ be its smallest element, written $d'=au+bv$.
+
+**Division.** Divide $a$ by $d'$: $a=d'q+r$ with $0\le r<d'$. Then
+$$r=a-d'q=a-(au+bv)q=a(1-uq)+b(-vq).$$
+So $r$ is a linear combination of $a$ and $b$. If $r>0$, then $r\in S$ and $r<d'$, contradicting the minimality of $d'$. Hence $r=0$, so $d'\mid a$. Similarly $d'\mid b$.
+
+**Conclusion.** $d'$ is a common divisor of $a$ and $b$, so $d'\le d$. On the other hand, $d$ divides every linear combination of $a$ and $b$, so $d\mid d'$, hence $d\le d'$. Therefore $d'=d$, and $d$ has a Bézout representation.
+
+@@@ divisibility-lcm-relation-exercise.md
+---
+title: Computing LCM from divisibility
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: lcm, divisibility, product
+date: 2026-11-02
+---
+
+## Statement
+
+Given $\divisibility(8303,2717)=19$, compute $\operatorname{lcm}(8303,2717)$.
+
+## Hint
+
+Use $\divisibility(a,b)\cdot\operatorname{lcm}(a,b)=ab$.
+
+## Solution
+
+$$\operatorname{lcm}(8303,2717)=\frac{8303\cdot2717}{19}=\frac{22556251}{19}=1187329.$$
+
+**Remark.** This matches the Université Lyon 1 correction.
+
+@@@ divisibility-simplify-fraction.md
+---
+title: Simplifying a fraction with the divisibility
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: divisibility, irreducible fraction, simplification
+date: 2026-11-02
+---
+
+## Statement
+
+Simplify $\dfrac{1725}{1995}$ to an irreducible fraction.
+
+## Hint
+
+Compute $\divisibility(1725,1995)$ with the Euclidean algorithm and divide.
+
+## Solution
+
+**Euclidean algorithm.**
+\begin{align*}
+1995 &= 1\cdot1785+210,\\
+1785 &= 8\cdot210+105,\\
+210 &= 2\cdot105+0.
+\end{align*}
+So $\divisibility(1725,1995)=105$.
+
+**Simplification.**
+$$\frac{1725}{1995}=\frac{1725/105}{1995/105}=\frac{17}{19}.$$
+
+Since $17$ is prime and does not divide $19$, the fraction is irreducible.
+
+@@@ divisibility-divisors-common-multiple.md
+---
+title: Common divisors and common multiples
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: divisibility, lcm, structure
+date: 2026-11-02
+---
+
+## Statement
+
+Show that every common divisor of $a$ and $b$ divides $\divisibility(a,b)$, and every common multiple of $a$ and $b$ is a multiple of $\operatorname{lcm}(a,b)$.
+
+## Hint
+
+Use the prime factorizations, or the Bézout identity for the first part.
+
+## Solution
+
+**Common divisors.** Let $d=\divisibility(a,b)$ and let $c$ be any common divisor of $a,b$. Write $d=au+bv$ (Bézout). Since $c\mid a$ and $c\mid b$, we get $c\mid au+bv=d$.
+
+**Common multiples.** Let $M=\operatorname{lcm}(a,b)$ and let $N$ be any common multiple. Write the Euclidean division $N=Mq+r$ with $0\le r<M$. Since $N$ and $M$ are both multiples of $a$ and $b$, so is $r=N-Mq$. But $M$ is the *smallest* positive common multiple, so $r=0$. Hence $M\mid N$.
+
+@@@ divisibility-recurrence-coprime.md
+---
+title: A divisibility recurrence
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: divisibility, recurrence, Euclidean algorithm
+date: 2026-11-02
+---
+
+## Statement
+
+Let $F_0=0$, $F_1=1$, and $F_{n+2}=F_{n+1}+F_n$ (Fibonacci). Show that $\divisibility(F_n,F_{n+1})=1$ for all $n$.
+
+## Hint
+
+Use the Euclidean algorithm relation $\divisibility(F_{n+1},F_n)=\divisibility(F_n,F_{n-1})$.
+
+## Solution
+
+**Recurrence.** From $F_{n+1}=F_n+F_{n-1}$, we have
+$$\divisibility(F_{n+1},F_n)=\divisibility(F_n+F_{n-1},F_n)=\divisibility(F_{n-1},F_n).$$
+Iterating:
+$$\divisibility(F_{n+1},F_n)=\divisibility(F_n,F_{n-1})=\cdots=\divisibility(F_2,F_1)=\divisibility(1,1)=1.$$
+
+**Conclusion.** Consecutive Fibonacci numbers are always coprime.
+
+**Remark.** This is a nice application of the invariance of the divisibility under the Euclidean step.
+
+@@@ divisibility-beckett-identity.md
+---
+title: A divisibility identity for a sum
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: divisibility, linearity, sum
+date: 2026-11-02
+---
+
+## Statement
+
+Show that $\divisibility(a+b,\operatorname{lcm}(a,b))=\divisibility(a,b)$ for all positive integers $a,b$.
+
+## Hint
+
+Write $a=\delta a'$, $b=\delta b'$ with $\divisibility(a',b')=1$. Then $\operatorname{lcm}=\delta a'b'$ and $a+b=\delta(a'+b')$.
+
+## Solution
+
+**Reduction.** Let $\delta=\divisibility(a,b)$, $a=\delta a'$, $b=\delta b'$, $\divisibility(a',b')=1$. Then
+$$a+b=\delta(a'+b'),\qquad \operatorname{lcm}(a,b)=\delta a'b'.$$
+So
+$$\divisibility(a+b,\operatorname{lcm}(a,b))=\delta\cdot\divisibility(a'+b',a'b').$$
+
+**Coprimality.** Since $\divisibility(a',b')=1$, any prime dividing $a'b'$ divides exactly one of $a',b'$, hence cannot divide $a'+b'$. Therefore $\divisibility(a'+b',a'b')=1$.
+
+**Conclusion.** $\divisibility(a+b,\operatorname{lcm}(a,b))=\delta=\divisibility(a,b)$.
+
+@@@ divisibility-divisibility-of-power.md
+---
+title: Divisibility of $a^n-b^n$
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: divisibility, factorization, powers
+date: 2026-11-02
+---
+
+## Statement
+
+Show that for all integers $a,b$ and all $n\ge1$, $a-b$ divides $a^n-b^n$.
+
+## Hint
+
+Factor: $a^n-b^n=(a-b)(a^{n-1}+a^{n-2}b+\cdots+b^{n-1})$.
+
+## Solution
+
+**Factorization.**
+$$a^n-b^n=(a-b)\sum_{k=0}^{n-1}a^{n-1-k}b^k.$$
+The sum is an integer since $a,b$ are integers. Hence $a-b\mid a^n-b^n$.
+
+**Remark.** This is the algebraic identity behind many divisibility results, for example $n^3-1=(n-1)(n^2+n+1)$.
+
+@@@ divisibility-coprime-sum-product.md
+---
+title: If $a,b$ are coprime, so are $a+b$ and $ab$
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: coprime, sum, product
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a,b$ be coprime positive integers. Show that $\divisibility(a+b,ab)=1$.
+
+## Hint
+
+Let $p$ be a prime dividing both $a+b$ and $ab$. Use Euclid's lemma.
+
+## Solution
+
+**Prime argument.** Suppose a prime $p$ divides $a+b$ and $ab$. Since $p\mid ab$ and $p$ is prime, $p\mid a$ or $p\mid b$.
+
+If $p\mid a$, then from $p\mid a+b$ we get $p\mid b$, contradicting $\divisibility(a,b)=1$. Similarly if $p\mid b$.
+
+**Conclusion.** No prime divides both $a+b$ and $ab$, so $\divisibility(a+b,ab)=1$.
+
+@@@ divisibility-three-numbers.md
+---
+title: divisibility of three numbers
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: divisibility, three numbers, prime factorization
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\divisibility(540,468,396)$.
+
+## Hint
+
+Compute $\divisibility(540,468)$ first, then take the divisibility with $396$. Alternatively, use prime factorizations.
+
+## Solution
+
+**Prime factorizations.**
+$$540=2^2\cdot3^3\cdot5,\qquad 468=2^2\cdot3^2\cdot13,\qquad 396=2^2\cdot3^2\cdot11.$$
+
+**divisibility.** Take the smallest exponent of each common prime:
+$$\divisibility=2^2\cdot3^2=4\cdot9=36.$$
+
+**Remark.** This is the maximum number of identical bags one can form with $540$ red, $468$ green, and $396$ yellow candies.
+
+@@@ divisibility-linear-equation-two-variables.md
+---
+title: Solving $ax+by=c$
+category: number/diophantine
+level: l1
+difficulty: 4
+tags: Diophantine equation, Bézout, solvability criterion
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a,b,c$ be integers with $a,b$ not both zero. Show that $ax+by=c$ has integer solutions if and only if $\divisibility(a,b)\mid c$.
+
+## Hint
+
+For the forward direction, note that $\divisibility(a,b)$ divides every linear combination. For the converse, use Bézout.
+
+## Solution
+
+**Necessity.** If $ax+by=c$ and $d=\divisibility(a,b)$, then $d\mid a$ and $d\mid b$, so $d\mid ax+by=c$.
+
+**Sufficiency.** Suppose $d\mid c$, say $c=dq$. By Bézout, there exist $u,v$ with $au+bv=d$. Multiplying by $q$:
+$$a(uq)+b(vq)=dq=c.$$
+So $(x,y)=(uq,vq)$ is a solution.
+
+@@@ divisibility-prime-divisor-property.md
+---
+title: A prime divisor property
+category: number/divisibility
+level: l1
+difficulty: 4
+tags: primes, divisibility, Euclid's lemma
+date: 2026-11-02
+---
+
+## Statement
+
+Let $p$ be prime and $a,b$ integers. Show that if $p\mid ab$, then $p\mid a$ or $p\mid b$.
+
+## Hint
+
+If $p\nmid a$, then $\divisibility(p,a)=1$. Apply Gauss's lemma.
+
+## Solution
+
+**Case 1.** If $p\mid a$, done.
+
+**Case 2.** If $p\nmid a$, then since $p$ is prime, $\divisibility(p,a)=1$. By Gauss's lemma (if $\divisibility(p,a)=1$ and $p\mid ab$, then $p\mid b$), we get $p\mid b$.
+
+**Remark.** This property characterizes prime numbers in $\mathbb{Z}$ and is the key to unique factorization.
+
+@@@ divisibility-exercise-20-divisors.md
+---
+title: Finding divisors systematically
+category: number/divisibility
+level: lycee
+difficulty: 1
+tags: divisors, enumeration, bounds
+date: 2026-11-02
+---
+
+## Statement
+
+Find all positive divisors of $20$.
+
+## Hint
+
+If $d\mid20$ and $d>0$, then $d\le20$. Test $d=1,\ldots,20$, or use $20=2^2\cdot5$.
+
+## Solution
+
+**Factorization.** $20=2^2\cdot5$. The divisors are $2^a5^b$ with $0\le a\le2$, $0\le b\le1$:
+$$1,2,4,5,10,20.$$
+
+**Verification.** $20=1\cdot20=2\cdot10=4\cdot5$.
+
+@@@ divisibility-number-of-divisors-odd.md
+---
+title: When is the number of divisors odd?
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: divisors, perfect squares, counting
+date: 2026-11-02
+---
+
+## Statement
+
+Show that a positive integer $n$ has an odd number of positive divisors if and only if $n$ is a perfect square.
+
+## Hint
+
+Pair each divisor $d$ with $n/d$. The pairing is perfect except when $d=n/d$.
+
+## Solution
+
+**Pairing.** For each divisor $d$ of $n$, $n/d$ is also a divisor. The map $d\mapsto n/d$ is an involution. Fixed points satisfy $d=n/d$, i.e. $d^2=n$.
+
+**Conclusion.** If $n$ is not a square, all divisors pair up, so the number of divisors is even. If $n=k^2$, all divisors pair up except $d=k$, so the number of divisors is odd.
+
+@@@ divisibility-smallest-prime-divisor.md
+---
+title: The smallest prime divisor
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: primes, smallest divisor, compositeness
+date: 2026-11-02
+---
+
+## Statement
+
+Show that if $n>1$ is composite, then $n$ has a prime divisor $p\le\sqrt n$.
+
+## Hint
+
+Write $n=ab$ with $1<a\le b<n$. Then $a\le\sqrt n$.
+
+## Solution
+
+**Factorization.** Since $n$ is composite, $n=ab$ with $1<a\le b<n$.
+
+**Bound.** If $a>\sqrt n$, then $b\ge a>\sqrt n$, so $ab>n$, contradiction. Hence $a\le\sqrt
