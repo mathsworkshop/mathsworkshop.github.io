@@ -1,0 +1,582 @@
+@@@ first-order-separable-basic.md
+---
+title: A separable first-order equation
+category: calculus/differential-equations/first-order
+level: l1
+difficulty: 2
+tags: separable equation, integration, initial condition
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the differential equation
+$$y' = \frac{x}{1+2y}$$
+with the initial condition $y(0)=0$.
+
+## Hint
+
+Separate the variables: $(1+2y)dy = x\,dx$, then integrate both sides.
+
+## Solution
+
+**Separation.** Multiply both sides by $(1+2y)$:
+$$(1+2y)\frac{dy}{dx} = x \implies (1+2y)dy = x\,dx.$$
+
+**Integration.**
+$$\int (1+2y)\,dy = \int x\,dx \implies y + y^2 = \frac{x^2}{2} + C.$$
+
+**Initial condition.** With $y(0)=0$:
+$$0 + 0 = 0 + C \implies C=0.$$
+
+**Implicit solution.**
+$$y^2 + y - \frac{x^2}{2} = 0.$$
+Solving for $y$:
+$$y = \frac{-1 \pm \sqrt{1+2x^2}}{2}.$$
+Since $y(0)=0$, we take the $+$ branch:
+$$y(x) = \frac{-1 + \sqrt{1+2x^2}}{2}.$$
+
+
+@@@ first-order-linear-constant-coefficients.md
+---
+title: A linear first-order equation with polynomial right-hand side
+category: calculus/differential-equations/first-order
+level: l1
+difficulty: 3
+tags: linear equation, homogeneous solution, particular solution
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the differential equation
+$$y' + 2y = x^2 - 2x + 3.$$
+
+## Hint
+
+Find the homogeneous solution $y_h = Ce^{-2x}$, then look for a particular solution of the form $y_p = ax^2 + bx + c$.
+
+## Solution
+
+**Homogeneous equation.** $y' + 2y = 0$ gives
+$$y_h(x) = Ce^{-2x}.$$
+
+**Particular solution.** Try $y_p = ax^2 + bx + c$. Then $y_p' = 2ax + b$, and
+$$y_p' + 2y_p = 2ax + b + 2ax^2 + 2bx + 2c = 2ax^2 + (2a+2b)x + (b+2c).$$
+Identifying with $x^2 - 2x + 3$:
+$$2a = 1 \implies a = \frac12,$$
+$$2a + 2b = -2 \implies 1 + 2b = -2 \implies b = -\frac32,$$
+$$b + 2c = 3 \implies -\frac32 + 2c = 3 \implies c = \frac94.$$
+So
+$$y_p(x) = \frac12 x^2 - \frac32 x + \frac94.$$
+
+**General solution.**
+$$y(x) = Ce^{-2x} + \frac12 x^2 - \frac32 x + \frac94, \qquad C \in \mathbb{R}.$$
+
+@@@ first-order-variation-of-constants.md
+---
+title: Variation of constants
+category: calculus/differential-equations/first-order
+level: l2
+difficulty: 3
+tags: variation of constants, linear equation, integration
+date: 2026-11-02
+---
+
+## Statement
+
+Solve on $]0,+\infty[$ the equation
+$$y' - \frac{y}{x} = x^2.$$
+
+## Hint
+
+The homogeneous solution is $y_h = Cx$. Use variation of constants: $y(x) = C(x)x$.
+
+## Solution
+
+**Homogeneous equation.** $y' - y/x = 0$ gives
+$$\frac{y'}{y} = \frac1x \implies \ln|y| = \ln x + \text{const} \implies y_h(x) = Cx.$$
+
+**Variation of constants.** Set $y(x) = C(x)x$. Then $y' = C'x + C$, and
+$$y' - \frac{y}{x} = C'x + C - C = C'x.$$
+We need $C'x = x^2$, so $C'(x) = x$, hence $C(x) = \frac{x^2}{2} + K$.
+
+**General solution.**
+$$y(x) = \left(\frac{x^2}{2} + K\right)x = \frac{x^3}{2} + Kx, \qquad K \in \mathbb{R}.$$
+
+**Remark.** This is the standard method of variation of constants.
+
+@@@ first-order-integrating-factor.md
+---
+title: An integrating factor
+category: calculus/differential-equations/first-order
+level: l2
+difficulty: 4
+tags: integrating factor, linear equation, exact equation
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the equation
+$$(1+x^2)dy + (xy + x^3 + x)dx = 0.$$
+
+## Hint
+
+Rewrite in the form $y' + P(x)y = Q(x)$, then find an integrating factor.
+
+## Solution
+
+**Rewrite.** Divide by $(1+x^2)dx$:
+$$\frac{dy}{dx} + \frac{x}{1+x^2}y = -x.$$
+
+**Integrating factor.** Here $P(x) = \frac{x}{1+x^2}$, so
+$$\int P(x)\,dx = \frac12 \ln(1+x^2) = \ln\sqrt{1+x^2}.$$
+The integrating factor is
+$$\mu(x) = e^{\int P\,dx} = \sqrt{1+x^2}.$$
+
+**Multiply.** 
+$$\sqrt{1+x^2}\,y' + \frac{x}{\sqrt{1+x^2}}y = -x\sqrt{1+x^2}.$$
+The left side is $\frac{d}{dx}(\sqrt{1+x^2}\,y)$.
+
+**Integrate.**
+$$\sqrt{1+x^2}\,y = -\int x\sqrt{1+x^2}\,dx = -\frac13(1+x^2)^{3/2} + C.$$
+Hence
+$$y(x) = -\frac13(1+x^2) + \frac{C}{\sqrt{1+x^2}}.$$
+
+
+@@@ first-order-newton-cooling.md
+---
+title: Newton's law of cooling
+category: calculus/differential-equations/first-order
+level: l1
+difficulty: 3
+tags: Newton cooling, separable equation, modelling
+date: 2026-11-02
+---
+
+## Statement
+
+A beer at $40^\circ$F is placed in a room at $70^\circ$F. After 10 minutes, its temperature is $48^\circ$F. Using Newton's law of cooling $y' = k(70-y)$, find the temperature after 25 minutes.
+
+## Hint
+
+Separate: $\frac{dy}{70-y} = k\,dt$. Solve with $y(0)=40$, then use $y(10)=48$ to find $k$.
+
+## Solution
+
+**Separation.**
+$$\frac{dy}{70-y} = k\,dt \implies -\ln|70-y| = kt + C \implies y(t) = 70 - Ae^{-kt}.$$
+
+**Initial condition.** $y(0)=40$ gives $40 = 70 - A$, so $A=30$.
+
+**Finding $k$.** $y(10)=48$ gives
+$$48 = 70 - 30e^{-10k} \implies e^{-10k} = \frac{22}{30} = \frac{11}{15} \implies k = -\frac{1}{10}\ln\frac{11}{15} \approx 0.0310.$$
+
+**At $t=25$.**
+$$y(25) = 70 - 30e^{-25k} \approx 70 - 30e^{-0.775} \approx 70 - 13.82 = 56.18^\circ\text{F}.$$
+
+
+@@@ second-order-real-distinct-roots.md
+---
+title: Distinct real roots
+category: calculus/differential-equations/second-order
+level: l1
+difficulty: 2
+tags: characteristic equation, real roots, homogeneous equation
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the differential equation
+$$y'' + 3y' - 4y = 0.$$
+
+## Hint
+
+Write the characteristic equation $r^2 + 3r - 4 = 0$ and find its roots.
+
+## Solution
+
+**Characteristic equation.**
+$$r^2 + 3r - 4 = 0.$$
+The discriminant is $\Delta = 9 + 16 = 25$, so the roots are
+$$r_1 = \frac{-3+5}{2} = 1, \qquad r_2 = \frac{-3-5}{2} = -4.$$
+
+**General solution.**
+$$y(x) = Ae^x + Be^{-4x}, \qquad A,B \in \mathbb{R}.$$
+
+
+@@@ second-order-double-root.md
+---
+title: A double root
+category: calculus/differential-equations/second-order
+level: l1
+difficulty: 2
+tags: characteristic equation, double root, homogeneous equation
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the differential equation
+$$y'' - 4y' + 4y = 0.$$
+
+## Hint
+
+The characteristic equation has a double root.
+
+## Solution
+
+**Characteristic equation.**
+$$r^2 - 4r + 4 = 0 \implies (r-2)^2 = 0.$$
+The root is $r=2$, double.
+
+**General solution.**
+$$y(x) = (Ax + B)e^{2x}, \qquad A,B \in \mathbb{R}.$$
+
+
+@@@ second-order-complex-roots.md
+---
+title: Complex conjugate roots
+category: calculus/differential-equations/second-order
+level: l1
+difficulty: 2
+tags: characteristic equation, complex roots, oscillation
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the differential equation
+$$y'' + 4y' + 5y = 0.$$
+
+## Hint
+
+The characteristic equation has complex conjugate roots.
+
+## Solution
+
+**Characteristic equation.**
+$$r^2 + 4r + 5 = 0.$$
+The discriminant is $\Delta = 16 - 20 = -4 = (2i)^2$, so the roots are
+$$r_{1,2} = \frac{-4 \pm 2i}{2} = -2 \pm i.$$
+
+**General solution.**
+$$y(x) = e^{-2x}(A\cos x + B\sin x), \qquad A,B \in \mathbb{R}.$$
+
+**Remark.** This is the oscillatory (pseudo-periodic) case.
+
+@@@ second-order-with-particular-solution.md
+---
+title: A second-order equation with a polynomial right-hand side
+category: calculus/differential-equations/second-order
+level: l2
+difficulty: 4
+tags: particular solution, identification, polynomial right-hand side
+date: 2026-11-02
+---
+
+## Statement
+
+Solve
+$$y'' + 9y = x + 1.$$
+
+## Hint
+
+The homogeneous solution uses $\cos(3x)$ and $\sin(3x)$. Look for a particular solution of the form $ax+b$.
+
+## Solution
+
+**Homogeneous equation.** $r^2 + 9 = 0$ gives $r = \pm 3i$, so
+$$y_h(x) = A\cos(3x) + B\sin(3x).$$
+
+**Particular solution.** Try $y_p = ax+b$. Then $y_p'' = 0$, and
+$$y_p'' + 9y_p = 9(ax+b) = 9ax + 9b.$$
+Identifying with $x+1$:
+$$9a = 1 \implies a = \frac19, \qquad 9b = 1 \implies b = \frac19.$$
+So
+$$y_p(x) = \frac{x+1}{9}.$$
+
+**General solution.**
+$$y(x) = A\cos(3x) + B\sin(3x) + \frac{x+1}{9}.$$
+
+
+@@@ second-order-resonance.md
+---
+title: Resonance with a double root
+category: calculus/differential-equations/second-order
+level: l2
+difficulty: 4
+tags: resonance, double root, particular solution, identification
+date: 2026-11-02
+---
+
+## Statement
+
+Solve
+$$y'' - 2y' + y = e^{3x}.$$
+
+## Hint
+
+The characteristic equation has a double root at $r=1$. Since $3$ is not a root, try $y_p = \alpha e^{3x}$.
+
+## Solution
+
+**Homogeneous equation.** $r^2 - 2r + 1 = (r-1)^2 = 0$, so $r=1$ is a double root and
+$$y_h(x) = (Ax+B)e^x.$$
+
+**Particular solution.** Try $y_p = \alpha e^{3x}$. Then $y_p' = 3\alpha e^{3x}$, $y_p'' = 9\alpha e^{3x}$, and
+$$y_p'' - 2y_p' + y_p = (9 - 6 + 1)\alpha e^{3x} = 4\alpha e^{3x}.$$
+We need $4\alpha = 1$, so $\alpha = \frac14$.
+
+**General solution.**
+$$y(x) = (Ax+B)e^x + \frac14 e^{3x}.$$
+
+
+@@@ second-order-full-example.md
+---
+title: Superposition of right-hand sides
+category: calculus/differential-equations/second-order
+level: l2
+difficulty: 5
+tags: superposition, double root, polynomial right-hand side
+date: 2026-11-02
+---
+
+## Statement
+
+Solve
+$$y'' - 2y' + y = (x^2+1)e^x + e^{3x}.$$
+
+## Hint
+
+Use superposition. Solve first with right-hand side $(x^2+1)e^x$, then with $e^{3x}$.
+
+## Solution
+
+**Homogeneous.** As before, $y_h = (Ax+B)e^x$.
+
+**First particular solution.** For $(x^2+1)e^x$, since $1$ is a double root, try $y_{p1} = P(x)e^x$ with $\deg P \le 4$. Substituting:
+$$y_{p1}'' - 2y_{p1}' + y_{p1} = P''(x)e^x.$$
+We need $P'' = x^2+1$. Integrating twice:
+$$P(x) = \frac{x^4}{12} + \frac{x^2}{2} + Cx + D.$$
+Taking $C=D=0$ for a particular solution:
+$$y_{p1}(x) = \left(\frac{x^4}{12} + \frac{x^2}{2}\right)e^x.$$
+
+**Second particular solution.** For $e^{3x}$, try $\alpha e^{3x}$. We found $\alpha = \frac14$.
+
+**General solution.**
+$$y(x) = \left(\frac{x^4}{12} + \frac{x^2}{2} + Ax + B\right)e^x + \frac14 e^{3x}.$$
+
+
+@@@ linear-systems-diagonalizable.md
+---
+title: A diagonalizable system
+category: calculus/differential-equations/linear-systems
+level: l2
+difficulty: 3
+tags: diagonalization, eigenvalues, eigenvectors
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the system $X' = AX$ where
+$$A = \begin{pmatrix} 1 & 2 & -1 \\ 2 & 4 & -2 \\ -1 & -2 & 1 \end{pmatrix}.$$
+
+## Hint
+
+Find the eigenvalues and eigenvectors of $A$. The characteristic polynomial is $X^2(X-6)$.
+
+## Solution
+
+**Eigenvalues.** $\det(A - \lambda I) = -\lambda^2(\lambda - 6)$, so the eigenvalues are $0$ (double) and $6$.
+
+**Eigenvectors for $\lambda=0$.** Solve $AX=0$: the kernel has dimension $2$, with basis
+$$u_1 = (1,0,1), \qquad u_2 = (2,-1,0).$$
+
+**Eigenvector for $\lambda=6$.** Solve $(A-6I)X=0$: a basis is
+$$u_3 = (1,2,-1).$$
+
+**General solution.**
+$$X(t) = \lambda u_1 + \mu u_2 + \gamma e^{6t} u_3, \qquad \lambda,\mu,\gamma \in \mathbb{R}.$$
+
+
+@@@ linear-systems-distinct-eigenvalues.md
+---
+title: A system with three distinct eigenvalues
+category: calculus/differential-equations/linear-systems
+level: l2
+difficulty: 3
+tags: eigenvalues, eigenvectors, general solution
+date: 2026-11-02
+---
+
+## Statement
+
+Solve $X' = AX$ where
+$$A = \begin{pmatrix} 0 & 1 & 1 \\ -1 & 2 & 1 \\ 1 & 0 & 1 \end{pmatrix}.$$
+
+## Hint
+
+The characteristic polynomial is $X(X-1)(X-2)$. Find the eigenvectors.
+
+## Solution
+
+**Eigenvalues.** $0, 1, 2$.
+
+**Eigenvectors.**
+- For $\lambda=0$: $u_0 = (1,1,-1)$.
+- For $\lambda=1$: $u_1 = (0,-1,1)$.
+- For $\lambda=2$: $u_2 = (1,1,1)$.
+
+**General solution.**
+$$X(t) = \lambda u_0 + \mu e^t u_1 + \gamma e^{2t} u_2.$$
+
+
+@@@ linear-systems-complex-eigenvalues.md
+---
+title: Complex eigenvalues
+category: calculus/differential-equations/linear-systems
+level: l3
+difficulty: 4
+tags: complex eigenvalues, real solutions, coefficients indéterminés
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the system $X' = AX$ where the eigenvalues of $A$ are $2$, $1+i$, $1-i$.
+
+## Hint
+
+For the complex eigenvalues, look for real solutions of the form $e^t(\cos t\,v + \sin t\,w)$.
+
+## Solution
+
+**Eigenvector for $\lambda=2$.** $u = (1,1,1)$, giving the solution $e^{2t}u$.
+
+**Complex pair.** For $\lambda = 1+i$, find a complex eigenvector, then take real and imaginary parts of $e^{(1+i)t}v$. The real solutions are of the form
+$$X(t) = e^t\begin{pmatrix} a \\ b \\ c \end{pmatrix}\cos t + e^t\begin{pmatrix} d \\ e \\ f \end{pmatrix}\sin t,$$
+where the coefficients are determined by substituting into $X' = AX$.
+
+
+@@@ linear-systems-matrix-exponential-nilpotent.md
+---
+title: Matrix exponential with a nilpotent part
+category: calculus/differential-equations/linear-systems
+level: l3
+difficulty: 4
+tags: matrix exponential, nilpotent, Jordan form
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\exp(tA)$ for
+$$A = \begin{pmatrix} \lambda & 1 & 0 \\ 0 & \lambda & 1 \\ 0 & 0 & \lambda \end{pmatrix}.$$
+
+## Hint
+
+Write $A = \lambda I + N$ where $N$ is nilpotent ($N^3=0$). Since $\lambda I$ and $N$ commute, $\exp(tA) = e^{\lambda t}\exp(tN)$.
+
+## Solution
+
+**Decomposition.** $A = \lambda I + N$ with
+$$N = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix}, \qquad N^2 = \begin{pmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{pmatrix}, \qquad N^3 = 0.$$
+
+**Exponential of $N$.**
+$$\exp(tN) = I + tN + \frac{t^2}{2}N^2 = \begin{pmatrix} 1 & t & t^2/2 \\ 0 & 1 & t \\ 0 & 0 & 1 \end{pmatrix}.$$
+
+**Exponential of $A$.**
+$$\exp(tA) = e^{\lambda t}\begin{pmatrix} 1 & t & t^2/2 \\ 0 & 1 & t \\ 0 & 0 & 1 \end{pmatrix}.$$
+
+
+@@@ linear-systems-matrix-exponential-basic.md
+---
+title: Properties of the matrix exponential
+category: calculus/differential-equations/linear-systems
+level: l3
+difficulty: 3
+tags: matrix exponential, commuting matrices, derivative
+date: 2026-11-02
+---
+
+## Statement
+
+Let $A,B$ be $n \times n$ matrices with $AB = BA$. Prove that $e^{A+B} = e^A e^B$.
+
+## Hint
+
+Use the power series definition and the binomial theorem, which is valid because $A$ and $B$ commute.
+
+## Solution
+
+**Power series.**
+$$e^A e^B = \left(\sum_{k=0}^{\infty} \frac{A^k}{k!}\right)\left(\sum_{l=0}^{\infty} \frac{B^l}{l!}\right) = \sum_{n=0}^{\infty} \sum_{m=0}^{n} \frac{A^{n-m}}{(n-m)!} \frac{B^m}{m!}.$$
+
+**Binomial theorem.** Since $AB=BA$, $(A+B)^n = \sum_{m=0}^{n} \binom{n}{m} A^{n-m} B^m$. Therefore
+$$e^A e^B = \sum_{n=0}^{\infty} \frac{1}{n!} \sum_{m=0}^{n} \binom{n}{m} A^{n-m} B^m = \sum_{n=0}^{\infty} \frac{(A+B)^n}{n!} = e^{A+B}.$$
+
+
+@@@ linear-systems-exponential-derivative.md
+---
+title: Derivative of the matrix exponential
+category: calculus/differential-equations/linear-systems
+level: l3
+difficulty: 3
+tags: matrix exponential, derivative, series
+date: 2026-11-02
+---
+
+## Statement
+
+Prove that $\frac{d}{dt} e^{tA} = A e^{tA} = e^{tA} A$.
+
+## Hint
+
+Differentiate the power series term by term.
+
+## Solution
+
+**Power series.**
+$$e^{tA} = \sum_{n=0}^{\infty} \frac{(tA)^n}{n!} = \sum_{n=0}^{\infty} \frac{t^n A^n}{n!}.$$
+
+**Differentiation.**
+$$\frac{d}{dt} e^{tA} = \sum_{n=1}^{\infty} \frac{n t^{n-1} A^n}{n!} = \sum_{n=1}^{\infty} \frac{t^{n-1} A^n}{(n-1)!} = A \sum_{n=1}^{\infty} \frac{t^{n-1} A^{n-1}}{(n-1)!} = A e^{tA}.$$
+Since $A$ commutes with $e^{tA}$, we also have $e^{tA} A$.
+
+**Remark.** This property is the key to solving linear systems $X' = AX$ via $X(t) = e^{tA}X(0)$.
+
+@@@ linear-systems-with-second-member.md
+---
+title: A linear system with a second member
+category: calculus/differential-equations/linear-systems
+level: l3
+difficulty: 4
+tags: second member, variation of constants, matrix exponential
+date: 2026-11-02
+---
+
+## Statement
+
+Solve the system $X' = AX + B(t)$ where $A$ is diagonalizable and $B(t)$ is a given vector function.
+
+## Hint
+
+Use variation of constants: $X(t) = e^{tA}C(t)$, so $C'(t) = e^{-tA}B(t)$.
+
+## Solution
+
+**Variation of constants.** Set $X(t) = e^{tA}C(t)$. Then
+$$X' = A e^{tA}C + e^{tA}C' = AX + e^{tA}C'.$$
+We need $e^{tA}C' = B(t)$, so
+$$C'(t) = e^{-tA}B(t).$$
+
+**Integration.**
+$$C(t) = C_0 + \int_{t_0}^{t} e^{-sA}B(s)\,ds.$$
+
+**General solution.**
+$$X(t) = e^{tA}C_0 + \int_{t_0}^{t} e^{(t-s)A}B(s)\,ds.$$
+
