@@ -271,17 +271,17 @@
       "subcategories": [
         {
           "id": "basics",
-          "name": "basic probability",
+          "name": "Basic probability",
           "subcategories": []
         },
         {
           "id": "discrete-distributions",
-          "name": "Discrete Distributions",
+          "name": "Discrete distributions",
           "subcategories": []
         },
-         {
+        {
           "id": "continuous",
-          "name": "Continuous Distributions",
+          "name": "Continuous distributions",
           "subcategories": []
         },
         {
@@ -305,18 +305,18 @@
           "subcategories": []
         },
         {
-        "id": "generating-functions",
+          "id": "generating-functions",
           "name": "Generating functions",
           "subcategories": []
-        },
+        }
       ]
     },
-          {
+    {
       "id": "stat",
       "name": "Statistics",
-      "description": "Finite and discrete probability.",
+      "description": "Sampling, estimation, confidence intervals, hypothesis testing and regression.",
       "subcategories": [
-         {
+        {
           "id": "sampling",
           "name": "Sampling",
           "subcategories": []
@@ -326,27 +326,26 @@
           "name": "Estimation",
           "subcategories": []
         },
-       
-         {
+        {
           "id": "confidence-intervals",
-          "name": "Confidence Intervals",
+          "name": "Confidence intervals",
           "subcategories": []
         },
         {
-           "id": "hypothesis-testing",
-          "name": "Hypothesis Testing",
+          "id": "hypothesis-testing",
+          "name": "Hypothesis testing",
           "subcategories": []
         },
         {
-           "id": "regression",
+          "id": "regression",
           "name": "Regression",
           "subcategories": []
         },
         {
-           "id": "bayesian",
-          "name": "Bayesian statistic",
+          "id": "bayesian",
+          "name": "Bayesian statistics",
           "subcategories": []
-        },
+        }
       ]
     },
     {
