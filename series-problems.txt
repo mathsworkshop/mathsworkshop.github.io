@@ -1,0 +1,1329 @@
+@@@ geometric-series-and-repeating-decimals.md
+---
+title: Geometric series and repeating decimals
+category: calculus/single-variable/series
+level: lycee
+difficulty: 1
+tags: geometric series, decimals, sum
+date: 2026-11-02
+---
+
+## Statement
+
+1. Compute $\displaystyle\sum_{n=0}^{\infty}\frac{3}{4^n}$ and $\displaystyle\sum_{n=1}^{\infty}\left(-\frac23\right)^n$.
+2. Write $0.\overline{142857}=0.142857142857\dots$ as a fraction.
+3. Explain why $0.999\dots=1$.
+
+## Hint
+
+If $|q|<1$, $\sum_{n=0}^\infty q^n=\frac1{1-q}$. A repeating decimal is a geometric series.
+
+## Solution
+
+**1.** First: $3\cdot\frac1{1-\frac14}=4$. Second: the series starts at $n=1$, so the sum is $\frac{q}{1-q}$ with $q=-\frac23$:
+$$\frac{-2/3}{1+2/3}=-\frac25.$$
+
+**2.** $0.\overline{142857}=142857\left(10^{-6}+10^{-12}+\dots\right)=142857\cdot\frac{10^{-6}}{1-10^{-6}}=\frac{142857}{999999}=\frac17.$
+
+**3.** $0.999\dots=9\sum_{n\ge1}10^{-n}=9\cdot\frac{1/10}{1-1/10}=1$. The number $0.999\dots$ is *by definition* the limit of the partial sums $0.9,0.99,0.999,\dots$, and this limit is exactly $1$.
+
+**Remark.** Every repeating decimal is a rational number, and conversely.
+@@@ telescoping-series-and-partial-fractions.md
+---
+title: Telescoping series with partial fractions
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: telescoping, partial fractions, sums
+date: 2026-11-02
+---
+
+## Statement
+
+Compute
+$$\sum_{n=1}^{\infty}\frac1{n(n+2)}\qquad\text{and}\qquad\sum_{n=1}^{\infty}\frac1{n(n+1)(n+2)}.$$
+
+## Hint
+
+Decompose into partial fractions and look at the partial sums.
+
+## Solution
+
+**First series.** $\frac1{n(n+2)}=\frac12\left(\frac1n-\frac1{n+2}\right)$. Then
+$$S_N=\frac12\sum_{n=1}^N\left(\frac1n-\frac1{n+2}\right)=\frac12\left(1+\frac12-\frac1{N+1}-\frac1{N+2}\right)\longrightarrow\frac34.$$
+The terms cancel *two* steps apart, so two terms of each end survive.
+
+**Second series.** $\frac1{n(n+1)(n+2)}=\frac12\left(\frac1{n(n+1)}-\frac1{(n+1)(n+2)}\right)$. The sum telescopes:
+$$S_N=\frac12\left(\frac1{1\cdot2}-\frac1{(N+1)(N+2)}\right)\longrightarrow\frac14.$$
+
+**Check.** $\sum_{n<10000}\frac1{n(n+1)(n+2)}=0.2499999\dots$ ✓.
+@@@ telescoping-series-with-logarithms.md
+---
+title: Telescoping with logarithms
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: telescoping, logarithm, divergence
+date: 2026-11-02
+---
+
+## Statement
+
+1. Show that $\displaystyle\sum_{n=1}^\infty\ln\left(1+\frac1n\right)$ diverges although its terms tend to $0$.
+2. Compute $\displaystyle\sum_{n=2}^\infty\ln\left(1-\frac1{n^2}\right)$.
+
+## Hint
+
+Use $\ln\frac ab=\ln a-\ln b$ so that the partial sums telescope.
+
+## Solution
+
+**1.** $\ln\left(1+\frac1n\right)=\ln(n+1)-\ln n$, so $S_N=\ln(N+1)\to+\infty$. The series diverges, even though $\ln(1+\frac1n)\to0$: the terms tend to $0$ too slowly (they behave like $\frac1n$).
+
+**2.** $1-\frac1{n^2}=\frac{(n-1)(n+1)}{n^2}$, so
+$$\ln\left(1-\frac1{n^2}\right)=\ln(n-1)-2\ln n+\ln(n+1)=\bigl[\ln(n+1)-\ln n\bigr]-\bigl[\ln n-\ln(n-1)\bigr].$$
+Summing from $2$ to $N$, the brackets telescope:
+$$S_N=\ln(N+1)-\ln N-\bigl(\ln2-\ln1\bigr)\longrightarrow-\ln2.$$
+
+**Remark.** Exponentiating gives the infinite product $\prod_{n\ge2}\left(1-\frac1{n^2}\right)=\frac12$.
+@@@ the-divergence-test.md
+---
+title: Terms that do not tend to zero
+category: calculus/single-variable/series
+level: l1
+difficulty: 1
+tags: divergence test, necessary condition
+date: 2026-11-02
+---
+
+## Statement
+
+Show that the following series diverge, and explain why the converse of your argument is false.
+
+1. $\displaystyle\sum_{n\ge1}\cos\frac1n$
+2. $\displaystyle\sum_{n\ge1}\left(1+\frac1n\right)^n$
+3. $\displaystyle\sum_{n\ge1}(-1)^n\frac{n}{n+1}$
+
+## Hint
+
+If $\sum u_n$ converges, then $u_n\to0$ (because $u_n=S_n-S_{n-1}$).
+
+## Solution
+
+**The principle.** If $\sum u_n$ converges to $S$, then $u_n=S_n-S_{n-1}\to S-S=0$. So if $u_n\not\to0$, the series diverges.
+
+**1.** $\cos\frac1n\to\cos0=1\ne0$.
+
+**2.** $\left(1+\frac1n\right)^n\to e\ne0$.
+
+**3.** $\left|(-1)^n\frac n{n+1}\right|\to1$, so the terms do not tend to $0$.
+
+**The converse is false.** $u_n=\frac1n\to0$ but $\sum\frac1n$ diverges. Tending to zero is *necessary* for convergence, never sufficient.
+@@@ estimating-the-tail-of-a-series.md
+---
+title: Estimating the tail of a series
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: integral comparison, remainder, error estimate
+date: 2026-11-02
+---
+
+## Statement
+
+Let $S=\sum_{n=1}^\infty\frac1{n^2}$ and $S_N=\sum_{n=1}^N\frac1{n^2}$.
+
+1. Show that $\dfrac1{N+1}<S-S_N<\dfrac1N$.
+2. How many terms ensure $S_N$ is within $10^{-3}$ of $S$?
+
+## Hint
+
+Compare the tail $\sum_{n>N}\frac1{n^2}$ with integrals of $\frac1{x^2}$, which is decreasing.
+
+## Solution
+
+**1.** For $n\ge N+1$, since $\frac1{x^2}$ is decreasing,
+$$\int_n^{n+1}\frac{dx}{x^2}<\frac1{n^2}<\int_{n-1}^n\frac{dx}{x^2}.$$
+Summing over $n\ge N+1$:
+$$\int_{N+1}^\infty\frac{dx}{x^2}<S-S_N<\int_N^\infty\frac{dx}{x^2},\qquad\text{i.e.}\qquad\frac1{N+1}<S-S_N<\frac1N.$$
+
+**2.** The error is less than $\frac1N$, so $N=1000$ terms suffice. The estimate is sharp: the true error for $N=1000$ is $0.0009995$, between $\frac1{1001}$ and $\frac1{1000}$.
+
+**Remark.** Convergence is slow: $1000$ terms give only three digits of $\frac{\pi^2}6=1.6449\dots$ Clever tricks (Euler–Maclaurin, or using the bound as a correction $S\approx S_N+\frac1{N+1/2}$) accelerate it a lot.
+@@@ even-and-odd-terms-of-zeta-2.md
+---
+title: Splitting the sum of 1/n² into even and odd terms
+category: calculus/single-variable/series
+level: l2
+difficulty: 3
+tags: absolute convergence, rearrangement, pi squared
+date: 2026-11-02
+---
+
+## Statement
+
+Using the known value $\displaystyle\sum_{n\ge1}\frac1{n^2}=\frac{\pi^2}6$, compute
+$$A=\sum_{k\ge0}\frac1{(2k+1)^2},\qquad B=\sum_{n\ge1}\frac{(-1)^{n+1}}{n^2}.$$
+
+## Hint
+
+The series converges absolutely, so you may split it into the even-indexed and odd-indexed terms.
+
+## Solution
+
+**Why splitting is legitimate.** For an **absolutely** convergent series, any grouping or rearrangement of the terms leaves the sum unchanged.
+
+**Even terms.** $\sum_{k\ge1}\frac1{(2k)^2}=\frac14\sum_{k\ge1}\frac1{k^2}=\frac{\pi^2}{24}$.
+
+**Odd terms.** $A=\frac{\pi^2}6-\frac{\pi^2}{24}=\dfrac{\pi^2}8.$
+
+**Alternating sum.** $B=A-\frac{\pi^2}{24}=\frac{\pi^2}8-\frac{\pi^2}{24}=\dfrac{\pi^2}{12}.$
+
+**Check.** $\frac{\pi^2}{12}=0.822467$ lies between the partial sums $S_9=0.82796$ and $S_{10}=0.81796$, as the alternating series test predicts.
+@@@ rearranging-the-alternating-harmonic-series.md
+---
+title: Rearranging a conditionally convergent series
+category: calculus/single-variable/series
+level: m1
+difficulty: 5
+tags: conditional convergence, rearrangement, Riemann theorem, ln 2
+date: 2026-11-02
+---
+
+## Statement
+
+Let $S=1-\frac12+\frac13-\frac14+\dots=\ln2$. Show that the rearranged series
+$$1+\frac13-\frac12+\frac15+\frac17-\frac14+\frac19+\frac1{11}-\frac16+\cdots$$
+(two odd reciprocals, then one even one) converges to $\frac32\ln2$, not $\ln2$.
+
+## Hint
+
+Write $\frac12S=\frac12-\frac14+\frac16-\dots$ and add it to $S$ term by term, keeping the zeros in place.
+
+## Solution
+
+**Idea.** Add the series $S$ to the series $\frac S2$, in which the term $\frac{(-1)^{k+1}}{2k}$ is placed at position $2k$ and zeros elsewhere:
+$$\frac S2=0+\frac12+0-\frac14+0+\frac16+0-\frac18+\cdots$$
+Two convergent series can be added term by term.
+
+**Addition.**
+- position $1$: $1+0=1$
+- position $2$: $-\frac12+\frac12=0$
+- position $3$: $\frac13$
+- position $4$: $-\frac14-\frac14=-\frac12$
+- position $5$: $\frac15$
+- position $6$: $-\frac16+\frac16=0$
+- position $7$: $\frac17$
+- position $8$: $-\frac18-\frac18=-\frac14$
+
+In general the even positions alternate between $0$ and $-\frac1{2k}$ for $k$ even, and the odd positions are $\frac1{2k+1}$.
+
+**Removing zeros.** Deleting zero terms from a convergent series does not change its sum. We obtain
+$$\frac32S=1+\frac13-\frac12+\frac15+\frac17-\frac14+\frac19+\frac1{11}-\frac16+\cdots$$
+which is exactly the rearrangement (every positive term $\frac1{2k+1}$ and every negative term $-\frac1{2k}$ appears once).
+
+**Conclusion.** The rearranged series sums to $\frac32\ln2\approx1.0397\ne\ln2\approx0.6931$.
+
+**Remark.** This is an instance of *Riemann's rearrangement theorem*: a conditionally convergent series can be rearranged to converge to **any** real number, or to diverge. Only absolutely convergent series are safe to rearrange.
+@@@ the-series-of-reciprocals-without-the-digit-nine.md
+---
+title: Reciprocals of integers with no digit 9
+category: calculus/single-variable/series
+level: l2
+difficulty: 4
+tags: comparison test, counting, harmonic series, Kempner
+date: 2026-11-02
+---
+
+## Statement
+
+Let $\mathcal K$ be the set of positive integers whose decimal expansion contains no digit $9$. Prove that $\displaystyle\sum_{n\in\mathcal K}\frac1n$ converges, although $\sum\frac1n$ diverges.
+
+## Hint
+
+Count the elements of $\mathcal K$ having exactly $k$ digits, and bound each term from above by the smallest $k$-digit number.
+
+## Solution
+
+**Counting.** A $k$-digit number in $\mathcal K$ has a first digit in $\{1,\dots,8\}$ (8 choices) and each of the $k-1$ others in $\{0,\dots,8\}$ (9 choices). So there are $8\cdot9^{k-1}$ of them.
+
+**Bounding.** Each $k$-digit number is at least $10^{k-1}$, so its reciprocal is at most $10^{1-k}$. Hence the sum over $k$-digit elements of $\mathcal K$ is at most
+$$8\cdot9^{k-1}\cdot10^{1-k}=8\left(\frac9{10}\right)^{k-1}.$$
+
+**Summing over $k$.**
+$$\sum_{n\in\mathcal K}\frac1n\le\sum_{k\ge1}8\left(\frac9{10}\right)^{k-1}=\frac8{1-0.9}=80.$$
+All terms are positive, so the partial sums are bounded and increasing: the series converges.
+
+**Remark.** The exact sum is about $22.92$ (Kempner's series). The result shows that the harmonic series diverges only because of the integers that *do* contain a $9$: they are numerous enough at large scales to make up all the divergence. The same is true when excluding any fixed digit string.
+@@@ cauchy-product-of-a-conditionally-convergent-series.md
+---
+title: A Cauchy product that diverges
+category: calculus/single-variable/series
+level: m1
+difficulty: 5
+tags: Cauchy product, conditional convergence, Mertens theorem
+date: 2026-11-02
+---
+
+## Statement
+
+Let $a_n=\dfrac{(-1)^n}{\sqrt{n+1}}$ for $n\ge0$. The series $\sum a_n$ converges (alternating series test). Show that its Cauchy product with itself,
+$$\sum_{n\ge0}c_n,\qquad c_n=\sum_{k=0}^na_ka_{n-k},$$
+diverges.
+
+## Hint
+
+Show that $|c_n|\ge1$ for all $n$, so $c_n\not\to0$.
+
+## Solution
+
+**The terms.** $a_ka_{n-k}=\dfrac{(-1)^n}{\sqrt{(k+1)(n-k+1)}}$, so
+$$c_n=(-1)^n\sum_{k=0}^n\frac1{\sqrt{(k+1)(n-k+1)}}.$$
+All the terms in the sum have the same sign: no cancellation.
+
+**A bound.** By AM-GM, $\sqrt{(k+1)(n-k+1)}\le\frac{(k+1)+(n-k+1)}2=\frac{n+2}2$. Hence
+$$|c_n|\ge(n+1)\cdot\frac2{n+2}\ge1\quad\text{for all }n\ge0.$$
+
+**Conclusion.** $c_n\not\to0$, so $\sum c_n$ diverges by the divergence test.
+
+**Remark.** The product of two convergent series is not always convergent! *Mertens' theorem* says it converges if at least one of the two series converges **absolutely**; here neither does.
+@@@ series-involving-the-exponential-function.md
+---
+title: Series with factorials and the number e
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: exponential series, factorials, e
+date: 2026-11-02
+---
+
+## Statement
+
+Using $\displaystyle\sum_{n=0}^\infty\frac1{n!}=e$, compute
+$$\sum_{n=1}^\infty\frac n{n!},\qquad\sum_{n=0}^\infty\frac{n^2}{n!},\qquad\sum_{n=0}^\infty\frac1{(n+1)!}.$$
+
+## Hint
+
+Rewrite $n^2=n(n-1)+n$ and use $\frac n{n!}=\frac1{(n-1)!}$ and $\frac{n(n-1)}{n!}=\frac1{(n-2)!}$.
+
+## Solution
+
+**First.** For $n\ge1$, $\frac n{n!}=\frac1{(n-1)!}$, so the sum is $\sum_{m\ge0}\frac1{m!}=e$.
+
+**Second.** Since $n^2=n(n-1)+n$ and the terms $n=0,1$ vanish for $n(n-1)$,
+$$\sum_{n\ge0}\frac{n^2}{n!}=\sum_{n\ge2}\frac1{(n-2)!}+\sum_{n\ge1}\frac1{(n-1)!}=e+e=2e.$$
+
+**Third.** $\sum_{n\ge0}\frac1{(n+1)!}=\sum_{m\ge1}\frac1{m!}=e-1$.
+
+**Remark.** These are the first moments of a Poisson random variable with mean $1$: the mean is $1$ and $E[X^2]=2$, so the variance is $1$.
+@@@ absolute-and-conditional-convergence-of-p-series.md
+---
+title: Absolute, conditional or no convergence
+category: calculus/single-variable/series
+level: l1
+difficulty: 3
+tags: absolute convergence, alternating series, p-series
+date: 2026-11-02
+---
+
+## Statement
+
+For each real $p$, determine whether $\displaystyle\sum_{n\ge1}\frac{(-1)^n}{n^p}$ is absolutely convergent, conditionally convergent, or divergent.
+
+## Hint
+
+Three ranges: $p>1$, $0<p\le1$ and $p\le0$. Use the $p$-series test and the alternating series test.
+
+## Solution
+
+**$p>1$.** $\sum\frac1{n^p}$ converges, so the series converges **absolutely**.
+
+**$0<p\le1$.** $\sum\frac1{n^p}$ diverges, so there is no absolute convergence. But $\frac1{n^p}$ is decreasing with limit $0$, so by the alternating series test the series converges. It is **conditionally convergent**.
+
+**$p\le0$.** The terms $\frac{(-1)^n}{n^p}=(-1)^nn^{|p|}$ do not tend to $0$ (their absolute value is $\ge1$), so the series **diverges**.
+
+**Summary.**
+- $p>1$: absolutely convergent,
+- $0<p\le1$: conditionally convergent,
+- $p\le0$: divergent.
+
+**Remark.** For $p=1$ the sum is $-\ln2$: a conditional convergence that is deeply sensitive to the order of the terms.
+@@@ the-alternating-series-test-and-its-remainder.md
+---
+title: Alternating series and the error bound
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: alternating series test, remainder, error estimate
+date: 2026-11-02
+---
+
+## Statement
+
+1. State the alternating series test and the bound on the remainder.
+2. Show that $\displaystyle\sum_{n\ge1}\frac{(-1)^{n+1}}{n^2}$ converges.
+3. How many terms are needed to get the sum with an error below $10^{-2}$?
+
+## Hint
+
+If $a_n\ge0$ decreases to $0$, then $\sum(-1)^{n+1}a_n$ converges and its remainder satisfies $|R_N|\le a_{N+1}$.
+
+## Solution
+
+**1. Statement.** If $(a_n)$ is non-negative, decreasing and tends to $0$, then $S=\sum_{n\ge1}(-1)^{n+1}a_n$ converges, and $S$ lies between any two consecutive partial sums. Hence $|S-S_N|\le a_{N+1}$.
+
+**2.** $a_n=\frac1{n^2}$ is positive, decreasing, and tends to $0$.
+
+**3.** $|R_N|\le\frac1{(N+1)^2}<10^{-2}$ as soon as $N+1>10$, i.e. $N\ge10$.
+
+**Numerics.** $S_9=0.82796$ and $S_{10}=0.81796$. The true sum $\frac{\pi^2}{12}=0.82247$ lies between them, within $10^{-2}$ of $S_{10}$.
+
+**Remark.** Taking the *average* of two consecutive partial sums, $\frac{S_9+S_{10}}2=0.82296$, gives an error of only $5\cdot10^{-4}$: a cheap acceleration trick for alternating series.
+@@@ the-comparison-test-in-practice.md
+---
+title: The comparison test in practice
+category: calculus/single-variable/series/convergence-tests
+level: l1
+difficulty: 2
+tags: comparison test, p-series
+date: 2026-11-02
+---
+
+## Statement
+
+Decide whether each series converges.
+
+1. $\displaystyle\sum\frac1{n^2+n}$
+2. $\displaystyle\sum\frac1{\sqrt{n^3+1}}$
+3. $\displaystyle\sum\frac{n+1}{n^2-n+1}$
+4. $\displaystyle\sum\frac{\sin^2n}{2^n}$
+
+## Hint
+
+For positive terms, if $0\le u_n\le v_n$ and $\sum v_n$ converges, so does $\sum u_n$; if $\sum u_n$ diverges, so does $\sum v_n$.
+
+## Solution
+
+**1.** $\frac1{n^2+n}\le\frac1{n^2}$, a convergent $p$-series ($p=2$): **converges**. (It even telescopes: $\frac1n-\frac1{n+1}$.)
+
+**2.** $\frac1{\sqrt{n^3+1}}\le\frac1{n^{3/2}}$, a convergent $p$-series ($p=\frac32>1$): **converges**.
+
+**3.** For $n\ge2$, $n^2-n+1\le n^2$, so $\frac{n+1}{n^2-n+1}\ge\frac{n+1}{n^2}\ge\frac1n$. The harmonic series diverges: **diverges**.
+
+**4.** $0\le\frac{\sin^2n}{2^n}\le\frac1{2^n}$, a convergent geometric series: **converges**.
+
+**Rule of thumb.** Look at the dominant behaviour of each term for large $n$ (here $\frac1{n^2}$, $\frac1{n^{3/2}}$, $\frac1n$), then find an inequality in the right direction.
+@@@ the-limit-comparison-test.md
+---
+title: The limit comparison test
+category: calculus/single-variable/series/convergence-tests
+level: l2
+difficulty: 3
+tags: limit comparison, equivalents, Taylor expansion
+date: 2026-11-02
+---
+
+## Statement
+
+Decide whether each series converges.
+
+1. $\displaystyle\sum\sin\frac1n$
+2. $\displaystyle\sum\left(1-\cos\frac1n\right)$
+3. $\displaystyle\sum\ln\left(1+\frac1{n^2}\right)$
+4. $\displaystyle\sum\left(\sqrt{n+1}-\sqrt n\right)$
+
+## Hint
+
+If $u_n,v_n>0$ and $u_n\sim v_n$ (that is $\frac{u_n}{v_n}\to1$), the series $\sum u_n$ and $\sum v_n$ have the same nature.
+
+## Solution
+
+**1.** $\sin\frac1n\sim\frac1n$ (since $\frac{\sin x}x\to1$). The harmonic series diverges: **diverges**.
+
+**2.** $1-\cos x\sim\frac{x^2}2$ at $0$, so $1-\cos\frac1n\sim\frac1{2n^2}$: **converges**.
+
+**3.** $\ln(1+x)\sim x$, so $\ln\left(1+\frac1{n^2}\right)\sim\frac1{n^2}$: **converges**.
+
+**4.** $\sqrt{n+1}-\sqrt n=\dfrac1{\sqrt{n+1}+\sqrt n}\sim\dfrac1{2\sqrt n}$, and $\sum\frac1{\sqrt n}$ diverges ($p=\frac12$): **diverges**. (Alternatively, the partial sums telescope to $\sqrt{N+1}-1\to\infty$.)
+
+**Remark.** Equivalents are the most efficient tool for positive series. They work only for positive terms (or terms of constant sign): for alternating series an equivalent is not enough, as the next-but-one problems show.
+@@@ the-ratio-test.md
+---
+title: The ratio test
+category: calculus/single-variable/series/convergence-tests
+level: l1
+difficulty: 2
+tags: ratio test, d'Alembert, factorials
+date: 2026-11-02
+---
+
+## Statement
+
+Decide the nature of
+$$\sum\frac{n!}{n^n},\qquad\sum\frac{2^n}{n!},\qquad\sum\frac{n^2}{2^n},\qquad\sum\frac{(2n)!}{(n!)^2}.$$
+Then show why the test is inconclusive for $\sum\frac1n$ and $\sum\frac1{n^2}$.
+
+## Hint
+
+If $\frac{u_{n+1}}{u_n}\to L$, the series converges for $L<1$ and diverges for $L>1$.
+
+## Solution
+
+**1.** $\dfrac{u_{n+1}}{u_n}=\dfrac{(n+1)\,n^n}{(n+1)^{n+1}}=\left(1+\frac1n\right)^{-n}\to\frac1e<1$: **converges**.
+
+**2.** $\dfrac{u_{n+1}}{u_n}=\dfrac2{n+1}\to0<1$: **converges**.
+
+**3.** $\dfrac{u_{n+1}}{u_n}=\dfrac12\left(1+\frac1n\right)^2\to\frac12<1$: **converges**.
+
+**4.** $\dfrac{u_{n+1}}{u_n}=\dfrac{(2n+2)(2n+1)}{(n+1)^2}\to4>1$: **diverges**.
+
+**Inconclusive case.** For $\frac1n$ and $\frac1{n^2}$ the ratio tends to $1$ in both cases, yet the first series diverges and the second converges. When $L=1$ another test is needed.
+@@@ the-root-test.md
+---
+title: The root test
+category: calculus/single-variable/series/convergence-tests
+level: l2
+difficulty: 3
+tags: root test, Cauchy, exponential limits
+date: 2026-11-02
+---
+
+## Statement
+
+Decide the nature of
+$$\sum\left(\frac n{2n+1}\right)^n,\qquad\sum\frac1{3^n}\left(1+\frac1n\right)^{n^2},\qquad\sum\left(1-\frac1n\right)^{n^2}.$$
+
+## Hint
+
+If $\sqrt[n]{u_n}\to L$, the series converges for $L<1$ and diverges for $L>1$.
+
+## Solution
+
+**1.** $\sqrt[n]{u_n}=\frac n{2n+1}\to\frac12<1$: **converges**.
+
+**2.** $\sqrt[n]{u_n}=\frac13\left(1+\frac1n\right)^n\to\frac e3\approx0.906<1$: **converges**.
+
+**3.** $\sqrt[n]{u_n}=\left(1-\frac1n\right)^n\to\frac1e<1$: **converges**.
+
+**Why the root test?** The exponent $n^2$ or $n$ makes the ratio test awkward but the $n$-th root easy.
+
+**Remark.** The root test is more powerful than the ratio test: whenever the ratio test gives an answer, so does the root test (the converse is false).
+@@@ the-integral-test-and-bertrand-series.md
+---
+title: The integral test and Bertrand series
+category: calculus/single-variable/series/convergence-tests
+level: l2
+difficulty: 3
+tags: integral test, Bertrand series, logarithm
+date: 2026-11-02
+---
+
+## Statement
+
+Determine, for each real $p$, whether $\displaystyle\sum_{n\ge2}\frac1{n(\ln n)^p}$ converges.
+
+## Hint
+
+The function $x\mapsto\frac1{x(\ln x)^p}$ is positive and decreasing for $p\ge0$. Compare the series with an integral, using the substitution $u=\ln x$.
+
+## Solution
+
+**The test.** If $f\ge0$ is decreasing on $[2,\infty)$, then $\sum f(n)$ and $\int_2^\infty f$ have the same nature.
+
+**Case $p>0$.** With $u=\ln x$, $du=\frac{dx}x$:
+$$\int_2^R\frac{dx}{x(\ln x)^p}=\int_{\ln2}^{\ln R}\frac{du}{u^p}.$$
+As $R\to\infty$ this converges iff $p>1$ (the $p$-test for integrals).
+
+**Case $p=0$.** $\sum\frac1n$ diverges.
+
+**Case $p<0$.** $\frac1{n(\ln n)^p}=\frac{(\ln n)^{|p|}}n\ge\frac1n$ for $n\ge3$: diverges.
+
+**Answer.** The series converges iff $p>1$.
+
+**Remark.** $\sum\frac1{n\ln n}$ diverges, yet so slowly that the partial sum up to $10^{100}$ is only about $5.4$: $\ln\ln10^{100}\approx5.4$. By contrast $\sum\frac1{n(\ln n)^2}$ converges.
+@@@ cauchy-condensation-test.md
+---
+title: Cauchy's condensation test
+category: calculus/single-variable/series/convergence-tests
+level: m1
+difficulty: 4
+tags: condensation test, p-series, monotone terms
+date: 2026-11-02
+---
+
+## Statement
+
+Let $(u_n)$ be a non-negative decreasing sequence. Prove that $\sum u_n$ converges if and only if $\sum2^ku_{2^k}$ converges. Deduce that $\sum\frac1{n^p}$ converges iff $p>1$.
+
+## Hint
+
+Group the terms of $\sum u_n$ in blocks $[2^k,2^{k+1}-1]$ and bound each block above and below using monotonicity.
+
+## Solution
+
+**Block bounds.** The block $2^k\le n<2^{k+1}$ contains $2^k$ terms, each between $u_{2^{k+1}}$ and $u_{2^k}$:
+$$2^ku_{2^{k+1}}\le\sum_{n=2^k}^{2^{k+1}-1}u_n\le2^ku_{2^k}.$$
+
+**If the condensed series converges,** summing the right inequality over $k$ shows $\sum u_n$ is bounded above by $\sum2^ku_{2^k}<\infty$, so it converges (positive terms).
+
+**If the condensed series diverges,** the left inequality gives $\sum_n u_n\ge\sum_k2^ku_{2^{k+1}}=\frac12\sum_{k\ge1}2^ku_{2^k}$, which diverges.
+
+**Application.** For $u_n=\frac1{n^p}$ with $p>0$ (decreasing): $2^ku_{2^k}=2^{k(1-p)}$, a geometric series that converges iff $2^{1-p}<1$, i.e. $p>1$. For $p\le0$ the terms do not tend to $0$.
+
+**Remark.** The condensation test says: the behaviour of a decreasing series is already encoded in a very sparse sample of its terms.
+@@@ when-the-alternating-series-test-fails.md
+---
+title: A series with an equivalent that converges but does not
+category: calculus/single-variable/series/convergence-tests
+level: m1
+difficulty: 5
+tags: equivalents, alternating series, counterexample
+date: 2026-11-02
+---
+
+## Statement
+
+Let $u_n=\dfrac{(-1)^n}{\sqrt n}$ and $v_n=\dfrac{(-1)^n}{\sqrt n+(-1)^n}$ for $n\ge2$. Show that $v_n\sim u_n$, that $\sum u_n$ converges, and that $\sum v_n$ diverges.
+
+## Hint
+
+Multiply $v_n$ by the conjugate $\sqrt n-(-1)^n$ and split the result into two series.
+
+## Solution
+
+**Equivalent.** $\frac{v_n}{u_n}=\frac{\sqrt n}{\sqrt n+(-1)^n}\to1$.
+
+**$\sum u_n$ converges** by the alternating series test ($\frac1{\sqrt n}$ decreases to $0$).
+
+**Rewriting $v_n$.**
+$$v_n=\frac{(-1)^n\left(\sqrt n-(-1)^n\right)}{n-1}=\frac{(-1)^n\sqrt n}{n-1}-\frac1{n-1}.$$
+
+**First part.** $w_n=\frac{\sqrt n}{n-1}$ is positive, tends to $0$, and is eventually decreasing (for $n\ge4$, its derivative in $n$ is negative). So $\sum\frac{(-1)^n\sqrt n}{n-1}$ converges.
+
+**Second part.** $\sum\frac1{n-1}$ diverges (harmonic).
+
+**Conclusion.** $\sum v_n$ is a convergent series minus a divergent one, hence **diverges**.
+
+**Moral.** For series of non-constant sign, *equivalent terms do not imply the same nature*. The small perturbation $(-1)^n$ in the denominator contributes a divergent harmonic-like piece $-\frac1n$ hidden in the next-order term.
+@@@ convergence-of-the-sum-of-sin-n-over-n.md
+---
+title: Convergence of the series of sin(n)/n
+category: calculus/single-variable/series/convergence-tests
+level: m1
+difficulty: 5
+tags: Abel summation, Dirichlet test, trigonometric series
+date: 2026-11-02
+---
+
+## Statement
+
+Prove that $\displaystyle\sum_{n\ge1}\frac{\sin n}n$ converges.
+
+## Hint
+
+Show that the partial sums $B_n=\sum_{k=1}^n\sin k$ are bounded, then apply Abel's summation by parts with $a_k=\frac1k$.
+
+## Solution
+
+**Step 1: the partial sums of $\sin k$ are bounded.** Using $2\sin\frac12\sin k=\cos\left(k-\frac12\right)-\cos\left(k+\frac12\right)$ and telescoping,
+$$B_n=\frac{\cos\frac12-\cos\left(n+\frac12\right)}{2\sin\frac12},\qquad|B_n|\le\frac1{\sin\frac12}=:M.$$
+
+**Step 2: Abel's summation by parts.** With $a_k=\frac1k$ and $b_k=\sin k$,
+$$\sum_{k=1}^na_kb_k=a_nB_n+\sum_{k=1}^{n-1}(a_k-a_{k+1})B_k.$$
+
+**Step 3: convergence.** Since $a_n\to0$ and $|B_n|\le M$, $a_nB_n\to0$. The second sum converges absolutely because
+$$\sum_{k}(a_k-a_{k+1})|B_k|\le M\sum_k(a_k-a_{k+1})=Ma_1<\infty$$
+(the differences are positive and telescope). So the partial sums have a limit.
+
+**Remark.** This is Dirichlet's test: *bounded partial sums times a monotone sequence tending to $0$ gives a convergent series*. The series is not absolutely convergent ($\sum\frac{|\sin n|}n=\infty$).
+@@@ radius-of-convergence-four-examples.md
+---
+title: Radius of convergence, four examples
+category: calculus/single-variable/series/power-series
+level: l2
+difficulty: 3
+tags: radius of convergence, ratio test, endpoints
+date: 2026-11-02
+---
+
+## Statement
+
+Find the radius of convergence of each power series, and study the endpoints for the last two.
+
+1. $\displaystyle\sum n!\,x^n$
+2. $\displaystyle\sum\frac{x^n}{n!}$
+3. $\displaystyle\sum\frac{x^n}n$
+4. $\displaystyle\sum\frac{x^n}{n^2}$
+
+## Hint
+
+Apply d'Alembert's test to $|a_nx^n|$: convergence if $|x|<R$ where $R=\lim\left|\frac{a_n}{a_{n+1}}\right|$.
+
+## Solution
+
+**1.** $\left|\frac{a_{n+1}}{a_n}\right|=n+1\to\infty$, so $R=0$: converges only at $x=0$.
+
+**2.** $\left|\frac{a_{n+1}}{a_n}\right|=\frac1{n+1}\to0$, so $R=+\infty$: converges for all $x$.
+
+**3.** $\left|\frac{a_{n+1}}{a_n}\right|=\frac n{n+1}\to1$, so $R=1$. At $x=1$: harmonic series, diverges. At $x=-1$: alternating harmonic, converges. Interval of convergence: $[-1,1)$.
+
+**4.** Also $R=1$. At $x=\pm1$: $\sum\frac1{n^2}$ and $\sum\frac{(-1)^n}{n^2}$ both converge. Interval of convergence: $[-1,1]$.
+
+**Remark.** The endpoints are the delicate part: inside the open interval the convergence is absolute, outside the series diverges, but on the boundary anything can happen.
+@@@ summing-power-series-in-closed-form.md
+---
+title: Summing power series in closed form
+category: calculus/single-variable/series/power-series
+level: l2
+difficulty: 3
+tags: power series, differentiation term by term, closed form
+date: 2026-11-02
+---
+
+## Statement
+
+1. For $|x|<1$, find closed forms for $\displaystyle\sum_{n\ge1}nx^n$ and $\displaystyle\sum_{n\ge1}n^2x^n$.
+2. Deduce $\displaystyle\sum_{n\ge1}\frac n{2^n}$ and $\displaystyle\sum_{n\ge1}\frac{n^2}{3^n}$.
+
+## Hint
+
+Start from $\sum_{n\ge0}x^n=\frac1{1-x}$. A power series can be differentiated term by term inside its radius of convergence.
+
+## Solution
+
+**First series.** Differentiating $\sum x^n=\frac1{1-x}$: $\sum_{n\ge1}nx^{n-1}=\frac1{(1-x)^2}$. Multiplying by $x$:
+$$\sum_{n\ge1}nx^n=\frac x{(1-x)^2}.$$
+
+**Second series.** Differentiate again the series $\sum nx^n$, then multiply by $x$:
+$$\sum_{n\ge1}n^2x^n=x\cdot\frac d{dx}\left(\frac x{(1-x)^2}\right)=x\cdot\frac{(1-x)^2+2x(1-x)}{(1-x)^4}=\frac{x(1+x)}{(1-x)^3}.$$
+
+**Numerical values.**
+- $x=\frac12$: $\sum\frac n{2^n}=\frac{1/2}{1/4}=2$.
+- $x=\frac13$: $\sum\frac{n^2}{3^n}=\frac{\frac13\cdot\frac43}{\frac8{27}}=\frac{4}{9}\cdot\frac{27}8=\frac32$.
+
+**Remark.** Probabilistic meaning: $\sum\frac n{2^n}=2$ is the expected number of tosses of a fair coin until the first head.
+@@@ power-series-of-logarithm-and-arctangent.md
+---
+title: Power series of ln(1+x) and arctan x
+category: calculus/single-variable/series/power-series
+level: l2
+difficulty: 3
+tags: integration term by term, Leibniz series, ln 2
+date: 2026-11-02
+---
+
+## Statement
+
+1. Find the power series of $\ln(1+x)$ and of $\arctan x$ for $|x|<1$.
+2. Deduce $\ln2=\sum_{n\ge1}\frac{(-1)^{n+1}}n$ and $\frac\pi4=\sum_{k\ge0}\frac{(-1)^k}{2k+1}$, assuming the series are valid at $x=1$.
+
+## Hint
+
+Integrate term by term the geometric series $\frac1{1+x}=\sum(-x)^n$ and $\frac1{1+x^2}=\sum(-1)^nx^{2n}$.
+
+## Solution
+
+**1.** For $|t|<1$, $\frac1{1+t}=\sum_{n\ge0}(-1)^nt^n$. Integrating from $0$ to $x$ (allowed inside the radius of convergence):
+$$\ln(1+x)=\sum_{n\ge0}\frac{(-1)^nx^{n+1}}{n+1}=x-\frac{x^2}2+\frac{x^3}3-\cdots$$
+Likewise $\frac1{1+t^2}=\sum(-1)^nt^{2n}$ gives
+$$\arctan x=\sum_{k\ge0}\frac{(-1)^kx^{2k+1}}{2k+1}=x-\frac{x^3}3+\frac{x^5}5-\cdots$$
+Both have radius of convergence $1$.
+
+**2. At $x=1$.** The two series at $x=1$ converge by the alternating series test, and by **Abel's theorem** (if a power series converges at an endpoint of its interval, its sum is continuous up to that endpoint), their sums equal the left limits $\ln2$ and $\arctan1=\frac\pi4$:
+$$\ln2=1-\frac12+\frac13-\cdots,\qquad\frac\pi4=1-\frac13+\frac15-\cdots$$
+
+**Remark.** Leibniz's series for $\frac\pi4$ is beautiful but converges very slowly: after $1000$ terms the error is still about $\frac1{2000}$. Machin-type formulas use $\arctan\frac15$ and $\arctan\frac1{239}$ instead.
+@@@ generating-function-of-the-fibonacci-numbers.md
+---
+title: The generating function of Fibonacci numbers
+category: calculus/single-variable/series/power-series
+level: m1
+difficulty: 4
+tags: generating function, Fibonacci, partial fractions, radius of convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Let $F_0=0$, $F_1=1$, $F_{n+2}=F_{n+1}+F_n$ and $G(x)=\sum_{n\ge0}F_nx^n$.
+
+1. Show that $G(x)=\dfrac x{1-x-x^2}$ where the series converges.
+2. Find the radius of convergence of $G$.
+3. Recover Binet's formula for $F_n$.
+
+## Hint
+
+Multiply the recurrence by $x^{n+2}$ and sum. For part 3, decompose $\frac1{1-x-x^2}$ into partial fractions with $\varphi=\frac{1+\sqrt5}2$ and $\psi=\frac{1-\sqrt5}2$, noting $1-x-x^2=(1-\varphi x)(1-\psi x)$.
+
+## Solution
+
+**1.** Multiply $F_{n+2}=F_{n+1}+F_n$ by $x^{n+2}$ and sum over $n\ge0$:
+$$G(x)-F_0-F_1x=x\bigl(G(x)-F_0\bigr)+x^2G(x),$$
+so $G(x)-x=xG(x)+x^2G(x)$ and $G(x)=\dfrac x{1-x-x^2}$.
+
+**2.** The singularities of $G$ are the roots of $1-x-x^2$, namely $-\varphi$ and $-\psi=\frac1\varphi\approx0.618$. The smaller in absolute value is $\frac1\varphi$, so $R=\frac1\varphi=\frac{\sqrt5-1}2$. (This agrees with $\frac{F_n}{F_{n+1}}\to\frac1\varphi$.)
+
+**3.** Since $1-x-x^2=(1-\varphi x)(1-\psi x)$ and $\varphi-\psi=\sqrt5$,
+$$\frac x{(1-\varphi x)(1-\psi x)}=\frac1{\sqrt5}\left(\frac1{1-\varphi x}-\frac1{1-\psi x}\right)=\frac1{\sqrt5}\sum_{n\ge0}\left(\varphi^n-\psi^n\right)x^n.$$
+Identifying coefficients: $F_n=\dfrac{\varphi^n-\psi^n}{\sqrt5}$.
+
+**Check.** Expanding $\frac x{1-x-x^2}=x+x^2+2x^3+3x^4+5x^5+8x^6+\cdots$ ✓.
+
+**Remark.** Generating functions turn a recurrence into an algebraic equation, and the *radius of convergence reveals the growth rate* of the coefficients.
+@@@ the-binomial-series-and-central-binomial-coefficients.md
+---
+title: The generating function of central binomial coefficients
+category: calculus/single-variable/series/power-series
+level: m1
+difficulty: 4
+tags: binomial series, generalised binomial coefficients, radius of convergence
+date: 2026-11-02
+---
+
+## Statement
+
+1. Show that for $|x|<\frac14$,
+$$\frac1{\sqrt{1-4x}}=\sum_{n\ge0}\binom{2n}nx^n.$$
+2. Deduce the radius of convergence of $\sum\binom{2n}nx^n$ and the value of $\sum_{n\ge0}\binom{2n}n\frac1{5^n}$.
+
+## Hint
+
+The binomial series is $(1+u)^\alpha=\sum_{n\ge0}\binom\alpha nu^n$ with $\binom\alpha n=\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}$. Take $\alpha=-\frac12$ and $u=-4x$.
+
+## Solution
+
+**1. Coefficients.** For $\alpha=-\frac12$,
+$$\binom{-1/2}n=\frac{\left(-\frac12\right)\left(-\frac32\right)\cdots\left(-\frac{2n-1}2\right)}{n!}=\frac{(-1)^n(2n-1)!!}{2^nn!},$$
+where $(2n-1)!!=1\cdot3\cdot5\cdots(2n-1)=\frac{(2n)!}{2^nn!}$. Hence
+$$\binom{-1/2}n=\frac{(-1)^n(2n)!}{4^n(n!)^2}=\frac{(-1)^n}{4^n}\binom{2n}n.$$
+With $u=-4x$, $\binom{-1/2}nu^n=\binom{2n}nx^n$, which proves the formula for $|4x|<1$.
+
+**2. Radius.** The binomial series has radius $1$ in $u$, so $R=\frac14$ in $x$. This agrees with $\frac{\binom{2n+2}{n+1}}{\binom{2n}n}\to4$ and the root test result $\binom{2n}n^{1/n}\to4$.
+
+**Value.** At $x=\frac15<\frac14$:
+$$\sum_{n\ge0}\binom{2n}n\frac1{5^n}=\frac1{\sqrt{1-\frac45}}=\sqrt5.$$
+
+**Check.** The first terms are $1+\frac25+\frac6{25}+\frac{20}{125}+\frac{70}{625}+\dots=1+0.4+0.24+0.16+0.112+\dots$, increasing to $\sqrt5\approx2.236$.
+@@@ the-exponential-law-from-the-cauchy-product.md
+---
+title: e^x e^y = e^(x+y) from power series
+category: calculus/single-variable/series/power-series
+level: m1
+difficulty: 4
+tags: Cauchy product, exponential series, binomial theorem
+date: 2026-11-02
+---
+
+## Statement
+
+Define $\exp(x)=\sum_{n\ge0}\frac{x^n}{n!}$ for $x\in\mathbb{R}$. Prove that $\exp(x)\exp(y)=\exp(x+y)$ for all real $x,y$.
+
+## Hint
+
+The series converges absolutely for every $x$, so the Cauchy product is allowed (Mertens' theorem). Use the binomial theorem on the coefficients.
+
+## Solution
+
+**Cauchy product.** Both series converge absolutely, so their product is the series with general term $c_n=\sum_{k=0}^na_kb_{n-k}$, where $a_k=\frac{x^k}{k!}$ and $b_j=\frac{y^j}{j!}$.
+
+**Computation.**
+$$c_n=\sum_{k=0}^n\frac{x^k}{k!}\cdot\frac{y^{n-k}}{(n-k)!}=\frac1{n!}\sum_{k=0}^n\binom nkx^ky^{n-k}=\frac{(x+y)^n}{n!}$$
+by the binomial theorem.
+
+**Conclusion.** $\exp(x)\exp(y)=\sum_n\frac{(x+y)^n}{n!}=\exp(x+y)$.
+
+**Consequences.** $\exp(x)\exp(-x)=1$, so $\exp$ never vanishes, and $\exp(1)=e$ gives $\exp(n)=e^n$: this is the rigorous way to show that the series is the exponential function.
+@@@ solving-a-differential-equation-with-a-power-series.md
+---
+title: Solving y″ = −y with a power series
+category: calculus/single-variable/series/power-series
+level: l2
+difficulty: 3
+tags: differential equations, power series, cosine, recurrence
+date: 2026-11-02
+---
+
+## Statement
+
+Find a power series solution $y(x)=\sum_{n\ge0}a_nx^n$ of $y''+y=0$ with $y(0)=1$ and $y'(0)=0$. Identify the function.
+
+## Hint
+
+Differentiate twice term by term, collect the coefficient of $x^n$ and find a recurrence for $a_n$.
+
+## Solution
+
+**Initial conditions.** $a_0=y(0)=1$ and $a_1=y'(0)=0$.
+
+**Equation.** $y''=\sum_{n\ge0}(n+2)(n+1)a_{n+2}x^n$. The equation $y''+y=0$ gives, for every $n$,
+$$(n+2)(n+1)a_{n+2}+a_n=0,\qquad a_{n+2}=-\frac{a_n}{(n+1)(n+2)}.$$
+
+**Solving.** Since $a_1=0$, all odd coefficients vanish. For even indices:
+$$a_2=-\frac{1}{2},\quad a_4=\frac1{4!},\quad a_6=-\frac1{6!},\ \dots,\qquad a_{2k}=\frac{(-1)^k}{(2k)!}.$$
+
+**Answer.**
+$$y(x)=\sum_{k\ge0}\frac{(-1)^kx^{2k}}{(2k)!}=\cos x.$$
+The series has infinite radius of convergence (ratio test), so the term-by-term differentiation is justified.
+
+**Remark.** With $y(0)=0$, $y'(0)=1$ the same method gives $\sin x$. This is the standard "analytic" definition of sine and cosine.
+@@@ geometric-series-with-parameters.md
+---
+title: Geometric series with a parameter
+category: calculus/single-variable/series
+level: lycee
+difficulty: 1
+tags: geometric series, convergence domain, parameters
+date: 2026-11-02
+---
+
+## Statement
+
+Determine whether each series converges, and if so compute its sum:
+$$\sum_{k\ge0}\frac{(-1)^k}{2^k},\qquad\sum_{k\ge0}\left(\frac a{1+a}\right)^k,\qquad\sum_{k\ge0}(1-x^2)^k.$$
+
+## Hint
+
+Each is $\sum r^k$ for a ratio $r$. It converges iff $|r|<1$, and then the sum is $\frac1{1-r}$.
+
+## Solution
+
+**First.** $r=-\frac12$, so the sum is $\dfrac1{1+\frac12}=\dfrac23$.
+
+**Second.** $r=\frac a{1+a}$ (with $a\ne-1$). The condition $|r|<1$ means $|a|<|1+a|$. Squaring, $a^2<1+2a+a^2$, i.e. $a>-\frac12$. For these $a$ the sum is $\dfrac1{1-\frac a{1+a}}=1+a$.
+
+**Third.** $r=1-x^2$. The condition $-1<1-x^2<1$ means $0<x^2<2$, i.e. $x\in(-\sqrt2,0)\cup(0,\sqrt2)$. The sum is $\dfrac1{1-(1-x^2)}=\dfrac1{x^2}$.
+
+**Remark.** The sum is a function of the parameter, and it blows up as $r\to1^-$, which is exactly the edge of the convergence domain.
+@@@ telescoping-sum-with-a-shift-p.md
+---
+title: Telescoping with a shift p
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: telescoping, partial fractions, harmonic numbers
+date: 2026-11-02
+---
+
+## Statement
+
+For a fixed integer $p\ge1$, show that $\displaystyle\sum_{k\ge1}\frac1{k(k+p)}$ converges and compute its sum.
+
+## Hint
+
+$\dfrac1{k(k+p)}=\dfrac1p\left(\dfrac1k-\dfrac1{k+p}\right)$. After telescoping, the first $p$ and the last $p$ terms survive.
+
+## Solution
+
+**Convergence.** $\frac1{k(k+p)}\le\frac1{k^2}$, which is summable, so the series converges by comparison.
+
+**Partial sums.**
+$$S_n=\frac1p\sum_{k=1}^n\left(\frac1k-\frac1{k+p}\right)=\frac1p\left(\sum_{k=1}^p\frac1k-\sum_{k=n+1}^{n+p}\frac1k\right).$$
+The second group has $p$ terms, each tending to $0$.
+
+**Sum.**
+$$\sum_{k=1}^\infty\frac1{k(k+p)}=\frac1p\sum_{k=1}^p\frac1k=\frac{H_p}p.$$
+
+**Check.** $p=1$ gives $1$; $p=2$ gives $\frac12\left(1+\frac12\right)=\frac34$, matching the classical $\sum\frac1{n(n+2)}$.
+@@@ telescoping-with-square-roots.md
+---
+title: Telescoping with square roots
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: telescoping, square roots, divergence, p-series
+date: 2026-11-02
+---
+
+## Statement
+
+Study the series $\displaystyle\sum_{n\ge1}\left(\sqrt{n+1}-\sqrt n\right)$.
+
+## Hint
+
+Compute the partial sum directly, and compare with the rationalised form $\frac1{\sqrt{n+1}+\sqrt n}$.
+
+## Solution
+
+**Direct.** The partial sums telescope: $S_N=\sqrt{N+1}-1\to+\infty$. The series **diverges**.
+
+**By equivalents.** $\sqrt{n+1}-\sqrt n=\dfrac1{\sqrt{n+1}+\sqrt n}\sim\dfrac1{2\sqrt n}$, and $\sum\frac1{\sqrt n}$ diverges ($p=\frac12\le1$). Same conclusion.
+
+**Remark.** The first method is more informative: the partial sums grow like $\sqrt N$, exactly like $\int_1^N\frac{dt}{2\sqrt t}$.
+@@@ equivalents-and-a-sign-trap.md
+---
+title: Equivalents, and a sign trap
+category: calculus/single-variable/series
+level: l1
+difficulty: 2
+tags: equivalents, comparison test, positive series
+date: 2026-11-02
+---
+
+## Statement
+
+Determine the nature of
+$$\text{(a) }\sum_{n\ge1}\left(1-\cos\frac\pi n\right),\qquad\text{(b) }\sum_{n\ge1}\ln\left(1+\frac1n\right),\qquad\text{(c) }\sum_{n\ge2}\frac{(-1)^n+n}{n^2+1}.$$
+
+## Hint
+
+For positive terms, $u_n\sim v_n$ implies that $\sum u_n$ and $\sum v_n$ have the same nature. Use $1-\cos x\sim\frac{x^2}2$ and $\ln(1+x)\sim x$ at $0$.
+
+## Solution
+
+**(a)** $1-\cos\frac\pi n\sim\frac{\pi^2}{2n^2}$, a convergent $p$-series: **converges**.
+
+**(b)** $\ln\left(1+\frac1n\right)\sim\frac1n$: **diverges**. (Directly: the partial sums are $\ln(N+1)$.)
+
+**(c)** The numerator $n+(-1)^n$ is positive for $n\ge2$, and $\frac{n+(-1)^n}{n^2+1}\sim\frac1n$: **diverges**.
+
+**The trap.** In (c) the factor $(-1)^n$ looks like an alternating series, but it is only a small perturbation of the dominant term $n$. The series is *not* alternating: all its terms are positive.
+@@@ a-taylor-equivalent-one-over-n-minus-sine.md
+---
+title: Cancellation revealed by a Taylor expansion
+category: calculus/single-variable/series
+level: l1
+difficulty: 3
+tags: Taylor expansion, equivalents, cancellation
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}\left(\frac1n-\sin\frac1n\right)$.
+
+## Hint
+
+Expand $\sin x=x-\frac{x^3}6+o(x^3)$ at $x=\frac1n$.
+
+## Solution
+
+**Idea.** The two terms $\frac1n$ and $\sin\frac1n$ almost cancel, so comparing the difference with $\frac1n$ would be a blunder.
+
+**Computation.**
+$$\frac1n-\sin\frac1n=\frac1n-\left(\frac1n-\frac1{6n^3}+o\!\left(\frac1{n^3}\right)\right)=\frac1{6n^3}+o\!\left(\frac1{n^3}\right).$$
+So the terms are positive for large $n$ and equivalent to $\frac1{6n^3}$.
+
+**Conclusion.** $\sum\frac1{n^3}$ converges, so the series **converges**.
+
+**Remark.** Each time the leading terms cancel, one has to go one order further in the expansion.
+@@@ a-series-with-ln-n-to-the-power-ln-n.md
+---
+title: The series of 1/(ln n)^(ln n)
+category: calculus/single-variable/series
+level: l2
+difficulty: 3
+tags: comparison test, exponential form, logarithm
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge2}\frac1{(\ln n)^{\ln n}}$.
+
+## Hint
+
+Write $(\ln n)^{\ln n}=e^{\ln n\cdot\ln\ln n}=n^{\ln\ln n}$.
+
+## Solution
+
+**Rewriting.** $\dfrac1{(\ln n)^{\ln n}}=\dfrac1{n^{\ln\ln n}}$.
+
+**Comparison.** Since $\ln\ln n\to+\infty$, there is $n_0$ (namely $n_0=\lceil e^{e^2}\rceil$) such that $\ln\ln n\ge2$ for $n\ge n_0$. For such $n$,
+$$\frac1{n^{\ln\ln n}}\le\frac1{n^2}.$$
+Hence the series **converges**.
+
+**Remark.** The exponent is not constant but eventually exceeds any fixed number, so the series is much "more summable" than any $p$-series. But note the threshold $n_0\approx1618$ already: the first terms are large, since $\ln n$ is small.
+@@@ bertrand-series-general.md
+---
+title: The Bertrand series, all cases
+category: calculus/single-variable/series
+level: l3
+difficulty: 4
+tags: Bertrand series, parameters, integral test, comparison
+date: 2026-11-02
+---
+
+## Statement
+
+Determine, depending on the real parameters $\alpha$ and $\beta$, the nature of
+$$\sum_{n\ge2}\frac1{n^\alpha(\ln n)^\beta}.$$
+
+## Hint
+
+Split into $\alpha>1$, $\alpha<1$ and $\alpha=1$. A power of $n$, however small, beats every power of $\ln n$.
+
+## Solution
+
+**$\alpha>1$.** Choose $\alpha'\in(1,\alpha)$. Whatever the sign of $\beta$, $(\ln n)^{-\beta}\le n^{\alpha-\alpha'}$ for large $n$ (a power of $\ln n$ is negligible against a positive power of $n$). So $u_n\le\frac1{n^{\alpha'}}$, and the series **converges**.
+
+**$\alpha<1$.** Choose $\alpha'\in(\alpha,1)$. Whatever the sign of $\beta$, $(\ln n)^\beta\le n^{\alpha'-\alpha}$ for large $n$. So $u_n\ge\frac1{n^{\alpha'}}$, and the series **diverges**.
+
+**$\alpha=1$.** For $\beta>0$ the function $\frac1{x(\ln x)^\beta}$ is positive and decreasing. With $u=\ln x$,
+$$\int_2^\infty\frac{dx}{x(\ln x)^\beta}=\int_{\ln2}^\infty\frac{du}{u^\beta},$$
+finite iff $\beta>1$. For $\beta\le0$, $\frac1{n(\ln n)^\beta}\ge\frac1n$ for $n\ge3$: divergence.
+
+**Conclusion.** The series converges iff $\alpha>1$, or $\alpha=1$ and $\beta>1$.
+
+**Remark.** The case $\alpha=1,\beta\le1$ shows that $\sum\frac1{n\ln n}$ diverges, even though $\frac1{n\ln n}$ is far smaller than $\frac1n$. This is the borderline of the scale of $p$-series.
+@@@ the-ratio-test-with-a-parameter.md
+---
+title: The ratio test with a parameter
+category: calculus/single-variable/series
+level: l2
+difficulty: 3
+tags: ratio test, Stirling formula, critical case
+date: 2026-11-02
+---
+
+## Statement
+
+For $a>0$, study $\displaystyle\sum_{n\ge1}\frac{n!\,a^n}{n^n}$.
+
+## Hint
+
+Compute $\frac{u_{n+1}}{u_n}$. At the critical value of $a$ the ratio test fails: use Stirling's formula $n!\sim\sqrt{2\pi n}\,(n/e)^n$.
+
+## Solution
+
+**Ratio.**
+$$\frac{u_{n+1}}{u_n}=a\cdot\frac{(n+1)\,n^n}{(n+1)^{n+1}}=a\left(1+\frac1n\right)^{-n}\longrightarrow\frac ae.$$
+
+**Cases.** For $a<e$ the series converges; for $a>e$ it diverges.
+
+**Critical case $a=e$.** By Stirling,
+$$u_n=\frac{n!\,e^n}{n^n}\sim\sqrt{2\pi n}\longrightarrow+\infty,$$
+so the terms do not tend to $0$: the series diverges.
+
+**Conclusion.** The series converges iff $0<a<e$.
+
+**Remark.** In fact for $a=e$ the ratio $\frac{u_{n+1}}{u_n}=e\left(1+\frac1n\right)^{-n}$ is always $>1$ (because $\left(1+\frac1n\right)^n<e$), which already shows divergence without Stirling.
+@@@ the-central-binomial-series-diverges.md
+---
+title: A ratio test that fails, and how to conclude
+category: calculus/single-variable/series
+level: l2
+difficulty: 4
+tags: ratio test, central binomial coefficients, induction, Stirling
+date: 2026-11-02
+---
+
+## Statement
+
+Let $u_n=\dfrac{(2n)!}{(n!)^2\,4^n}=\binom{2n}n4^{-n}$. Show that $\sum u_n$ diverges.
+
+## Hint
+
+The ratio tends to $1$, so d'Alembert says nothing. Prove by induction that $u_n\ge\frac1{2\sqrt n}$.
+
+## Solution
+
+**The ratio test is inconclusive.**
+$$\frac{u_{n+1}}{u_n}=\frac{(2n+2)(2n+1)}{4(n+1)^2}=\frac{2n+1}{2n+2}\longrightarrow1.$$
+
+**A lower bound.** We prove $u_n\ge\frac1{2\sqrt n}$ by induction. For $n=1$: $u_1=\frac12$. Assume it for $n$. Then
+$$u_{n+1}=\frac{2n+1}{2n+2}u_n\ge\frac{2n+1}{2n+2}\cdot\frac1{2\sqrt n}\ge\frac1{2\sqrt{n+1}},$$
+where the last inequality is equivalent (squaring) to $(2n+1)^2\ge4n(n+1)$, i.e. $1\ge0$.
+
+**Conclusion.** $\sum\frac1{2\sqrt n}$ diverges ($p=\frac12$), so $\sum u_n$ diverges by comparison.
+
+**With Stirling.** $u_n\sim\frac1{\sqrt{\pi n}}$, and the series diverges for the same reason.
+
+**Remark.** Note that $u_n\to0$ yet $\sum u_n=\infty$. The series of $u_n$ is the Taylor series of $\frac1{\sqrt{1-x}}$ at $x=1$.
+@@@ sine-of-an-alternating-term.md
+---
+title: The sine of an alternating term
+category: calculus/single-variable/series
+level: l2
+difficulty: 3
+tags: alternating series, odd function, conditional convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Study the series $\displaystyle\sum_{n\ge1}\sin\!\left(\frac{(-1)^n}n\right)$, and its absolute convergence.
+
+## Hint
+
+The sine is odd. What is $\sin\!\left(\frac{(-1)^n}n\right)$ in terms of $\sin\frac1n$?
+
+## Solution
+
+**Simplifying.** Since $\sin$ is odd, $\sin\!\left(\frac{(-1)^n}n\right)=(-1)^n\sin\frac1n$.
+
+**Convergence.** The sequence $b_n=\sin\frac1n$ is positive, decreasing (since $\frac1n$ decreases in $\left(0,\frac\pi2\right)$ where $\sin$ is increasing) and tends to $0$. By the alternating series test, the series **converges**.
+
+**Absolute convergence.** $\left|\sin\frac{(-1)^n}n\right|=\sin\frac1n\sim\frac1n$, so $\sum\left|\cdot\right|$ diverges. The convergence is **conditional**.
+
+**Remark.** The expansion route works too: $(-1)^n\left(\frac1n-\frac1{6n^3}+\dots\right)$ is a convergent alternating series plus an absolutely convergent one.
+@@@ two-alternating-series-with-logarithms.md
+---
+title: Two alternating series with logarithms
+category: calculus/single-variable/series
+level: l2
+difficulty: 3
+tags: alternating series test, monotonicity, conditional convergence
+date: 2026-11-02
+---
+
+## Statement
+
+Study the convergence, absolute and conditional, of
+$$\sum_{n\ge2}\frac{(-1)^n}{\ln n}\qquad\text{and}\qquad\sum_{n\ge1}(-1)^n\frac{\ln n}n.$$
+
+## Hint
+
+Check the three hypotheses of the alternating series test. For the second, study $x\mapsto\frac{\ln x}x$.
+
+## Solution
+
+**First series.** $b_n=\frac1{\ln n}$ is positive, decreasing (as $\ln n$ increases) and tends to $0$: the series **converges**. Since $\ln n\le n$ we have $\frac1{\ln n}\ge\frac1n$, so $\sum\frac1{\ln n}$ diverges: the convergence is **conditional**.
+
+**Second series.** Let $f(x)=\frac{\ln x}x$. Then $f'(x)=\frac{1-\ln x}{x^2}<0$ for $x>e$, so $\left(\frac{\ln n}n\right)_{n\ge3}$ is decreasing, and it tends to $0$. The series **converges**. Since $\frac{\ln n}n\ge\frac1n$ for $n\ge3$, the series of absolute values diverges: **conditional** convergence.
+
+**Remark.** The alternating series test requires *eventual* monotonicity only: the first terms (here $n=1,2$) do not matter.
+@@@ a-term-tending-to-one-half.md
+---
+title: A square root whose difference tends to 1/2
+category: calculus/single-variable/series
+level: m1
+difficulty: 2
+tags: divergence test, square roots, asymptotics
+date: 2026-11-02
+---
+
+## Statement
+
+Study $\displaystyle\sum_{n\ge1}\left(\sqrt{n^2+n+1}-n\right)$.
+
+## Hint
+
+Rationalise, then find the limit of the general term.
+
+## Solution
+
+**Rationalising.**
+$$\sqrt{n^2+n+1}-n=\frac{(n^2+n+1)-n^2}{\sqrt{n^2+n+1}+n}=\frac{n+1}{\sqrt{n^2+n+1}+n}.$$
+Dividing numerator and denominator by $n$,
+$$=\frac{1+\frac1n}{\sqrt{1+\frac1n+\frac1{n^2}}+1}\longrightarrow\frac12.$$
+
+**Conclusion.** The general term tends to $\frac12\ne0$, so the series **diverges** (divergence test).
+
+**Remark.** Compare with the problem $\sqrt{n^2+n}-n\to\frac12$ in the limits section: the difference of square roots has the same limit, which is why this series is hopelessly divergent.
+@@@ the-euler-mascheroni-constant-as-a-sum.md
+---
+title: The Euler-Mascheroni constant as a series
+category: calculus/single-variable/series
+level: m1
+difficulty: 4
+tags: Euler-Mascheroni constant, harmonic numbers, telescoping, logarithm
+date: 2026-11-02
+---
+
+## Statement
+
+Show that $\displaystyle\sum_{n\ge1}\left(\frac1n-\ln\left(1+\frac1n\right)\right)$ converges and identify its sum.
+
+## Hint
+
+The general term is $\frac1{2n^2}+O\left(\frac1{n^3}\right)$. For the sum, note that $\sum\ln\left(1+\frac1n\right)$ telescopes.
+
+## Solution
+
+**Convergence.** $\ln\left(1+\frac1n\right)=\frac1n-\frac1{2n^2}+O\!\left(\frac1{n^3}\right)$, so the general term is $\sim\frac1{2n^2}$: the series converges.
+
+**Partial sums.** Since $\ln\left(1+\frac1n\right)=\ln(n+1)-\ln n$,
+$$\sum_{n=1}^N\left(\frac1n-\ln\left(1+\frac1n\right)\right)=H_N-\ln(N+1).$$
+
+**Limit.** $H_N-\ln(N+1)=\bigl(H_N-\ln N\bigr)-\ln\left(1+\frac1N\right)\to\gamma-0$, where $\gamma=\lim(H_N-\ln N)\approx0.5772$ is the Euler-Mascheroni constant.
+
+**Conclusion.** The sum equals $\gamma$.
+
+**Remark.** This turns the *definition* of $\gamma$ as a limit into a convergent series, and the series converges fast: its terms behave like $\frac1{2n^2}$.
+@@@ an-arctangent-telescoping-series.md
+---
+title: An arctangent telescoping series
+category: calculus/single-variable/series
+level: olympiad
+difficulty: 4
+tags: telescoping, arctangent, subtraction formula
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\displaystyle\sum_{n=0}^\infty\arctan\frac1{n^2+n+1}$.
+
+## Hint
+
+Use $\arctan a-\arctan b=\arctan\frac{a-b}{1+ab}$ with $a=n+1$ and $b=n$.
+
+## Solution
+
+**Key identity.** For $a>b\ge0$, $\tan(\arctan a-\arctan b)=\frac{a-b}{1+ab}$, and $\arctan a-\arctan b\in\left(0,\frac\pi2\right)$, so $\arctan a-\arctan b=\arctan\frac{a-b}{1+ab}$. With $a=n+1$, $b=n$:
+$$\arctan(n+1)-\arctan n=\arctan\frac1{1+n(n+1)}=\arctan\frac1{n^2+n+1}.$$
+
+**Telescoping.**
+$$S_N=\sum_{n=0}^N\bigl(\arctan(n+1)-\arctan n\bigr)=\arctan(N+1).$$
+
+**Limit.** $S_N\to\frac\pi2$.
+
+**Answer.** The sum is $\dfrac\pi2$.
+
+**Remark.** Each term is positive and about $\frac1{n^2}$, so the series converges quickly, and the infinite sum of small angles adds up to a right angle.
+@@@ a-zeta-type-telescoping-sum.md
+---
+title: A telescoping sum that proves ζ(2) converges
+category: calculus/single-variable/series
+level: l1
+difficulty: 3
+tags: telescoping, comparison, zeta function
+date: 2026-11-02
+---
+
+## Statement
+
+1. Compute $\displaystyle\sum_{n\ge2}\frac1{n^2-1}$.
+2. Deduce that $\displaystyle\sum_{n\ge1}\frac1{n^2}$ converges, with a sum smaller than $\frac74$.
+
+## Hint
+
+$\dfrac1{n^2-1}=\dfrac12\left(\dfrac1{n-1}-\dfrac1{n+1}\right)$.
+
+## Solution
+
+**1.** For $N\ge3$ the partial sums telescope with a step of $2$:
+$$S_N=\frac12\sum_{n=2}^N\left(\frac1{n-1}-\frac1{n+1}\right)=\frac12\left(1+\frac12-\frac1N-\frac1{N+1}\right)\longrightarrow\frac34.$$
+
+**2.** For $n\ge2$, $\frac1{n^2}<\frac1{n^2-1}$. So the partial sums of $\sum\frac1{n^2}$ are increasing and bounded by $1+\frac34=\frac74$: the series converges, with sum less than $\frac74$.
+
+**Remark.** The true value is $\frac{\pi^2}6\approx1.645$, and $\frac74=1.75$: a crude bound obtained with no calculus at all.
+@@@ pointwise-and-normal-convergence-of-a-series-of-functions.md
+---
+title: A series of functions
+category: calculus/single-variable/series
+level: m1
+difficulty: 4
+tags: series of functions, normal convergence, pointwise convergence
+date: 2026-11-02
+---
+
+## Statement
+
+For $x\ge0$ let $u_n(x)=\dfrac x{n(1+nx)}$. Show that $\sum u_n(x)$ converges for every $x\ge0$ and that the convergence is **normal** on $[0,+\infty)$. What can you say about the sum $f(x)=\sum_{n\ge1}u_n(x)$?
+
+## Hint
+
+Bound $u_n(x)$ by $\frac1{n^2}$ uniformly in $x$.
+
+## Solution
+
+**Pointwise.** For $x=0$, all terms vanish. For $x>0$, $1+nx\ge nx$, so
+$$0\le u_n(x)=\frac1n\cdot\frac x{1+nx}\le\frac1n\cdot\frac1n=\frac1{n^2}.$$
+The series converges.
+
+**Normally.** The bound $0\le u_n(x)\le\frac1{n^2}$ holds for all $x\ge0$, and $\sum\frac1{n^2}<\infty$. So $\sum\sup_x|u_n|<\infty$: the convergence is normal, hence uniform, on $[0,+\infty)$.
+
+**Consequence.** Each $u_n$ is continuous on $[0,+\infty)$, and a uniformly convergent series of continuous functions has a continuous sum. So $f$ is continuous on $[0,+\infty)$, with $f(0)=0$.
+
+**Remark.** One can check that $f$ is not differentiable at $0$ from the right: $\frac{f(x)}x=\sum\frac1{n(1+nx)}\to\sum\frac1n=\infty$ as $x\to0^+$, a classic example where the derivative of a uniformly convergent series cannot be computed term by term.
