@@ -145,16 +145,19 @@
             {
               "id": "first-order",
               "name": "First-order equations",
+              "description": "First-order differential equations, separable equations and integrating factors.",
               "subcategories": []
             },
             {
               "id": "second-order",
               "name": "Linear equations of order two",
+              "description": "Second-order linear differential equations with constant coefficients.",
               "subcategories": []
             },
             {
               "id": "linear-systems",
               "name": "Linear systems",
+              "description": "Systems of first-order linear differential equations and matrix exponentials.",
               "subcategories": []
             }
           ]
@@ -169,16 +172,19 @@
         {
           "id": "topology",
           "name": "Topology and metric spaces",
+          "description": "Open and closed sets, compact sets, connectedness and metric spaces.",
           "subcategories": []
         },
         {
           "id": "function-sequences",
           "name": "Sequences and series of functions",
+          "description": "Pointwise and uniform convergence of sequences and series of functions.",
           "subcategories": []
         },
         {
           "id": "riemann-integral",
           "name": "The Riemann integral",
+          "description": "Construction, properties and fundamental theorems of Riemann integration.",
           "subcategories": []
         }
       ]
@@ -191,11 +197,13 @@
         {
           "id": "matrices",
           "name": "Matrices and linear systems",
+          "description": "Matrix operations, Gaussian elimination, matrix inverses and linear systems.",
           "subcategories": []
         },
         {
           "id": "vector-spaces",
           "name": "Vector spaces and subspaces",
+          "description": "Subspaces, linear independence, span, bases and dimension.",
           "subcategories": []
         },
         {
@@ -207,11 +215,13 @@
         {
           "id": "determinants",
           "name": "Determinants",
+          "description": "Properties of determinants, cofactors and Cramer's rule.",
           "subcategories": []
         },
         {
           "id": "eigenvalues",
           "name": "Eigenvalues and diagonalisation",
+          "description": "Eigenvalues, eigenvectors, characteristic polynomials and diagonalisation.",
           "subcategories": []
         },
         {
@@ -223,6 +233,7 @@
         {
           "id": "quadratic-forms",
           "name": "Quadratic forms",
+          "description": "Symmetric matrices, quadratic forms, positive definiteness and reduction.",
           "subcategories": []
         }
       ]
@@ -235,31 +246,37 @@
         {
           "id": "inequalities",
           "name": "Inequalities",
+          "description": "Algebraic inequalities, AM-GM, Cauchy-Schwarz and bounding techniques.",
           "subcategories": []
         },
         {
           "id": "equations",
           "name": "Equations and radicals",
+          "description": "Polynomial equations, radical equations and systems of algebraic equations.",
           "subcategories": []
         },
         {
           "id": "polynomials",
           "name": "Polynomials",
+          "description": "Roots of polynomials, factorisation, divisibility and Vieta's formulas.",
           "subcategories": []
         },
         {
           "id": "complex-numbers",
           "name": "Complex numbers",
+          "description": "Complex plane, De Moivre's formula, roots of unity and complex functions.",
           "subcategories": []
         },
         {
           "id": "groups",
           "name": "Groups",
+          "description": "Subgroups, cyclic groups, Lagrange's theorem and group homomorphisms.",
           "subcategories": []
         },
         {
           "id": "rings-and-fields",
           "name": "Rings and fields",
+          "description": "Rings, ideals, quotient rings, integral domains and field extensions.",
           "subcategories": []
         }
       ]
@@ -272,41 +289,49 @@
         {
           "id": "basics",
           "name": "Basic probability",
+          "description": "Events, sample spaces, axioms of probability and basic counting.",
           "subcategories": []
         },
         {
           "id": "discrete-distributions",
           "name": "Discrete distributions",
+          "description": "Uniform, Binomial, Poisson, Geometric and Hypergeometric distributions.",
           "subcategories": []
         },
         {
           "id": "continuous",
           "name": "Continuous distributions",
+          "description": "Uniform, Exponential, Normal and Gamma continuous distributions.",
           "subcategories": []
         },
         {
           "id": "combinatorics",
           "name": "Combinatorics",
+          "description": "Permutations, combinations, partitions and counting arguments.",
           "subcategories": []
         },
         {
           "id": "conditional",
           "name": "Conditional probability",
+          "description": "Conditional probability, independence, law of total probability and Bayes' rule.",
           "subcategories": []
         },
         {
           "id": "moments",
           "name": "Moments",
+          "description": "Expectation, variance, covariance, correlation and moment-generating functions.",
           "subcategories": []
         },
         {
           "id": "limit-theorems",
           "name": "Limit theorems",
+          "description": "Law of Large Numbers, Central Limit Theorem and convergence of random variables.",
           "subcategories": []
         },
         {
           "id": "generating-functions",
           "name": "Generating functions",
+          "description": "Probability generating functions, moment generating functions and characteristic functions.",
           "subcategories": []
         }
       ]
@@ -314,36 +339,42 @@
     {
       "id": "stat",
       "name": "Statistics",
-      "description": "Sampling, estimation, confidence intervals, hypothesis testing and regression.",
+      "description": "Sampling distributions, estimation, hypothesis testing, confidence intervals and regression.",
       "subcategories": [
         {
           "id": "sampling",
           "name": "Sampling",
+          "description": "Random sampling, sample statistics and sampling distributions.",
           "subcategories": []
         },
         {
           "id": "estimation",
           "name": "Estimation",
+          "description": "Point estimation, bias, MSE, consistency and maximum likelihood estimation.",
           "subcategories": []
         },
         {
           "id": "confidence-intervals",
           "name": "Confidence intervals",
+          "description": "Confidence intervals for means, proportions and variances.",
           "subcategories": []
         },
         {
           "id": "hypothesis-testing",
           "name": "Hypothesis testing",
+          "description": "Null and alternative hypotheses, Type I/II errors, t-tests and p-values.",
           "subcategories": []
         },
         {
           "id": "regression",
           "name": "Regression",
+          "description": "Simple and multiple linear regression, correlation and least squares.",
           "subcategories": []
         },
         {
           "id": "bayesian",
           "name": "Bayesian statistics",
+          "description": "Prior and posterior distributions, conjugate priors and Bayesian inference.",
           "subcategories": []
         }
       ]
@@ -356,21 +387,25 @@
         {
           "id": "divisibility",
           "name": "Divisibility and gcd",
+          "description": "Divisibility rules, greatest common divisor, Euclid's algorithm and Bezout's identity.",
           "subcategories": []
         },
         {
           "id": "congruences",
           "name": "Congruences",
+          "description": "Modular arithmetic, linear congruences, Chinese Remainder Theorem and Fermat's Little Theorem.",
           "subcategories": []
         },
         {
           "id": "primes",
           "name": "Primes",
+          "description": "Prime numbers, Fundamental Theorem of Arithmetic and primality testing.",
           "subcategories": []
         },
         {
           "id": "irrationality",
           "name": "Irrationality",
+          "description": "Proofs of irrationality for roots, logarithms and fundamental constants.",
           "subcategories": []
         }
       ]
@@ -383,26 +418,31 @@
         {
           "id": "counting",
           "name": "Counting principles",
+          "description": "Sum rule, product rule, bijections and double counting.",
           "subcategories": []
         },
         {
           "id": "binomial",
           "name": "Binomial coefficients",
+          "description": "Binomial expansion, Pascal's triangle and combinatorial identities.",
           "subcategories": []
         },
         {
           "id": "pigeonhole",
           "name": "Pigeonhole principle",
+          "description": "Pigeonhole principle and generalized pigeonhole applications.",
           "subcategories": []
         },
         {
           "id": "inclusion-exclusion",
           "name": "Inclusion-exclusion",
+          "description": "Principle of inclusion-exclusion and derangements.",
           "subcategories": []
         },
         {
           "id": "graphs",
           "name": "Graph theory",
+          "description": "Graph terminology, trees, paths, connectivity and planar graphs.",
           "subcategories": []
         }
       ]
@@ -415,16 +455,19 @@
         {
           "id": "plane",
           "name": "Plane geometry",
+          "description": "Triangles, circles, quadrilaterals, similarity and Euclidean geometry proofs.",
           "subcategories": []
         },
         {
           "id": "analytic",
           "name": "Analytic geometry",
+          "description": "Cartesian coordinates, lines, conic sections and parametric curves.",
           "subcategories": []
         },
         {
           "id": "space",
           "name": "Geometry in space",
+          "description": "3D coordinate systems, vectors, lines, planes and solid geometry.",
           "subcategories": []
         }
       ]
@@ -437,10 +480,12 @@
         {
           "id": "proof-techniques",
           "name": "Proof techniques",
+          "description": "Direct proof, proof by contradiction, contraposition and cases.",
           "subcategories": [
             {
               "id": "induction",
               "name": "Induction",
+              "description": "Mathematical induction, strong induction and structural induction.",
               "subcategories": []
             }
           ]
@@ -448,21 +493,25 @@
         {
           "id": "quantifiers",
           "name": "Quantifiers and negation",
+          "description": "Universal and existential quantifiers, predicate logic and logical equivalences.",
           "subcategories": []
         },
         {
           "id": "sets-and-maps",
           "name": "Sets and maps",
+          "description": "Set operations, power sets, injections, surjections and bijections.",
           "subcategories": []
         },
         {
           "id": "relations",
           "name": "Relations",
+          "description": "Equivalence relations, equivalence classes, partial orders and partitions.",
           "subcategories": []
         },
         {
           "id": "cardinality",
           "name": "Countability and cardinality",
+          "description": "Finite and infinite sets, countability of Q, uncountability of R and Cantor's diagonal argument.",
           "subcategories": []
         }
       ]
