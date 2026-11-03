@@ -7812,39 +7812,6 @@ $$\operatorname{Var}(\bar X)=\frac{\sigma^2}{n}.$$
 
 **Conclusion.** With replacement, the variance of the sample mean is $\sigma^2/n$.
 
-@@@ stat-sampling-without-replacement.md
----
-title: Sampling without replacement
-category: stat/sampling
-level: l1
-difficulty: 4
-tags: sampling without replacement, finite population correction
-date: 2026-11-03
----
-
-## Statement
-
-With the same population as above, a sample of size $n$ is drawn *without replacement*. Show that
-$$\operatorname{Var}(\bar X)=\frac{\sigma^2}{n}\cdot\frac{N-n}{N-1}.$$
-
-## Hint
-
-Each pair of draws is negatively correlated; compute $\operatorname{Cov}(X_i,X_j)=-\sigma^2/(N-1)$ for $i\neq j$.
-
-## Solution
-
-**Covariance.** For $i\neq j$:
-$$E(X_iX_j)=\frac{1}{N(N-1)}\sum_{k\neq\ell}x_kx_\ell.$$
-A direct computation (using $\sum_{k}x_k=N\mu$ and $\sum x_k^2=N\sigma^2+N\mu^2$) gives
-$$\operatorname{Cov}(X_i,X_j)=-\frac{\sigma^2}{N-1}.$$
-
-**Variance of the sum.** $n$ variance terms, $n(n-1)$ covariance terms:
-$$\operatorname{Var}\left(\sum X_i\right)=n\sigma^2+n(n-1)\left(-\frac{\sigma^2}{N-1}\right)=n\sigma^2\cdot\frac{N-n}{N-1}.$$
-
-**Conclusion.** Dividing by $n^2$:
-$$\operatorname{Var}(\bar X)=\frac{\sigma^2}{n}\cdot\frac{N-n}{N-1}.$$
-
-**Remark.** The factor $\frac{N-n}{N-1}$ is the finite population correction. It is $<1$, so sampling without replacement is more efficient than with replacement.
 
 @@@ stat-sampling-distribution-mean.md
 ---
