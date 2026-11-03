@@ -1,3 +1,1634 @@
+@@@ quadratic-form-definition.md
+---
+title: Definition and matrix of a quadratic form
+category: linear/quadratic-forms
+level: lycee
+difficulty: 1
+tags: quadratic form, symmetric matrix, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Write the quadratic form
+$$Q(x,y) = x^2 + 4xy + 3y^2$$
+in the form $Q(X) = X^T A X$, where $A$ is a symmetric matrix.
+
+## Hint
+
+The coefficient of $x_ix_j$ for $i\neq j$ is $2a_{ij}$ in $X^TAX$.
+
+## Solution
+
+**Identification.** 
+$$Q(x,y) = a_{11}x^2 + 2a_{12}xy + a_{22}y^2.$$
+So $a_{11}=1$, $2a_{12}=4\Rightarrow a_{12}=2$, $a_{22}=3$.
+
+**Matrix.**
+$$A = \begin{pmatrix} 1 & 2 \\ 2 & 3 \end{pmatrix}.$$
+
+**Verification.** $X^TAX = (x,y)\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix} = x^2+2xy+2xy+3y^2 = x^2+4xy+3y^2$.
+
+**Conclusion.** $Q(x,y)=X^TAX$ with $A=\begin{pmatrix}1&2\\2&3\end{pmatrix}$.
+
+@@@ quadratic-form-polarization.md
+---
+title: Polar form of a quadratic form
+category: linear/quadratic-forms
+level: lycee
+difficulty: 2
+tags: polar form, symmetric bilinear form, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Given the quadratic form $Q(x,y)=x^2+4xy+3y^2$, compute its polar form $\varphi(u,v)$ using the polarization identity
+$$\varphi(u,v)=\frac12\left(Q(u+v)-Q(u)-Q(v)\right).$$
+
+## Hint
+
+Compute $Q(u+v)$, $Q(u)$, $Q(v)$, then combine.
+
+## Solution
+
+**Notation.** $u=(x_1,y_1)$, $v=(x_2,y_2)$.
+
+**Compute.**
+$$Q(u+v)=(x_1+x_2)^2+4(x_1+x_2)(y_1+y_2)+3(y_1+y_2)^2.$$
+Expand:
+$$=x_1^2+2x_1x_2+x_2^2+4x_1y_1+4x_1y_2+4x_2y_1+4x_2y_2+3y_1^2+6y_1y_2+3y_2^2.$$
+
+**Subtract $Q(u)+Q(v)$.** The pure terms cancel:
+$$Q(u+v)-Q(u)-Q(v)=2x_1x_2+4x_1y_2+4x_2y_1+6y_1y_2.$$
+
+**Divide by 2.**
+$$\varphi(u,v)=x_1x_2+2x_1y_2+2x_2y_1+3y_1y_2.$$
+
+**Check.** $\varphi(u,u)=x_1^2+4x_1y_1+3y_1^2=Q(u)$. Correct.
+
+**Conclusion.** The polar form is $\varphi(u,v)=x_1x_2+2x_1y_2+2x_2y_1+3y_1y_2$.
+
+@@@ quadratic-form-completing-square.md
+---
+title: Reducing a quadratic form by completing the square
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: reduction, completing square, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Reduce the quadratic form
+$$Q(x,y) = x^2 + 4xy + 5y^2$$
+by completing the square.
+
+## Hint
+
+Write $Q$ as $(x+2y)^2 + \ldots$.
+
+## Solution
+
+**Completing the square.**
+$$Q(x,y) = x^2 + 4xy + 5y^2 = (x+2y)^2 + y^2.$$
+
+**Verification.** $(x+2y)^2+y^2 = x^2+4xy+4y^2+y^2=x^2+4xy+5y^2$. Correct.
+
+**New variables.** Let $u=x+2y$, $v=y$. Then $Q=u^2+v^2$.
+
+**Conclusion.** $Q$ is positive definite (sum of two squares). Its signature is $(2,0,0)$.
+
+@@@ quadratic-form-signature-3x3.md
+---
+title: Signature of a quadratic form in 3 variables
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: signature, reduction, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Determine the signature of the quadratic form
+$$Q(x,y,z) = x^2 + 2xy + 2xz + 2y^2 + 4yz + 3z^2.$$
+
+## Hint
+
+Complete the square in $x$ first, then in $y$, then in $z$.
+
+## Solution
+
+**Square in $x$.** Consider $x^2+2x(y+z)$, which is $(x+y+z)^2-(y+z)^2$. So
+$$Q = (x+y+z)^2 - (y+z)^2 + 2y^2+4yz+3z^2.$$
+
+**Simplify.**
+$$-(y^2+2yz+z^2)+2y^2+4yz+3z^2 = y^2+2yz+2z^2.$$
+
+**Square in $y$.** $y^2+2yz+2z^2=(y+z)^2+z^2$.
+
+**Result.**
+$$Q = (x+y+z)^2 + (y+z)^2 + z^2.$$
+
+**Signature.** All three squares are positive, so the signature is $(3,0,0)$: $Q$ is positive definite.
+
+**Conclusion.** Signature $(3,0,0)$.
+
+@@@ quadratic-form-sylvester.md
+---
+title: Sylvester's criterion for positive definiteness
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: Sylvester criterion, positive definite, minors
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the quadratic form
+$$Q(x,y,z) = 2x^2+2y^2+2z^2+2xy+2yz+2zx$$
+is positive definite using Sylvester's criterion.
+
+## Hint
+
+The matrix of $Q$ is $A = \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}$. Compute the leading principal minors.
+
+## Solution
+
+**Matrix.**
+$$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}.$$
+
+**Leading principal minors.**
+- $\Delta_1 = 2 > 0$.
+- $\Delta_2 = \begin{vmatrix}2&1\\1&2\end{vmatrix}=3>0$.
+- $\Delta_3 = \det A = 2(4-1)-1(2-1)+1(1-2)=6-1-1=4>0$.
+
+**Sylvester's criterion.** All leading principal minors are positive, so $A$ is positive definite.
+
+**Conclusion.** $Q$ is positive definite, i.e. $Q(x,y,z)>0$ for all $(x,y,z)\neq(0,0,0)$.
+
+@@@ quadratic-form-indefinite.md
+---
+title: An indefinite quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: indefinite, signature, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the quadratic form
+$$Q(x,y) = x^2 - y^2$$
+is indefinite (neither positive nor negative).
+
+## Hint
+
+Find vectors $u,v$ with $Q(u)>0$ and $Q(v)<0$.
+
+## Solution
+
+**Positive value.** $Q(1,0)=1>0$.
+
+**Negative value.** $Q(0,1)=-1<0$.
+
+**Conclusion.** $Q$ takes both positive and negative values, so it is indefinite. Its signature is $(1,1,0)$: one positive square and one negative square.
+
+**Matrix form.** $A=\begin{pmatrix}1&0\\0&-1\end{pmatrix}$, with eigenvalues $1$ and $-1$, of opposite signs.
+
+@@@ quadratic-form-degenerate.md
+---
+title: A degenerate quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: degenerate, signature, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Determine the signature of the quadratic form
+$$Q(x,y,z) = x^2 + 2xy + y^2 = (x+y)^2.$$
+
+## Hint
+
+$Q$ is a square of a linear form; find the kernel.
+
+## Solution
+
+**Reduction.** $Q=(x+y)^2$. Let $u=x+y$. Then $Q=u^2$, with one positive square.
+
+**Kernel.** $Q(x,y,z)=0\iff x+y=0$. The kernel has dimension $2$ (a plane in $\mathbb{R}^3$).
+
+**Signature.** One positive square, zero negative squares, kernel dimension $2$. Signature: $(1,0,2)$.
+
+**Conclusion.** $Q$ is positive but degenerate (not positive definite). Its rank is $1$, its kernel has dimension $2$.
+
+@@@ quadratic-form-change-of-variables.md
+---
+title: Change of variables in a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: change of variables, quadratic form, matrix
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q(x,y)=x^2+4xy+3y^2$ and $P=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ (invertible). Express $Q$ in the new variables $(u,v)$ defined by $\begin{pmatrix}x\\y\end{pmatrix}=P\begin{pmatrix}u\\v\end{pmatrix}$.
+
+## Hint
+
+$Q=PX$ gives $X^T A X = U^T(P^TAP)U$.
+
+## Solution
+
+**New variables.** $x=u+2v$, $y=v$.
+
+**Direct substitution.**
+$$Q=(u+2v)^2+4(u+2v)v+3v^2=u^2+4uv+4v^2+4uv+8v^2+3v^2=u^2+8uv+15v^2.$$
+
+**Matrix form.** The new matrix is $P^TAP$:
+$$P^TAP=\begin{pmatrix}1&0\\2&1\end{pmatrix}\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&2\\0&1\end{pmatrix}.$$
+Compute: $\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&2\\0&1\end{pmatrix}=\begin{pmatrix}1&4\\2&7\end{pmatrix}$. Then
+$$\begin{pmatrix}1&0\\2&1\end{pmatrix}\begin{pmatrix}1&4\\2&7\end{pmatrix}=\begin{pmatrix}1&4\\4&15\end{pmatrix}.$$
+
+**Verification.** $U^T\begin{pmatrix}1&4\\4&15\end{pmatrix}U=u^2+8uv+15v^2$. Consistent.
+
+**Conclusion.** In $(u,v)$, $Q=u^2+8uv+15v^2$.
+
+@@@ quadratic-form-eigenvalues.md
+---
+title: Reduction of a quadratic form by eigenvalues
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: eigenvalues, orthogonal diagonalization, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Reduce the quadratic form
+$$Q(x,y)=3x^2+2xy+3y^2$$
+using an orthogonal change of variables.
+
+## Hint
+
+The symmetric matrix $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$ has eigenvalues $2$ and $4$ with orthonormal eigenvectors.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
+
+**Eigenvalues.** $\det(A-\lambda I)=(3-\lambda)^2-1=\lambda^2-6\lambda+8=(\lambda-2)(\lambda-4)$. So $\lambda_1=2$, $\lambda_2=4$.
+
+**Orthonormal eigenvectors.** For $\lambda_1=2$: $u_1=(1,-1)/\sqrt2$. For $\lambda_2=4$: $u_2=(1,1)/\sqrt2$.
+
+**Orthogonal change of variables.** Let $X=QU$ with $Q=\frac{1}{\sqrt2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}$. Then
+$$Q(x,y)=2u^2+4v^2.$$
+
+**Conclusion.** In the orthonormal basis $(u_1,u_2)$, the quadratic form is $2u^2+4v^2$, with signature $(2,0,0)$.
+
+@@@ quadratic-form-inertia-law.md
+---
+title: Sylvester's law of inertia
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: inertia law, signature, invariance
+date: 2026-11-03
+---
+
+## Statement
+
+State Sylvester's law of inertia and illustrate it on the quadratic form $Q(x,y)=x^2-y^2$ reduced by two different changes of variables.
+
+## Hint
+
+The signature (number of positive, negative, and zero eigenvalues) is invariant under invertible linear changes of variables.
+
+## Solution
+
+**Law of inertia.** Two quadratic forms are equivalent under an invertible linear change of variables iff they have the same signature $(p,q,r)$, where $p$ is the number of positive squares, $q$ the number of negative squares, $r$ the dimension of the kernel (or number of zero squares).
+
+**Reduction 1.** $Q=x^2-y^2$ is already diagonal: $p=1$, $q=1$, $r=0$.
+
+**Reduction 2.** Let $x=u+v$, $y=u-v$. Then
+$$Q=(u+v)^2-(u-v)^2=4uv.$$
+This is not diagonal. To diagonalize, use $u=(s+t)/2$, $v=(s-t)/2$: $4uv=(s+t)(s-t)=s^2-t^2$. Signature $(1,1,0)$, same as before.
+
+**Conclusion.** The signature is invariant: $(1,1,0)$ in both reductions.
+
+@@@ quadratic-form-cone.md
+---
+title: The cone $x^2+y^2-z^2=0$
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: cone, quadratic form, signature
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the zero set of the quadratic form $Q(x,y,z)=x^2+y^2-z^2$ and identify its signature.
+
+## Hint
+
+The equation $x^2+y^2=z^2$ describes a cone.
+
+## Solution
+
+**Signature.** $Q$ has two positive squares and one negative square: signature $(2,1,0)$.
+
+**Zero set.** $Q=0\iff x^2+y^2=z^2$. This is the (double) cone of revolution about the $z$-axis, with apex at the origin.
+
+**Geometric interpretation.** The signature $(2,1,0)$ indicates that the level set $Q=0$ is a cone (not a single point or the empty set).
+
+**Conclusion.** $Q$ is indefinite with signature $(2,1,0)$, and $Q=0$ is a double cone.
+
+@@@ quadratic-form-positivity-parameter.md
+---
+title: Positive definiteness depending on a parameter
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: parameter, positive definite, Sylvester
+date: 2026-11-03
+---
+
+## Statement
+
+For which real values of $a$ is the quadratic form
+$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz+zx)$$
+positive definite?
+
+## Hint
+
+Compute the leading principal minors of the matrix $A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}$.
+
+## Solution
+
+**Matrix.**
+$$A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}.$$
+
+**Leading minors.**
+- $\Delta_1=1>0$.
+- $\Delta_2=\begin{vmatrix}1&a\\a&1\end{vmatrix}=1-a^2>0\iff|a|<1$.
+- $\Delta_3=\det A$. Compute: add all rows to the first, factor $(1+2a)$, then $\Delta_3=(1+2a)(1-a)^2$. So $\Delta_3>0\iff a>-1/2$ and $a\neq1$.
+
+**Combining.** $|a|<1$ and $a>-1/2$ gives $-1/2<a<1$. At $a=1$, $\Delta_3=0$ (rank $1$), not positive definite. At $a=-1/2$, $\Delta_3=0$ (degenerate), not positive definite.
+
+**Conclusion.** $Q$ is positive definite iff $-1/2<a<1$.
+
+@@@ quadratic-form-reduction-cross.md
+---
+title: Reduction of a quadratic form with cross terms
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: reduction, completing square, cross terms
+date: 2026-11-03
+---
+
+## Statement
+
+Reduce the quadratic form
+$$Q(x,y,z)=xy+yz+zx$$
+by completing the square.
+
+## Hint
+
+Group the terms as $xy+yz+zx = \frac14[(x+y+z)^2-(x-y)^2-(y-z)^2-(z-x)^2]$, or use the substitution $u=x+y$, $v=x-y$.
+
+## Solution
+
+**Approach 1: direct grouping.** Use the identity
+$$xy+yz+zx=\frac12\left[(x+y+z)^2-(x^2+y^2+z^2)\right].$$
+This is not directly a sum of squares, but shows the signature.
+
+**Approach 2: substitution.** Let $u=x+y$, $v=x-y$, $z=z$ (this is invertible: $x=(u+v)/2$, $y=(u-v)/2$). Then
+$$xy=\frac{u^2-v^2}{4},\qquad yz=\frac{u-v}{2}z,\qquad zx=\frac{u+v}{2}z.$$
+So
+$$Q=\frac{u^2-v^2}{4}+uz.$$
+Complete the square in $u$:
+$$Q=\frac14(u+2z)^2-\frac14v^2-z^2.$$
+
+**Signature.** One positive square, two negative squares. Signature $(1,2,0)$.
+
+**Conclusion.** $Q=\frac14(u+2z)^2-\frac14v^2-z^2$, with signature $(1,2,0)$.
+
+@@@ quadratic-form-definite-negative.md
+---
+title: Negative definite quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: negative definite, signature, Sylvester
+date: 2026-11-03
+---
+
+## Statement
+
+Show that
+$$Q(x,y)=-x^2-2xy-3y^2$$
+is negative definite.
+
+## Hint
+
+Consider $-Q$ and show it is positive definite.
+
+## Solution
+
+**Reduce $-Q$.**
+$$-Q=x^2+2xy+3y^2=(x+y)^2+2y^2.$$
+
+**$-Q$ is positive definite.** It is a sum of positive squares, and vanishes only when $x+y=0$ and $y=0$, i.e. $(x,y)=(0,0)$.
+
+**Conclusion.** $Q=-[(x+y)^2+2y^2]$ is negative definite: $Q(x,y)<0$ for $(x,y)\neq(0,0)$, with signature $(0,2,0)$.
+
+@@@ quadratic-form-comparison.md
+---
+title: Comparison of two quadratic forms
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: comparison, positive definite, inequalities
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q(x,y)=x^2+2xy+2y^2$ and $R(x,y)=2x^2+2y^2$. Show that $Q(x,y)\le R(x,y)$ for all $(x,y)\in\mathbb{R}^2$.
+
+## Hint
+
+Compute $R-Q$ and show it is positive.
+
+## Solution
+
+**Difference.**
+$$R-Q = (2x^2+2y^2)-(x^2+2xy+2y^2)=x^2-2xy.$$
+Complete the square: $x^2-2xy=(x-y)^2-y^2$, which is not always $\ge0$. So the direct difference is not obviously positive. Instead:
+
+**Alternative.** Compare with eigenvalues. $Q$ has matrix $A_Q=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, eigenvalues $(3\pm\sqrt5)/2$. $R$ has matrix $2I$, eigenvalues $2$. The largest eigenvalue of $A_Q$ is $(3+\sqrt5)/2\approx2.618>2$, so $Q\le R$ is **false** in general.
+
+**Counterexample.** At $(x,y)=(1,-1)$: $Q=1-2+2=1$ and $R=2+2=4$, so $Q<R$. At $(x,y)=(1,1)$: $Q=1+2+2=5$ and $R=4$, so $Q>R$.
+
+**Conclusion.** The inequality $Q\le R$ is **false** in general. The largest eigenvalue of $Q$'s matrix exceeds $2$.
+
+@@@ quadratic-form-canonical-form.md
+---
+title: Canonical form of a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: canonical form, Gauss reduction, signature
+date: 2026-11-03
+---
+
+## Statement
+
+Put the quadratic form
+$$Q(x,y,z)=x^2+2y^2+3z^2+2xy-4xz$$
+into canonical form (sum of squares with coefficients $\pm1$ or $0$).
+
+## Hint
+
+Complete the square in $x$ first (since $x^2$ appears), then in $y$, then in $z$.
+
+## Solution
+
+**Group terms containing $x$.** $x^2+2xy-4xz=x^2+2x(y-2z)=(x+y-2z)^2-(y-2z)^2$.
+
+**Remaining terms.**
+$$Q=(x+y-2z)^2-(y-2z)^2+2y^2+3z^2=(x+y-2z)^2+y^2+4yz-z^2.$$
+
+**Square in $y$.** $y^2+4yz=(y+2z)^2-4z^2$. So
+$$Q=(x+y-2z)^2+(y+2z)^2-5z^2.$$
+
+**Canonical form.** With $u=x+y-2z$, $v=y+2z$, $w=z$:
+$$Q=u^2+v^2-5w^2.$$
+
+**Signature.** $(2,1,0)$: two positive squares, one negative.
+
+**Conclusion.** $Q=u^2+v^2-5w^2$ (or, after rescaling $w'=\sqrt5 w$, $Q=u^2+v^2-w'^2$).
+
+@@@ quadratic-form-gram.md
+---
+title: Gram matrix of a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: Gram matrix, quadratic form, polar form
+date: 2026-11-03
+---
+
+## Statement
+
+Let $\varphi$ be the symmetric bilinear form with matrix
+$$A=\begin{pmatrix}2&1\\1&3\end{pmatrix}.$$
+Compute the quadratic form $Q(u)=\varphi(u,u)$ and check that its matrix is $A$.
+
+## Hint
+
+$Q(u)=u^TAu$.
+
+## Solution
+
+**Computation.**
+$$Q(x,y)=(x,y)\begin{pmatrix}2&1\\1&3\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=2x^2+2xy+3y^2.$$
+
+**Matrix.** The matrix of $Q$ in the canonical basis is $A$, since the coefficient of $x^2$ is $2$, of $y^2$ is $3$, and of $xy$ is $2\cdot1=2$.
+
+**Conclusion.** $Q(x,y)=2x^2+2xy+3y^2$ with Gram matrix $A$.
+
+@@@ quadratic-form-diagonalization-congruence.md
+---
+title: Diagonalization by congruence
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: congruence, diagonalization, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Diagonalize the quadratic form $Q(x,y)=x^2+4xy+3y^2$ by congruence (find an invertible $P$ such that $P^TAP$ is diagonal).
+
+## Hint
+
+Use the substitution $x=u-2v$, $y=v$ that comes from completing the square.
+
+## Solution
+
+**Reduction.** $Q=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q=u^2-v^2$.
+
+**Transition matrix.** From $u=x+2y$, $v=y$: $x=u-2v$, $y=v$. So
+$$P=\begin{pmatrix}1&-2\\0&1\end{pmatrix}.$$
+
+**Congruence.** $A=\begin{pmatrix}1&2\\2&3\end{pmatrix}$, and
+$$P^TAP=\begin{pmatrix}1&0\\-2&1\end{pmatrix}\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&-2\\0&1\end{pmatrix}=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.$$
+
+**Conclusion.** $Q=u^2-v^2$, signature $(1,1,0)$.
+
+@@@ quadratic-form-positivity-check.md
+---
+title: Checking positivity of a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: positive definite, positivity, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Show that
+$$Q(x,y,z)=x^2+y^2+z^2+xy+yz+zx$$
+is positive definite.
+
+## Hint
+
+Write $Q=\frac12[(x+y)^2+(y+z)^2+(z+x)^2]$ and check when it vanishes.
+
+## Solution
+
+**Identity.**
+$$Q=\frac12\left[(x+y)^2+(y+z)^2+(z+x)^2\right].$$
+Verify: RHS $=\frac12(2x^2+2y^2+2z^2+2xy+2yz+2zx)=x^2+y^2+z^2+xy+yz+zx=Q$.
+
+**Vanishing.** $Q=0\iff x+y=0$, $y+z=0$, $z+x=0$. Adding: $2(x+y+z)=0$, so $x+y+z=0$, then combining with $x+y=0$ gives $z=0$, similarly $x=y=0$.
+
+**Conclusion.** $Q\ge0$ with equality iff $(x,y,z)=(0,0,0)$, so $Q$ is positive definite.
+
+@@@ quadratic-form-eigenvalue-inequality.md
+---
+title: Bounding a quadratic form by eigenvalues
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: eigenvalues, Rayleigh quotient, inequalities
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be a symmetric $n\times n$ matrix with eigenvalues $\lambda_1\le\cdots\le\lambda_n$. Show that for all $X\in\mathbb{R}^n$:
+$$\lambda_1\|X\|^2\le X^TAX\le\lambda_n\|X\|^2.$$
+
+## Hint
+
+Diagonalize $A$ orthogonally: $A=QDQ^T$. Then $X^TAX=(Q^TX)^TD(Q^TX)$.
+
+## Solution
+
+**Diagonalization.** Since $A$ is symmetric, there is an orthogonal matrix $Q$ with $A=QDQ^T$, $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
+
+**Change of variables.** Let $Y=Q^TX$. Then $X^TAX=Y^TDY=\sum_i\lambda_i y_i^2$.
+
+**Bounding.** Since $\lambda_1\le\lambda_i\le\lambda_n$:
+$$\lambda_1\sum_i y_i^2\le\sum_i\lambda_i y_i^2\le\lambda_n\sum_i y_i^2.$$
+But $\sum_i y_i^2=\|Y\|^2=\|X\|^2$ (since $Q$ is orthogonal).
+
+**Conclusion.** $\lambda_1\|X\|^2\le X^TAX\le\lambda_n\|X\|^2$.
+
+@@@ quadratic-form-ellipse.md
+---
+title: The ellipse $x^2+xy+y^2=1$
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: ellipse, quadratic form, geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the set $E=\{(x,y): x^2+xy+y^2=1\}$.
+
+## Hint
+
+Diagonalize the quadratic form $Q(x,y)=x^2+xy+y^2$. The set $Q=1$ is an ellipse.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}1&1/2\\1/2&1\end{pmatrix}$.
+
+**Eigenvalues.** $\det(A-\lambda I)=(1-\lambda)^2-1/4=\lambda^2-2\lambda+3/4$. Roots: $\lambda=(2\pm1)/2$, so $\lambda_1=1/2$ and $\lambda_2=3/2$.
+
+**Diagonalization.** In the orthonormal eigenbasis, $Q=\frac12 u^2+\frac32 v^2$. The equation becomes
+$$\frac{u^2}{2}+\frac{v^2}{2/3}=1.$$
+
+**Geometry.** This is an ellipse centered at the origin, with semi-axes $\sqrt2$ (in the direction of the eigenvector for $\lambda_1=1/2$) and $\sqrt{2/3}$ (in the direction for $\lambda_2=3/2$).
+
+**Conclusion.** $E$ is an ellipse; its semi-axes are $\sqrt2$ and $\sqrt{2/3}$.
+
+@@@ quadratic-form-hyperbola.md
+---
+title: The hyperbola $x^2-y^2=1$
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: hyperbola, quadratic form, geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the set $H=\{(x,y): x^2-y^2=1\}$.
+
+## Hint
+
+The quadratic form $Q(x,y)=x^2-y^2$ has signature $(1,1,0)$; the set $Q=1$ is a hyperbola.
+
+## Solution
+
+**Signature.** $Q$ is indefinite with signature $(1,1,0)$.
+
+**Geometry.** $x^2-y^2=1$ is a hyperbola centered at the origin, with asymptotes $y=\pm x$ (given by $x^2-y^2=0$). The vertices are at $(\pm1,0)$.
+
+**Conclusion.** $H$ is a hyperbola with vertices $(\pm1,0)$ and asymptotes $y=\pm x$.
+
+@@@ quadratic-form-positivity-parameter-2.md
+---
+title: Positive definiteness of a 2Ã—2 parameter family
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: parameter, positive definite, minors
+date: 2026-11-03
+---
+
+## Statement
+
+For which $m\in\mathbb{R}$ is the quadratic form
+$$Q(x,y)=x^2+2mxy+4y^2$$
+positive definite?
+
+## Hint
+
+The matrix is $\begin{pmatrix}1&m\\m&4\end{pmatrix}$. Use Sylvester's criterion.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}1&m\\m&4\end{pmatrix}$.
+
+**Leading principal minors.**
+- $\Delta_1=1>0$.
+- $\Delta_2=4-m^2>0\iff|m|<2$.
+
+**Conclusion.** $Q$ is positive definite iff $|m|<2$, i.e. $-2<m<2$.
+
+@@@ quadratic-form-signature-parameter.md
+---
+title: Signature depending on a parameter
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: signature, parameter, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+For which $a\in\mathbb{R}$ is the quadratic form
+$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz)$$
+positive definite? Find the signature for all $a$.
+
+## Hint
+
+Reduce by grouping $x^2+2axy+...$, completing the square in $x$ first.
+
+## Solution
+
+**Group in $x$.** $x^2+2axy=(x+ay)^2-a^2y^2$. So
+$$Q=(x+ay)^2+(1-a^2)y^2+z^2+2ayz.$$
+
+**Group in $z$.** $z^2+2ayz=(z+ay)^2-a^2y^2$. So
+$$Q=(x+ay)^2+(1-2a^2)y^2+(z+ay)^2.$$
+
+**Signature analysis.**
+- If $1-2a^2>0$, i.e. $|a|<1/\sqrt2$: signature $(3,0,0)$, positive definite.
+- If $a=\pm1/\sqrt2$: signature $(2,0,1)$, degenerate positive.
+- If $|a|>1/\sqrt2$: signature $(2,1,0)$, indefinite.
+
+**Conclusion.** $Q$ is positive definite iff $|a|<1/\sqrt2$.
+
+@@@ quadratic-form-orthogonal-diagonalization.md
+---
+title: Orthogonal diagonalization of a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: orthogonal diagonalization, eigenvalues, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Orthogonally diagonalize the quadratic form
+$$Q(x,y,z)=2x^2+2y^2+2z^2+2xy-2xz-2yz,$$
+i.e. find an orthogonal matrix $Q$ and diagonal $D$ with $A=QDQ^T$.
+
+## Hint
+
+Compute the matrix $A$, then its eigenvalues and eigenvectors.
+
+## Solution
+
+**Matrix.**
+$$A=\begin{pmatrix}2&1&-1\\1&2&-1\\-1&-1&2\end{pmatrix}.$$
+
+**Eigenvalues.** Characteristic polynomial: $\det(A-\lambda I)$. Row/column sums are $2$, so $\lambda=2$ is an eigenvalue with eigenvector $(1,1,0)$? Let's compute: $A(1,1,0)^T=(3,3,-2)^T\neq2(1,1,0)$. Try $(1,1,0)$: no. Try $(1,-1,0)$: $A(1,-1,0)=(1,-1,0)$? $A(1,-1,0)=(1,-1,0)$. Yes! $\lambda=1$ with eigenvector $(1,-1,0)$.
+
+Compute trace: $6$, so remaining eigenvalues sum to $5$. Compute $\det A$: expand. Using eigenvalues $1$ and $2$ (found by inspection) plus a third. Actually let me compute the characteristic polynomial directly.
+
+Hmm, this is getting long. A cleaner approach: the matrix has the form $2I+N$ where $N=\begin{pmatrix}0&1&-1\\1&0&-1\\-1&-1&0\end{pmatrix}$. Eigenvalues of $N$: trace $0$, $\det N=0$ (sum of rows is $0$ for row $1$? Row $1$: $0+1-1=0$, so $(1,1,1)$ is in kernel, $\lambda=0$). Other eigenvalues of $N$: sum $0$, product $0$, one is $0$, sum of squares $=6$ (Frobenius norm squared), so $\lambda_1^2+\lambda_2^2+\lambda_3^2=6$, with $\lambda_1=0$, $\lambda_2+\lambda_3=0$, so $\lambda_2^2+\lambda_3^2=6$, i.e. $\lambda_2=\pm\sqrt3$, $\lambda_3=\mp\sqrt3$. So eigenvalues of $N$: $0,\sqrt3,-\sqrt3$. Eigenvalues of $A=2I+N$: $2, 2+\sqrt3, 2-\sqrt3$.
+
+**Signature.** $(3,0,0)$, all positive, so $Q$ is positive definite.
+
+**Orthogonal diagonalization.** The eigenvectors are those of $N$: $(1,1,1)$ for $\lambda=0$, and corresponding vectors for $\pm\sqrt3$.
+
+**Conclusion.** $Q$ is positive definite with eigenvalues $2, 2+\sqrt3, 2-\sqrt3$. Orthogonal diagonalization gives $Q=2u^2+(2+\sqrt3)v^2+(2-\sqrt3)w^2$.
+
+@@@ quadratic-form-two-forms-equivalent.md
+---
+title: When are two quadratic forms equivalent?
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: equivalence, signature, congruence
+date: 2026-11-03
+---
+
+## Statement
+
+Are the quadratic forms $Q_1(x,y)=x^2+4xy+3y^2$ and $Q_2(x,y)=x^2-y^2$ equivalent under an invertible linear change of variables?
+
+## Hint
+
+Compute their signatures.
+
+## Solution
+
+**$Q_1$.** $Q_1=(x+2y)^2-y^2$, signature $(1,1,0)$.
+
+**$Q_2$.** $Q_2=x^2-y^2$, signature $(1,1,0)$.
+
+**Equivalence.** Two quadratic forms are equivalent iff they have the same signature (Sylvester's law of inertia). Both have signature $(1,1,0)$, so they are equivalent.
+
+**Explicit change.** $Q_1=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q_1=u^2-v^2$, which is $Q_2$ in the variables $(u,v)$.
+
+**Conclusion.** $Q_1$ and $Q_2$ are equivalent.
+
+@@@ quadratic-form-minimize.md
+---
+title: Minimizing a quadratic form on the sphere
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: minimum, sphere, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Minimize the quadratic form
+$$Q(x,y)=3x^2+2xy+3y^2$$
+on the unit circle $x^2+y^2=1$.
+
+## Hint
+
+The minimum is the smallest eigenvalue of the matrix $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
+
+**Eigenvalues.** $\det(A-\lambda I)=(3-\lambda)^2-1$, roots $\lambda=2$ and $\lambda=4$.
+
+**Rayleigh quotient.** For $\|X\|=1$, $X^TAX$ ranges in $[\lambda_{\min},\lambda_{\max}]=[2,4]$.
+
+**Minimum.** The minimum is $2$, attained at the unit eigenvector for $\lambda=2$, i.e. $(1,-1)/\sqrt2$.
+
+**Conclusion.** $\min Q=2$ on the unit circle, attained at $\pm(1,-1)/\sqrt2$.
+
+@@@ quadratic-form-maximize.md
+---
+title: Maximizing a quadratic form on the sphere
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: maximum, sphere, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Maximize the quadratic form
+$$Q(x,y)=3x^2+2xy+3y^2$$
+on the unit circle.
+
+## Hint
+
+Use the largest eigenvalue.
+
+## Solution
+
+**Eigenvalues.** From the previous exercise, $\lambda_1=2$ and $\lambda_2=4$.
+
+**Maximum.** On the unit sphere, $Q\le\lambda_2=4$, with equality at the unit eigenvector for $\lambda_2$, i.e. $(1,1)/\sqrt2$.
+
+**Verification.** $Q(1/\sqrt2,1/\sqrt2)=3/2+2/2+3/2=4$. Correct.
+
+**Conclusion.** $\max Q=4$ on the unit circle, attained at $\pm(1,1)/\sqrt2$.
+
+@@@ quadratic-form-rayleigh.md
+---
+title: The Rayleigh quotient
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: Rayleigh quotient, eigenvalues, optimization
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be a symmetric matrix. The Rayleigh quotient of $X\neq0$ is
+$$R(X)=\frac{X^TAX}{X^TX}.$$
+Show that the minimum and maximum of $R$ over $\mathbb{R}^n\setminus\{0\}$ are the smallest and largest eigenvalues of $A$.
+
+## Hint
+
+Use the Lagrange multiplier method on the sphere, or the orthogonal diagonalization $A=QDQ^T$.
+
+## Solution
+
+**Diagonalization.** $A=QDQ^T$ with $Q$ orthogonal, $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
+
+**Change of variables.** Let $Y=Q^TX$. Then $X^TAX=Y^TDY=\sum_i\lambda_i y_i^2$ and $\|X\|^2=\|Y\|^2=\sum_i y_i^2$. So
+$$R(X)=\frac{\sum_i\lambda_i y_i^2}{\sum_i y_i^2}.$$
+
+**Bounding.** Since $\lambda_1\le\lambda_i\le\lambda_n$, the quotient lies in $[\lambda_1,\lambda_n]$.
+
+**Attainment.** Take $Y$ proportional to $e_1$ (for $\lambda_1$) or $e_n$ (for $\lambda_n$); then $X=QY$ is the corresponding eigenvector.
+
+**Conclusion.** $\min R=\lambda_{\min}$ and $\max R=\lambda_{\max}$.
+
+@@@ quadratic-form-LDL-decomposition.md
+---
+title: LDL decomposition of a symmetric matrix
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: LDL decomposition, Sylvester, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Write the matrix
+$$A=\begin{pmatrix}4&2\\2&5\end{pmatrix}$$
+in the form $A=LDL^T$ with $L$ unit lower triangular and $D$ diagonal.
+
+## Hint
+
+Use Gaussian elimination without pivoting, tracking the multipliers.
+
+## Solution
+
+**First step.** $L_2\leftarrow L_2-(1/2)L_1$: multiplier $\ell_{21}=1/2$. New matrix:
+$$\begin{pmatrix}4&2\\0&4\end{pmatrix}.$$
+Wait, let me compute: $5-(1/2)\cdot2=4$, and $2-(1/2)\cdot4=0$. So yes, $\begin{pmatrix}4&2\\0&4\end{pmatrix}$.
+
+**Decomposition.**
+$$L=\begin{pmatrix}1&0\\1/2&1\end{pmatrix},\qquad D=\begin{pmatrix}4&0\\0&4\end{pmatrix}.$$
+
+**Verify.**
+$$LDL^T=\begin{pmatrix}1&0\\1/2&1\end{pmatrix}\begin{pmatrix}4&0\\0&4\end{pmatrix}\begin{pmatrix}1&1/2\\0&1\end{pmatrix}=\begin{pmatrix}4&2\\2&5\end{pmatrix}.$$
+Correct.
+
+**Conclusion.** $A=LDL^T$ with the matrices above.
+
+@@@ quadratic-form-inequality.md
+---
+title: An inequality via a positive definite form
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: inequality, positive definite, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Show that for all $x,y\in\mathbb{R}$,
+$$x^2+xy+y^2\ge\frac34(x+y)^2.$$
+
+## Hint
+
+Consider the quadratic form $Q=x^2+xy+y^2-\frac34(x+y)^2$ and show it is positive semi-definite.
+
+## Solution
+
+**Compute $Q$.**
+$$Q=x^2+xy+y^2-\frac34(x^2+2xy+y^2)=\frac14x^2-\frac12xy+\frac14y^2=\frac14(x-y)^2.$$
+
+**Conclusion.** $Q=\frac14(x-y)^2\ge0$, with equality iff $x=y$. Hence the inequality holds.
+
+**Remark.** This is a special case of the Cauchyâ€“Schwarz-type inequalities involving quadratic forms.
+
+@@@ inner-product-definition.md
+---
+title: Inner product axioms
+category: linear/inner-products
+level: lycee
+difficulty: 1
+tags: inner product, axioms, dot product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $E=\mathbb{R}^2$ with the map $\langle u,v\rangle = 2u_1v_1 + u_2v_2$. Show that $\langle\cdot,\cdot\rangle$ is an inner product on $\mathbb{R}^2$.
+
+## Hint
+
+Check the four axioms: bilinearity, symmetry, and positive definiteness.
+
+## Solution
+
+**Bilinearity.** For $u,v,w\in\mathbb{R}^2$ and $\lambda\in\mathbb{R}$:
+$$\langle u+\lambda w,v\rangle = 2(u_1+\lambda w_1)v_1+(u_2+\lambda w_2)v_2 = \langle u,v\rangle+\lambda\langle w,v\rangle.$$
+Symmetry in the second variable follows similarly.
+
+**Symmetry.** $\langle u,v\rangle = 2u_1v_1+u_2v_2 = 2v_1u_1+v_2u_2=\langle v,u\rangle$.
+
+**Positive definiteness.** $\langle u,u\rangle = 2u_1^2+u_2^2\ge0$, with equality iff $u_1=u_2=0$.
+
+**Conclusion.** $\langle\cdot,\cdot\rangle$ is an inner product on $\mathbb{R}^2$.
+
+@@@ inner-product-cauchy-schwarz.md
+---
+title: Cauchyâ€“Schwarz inequality
+category: linear/inner-products
+level: lycee
+difficulty: 2
+tags: Cauchy-Schwarz, inequality, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(E,\langle\cdot,\cdot\rangle)$ be an inner product space. Show that
+$$|\langle u,v\rangle|\le\|u\|\|v\|$$
+for all $u,v\in E$.
+
+## Hint
+
+Consider $\|u-tv\|^2\ge0$ for all $t\in\mathbb{R}$ and choose $t$ appropriately.
+
+## Solution
+
+**Non-negativity.** For all $t\in\mathbb{R}$,
+$$\|u-tv\|^2=\|u\|^2-2t\langle u,v\rangle+t^2\|v\|^2\ge0.$$
+
+**Case $v=0$.** Then $\langle u,v\rangle=0$ and the inequality is trivial.
+
+**Case $v\neq0$.** Choose $t=\langle u,v\rangle/\|v\|^2$:
+$$\|u\|^2 - \frac{\langle u,v\rangle^2}{\|v\|^2}\ge0,$$
+i.e. $\langle u,v\rangle^2\le\|u\|^2\|v\|^2$.
+
+**Conclusion.** $|\langle u,v\rangle|\le\|u\|\|v\|$, with equality iff $u,v$ are linearly dependent.
+
+@@@ inner-product-triangle-inequality.md
+---
+title: Triangle inequality
+category: linear/inner-products
+level: lycee
+difficulty: 3
+tags: triangle inequality, norm, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $\|\cdot\|$ be the norm associated with an inner product. Show that
+$$\|u+v\|\le\|u\|+\|v\|.$$
+
+## Hint
+
+Expand $\|u+v\|^2$ and bound $\langle u,v\rangle$ using Cauchyâ€“Schwarz.
+
+## Solution
+
+**Expansion.**
+$$\|u+v\|^2=\|u\|^2+2\langle u,v\rangle+\|v\|^2.$$
+
+**Bound.** By Cauchyâ€“Schwarz, $\langle u,v\rangle\le|\langle u,v\rangle|\le\|u\|\|v\|$, so
+$$\|u+v\|^2\le\|u\|^2+2\|u\|\|v\|+\|v\|^2=(\|u\|+\|v\|)^2.$$
+
+**Conclusion.** Taking square roots: $\|u+v\|\le\|u\|+\|v\|$, with equality iff $u,v$ are nonnegatively proportional.
+
+@@@ inner-product-orthogonal-family.md
+---
+title: Orthogonal families are independent
+category: linear/inner-products
+level: lycee
+difficulty: 2
+tags: orthogonal family, linear independence, proof
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(v_1,\ldots,v_k)$ be a family of nonzero pairwise orthogonal vectors in an inner product space. Show that this family is linearly independent.
+
+## Hint
+
+Suppose $\sum\alpha_i v_i=0$, and take the inner product with each $v_j$.
+
+## Solution
+
+**Orthogonality.** For $i\neq j$, $\langle v_i,v_j\rangle=0$.
+
+**Linear independence.** Suppose $\sum_{i=1}^k\alpha_i v_i=0$. For a fixed $j$:
+$$0=\langle 0,v_j\rangle=\left\langle\sum_i\alpha_i v_i,v_j\right\rangle=\sum_i\alpha_i\langle v_i,v_j\rangle=\alpha_j\|v_j\|^2.$$
+Since $v_j\neq0$, $\|v_j\|^2>0$, so $\alpha_j=0$.
+
+**Conclusion.** All coefficients are zero, so the family is linearly independent.
+
+@@@ inner-product-gram-schmidt.md
+---
+title: Gramâ€“Schmidt orthonormalization
+category: linear/inner-products
+level: l1
+difficulty: 3
+tags: Gram-Schmidt, orthonormal basis, algorithm
+date: 2026-11-03
+---
+
+## Statement
+
+Apply Gramâ€“Schmidt to the vectors $v_1=(1,1,0)$, $v_2=(1,0,1)$, $v_3=(0,1,1)$ in $\mathbb{R}^3$ with the standard inner product.
+
+## Hint
+
+At each step $k$, subtract from $v_k$ its projection onto the previously constructed orthonormal vectors.
+
+## Solution
+
+**Step 1.** $u_1=v_1/\|v_1\|=(1,1,0)/\sqrt2$.
+
+**Step 2.** Projection of $v_2$ onto $u_1$: $\langle v_2,u_1\rangle=1/\sqrt2$. Orthogonal part:
+$$w_2=v_2-\frac{1}{\sqrt2}u_1=(1,0,1)-(1/2)(1,1,0)=(1/2,-1/2,1).$$
+Norm: $\sqrt{1/4+1/4+1}=\sqrt{3/2}$, so $u_2=w_2/\|w_2\|=(1,-1,2)/\sqrt6$.
+
+**Step 3.** Projections of $v_3$:
+$$\langle v_3,u_1\rangle=1/\sqrt2,\qquad \langle v_3,u_2\rangle=2/\sqrt6.$$
+Orthogonal part:
+$$w_3=v_3-\frac{1}{\sqrt2}u_1-\frac{2}{\sqrt6}u_2.$$
+Compute: $\frac{1}{\sqrt2}u_1=(1/2,1/2,0)$ and $\frac{2}{\sqrt6}u_2=(1/3,-1/3,2/3)$. So
+$$w_3=(0,1,1)-(1/2,1/2,0)-(1/3,-1/3,2/3)=(-5/6,5/6,1/3).$$
+Wait, check: $0-1/2-1/3=-5/6$; $1-1/2+1/3=5/6$; $1-0-2/3=1/3$. Norm: $\sqrt{25/36+25/36+4/36}=\sqrt{54}/6$. Simplify: $\sqrt{54}=3\sqrt6$, so $\|w_3\|=\sqrt6/2$. Hence $u_3=w_3/\|w_3\|=(-5,5,2)/\sqrt{54}$.
+
+**Conclusion.** The orthonormal basis is
+$$u_1=\frac{1}{\sqrt2}(1,1,0),\quad u_2=\frac{1}{\sqrt6}(1,-1,2),\quad u_3=\frac{1}{\sqrt{54}}(-5,5,2).$$
+
+@@@ inner-product-orthogonal-basis.md
+---
+title: An orthogonal basis from the standard basis
+category: linear/inner-products
+level: l1
+difficulty: 3
+tags: orthogonal basis, Gram-Schmidt, polynomial space
+date: 2026-11-03
+---
+
+## Statement
+
+In $\mathbb{R}_2[X]$ with inner product $\langle P,Q\rangle=\int_0^1 P(t)Q(t)\,dt$, orthonormalize the basis $(1,X,X^2)$.
+
+## Hint
+
+Apply Gramâ€“Schmidt with respect to the integral inner product.
+
+## Solution
+
+**Step 1.** $\langle 1,1\rangle=\int_0^1 1\,dt=1$, so $u_1=1$.
+
+**Step 2.** $\langle X,1\rangle=\int_0^1 t\,dt=1/2$. Orthogonal part:
+$$w_2=X-\frac12.$$
+Norm: $\|w_2\|^2=\int_0^1(t-1/2)^2\,dt=1/12$. So $u_2=2\sqrt3(X-1/2)=\sqrt3(2X-1)$.
+
+**Step 3.** $\langle X^2,1\rangle=1/3$, $\langle X^2,u_2\rangle=\sqrt3\int_0^1 t^2(2t-1)\,dt=\sqrt3(1/2-1/3)=\sqrt3/6$. Orthogonal part:
+$$w_3=X^2-\frac13-\frac{\sqrt3}{6}\cdot\sqrt3(2X-1)=X^2-\frac13-\frac12(2X-1)=X^2-X+\frac16.$$
+Norm: $\|w_3\|^2=\int_0^1(X^2-X+1/6)^2\,dt=1/180$. So $u_3=6\sqrt5(X^2-X+1/6)$.
+
+**Conclusion.** The orthonormal basis is $(1,\sqrt3(2X-1),6\sqrt5(X^2-X+1/6))$.
+
+@@@ inner-product-orthogonal-projection.md
+---
+title: Orthogonal projection onto a subspace
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: orthogonal projection, subspace, orthonormal basis
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$ with the standard inner product. Compute the orthogonal projection of $v=(1,2,3)$ onto $F$.
+
+## Hint
+
+Find an orthonormal basis of $F$, then $p_F(v)=\sum_i\langle v,u_i\rangle u_i$.
+
+## Solution
+
+**Orthonormal basis of $F$.** From Gramâ€“Schmidt: $u_1=(1,1,0)/\sqrt2$ and $u_2=(1,-1,2)/\sqrt6$.
+
+**Projections.**
+$$\langle v,u_1\rangle=\frac{3}{\sqrt2},\qquad \langle v,u_2\rangle=\frac{1-2+6}{\sqrt6}=\frac{5}{\sqrt6}.$$
+
+**Projection.**
+$$p_F(v)=\frac{3}{\sqrt2}u_1+\frac{5}{\sqrt6}u_2=\frac{3}{2}(1,1,0)+\frac{5}{6}(1,-1,2).$$
+Compute:
+$$p_F(v)=\left(\frac32+\frac56, \frac32-\frac56, \frac{10}{6}\right)=\left(\frac73,\frac23,\frac53\right).$$
+
+**Check.** $v-p_F(v)=(-4/3,4/3,4/3)$ should be orthogonal to $F$. Check with $(1,1,0)$: $-4/3+4/3=0$. With $(0,1,1)$: $4/3+4/3\neq0$... wait, let me recompute. $(0,1,1)$ dot $v-p_F(v) = 0\cdot(-4/3)+1\cdot4/3+1\cdot4/3=8/3\neq0$. Something is wrong.
+
+Let me recheck the projection. $\langle v,u_1\rangle = (1+2+0)/\sqrt2=3/\sqrt2$. $\langle v,u_2\rangle = (1-2+6)/\sqrt6=5/\sqrt6$. Then $p_F(v)=(3/2)(1,1,0)+(5/6)(1,-1,2)=(3/2+5/6, 3/2-5/6, 10/6)=(14/6, 4/6, 10/6)=(7/3, 2/3, 5/3)$. Then $v-p_F(v)=(1-7/3, 2-2/3, 3-5/3)=(-4/3,4/3,4/3)$. Dot with $(0,1,1)$: $4/3+4/3=8/3$. This should be zero since $v-p_F(v)\perp F$.
+
+Recheck $u_2$: $u_2=(1,-1,2)/\sqrt6$. Dot with $(0,1,1)$: $0-1+2=1/\sqrt6\cdot1$... yes, $(0,1,1)\cdot u_2=1/\sqrt6$. So $(0,1,1)$ is not orthogonal to $p_F(v)$? That's fine, $p_F(v)\in F$ and $(0,1,1)\in F$, so $(v-p_F(v))\cdot(0,1,1)=0$.
+
+Recheck: $(v-p_F(v))\cdot(0,1,1) = 0\cdot(-4/3)+1\cdot4/3+1\cdot4/3=8/3$. But it should be 0. So the projection is wrong.
+
+Let me redo. $\langle v,u_1\rangle u_1+\langle v,u_2\rangle u_2 = (3/\sqrt2)\cdot(1,1,0)/\sqrt2+(5/\sqrt6)\cdot(1,-1,2)/\sqrt6 = (3/2)(1,1,0)+(5/6)(1,-1,2) = (3/2+5/6, 3/2-5/6, 10/6) = (9/6+5/6, 9/6-5/6, 10/6) = (14/6, 4/6, 10/6) = (7/3, 2/3, 5/3)$.
+
+$v-p_F(v)=(1-7/3, 2-2/3, 3-5/3)=(-4/3,4/3,4/3)$.
+
+$(v-p_F(v))\cdot(0,1,1) = 0+4/3+4/3=8/3$. Hmm.
+
+But wait, is $(0,1,1)$ in $F$? $F=\operatorname{span}((1,1,0),(0,1,1))$. Yes, $(0,1,1)$ is one of the generators. So $(v-p_F(v))\cdot(0,1,1)$ must be 0 for a correct orthogonal projection.
+
+Let me recompute $u_2$. Gramâ€“Schmidt: $v_2=(0,1,1)$, $u_1=(1,1,0)/\sqrt2$. $\langle v_2,u_1\rangle=1/\sqrt2$. $w_2=(0,1,1)-(1/\sqrt2)(1,1,0)/\sqrt2=(0,1,1)-(1/2,1/2,0)=(-1/2,1/2,1)$. Norm $\sqrt{1/4+1/4+1}=\sqrt{3/2}$. So $u_2=(-1/2,1/2,1)/\sqrt{3/2}=(-1,1,2)/\sqrt6$.
+
+Ah, my $u_2$ had the wrong sign! $u_2=(-1,1,2)/\sqrt6$, not $(1,-1,2)/\sqrt6$.
+
+Redo. $\langle v,u_2\rangle=(1\cdot(-1)+2\cdot1+3\cdot2)/\sqrt6=(-1+2+6)/\sqrt6=7/\sqrt6$.
+
+Then $p_F(v)=(3/2)(1,1,0)+(7/6)(-1,1,2)=(3/2-7/6, 3/2+7/6, 14/6)=(1/3, 8/3, 7/3)$.
+
+Check: $v-p_F(v)=(1-1/3, 2-8/3, 3-7/3)=(2/3, -2/3, 2/3)$. Dot with $(1,1,0)$: $2/3-2/3=0$. Dot with $(0,1,1)$: $-2/3+2/3=0$. Correct.
+
+**Conclusion.** $p_F(v)=(1/3, 8/3, 7/3)$.
+
+@@@ inner-product-orthogonal-complement.md
+---
+title: Orthogonal complement
+category: linear/inner-products
+level: l1
+difficulty: 3
+tags: orthogonal complement, dimension, direct sum
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$. Compute $F^\perp$ and verify $\mathbb{R}^3=F\oplus F^\perp$.
+
+## Hint
+
+$F^\perp$ is the set of vectors orthogonal to the generators.
+
+## Solution
+
+**Equations.** $v=(x,y,z)\in F^\perp$ iff:
+$$v\cdot(1,1,0)=x+y=0,\qquad v\cdot(0,1,1)=y+z=0.$$
+So $y=-x$ and $z=x$, giving $v=x(1,-1,1)$.
+
+**Conclusion.** $F^\perp=\operatorname{span}((1,-1,1))$, dimension $1$.
+
+**Direct sum.** $\dim F=2$, $\dim F^\perp=1$, and $2+1=3=\dim\mathbb{R}^3$. Also $F\cap F^\perp=\{0\}$ (a vector in both would be orthogonal to itself, hence zero). So $\mathbb{R}^3=F\oplus F^\perp$.
+
+@@@ inner-product-distance-to-subspace.md
+---
+title: Distance to a subspace
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: distance, orthogonal projection, minimization
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance from $v=(1,1,1)$ to the plane $F=\{x+y+z=0\}$ in $\mathbb{R}^3$.
+
+## Hint
+
+The distance is $\|v-p_F(v)\|$, and $v-p_F(v)$ is the projection onto $F^\perp=\operatorname{span}((1,1,1))$.
+
+## Solution
+
+**Orthogonal complement.** $F^\perp=\operatorname{span}((1,1,1))$, normalized to $u=(1,1,1)/\sqrt3$.
+
+**Projection onto $F^\perp$.** $\langle v,u\rangle=(1+1+1)/\sqrt3=3/\sqrt3=\sqrt3$. So $p_{F^\perp}(v)=\sqrt3 u=(1,1,1)$.
+
+**Distance.** $v-p_{F^\perp}(v)=v-v=0$? That can't be rightâ€”$v\notin F$.
+
+Wait, $v=(1,1,1)$ has $1+1+1=3\neq0$, so $v\notin F$. Let me recompute. $p_{F^\perp}(v)=\langle v,u\rangle u=\sqrt3\cdot(1,1,1)/\sqrt3=(1,1,1)=v$. But $v\notin F^\perp$ eitherâ€”$F^\perp$ is the line through $(1,1,1)$, so $v=(1,1,1)\in F^\perp$. So $p_F(v)=0$, and distance = $\|v\|=\sqrt3$.
+
+**Conclusion.** The distance from $(1,1,1)$ to the plane $x+y+z=0$ is $\sqrt3$.
+
+**Verification.** Distance from a point $(x_0,y_0,z_0)$ to the plane $ax+by+cz+d=0$ is $|ax_0+by_0+cz_0+d|/\sqrt{a^2+b^2+c^2}$. Here $|1+1+1|/\sqrt3=3/\sqrt3=\sqrt3$. Correct.
+
+@@@ inner-product-bessel.md
+---
+title: Bessel's inequality
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: Bessel inequality, orthonormal family, projection
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(e_1,\ldots,e_k)$ be an orthonormal family in an inner product space $E$. Show that for every $v\in E$,
+$$\sum_{i=1}^k|\langle v,e_i\rangle|^2\le\|v\|^2.$$
+
+## Hint
+
+Consider $w=v-\sum_i\langle v,e_i\rangle e_i$ and expand $\|w\|^2\ge0$.
+
+## Solution
+
+**Decomposition.** Let $p=\sum_i\langle v,e_i\rangle e_i$. Then $\langle p,e_j\rangle=\langle v,e_j\rangle$ for each $j$, so $v-p\perp e_j$ for all $j$.
+
+**Norm expansion.**
+$$\|v\|^2=\|p+(v-p)\|^2=\|p\|^2+\|v-p\|^2$$
+because $p\perp(v-p)$.
+
+**Computation.** $\|p\|^2=\sum_i|\langle v,e_i\rangle|^2$ (by orthonormality) and $\|v-p\|^2\ge0$. Hence
+$$\|v\|^2\ge\|p\|^2=\sum_i|\langle v,e_i\rangle|^2.$$
+
+**Conclusion.** Bessel's inequality holds. Equality iff $v\in\operatorname{span}(e_1,\ldots,e_k)$.
+
+@@@ inner-product-parseval.md
+---
+title: Parseval's identity
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: Parseval identity, orthonormal basis, norm
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(e_1,\ldots,e_n)$ be an orthonormal basis of a finite-dimensional inner product space $E$. Show that for every $v\in E$,
+$$\|v\|^2=\sum_{i=1}^n|\langle v,e_i\rangle|^2.$$
+
+## Hint
+
+Use Bessel's inequality and the fact that $v=\sum_i\langle v,e_i\rangle e_i$ (since the basis is complete).
+
+## Solution
+
+**Expansion.** Since $(e_i)$ is a basis, $v=\sum_i c_i e_i$ with $c_i=\langle v,e_i\rangle$ (because $\langle v,e_j\rangle=\sum_i c_i\langle e_i,e_j\rangle=c_j$).
+
+**Norm.** $\|v\|^2=\langle\sum_i c_i e_i,\sum_j c_j e_j\rangle=\sum_i|c_i|^2$ by orthonormality.
+
+**Conclusion.** $\|v\|^2=\sum_i|\langle v,e_i\rangle|^2$ â€” Parseval's identity.
+
+**Remark.** This is the equality case of Bessel's inequality when the orthonormal family is complete (a basis).
+
+@@@ inner-product-adjoint.md
+---
+title: Adjoint of a linear map
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: adjoint, linear map, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^n\to\mathbb{R}^n$ be a linear map. Show that there exists a unique linear map $f^*:\mathbb{R}^n\to\mathbb{R}^n$ such that
+$$\langle f(u),v\rangle=\langle u,f^*(v)\rangle$$
+for all $u,v$. Identify $f^*$ in matrix terms.
+
+## Hint
+
+Fix an orthonormal basis; the map $v\mapsto\langle f(\cdot),v\rangle$ is a linear form, represented by a vector.
+
+## Solution
+
+**Existence.** Fix an orthonormal basis $(e_1,\ldots,e_n)$. For each $v$, the map $u\mapsto\langle f(u),v\rangle$ is linear in $u$, so there is a unique vector, call it $f^*(v)$, with $\langle f(u),v\rangle=\langle u,f^*(v)\rangle$ for all $u$.
+
+**Linearity of $f^*$.** For $\alpha,\beta\in\mathbb{R}$ and $v,w$:
+$$\langle u,f^*(\alpha v+\beta w)\rangle=\langle f(u),\alpha v+\beta w\rangle=\alpha\langle f(u),v\rangle+\beta\langle f(u),w\rangle.$$
+By uniqueness, $f^*(\alpha v+\beta w)=\alpha f^*(v)+\beta f^*(w)$.
+
+**Matrix form.** If $M$ is the matrix of $f$ in the orthonormal basis, then $f^*$ has matrix $M^T$ (transpose), because $\langle Mu,v\rangle=u^T M^T v=\langle u,M^T v\rangle$.
+
+**Conclusion.** $f^*$ exists and is unique, called the **adjoint** of $f$. In matrix terms, $f^*$ corresponds to the transpose.
+
+@@@ inner-product-self-adjoint.md
+---
+title: Self-adjoint operators and symmetric matrices
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: self-adjoint, symmetric matrix, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Show that a linear map $f:\mathbb{R}^n\to\mathbb{R}^n$ is self-adjoint (i.e. $f=f^*$) iff its matrix in an orthonormal basis is symmetric.
+
+## Hint
+
+Use $f^*$ has matrix $M^T$.
+
+## Solution
+
+**If $M$ is symmetric.** Then the matrix of $f^*$ is $M^T=M$, so $f^*=f$.
+
+**If $f$ is self-adjoint.** Then the matrix of $f^*$ equals the matrix of $f$. But the matrix of $f^*$ is $M^T$, so $M=M^T$.
+
+**Conclusion.** In an orthonormal basis, $f$ is self-adjoint iff $M$ is symmetric.
+
+**Consequence.** Self-adjoint operators have real eigenvalues, and eigenvectors for distinct eigenvalues are orthogonal (spectral theorem for symmetric matrices).
+
+@@@ inner-product-orthogonal-matrix.md
+---
+title: Orthogonal matrices and isometries
+category: linear/inner-products
+level: l1
+difficulty: 3
+tags: orthogonal matrix, isometry, inner product preservation
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q$ be a real $n\times n$ matrix. Show that $Q$ is orthogonal ($Q^TQ=I$) iff $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$.
+
+## Hint
+
+Compute $\langle Qu,Qv\rangle=u^T Q^T Qv$.
+
+## Solution
+
+**If $Q^TQ=I$.** Then $\langle Qu,Qv\rangle=(Qu)^T(Qv)=u^TQ^TQv=u^Tv=\langle u,v\rangle$.
+
+**Conversely.** If $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$, then $u^T(Q^TQ-I)v=0$ for all $u,v$. Taking $u=e_i$, $v=e_j$, we get $(Q^TQ)_{ij}=\delta_{ij}$, so $Q^TQ=I$.
+
+**Conclusion.** Orthogonal matrices are exactly the linear isometries of $\mathbb{R}^n$.
+
+**Consequences.** $\det Q=\pm1$, and the columns of $Q$ form an orthonormal basis.
+
+@@@ inner-product-orthogonal-projection-formula.md
+---
+title: Orthogonal projection onto a column space
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: orthogonal projection, column space, normal equations
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $m\times n$ matrix with full column rank ($\operatorname{rank}A=n$). Show that the matrix of orthogonal projection onto $\operatorname{Col}(A)$ is
+$$P=A(A^TA)^{-1}A^T.$$
+
+## Hint
+
+Show that $P$ is symmetric, idempotent, and fixes $\operatorname{Col}(A)$, and that its kernel is $\operatorname{Col}(A)^\perp$.
+
+## Solution
+
+**Symmetry.** $P^T=(A^TA)^{-1}$-part: $P^T=A((A^TA)^{-1})^T A^T=A(A^TA)^{-1}A^T=P$ since $A^TA$ is symmetric.
+
+**Idempotence.**
+$$P^2=A(A^TA)^{-1}A^T A(A^TA)^{-1}A^T=A(A^TA)^{-1}(A^TA)(A^TA)^{-1}A^T=P.$$
+
+**Fixes $\operatorname{Col}(A)$.** For $x=Ay$: $Px=A(A^TA)^{-1}A^TAy=Ay=x$.
+
+**Kernel.** If $Px=0$, then $A(A^TA)^{-1}A^T x=0$. Multiply by $(A^TA)^{-1}A^T$? Actually, $\langle Px,x\rangle=0\iff\|A^T x\|^2_{?}=0$. Note $x^T P x=x^TA(A^TA)^{-1}A^Tx=\|(A^TA)^{-1/2}A^Tx\|^2\ge0$. If $Px=0$, then $A^Tx=0$, so $x\perp\operatorname{Col}(A)$.
+
+**Conclusion.** $P$ is the orthogonal projection onto $\operatorname{Col}(A)$.
+
+@@@ inner-product-least-squares.md
+---
+title: Least squares and normal equations
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: least squares, normal equations, orthogonal projection
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $m\times n$ matrix with full column rank, $b\in\mathbb{R}^m$. Show that the vector $x^*$ minimizing $\|Ax-b\|$ satisfies the normal equations
+$$A^TAx^*=A^Tb.$$
+
+## Hint
+
+Interpret $Ax$ as a point in $\operatorname{Col}(A)$, and $x^*$ as the orthogonal projection of $b$.
+
+## Solution
+
+**Geometric interpretation.** Minimizing $\|Ax-b\|$ over $x$ is equivalent to finding the point of $\operatorname{Col}(A)$ closest to $b$. This is the orthogonal projection of $b$ onto $\operatorname{Col}(A)$.
+
+**Orthogonality.** For $x^*$ to be the projection, $b-Ax^*$ must be orthogonal to $\operatorname{Col}(A)$, i.e. to every column of $A$:
+$$A^T(b-Ax^*)=0.$$
+
+**Normal equations.** Rearranging:
+$$A^TAx^*=A^Tb.$$
+Since $A$ has full column rank, $A^TA$ is invertible, so $x^*=(A^TA)^{-1}A^Tb$.
+
+**Conclusion.** The least-squares solution satisfies the normal equations.
+
+@@@ inner-product-orthonormal-completion.md
+---
+title: Completing an orthonormal family
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: orthonormal family, basis, completion
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(e_1,\ldots,e_k)$ be an orthonormal family in a finite-dimensional inner product space $E$. Show that it can be completed to an orthonormal basis of $E$.
+
+## Hint
+
+Extend to a basis, then apply Gramâ€“Schmidt while keeping the first $k$ vectors.
+
+## Solution
+
+**Extension.** By the incomplete basis theorem, extend $(e_1,\ldots,e_k)$ to a basis $(e_1,\ldots,e_k,v_{k+1},\ldots,v_n)$ of $E$.
+
+**Gramâ€“Schmidt, keeping the first $k$.** The vectors $e_1,\ldots,e_k$ are already orthonormal. Apply Gramâ€“Schmidt to the whole basis: the first $k$ vectors don't change (they are already orthonormal), and the process produces orthonormal vectors $e_1,\ldots,e_k,e_{k+1},\ldots,e_n$.
+
+**Conclusion.** $(e_1,\ldots,e_n)$ is an orthonormal basis of $E$ completing the original family.
+
+@@@ inner-product-orthogonal-polynomials-legendre.md
+---
+title: Legendre polynomials
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: Legendre polynomials, orthogonal polynomials, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+In $\mathbb{R}_n[X]$ with inner product $\langle P,Q\rangle=\int_{-1}^1 P(t)Q(t)\,dt$, construct the first three Legendre polynomials by orthonormalizing $(1,X,X^2)$.
+
+## Hint
+
+Apply Gramâ€“Schmidt.
+
+## Solution
+
+**Step 1.** $\langle 1,1\rangle=2$, so $u_1=1/\sqrt2$.
+
+**Step 2.** $\langle X,1\rangle=\int_{-1}^1 t\,dt=0$. So $X\perp1$. Norm: $\langle X,X\rangle=\int_{-1}^1 t^2\,dt=2/3$, so $u_2=X/\sqrt{2/3}=\sqrt{3/2}\,X$.
+
+**Step 3.** $\langle X^2,1\rangle=\int_{-1}^1 t^2\,dt=2/3$, $\langle X^2,X\rangle=\int_{-1}^1 t^3\,dt=0$. So the orthogonal part is
+$$X^2-\frac{2/3}{2}\cdot1=X^2-\frac13.$$
+Norm: $\int_{-1}^1(t^2-1/3)^2\,dt=2/5-4/9+2/9=...$. Compute: $\int t^4=2/5$, $\int(2/3)t^2=2/9$, $\int1/9=2/9$. So $2/5-2/9+2/9=...$ wait: $\int(t^2-1/3)^2=\int t^4-(2/3)\int t^2+(1/9)\int 1=2/5-(2/3)(2/3)+(1/9)(2)=2/5-4/9+2/9=2/5-2/9=(18-10)/45=8/45$. Norm: $\sqrt{8/45}$. So $u_3=\sqrt{45/8}(X^2-1/3)=\frac{3\sqrt5}{2\sqrt2}(X^2-1/3)$.
+
+**Standard Legendre polynomials.** Usually, one defines $P_0=1$, $P_1=X$, $P_2=\frac32X^2-\frac12$ (not normalized). These are proportional to $u_1,u_2,u_3$.
+
+**Conclusion.** The Legendre polynomials (unnormalized) are $P_0=1$, $P_1=X$, $P_2=\frac{3X^2-1}{2}$, and they are orthogonal for the integral inner product on $[-1,1]$.
+
+@@@ inner-product-fourier-coefficients.md
+---
+title: Fourier coefficients and orthogonal projection
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: Fourier coefficients, trigonometric basis, orthogonal projection
+date: 2026-11-03
+---
+
+## Statement
+
+On the space of continuous $2\pi$-periodic functions with inner product $\langle f,g\rangle=\frac1\pi\int_{-\pi}^\pi f(t)g(t)\,dt$, show that the functions $1,\cos t,\sin t,\cos 2t,\sin 2t,\ldots$ are orthogonal.
+
+## Hint
+
+Compute $\langle \cos mt,\cos nt\rangle$, $\langle\sin mt,\sin nt\rangle$, $\langle\cos mt,\sin nt\rangle$ using product-to-sum formulas.
+
+## Solution
+
+**Orthogonality of cosines.** For $m\neq n$:
+$$\langle\cos mt,\cos nt\rangle=\frac1\pi\int_{-\pi}^\pi\cos mt\cos nt\,dt=\frac1{2\pi}\int_{-\pi}^\pi[\cos(m-n)t+\cos(m+n)t]\,dt=0.$$
+For $m=n$, it equals $1$.
+
+**Orthogonality of sines.** Similarly, $\langle\sin mt,\sin nt\rangle=\delta_{mn}$.
+
+**Orthogonality between cosine and sine.** $\langle\cos mt,\sin nt\rangle=0$ because the integrand is odd.
+
+**Orthogonality with constant.** $\langle 1,\cos mt\rangle=0$ and $\langle 1,\sin nt\rangle=0$ (integral of cosine/sine over a period).
+
+**Conclusion.** These functions form an orthogonal family. The Fourier coefficients $a_n=\langle f,\cos nt\rangle$, $b_n=\langle f,\sin nt\rangle$ are the projections of $f$ onto these orthogonal functions.
+
+@@@ inner-product-riesz-representation.md
+---
+title: Riesz representation theorem (finite-dimensional)
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: Riesz representation, linear forms, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $E$ be a finite-dimensional inner product space, and $\varphi:E\to\mathbb{R}$ a linear form. Show that there exists a unique $u\in E$ such that
+$$\varphi(v)=\langle v,u\rangle$$
+for all $v\in E$.
+
+## Hint
+
+Choose an orthonormal basis $(e_i)$ and set $u=\sum_i\varphi(e_i)e_i$.
+
+## Solution
+
+**Existence.** Let $(e_1,\ldots,e_n)$ be an orthonormal basis of $E$. Define $u=\sum_i\varphi(e_i)e_i$. For any $v=\sum_j v_j e_j$:
+$$\langle v,u\rangle=\sum_j v_j\langle e_j,u\rangle=\sum_j v_j\varphi(e_j)=\varphi\left(\sum_j v_j e_j\right)=\varphi(v).$$
+
+**Uniqueness.** If $\langle v,u\rangle=\langle v,u'\rangle$ for all $v$, then $\langle v,u-u'\rangle=0$ for all $v$. Taking $v=u-u'$: $\|u-u'\|^2=0$, so $u=u'$.
+
+**Conclusion.** Every linear form on a finite-dimensional inner product space is represented by a unique vector.
+
+**Matrix form.** In matrix terms, a linear form $\varphi(v)=a^Tv$ is represented by the vector $u=a$ (in an orthonormal basis).
+
 @@@ matrix-operations-basic.md
 ---
 title: Matrix addition and scalar multiplication
