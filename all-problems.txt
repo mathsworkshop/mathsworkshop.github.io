@@ -7808,35 +7808,6 @@ Recall the PMF, mean, and variance for each.
 
 **Conclusion.** Each distribution models a different type of discrete random experiment.
 
-@@@ stat-sample-mean-properties.md
----
-title: Properties of the sample mean
-category: stat/sampling
-level: l1
-difficulty: 3
-tags: sample mean, expectation, variance, iid
-date: 2026-11-03
----
-
-## Statement
-
-Let $X_1,\ldots,X_n$ be i.i.d. with mean $\mu$ and variance $\sigma^2$. Define $\bar X=\frac1n\sum_{i=1}^n X_i$. Show that $E(\bar X)=\mu$ and $\operatorname{Var}(\bar X)=\sigma^2/n$.
-
-## Hint
-
-Use linearity of expectation for the mean; use independence for the variance.
-
-## Solution
-
-**Expectation.**
-$$E(\bar X)=\frac1n\sum_{i=1}^n E(X_i)=\frac1n\cdot n\mu=\mu.$$
-
-**Variance.**
-$$\operatorname{Var}(\bar X)=\frac{1}{n^2}\operatorname{Var}\left(\sum_{i=1}^nX_i\right)=\frac{1}{n^2}\sum_{i=1}^n\operatorname{Var}(X_i)=\frac{n\sigma^2}{n^2}=\frac{\sigma^2}{n}.$$
-The second equality uses independence (covariances vanish).
-
-**Conclusion.** $\bar X$ is unbiased and its variance decreases like $1/n$.
-
 @@@ stat-sampling-with-replacement.md
 ---
 title: Sampling with replacement
