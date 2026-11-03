@@ -176,13 +176,13 @@
       "description": "Topology, metric and normed spaces.",
       "subcategories": [
         {
-          "id": "topology-of-R",
+          "id": "topology-of-r",
           "name": "Topology of ℝ",
           "description": "Open and closed sets, compact sets and connectedness.",
           "subcategories": []
         },
          {
-          "id": "topology-of-Rn",
+          "id": "topology-of-rn",
           "name": "Topology of ℝⁿ",
           "description": "Open and closed sets, compact sets and connectedness.",
           "subcategories": []
