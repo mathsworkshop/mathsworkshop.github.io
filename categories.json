@@ -171,26 +171,26 @@
       ]
     },
     {
-      "id": "analysis",
-      "name": "Real analysis",
-      "description": "Topology, metric spaces and functions.",
+      "id": "topology",
+      "name": "Topology",
+      "description": "Topology, metric and normed spaces.",
       "subcategories": [
         {
-          "id": "topology",
-          "name": "Topology and metric spaces",
-          "description": "Open and closed sets, compact sets, connectedness and metric spaces.",
+          "id": "topology-of-R",
+          "name": "Topology of \mathbb{R}",
+          "description": "Open and closed sets, compact sets and connectedness.",
+          "subcategories": []
+        },
+         {
+          "id": "topology-of-Rn",
+          "name": "Topology of $\mathbb{R}^n$",
+          "description": "Open and closed sets, compact sets and connectedness.",
           "subcategories": []
         },
         {
-          "id": "function-sequences",
-          "name": "Sequences and series of functions",
-          "description": "Pointwise and uniform convergence of sequences and series of functions.",
-          "subcategories": []
-        },
-        {
-          "id": "riemann-integral",
-          "name": "The Riemann integral",
-          "description": "Construction, properties and fundamental theorems of Riemann integration.",
+          "id": "metric",
+          "name": "Metric and normed spaces",
+          "description": "Topological Properties, Convergence, Compactness and Completeness.",
           "subcategories": []
         }
       ]
