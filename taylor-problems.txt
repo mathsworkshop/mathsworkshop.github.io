@@ -1,0 +1,911 @@
+@@@ the-expansion-of-the-arctangent.md
+---
+title: The Taylor expansion of arctan by integrating
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 2
+tags: Taylor expansion, integration of expansions, arctangent
+date: 2026-11-03
+---
+
+## Statement
+
+1. Write the expansion of $\dfrac1{1+t^2}$ at $0$ up to order $6$.
+2. Integrate it to obtain the expansion of $\arctan x$ at $0$ up to order $7$.
+3. Deduce the limit $\displaystyle\lim_{x\to0}\frac{\arctan x-x}{x^3}$.
+
+## Hint
+
+If $f$ is differentiable and $f'(t)=P(t)+o(t^n)$, then $f(x)=f(0)+\int_0^xP+o(x^{n+1})$.
+
+## Solution
+
+**1.** With $u=-t^2$ in $\frac1{1-u}=1+u+u^2+u^3+o(u^3)$:
+$$\frac1{1+t^2}=1-t^2+t^4-t^6+o(t^6).$$
+
+**2.** Since $\arctan(0)=0$ and $\arctan'(t)=\frac1{1+t^2}$, integrating term by term,
+$$\arctan x=x-\frac{x^3}3+\frac{x^5}5-\frac{x^7}7+o(x^7).$$
+
+**3.** $\arctan x-x=-\frac{x^3}3+o(x^3)$, so the limit is $-\dfrac13$.
+
+**Remark.** Evaluating at $x=1$ formally gives Leibniz's formula $\frac\pi4=1-\frac13+\frac15-\cdots$. The expansion above does not prove it (it is a local statement at $0$), but it points to it.
+@@@ a-rational-function-and-its-logarithm.md
+---
+title: Expansions of 1/(1 + x + x²) and ln(1 + x + x²)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 3
+tags: Taylor expansion, geometric series, factorisation trick
+date: 2026-11-03
+---
+
+## Statement
+
+1. Expand $\dfrac1{1+x+x^2}$ at $0$ up to order $7$.
+2. Expand $\ln(1+x+x^2)$ at $0$ up to order $4$.
+
+## Hint
+
+Notice that $(1-x)(1+x+x^2)=1-x^3$.
+
+## Solution
+
+**1.** Since $1+x+x^2=\dfrac{1-x^3}{1-x}$,
+$$\frac1{1+x+x^2}=\frac{1-x}{1-x^3}=(1-x)\left(1+x^3+x^6+o(x^7)\right)=1-x+x^3-x^4+x^6-x^7+o(x^7).$$
+The coefficients repeat with period $3$: $1,-1,0,1,-1,0,\dots$
+
+**2.** Similarly $\ln(1+x+x^2)=\ln(1-x^3)-\ln(1-x)$, with
+$$-\ln(1-x)=x+\frac{x^2}2+\frac{x^3}3+\frac{x^4}4+o(x^4),\qquad\ln(1-x^3)=-x^3+o(x^4).$$
+Hence
+$$\ln(1+x+x^2)=x+\frac{x^2}2-\frac{2x^3}3+\frac{x^4}4+o(x^4).$$
+
+**Remark.** Dividing a fraction of expansions by hand is painful; here a single algebraic identity turns the problem into two geometric series.
+@@@ the-binomial-expansion-of-a-square-root.md
+---
+title: The binomial expansion of √(1 + x)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 2
+tags: Taylor expansion, binomial series, square root
+date: 2026-11-03
+---
+
+## Statement
+
+1. Find the expansion of $\sqrt{1+x}$ at $0$ up to order $3$.
+2. Use it, with a well-chosen $x$, to estimate $\sqrt{1.2}$ and $\sqrt{0.9}$.
+
+## Hint
+
+The derivatives of $(1+x)^{1/2}$ are $\frac12(1+x)^{-1/2}$, $-\frac14(1+x)^{-3/2}$, $\frac38(1+x)^{-5/2}$.
+
+## Solution
+
+**1.** Evaluating at $0$: $f(0)=1$, $f'(0)=\frac12$, $f''(0)=-\frac14$, $f'''(0)=\frac38$. By Taylor–Young,
+$$\sqrt{1+x}=1+\frac x2-\frac{x^2}8+\frac{x^3}{16}+o(x^3).$$
+
+**2.** With $x=0.2$: $1+0.1-0.005+0.0005=1.0955$ (true value $1.095445\dots$).
+With $x=-0.1$: $1-0.05-0.00125-0.0000625=0.9487\dots$ (true value $0.948683\dots$).
+
+**Remark.** The general rule is $(1+x)^\alpha=1+\alpha x+\frac{\alpha(\alpha-1)}2x^2+\frac{\alpha(\alpha-1)(\alpha-2)}6x^3+\cdots$, valid for all real $\alpha$.
+@@@ an-expansion-of-the-inverse-function.md
+---
+title: Expanding the inverse of x + x³
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 4
+tags: Taylor expansion, inverse function, fixed point iteration
+date: 2026-11-03
+---
+
+## Statement
+
+The function $f(x)=x+x^3$ is a bijection of $\mathbb{R}$ onto itself. Let $g=f^{-1}$. Find the expansion of $g(y)$ at $0$ up to order $5$.
+
+## Hint
+
+$g$ is odd and satisfies $g(y)+g(y)^3=y$, i.e. $g(y)=y-g(y)^3$. Start from $g(y)=y+o(y)$ and substitute repeatedly.
+
+## Solution
+
+**Setup.** $g$ is differentiable with $g'(y)=\frac1{1+3g(y)^2}$, and it is infinitely differentiable, so it has expansions to any order. Also $g(y)=y+o(y)$ because $g'(0)=1$.
+
+**Step 1.** From $g(y)=y-g(y)^3$ and $g(y)=y+o(y)$:
+$$g(y)=y-y^3+o(y^3).$$
+
+**Step 2.** Cube it: $g^3=\left(y-y^3+o(y^3)\right)^3=y^3-3y^5+o(y^5)$. Hence
+$$g(y)=y-\left(y^3-3y^5\right)+o(y^5)=y-y^3+3y^5+o(y^5).$$
+
+**Check.** With $y=0.1$: $y-y^3+3y^5=0.099\,03$ and $f(0.099\,03)=0.099\,03+0.000\,971\approx0.100\,00$ ✓.
+
+**Remark.** Each substitution gains two orders of accuracy, because $g^3$ is $O(y^3)$. This bootstrap method works for any equation of the form $x=y+\varepsilon(x)$.
+@@@ the-bernoulli-numbers-from-x-over-e-to-the-x-minus-one.md
+---
+title: Expanding x/(eˣ − 1)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: Taylor expansion, quotient, Bernoulli numbers, undetermined coefficients
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the expansion of $\varphi(x)=\dfrac x{e^x-1}$ at $0$ up to order $2$, by writing $\varphi(x)=1+ax+bx^2+o(x^2)$ and finding $a,b$.
+
+## Hint
+
+Use $\dfrac{e^x-1}x=1+\dfrac x2+\dfrac{x^2}6+o(x^2)$ and the identity $\varphi(x)\cdot\dfrac{e^x-1}x=1$.
+
+## Solution
+
+**Identity.** $\left(1+ax+bx^2\right)\left(1+\frac x2+\frac{x^2}6\right)=1+o(x^2)$.
+
+**Expanding.** The coefficient of $x$ is $a+\frac12$ and the coefficient of $x^2$ is $b+\frac a2+\frac16$. Both must vanish:
+$$a=-\frac12,\qquad b=-\frac a2-\frac16=\frac14-\frac16=\frac1{12}.$$
+
+**Result.**
+$$\frac x{e^x-1}=1-\frac x2+\frac{x^2}{12}+o(x^2).$$
+
+**Remark.** The coefficients $1,-\frac12,\frac16,0,-\frac1{30},\dots$ (after multiplying by $n!$) are the Bernoulli numbers. Here $\frac{x^2}{12}=\frac{B_2}{2!}x^2$ with $B_2=\frac16$. Since $\varphi(x)+\frac x2$ is even, all the odd coefficients after the first vanish.
+@@@ central-binomial-coefficients-from-a-binomial-expansion.md
+---
+title: Central binomial coefficients from (1 − 4x)^(−1/2)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 4
+tags: binomial series, generalised binomial coefficients, central binomial
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the coefficient of $x^n$ in the expansion of $(1-4x)^{-1/2}$ at $0$ is $\dbinom{2n}n$.
+
+## Hint
+
+Use the Taylor coefficient $\dfrac{f^{(n)}(0)}{n!}$ with $f(x)=(1-4x)^{-1/2}$ and compute $f^{(n)}$ by induction.
+
+## Solution
+
+**Derivatives.** $f'(x)=2(1-4x)^{-3/2}$, $f''(x)=2\cdot6(1-4x)^{-5/2}$, $f'''(x)=2\cdot6\cdot10(1-4x)^{-7/2}$. By induction,
+$$f^{(n)}(x)=\prod_{k=0}^{n-1}(4k+2)\;(1-4x)^{-(2n+1)/2},$$
+since differentiating $(1-4x)^{-(2n+1)/2}$ multiplies by $\frac{2n+1}2\cdot4=4n+2$.
+
+**Coefficient.** Therefore
+$$\frac{f^{(n)}(0)}{n!}=\frac{2\cdot6\cdot10\cdots(4n-2)}{n!}=\frac{2^n\cdot1\cdot3\cdot5\cdots(2n-1)}{n!}.$$
+Using $1\cdot3\cdots(2n-1)=\dfrac{(2n)!}{2^nn!}$, this equals $\dfrac{(2n)!}{n!\,n!}=\dbinom{2n}n$.
+
+**First terms.** $(1-4x)^{-1/2}=1+2x+6x^2+20x^3+70x^4+\cdots$ ✓.
+
+**Remark.** This is the generating function of the central binomial coefficients. Applying the same idea to $\sqrt{1-4x}$ produces the Catalan numbers.
+@@@ high-order-derivatives-from-known-series.md
+---
+title: Derivatives of high order at 0 without differentiating
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: Taylor expansion, uniqueness, high order derivatives
+date: 2026-11-03
+---
+
+## Statement
+
+Compute:
+1. $f^{(10)}(0)$ where $f(x)=\dfrac{x^2}{1+x}$,
+2. $g^{(2015)}(0)$ where $g(x)=\arctan x$.
+
+## Hint
+
+By uniqueness of the expansion, the coefficient of $x^n$ in the expansion is $\frac{f^{(n)}(0)}{n!}$.
+
+## Solution
+
+**1.** $\dfrac1{1+x}=\sum_{k\ge0}(-1)^kx^k$, so $\dfrac{x^2}{1+x}=\sum_{k\ge0}(-1)^kx^{k+2}$. The coefficient of $x^{10}$ is obtained for $k=8$: it is $(-1)^8=1$. Hence
+$$f^{(10)}(0)=10!\times1=3\,628\,800.$$
+
+**2.** From $\arctan x=\sum_{k\ge0}\frac{(-1)^k}{2k+1}x^{2k+1}$, the coefficient of $x^{2015}$ corresponds to $k=1007$: it is $-\frac1{2015}$. Hence
+$$g^{(2015)}(0)=-\frac{2015!}{2015}=-2014!.$$
+
+**Remark.** The general formula $g^{(2k+1)}(0)=(-1)^k(2k)!$ shows how fast the derivatives of $\arctan$ at $0$ grow, even though $\arctan$ is bounded.
+@@@ a-rational-approximation-of-cosine.md
+---
+title: A rational approximation of cosine
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 4
+tags: Padé approximant, undetermined coefficients, approximation
+date: 2026-11-03
+---
+
+## Statement
+
+Find real numbers $a,b$ such that
+$$\cos x-\frac{1+ax^2}{1+bx^2}=o(x^4)\quad\text{as }x\to0,$$
+and compute the next term of the difference. Compare $\cos 1$ with the approximation.
+
+## Hint
+
+Expand $\dfrac{1+ax^2}{1+bx^2}=(1+ax^2)\bigl(1-bx^2+b^2x^4+o(x^4)\bigr)$.
+
+## Solution
+
+**Expansion of the fraction.**
+$$\frac{1+ax^2}{1+bx^2}=1+(a-b)x^2-b(a-b)x^4+o(x^4).$$
+
+**Matching with $\cos x=1-\frac{x^2}2+\frac{x^4}{24}+o(x^4)$.**
+$$a-b=-\frac12,\qquad -b(a-b)=\frac b2=\frac1{24}\ \Longrightarrow\ b=\frac1{12},\ a=-\frac5{12}.$$
+
+**Result.** $\cos x\approx\dfrac{1-\frac5{12}x^2}{1+\frac1{12}x^2}=\dfrac{12-5x^2}{12+x^2}$. Pushing the computation to order $6$ gives
+$$\cos x-\frac{12-5x^2}{12+x^2}=\frac{x^6}{480}+o(x^6).$$
+
+**Test.** At $x=1$: $\frac7{13}=0.5385$ while $\cos1=0.5403$, an error of $1.8\cdot10^{-3}$, close to $\frac1{480}\approx2\cdot10^{-3}$. The Taylor polynomial of degree $4$ gives $0.54167$, with a similar error.
+
+**Remark.** With the same number of coefficients (three), the rational approximation has the same order of accuracy as the polynomial. Padé approximants shine for functions with poles, where polynomials do badly.
+@@@ matching-coefficients-to-approximate-x.md
+---
+title: Approximating x by a combination of sines
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: undetermined coefficients, Taylor expansion, Richardson extrapolation
+date: 2026-11-03
+---
+
+## Statement
+
+Find real numbers $\alpha,\beta$ such that $\alpha\sin x+\beta\sin2x-x=o(x^4)$ as $x\to0$, and identify the order of the error.
+
+## Hint
+
+Expand $\sin x$ and $\sin2x$ up to order $5$ and cancel the coefficients of $x$ and $x^3$.
+
+## Solution
+
+**Expansions.**
+$$\sin x=x-\frac{x^3}6+\frac{x^5}{120}+o(x^5),\qquad\sin2x=2x-\frac{8x^3}6+\frac{32x^5}{120}+o(x^5).$$
+
+**Conditions.** The coefficient of $x$ must be $1$ and the coefficient of $x^3$ must vanish:
+$$\alpha+2\beta=1,\qquad-\frac\alpha6-\frac{8\beta}6=0\ \Longrightarrow\ \alpha=-8\beta.$$
+So $-6\beta=1$, i.e. $\beta=-\frac16$ and $\alpha=\frac43$.
+
+**Error term.** The coefficient of $x^5$ is $\frac{\alpha+32\beta}{120}=\frac{\frac43-\frac{16}3}{120}=-\frac1{30}$:
+$$\frac43\sin x-\frac16\sin2x=x-\frac{x^5}{30}+o(x^5).$$
+
+**Remark.** This is Richardson extrapolation: two approximations with the same structure of error are combined to cancel the leading error term. It is the idea behind many numerical methods (Romberg integration, for instance).
+@@@ finite-difference-formulas-for-the-derivative.md
+---
+title: Finite difference formulas for f′
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l3
+difficulty: 3
+tags: finite differences, numerical differentiation, error estimate
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f$ be sufficiently smooth. Using Taylor expansions, show that
+1. $\dfrac{f(x+h)-f(x-h)}{2h}=f'(x)+\dfrac{h^2}6f'''(x)+O(h^4)$,
+2. $\dfrac{-f(x+2h)+8f(x+h)-8f(x-h)+f(x-2h)}{12h}=f'(x)-\dfrac{h^4}{30}f^{(5)}(x)+O(h^6)$.
+
+Test on $f=\exp$ at $x=0$ with $h=0.1$.
+
+## Hint
+
+In $f(x+h)-f(x-h)$ the even-order terms cancel.
+
+## Solution
+
+**1.** $f(x\pm h)=f\pm hf'+\frac{h^2}2f''\pm\frac{h^3}6f'''+\frac{h^4}{24}f^{(4)}\pm\frac{h^5}{120}f^{(5)}+\cdots$, so
+$$f(x+h)-f(x-h)=2hf'+\frac{h^3}3f'''+\frac{h^5}{60}f^{(5)}+\cdots$$
+Dividing by $2h$ gives the first formula.
+
+**2.** Let $D(h)=\dfrac{f(x+h)-f(x-h)}{2h}=f'+\dfrac{h^2}6f'''+\dfrac{h^4}{120}f^{(5)}+\cdots$ (from part 1, pushed one order further). Consider $\dfrac{4D(h)-D(2h)}3$:
+- the coefficient of $f'$ is $\frac{4-1}3=1$,
+- the coefficient of $h^2f'''$ is $\frac{4/6-4/6}3=0$,
+- the coefficient of $h^4f^{(5)}$ is $\frac{4/120-16/120}3=-\frac1{30}$.
+
+Explicitly,
+$$\frac{4D(h)-D(2h)}3=\frac{8\left(f(x+h)-f(x-h)\right)-\left(f(x+2h)-f(x-2h)\right)}{12h},$$
+which is the stated formula, with error $-\frac{h^4}{30}f^{(5)}(x)$.
+
+**Numerics.** For $f=\exp$, $x=0$, $h=0.1$ (exact value $1$):
+- formula 1 gives $1.0016675$ (error $1.7\cdot10^{-3}\approx\frac{h^2}6$),
+- formula 2 gives $0.9999967$ (error $-3.3\cdot10^{-6}\approx-\frac{h^4}{30}$).
+
+**Remark.** Cancelling terms through a clever combination gains two orders of accuracy for the price of two more function evaluations.
+@@@ the-symmetric-second-difference.md
+---
+title: The symmetric second difference
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: Taylor-Young, second derivative, counterexample
+date: 2026-11-03
+---
+
+## Statement
+
+1. Let $f$ be twice differentiable at $a$. Show that
+$$\lim_{h\to0}\frac{f(a+h)-2f(a)+f(a-h)}{h^2}=f''(a).$$
+2. Show that the converse is false: find $f$ such that this limit exists at $a=0$ but $f''(0)$ does not.
+
+## Hint
+
+For part 2, try an odd function and $a=0$.
+
+## Solution
+
+**1.** By Taylor–Young at order $2$,
+$$f(a\pm h)=f(a)\pm hf'(a)+\frac{h^2}2f''(a)+o(h^2).$$
+Adding the two relations, the terms in $h$ cancel:
+$$f(a+h)+f(a-h)-2f(a)=h^2f''(a)+o(h^2),$$
+and dividing by $h^2$ gives the limit.
+
+**2.** Take $f(x)=x|x|$. It is odd and $f(0)=0$, so
+$$\frac{f(h)-2f(0)+f(-h)}{h^2}=0\ \longrightarrow\ 0.$$
+But $f'(x)=2|x|$ for all $x$ (including $x=0$ where $f'(0)=0$), and $\frac{f'(x)-f'(0)}{x}=\frac{2|x|}x$ has different one-sided limits $\pm2$ at $0$. Hence $f''(0)$ does not exist.
+
+**Remark.** The symmetric second difference is the standard numerical approximation of $f''$; the converse failing means one must not read its limit as a proof that $f''$ exists.
+@@@ a-smooth-function-with-a-zero-taylor-series.md
+---
+title: A smooth function that is not its Taylor series
+category: calculus/single-variable/differentiation/taylor-expansions
+level: m1
+difficulty: 5
+tags: flat function, smooth, analytic, counterexample
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(x)=e^{-1/x^2}$ for $x\ne0$ and $f(0)=0$.
+
+1. Show that for $x\ne0$ and $n\ge0$, $f^{(n)}(x)=P_n\!\left(\frac1x\right)e^{-1/x^2}$ for a polynomial $P_n$.
+2. Show that $f$ is infinitely differentiable at $0$ with $f^{(n)}(0)=0$ for all $n$.
+3. Conclude that $f$ is not equal to its Taylor series on any neighbourhood of $0$.
+
+## Hint
+
+Use the fact that $\lim_{u\to\infty}u^ke^{-u^2}=0$ for every $k$.
+
+## Solution
+
+**1.** By induction: $f=P_0\left(\frac1x\right)e^{-1/x^2}$ with $P_0=1$. If $f^{(n)}=P_n(1/x)e^{-1/x^2}$, then
+$$f^{(n+1)}=\left(-\frac1{x^2}P_n'\!\left(\frac1x\right)+\frac2{x^3}P_n\!\left(\frac1x\right)\right)e^{-1/x^2}.$$
+Writing $u=\frac1x$ this is $\bigl(-u^2P_n'(u)+2u^3P_n(u)\bigr)e^{-u^2}$, so $P_{n+1}(u)=2u^3P_n(u)-u^2P_n'(u)$ is a polynomial.
+
+**2.** For every polynomial $P$, $P\!\left(\frac1x\right)e^{-1/x^2}\to0$ as $x\to0$ (put $u=\frac1x\to\pm\infty$). Suppose $f^{(n)}(0)=0$. Then
+$$\frac{f^{(n)}(x)-f^{(n)}(0)}x=\frac1xP_n\!\left(\frac1x\right)e^{-1/x^2}\to0,$$
+so $f^{(n+1)}(0)=0$. Induction on $n$.
+
+**3.** The Taylor series of $f$ at $0$ is identically $0$, while $f(x)>0$ for every $x\ne0$. So $f$ is not equal to its Taylor series on any interval around $0$.
+
+**Remark.** Smooth ($C^\infty$) does not imply analytic. This function is the standard building block for bump functions and partitions of unity in analysis.
+@@@ a-function-with-an-expansion-but-no-second-derivative.md
+---
+title: An expansion of order 2 without a second derivative
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l3
+difficulty: 4
+tags: Taylor-Young converse, counterexample, differentiability
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(x)=x^3\sin\frac1x$ for $x\ne0$ and $f(0)=0$.
+
+1. Show that $f(x)=o(x^2)$ as $x\to0$: $f$ admits an expansion of order $2$ at $0$.
+2. Show that $f$ is differentiable at $0$ but not twice differentiable at $0$.
+
+## Hint
+
+$|\sin|\le1$. For part 2, compute $f'(x)$ for $x\ne0$ and look at $\frac{f'(x)-f'(0)}x$.
+
+## Solution
+
+**1.** $\left|\frac{f(x)}{x^2}\right|=\left|x\sin\frac1x\right|\le|x|\to0$. Hence $f(x)=0+0\cdot x+0\cdot x^2+o(x^2)$.
+
+**2.** $\frac{f(x)-f(0)}x=x^2\sin\frac1x\to0$, so $f'(0)=0$. For $x\ne0$,
+$$f'(x)=3x^2\sin\frac1x-x\cos\frac1x.$$
+Then
+$$\frac{f'(x)-f'(0)}x=3x\sin\frac1x-\cos\frac1x,$$
+which has no limit as $x\to0$ (the first term tends to $0$ and $\cos\frac1x$ oscillates in $[-1,1]$). So $f''(0)$ does not exist.
+
+**Remark.** Taylor–Young says: twice differentiable at $a$ $\Rightarrow$ expansion of order $2$. The converse is false for orders $\ge2$ (it is true for order $1$: an expansion of order $1$ is equivalent to differentiability).
+@@@ bounding-the-derivative-by-the-function-and-its-second-derivative.md
+---
+title: Bounding f′ by f and f″ (Landau's inequality)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: m1
+difficulty: 4
+tags: Taylor-Lagrange, inequalities, optimisation of a parameter
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}\to\mathbb{R}$ be twice differentiable, with $|f|\le M_0$ and $|f''|\le M_2$ on $\mathbb{R}$. Prove that
+$$|f'(x)|\le\sqrt{2M_0M_2}\quad\text{for all }x.$$
+
+## Hint
+
+Write Taylor–Lagrange at order $2$ for $f(x+h)$ and $f(x-h)$, subtract, and then choose $h$ optimally.
+
+## Solution
+
+**Taylor–Lagrange.** For $h>0$ there exist $c_1\in(x,x+h)$ and $c_2\in(x-h,x)$ with
+$$f(x+h)=f(x)+hf'(x)+\tfrac{h^2}2f''(c_1),\qquad f(x-h)=f(x)-hf'(x)+\tfrac{h^2}2f''(c_2).$$
+
+**Subtracting.**
+$$2hf'(x)=f(x+h)-f(x-h)-\tfrac{h^2}2\bigl(f''(c_1)-f''(c_2)\bigr).$$
+Using the bounds, $2h|f'(x)|\le2M_0+h^2M_2$, that is
+$$|f'(x)|\le\frac{M_0}h+\frac{hM_2}2\qquad\text{for every }h>0.$$
+
+**Optimising.** The right side is minimal at $h=\sqrt{2M_0/M_2}$, where it equals $\sqrt{\frac{M_0M_2}2}+\sqrt{\frac{M_0M_2}2}=\sqrt{2M_0M_2}$. (If $M_2=0$, let $h\to\infty$: $f'=0$.)
+
+**Check.** For $f=\sin$: $M_0=M_2=1$ and the bound is $\sqrt2\ge1=\sup|\cos|$ ✓.
+
+**Remark.** A function cannot be both small and have a small second derivative while having a large first derivative: this is a quantitative version of "a smooth bounded function cannot oscillate quickly with large amplitude". The sharp constant is $\sqrt{2M_0M_2}$.
+@@@ an-inequality-from-the-lagrange-remainder.md
+---
+title: A one-sided bound for √(1 + x) from the Lagrange remainder
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 3
+tags: Taylor-Lagrange, inequality, remainder sign
+date: 2026-11-03
+---
+
+## Statement
+
+Prove that for $x\ge0$,
+$$\sqrt{1+x}\le1+\frac x2-\frac{x^2}8+\frac{x^3}{16}.$$
+Use it, together with a bound on the error, to give an enclosure of $\sqrt{1.2}$.
+
+## Hint
+
+Apply Taylor–Lagrange at order $3$ and look at the sign of $f^{(4)}$.
+
+## Solution
+
+**Fourth derivative.** For $f(x)=\sqrt{1+x}$, $f^{(4)}(x)=-\frac{15}{16}(1+x)^{-7/2}<0$.
+
+**Taylor–Lagrange.** There is $c\in(0,x)$ with
+$$\sqrt{1+x}=1+\frac x2-\frac{x^2}8+\frac{x^3}{16}+\frac{f^{(4)}(c)}{24}x^4,$$
+and the last term is $\le0$. This is the inequality.
+
+**Enclosure.** Moreover $|f^{(4)}(c)|\le\frac{15}{16}$, so the error is at most $\frac{15}{16\cdot24}x^4=\frac{5}{128}x^4$. For $x=0.2$: $\frac5{128}\cdot0.0016=6.25\cdot10^{-5}$. As $P_3(0.2)=1.0955$,
+$$1.09543\le\sqrt{1.2}\le1.0955.$$
+(True value: $1.095445\dots$)
+
+**Remark.** The sign of the Lagrange remainder gives a *one-sided* inequality for free: this is how polynomial inequalities such as $\cos x\ge1-\frac{x^2}2$ are proved.
+@@@ e-is-irrational.md
+---
+title: e is irrational
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 4
+tags: Taylor-Lagrange, irrationality, exponential
+date: 2026-11-03
+---
+
+## Statement
+
+Use the Taylor–Lagrange formula for $\exp$ to prove that $e$ is irrational.
+
+## Hint
+
+Suppose $e=\frac pq$. Multiply the Taylor–Lagrange formula at order $n\ge q$ by $n!$ and look at integrality.
+
+## Solution
+
+**Formula.** For every $n$ there is $c\in(0,1)$ with
+$$e=\sum_{k=0}^n\frac1{k!}+\frac{e^c}{(n+1)!}.$$
+
+**Assume $e=\frac pq$.** Take $n\ge\max(q,3)$. Multiply by $n!$:
+$$n!\,e=\sum_{k=0}^n\frac{n!}{k!}+\frac{e^c}{n+1}.$$
+- The left side is an integer, because $q$ divides $n!$.
+- $\sum_{k=0}^n\frac{n!}{k!}$ is an integer.
+
+So $\dfrac{e^c}{n+1}$ is an integer. But $0<e^c<e<3$ and $n+1\ge4$, so
+$$0<\frac{e^c}{n+1}<\frac34<1.$$
+There is no integer strictly between $0$ and $1$: contradiction. Hence $e\notin\mathbb{Q}$.
+
+**Remark.** This is Fourier's proof (1815). The same method does not work for $\pi$, which is also irrational, but whose proof needs more work.
+@@@ an-integral-without-an-antiderivative.md
+---
+title: Computing ∫₀¹ sin(x²) dx with a series
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: integration of expansions, numerical approximation, alternating series
+date: 2026-11-03
+---
+
+## Statement
+
+The function $x\mapsto\sin(x^2)$ has no elementary antiderivative. Use its Taylor expansion to compute $I=\displaystyle\int_0^1\sin(x^2)\,dx$ with an error less than $10^{-4}$.
+
+## Hint
+
+Substitute $x^2$ in the series of $\sin$ and integrate term by term. The resulting series is alternating.
+
+## Solution
+
+**Series.** $\sin(x^2)=\sum_{k\ge0}\frac{(-1)^k}{(2k+1)!}x^{4k+2}$, and integrating on $[0,1]$,
+$$I=\sum_{k\ge0}\frac{(-1)^k}{(2k+1)!\,(4k+3)}=\frac13-\frac1{42}+\frac1{1320}-\frac1{75\,600}+\cdots$$
+
+**Alternating series bound.** The terms decrease in absolute value to $0$, so the error is less than the first omitted term. The term for $k=3$ is $\frac1{75\,600}\approx1.3\cdot10^{-5}<10^{-4}$, so stopping at $k=2$ suffices:
+$$I\approx\frac13-\frac1{42}+\frac1{1320}=\frac{2867}{9240}\approx0.31028.$$
+
+**Check.** The true value is $0.310268\dots$, with error $1.3\cdot10^{-5}$ ✓.
+
+**Remark.** This is a Fresnel-type integral. Integrating a power series term by term is legitimate on the interval where the series converges uniformly (here, all of $\mathbb{R}$).
+@@@ computing-ln-2-with-an-odd-series.md
+---
+title: A fast series for ln 2
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: logarithm, series, numerical approximation, speed of convergence
+date: 2026-11-03
+---
+
+## Statement
+
+1. Expand $\ln\frac{1+t}{1-t}$ at $0$ up to order $5$.
+2. Take $t=\frac13$ to approximate $\ln2$, and bound the error.
+3. Compare with the plain expansion of $\ln(1+x)$ at $x=1$.
+
+## Hint
+
+Subtract the expansions of $\ln(1+t)$ and $\ln(1-t)$: the even terms cancel.
+
+## Solution
+
+**1.** $\ln(1+t)-\ln(1-t)=2\left(t+\frac{t^3}3+\frac{t^5}5+o(t^5)\right)$.
+
+**2.** For $t=\frac13$: $\frac{1+t}{1-t}=2$, so
+$$\ln2\approx2\left(\frac13+\frac1{81}+\frac1{1215}\right)=0.69300\ldots$$
+The full series $2\sum_{k\ge0}\frac{t^{2k+1}}{2k+1}$ has positive terms, and the tail after $k=2$ is bounded by a geometric series:
+$$0<\text{error}<2\cdot\frac{t^7}7\cdot\frac1{1-t^2}=\frac2{7\cdot2187}\cdot\frac98<1.5\cdot10^{-4}.$$
+So $0.6930\le\ln2\le0.6932$ (true value $0.693147\dots$).
+
+**3.** The series $\ln(1+x)=x-\frac{x^2}2+\cdots$ at $x=1$ gives the alternating harmonic series, whose error after $n$ terms is of order $\frac1n$: reaching $10^{-4}$ would need about $10^4$ terms, against just $3$ terms above.
+
+**Remark.** Choosing the expansion variable cleverly ($t=\frac13$ instead of $x=1$) is what makes numerical computations of $\ln$ practical.
+@@@ the-first-terms-of-a-differential-equation-solution.md
+---
+title: Taylor series of the solution of y′ = x + y²
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: differential equation, Taylor expansion, successive derivatives
+date: 2026-11-03
+---
+
+## Statement
+
+Let $y$ be the solution of $y'=x+y^2$ with $y(0)=1$. Find the Taylor polynomial of $y$ at $0$ of order $3$.
+
+## Hint
+
+Differentiate the equation to get $y''$ and $y'''$ in terms of $y$ and $y'$.
+
+## Solution
+
+**Successive derivatives.**
+- $y'(0)=0+1^2=1$.
+- Differentiating: $y''=1+2yy'$, so $y''(0)=1+2\cdot1\cdot1=3$.
+- Differentiating again: $y'''=2(y')^2+2yy''$, so $y'''(0)=2+6=8$.
+
+**Taylor polynomial.**
+$$y(x)=1+x+\frac32x^2+\frac43x^3+o(x^3).$$
+
+**Check.** Substitute into the equation: $y'=1+3x+4x^2$ and $x+y^2=x+1+2x+\left(1+3\right)x^2+\cdots=1+3x+4x^2+\cdots$ ✓.
+
+**Remark.** This equation has no solution in elementary functions (it is a Riccati equation related to Airy functions), yet we get as many coefficients as desired by repeated differentiation. Note also that this solution blows up at a finite $x$, so the series has a finite radius of convergence.
+@@@ a-limit-with-two-reciprocal-squares.md
+---
+title: lim (1/x² − 1/sin² x)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 3
+tags: limits, expansions, difference of fractions
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle\lim_{x\to0}\left(\frac1{x^2}-\frac1{\sin^2x}\right)$.
+
+## Hint
+
+Put over a common denominator, then expand $\sin^2x=x^2\left(1-\frac{x^2}6+\cdots\right)^2$ to the right order.
+
+## Solution
+
+**Common denominator.**
+$$\frac1{x^2}-\frac1{\sin^2x}=\frac{\sin^2x-x^2}{x^2\sin^2x}.$$
+
+**Numerator.** $\sin x=x-\frac{x^3}6+o(x^3)$, so
+$$\sin^2x=x^2-\frac{x^4}3+o(x^4)\quad\Longrightarrow\quad\sin^2x-x^2=-\frac{x^4}3+o(x^4).$$
+
+**Denominator.** $x^2\sin^2x=x^4+o(x^4)$.
+
+**Limit.**
+$$\frac{-\frac{x^4}3+o(x^4)}{x^4+o(x^4)}\longrightarrow-\frac13.$$
+
+**Remark.** The orders of expansion are dictated by the denominator: $x^4$ below means the numerator must be known up to $o(x^4)$, so we need $\sin x$ up to $x^3$ only.
+@@@ a-power-with-an-exponential-correction.md
+---
+title: lim ((1 + x)^(1/x) / e)^(1/x)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: limits, indeterminate form 1^∞, logarithm, expansions
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle\lim_{x\to0}\left(\frac{(1+x)^{1/x}}e\right)^{1/x}$.
+
+## Hint
+
+Take the logarithm. You need $\ln(1+x)$ up to order $2$.
+
+## Solution
+
+**Logarithm.** Let $L(x)=\frac1x\ln\frac{(1+x)^{1/x}}e=\frac1x\left(\frac{\ln(1+x)}x-1\right)$.
+
+**Expansion.** $\ln(1+x)=x-\frac{x^2}2+\frac{x^3}3+o(x^3)$, so
+$$\frac{\ln(1+x)}x-1=-\frac x2+\frac{x^2}3+o(x^2).$$
+
+**Limit.** Therefore $L(x)=-\frac12+\frac x3+o(x)\to-\frac12$, and by continuity of $\exp$ the limit is
+$$e^{-1/2}=\frac1{\sqrt e}.$$
+
+**Remark.** This also shows that $(1+x)^{1/x}=e\left(1-\frac x2+o(x)\right)$: it approaches $e$ linearly, with slope $-\frac e2$. (Compare with the expansion of $(1+\frac1n)^n$.)
+@@@ an-equivalent-of-the-difference-of-two-exponentials.md
+---
+title: An equivalent of e^(sin x) − e^(tan x)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: equivalents, expansions, difference of functions
+date: 2026-11-03
+---
+
+## Statement
+
+Find an equivalent of $e^{\sin x}-e^{\tan x}$ as $x\to0$.
+
+## Hint
+
+Factor: $e^{\sin x}-e^{\tan x}=e^{\sin x}\left(1-e^{\tan x-\sin x}\right)$. Expand $\tan x-\sin x$ first.
+
+## Solution
+
+**Expansion of the difference of the arguments.** $\tan x=x+\frac{x^3}3+o(x^3)$ and $\sin x=x-\frac{x^3}6+o(x^3)$, so
+$$\tan x-\sin x=\frac{x^3}2+o(x^3).$$
+
+**Factoring.** Since $\tan x-\sin x\to0$, $1-e^{\tan x-\sin x}\sim-(\tan x-\sin x)\sim-\frac{x^3}2$. Also $e^{\sin x}\to1$. Hence
+$$e^{\sin x}-e^{\tan x}\sim-\frac{x^3}2.$$
+
+**Warning.** Expanding each term separately to order $2$ only gives $0$: both functions are $1+x+\frac{x^2}2+\cdots$. The difference starts at order $3$, which is why the expansions must go that far.
+
+**Remark.** In general, $e^u-e^v\sim e^v(u-v)$ when $u-v\to0$: it reduces an exponential difference to a simple difference.
+@@@ the-asymptotic-expansion-of-a-classical-sequence.md
+---
+title: Asymptotic expansion of (1 + 1/n)ⁿ
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 4
+tags: asymptotic expansion, sequences, composition of expansions
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\left(1+\dfrac1n\right)^n=e-\dfrac e{2n}+\dfrac{11e}{24n^2}+o\!\left(\dfrac1{n^2}\right)$.
+
+## Hint
+
+Write $\left(1+\frac1n\right)^n=\exp\left(n\ln\left(1+\frac1n\right)\right)$ and expand $\ln(1+u)$ to order $3$ with $u=\frac1n$.
+
+## Solution
+
+**Exponent.** With $u=\frac1n$ and $\ln(1+u)=u-\frac{u^2}2+\frac{u^3}3+o(u^3)$:
+$$n\ln\left(1+\frac1n\right)=1-\frac1{2n}+\frac1{3n^2}+o\!\left(\frac1{n^2}\right).$$
+
+**Exponentiation.** Let $v=-\frac1{2n}+\frac1{3n^2}$. Then $e^v=1+v+\frac{v^2}2+o\left(\frac1{n^2}\right)$ with $v^2=\frac1{4n^2}+o\left(\frac1{n^2}\right)$:
+$$e^v=1-\frac1{2n}+\frac1{3n^2}+\frac1{8n^2}+o\!\left(\frac1{n^2}\right)=1-\frac1{2n}+\frac{11}{24n^2}+o\!\left(\frac1{n^2}\right).$$
+
+**Conclusion.** Multiplying by $e$ gives the claimed expansion.
+
+**Check.** For $n=100$: the expansion gives $2.7048138+\dots$: $e-\frac e{200}+\frac{11e}{240000}=2.718282-0.013591+0.000125=2.704816$, and $(1.01)^{100}=2.704814$ ✓.
+
+**Remark.** In particular $\left(1+\frac1n\right)^n$ increases to $e$ with $e-u_n\sim\frac e{2n}$: a very slow convergence.
+@@@ the-limit-of-a-cosine-to-the-power-n-squared.md
+---
+title: lim cos(1/n)^(n²)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 2
+tags: sequences, expansions, indeterminate form 1^∞
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle\lim_{n\to\infty}\left(\cos\frac1n\right)^{n^2}$.
+
+## Hint
+
+Take the logarithm and expand $\cos u$ then $\ln(1+v)$ with $u=\frac1n$.
+
+## Solution
+
+**Logarithm.** $\ln\left(\cos\frac1n\right)^{n^2}=n^2\ln\cos\frac1n$.
+
+**Expansion.** $\cos\frac1n=1-\frac1{2n^2}+o\!\left(\frac1{n^2}\right)$, and $\ln(1+v)=v+o(v)$, so
+$$\ln\cos\frac1n=-\frac1{2n^2}+o\!\left(\frac1{n^2}\right).$$
+
+**Limit.** $n^2\ln\cos\frac1n\to-\frac12$, hence the sequence converges to $e^{-1/2}$.
+
+**Remark.** The exponent $n^2$ (and not $n$) is exactly what is needed to balance the $\frac1{n^2}$ deviation of the cosine from $1$. With exponent $n$, the limit would be $1$.
+@@@ series-compared-using-expansions.md
+---
+title: Convergence of three series via expansions
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: series, equivalents, comparison
+date: 2026-11-03
+---
+
+## Statement
+
+Determine the nature of:
+1. $\displaystyle\sum\left(\frac1n-\sin\frac1n\right)$,
+2. $\displaystyle\sum\left(e-\left(1+\frac1n\right)^n\right)$,
+3. $\displaystyle\sum\left(n\sin\frac1n-1\right)$.
+
+## Hint
+
+Find an equivalent of the general term of the form $\frac cn^\alpha$ and compare with a Riemann series.
+
+## Solution
+
+**1.** $\sin\frac1n=\frac1n-\frac1{6n^3}+o\!\left(\frac1{n^3}\right)$, so $\frac1n-\sin\frac1n\sim\frac1{6n^3}>0$. Convergent (comparison with $\sum\frac1{n^3}$).
+
+**2.** By the expansion $\left(1+\frac1n\right)^n=e-\frac e{2n}+o\!\left(\frac1n\right)$, the term is $\sim\frac e{2n}>0$. **Divergent** (comparison with the harmonic series).
+
+**3.** $n\sin\frac1n-1=-\frac1{6n^2}+o\!\left(\frac1{n^2}\right)\sim-\frac1{6n^2}$. The terms are eventually of constant sign (negative), so the series converges (absolutely) by comparison with $\sum\frac1{n^2}$.
+
+**Remark.** The sign of the general term must be constant (at least eventually) for equivalents to give a valid conclusion. For terms of changing sign, equivalents may fail.
+@@@ position-of-a-curve-relative-to-its-tangent.md
+---
+title: Position of a curve relative to its tangent
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 3
+tags: tangent line, inflection, local behaviour
+date: 2026-11-03
+---
+
+## Statement
+
+For each function, determine the position of its graph relative to its tangent at $0$, locally:
+1. $f(x)=x\cos x$,
+2. $g(x)=\ln(1+x)$,
+3. $h(x)=e^x\sin x$.
+
+## Hint
+
+Expand to the first order at which the expansion differs from the tangent $y=f(0)+f'(0)x$.
+
+## Solution
+
+**1.** $x\cos x=x-\frac{x^3}2+o(x^3)$. The tangent is $y=x$, and $f(x)-x\sim-\frac{x^3}2$ changes sign at $0$: the curve **crosses** its tangent (inflection point).
+
+**2.** $\ln(1+x)=x-\frac{x^2}2+o(x^2)$. The tangent is $y=x$ and $g(x)-x\sim-\frac{x^2}2<0$: the curve lies **below** its tangent on both sides (locally concave).
+
+**3.** $e^x\sin x=x+x^2+\frac{x^3}3+o(x^3)$. The tangent is $y=x$ and $h(x)-x\sim x^2>0$: the curve lies **above** its tangent (locally convex).
+
+**Rule.** If the first non-zero term after the linear part is $c\,x^k$: for $k$ even, the sign of $c$ gives the side (above if $c>0$); for $k$ odd, the curve crosses the tangent.
+
+**Remark.** Note that $x\cos x$ has $f''(0)=0$: this is the signature of an inflection point.
+@@@ a-taylor-expansion-at-a-point-other-than-zero.md
+---
+title: Expanding √x at x = 4
+category: calculus/single-variable/differentiation/taylor-expansions
+level: lycee
+difficulty: 2
+tags: Taylor expansion, shifted point, numerical estimate
+date: 2026-11-03
+---
+
+## Statement
+
+1. Find the expansion of $\sqrt x$ at the point $4$ up to order $3$, i.e. of $\sqrt{4+h}$ as $h\to0$.
+2. Estimate $\sqrt{4.1}$.
+
+## Hint
+
+Factor: $\sqrt{4+h}=2\sqrt{1+\frac h4}$ and use the expansion of $\sqrt{1+u}$.
+
+## Solution
+
+**1.** With $u=\frac h4$ and $\sqrt{1+u}=1+\frac u2-\frac{u^2}8+\frac{u^3}{16}+o(u^3)$:
+$$\sqrt{4+h}=2+\frac h4-\frac{h^2}{64}+\frac{h^3}{512}+o(h^3).$$
+
+**2.** For $h=0.1$:
+$$2+0.025-0.00015625+0.00000195=2.02484570.$$
+The exact value is $2.02484567\dots$: the error is about $3\cdot10^{-8}$.
+
+**Remark.** Always expand around the nearest "nice" point: the closer to the centre, the better the approximation. Expanding $\sqrt x$ at $0$ is impossible (the derivative blows up there).
+@@@ cosh-is-below-e-to-x-squared-over-2.md
+---
+title: cosh x ≤ e^(x²/2)
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l2
+difficulty: 3
+tags: series comparison, hyperbolic functions, inequalities
+date: 2026-11-03
+---
+
+## Statement
+
+Prove that for all real $x$, $\cosh x\le e^{x^2/2}$.
+
+## Hint
+
+Write both sides as power series in $x$ and compare the coefficients of $x^{2k}$ term by term.
+
+## Solution
+
+**Series.**
+$$\cosh x=\sum_{k\ge0}\frac{x^{2k}}{(2k)!},\qquad e^{x^2/2}=\sum_{k\ge0}\frac{x^{2k}}{2^kk!}.$$
+
+**Comparison.** For $k\ge1$,
+$$(2k)!=k!\cdot(k+1)(k+2)\cdots(2k)\ \ge\ k!\cdot2^k,$$
+since each of the $k$ factors $k+1,\dots,2k$ is at least $2$. Hence $\frac1{(2k)!}\le\frac1{2^kk!}$ for all $k$ (equality for $k=0$ and $k=1$).
+
+**Conclusion.** The inequality holds term by term and $x^{2k}\ge0$, so $\cosh x\le e^{x^2/2}$.
+
+**Remark.** This bound is the standard "sub-Gaussian" estimate: it shows that a random sign $\pm1$ has moment generating function $\mathbb{E}\,e^{tX}=\cosh t\le e^{t^2/2}$, the key to Hoeffding's inequality.
+@@@ how-many-terms-are-needed-for-sin-1.md
+---
+title: How many terms are needed to compute sin 1?
+category: calculus/single-variable/differentiation/taylor-expansions
+level: l1
+difficulty: 2
+tags: Taylor-Lagrange, error bound, numerical computation
+date: 2026-11-03
+---
+
+## Statement
+
+Find the smallest degree $n$ for which the Taylor polynomial $T_n$ of $\sin$ at $0$ approximates $\sin1$ with an error below $10^{-6}$, and compute the approximation.
+
+## Hint
+
+The Lagrange remainder at order $n$ is bounded by $\frac1{(n+1)!}$ since all derivatives of $\sin$ are bounded by $1$.
+
+## Solution
+
+**Error bound.** $|\sin1-T_n(1)|\le\dfrac1{(n+1)!}$.
+- $\frac1{8!}=2.5\cdot10^{-5}$: not enough for $n=7$.
+- $\frac1{9!}=2.8\cdot10^{-6}$: not enough for $n=8$ (and $T_8=T_7$ anyway).
+- $\frac1{10!}=2.8\cdot10^{-7}<10^{-6}$ ✓ for $n=9$.
+
+**Approximation.**
+$$T_9(1)=1-\frac16+\frac1{120}-\frac1{5040}+\frac1{362\,880}=0.8414710\ldots$$
+
+**Check.** $\sin1=0.8414709848\ldots$ so the error is about $2.5\cdot10^{-8}$, far better than the guaranteed bound.
+
+**Remark.** The guaranteed bound is pessimistic by a factor of about $10$ here, because it uses $|\cos c|\le1$ at order $9$, while $T_9=T_{10}$ and the order-$10$ remainder has a factor $\frac1{11!}=2.5\cdot10^{-8}$, the true size of the error.
