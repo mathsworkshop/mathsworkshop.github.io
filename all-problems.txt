@@ -1,3 +1,1561 @@
+@@@ metric-definition.md
+---
+title: Metric spaces
+category: topology/metric
+level: l1
+difficulty: 1
+tags: metric, definition, axioms
+date: 2026-11-03
+---
+
+## Statement
+
+Define a metric space and give two examples.
+
+## Hint
+
+A metric $d:X\times X\to[0,\infty)$ satisfies positivity, symmetry, and the triangle inequality.
+
+## Solution
+
+**Definition.** A metric on $X$ is a map $d:X\times X\to[0,+\infty[$ such that for all $x,y,z\in X$:
+1. $d(x,y)=0\iff x=y$;
+2. $d(x,y)=d(y,x)$;
+3. $d(x,z)\le d(x,y)+d(y,z)$.
+
+**Examples.**
+- Euclidean metric on $\mathbb{R}^n$: $d(x,y)=\|x-y\|_2$.
+- Discrete metric: $d(x,y)=0$ if $x=y$, $d(x,y)=1$ otherwise.
+
+**Conclusion.** A metric space is a pair $(X,d)$; the metric encodes distance and topology.
+
+@@@ metric-examples-classical.md
+---
+title: Classical metrics on $\mathbb{R}^n$
+category: topology/metric
+level: l1
+difficulty: 2
+tags: Euclidean, Manhattan, sup norm
+date: 2026-11-03
+---
+
+## Statement
+
+Define the Euclidean, Manhattan, and sup metrics on $\mathbb{R}^n$ and compare them.
+
+## Hint
+
+$\|x\|_2\le\|x\|_1\le n\|x\|_2$ and $\|x\|_\infty\le\|x\|_2\le\sqrt n\|x\|_\infty$.
+
+## Solution
+
+**Metrics.**
+- Euclidean: $d_2(x,y)=\sqrt{\sum(x_i-y_i)^2}$.
+- Manhattan: $d_1(x,y)=\sum|x_i-y_i|$.
+- Sup: $d_\infty(x,y)=\max_i|x_i-y_i|$.
+
+**Comparison.** For every $x\in\mathbb{R}^n$:
+$$\|x\|_\infty\le\|x\|_2\le\|x\|_1\le n\|x\|_\infty.$$
+
+**Conclusion.** These metrics define the same topology (they are equivalent).
+
+@@@ metric-open-ball.md
+---
+title: Open balls in a metric space
+category: topology/metric
+level: l1
+difficulty: 1
+tags: open ball, metric, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Define the open ball $B(a,r)$ in a metric space and show it is open.
+
+## Hint
+
+For $x\in B(a,r)$, use $r-\|x-a\|>0$.
+
+## Solution
+
+**Definition.** $B(a,r)=\{x\in X:d(x,a)<r\}$.
+
+**Openness.** Let $x\in B(a,r)$ and $\rho=r-d(x,a)>0$. For $y\in B(x,\rho)$: $d(y,a)\le d(y,x)+d(x,a)<\rho+d(x,a)=r$.
+
+**Conclusion.** $B(x,\rho)\subseteq B(a,r)$: open balls are open sets.
+
+@@@ metric-convergence.md
+---
+title: Convergence in metric spaces
+category: topology/metric
+level: l1
+difficulty: 2
+tags: convergence, sequences, metric
+date: 2026-11-03
+---
+
+## Statement
+
+Define convergence of a sequence in a metric space and show that limits are unique.
+
+## Hint
+
+Suppose $x_n\to x$ and $x_n\to y$ with $x\neq y$; take $\varepsilon=d(x,y)/2$.
+
+## Solution
+
+**Definition.** $x_n\to x$ iff $d(x_n,x)\to0$.
+
+**Uniqueness.** If $x_n\to x$ and $x_n\to y$, then $d(x,y)\le d(x,x_n)+d(x_n,y)\to0$, so $d(x,y)=0$, hence $x=y$.
+
+**Conclusion.** Limits in metric spaces are unique.
+
+@@@ metric-continuity.md
+---
+title: Continuity in metric spaces
+category: topology/metric
+level: l1
+difficulty: 2
+tags: continuity, epsilon-delta, metric
+date: 2026-11-03
+---
+
+## Statement
+
+Define continuity of $f:X\to Y$ between metric spaces.
+
+## Hint
+
+For all $x_0$, $\forall\varepsilon>0,\exists\delta>0:\ d_X(x,x_0)<\delta\Rightarrow d_Y(f(x),f(x_0))<\varepsilon$.
+
+## Solution
+
+**Definition.** $f$ is continuous at $x_0$ iff $\forall\varepsilon>0,\exists\delta>0:\ d_X(x,x_0)<\delta\Rightarrow d_Y(f(x),f(x_0))<\varepsilon$.
+
+**Global.** $f$ is continuous iff continuous at every point.
+
+**Equivalence.** Equivalent to: $f^{-1}(U)$ open in $X$ for every open $U\subseteq Y$; and to sequential continuity.
+
+**Conclusion.** Continuity has multiple equivalent characterizations in metric spaces.
+
+@@@ metric-compact.md
+---
+title: Compactness in metric spaces
+category: topology/metric
+level: l1
+difficulty: 3
+tags: compactness, open cover, sequential
+date: 2026-11-03
+---
+
+## Statement
+
+State the equivalence between compactness by open covers and sequential compactness in metric spaces.
+
+## Hint
+
+In metric spaces, compact $\Leftrightarrow$ sequentially compact.
+
+## Solution
+
+**Theorem.** For a metric space $X$: compact (every open cover has a finite subcover) $\iff$ every sequence has a convergent subsequence (sequential compactness).
+
+**Key steps.** Sequential compactness implies the space is totally bounded; a totally bounded complete space is compact.
+
+**Conclusion.** Both compactness notions coincide in metric spaces.
+
+@@@ metric-complete.md
+---
+title: Complete metric spaces
+category: topology/metric
+level: l1
+difficulty: 3
+tags: completeness, Cauchy sequences, examples
+date: 2026-11-03
+---
+
+## Statement
+
+Define completeness and give two examples of complete and two non-complete metric spaces.
+
+## Hint
+
+Complete = every Cauchy sequence converges in the space.
+
+## Solution
+
+**Definition.** A metric space is complete if every Cauchy sequence has a limit in the space.
+
+**Complete.** $\mathbb{R}$, $\mathbb{R}^n$ with Euclidean metric, closed subsets of $\mathbb{R}^n$.
+
+**Not complete.** $\mathbb{Q}$ (with usual metric: $1,1.4,1.41,\ldots$ converges to $\sqrt2\notin\mathbb{Q}$); $]0,1]$ (sequence $1/n$ is Cauchy but converges to $0\notin]0,1]$).
+
+**Conclusion.** Completeness depends both on the metric and the underlying set.
+
+@@@ metric-equivalence.md
+---
+title: Equivalent metrics
+category: topology/metric
+level: l1
+difficulty: 3
+tags: equivalent metrics, same topology, norms
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the three classical metrics on $\mathbb{R}^n$ are equivalent: they define the same topology.
+
+## Hint
+
+Two metrics are topologically equivalent iff each open ball for one contains an open ball for the other.
+
+## Solution
+
+**Bounds.** $\|x\|_\infty\le\|x\|_2\le\sqrt n\|x\|_\infty$, and similar for $\|\cdot\|_1$.
+
+**Consequence.** $B_\infty(a,r/\sqrt n)\subseteq B_2(a,r)\subseteq B_\infty(a,r)$; similarly for $\|\cdot\|_1$.
+
+**Conclusion.** $d_1,d_2,d_\infty$ are topologically equivalent on $\mathbb{R}^n$.
+
+@@@ metric-norm-definition.md
+---
+title: Normed spaces
+category: topology/metric
+level: l1
+difficulty: 2
+tags: norm, definition, axioms
+date: 2026-11-03
+---
+
+## Statement
+
+Define a norm on a vector space and show that the induced distance is a metric.
+
+## Hint
+
+$\|x\|=0\iff x=0$; $\|\lambda x\|=|\lambda|\|x\|$; triangle inequality.
+
+## Solution
+
+**Axioms.** A norm $\|\cdot\|:E\to[0,+\infty[$ satisfies:
+1. $\|x\|=0\iff x=0$;
+2. $\|\lambda x\|=|\lambda|\|x\|$;
+3. $\|x+y\|\le\|x\|+\|y\|$.
+
+**Induced metric.** $d(x,y)=\|x-y\|$ is a metric: positivity from (1), symmetry from $\|\lambda x\|$ with $\lambda=-1$, triangle from (3).
+
+**Conclusion.** Every normed space is a metric space.
+
+@@@ metric-norm-equivalent.md
+---
+title: Equivalent norms
+category: topology/metric
+level: l1
+difficulty: 3
+tags: equivalent norms, topology, finite dimension
+date: 2026-11-03
+---
+
+## Statement
+
+Show that in finite-dimensional spaces, any two norms are equivalent.
+
+## Hint
+
+Work in a basis; the closed unit ball of one norm is compact for the other.
+
+## Solution
+
+**Setup.** Let $\|\cdot\|_1,\|\cdot\|_2$ be two norms on $\mathbb{R}^n$. By compactness of the unit sphere of $\|\cdot\|_1$ (for $\|\cdot\|_2$), the continuous function $\|\cdot\|_1/\|\cdot\|_2$ has a positive minimum $m$ and finite maximum $M$.
+
+**Consequence.** $m\|x\|_2\le\|x\|_1\le M\|x\|_2$.
+
+**Conclusion.** In finite dimension, all norms are equivalent.
+
+**Note.** Fails in infinite dimension (e.g. $\|\cdot\|_\infty$ vs $\|\cdot\|_1$ on $C([0,1])$).
+
+@@@ metric-compact-closed.md
+---
+title: Compact sets are closed and bounded
+category: topology/metric
+level: l1
+difficulty: 3
+tags: compact, closed, bounded, metric
+date: 2026-11-03
+---
+
+## Statement
+
+Show that in a metric space, every compact set is closed and bounded.
+
+## Hint
+
+Sequential argument: a limit point outside would contradict compactness; a sequence with no convergent subsequence gives unboundedness.
+
+## Solution
+
+**Closed.** If $x_n\in K$ converges to $x$, sequential compactness gives a convergent subsequence in $K$, so $x\in K$; hence $K$ is closed.
+
+**Bounded.** If $K$ were unbounded, there would exist $(x_n)$ in $K$ with $d(x_0,x_n)\to+\infty$; such a sequence has no convergent subsequence, contradiction.
+
+**Conclusion.** In metric spaces, compact $\Rightarrow$ closed and bounded.
+
+**Note.** The converse holds in $\mathbb{R}^n$ (Heine–Borel) but not in general metric spaces.
+
+@@@ metric-Cauchy.md
+---
+title: Cauchy sequences
+category: topology/metric
+level: l1
+difficulty: 2
+tags: Cauchy, sequences, metric
+date: 2026-11-03
+---
+
+## Statement
+
+Define a Cauchy sequence and show that a convergent sequence is Cauchy.
+
+## Hint
+
+For $\varepsilon>0$, use $d(x_n,x)\to0$ and the triangle inequality.
+
+## Solution
+
+**Definition.** $(x_n)$ is Cauchy if $\forall\varepsilon>0,\ \exists N,\ \forall m,n\ge N,\ d(x_m,x_n)<\varepsilon$.
+
+**Convergent $\Rightarrow$ Cauchy.** If $x_n\to x$, then for $m,n\ge N$, $d(x_m,x_n)\le d(x_m,x)+d(x,x_n)<\varepsilon$.
+
+**Conclusion.** Every convergent sequence is Cauchy.
+
+**Note.** The converse characterizes complete spaces.
+
+@@@ metric-product.md
+---
+title: Product metrics
+category: topology/metric
+level: l1
+difficulty: 3
+tags: product spaces, metric, sup
+date: 2026-11-03
+---
+
+## Statement
+
+Define a metric on $X\times Y$ in terms of metrics on $X$ and $Y$.
+
+## Hint
+
+$d((x_1,y_1),(x_2,y_2))=\max(d_X(x_1,x_2),d_Y(y_1,y_2))$.
+
+## Solution
+
+**Definition.** $d((x_1,y_1),(x_2,y_2))=\max(d_X(x_1,x_2),d_Y(y_1,y_2))$.
+
+**Properties.** Positivity, symmetry, triangle: all inherited component-wise.
+
+**Conclusion.** $X\times Y$ is a metric space; convergence is component-wise.
+
+@@@ metric-Banach.md
+---
+title: Banach fixed point theorem
+category: topology/metric
+level: m1
+difficulty: 5
+tags: Banach, fixed point, contraction
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(X,d)$ be complete and $f:X\to X$ be a contraction ($d(f(x),f(y))\le kd(x,y)$ with $k<1$). Show that $f$ has a unique fixed point and that iterates converge to it.
+
+## Hint
+
+Show $(x_n)$ with $x_{n+1}=f(x_n)$ is Cauchy; use $d(x_{n+1},x_n)\le k^n d(x_1,x_0)$.
+
+## Solution
+
+**Cauchy.** $d(x_{n+1},x_n)\le k^nd(x_1,x_0)$; summing, $d(x_n,x_m)\le\frac{k^n}{1-k}d(x_1,x_0)\to0$.
+
+**Convergence.** Complete: $x_n\to x^*$. Continuity: $f(x^*)=x^*$.
+
+**Uniqueness.** If $f(x^*)=x^*$ and $f(y^*)=y^*$, $d(x^*,y^*)\le kd(x^*,y^*)$, so $d(x^*,y^*)=0$.
+
+**Conclusion.** Banach fixed point theorem holds; iterates converge geometrically.
+
+@@@ metric-Baire.md
+---
+title: Baire category theorem
+category: topology/metric
+level: m1
+difficulty: 4
+tags: Baire, category, complete
+date: 2026-11-03
+---
+
+## Statement
+
+State the Baire category theorem for complete metric spaces.
+
+## Hint
+
+In a complete metric space, a countable intersection of dense open sets is dense.
+
+## Solution
+
+**Theorem (Baire).** Let $(X,d)$ be complete. If $(U_n)$ is a sequence of dense open sets, then $\bigcap_nU_n$ is dense.
+
+**Consequence.** A complete metric space is not a countable union of nowhere dense sets.
+
+**Conclusion.** Baire's theorem is a powerful tool in functional analysis (open mapping, closed graph, uniform boundedness).
+
+@@@ metric-completion.md
+---
+title: Completion of a metric space
+category: topology/metric
+level: m1
+difficulty: 4
+tags: completion, Cauchy, dense embedding
+date: 2026-11-03
+---
+
+## Statement
+
+State the completion theorem for metric spaces.
+
+## Hint
+
+Every metric space embeds isometrically as a dense subset of a complete metric space.
+
+## Solution
+
+**Theorem.** Given a metric space $(X,d)$, there exists a complete metric space $(\hat X,\hat d)$ and an isometric embedding $i:X\to\hat X$ with dense image. This $(\hat X,\hat d)$ is unique up to isometry.
+
+**Construction.** Take equivalence classes of Cauchy sequences of $X$ (with two sequences equivalent if their pointwise distance tends to $0$).
+
+**Example.** $\mathbb{Q}$ completes to $\mathbb{R}$.
+
+**Conclusion.** Completion fills in "missing limits" in a canonical way.
+
+@@@ metric-norm-examples.md
+---
+title: Classical normed spaces
+category: topology/metric
+level: l1
+difficulty: 3
+tags: normed spaces, Banach, examples
+date: 2026-11-03
+---
+
+## Statement
+
+List the classical normed spaces $\ell^p$ and $C([0,1])$.
+
+## Hint
+
+$\ell^p$ sequences with $\sum|x_n|^p<\infty$; $C([0,1])$ with $\sup$-norm.
+
+## Solution
+
+**$\ell^p$ for $1\le p<\infty$.** $\|x\|_p=(\sum|x_n|^p)^{1/p}$.
+
+**$\ell^\infty$.** $\|x\|_\infty=\sup_n|x_n|$.
+
+**$C([0,1])$.** $\|f\|_\infty=\sup_{[0,1]}|f|$.
+
+**Completeness.** All these spaces are Banach (complete normed) spaces.
+
+**Conclusion.** Classical spaces provide examples and counterexamples in functional analysis.
+
+@@@ metric-compact-image.md
+---
+title: Continuous image of compact
+category: topology/metric
+level: l1
+difficulty: 3
+tags: compact image, continuity, compactness
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the continuous image of a compact metric space is compact.
+
+## Hint
+
+Sequential: extract a subsequence from a sequence in the image.
+
+## Solution
+
+**Proof.** Let $K$ compact and $f:K\to Y$ continuous. Given a sequence $(f(x_n))$ in $f(K)$, extract a subsequence $x_{n_k}\to x\in K$. Then $f(x_{n_k})\to f(x)\in f(K)$.
+
+**Conclusion.** $f(K)$ is compact; if $Y=\mathbb{R}$, extrema are attained.
+
+@@@ metric-uniform-continuity.md
+---
+title: Heine–Cantor theorem
+category: topology/metric
+level: l1
+difficulty: 4
+tags: Heine-Cantor, uniform continuity, compact
+date: 2026-11-03
+---
+
+## Statement
+
+State and prove that continuous maps from a compact metric space are uniformly continuous.
+
+## Hint
+
+Contradiction via sequences.
+
+## Solution
+
+**Theorem.** Continuous $f:K\to Y$ with $K$ compact is uniformly continuous.
+
+**Proof.** Suppose not: $\exists\varepsilon>0$ with $x_n,y_n\in K$, $d(x_n,y_n)\to0$ but $d(f(x_n),f(y_n))\ge\varepsilon$. Compactness of $K$ gives a subsequence $x_{n_k}\to x$; then $y_{n_k}\to x$. Continuity: $f(x_{n_k}),f(y_{n_k})\to f(x)$, contradiction.
+
+**Conclusion.** Heine–Cantor holds in general metric spaces.
+
+@@@ metric-isometry.md
+---
+title: Isometries between metric spaces
+category: topology/metric
+level: l1
+difficulty: 3
+tags: isometry, metric, distance-preserving
+date: 2026-11-03
+---
+
+## Statement
+
+Define an isometry and show it is injective.
+
+## Hint
+
+If $f(x)=f(y)$, apply $d(f(x),f(y))=d(x,y)$.
+
+## Solution
+
+**Definition.** $f:X\to Y$ is an isometry if $d_Y(f(x),f(y))=d_X(x,y)$ for all $x,y$.
+
+**Injectivity.** $f(x)=f(y)\Rightarrow d_Y(f(x),f(y))=0\Rightarrow d_X(x,y)=0\Rightarrow x=y$.
+
+**Conclusion.** Every isometry is injective; if surjective, it is an isometric isomorphism.
+
+@@@ metric-non-compact-closed-bounded.md
+---
+title: Closed bounded sets need not be compact
+category: topology/metric
+level: m1
+difficulty: 4
+tags: counterexample, compactness, infinite dimension
+date: 2026-11-03
+---
+
+## Statement
+
+Give an example of a closed bounded set that is not compact in a metric space.
+
+## Hint
+
+In $\ell^2$, the closed unit ball is closed and bounded but not compact.
+
+## Solution
+
+**Counterexample.** In $\ell^2$ (space of square-summable sequences with $\|\cdot\|_2$), the closed unit ball $\overline B(0,1)$ is closed and bounded. But the sequence $(e_n)$ of standard basis vectors is at pairwise distance $\sqrt2$, so has no convergent subsequence.
+
+**Conclusion.** In infinite dimension, closed bounded $\not\Rightarrow$ compact.
+
+**Note.** Riesz's theorem: the closed unit ball of a normed space is compact iff the space is finite-dimensional.
+
+@@@ topology-Rn-open-ball.md
+---
+title: Open balls in $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: l1
+difficulty: 1
+tags: open ball, Euclidean norm, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Define the open ball $B(a,r)$ in $\mathbb{R}^n$ and show it is an open set.
+
+## Hint
+
+For $x\in B(a,r)$, take $\rho=r-\|x-a\|>0$ and use the triangle inequality.
+
+## Solution
+
+**Definition.** $B(a,r)=\{x\in\mathbb{R}^n:\|x-a\|<r\}$.
+
+**Openness.** Let $x\in B(a,r)$ and $\rho=r-\|x-a\|>0$. For $y\in B(x,\rho)$: $\|y-a\|\le\|y-x\|+\|x-a\|<\rho+\|x-a\|=r$. So $B(x,\rho)\subseteq B(a,r)$.
+
+**Conclusion.** Open balls are open sets.
+
+@@@ topology-Rn-open-definition.md
+---
+title: Open sets in $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: l1
+difficulty: 1
+tags: open sets, definition, ball
+date: 2026-11-03
+---
+
+## Statement
+
+State the definition of an open set in $\mathbb{R}^n$ and give two examples.
+
+## Hint
+
+$U$ is open iff every point of $U$ has a small ball contained in $U$.
+
+## Solution
+
+**Definition.** $U\subseteq\mathbb{R}^n$ is open iff for all $x\in U$ there is $r>0$ with $B(x,r)\subseteq U$.
+
+**Examples.** $\mathbb{R}^n$ itself, open balls, $\{x:x_1>0\}$ (open half-space).
+
+**Counterexample.** The closed ball $\overline B(a,r)$ is not open (its boundary points fail the condition).
+
+**Conclusion.** Openness is defined pointwise via balls.
+
+@@@ topology-Rn-closed.md
+---
+title: Closed sets in $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: l1
+difficulty: 1
+tags: closed sets, complement, examples
+date: 2026-11-03
+---
+
+## Statement
+
+Define a closed set in $\mathbb{R}^n$ and give two examples.
+
+## Hint
+
+Closed = complement open.
+
+## Solution
+
+**Definition.** $F\subseteq\mathbb{R}^n$ is closed iff $\mathbb{R}^n\setminus F$ is open.
+
+**Examples.** Closed ball $\overline B(a,r)=\{x:\|x-a\|\le r\}$; spheres $\{x:\|x-a\|=r\}$; hyperplanes.
+
+**Conclusion.** Closed sets are complements of open ones.
+
+@@@ topology-Rn-union-intersection.md
+---
+title: Stability of open and closed sets
+category: topology/topology-of-Rn
+level: l1
+difficulty: 2
+tags: unions, intersections, stability
+date: 2026-11-03
+---
+
+## Statement
+
+Show that arbitrary unions and finite intersections of open sets in $\mathbb{R}^n$ are open; dual properties for closed sets.
+
+## Hint
+
+For finite intersections, take the minimum of radii. For closed sets, use De Morgan's laws.
+
+## Solution
+
+**Union.** If $x\in\bigcup U_i$, pick $i_0$ with $x\in U_{i_0}$; use the ball around $x$ inside $U_{i_0}$.
+
+**Finite intersection.** With $x\in U_1\cap\cdots\cap U_n$, take $r=\min_i r_i>0$ where $B(x,r_i)\subseteq U_i$.
+
+**Closed sets.** By De Morgan: arbitrary intersections and finite unions of closed sets are closed.
+
+**Conclusion.** The topology is stable under the expected operations.
+
+@@@ topology-Rn-interior-closure.md
+---
+title: Interior, closure, boundary
+category: topology/topology-of-Rn
+level: l1
+difficulty: 2
+tags: interior, closure, boundary
+date: 2026-11-03
+---
+
+## Statement
+
+Define the interior, closure and boundary of $A\subseteq\mathbb{R}^n$, and compute them for $A=B(a,r)$ (open ball).
+
+## Hint
+
+$\overline{A}$ is the smallest closed set containing $A$; boundary $=\overline A\setminus\mathring A$.
+
+## Solution
+
+**Definitions.**
+- Interior: union of open subsets of $A$.
+- Closure: intersection of closed sets containing $A$; equivalently $A$ plus its limit points.
+- Boundary: $\overline A\setminus\mathring A$.
+
+**For $A=B(a,r)$.**
+- Interior: $A$ itself (it is open).
+- Closure: $\overline B(a,r)=\{x:\|x-a\|\le r\}$.
+- Boundary: sphere $\{x:\|x-a\|=r\}$.
+
+**Conclusion.** For an open ball, boundary is the sphere, closure is the closed ball.
+
+@@@ topology-Rn-limit-points.md
+---
+title: Limit points in $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: l1
+difficulty: 2
+tags: limit points, sequences, closure
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $x$ is in the closure of $A\subseteq\mathbb{R}^n$ iff there is a sequence $(x_k)$ in $A$ with $x_k\to x$.
+
+## Hint
+
+Use $\varepsilon$-balls and sequential characterisation.
+
+## Solution
+
+**$\Leftarrow$.** If $x_k\to x$ with $x_k\in A$, every ball around $x$ contains a $x_k$. So $x$ is a limit point of $A$; $x\in\overline A$.
+
+**$\Rightarrow$.** If $x\in\overline A$, for each $k$ pick $x_k\in A\cap B(x,1/k)$; such a ball always meets $A$ by definition of closure.
+
+**Conclusion.** Closure equals the set of limits of sequences in $A$.
+
+@@@ topology-Rn-compact-heine-borel.md
+---
+title: Heine–Borel in $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: l1
+difficulty: 3
+tags: compactness, Heine-Borel, closed bounded
+date: 2026-11-03
+---
+
+## Statement
+
+State the Heine–Borel theorem in $\mathbb{R}^n$ and give examples.
+
+## Hint
+
+In $\mathbb{R}^n$, compact = closed + bounded.
+
+## Solution
+
+**Theorem.** $K\subseteq\mathbb{R}^n$ is compact iff $K$ is closed and bounded.
+
+**Examples.**
+- Compact: closed ball $\overline B(0,1)$, the cube $[0,1]^n$, spheres.
+- Non-compact: open ball $B(0,1)$ (not closed), hyperplane (not bounded).
+
+**Conclusion.** Compactness in $\mathbb{R}^n$ = closed and bounded.
+
+@@@ topology-Rn-sequential-compact.md
+---
+title: Sequential compactness in $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: l1
+difficulty: 3
+tags: Bolzano-Weierstrass, sequential compactness
+date: 2026-11-03
+---
+
+## Statement
+
+State the Bolzano–Weierstrass theorem in $\mathbb{R}^n$.
+
+## Hint
+
+Every bounded sequence has a convergent subsequence.
+
+## Solution
+
+**Theorem.** Every bounded sequence in $\mathbb{R}^n$ has a convergent subsequence.
+
+**Link to compactness.** If $K$ is compact, every sequence in $K$ has a subsequence converging in $K$ (sequential compactness).
+
+**Conclusion.** Compactness $\Leftrightarrow$ sequential compactness in $\mathbb{R}^n$.
+
+@@@ topology-Rn-connected.md
+---
+title: Connectedness in $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: l1
+difficulty: 3
+tags: connectedness, path-connectedness
+date: 2026-11-03
+---
+
+## Statement
+
+Define connectedness and path-connectedness of subsets of $\mathbb{R}^n$, and show that any convex set is path-connected.
+
+## Hint
+
+For convex $C$, the segment between any two points lies in $C$.
+
+## Solution
+
+**Definitions.**
+- $A$ is connected if no separation $A=U\cup V$ with $U,V$ nonempty open, disjoint.
+- $A$ is path-connected if any two points are joined by a continuous path in $A$.
+
+**Convex $\Rightarrow$ path-connected.** For $x,y\in C$ convex, the segment $t\mapsto(1-t)x+ty$, $t\in[0,1]$, lies in $C$.
+
+**Conclusion.** Convex sets are path-connected (hence connected).
+
+@@@ topology-Rn-convex-connected.md
+---
+title: Convex sets are connected
+category: topology/topology-of-Rn
+level: l1
+difficulty: 3
+tags: connectedness, convexity, segments
+date: 2026-11-03
+---
+
+## Statement
+
+Show that a convex set of $\mathbb{R}^n$ is connected.
+
+## Hint
+
+Path-connected sets are connected; convex sets are path-connected.
+
+## Solution
+
+**Path-connectedness.** As shown, every pair of points of a convex set is joined by a segment inside the set.
+
+**Connectedness.** Path-connected sets are connected.
+
+**Conclusion.** Convex sets are connected.
+
+@@@ topology-Rn-continuity-open.md
+---
+title: Continuity and open preimages
+category: topology/topology-of-Rn
+level: l1
+difficulty: 4
+tags: continuity, open preimages, multivariable
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f:\mathbb{R}^n\to\mathbb{R}^m$ is continuous iff $f^{-1}(U)$ is open for every open $U\subseteq\mathbb{R}^m$.
+
+## Hint
+
+Copy the one-dimensional proof, replacing intervals by balls.
+
+## Solution
+
+**$\Leftarrow$.** Given $x_0$ and $\varepsilon>0$, the ball $U=B(f(x_0),\varepsilon)$ is open. So $f^{-1}(U)$ is open; it contains $x_0$, hence $B(x_0,\delta)\subseteq f^{-1}(U)$. So $\|f(x)-f(x_0)\|<\varepsilon$ for $\|x-x_0\|<\delta$.
+
+**$\Rightarrow$.** Given open $U$ and $x_0\in f^{-1}(U)$, $f(x_0)\in U$ gives $\varepsilon>0$ with $B(f(x_0),\varepsilon)\subseteq U$; continuity gives $\delta$ with $f(B(x_0,\delta))\subseteq U$.
+
+**Conclusion.** Continuity is equivalent to the preimage of open sets being open.
+
+@@@ topology-Rn-boundary-sphere.md
+---
+title: Boundary of a ball
+category: topology/topology-of-Rn
+level: l1
+difficulty: 2
+tags: boundary, sphere, ball
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the boundary of the closed ball $\overline B(a,r)\subseteq\mathbb{R}^n$.
+
+## Hint
+
+Boundary = closure $\setminus$ interior. The closed ball is its own closure; its interior is the open ball.
+
+## Solution
+
+**Closure.** $\overline B(a,r)$ is closed, so its closure is itself.
+
+**Interior.** $\mathring{\overline B}=B(a,r)$: any boundary point fails to have a ball inside the closed ball.
+
+**Boundary.** $\overline{B(a,r)}\setminus B(a,r)=\{x:\|x-a\|=r\}$.
+
+**Conclusion.** The boundary is the sphere $S(a,r)=\{x:\|x-a\|=r\}$.
+
+@@@ topology-Rn-limit-not-continuity.md
+---
+title: Continuity versus iterated limits
+category: topology/topology-of-Rn
+level: l1
+difficulty: 3
+tags: iterated limits, continuity, subtleties
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=\dfrac{xy}{x^2+y^2}$ (with $f(0,0)=0$) has iterated limits $0$ along both axes but no limit at the origin.
+
+## Hint
+
+Compute limits along $y=0$ and $x=0$, then along $y=x$.
+
+## Solution
+
+**Iterated limits.** $f(x,0)=0$, $f(0,y)=0$: so $\lim_{x\to0}\lim_{y\to0}f=\lim_{y\to0}\lim_{x\to0}f=0$.
+
+**Diagonal.** Along $y=x$: $f(x,x)=\frac12$, so the limit along this path is $1/2$.
+
+**Conclusion.** Iterated limits exist and coincide, but the two-dimensional limit does not: $f$ is not continuous at the origin.
+
+@@@ topology-Rn-compactness-image.md
+---
+title: Continuous image of a compact set
+category: topology/topology-of-Rn
+level: l1
+difficulty: 3
+tags: compact, continuous image, extrema
+date: 2026-11-03
+---
+
+## Statement
+
+Show that if $K\subseteq\mathbb{R}^n$ is compact and $f:K\to\mathbb{R}$ is continuous, then $f$ attains its maximum and minimum on $K$.
+
+## Hint
+
+$f(K)$ is compact in $\mathbb{R}$, hence closed and bounded; contains its supremum and infimum.
+
+## Solution
+
+**Image compact.** $f(K)$ is compact in $\mathbb{R}$ (continuous image of compact is compact).
+
+**Extrema.** $f(K)$ is closed and bounded in $\mathbb{R}$: it contains its supremum $M$ and infimum $m$. So there exist $x_{\max}, x_{\min}\in K$ with $f(x_{\max})=M$, $f(x_{\min})=m$.
+
+**Conclusion.** Continuous functions on compact sets attain their extrema.
+
+@@@ topology-Rn-uniform-continuity.md
+---
+title: Heine–Cantor in $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: m1
+difficulty: 4
+tags: uniform continuity, Heine-Cantor, compactness
+date: 2026-11-03
+---
+
+## Statement
+
+State Heine–Cantor theorem for $\mathbb{R}^n$ and outline its proof.
+
+## Hint
+
+Argue by contradiction using sequential compactness.
+
+## Solution
+
+**Theorem.** A continuous $f:K\to\mathbb{R}^m$ on a compact $K\subseteq\mathbb{R}^n$ is uniformly continuous.
+
+**Proof.** Assume not: $\exists\varepsilon>0$ with $\|x_k-y_k\|\to0$ but $\|f(x_k)-f(y_k)\|\ge\varepsilon$. Compactness gives a subsequence $x_{k_j}\to x$. Then $y_{k_j}\to x$ too. Continuity: $f(x_{k_j})\to f(x)$ and $f(y_{k_j})\to f(x)$, contradiction.
+
+**Conclusion.** Heine–Cantor holds in $\mathbb{R}^n$.
+
+@@@ topology-Rn-baire.md
+---
+title: Baire category theorem for $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: m1
+difficulty: 4
+tags: Baire, complete metric, category
+date: 2026-11-03
+---
+
+## Statement
+
+State Baire's theorem for $\mathbb{R}^n$ and explain its use for the existence of functions continuous nowhere differentiable.
+
+## Hint
+
+$\mathbb{R}^n$ is a complete metric space; the set of continuous functions is meager in the space of all functions, but the set of nowhere-differentiable ones is residual.
+
+## Solution
+
+**Baire's theorem.** In a complete metric space, a countable intersection of dense open sets is dense.
+
+**Application.** In the space of continuous functions on $[0,1]$ with the uniform norm, the set of nowhere-differentiable functions is a dense $G_\delta$ (residual) — hence non-empty (in fact, "typical").
+
+**Conclusion.** Baire's theorem forces the existence of highly irregular but continuous functions.
+
+@@@ topology-Rn-boundary-open.md
+---
+title: Boundary of an open set
+category: topology/topology-of-Rn
+level: l1
+difficulty: 2
+tags: boundary, open set, disjointness
+date: 2026-11-03
+---
+
+## Statement
+
+Show that an open set $U\subseteq\mathbb{R}^n$ is disjoint from its boundary.
+
+## Hint
+
+Boundary $=\overline U\setminus\mathring U$.
+
+## Solution
+
+**Compute.** Since $U$ is open, $\mathring U=U$. Thus $\partial U=\overline U\setminus U$.
+
+**Disjointness.** $\partial U\cap U=\emptyset$.
+
+**Conclusion.** Open sets do not meet their boundary.
+
+@@@ topology-Rn-isometry.md
+---
+title: Isometries of $\mathbb{R}^n$
+category: topology/topology-of-Rn
+level: m1
+difficulty: 4
+tags: isometry, Euclidean, rigid motion
+date: 2026-11-03
+---
+
+## Statement
+
+Show that every isometry $f:\mathbb{R}^n\to\mathbb{R}^n$ is of the form $f(x)=Qx+b$ with $Q$ orthogonal.
+
+## Hint
+
+Translate to assume $f(0)=0$; then $Q=f$ preserves the norm; use the polarization identity to show $Q$ is linear.
+
+## Solution
+
+**Norm preservation.** Since $f$ is an isometry and $f(0)=0$, $\|f(x)\|=\|x\|$.
+
+**Linear.** Polarization identity: $\langle f(x),f(y)\rangle=\langle x,y\rangle$. This linearises $f$: for $\lambda\in\mathbb{R}$, $f(\lambda x)=\lambda f(x)$ and $f(x+y)=f(x)+f(y)$.
+
+**Orthogonal.** $Q=f$ satisfies $Q^TQ=I$.
+
+**Conclusion.** Any isometry of $\mathbb{R}^n$ is an orthogonal transformation plus a translation.
+
+@@@ topology-Rn-homeomorphism-ball-cube.md
+---
+title: Ball and cube are homeomorphic
+category: topology/topology-of-Rn
+level: m1
+difficulty: 4
+tags: homeomorphism, ball, cube
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the unit ball $B(0,1)\subseteq\mathbb{R}^n$ and the open cube $]-1,1[^n$ are homeomorphic.
+
+## Hint
+
+Use a scaling by the sup-norm: $T(x)=x/\|x\|_\infty\cdot\|x\|_2$ (or directly $T(x)=\frac{\|x\|_2}{\|x\|_\infty}x$ when $x\neq0$).
+
+## Solution
+
+**Map.** Define $T(x)=\frac{\|x\|_2}{\|x\|_\infty}x$ for $x\neq0$, $T(0)=0$. This maps the cube $\|x\|_\infty<1$ onto the ball $\|x\|_2<1$.
+
+**Inverse.** The inverse is $T^{-1}(y)=\frac{\|y\|_\infty}{\|y\|_2}y$, continuous.
+
+**Conclusion.** Ball and cube are homeomorphic.
+
+@@@ topology-R-open-interval.md
+---
+title: Open intervals are open sets
+category: topology/topology-of-R
+level: l1
+difficulty: 1
+tags: open sets, open intervals, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Show that any open interval $]a,b[$ (with $a<b$) is an open set of $\mathbb{R}$.
+
+## Hint
+
+For any $x\in]a,b[$, take $r=\min(x-a,b-x)>0$; then $]x-r,x+r[\subseteq]a,b[$.
+
+## Solution
+
+**Radius.** Let $x\in]a,b[$ and $r=\min(x-a,b-x)>0$. Then for any $y\in]x-r,x+r[$: $y<x+r\le b$ and $y>x-r\ge a$. So $y\in]a,b[$.
+
+**Conclusion.** Every $x\in]a,b[$ has a neighbourhood inside $]a,b[$; the interval is open.
+
+@@@ topology-R-open-ball.md
+---
+title: Open balls in $\mathbb{R}$
+category: topology/topology-of-R
+level: l1
+difficulty: 1
+tags: open ball, interval, topology
+date: 2026-11-03
+---
+
+## Statement
+
+For $a\in\mathbb{R}$ and $r>0$, describe the open ball $B(a,r)$ and show it is an open set.
+
+## Hint
+
+$B(a,r)=\{x:|x-a|<r\}=]a-r,a+r[$.
+
+## Solution
+
+**Identification.** $B(a,r)$ is the open interval $]a-r,a+r[$.
+
+**Openness.** Every point of $]a-r,a+r[$ has a small ball around it contained in $]a-r,a+r[$ (previous exercise).
+
+**Conclusion.** Open balls are open sets; they are the building blocks of the topology of $\mathbb{R}$.
+
+@@@ topology-R-union-open.md
+---
+title: Arbitrary unions of open sets
+category: topology/topology-of-R
+level: l1
+difficulty: 2
+tags: unions, open sets, arbitrary
+date: 2026-11-03
+---
+
+## Statement
+
+Show that an arbitrary union of open sets of $\mathbb{R}$ is open.
+
+## Hint
+
+For $x$ in the union, it belongs to at least one open set $U_i$; use the open ball around $x$ inside $U_i$.
+
+## Solution
+
+**Proof.** Let $(U_i)_{i\in I}$ be open and $x\in\bigcup_i U_i$. Pick $i_0$ with $x\in U_{i_0}$. Since $U_{i_0}$ is open, there is $r>0$ with $B(x,r)\subseteq U_{i_0}\subseteq\bigcup_i U_i$.
+
+**Conclusion.** $\bigcup_i U_i$ is open.
+
+**Remark.** Finite intersections of open sets are open, but infinite intersections may fail: $\bigcap_{n\ge1}]-\frac1n,\frac1n[=\{0\}$, not open.
+
+@@@ topology-R-intersection-open.md
+---
+title: Finite intersections of open sets
+category: topology/topology-of-R
+level: l1
+difficulty: 2
+tags: intersections, open sets, finite
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the intersection of finitely many open sets of $\mathbb{R}$ is open.
+
+## Hint
+
+For $x\in U_1\cap\cdots\cap U_n$, take the minimum of the radii from each $U_i$.
+
+## Solution
+
+**Proof.** Let $U_1,\ldots,U_n$ be open and $x\in\bigcap U_i$. For each $i$, there is $r_i>0$ with $B(x,r_i)\subseteq U_i$. Let $r=\min(r_1,\ldots,r_n)>0$. Then $B(x,r)\subseteq\bigcap U_i$.
+
+**Conclusion.** The intersection is open.
+
+@@@ topology-R-closed-interval.md
+---
+title: Closed intervals are closed
+category: topology/topology-of-R
+level: l1
+difficulty: 2
+tags: closed sets, closed intervals, complement
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $[a,b]$ is closed in $\mathbb{R}$.
+
+## Hint
+
+Its complement $]-\infty,a[\cup]b,+\infty[$ is a union of open sets.
+
+## Solution
+
+**Complement.** $\mathbb{R}\setminus[a,b]=]-\infty,a[\cup]b,+\infty[$, a union of open sets, hence open.
+
+**Conclusion.** $[a,b]$ is closed.
+
+@@@ topology-R-closed-definition.md
+---
+title: Closed sets
+category: topology/topology-of-R
+level: l1
+difficulty: 2
+tags: closed sets, complement, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Define a closed set in $\mathbb{R}$ and give two examples and one counterexample.
+
+## Hint
+
+Closed = complement is open.
+
+## Solution
+
+**Definition.** $F\subseteq\mathbb{R}$ is closed iff $\mathbb{R}\setminus F$ is open.
+
+**Examples.** $\emptyset$, $\mathbb{R}$, $[0,1]$, singletons $\{a\}$.
+
+**Counterexample.** $]0,1]$ is neither open nor closed: it is not open (0 is a boundary point) and its complement $]-\infty,0]\cup]1,+\infty[$ is not open.
+
+**Conclusion.** Some sets are neither open nor closed.
+
+@@@ topology-R-boundary.md
+---
+title: Interior, closure, boundary
+category: topology/topology-of-R
+level: l1
+difficulty: 3
+tags: interior, closure, boundary
+date: 2026-11-03
+---
+
+## Statement
+
+For $A=]0,1]\cup\{2\}$, compute the interior, closure, and boundary of $A$.
+
+## Hint
+
+$\mathring A$ = union of open subsets of $A$; $\overline A$ = smallest closed set containing $A$; $\partial A=\overline A\setminus\mathring A$.
+
+## Solution
+
+**Interior.** $\mathring A=]0,1[$: $1$ is not interior (every ball around $1$ hits the complement), $2$ is not interior (isolated).
+
+**Closure.** $\overline A=[0,1]\cup\{2\}$: the limit points of $]0,1]$ are in $[0,1]$; $2$ is already in $A$.
+
+**Boundary.** $\partial A=\{0,1,2\}$.
+
+**Conclusion.** Interior $]0,1[$, closure $[0,1]\cup\{2\}$, boundary $\{0,1,2\}$.
+
+@@@ topology-R-limits.md
+---
+title: Limit points
+category: topology/topology-of-R
+level: l1
+difficulty: 3
+tags: limit points, accumulation, closure
+date: 2026-11-03
+---
+
+## Statement
+
+Define a limit point of a set $A\subseteq\mathbb{R}$ and describe the limit points of $A=\{1/n:n\ge1\}$.
+
+## Hint
+
+$x$ is a limit point if every neighbourhood of $x$ meets $A\setminus\{x\}$.
+
+## Solution
+
+**Definition.** $x$ is a limit point of $A$ if $\forall\varepsilon>0$, $(x-\varepsilon,x+\varepsilon)\cap(A\setminus\{x\})\neq\emptyset$.
+
+**Limit points of $A$.** Only $0$: any $\varepsilon$-neighbourhood of $0$ contains infinitely many $1/n$; other points are isolated.
+
+**Conclusion.** $A'=\{0\}$; the closure is $\overline A=A\cup\{0\}$.
+
+@@@ topology-R-compact.md
+---
+title: Compact sets in $\mathbb{R}$
+category: topology/topology-of-R
+level: l1
+difficulty: 4
+tags: compact sets, Heine-Borel, closed bounded
+date: 2026-11-03
+---
+
+## Statement
+
+State the Heine–Borel theorem and give two examples of compact and two non-compact sets.
+
+## Hint
+
+A subset of $\mathbb{R}$ is compact iff it is closed and bounded.
+
+## Solution
+
+**Theorem (Heine–Borel).** $K\subseteq\mathbb{R}$ is compact iff $K$ is closed and bounded.
+
+**Compact.** $[0,1]$, $\{0\}\cup\{1/n:n\ge1\}$.
+
+**Non-compact.** $]0,1[$ (not closed), $[0,+\infty[$ (not bounded).
+
+**Conclusion.** Compactness = closed + bounded in $\mathbb{R}$.
+
+@@@ topology-R-open-cover.md
+---
+title: The Borel–Lebesgue property
+category: topology/topology-of-R
+level: l1
+difficulty: 4
+tags: compactness, open cover, finite subcover
+date: 2026-11-03
+---
+
+## Statement
+
+Recall the definition of compactness by open covers and show that $[0,1]$ has the Borel–Lebesgue property.
+
+## Hint
+
+Standard proof: assume a cover with no finite subcover, bisect, iterate, get contradiction.
+
+## Solution
+
+**Definition.** $K$ is compact if every open cover of $K$ admits a finite subcover.
+
+**Proof sketch for $[0,1]$.** Suppose $(U_i)$ is an open cover with no finite subcover. Bisect $[0,1]$: one half also has no finite subcover. Iterate to get nested intervals $I_n$ of length $2^{-n}$, each requiring infinitely many $U_i$. Their intersection is a single point $x\in[0,1]$, which lies in some $U_{i_0}$. For $n$ large, $I_n\subseteq U_{i_0}$ — contradiction.
+
+**Conclusion.** $[0,1]$ is compact.
+
+@@@ topology-R-connected.md
+---
+title: Connected subsets of $\mathbb{R}$
+category: topology/topology-of-R
+level: l1
+difficulty: 3
+tags: connectedness, intervals, IVT
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the connected subsets of $\mathbb{R}$ are exactly the intervals.
+
+## Hint
+
+If $A$ has a gap, split $A\cap]-\infty,c[$ and $A\cap]c,+\infty[$. Conversely, if $A$ is an interval, any separation would contradict the IVT for the identity.
+
+## Solution
+
+**Interval connected.** If $A$ is an interval and $A=U\cup V$ with $U,V$ disjoint nonempty open in $A$, take $u\in U$, $v\in V$, WLOG $u<v$. Since $A$ is an interval, $[u,v]\subseteq A$. The sets $U\cap[u,v]$ and $V\cap[u,v]$ give a separation of $[u,v]$, contradiction with connectedness of intervals.
+
+**Non-interval disconnected.** If $a<b<c$ with $a,c\in A$, $b\notin A$, then $A\cap]-\infty,b[$ and $A\cap]b,+\infty[$ separate $A$.
+
+**Conclusion.** Connected subsets of $\mathbb{R}$ = intervals.
+
+@@@ topology-R-continuity-characterisation.md
+---
+title: Continuity via open preimages
+category: topology/topology-of-R
+level: l1
+difficulty: 4
+tags: continuity, open preimages, topological definition
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f:\mathbb{R}\to\mathbb{R}$ is continuous iff $f^{-1}(U)$ is open for every open $U$.
+
+## Hint
+
+$(\Leftarrow)$: apply to $U=]f(x_0)-\varepsilon,f(x_0)+\varepsilon[$. $(\Rightarrow)$: use the $\varepsilon$-$\delta$ definition.
+
+## Solution
+
+**$\Leftarrow$.** Given $x_0$ and $\varepsilon>0$, the ball $U=]f(x_0)-\varepsilon,f(x_0)+\varepsilon[$ is open, so $f^{-1}(U)$ is open. It contains $x_0$, hence contains $B(x_0,\delta)\subseteq f^{-1}(U)$. So $|f(x)-f(x_0)|<\varepsilon$ for $|x-x_0|<\delta$.
+
+**$\Rightarrow$.** Given open $U$ and $x_0\in f^{-1}(U)$, $f(x_0)\in U$ gives $\varepsilon>0$ with $B(f(x_0),\varepsilon)\subseteq U$. Continuity provides $\delta>0$ with $B(x_0,\delta)\subseteq f^{-1}(U)$.
+
+**Conclusion.** Continuity is topological.
+
+@@@ topology-R-cantor-set.md
+---
+title: The Cantor set is compact
+category: topology/topology-of-R
+level: l1
+difficulty: 4
+tags: Cantor set, compactness, closed
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the Cantor set $K$ (intersection of nested triadic sets) is compact.
+
+## Hint
+
+$K$ is the intersection of closed bounded sets.
+
+## Solution
+
+**Construction.** $K=\bigcap_n K_n$ with $K_0=[0,1]$, $K_{n+1}$ removing the middle thirds of each interval of $K_n$.
+
+**Closed.** Each $K_n$ is a union of closed intervals, hence closed; the intersection is closed.
+
+**Bounded.** $K\subseteq[0,1]$.
+
+**Conclusion.** $K$ is closed and bounded, hence compact (Heine–Borel).
+
+**Remark.** $K$ is also uncountable, perfect, and has empty interior.
+
+@@@ topology-R-open-dense.md
+---
+title: Dense sets
+category: topology/topology-of-R
+level: l1
+difficulty: 3
+tags: dense, rationals, irrationals
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\mathbb{Q}$ and $\mathbb{R}\setminus\mathbb{Q}$ are both dense in $\mathbb{R}$.
+
+## Hint
+
+Between any two reals there is a rational, and between any two reals there is an irrational.
+
+## Solution
+
+**$\mathbb{Q}$ dense.** For $a<b$ reals, pick $n$ with $1/n<b-a$; some $k/n\in]a,b[$.
+
+**$\mathbb{R}\setminus\mathbb{Q}$ dense.** Given $a<b$, take a rational $q\in]a,b[$; then $q+\frac{\sqrt2}{n}\in]a,b[$ for large $n$ is irrational.
+
+**Conclusion.** Both $\mathbb{Q}$ and $\mathbb{R}\setminus\mathbb{Q}$ are dense in $\mathbb{R}$.
+
+@@@ topology-R-baire.md
+---
+title: Baire category theorem for $\mathbb{R}$
+category: topology/topology-of-R
+level: m1
+difficulty: 5
+tags: Baire, category, dense G-delta
+date: 2026-11-03
+---
+
+## Statement
+
+State and prove that $\mathbb{R}$ is not a countable union of nowhere dense sets.
+
+## Hint
+
+Assume $\mathbb{R}=\bigcup F_n$; construct nested intervals avoiding each $F_n$.
+
+## Solution
+
+**Statement (Baire).** $\mathbb{R}$ is not a countable union of nowhere dense sets.
+
+**Proof.** Suppose $\mathbb{R}=\bigcup_n F_n$ with each $F_n$ nowhere dense. Construct nested closed intervals $I_n$ with $I_n\cap F_n=\emptyset$ and $\mathrm{diam}(I_n)\le2^{-n}$. Their intersection is a point $x\notin\bigcup F_n$ — contradiction.
+
+**Conclusion.** $\mathbb{R}$ is of second Baire category, in particular uncountable.
+
+**Remark.** A dense $G_\delta$ (e.g. irrationals) is residual; its complement is meager.
+
+@@@ topology-R-limit-superior.md
+---
+title: Limit superior and limit inferior
+category: topology/topology-of-R
+level: l1
+difficulty: 4
+tags: limit superior, limit inferior, sequences
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\limsup$ and $\liminf$ of $u_n=(-1)^n\left(1+\frac1n\right)$.
+
+## Hint
+
+Consider even and odd subsequences.
+
+## Solution
+
+**Even.** $u_{2k}=1+\frac{1}{2k}\to1$.
+
+**Odd.** $u_{2k+1}=-(1+\frac{1}{2k+1})\to-1$.
+
+**Conclusion.** $\limsup u_n=1$, $\liminf u_n=-1$; the sequence has no limit.
+
+@@@ topology-R-compact-char.md
+---
+title: Sequential compactness in $\mathbb{R}$
+category: topology/topology-of-R
+level: l1
+difficulty: 4
+tags: sequential compactness, Bolzano-Weierstrass
+date: 2026-11-03
+---
+
+## Statement
+
+State the Bolzano–Weierstrass theorem and explain its link with compactness of $[0,1]$.
+
+## Hint
+
+Every bounded sequence has a convergent subsequence.
+
+## Solution
+
+**Theorem (Bolzano–Weierstrass).** Every bounded sequence of reals has a convergent subsequence.
+
+**Link.** If $K\subseteq\mathbb{R}$ is compact (closed and bounded), every sequence in $K$ is bounded, so has a convergent subsequence; its limit lies in $K$ since $K$ is closed.
+
+**Conclusion.** Compactness implies sequential compactness in $\mathbb{R}$; the converse also holds.
+
+@@@ topology-R-accumulation.md
+---
+title: Accumulation points of $\mathbb{Q}$
+category: topology/topology-of-R
+level: l1
+difficulty: 4
+tags: accumulation, rationals, density
+date: 2026-11-03
+---
+
+## Statement
+
+Show that every real number is an accumulation point of $\mathbb{Q}$.
+
+## Hint
+
+Use density of $\mathbb{Q}$ in $\mathbb{R}$.
+
+## Solution
+
+**Proof.** Let $x\in\mathbb{R}$ and $\varepsilon>0$. Since $\mathbb{Q}$ is dense, there is $q\in\mathbb{Q}\cap(x-\varepsilon,x+\varepsilon)$. If $q\neq x$, done; if $q=x$, take another rational in the smaller ball $(x-\varepsilon,x+\varepsilon)\setminus\{x\}$.
+
+**Conclusion.** Every real number is an accumulation point of $\mathbb{Q}$; $\overline{\mathbb{Q}}=\mathbb{R}$.
+
 @@@ continuity-summary.md
 ---
 title: Summary of continuity
