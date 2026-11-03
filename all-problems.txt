@@ -575,7 +575,7 @@ In $\ell^2$, the closed unit ball is closed and bounded but not compact.
 @@@ topology-Rn-open-ball.md
 ---
 title: Open balls in $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 1
 tags: open ball, Euclidean norm, definition
@@ -601,7 +601,7 @@ For $x\in B(a,r)$, take $\rho=r-\|x-a\|>0$ and use the triangle inequality.
 @@@ topology-Rn-open-definition.md
 ---
 title: Open sets in $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 1
 tags: open sets, definition, ball
@@ -629,7 +629,7 @@ $U$ is open iff every point of $U$ has a small ball contained in $U$.
 @@@ topology-Rn-closed.md
 ---
 title: Closed sets in $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 1
 tags: closed sets, complement, examples
@@ -655,7 +655,7 @@ Closed = complement open.
 @@@ topology-Rn-union-intersection.md
 ---
 title: Stability of open and closed sets
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 2
 tags: unions, intersections, stability
@@ -683,7 +683,7 @@ For finite intersections, take the minimum of radii. For closed sets, use De Mor
 @@@ topology-Rn-interior-closure.md
 ---
 title: Interior, closure, boundary
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 2
 tags: interior, closure, boundary
@@ -715,7 +715,7 @@ $\overline{A}$ is the smallest closed set containing $A$; boundary $=\overline A
 @@@ topology-Rn-limit-points.md
 ---
 title: Limit points in $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 2
 tags: limit points, sequences, closure
@@ -741,7 +741,7 @@ Use $\varepsilon$-balls and sequential characterisation.
 @@@ topology-Rn-compact-heine-borel.md
 ---
 title: Heine–Borel in $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 3
 tags: compactness, Heine-Borel, closed bounded
@@ -769,7 +769,7 @@ In $\mathbb{R}^n$, compact = closed + bounded.
 @@@ topology-Rn-sequential-compact.md
 ---
 title: Sequential compactness in $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 3
 tags: Bolzano-Weierstrass, sequential compactness
@@ -795,7 +795,7 @@ Every bounded sequence has a convergent subsequence.
 @@@ topology-Rn-connected.md
 ---
 title: Connectedness in $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 3
 tags: connectedness, path-connectedness
@@ -823,7 +823,7 @@ For convex $C$, the segment between any two points lies in $C$.
 @@@ topology-Rn-convex-connected.md
 ---
 title: Convex sets are connected
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 3
 tags: connectedness, convexity, segments
@@ -849,7 +849,7 @@ Path-connected sets are connected; convex sets are path-connected.
 @@@ topology-Rn-continuity-open.md
 ---
 title: Continuity and open preimages
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 4
 tags: continuity, open preimages, multivariable
@@ -875,7 +875,7 @@ Copy the one-dimensional proof, replacing intervals by balls.
 @@@ topology-Rn-boundary-sphere.md
 ---
 title: Boundary of a ball
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 2
 tags: boundary, sphere, ball
@@ -903,7 +903,7 @@ Boundary = closure $\setminus$ interior. The closed ball is its own closure; its
 @@@ topology-Rn-limit-not-continuity.md
 ---
 title: Continuity versus iterated limits
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 3
 tags: iterated limits, continuity, subtleties
@@ -929,7 +929,7 @@ Compute limits along $y=0$ and $x=0$, then along $y=x$.
 @@@ topology-Rn-compactness-image.md
 ---
 title: Continuous image of a compact set
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 3
 tags: compact, continuous image, extrema
@@ -955,7 +955,7 @@ $f(K)$ is compact in $\mathbb{R}$, hence closed and bounded; contains its suprem
 @@@ topology-Rn-uniform-continuity.md
 ---
 title: Heine–Cantor in $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: m1
 difficulty: 4
 tags: uniform continuity, Heine-Cantor, compactness
@@ -981,7 +981,7 @@ Argue by contradiction using sequential compactness.
 @@@ topology-Rn-baire.md
 ---
 title: Baire category theorem for $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: m1
 difficulty: 4
 tags: Baire, complete metric, category
@@ -1007,7 +1007,7 @@ $\mathbb{R}^n$ is a complete metric space; the set of continuous functions is me
 @@@ topology-Rn-boundary-open.md
 ---
 title: Boundary of an open set
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: l1
 difficulty: 2
 tags: boundary, open set, disjointness
@@ -1033,7 +1033,7 @@ Boundary $=\overline U\setminus\mathring U$.
 @@@ topology-Rn-isometry.md
 ---
 title: Isometries of $\mathbb{R}^n$
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: m1
 difficulty: 4
 tags: isometry, Euclidean, rigid motion
@@ -1061,7 +1061,7 @@ Translate to assume $f(0)=0$; then $Q=f$ preserves the norm; use the polarizatio
 @@@ topology-Rn-homeomorphism-ball-cube.md
 ---
 title: Ball and cube are homeomorphic
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: m1
 difficulty: 4
 tags: homeomorphism, ball, cube
@@ -1087,7 +1087,7 @@ Use a scaling by the sup-norm: $T(x)=x/\|x\|_\infty\cdot\|x\|_2$ (or directly $T
 @@@ topology-R-open-interval.md
 ---
 title: Open intervals are open sets
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 1
 tags: open sets, open intervals, definition
@@ -1111,7 +1111,7 @@ For any $x\in]a,b[$, take $r=\min(x-a,b-x)>0$; then $]x-r,x+r[\subseteq]a,b[$.
 @@@ topology-R-open-ball.md
 ---
 title: Open balls in $\mathbb{R}$
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 1
 tags: open ball, interval, topology
@@ -1137,7 +1137,7 @@ $B(a,r)=\{x:|x-a|<r\}=]a-r,a+r[$.
 @@@ topology-R-union-open.md
 ---
 title: Arbitrary unions of open sets
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 2
 tags: unions, open sets, arbitrary
@@ -1163,7 +1163,7 @@ For $x$ in the union, it belongs to at least one open set $U_i$; use the open ba
 @@@ topology-R-intersection-open.md
 ---
 title: Finite intersections of open sets
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 2
 tags: intersections, open sets, finite
@@ -1187,7 +1187,7 @@ For $x\in U_1\cap\cdots\cap U_n$, take the minimum of the radii from each $U_i$.
 @@@ topology-R-closed-interval.md
 ---
 title: Closed intervals are closed
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 2
 tags: closed sets, closed intervals, complement
@@ -1211,7 +1211,7 @@ Its complement $]-\infty,a[\cup]b,+\infty[$ is a union of open sets.
 @@@ topology-R-closed-definition.md
 ---
 title: Closed sets
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 2
 tags: closed sets, complement, definition
@@ -1239,7 +1239,7 @@ Closed = complement is open.
 @@@ topology-R-boundary.md
 ---
 title: Interior, closure, boundary
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 3
 tags: interior, closure, boundary
@@ -1267,7 +1267,7 @@ $\mathring A$ = union of open subsets of $A$; $\overline A$ = smallest closed se
 @@@ topology-R-limits.md
 ---
 title: Limit points
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 3
 tags: limit points, accumulation, closure
@@ -1293,7 +1293,7 @@ $x$ is a limit point if every neighbourhood of $x$ meets $A\setminus\{x\}$.
 @@@ topology-R-compact.md
 ---
 title: Compact sets in $\mathbb{R}$
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 4
 tags: compact sets, Heine-Borel, closed bounded
@@ -1321,7 +1321,7 @@ A subset of $\mathbb{R}$ is compact iff it is closed and bounded.
 @@@ topology-R-open-cover.md
 ---
 title: The Borel–Lebesgue property
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 4
 tags: compactness, open cover, finite subcover
@@ -1347,7 +1347,7 @@ Standard proof: assume a cover with no finite subcover, bisect, iterate, get con
 @@@ topology-R-connected.md
 ---
 title: Connected subsets of $\mathbb{R}$
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 3
 tags: connectedness, intervals, IVT
@@ -1373,7 +1373,7 @@ If $A$ has a gap, split $A\cap]-\infty,c[$ and $A\cap]c,+\infty[$. Conversely, i
 @@@ topology-R-continuity-characterisation.md
 ---
 title: Continuity via open preimages
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 4
 tags: continuity, open preimages, topological definition
@@ -1399,7 +1399,7 @@ $(\Leftarrow)$: apply to $U=]f(x_0)-\varepsilon,f(x_0)+\varepsilon[$. $(\Rightar
 @@@ topology-R-cantor-set.md
 ---
 title: The Cantor set is compact
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 4
 tags: Cantor set, compactness, closed
@@ -1429,7 +1429,7 @@ $K$ is the intersection of closed bounded sets.
 @@@ topology-R-open-dense.md
 ---
 title: Dense sets
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 3
 tags: dense, rationals, irrationals
@@ -1455,7 +1455,7 @@ Between any two reals there is a rational, and between any two reals there is an
 @@@ topology-R-baire.md
 ---
 title: Baire category theorem for $\mathbb{R}$
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: m1
 difficulty: 5
 tags: Baire, category, dense G-delta
@@ -1483,7 +1483,7 @@ Assume $\mathbb{R}=\bigcup F_n$; construct nested intervals avoiding each $F_n$.
 @@@ topology-R-limit-superior.md
 ---
 title: Limit superior and limit inferior
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 4
 tags: limit superior, limit inferior, sequences
@@ -1509,7 +1509,7 @@ Consider even and odd subsequences.
 @@@ topology-R-compact-char.md
 ---
 title: Sequential compactness in $\mathbb{R}$
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 4
 tags: sequential compactness, Bolzano-Weierstrass
@@ -1535,7 +1535,7 @@ Every bounded sequence has a convergent subsequence.
 @@@ topology-R-accumulation.md
 ---
 title: Accumulation points of $\mathbb{Q}$
-category: topology/topology-of-R
+category: topology/topology-of-r
 level: l1
 difficulty: 4
 tags: accumulation, rationals, density
