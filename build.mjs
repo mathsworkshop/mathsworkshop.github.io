@@ -215,14 +215,14 @@ function side(activePath) {
     if (!counts[path] && path !== activePath) return '';
     let out = `<a class="cat${n.depth ? ' subcat' : ''}" href="/category/${path}/"${activePath === path ? ' aria-current="page"' : ''}><span>${esc(n.name)}</span><span>${counts[path] || 0}</span></a>`;
     if (open.has(path)) {
-      const kids = n.children.map(render).join('');
+      const kids = n.children.filter(c => path === activePath || open.has(c)).map(render).join('');
       if (kids) out += `<div class="subcats">${kids}</div>`;
     }
     return out;
   };
   let h = '<aside class="side"><div><h2>Categories</h2><nav class="cats" aria-label="Categories">';
-  h += `<a class="cat" href="/"${!activePath ? ' aria-current="page"' : ''}><span>All</span><span>${problems.length}</span></a>`;
-  h += ROOTS.map(render).join('');
+  h += `<a class="cat" href="/"${!activePath ? ' aria-current="page"' : ''}><span>${activePath ? '← All categories' : 'All'}</span><span>${problems.length}</span></a>`;
+  h += ROOTS.filter(r => !activePath || open.has(r)).map(render).join('');
   return h + '</nav></div></aside>';
 }
 
