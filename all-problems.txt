@@ -7840,37 +7840,6 @@ $$\bar X\sim\mathcal{N}\!\left(\mu,\frac{\sigma^2}{n}\right).$$
 
 **Conclusion.** The sampling distribution of the mean from a normal population is normal.
 
-@@@ stat-chi-square-distribution.md
----
-title: The chi-square distribution
-category: stat/sampling
-level: l1
-difficulty: 4
-tags: chi-square, sampling distribution, normal
-date: 2026-11-03
----
-
-## Statement
-
-Let $Z_1,\ldots,Z_k$ be i.i.d. $\mathcal{N}(0,1)$. Show that $Y=Z_1^2+\cdots+Z_k^2$ has the chi-square distribution with $k$ degrees of freedom.
-
-## Hint
-
-Compute the moment generating function of $Z_i^2$ and multiply.
-
-## Solution
-
-**MGF of $Z^2$.** For $Z\sim\mathcal{N}(0,1)$ and $t<1/2$:
-$$M_{Z^2}(t)=E(e^{tZ^2})=\frac{1}{\sqrt{1-2t}}.$$
-
-**MGF of $Y$.** By independence:
-$$M_Y(t)=\left(\frac{1}{\sqrt{1-2t}}\right)^k=(1-2t)^{-k/2}.$$
-This is the MGF of $\chi^2_k$.
-
-**Conclusion.** $Y\sim\chi^2_k$.
-
-**Application.** Sample variance: $(n-1)S^2/\sigma^2\sim\chi^2_{n-1}$.
-
 @@@ stat-t-distribution.md
 ---
 title: The Student $t$ distribution
