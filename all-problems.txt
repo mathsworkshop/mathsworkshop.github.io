@@ -29096,32 +29096,6 @@ Apéry proved $\zeta(3)$ is irrational by constructing rational approximations w
 
 **Conclusion.** $\zeta(3)$ is irrational (Apéry's theorem).
 
-@@@ irrationality-riemann-zeta.md
----
-title: Irrationality of $\zeta(2n+1)$
-category: number/irrationality
-level: m1
-difficulty: 5
-tags: Riemann zeta, odd values, irrationality
-date: 2026-11-03
----
-
-## Statement
-
-State what is known about the irrationality of $\zeta(2n+1)$ for $n\ge1$.
-
-## Hint
-
-$\zeta(2n)$ are known to be rational multiples of $\pi^{2n}$; $\zeta(3)$ (Apéry) is irrational; the others are unknown.
-
-## Solution
-
-**Even values.** $\zeta(2n)$ are rational multiples of $\pi^{2n}$ (Euler). These are transcendental (since $\pi$ is), hence irrational.
-
-**Odd values.** $\zeta(3)$ irrational (Apéry). $\zeta(5),\zeta(7),\ldots$: irrationality of any single one remains unknown. However, infinitely many $\zeta(2n+1)$ are irrational (Rivoal, Zudilin).
-
-**Conclusion.** Much remains open about $\zeta$ at odd integers.
-
 @@@ irrationality-liouville-theorem.md
 ---
 title: Liouville's theorem and examples
