@@ -1,0 +1,844 @@
+@@@ linear-map-definition-check.md
+---
+title: Checking linearity
+category: linear/linear-maps
+level: lycee
+difficulty: 1
+tags: linear map, definition, examples
+date: 2026-11-03
+---
+
+## Statement
+
+Determine whether each map is linear:
+
+(a) $f:\mathbb{R}^2\to\mathbb{R}^2$, $f(x,y)=(2x-y, x+3y)$;
+(b) $g:\mathbb{R}^2\to\mathbb{R}$, $g(x,y)=xy$;
+(c) $h:\mathbb{R}\to\mathbb{R}$, $h(x)=x+1$;
+(d) $k:\mathbb{R}^2\to\mathbb{R}^2$, $k(x,y)=(x^2,y)$.
+
+## Hint
+
+Check $f(u+v)=f(u)+f(v)$ and $f(\lambda u)=\lambda f(u)$. A quick necessary condition is $f(0)=0$.
+
+## Solution
+
+**(a)** $f(\lambda(x,y))=(2\lambda x-\lambda y,\lambda x+3\lambda y)=\lambda f(x,y)$, and $f((x,y)+(x',y'))=(2(x+x')-(y+y'),(x+x')+3(y+y'))=f(x,y)+f(x',y')$. Linear.
+
+**(b)** $g(2,3)=6$ but $2g(1,1)+g(0,1)=2\cdot1+0=2\neq6$; alternatively $g(\lambda x,\lambda y)=\lambda^2 xy\neq\lambda g(x,y)$ in general. Not linear.
+
+**(c)** $h(0)=1\neq0$. Not linear.
+
+**(d)** $k(2,1)=(4,1)$ but $2k(1,1)=(2,2)$. Not linear.
+
+**Conclusion.** Only (a) is linear.
+
+@@@ linear-map-matrix.md
+---
+title: Matrix of a linear map
+category: linear/linear-maps
+level: lycee
+difficulty: 2
+tags: matrix representation, canonical basis, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^3\to\mathbb{R}^2$ be defined by $f(x,y,z)=(x+2y, 3y-z)$. Write the matrix of $f$ in the canonical bases.
+
+## Hint
+
+The columns are the images of the canonical basis vectors.
+
+## Solution
+
+**Images.**
+$$f(1,0,0)=(1,0), \quad f(0,1,0)=(2,3), \quad f(0,0,1)=(0,-1).$$
+
+**Matrix.** These are the columns:
+$$A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 3 & -1 \end{pmatrix}.$$
+
+**Check.** $A(x,y,z)^T = (x+2y, 3y-z)^T$, consistent with $f$.
+
+@@@ linear-map-kernel-basic.md
+---
+title: Computing a kernel
+category: linear/linear-maps
+level: lycee
+difficulty: 2
+tags: kernel, linear map, basis
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^3\to\mathbb{R}^3$ be defined by $f(x,y,z)=(x+y, y+z, x+2y+z)$. Compute $\ker f$.
+
+## Hint
+
+Solve $f(x,y,z)=(0,0,0)$.
+
+## Solution
+
+**System.**
+$$x+y=0, \qquad y+z=0, \qquad x+2y+z=0.$$
+From the first, $x=-y$. From the second, $z=-y$. The third then becomes $-y+2y-y=0$, automatically satisfied.
+
+**Kernel.** $\ker f=\{( -y, y, -y): y\in\mathbb{R}\}=\operatorname{span}((-1,1,-1))$.
+
+**Conclusion.** $\ker f$ is the line spanned by $(-1,1,-1)$.
+
+@@@ linear-map-image-basic.md
+---
+title: Computing an image
+category: linear/linear-maps
+level: lycee
+difficulty: 2
+tags: image, linear map, generators
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}^3$ be defined by $f(x,y)=(x+y, x-y, 2x)$. Compute $\operatorname{Im} f$ and its dimension.
+
+## Hint
+
+The image is spanned by the images of a basis of $\mathbb{R}^2$.
+
+## Solution
+
+**Generators.** $f(1,0)=(1,1,2)$ and $f(0,1)=(1,-1,0)$.
+
+**Independence.** The two vectors are not proportional, so they are independent.
+
+**Conclusion.** $\operatorname{Im} f=\operatorname{span}((1,1,2),(1,-1,0))$, a plane in $\mathbb{R}^3$, of dimension $2$.
+
+@@@ linear-map-rank-nullity.md
+---
+title: Rank-nullity theorem on an example
+category: linear/linear-maps
+level: lycee
+difficulty: 3
+tags: rank-nullity, rank, kernel dimension
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^4\to\mathbb{R}^3$ be the linear map with matrix
+$$A = \begin{pmatrix} 1 & 2 & 3 & 1 \\ 2 & 4 & 6 & 3 \\ 0 & 0 & 0 & 1 \end{pmatrix}.$$
+Compute $\operatorname{rank}(f)$ and $\dim\ker f$, and check the rank-nullity theorem.
+
+## Hint
+
+Row-reduce $A$ and count nonzero rows.
+
+## Solution
+
+**Row reduction.** $L_2\leftarrow L_2-2L_1$:
+$$\begin{pmatrix} 1 & 2 & 3 & 1 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 1 \end{pmatrix}.$$
+$L_3\leftarrow L_3-L_2$:
+$$\begin{pmatrix} 1 & 2 & 3 & 1 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \end{pmatrix}.$$
+Rank is $2$.
+
+**Kernel dimension.** By rank-nullity, $\dim\ker f=4-2=2$.
+
+**Conclusion.** $\operatorname{rank}(f)=2$ and $\dim\ker f=2$, with $2+2=4$.
+
+@@@ linear-map-injective.md
+---
+title: An injective linear map
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: injectivity, kernel, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}^3$ be defined by $f(x,y)=(x+y, x-y, 2x)$. Show that $f$ is injective.
+
+## Hint
+
+Compute $\ker f$.
+
+## Solution
+
+**Kernel.** Solve $x+y=0$, $x-y=0$, $2x=0$. From the first two, adding gives $2x=0$, so $x=0$, then $y=0$.
+
+**Conclusion.** $\ker f=\{0\}$, so $f$ is injective. Since $\dim\mathbb{R}^2=2$ and $f$ is injective, $\operatorname{Im} f$ has dimension $2$, consistent with the earlier computation.
+
+@@@ linear-map-surjective.md
+---
+title: A surjective linear map
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: surjectivity, rank, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^3\to\mathbb{R}^2$ be defined by $f(x,y,z)=(x+y, y+z)$. Show that $f$ is surjective.
+
+## Hint
+
+Find preimages of the standard basis of $\mathbb{R}^2$.
+
+## Solution
+
+**Preimages.** $f(1,0,0)=(1,0)$ and $f(0,0,1)=(0,1)$.
+
+**Surjectivity.** For any $(a,b)\in\mathbb{R}^2$, $f(a,0,b)=(a,b)$.
+
+**Kernel.** $x+y=0$, $y+z=0$ gives $y=-x$, $z=x$, so $\ker f=\operatorname{span}((1,-1,1))$.
+
+**Conclusion.** $f$ is surjective, $\operatorname{rank}(f)=2$, $\dim\ker f=1$, and $2+1=3$.
+
+@@@ linear-map-isomorphism.md
+---
+title: An isomorphism
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: isomorphism, inverse, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}^2$ be defined by $f(x,y)=(2x+y, x-y)$. Show that $f$ is an isomorphism and compute $f^{-1}$.
+
+## Hint
+
+Show that $\ker f=\{0\}$, or compute the inverse of the matrix.
+
+## Solution
+
+**Matrix.**
+$$A = \begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix}, \qquad \det A = -2-1=-3\neq0.$$
+So $A$ is invertible and $f$ is an isomorphism.
+
+**Inverse.**
+$$A^{-1} = -\frac13\begin{pmatrix} -1 & -1 \\ -1 & 2 \end{pmatrix} = \frac13\begin{pmatrix} 1 & 1 \\ 1 & -2 \end{pmatrix}.$$
+So $f^{-1}(u,v)=\frac13(u+v, u-2v)$.
+
+**Verification.** $f(f^{-1}(u,v))=(u,v)$:
+$$f\left(\frac{u+v}{3}, \frac{u-2v}{3}\right) = \left(\frac{2(u+v)+(u-2v)}{3}, \frac{(u+v)-(u-2v)}{3}\right)=(u,v).$$
+
+@@@ linear-map-rank-basic.md
+---
+title: Rank of a linear map
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: rank, image dimension, matrix
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^3\to\mathbb{R}^3$ be defined by
+$$f(x,y,z)=(x+2y, 2x+4y, 3x+6y+z).$$
+Compute $\operatorname{rank}(f)$.
+
+## Hint
+
+Write the matrix and row-reduce.
+
+## Solution
+
+**Matrix.**
+$$A = \begin{pmatrix} 1 & 2 & 0 \\ 2 & 4 & 0 \\ 3 & 6 & 1 \end{pmatrix}.$$
+
+**Row reduction.** $L_2\leftarrow L_2-2L_1$ gives zero row; $L_3\leftarrow L_3-3L_1$:
+$$\begin{pmatrix} 1 & 2 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}.$$
+Rank is $2$.
+
+**Conclusion.** $\operatorname{rank}(f)=2$, $\dim\ker f=1$.
+
+@@@ linear-map-composition.md
+---
+title: Composition of linear maps
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: composition, matrix product, linear maps
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}^3$ have matrix
+$$A=\begin{pmatrix} 1 & 2 \\ 0 & 1 \\ 1 & 0 \end{pmatrix},$$
+and $g:\mathbb{R}^3\to\mathbb{R}^2$ have matrix
+$$B=\begin{pmatrix} 1 & 0 & 1 \\ 2 & 1 & 0 \end{pmatrix}.$$
+Compute the matrix of $g\circ f$.
+
+## Hint
+
+The matrix of $g\circ f$ is $BA$.
+
+## Solution
+
+**Product.**
+$$BA = \begin{pmatrix} 1 & 0 & 1 \\ 2 & 1 & 0 \end{pmatrix}\begin{pmatrix} 1 & 2 \\ 0 & 1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 1+0+1 & 2+0+0 \\ 2+0+0 & 4+1+0 \end{pmatrix} = \begin{pmatrix} 2 & 2 \\ 2 & 5 \end{pmatrix}.$$
+
+**Conclusion.** The matrix of $g\circ f$ is $\begin{pmatrix} 2 & 2 \\ 2 & 5 \end{pmatrix}$.
+
+@@@ linear-map-kernel-composition.md
+---
+title: Kernel of a composition
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: composition, kernel, inclusion
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:E\to F$ and $g:F\to G$ be linear maps. Show that $\ker f\subseteq\ker(g\circ f)$, with equality if $g$ is injective on $\operatorname{Im} f$.
+
+## Hint
+
+For the first inclusion, use $f(x)=0\implies g(f(x))=0$. For equality, suppose $g(f(x))=0$ and use injectivity.
+
+## Solution
+
+**Inclusion.** If $x\in\ker f$, then $f(x)=0$, so $(g\circ f)(x)=g(0)=0$, i.e. $x\in\ker(g\circ f)$.
+
+**Equality when $g$ is injective on $\operatorname{Im} f$.** Suppose $x\in\ker(g\circ f)$. Then $g(f(x))=0$. Since $f(x)\in\operatorname{Im} f$ and $g$ is injective on this set, and since $g(0)=0$, we get $f(x)=0$. So $x\in\ker f$.
+
+**Conclusion.** $\ker f\subseteq\ker(g\circ f)$, with equality under the stated condition.
+
+@@@ linear-map-image-composition.md
+---
+title: Image of a composition
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: composition, image, inclusion
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:E\to F$ and $g:F\to G$ be linear maps. Show that $\operatorname{Im}(g\circ f)\subseteq\operatorname{Im} g$, with equality if $g$ is surjective.
+
+## Hint
+
+The image of $g\circ f$ is $g(\operatorname{Im} f)$.
+
+## Solution
+
+**Inclusion.** $\operatorname{Im}(g\circ f)=g(\operatorname{Im} f)\subseteq g(F)=\operatorname{Im} g$.
+
+**Equality if $g$ surjective.** If $\operatorname{Im} g=G$, then for every $w\in G$ there is $y\in F$ with $g(y)=w$. But $y$ itself may not be in $\operatorname{Im} f$. So equality requires more than surjectivity of $g$ in general; a sufficient condition is that $\operatorname{Im} f+\ker g=F$. Under this condition, write $y=y_f+k$ with $y_f\in\operatorname{Im} f$ and $k\in\ker g$; then $g(y)=g(y_f)$, so $w\in g(\operatorname{Im} f)$.
+
+**Conclusion.** In general $\operatorname{Im}(g\circ f)\subseteq\operatorname{Im} g$, with equality when $\operatorname{Im} f+\ker g=F$ (in particular when $g$ is injective, or when $\operatorname{Im} f=F$).
+
+@@@ linear-map-matrix-composition.md
+---
+title: Composition and matrix product
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: composition, matrix product, representation
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^n\to\mathbb{R}^m$ and $g:\mathbb{R}^m\to\mathbb{R}^p$ be linear maps with matrices $A$ and $B$ in the canonical bases. Show that the matrix of $g\circ f$ is $BA$.
+
+## Hint
+
+Compute $g(f(x))$ using the matrix product.
+
+## Solution
+
+**Matrix action.** For $x\in\mathbb{R}^n$, $f(x)=Ax\in\mathbb{R}^m$ and $g(y)=By\in\mathbb{R}^p$. Therefore
+$$(g\circ f)(x)=g(f(x))=B(Ax)=(BA)x.$$
+So the linear map $g\circ f$ is represented by the matrix $BA$.
+
+**Conclusion.** Composition of linear maps corresponds to matrix multiplication (in the same order).
+
+@@@ linear-map-change-of-basis.md
+---
+title: Change of basis for a linear map
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: change of basis, matrix representation, similarity
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}^2$ have matrix $A=\begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ in the canonical basis. Compute the matrix of $f$ in the basis $\mathcal{B}=((1,1),(1,-1))$.
+
+## Hint
+
+If $P$ is the transition matrix from the canonical basis to $\mathcal{B}$, the new matrix is $P^{-1}AP$.
+
+## Solution
+
+**Transition matrix.**
+$$P = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, \qquad P^{-1} = \frac12\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.$$
+
+**New matrix.**
+$$P^{-1}AP = \frac12\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.$$
+Compute:
+$$\begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \begin{pmatrix} 3 & 1 \\ 3 & -1 \end{pmatrix},$$
+then
+$$\frac12\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 3 & 1 \\ 3 & -1 \end{pmatrix} = \frac12\begin{pmatrix} 6 & 0 \\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}.$$
+
+**Conclusion.** In $\mathcal{B}$, the matrix is $\operatorname{diag}(3,1)$.
+
+@@@ linear-map-similarity-properties.md
+---
+title: Invariants under similarity
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: similarity, trace, determinant, rank
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ and $B$ be similar matrices. Show that $A$ and $B$ have the same rank, trace, and determinant.
+
+## Hint
+
+$B=P^{-1}AP$. For the rank, use that $P$ and $P^{-1}$ are isomorphisms. For trace and determinant, use the properties of the trace and the multiplicativity of the determinant.
+
+## Solution
+
+**Rank.** Multiplication by an invertible matrix preserves the rank (it is an isomorphism). So $\operatorname{rank}(B)=\operatorname{rank}(P^{-1}AP)=\operatorname{rank}(A)$.
+
+**Trace.** Using the cyclic property: $\operatorname{tr}(P^{-1}AP)=\operatorname{tr}(APP^{-1})=\operatorname{tr}(A)$.
+
+**Determinant.**
+$$\det B = \det(P^{-1}AP)=\det(P^{-1})\det A\det P=\det A.$$
+
+**Conclusion.** Rank, trace, and determinant are all invariant under similarity. In particular, the characteristic polynomial is also invariant.
+
+@@@ linear-map-diagonalization-criterion.md
+---
+title: Diagonalizability and the sum of eigenspaces
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: diagonalization, eigenspaces, dimension
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:E\to E$ be a linear endomorphism of a finite-dimensional space $E$. Show that $f$ is diagonalizable if and only if $\sum_\lambda\dim E_\lambda=\dim E$, where $E_\lambda=\ker(f-\lambda\,\mathrm{id})$.
+
+## Hint
+
+If $f$ is diagonalizable, there is a basis of eigenvectors. Conversely, if the sum of dimensions equals $\dim E$, the union of bases of the eigenspaces is a basis of $E$.
+
+## Solution
+
+**Forward direction.** If $f$ is diagonalizable, there is a basis of eigenvectors. Each eigenvector lies in some eigenspace, so the sum of the dimensions of the eigenspaces is at least $\dim E$. Since the eigenspaces are in direct sum (distinct eigenvalues), their dimensions sum to exactly $\dim E$.
+
+**Converse.** If the sum of the dimensions equals $\dim E$, choose a basis of each eigenspace. Because the eigenspaces are in direct sum, the union of these bases has $\dim E$ vectors and is linearly independent, hence a basis of $E$. This basis consists of eigenvectors, so $f$ is diagonalizable.
+
+**Conclusion.** Diagonalizability is equivalent to the sum of the eigenspace dimensions being $\dim E$.
+
+@@@ linear-map-kernel-basis-3x3.md
+---
+title: Basis of a kernel
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: kernel, basis, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^3\to\mathbb{R}^3$ have matrix
+$$A = \begin{pmatrix} 1 & 1 & 2 \\ 2 & 2 & 4 \\ 1 & 0 & 1 \end{pmatrix}.$$
+Find a basis of $\ker f$.
+
+## Hint
+
+Row-reduce $A$ and solve $Ax=0$.
+
+## Solution
+
+**Row reduction.** $L_2\leftarrow L_2-2L_1$ gives zero row; $L_3\leftarrow L_3-L_1$:
+$$\begin{pmatrix} 1 & 1 & 2 \\ 0 & 0 & 0 \\ 0 & -1 & -1 \end{pmatrix}.$$
+Swapping rows:
+$$\begin{pmatrix} 1 & 1 & 2 \\ 0 & -1 & -1 \\ 0 & 0 & 0 \end{pmatrix}.$$
+Rank is $2$, $\dim\ker f=1$.
+
+**Solve.** From $-y-z=0$, $y=-z$. From $x+y+2z=0$, $x+z-2z=0$?? Wait: $x+y+2z=0$ with $y=-z$ gives $x-z+2z=0$, i.e. $x=-z$. So $(x,y,z)=(-z,-z,z)=z(-1,-1,1)$.
+
+**Conclusion.** $\ker f=\operatorname{span}((-1,-1,1))$.
+
+@@@ linear-map-rank-inequality.md
+---
+title: Rank inequality for a composition
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: rank, composition, inequality
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:E\to F$ and $g:F\to G$ be linear maps. Show that
+$$\operatorname{rank}(g\circ f)\ge\operatorname{rank}(f)+\operatorname{rank}(g)-\dim F.$$
+
+## Hint
+
+Apply rank-nullity to $g$ restricted to $\operatorname{Im} f$, or use the inclusion $\ker(g\circ f)\subseteq f^{-1}(\ker g)$.
+
+## Solution
+
+**Kernel inclusion.** $\ker(g\circ f)=f^{-1}(\ker g)$. Therefore
+$$\dim\ker(g\circ f)\le\dim\ker f+\dim\ker g.$$
+(Indeed, the restriction of $f$ to $f^{-1}(\ker g)$ has kernel $\ker f$ and image in $\ker g$.)
+
+**Rank-nullity.** $\operatorname{rank}(g\circ f)=\dim E-\dim\ker(g\circ f)$, $\operatorname{rank}(f)=\dim E-\dim\ker f$, $\operatorname{rank}(g)=\dim F-\dim\ker g$.
+
+**Inequality.** Combining:
+$$\operatorname{rank}(g\circ f)\ge\dim E-\dim\ker f-\dim\ker g=\operatorname{rank}(f)+\operatorname{rank}(g)-\dim F.$$
+
+**Conclusion.** The inequality holds; it is known as **Sylvester's rank inequality**.
+
+@@@ linear-map-projection.md
+---
+title: A linear projection
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: projection, idempotence, kernel and image
+date: 2026-11-03
+---
+
+## Statement
+
+Let $p:\mathbb{R}^2\to\mathbb{R}^2$ be defined by $p(x,y)=(x,0)$. Show that $p$ is linear, compute $\ker p$ and $\operatorname{Im} p$, and verify $p\circ p=p$.
+
+## Hint
+
+Project onto the first coordinate.
+
+## Solution
+
+**Linearity.** $p$ is a linear map (it is the linear form $(x,y)\mapsto x$ applied to a coordinate). Direct check: $p(\lambda u+\mu v)=\lambda p(u)+\mu p(v)$.
+
+**Kernel.** $p(x,y)=0\iff x=0$, so $\ker p=\{(0,y): y\in\mathbb{R}\}=\operatorname{span}((0,1))$, the $y$-axis.
+
+**Image.** $p(x,y)=(x,0)$, so $\operatorname{Im} p=\{(x,0): x\in\mathbb{R}\}=\operatorname{span}((1,0))$, the $x$-axis.
+
+**Idempotence.** $p(p(x,y))=p(x,0)=(x,0)=p(x,y)$.
+
+**Conclusion.** $p$ is a projection onto the $x$-axis, parallel to the $y$-axis.
+
+@@@ linear-map-symmetry.md
+---
+title: A linear symmetry
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: symmetry, involution, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $s:\mathbb{R}^2\to\mathbb{R}^2$ be defined by $s(x,y)=(y,x)$. Show that $s$ is linear and $s\circ s=\mathrm{id}$.
+
+## Hint
+
+Direct check.
+
+## Solution
+
+**Linearity.** $s(\lambda(x,y))=( \lambda y,\lambda x)=\lambda(y,x)=\lambda s(x,y)$, and $s((x,y)+(x',y'))=(y+y',x+x')=s(x,y)+s(x',y')$.
+
+**Involution.** $s(s(x,y))=s(y,x)=(x,y)$, so $s^2=\mathrm{id}$.
+
+**Eigenvalues and eigenspaces.** $\lambda=1$: $y=x$, eigenspace the line $(1,1)$. $\lambda=-1$: $y=-x$, eigenspace the line $(1,-1)$. The two lines are in direct sum, and $s$ is the reflection across the line $y=x$.
+
+**Conclusion.** $s$ is a linear involution (a symmetry), and it is diagonalizable with eigenvalues $1$ and $-1$.
+
+@@@ linear-map-nilpotent.md
+---
+title: A nilpotent endomorphism
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: nilpotent, kernel, image
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^3\to\mathbb{R}^3$ be defined by $f(x,y,z)=(y,z,0)$. Show that $f$ is linear, compute $f^2$ and $f^3$, and describe $\ker f$ and $\operatorname{Im} f$.
+
+## Hint
+
+Apply $f$ repeatedly.
+
+## Solution
+
+**Linearity.** $f$ is linear (each coordinate is linear).
+
+**Powers.** $f^2(x,y,z)=f(y,z,0)=(z,0,0)$, and $f^3(x,y,z)=f(z,0,0)=(0,0,0)$. So $f^3=0$: $f$ is nilpotent of index $3$.
+
+**Kernel.** $f(x,y,z)=0$ iff $y=z=0$, so $\ker f=\{(x,0,0)\}=\operatorname{span}((1,0,0))$, dimension $1$.
+
+**Image.** $f(x,y,z)=(y,z,0)$, so $\operatorname{Im} f=\{(y,z,0)\}=\operatorname{span}((1,0,0),(0,1,0))$, dimension $2$.
+
+**Check.** $\dim\ker f+\dim\operatorname{Im} f=1+2=3$.
+
+**Conclusion.** $f$ is nilpotent of index $3$, with $\ker f\subseteq\operatorname{Im} f$ (both contain the $x$-axis).
+
+@@@ linear-map-kernel-image-sum.md
+---
+title: Kernel and image of an endomorphism
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: kernel, image, direct sum, endomorphism
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:E\to E$ be a linear endomorphism of a finite-dimensional space. Show that $f$ is invertible if and only if $E=\ker f\oplus\operatorname{Im} f$.
+
+## Hint
+
+If $f$ is invertible, $\ker f=\{0\}$ and $\operatorname{Im} f=E$. Conversely, if $\ker f\cap\operatorname{Im} f=\{0\}$ and the dimensions sum to $\dim E$, then $\ker f=\{0\}$.
+
+## Solution
+
+**If $f$ is invertible.** Then $\ker f=\{0\}$ and $\operatorname{Im} f=E$, so the sum is trivially direct and equal to $E$.
+
+**Conversely, assume $E=\ker f\oplus\operatorname{Im} f$.** Then $\dim\ker f+\dim\operatorname{Im} f=\dim E$ (this holds for any linear map by rank-nullity, so the direct-sum hypothesis adds only $\ker f\cap\operatorname{Im} f=\{0\}$). Suppose $x\in\ker f$. Then $x=f(y)$ for some $y$ (since $x\in E=\operatorname{Im} f+\ker f$ and $x\in\ker f$ means we can write $x=x_k+x_i$; but $x\in\ker f$ and $x\in\operatorname{Im} f+\ker f$: write $x=x'$ with $x'\in\operatorname{Im} f$ by taking $x_i=x$, $x_k=0$; wait, we need a cleaner argument).
+
+Cleaner: if $x\in\ker f\cap\operatorname{Im} f$, then $x=f(y)$ for some $y$ and $f(x)=0$. Then $f^2(y)=0$. If $\ker f\cap\operatorname{Im} f=\{0\}$, then $f(y)\in\ker f\cap\operatorname{Im} f$, so $f(y)=0$, i.e. $y\in\ker f$, i.e. $x=f(y)=0$. Hence $\ker f\cap\operatorname{Im} f=\{0\}$ forces: $x=f(y)$ and $f(x)=0$ implies $f^2(y)=0$, but that alone doesn't imply $f(y)=0$ unless $f^2=f\circ f$ has kernel containing $\operatorname{Im} f$... 
+
+Actually the correct statement is: if $\ker f\cap\operatorname{Im} f=\{0\}$, then $f$ restricted to $\operatorname{Im} f$ is injective (since its kernel is $\ker f\cap\operatorname{Im} f$). But that does not directly give $f$ invertible.
+
+Let me restate: the equivalence "$f$ invertible $\iff$ $E=\ker f\oplus\operatorname{Im} f$" is **false** in general. For example, the nilpotent $f(x,y,z)=(y,z,0)$ has $\ker f\cap\operatorname{Im} f=\{(x,0,0)\}\neq\{0\}$, and indeed $f$ is not invertible; but for a suitable map, $\ker f\oplus\operatorname{Im} f$ could be $E$ without $f$ being invertible (e.g. on $\mathbb{R}^2$, $f(x,y)=(x,0)$: $\ker f=\{(0,y)\}$, $\operatorname{Im} f=\{(x,0)\}$, and $\ker f\oplus\operatorname{Im} f=\mathbb{R}^2$, but $f$ is not invertible).
+
+**Conclusion.** The proposed equivalence is **false**. The correct equivalence is: $f$ is invertible iff $\ker f=\{0\}$ (equivalently $\operatorname{Im} f=E$). The direct-sum condition $E=\ker f\oplus\operatorname{Im} f$ holds for many non-invertible $f$ (e.g. any projection).
+
+@@@ linear-map-nonzero-eigenvalue.md
+---
+title: Eigenvectors and injectivity
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: eigenvectors, injectivity, kernel
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:E\to E$ be a linear endomorphism. Show that $f$ is injective if and only if $0$ is not an eigenvalue of $f$.
+
+## Hint
+
+$0$ is an eigenvalue iff there is a nonzero $v$ with $f(v)=0$, i.e. $\ker f\neq\{0\}$.
+
+## Solution
+
+**$0$ eigenvalue $\iff\ker f\neq\{0\}$.** $0$ is an eigenvalue of $f$ iff there exists $v\neq 0$ with $f(v)=0\cdot v=0$, iff $\ker f\neq\{0\}$.
+
+**Conclusion.** By the injectivity criterion ($f$ injective $\iff\ker f=\{0\}$), $f$ is injective iff $0$ is not an eigenvalue.
+
+@@@ linear-map-matrix-rank-invariance.md
+---
+title: Rank is invariant under invertible multiplications
+category: linear/linear-maps
+level: l1
+difficulty: 3
+tags: rank, invertible matrices, invariance
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A\in\mathcal{M}_{m,n}(\mathbb{R})$, $P\in GL_m(\mathbb{R})$, $Q\in GL_n(\mathbb{R})$. Show that
+$$\operatorname{rank}(PA)=\operatorname{rank}(A), \qquad \operatorname{rank}(AQ)=\operatorname{rank}(A), \qquad \operatorname{rank}(PAQ)=\operatorname{rank}(A).$$
+
+## Hint
+
+Multiplication by an invertible matrix is an isomorphism of vector spaces.
+
+## Solution
+
+**$PA$.** Multiplication by $P$ is an isomorphism $\mathbb{R}^m\to\mathbb{R}^m$, so it preserves dimensions of subspaces. Thus
+$$\operatorname{rank}(PA)=\dim(P(\operatorname{Im} A))=\dim(\operatorname{Im} A)=\operatorname{rank}(A).$$
+
+**$AQ$.** Multiplication by $Q$ is an isomorphism $\mathbb{R}^n\to\mathbb{R}^n$, so $\operatorname{Im}(AQ)=A(\operatorname{Im} Q)=A(\mathbb{R}^n)=\operatorname{Im} A$. Thus $\operatorname{rank}(AQ)=\operatorname{rank}(A)$.
+
+**$PAQ$.** Combine: $\operatorname{rank}(PAQ)=\operatorname{rank}(AQ)=\operatorname{rank}(A)$.
+
+**Conclusion.** The rank is invariant under left and right multiplication by invertible matrices.
+
+@@@ linear-map-orthogonal-projection.md
+---
+title: Projection onto a subspace
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: orthogonal projection, linear map, kernel and image
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F\subseteq\mathbb{R}^n$ be a subspace with orthonormal basis $(u_1,\ldots,u_k)$. Define $p(x)=\sum_{i=1}^k\langle x,u_i\rangle u_i$. Show that $p$ is linear, compute $\ker p$ and $\operatorname{Im} p$, and check $p^2=p$.
+
+## Hint
+
+Linearity of $p$ comes from linearity of the inner product. For the kernel, use the orthogonal complement.
+
+## Solution
+
+**Linearity.** For $x,y\in\mathbb{R}^n$ and $\lambda\in\mathbb{R}$:
+$$p(x+\lambda y)=\sum_i\langle x+\lambda y,u_i\rangle u_i=\sum_i(\langle x,u_i\rangle+\lambda\langle y,u_i\rangle)u_i=p(x)+\lambda p(y).$$
+So $p$ is linear.
+
+**Image.** $p(x)$ is a combination of the $u_i$, so $\operatorname{Im} p\subseteq F$. Conversely, if $x\in F$, then $x=\sum_i\langle x,u_i\rangle u_i=p(x)$, so $F\subseteq\operatorname{Im} p$. Therefore $\operatorname{Im} p=F$.
+
+**Kernel.** $p(x)=0$ iff $x$ is orthogonal to every $u_i$, iff $x\in F^\perp$. So $\ker p=F^\perp$.
+
+**Idempotence.** For $x\in\mathbb{R}^n$, $p(x)\in F$, and $p$ is the identity on $F$ (as shown above), so $p(p(x))=p(x)$.
+
+**Conclusion.** $p$ is the orthogonal projection onto $F$, with $\ker p=F^\perp$, $\operatorname{Im} p=F$, and $p^2=p$.
+
+@@@ linear-map-endomorphism-inverse.md
+---
+title: Inverse of an endomorphism
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: inverse, endomorphism, matrix inverse
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^3\to\mathbb{R}^3$ have matrix
+$$A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 4 \\ 0 & 0 & 1 \end{pmatrix}.$$
+Show that $f$ is an isomorphism and compute $f^{-1}(x,y,z)$.
+
+## Hint
+
+$A$ is upper triangular with nonzero diagonal, hence invertible. Compute $A^{-1}$ by back-substitution.
+
+## Solution
+
+**Invertibility.** $\det A = 1\cdot1\cdot1=1\neq0$, so $A$ is invertible and $f$ is an isomorphism.
+
+**Inverse.** Solve $A(x',y',z')=(x,y,z)$:
+$$x'+2y'+3z'=x, \quad y'+4z'=y, \quad z'=z.$$
+Back-substituting: $z'=z$; $y'=y-4z$; $x'=x-2(y-4z)-3z=x-2y+5z$.
+
+**Conclusion.** $f^{-1}(x,y,z)=(x-2y+5z,\ y-4z,\ z)$.
+
+@@@ linear-map-matrix-kernel-image-relation.md
+---
+title: Kernel and image of $A$ and $A^T$
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: kernel, image, transpose, orthogonal complement
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A\in\mathcal{M}_{m,n}(\mathbb{R})$. Show that
+$$\ker A=(\operatorname{Im} A^T)^\perp, \qquad \operatorname{Im} A=(\ker A^T)^\perp,$$
+where the orthogonal complements are taken in $\mathbb{R}^n$ and $\mathbb{R}^m$ respectively.
+
+## Hint
+
+Use the identity $\langle Ax,y\rangle=\langle x,A^T y\rangle$.
+
+## Solution
+
+**First identity.** Let $x\in\mathbb{R}^n$. Then
+$$x\in\ker A\iff Ax=0\iff \langle Ax,y\rangle=0\ \forall y\in\mathbb{R}^m\iff \langle x,A^T y\rangle=0\ \forall y\in\mathbb{R}^m.$$
+So $x$ is orthogonal to every vector of the form $A^T y$, i.e. to $\operatorname{Im} A^T$. Hence $\ker A=(\operatorname{Im} A^T)^\perp$.
+
+**Second identity.** Apply the first identity to $A^T$: $\ker A^T=(\operatorname{Im} A)^\perp$. Taking orthogonal complements: $(\ker A^T)^\perp=\operatorname{Im} A$.
+
+**Conclusion.** Both identities hold. They imply $\operatorname{rank} A+\dim\ker A^T=m$ and $\operatorname{rank} A+\dim\ker A=n$ (rank-nullity), which is consistent with $\operatorname{rank} A=\operatorname{rank} A^T$.
+
+@@@ linear-map-invariant-subspace.md
+---
+title: Invariant subspaces
+category: linear/linear-maps
+level: l1
+difficulty: 4
+tags: invariant subspace, endomorphism, restriction
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:E\to E$ be a linear endomorphism, and $F$ a subspace of $E$. We say $F$ is $f$-invariant if $f(F)\subseteq F$. Show that if $F$ is $f$-invariant, the restriction $f|_F:F\to F$ is a well-defined linear map.
+
+## Hint
+
+For $x\in F$, $f|_F(x)=f(x)$ is in $F$ by invariance. Linearity is inherited from $f$.
+
+## Solution
+
+**Well-defined.** If $x\in F$, then $f(x)\in f(F)\subseteq F$, so $f|_F(x)\in F$.
+
+**Linearity.** For $x,y\in F$ and $\lambda\in\mathbb{R}$: $f|_F(x+\lambda y)=f(x+\lambda y)=f(x)+\lambda f(y)=f|_F(x)+\lambda f|_F(y)$.
+
+**Conclusion.** $f|_F$ is a well-defined linear endomorphism of $F$.
+
+**Example.** If $f$ has an eigenvector $v$, the line $\operatorname{span}(v)$ is $f$-invariant. More generally, any eigenspace is $f$-invariant.
+
+@@@ linear-map-quotient-induced.md
+---
+title: Induced map on a quotient
+category: linear/linear-maps
+level: l1
+difficulty: 5
+tags: quotient space, induced map, well-defined
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:E\to E$ be a linear endomorphism and $F$ an $f$-invariant subspace. Show that $f$ induces a well-defined linear map $\bar f:E/F\to E/F$ by $\bar f([x])=[f(x)]$.
+
+## Hint
+
+Show that if $[x]=[y]$, then $[f(x)]=[f(y)]$.
+
+## Solution
+
+**Well-defined.** Suppose $[x]=[y]$. Then $x-y\in F$. Since $F$ is $f$-invariant, $f(x-y)\in F$, so $f(x)-f(y)\in F$, i.e. $[f(x)]=[f(y)]$. So $\bar f$ is well-defined.
+
+**Linearity.** $\bar f([x]+\lambda[y])=\bar f([x+\lambda y])=[f(x+\lambda y)]=[f(x)+\lambda f(y)]=[f(x)]+\lambda[f(y)]=\bar f([x])+\lambda\bar f([y])$.
+
+**Conclusion.** $\bar f$ is a well-defined linear endomorphism of $E/F$, called the **quotient map** induced by $f$.
+
+**Remark.** This construction is the basis for studying the structure of endomorphisms via invariant subspaces.
