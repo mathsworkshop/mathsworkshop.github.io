@@ -56,6 +56,37 @@ $$\det M=1\begin{vmatrix}4&5\\0&6\end{vmatrix}-2\begin{vmatrix}0&5\\1&6\end{vmat
 The three $2\times2$ determinants are $24$, $-5$ and $-4$. So
 $$\det M=24-2(-5)+3(-4)=24+10-12=22.$$
 
+@@@ determinant-2x2-basic.md
+---
+title: Determinant of a 2×2 matrix
+category: linear/determinants
+level: lycee
+difficulty: 1
+tags: determinant, 2x2 matrices, invertibility
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the determinant of each matrix and decide whether it is invertible:
+
+(a) $A = \begin{pmatrix} 3 & 1 \\ 5 & 2 \end{pmatrix}$;
+(b) $B = \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}$;
+(c) $C = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$.
+
+## Hint
+
+For a $2\times2$ matrix $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$, the determinant is $ad-bc$. The matrix is invertible iff the determinant is nonzero.
+
+## Solution
+
+**(a)** $\det A = 3\cdot2 - 1\cdot5 = 6-5=1$. Invertible.
+
+**(b)** $\det B = 1\cdot4 - 2\cdot2 = 0$. Not invertible.
+
+**(c)** $\det C = \cos\theta\cdot\cos\theta - (-\sin\theta)(\sin\theta) = \cos^2\theta+\sin^2\theta = 1$. Invertible for all $\theta$ (it is a rotation matrix).
+
+
 @@@ a-classic-inequality.md
 ---
 title: A classic inequality
