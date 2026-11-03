@@ -111,6 +111,12 @@
           "name": "Multivariable calculus",
           "description": "Functions of several real variables.",
           "subcategories": [
+              {
+              "id": "continuity",
+              "name": "Continuity",
+              "description": "Continuity of functions of several variables.",
+              "subcategories": []
+            },
             {
               "id": "partial-derivatives",
               "name": "Partial derivatives",
