@@ -3,7 +3,7 @@
 title: Summary of continuity
 category: calculus/multivariable/continuity
 level: lycee
-difficulty: L2
+difficulty: 2
 tags: summary, continuity
 date: 2026-11-03
 ---
