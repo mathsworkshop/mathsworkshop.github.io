@@ -1,3 +1,1056 @@
+@@@ stat-sample-mean-properties.md
+---
+title: Properties of the sample mean
+category: stat/sampling
+level: l1
+difficulty: 3
+tags: sample mean, expectation, variance, iid
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n$ be i.i.d. with mean $\mu$ and variance $\sigma^2$. Define $\bar X=\frac1n\sum_{i=1}^n X_i$. Show that $E(\bar X)=\mu$ and $\operatorname{Var}(\bar X)=\sigma^2/n$.
+
+## Hint
+
+Use linearity of expectation for the mean; use independence for the variance.
+
+## Solution
+
+**Expectation.**
+$$E(\bar X)=\frac1n\sum_{i=1}^n E(X_i)=\frac1n\cdot n\mu=\mu.$$
+
+**Variance.**
+$$\operatorname{Var}(\bar X)=\frac{1}{n^2}\operatorname{Var}\left(\sum_{i=1}^nX_i\right)=\frac{1}{n^2}\sum_{i=1}^n\operatorname{Var}(X_i)=\frac{n\sigma^2}{n^2}=\frac{\sigma^2}{n}.$$
+The second equality uses independence (covariances vanish).
+
+**Conclusion.** $\bar X$ is unbiased and its variance decreases like $1/n$.
+
+@@@ stat-sampling-with-replacement.md
+---
+title: Sampling with replacement
+category: stat/sampling
+level: l1
+difficulty: 3
+tags: sampling, with replacement, independence
+date: 2026-11-03
+---
+
+## Statement
+
+A population has $N$ individuals with values $x_1,\ldots,x_N$. A sample of size $n$ is drawn *with replacement*. Show that the sample mean is unbiased and compute its variance.
+
+## Hint
+
+With replacement, the draws are i.i.d. uniform over the population.
+
+## Solution
+
+**Setup.** Let $X_i$ be the $i$-th draw. The $X_i$ are i.i.d., each uniform over $\{x_1,\ldots,x_N\}$.
+
+**Population parameters.** $\mu=\frac1N\sum x_j$, $\sigma^2=\frac1N\sum(x_j-\mu)^2$.
+
+**Unbiasedness.** $E(\bar X)=\mu$.
+
+**Variance.**
+$$\operatorname{Var}(\bar X)=\frac{\sigma^2}{n}.$$
+
+**Conclusion.** With replacement, the variance of the sample mean is $\sigma^2/n$.
+
+@@@ stat-sampling-without-replacement.md
+---
+title: Sampling without replacement
+category: stat/sampling
+level: l1
+difficulty: 4
+tags: sampling without replacement, finite population correction
+date: 2026-11-03
+---
+
+## Statement
+
+With the same population as above, a sample of size $n$ is drawn *without replacement*. Show that
+$$\operatorname{Var}(\bar X)=\frac{\sigma^2}{n}\cdot\frac{N-n}{N-1}.$$
+
+## Hint
+
+Each pair of draws is negatively correlated; compute $\operatorname{Cov}(X_i,X_j)=-\sigma^2/(N-1)$ for $i\neq j$.
+
+## Solution
+
+**Covariance.** For $i\neq j$:
+$$E(X_iX_j)=\frac{1}{N(N-1)}\sum_{k\neq\ell}x_kx_\ell.$$
+A direct computation (using $\sum_{k}x_k=N\mu$ and $\sum x_k^2=N\sigma^2+N\mu^2$) gives
+$$\operatorname{Cov}(X_i,X_j)=-\frac{\sigma^2}{N-1}.$$
+
+**Variance of the sum.** $n$ variance terms, $n(n-1)$ covariance terms:
+$$\operatorname{Var}\left(\sum X_i\right)=n\sigma^2+n(n-1)\left(-\frac{\sigma^2}{N-1}\right)=n\sigma^2\cdot\frac{N-n}{N-1}.$$
+
+**Conclusion.** Dividing by $n^2$:
+$$\operatorname{Var}(\bar X)=\frac{\sigma^2}{n}\cdot\frac{N-n}{N-1}.$$
+
+**Remark.** The factor $\frac{N-n}{N-1}$ is the finite population correction. It is $<1$, so sampling without replacement is more efficient than with replacement.
+
+@@@ stat-sampling-distribution-mean.md
+---
+title: Sampling distribution of the mean
+category: stat/sampling
+level: l1
+difficulty: 3
+tags: sampling distribution, normal population, mean
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n$ be i.i.d. $\mathcal{N}(\mu,\sigma^2)$. Determine the distribution of $\bar X$.
+
+## Hint
+
+A linear combination of independent normal variables is normal.
+
+## Solution
+
+**Distribution.** $\bar X$ is a linear combination of independent normals, so it is normal. Its mean is $\mu$ and variance $\sigma^2/n$. Hence
+$$\bar X\sim\mathcal{N}\!\left(\mu,\frac{\sigma^2}{n}\right).$$
+
+**Standardization.** $Z=\frac{\bar X-\mu}{\sigma/\sqrt n}\sim\mathcal{N}(0,1)$.
+
+**Conclusion.** The sampling distribution of the mean from a normal population is normal.
+
+@@@ stat-chi-square-distribution.md
+---
+title: The chi-square distribution
+category: stat/sampling
+level: l1
+difficulty: 4
+tags: chi-square, sampling distribution, normal
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Z_1,\ldots,Z_k$ be i.i.d. $\mathcal{N}(0,1)$. Show that $Y=Z_1^2+\cdots+Z_k^2$ has the chi-square distribution with $k$ degrees of freedom.
+
+## Hint
+
+Compute the moment generating function of $Z_i^2$ and multiply.
+
+## Solution
+
+**MGF of $Z^2$.** For $Z\sim\mathcal{N}(0,1)$ and $t<1/2$:
+$$M_{Z^2}(t)=E(e^{tZ^2})=\frac{1}{\sqrt{1-2t}}.$$
+
+**MGF of $Y$.** By independence:
+$$M_Y(t)=\left(\frac{1}{\sqrt{1-2t}}\right)^k=(1-2t)^{-k/2}.$$
+This is the MGF of $\chi^2_k$.
+
+**Conclusion.** $Y\sim\chi^2_k$.
+
+**Application.** Sample variance: $(n-1)S^2/\sigma^2\sim\chi^2_{n-1}$.
+
+@@@ stat-t-distribution.md
+---
+title: The Student $t$ distribution
+category: stat/sampling
+level: l1
+difficulty: 4
+tags: Student t, sampling distribution, unknown variance
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Z\sim\mathcal{N}(0,1)$ and $Y\sim\chi^2_k$ be independent. Define $T=Z/\sqrt{Y/k}$. Identify the distribution of $T$.
+
+## Hint
+
+This is the standard definition of the Student $t$ distribution.
+
+## Solution
+
+**Definition.** $T=Z/\sqrt{Y/k}$ follows a Student $t$ distribution with $k$ degrees of freedom, denoted $t_k$.
+
+**Application.** If $X_1,\ldots,X_n\sim\mathcal{N}(\mu,\sigma^2)$ and $S^2$ is the sample variance, then
+$$\frac{\bar X-\mu}{S/\sqrt n}\sim t_{n-1}.$$
+Here $Z=\frac{\bar X-\mu}{\sigma/\sqrt n}\sim\mathcal{N}(0,1)$ and $Y=\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}$; the unknown $\sigma$ cancels.
+
+**Conclusion.** The $t$-distribution is the sampling distribution of the standardized mean when the variance is estimated.
+
+@@@ stat-F-distribution.md
+---
+title: The Fisher–Snedecor $F$ distribution
+category: stat/sampling
+level: m1
+difficulty: 4
+tags: Fisher F, sampling distribution, variance ratio
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Y_1\sim\chi^2_{d_1}$ and $Y_2\sim\chi^2_{d_2}$ be independent. Define $F=\frac{Y_1/d_1}{Y_2/d_2}$. Identify the distribution of $F$.
+
+## Hint
+
+This is the standard definition of the Fisher $F$ distribution.
+
+## Solution
+
+**Definition.** $F$ follows the Fisher–Snedecor distribution with $(d_1,d_2)$ degrees of freedom.
+
+**Application.** Testing equality of two variances: if $S_1^2, S_2^2$ are sample variances from independent normal samples of sizes $n_1,n_2$:
+$$\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}\sim F_{n_1-1, n_2-1}.$$
+
+**Conclusion.** The $F$-distribution appears in variance comparisons and ANOVA.
+
+@@@ stat-mse-decomposition.md
+---
+title: The bias-variance decomposition
+category: stat/estimation
+level: l1
+difficulty: 3
+tags: MSE, bias, variance, estimator
+date: 2026-11-03
+---
+
+## Statement
+
+Let $\hat\theta$ be an estimator of $\theta$. Define the mean squared error $\mathrm{MSE}(\hat\theta)=E[(\hat\theta-\theta)^2]$. Show that
+$$\mathrm{MSE}(\hat\theta)=\operatorname{Var}(\hat\theta)+\mathrm{Bias}(\hat\theta)^2.$$
+
+## Hint
+
+Write $\hat\theta-\theta=(\hat\theta-E\hat\theta)+(E\hat\theta-\theta)$ and expand.
+
+## Solution
+
+**Decomposition.**
+$$\hat\theta-\theta=(\hat\theta-E\hat\theta)+(E\hat\theta-\theta).$$
+Squaring and taking expectations:
+$$\mathrm{MSE}=E[(\hat\theta-E\hat\theta)^2]+2(E\hat\theta-\theta)E[\hat\theta-E\hat\theta]+(E\hat\theta-\theta)^2.$$
+The middle term vanishes since $E[\hat\theta-E\hat\theta]=0$. So
+$$\mathrm{MSE}=\operatorname{Var}(\hat\theta)+\mathrm{Bias}(\hat\theta)^2.$$
+
+**Conclusion.** MSE = variance + bias². An estimator can trade bias for variance to minimize MSE.
+
+@@@ stat-unbiased-estimator.md
+---
+title: Unbiased estimators
+category: stat/estimation
+level: l1
+difficulty: 2
+tags: unbiased, estimation, expectation
+date: 2026-11-03
+---
+
+## Statement
+
+Define an unbiased estimator and show that $\bar X$ is unbiased for $\mu$.
+
+## Hint
+
+$\hat\theta$ is unbiased if $E(\hat\theta)=\theta$.
+
+## Solution
+
+**Definition.** $\hat\theta$ is unbiased for $\theta$ if $E(\hat\theta)=\theta$.
+
+**Sample mean.** $E(\bar X)=\mu$.
+
+**Conclusion.** $\bar X$ is unbiased for $\mu$.
+
+**Remark.** Unbiasedness is a minimal desirable property; other criteria (MSE, consistency) matter too.
+
+@@@ stat-consistency.md
+---
+title: Consistency of an estimator
+category: stat/estimation
+level: l1
+difficulty: 3
+tags: consistency, convergence, estimator
+date: 2026-11-03
+---
+
+## Statement
+
+Define consistency and show that $\bar X_n$ is consistent for $\mu$ when the variance is finite.
+
+## Hint
+
+Use Chebyshev: $P(|\bar X_n-\mu|\ge\varepsilon)\le\sigma^2/(n\varepsilon^2)$.
+
+## Solution
+
+**Definition.** $\hat\theta_n$ is consistent if $\hat\theta_n\to\theta$ in probability, i.e. $\forall\varepsilon>0$, $P(|\hat\theta_n-\theta|\ge\varepsilon)\to0$.
+
+**Chebyshev.** $P(|\bar X_n-\mu|\ge\varepsilon)\le\sigma^2/(n\varepsilon^2)\to0$.
+
+**Conclusion.** $\bar X_n$ is consistent for $\mu$ (weak law of large numbers).
+
+@@@ stat-mle-uniform.md
+---
+title: MLE for the uniform distribution
+category: stat/estimation
+level: l1
+difficulty: 3
+tags: MLE, uniform, support depending on parameter
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n$ be i.i.d. $\mathcal{U}([0,\theta])$. Find the MLE of $\theta$.
+
+## Hint
+
+The likelihood is $\theta^{-n}$ on the admissible region $\theta\ge\max X_i$.
+
+## Solution
+
+**Likelihood.**
+$$L(\theta)=\theta^{-n}\mathbf 1_{\{\theta\ge M_n\}},\qquad M_n=\max X_i.$$
+
+**Maximization.** On $\theta\ge M_n$, $L$ is decreasing, so the maximum is at $\theta=M_n$.
+
+**Conclusion.** $\hat\theta_{\mathrm{MLE}}=M_n=\max X_i$.
+
+**Properties.** $E(M_n)=\frac{n}{n+1}\theta$, so biased. The unbiased version is $\frac{n+1}{n}M_n$. Both are consistent.
+
+@@@ stat-mle-exponential.md
+---
+title: MLE for the exponential distribution
+category: stat/estimation
+level: l1
+difficulty: 3
+tags: MLE, exponential, log-likelihood
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n$ be i.i.d. $\mathcal{E}(\lambda)$. Compute the MLE of $\lambda$.
+
+## Hint
+
+Maximize $\ell(\lambda)=n\ln\lambda-\lambda\sum X_i$.
+
+## Solution
+
+**Log-likelihood.** $\ell(\lambda)=n\ln\lambda-\lambda\sum X_i$.
+
+**Derivative.** $\ell'(\lambda)=n/\lambda-\sum X_i=0\Rightarrow\hat\lambda=n/\sum X_i=1/\bar X$.
+
+**Second derivative.** $\ell''<0$, so maximum.
+
+**Conclusion.** $\hat\lambda_{\mathrm{MLE}}=1/\bar X$.
+
+**Properties.** Biased, but consistent and asymptotically efficient.
+
+@@@ stat-mle-bernoulli.md
+---
+title: MLE for Bernoulli trials
+category: stat/estimation
+level: l1
+difficulty: 2
+tags: MLE, Bernoulli, empirical frequency
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n\sim\mathrm{Bernoulli}(p)$. Compute the MLE of $p$.
+
+## Hint
+
+Log-likelihood $\ell(p)=S\ln p+(n-S)\ln(1-p)$.
+
+## Solution
+
+**Log-likelihood.** $\ell(p)=S\ln p+(n-S)\ln(1-p)$ with $S=\sum X_i$.
+
+**Derivative.** $\ell'(p)=S/p-(n-S)/(1-p)=0\Rightarrow p=S/n=\bar X$.
+
+**Conclusion.** $\hat p=\bar X$ (the empirical frequency).
+
+**Properties.** Unbiased, variance $p(1-p)/n$, consistent.
+
+@@@ stat-mle-normal.md
+---
+title: MLE for the normal distribution
+category: stat/estimation
+level: l1
+difficulty: 4
+tags: MLE, normal, mean, variance
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n\sim\mathcal{N}(\mu,\sigma^2)$. Compute the MLEs of $\mu$ and $\sigma^2$.
+
+## Hint
+
+Maximize $\ell(\mu,\sigma^2)=-\frac n2\ln(2\pi\sigma^2)-\frac{1}{2\sigma^2}\sum(X_i-\mu)^2$.
+
+## Solution
+
+**First-order conditions.**
+- $\partial\ell/\partial\mu=\frac{1}{\sigma^2}\sum(X_i-\mu)=0\Rightarrow\hat\mu=\bar X$.
+- $\partial\ell/\partial\sigma^2=-\frac{n}{2\sigma^2}+\frac{1}{2\sigma^4}\sum(X_i-\bar X)^2=0\Rightarrow\hat\sigma^2=\frac{1}{n}\sum(X_i-\bar X)^2$.
+
+**Conclusion.** $\hat\mu_{\mathrm{MLE}}=\bar X$, $\hat\sigma^2_{\mathrm{MLE}}=\frac1n\sum(X_i-\bar X)^2$.
+
+**Properties.** $\hat\mu$ is unbiased; $\hat\sigma^2$ is biased (expectation $\frac{n-1}{n}\sigma^2$). The unbiased version uses $1/(n-1)$.
+
+@@@ stat-unbiased-variance.md
+---
+title: The unbiased sample variance
+category: stat/estimation
+level: l1
+difficulty: 3
+tags: unbiased, sample variance, Bessel
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $S^2=\frac{1}{n-1}\sum(X_i-\bar X)^2$ is unbiased for $\sigma^2$.
+
+## Hint
+
+Use $\sum(X_i-\bar X)^2=\sum(X_i-\mu)^2-n(\bar X-\mu)^2$ and take expectations.
+
+## Solution
+
+**Identity.** $\sum(X_i-\bar X)^2=\sum(X_i-\mu)^2-n(\bar X-\mu)^2$.
+
+**Expectation.** $E[\sum(X_i-\mu)^2]=n\sigma^2$, $E[n(\bar X-\mu)^2]=\sigma^2$.
+
+**Result.** $E[\sum(X_i-\bar X)^2]=(n-1)\sigma^2$, so $E(S^2)=\sigma^2$.
+
+**Conclusion.** $S^2$ is unbiased; the factor $\frac{n-1}{n}$ in the MLE version is a bias correction.
+
+@@@ stat-cramer-rao-bound.md
+---
+title: The Cramér–Rao bound
+category: stat/estimation
+level: m1
+difficulty: 4
+tags: Cramér-Rao, Fisher information, efficiency
+date: 2026-11-03
+---
+
+## Statement
+
+State the Cramér–Rao bound for unbiased estimators of a parameter $\theta$ from $n$ i.i.d. observations.
+
+## Hint
+
+Bound variance by the inverse of the Fisher information.
+
+## Solution
+
+**Fisher information.** $I(\theta)=E[(\partial\ln f/\partial\theta)^2]$ for one observation.
+
+**Bound.** For any unbiased estimator $\hat\theta$:
+$$\operatorname{Var}(\hat\theta)\ge\frac{1}{nI(\theta)}.$$
+
+**Equality.** Attained (asymptotically) by the MLE under regularity conditions.
+
+**Conclusion.** The Cramér–Rao bound gives the best possible variance for unbiased estimators; MLEs are asymptotically efficient.
+
+@@@ stat-sufficient-statistic.md
+---
+title: Sufficient statistics
+category: stat/estimation
+level: m1
+difficulty: 4
+tags: sufficiency, factorization, statistic
+date: 2026-11-03
+---
+
+## Statement
+
+State the factorization criterion for sufficiency and apply it to Bernoulli data.
+
+## Hint
+
+$T$ is sufficient for $\theta$ iff the joint density factors as $g(T;\theta)h(x)$.
+
+## Solution
+
+**Criterion.** $T$ is sufficient for $\theta$ iff $f(x_1,\ldots,x_n;\theta)=g(T(x);\theta)h(x)$ for some functions $g,h$.
+
+**Application.** Bernoulli with parameter $p$:
+$$f(x;p)=\prod p^{x_i}(1-p)^{1-x_i}=p^S(1-p)^{n-S},$$
+where $S=\sum x_i$. So $S$ is sufficient for $p$.
+
+**Conclusion.** For Bernoulli data, the sum (or equivalently $\bar X$) is sufficient for $p$.
+
+@@@ stat-confidence-interval-mean-known.md
+---
+title: Confidence interval for a normal mean (known variance)
+category: stat/confidence-intervals
+level: l1
+difficulty: 3
+tags: confidence interval, normal, known variance
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n\sim\mathcal{N}(\mu,\sigma^2)$ with $\sigma$ known. Construct a $95\%$ confidence interval for $\mu$.
+
+## Hint
+
+Use the pivot $Z=(\bar X-\mu)/(\sigma/\sqrt n)\sim\mathcal{N}(0,1)$ and the quantile $z_{0.975}=1.96$.
+
+## Solution
+
+**Pivot.** $Z=(\bar X-\mu)/(\sigma/\sqrt n)\sim\mathcal{N}(0,1)$.
+
+**Quantiles.** $P(-1.96\le Z\le1.96)=0.95$.
+
+**Inversion.**
+$$P\!\left(\bar X-1.96\frac{\sigma}{\sqrt n}\le\mu\le\bar X+1.96\frac{\sigma}{\sqrt n}\right)=0.95.$$
+
+**Conclusion.** The interval is $\left[\bar X-1.96\sigma/\sqrt n,\ \bar X+1.96\sigma/\sqrt n\right]$.
+
+@@@ stat-confidence-interval-mean-unknown.md
+---
+title: Confidence interval for a mean with unknown variance
+category: stat/confidence-intervals
+level: l1
+difficulty: 4
+tags: confidence interval, Student t, unknown variance
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n\sim\mathcal{N}(\mu,\sigma^2)$ with $\sigma$ unknown. Construct a $95\%$ confidence interval for $\mu$.
+
+## Hint
+
+Use the Student pivot $T=(\bar X-\mu)/(S/\sqrt n)\sim t_{n-1}$.
+
+## Solution
+
+**Pivot.** $T=(\bar X-\mu)/(S/\sqrt n)\sim t_{n-1}$, where $S^2$ is the unbiased sample variance.
+
+**Quantiles.** $P(-t_{n-1,0.975}\le T\le t_{n-1,0.975})=0.95$.
+
+**Conclusion.** The $95\%$ interval is
+$$\left[\bar X-t_{n-1,0.975}\frac{S}{\sqrt n},\ \bar X+t_{n-1,0.975}\frac{S}{\sqrt n}\right].$$
+
+**Comparison.** For small $n$, $t_{n-1,0.975}>1.96$, reflecting extra uncertainty from estimating $\sigma$.
+
+@@@ stat-confidence-interval-proportion.md
+---
+title: Confidence interval for a proportion
+category: stat/confidence-intervals
+level: l1
+difficulty: 3
+tags: confidence interval, proportion, normal approximation
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n\sim\mathrm{Bernoulli}(p)$. Construct an approximate $95\%$ confidence interval for $p$.
+
+## Hint
+
+$\bar X\approx\mathcal{N}(p,p(1-p)/n)$; estimate $p(1-p)$ by $\bar X(1-\bar X)$.
+
+## Solution
+
+**Asymptotic normality.**
+$$\frac{\bar X-p}{\sqrt{\bar X(1-\bar X)/n}}\approx\mathcal{N}(0,1).$$
+
+**Interval.**
+$$\left[\bar X-1.96\sqrt{\frac{\bar X(1-\bar X)}{n}},\ \bar X+1.96\sqrt{\frac{\bar X(1-\bar X)}{n}}\right].$$
+
+**Validity.** Requires $n\bar X\ge5$ and $n(1-\bar X)\ge5$.
+
+**Conclusion.** Wald interval for a proportion.
+
+@@@ stat-confidence-interval-variance.md
+---
+title: Confidence interval for a variance
+category: stat/confidence-intervals
+level: m1
+difficulty: 4
+tags: confidence interval, variance, chi-square
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n\sim\mathcal{N}(\mu,\sigma^2)$. Construct a $95\%$ confidence interval for $\sigma^2$.
+
+## Hint
+
+Use $(n-1)S^2/\sigma^2\sim\chi^2_{n-1}$.
+
+## Solution
+
+**Pivot.** $Y=(n-1)S^2/\sigma^2\sim\chi^2_{n-1}$.
+
+**Quantiles.** Let $\chi^2_{n-1,\alpha}$ denote the $\alpha$-quantile. Then
+$$P\!\left(\chi^2_{n-1,0.025}\le Y\le\chi^2_{n-1,0.975}\right)=0.95.$$
+
+**Inversion.**
+$$\sigma^2\in\left[\frac{(n-1)S^2}{\chi^2_{n-1,0.975}},\ \frac{(n-1)S^2}{\chi^2_{n-1,0.025}}\right].$$
+
+**Conclusion.** The chi-square interval is asymmetric in general.
+
+@@@ stat-t-test-one-sample.md
+---
+title: One-sample t-test
+category: stat/hypothesis-testing
+level: l1
+difficulty: 4
+tags: t-test, hypothesis, mean
+date: 2026-11-03
+---
+
+## Statement
+
+Let $X_1,\ldots,X_n\sim\mathcal{N}(\mu,\sigma^2)$ with $\sigma$ unknown. Describe the test of $H_0:\mu=\mu_0$ vs $H_1:\mu\ne\mu_0$ at level $\alpha$.
+
+## Hint
+
+Use the Student pivot.
+
+## Solution
+
+**Statistic.** $T=\frac{\bar X-\mu_0}{S/\sqrt n}\sim t_{n-1}$ under $H_0$.
+
+**Rejection.** Reject $H_0$ if $|T|>t_{n-1,1-\alpha/2}$.
+
+**p-value.** $p=2P(t_{n-1}>|T_{\mathrm{obs}}|)$.
+
+**Conclusion.** Two-sided t-test; reject if the observed mean is too far from $\mu_0$ relative to its standard error.
+
+@@@ stat-type-errors.md
+---
+title: Type I and Type II errors
+category: stat/hypothesis-testing
+level: l1
+difficulty: 3
+tags: type I error, type II error, power
+date: 2026-11-03
+---
+
+## Statement
+
+Define Type I and Type II errors and the power of a test.
+
+## Hint
+
+Type I: reject a true $H_0$. Type II: fail to reject a false $H_0$.
+
+## Solution
+
+**Type I error.** $P(\text{reject }H_0\mid H_0\text{ true})=\alpha$ (the significance level).
+
+**Type II error.** $P(\text{fail to reject }H_0\mid H_1\text{ true})=\beta$.
+
+**Power.** $1-\beta=P(\text{reject }H_0\mid H_1\text{ true})$.
+
+**Conclusion.** Trade-off: reducing $\alpha$ typically increases $\beta$; increasing $n$ or $|\mu_1-\mu_0|$ improves power.
+
+@@@ stat-chi-square-goodness.md
+---
+title: Chi-square goodness-of-fit
+category: stat/hypothesis-testing
+level: l1
+difficulty: 4
+tags: chi-square, goodness of fit, categorical
+date: 2026-11-03
+---
+
+## Statement
+
+A die is rolled $120$ times, giving counts $(15,18,22,20,25,20)$. Test fairness at $\alpha=0.05$.
+
+## Hint
+
+Pearson statistic with $E_i=20$; degrees of freedom $5$.
+
+## Solution
+
+**Statistic.**
+$$\chi^2=\frac{(-5)^2+(-2)^2+2^2+0^2+5^2+0^2}{20}=\frac{58}{20}=2.9.$$
+
+**Degrees of freedom.** $6-1=5$.
+
+**Critical value.** $\chi^2_{5,0.95}\approx11.07$.
+
+**Conclusion.** $2.9<11.07$: do not reject fairness. $p$-value $\approx0.72$.
+
+@@@ stat-chi-square-independence.md
+---
+title: Chi-square test of independence
+category: stat/hypothesis-testing
+level: l1
+difficulty: 4
+tags: chi-square, contingency, independence
+date: 2026-11-03
+---
+
+## Statement
+
+For a $2\times2$ table $\begin{pmatrix}30&20\\15&35\end{pmatrix}$, test independence at $\alpha=0.05$.
+
+## Hint
+
+Expected counts $E_{ij}=R_iC_j/n$; $\chi^2$ with $1$ degree of freedom.
+
+## Solution
+
+**Expected.** $E_{11}=E_{21}=22.5$, $E_{12}=E_{22}=27.5$.
+
+**Statistic.**
+$$\chi^2=\frac{7.5^2}{22.5}+\frac{(-7.5)^2}{27.5}+\frac{(-7.5)^2}{22.5}+\frac{7.5^2}{27.5}\approx9.09.$$
+
+**Critical value.** $\chi^2_{1,0.95}\approx3.84$.
+
+**Conclusion.** $9.09>3.84$: reject independence at $5\%$; the variables appear associated.
+
+@@@ stat-t-test-paired.md
+---
+title: Paired t-test
+category: stat/hypothesis-testing
+level: l1
+difficulty: 4
+tags: paired t-test, differences, before-after
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the paired t-test for comparing two measurements on the same subjects.
+
+## Hint
+
+Reduce to a one-sample test on the differences.
+
+## Solution
+
+**Setup.** Pairs $(X_i,Y_i)$; define $D_i=X_i-Y_i$.
+
+**Hypothesis.** $H_0$: $E(D)=0$; $H_1$: $E(D)\neq0$.
+
+**Test.** Apply the one-sample t-test to the $D_i$.
+
+**Conclusion.** The paired t-test accounts for correlation within pairs and is more powerful than an unpaired test when the correlation is strong.
+
+@@@ stat-two-sample-t-test.md
+---
+title: Two-sample t-test
+category: stat/hypothesis-testing
+level: m1
+difficulty: 4
+tags: two-sample t-test, Welch, pooled
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the two-sample t-test for comparing the means of two normal populations.
+
+## Hint
+
+Use the Welch approximation for unequal variances, or pool variances when assuming equal variance.
+
+## Solution
+
+**Statistic (Welch).**
+$$T=\frac{\bar X_1-\bar X_2}{\sqrt{S_1^2/n_1+S_2^2/n_2}}.$$
+The degrees of freedom are given by the Welch–Satterthwaite formula.
+
+**Pooled version.** If $\sigma_1=\sigma_2$, use
+$$S_p^2=\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{n_1+n_2-2},$$
+and $T$ follows $t_{n_1+n_2-2}$.
+
+**Conclusion.** The Welch test is the default choice; the pooled test is more powerful when equal variances hold.
+
+@@@ stat-p-value.md
+---
+title: The p-value
+category: stat/hypothesis-testing
+level: l1
+difficulty: 3
+tags: p-value, hypothesis testing, interpretation
+date: 2026-11-03
+---
+
+## Statement
+
+Define the $p$-value and explain its interpretation.
+
+## Hint
+
+The $p$-value is the probability of observing a test statistic as extreme as the observed one, under $H_0$.
+
+## Solution
+
+**Definition.** $p=P(\text{statistic at least as extreme as observed}\mid H_0)$.
+
+**Interpretation.** Small $p$ indicates that the data are unlikely under $H_0$, suggesting rejection of $H_0$. Thresholds are chosen (e.g. $0.05$).
+
+**Common mistake.** $p$ is *not* the probability that $H_0$ is true.
+
+**Conclusion.** The $p$-value quantifies evidence against $H_0$; it must be interpreted alongside effect size and context.
+
+@@@ stat-pearson-correlation.md
+---
+title: Pearson correlation coefficient
+category: stat/regression
+level: l1
+difficulty: 3
+tags: correlation, Pearson, linear dependence
+date: 2026-11-03
+---
+
+## Statement
+
+Define the Pearson correlation coefficient and show $|\rho|\le1$.
+
+## Hint
+
+Apply Cauchy–Schwarz to the centered variables.
+
+## Solution
+
+**Definition.** $\rho=\operatorname{Cov}(X,Y)/(\sigma_X\sigma_Y)$.
+
+**Bound.** By Cauchy–Schwarz:
+$$|\operatorname{Cov}(X,Y)|=|E[(X-\mu_X)(Y-\mu_Y)]|\le\sigma_X\sigma_Y.$$
+So $|\rho|\le1$.
+
+**Equality case.** $|\rho|=1$ iff $Y=aX+b$ almost surely, i.e. perfect linear relation.
+
+**Conclusion.** $\rho$ measures linear dependence, ranging in $[-1,1]$.
+
+@@@ stat-least-squares.md
+---
+title: Least squares regression
+category: stat/regression
+level: l1
+difficulty: 4
+tags: least squares, regression, normal equations
+date: 2026-11-03
+---
+
+## Statement
+
+Find the line minimizing $\sum(y_i-ax_i-b)^2$.
+
+## Hint
+
+Differentiate and solve normal equations.
+
+## Solution
+
+**Normal equations.** Setting partial derivatives to zero gives $b=\bar y-a\bar x$ and
+$$\sum x_iy_i=a\sum x_i^2+b\sum x_i.$$
+
+**Solution.**
+$$a=\frac{\sum(x_i-\bar x)(y_i-\bar y)}{\sum(x_i-\bar x)^2},\qquad b=\bar y-a\bar x.$$
+
+**Conclusion.** The least-squares line passes through $(\bar x,\bar y)$ with slope $\operatorname{Cov}(x,y)/\operatorname{Var}(x)$.
+
+@@@ stat-r-squared.md
+---
+title: The coefficient of determination $R^2$
+category: stat/regression
+level: l1
+difficulty: 3
+tags: R squared, goodness of fit, regression
+date: 2026-11-03
+---
+
+## Statement
+
+Define $R^2$ for a linear regression and explain its interpretation.
+
+## Hint
+
+$R^2=1-\mathrm{SS}_{\text{res}}/\mathrm{SS}_{\text{tot}}$.
+
+## Solution
+
+**Definitions.**
+- $\mathrm{SS}_{\text{tot}}=\sum(y_i-\bar y)^2$.
+- $\mathrm{SS}_{\text{res}}=\sum(y_i-\hat y_i)^2$.
+- $R^2=1-\mathrm{SS}_{\text{res}}/\mathrm{SS}_{\text{tot}}$.
+
+**Interpretation.** Fraction of total variance in $y$ explained by the model.
+
+**Property.** In simple linear regression, $R^2=\rho^2$ (squared correlation).
+
+**Conclusion.** $R^2\in[0,1]$; higher values indicate better fit (but do not prove causation).
+
+@@@ stat-multiple-regression.md
+---
+title: Multiple linear regression
+category: stat/regression
+level: m1
+difficulty: 4
+tags: multiple regression, matrix form, normal equations
+date: 2026-11-03
+---
+
+## Statement
+
+State the matrix form of the normal equations for multiple linear regression.
+
+## Hint
+
+Write $Y=X\beta+\varepsilon$; minimize $\|Y-X\beta\|^2$.
+
+## Solution
+
+**Model.** $Y=X\beta+\varepsilon$, with $X$ the $n\times p$ design matrix.
+
+**Normal equations.** Minimizing $\|Y-X\beta\|^2$ gives
+$$X^TX\hat\beta=X^TY.$$
+If $X$ has full column rank, $\hat\beta=(X^TX)^{-1}X^TY$.
+
+**Fitted values.** $\hat Y=X\hat\beta$, and residuals $e=Y-\hat Y$ are orthogonal to the columns of $X$.
+
+**Conclusion.** OLS in matrix form; the projection interpretation links to linear algebra.
+
+@@@ stat-bayes-basic.md
+---
+title: Bayesian updating
+category: stat/bayesian
+level: l1
+difficulty: 3
+tags: Bayes, posterior, prior
+date: 2026-11-03
+---
+
+## Statement
+
+State Bayes' theorem in the Bayesian inference framework.
+
+## Hint
+
+Posterior $\propto$ likelihood $\times$ prior.
+
+## Solution
+
+**Bayes' theorem.**
+$$\pi(\theta\mid x)=\frac{f(x\mid\theta)\pi(\theta)}{\int f(x\mid\theta')\pi(\theta')\,d\theta'}.$$
+
+**Interpretation.** The posterior combines prior belief and data evidence.
+
+**Conclusion.** Bayesian inference treats the parameter as random and updates its distribution with data.
+
+@@@ stat-beta-binomial.md
+---
+title: The Beta–Binomial model
+category: stat/bayesian
+level: l1
+difficulty: 4
+tags: Beta-Binomial, conjugate prior, posterior
+date: 2026-11-03
+---
+
+## Statement
+
+For $X_1,\ldots,X_n\sim\mathrm{Bernoulli}(p)$ with prior $p\sim\mathrm{Beta}(\alpha,\beta)$, show the posterior is $\mathrm{Beta}(\alpha+S,\beta+n-S)$.
+
+## Hint
+
+Posterior $\propto$ prior $\times$ likelihood, recognizing the Beta kernel.
+
+## Solution
+
+**Prior.** $\pi(p)\propto p^{\alpha-1}(1-p)^{\beta-1}$.
+
+**Likelihood.** $L(p)\propto p^S(1-p)^{n-S}$.
+
+**Posterior.** $\pi(p\mid x)\propto p^{\alpha+S-1}(1-p)^{\beta+n-S-1}$, a Beta kernel.
+
+**Conclusion.** Beta is the conjugate prior for Bernoulli data. Posterior mean is $\frac{\alpha+S}{\alpha+\beta+n}$, a weighted average of prior and empirical means.
+
+@@@ stat-normal-normal-conjugate.md
+---
+title: The normal–normal Bayesian model
+category: stat/bayesian
+level: m1
+difficulty: 4
+tags: normal prior, posterior, conjugate
+date: 2026-11-03
+---
+
+## Statement
+
+For $X_1,\ldots,X_n\sim\mathcal{N}(\mu,\sigma^2)$ with $\sigma^2$ known and prior $\mu\sim\mathcal{N}(\mu_0,\tau^2)$, compute the posterior.
+
+## Hint
+
+Product of Gaussian densities; complete the square.
+
+## Solution
+
+**Posterior.** $\mu\mid X\sim\mathcal{N}(\mu_1,\tau_1^2)$ where
+$$\frac{1}{\tau_1^2}=\frac{n}{\sigma^2}+\frac{1}{\tau^2},\qquad \mu_1=\tau_1^2\left(\frac{n\bar x}{\sigma^2}+\frac{\mu_0}{\tau^2}\right).$$
+
+**Interpretation.** Posterior precision is the sum of data and prior precisions; posterior mean is a precision-weighted average.
+
+**Conclusion.** Normal is the conjugate prior for the normal mean with known variance.
+
+@@@ stat-summary.md
+---
+title: Summary of statistics
+category: stat/sampling
+level: l1
+difficulty: 2
+tags: summary, statistics
+date: 2026-11-03
+---
+
+## Statement
+
+Summarize key statistical concepts.
+
+## Hint
+
+Review sampling, estimation, tests, regression, Bayesian.
+
+## Solution
+
+**Sampling.**
+- Sample mean $\bar X$ has $E=\mu$ and $\operatorname{Var}=\sigma^2/n$ (with replacement) or $\frac{\sigma^2}{n}\frac{N-n}{N-1}$ (without).
+- Sampling distributions: $\bar X\sim\mathcal{N}(\mu,\sigma^2/n)$; $(n-1)S^2/\sigma^2\sim\chi^2_{n-1}$.
+
+**Estimation.**
+- Unbiased, consistent, MSE = variance + bias².
+- MLE for Bernoulli, exponential, normal, uniform.
+- Cramér–Rao bound, sufficiency, factorization criterion.
+
+**Confidence intervals.**
+- Mean (known variance), mean (unknown variance, Student), proportion, variance (chi-square).
+
+**Hypothesis testing.**
+- $t$-tests, chi-square tests; type I/II errors, power, p-value.
+
+**Regression.**
+- Least squares, normal equations, $R^2$, multiple regression.
+
+**Bayesian.**
+- Bayes' theorem, conjugate priors (Beta–Binomial, normal–normal).
+
+**Conclusion.** Statistics combines probability, inference, and decision theory to learn from data.
+
 @@@ cardinality-finite-sets.md
 ---
 title: Cardinality of finite sets
