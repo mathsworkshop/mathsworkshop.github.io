@@ -3,7 +3,7 @@
 title: Summary of continuity
 category: calculus/multivariable/continuity
 level: lycee
-difficulty: 2
+difficulty: L2
 tags: summary, continuity
 date: 2026-11-03
 ---
@@ -26,7 +26,6 @@ Review methods and theorems.
 
 **Notable counterexamples.** $f(x,y)=\frac{xy}{x+y}$ at origin, $\frac{x^2y}{x^4+y^2}$ (discontinuous despite radial limits), $\sin(1/r^2)$.
 
-**Semicontinuity.** One-sided weaker notions.
 
 **Key theorems.** Continuous image of compact is compact; continuous on compact is uniformly continuous (Heine–Cantor); norm and projections are continuous.
 
