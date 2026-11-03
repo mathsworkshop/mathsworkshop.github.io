@@ -177,13 +177,13 @@
       "subcategories": [
         {
           "id": "topology-of-R",
-          "name": "Topology of \mathbb{R}",
+          "name": "Topology of ℝ",
           "description": "Open and closed sets, compact sets and connectedness.",
           "subcategories": []
         },
          {
           "id": "topology-of-Rn",
-          "name": "Topology of $\mathbb{R}^n$",
+          "name": "Topology of ℝⁿ",
           "description": "Open and closed sets, compact sets and connectedness.",
           "subcategories": []
         },
