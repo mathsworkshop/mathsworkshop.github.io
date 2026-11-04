@@ -14395,7 +14395,7 @@ Element-wise proof.
 
 ## Solution
 
-**Definition.** $A\triangle B=\{x:x\in A\text{ xor }x\in B\}$.
+**Definition.** $A\triangle B=\{x:x\in A\text{ or }x\in B\}$.
 
 **$(A\setminus B)\cup(B\setminus A)$.** $x$ is in this set iff $x$ is in exactly one of $A$ or $B$.
 
