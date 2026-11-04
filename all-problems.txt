@@ -14555,7 +14555,7 @@ Reflexive, antisymmetric, transitive.
 @@@ sets-total-order.md
 ---
 title: Total orders
-category: logic/sets-and-maps
+category: logic/relations
 level: l1
 difficulty: 3
 tags: total order, comparability, poset
