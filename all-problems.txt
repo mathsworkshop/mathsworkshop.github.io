@@ -14554,31 +14554,6 @@ Total order: any two elements are comparable.
 
 **Conclusion.** Total orders are partial orders with comparability; the subset relation is typically not total.
 
-@@@ sets-hasse-diagram.md
----
-title: Hasse diagrams
-category: logic/sets-and-maps
-level: l1
-difficulty: 3
-tags: Hasse diagram, poset, visualization
-date: 2026-11-03
----
-
-## Statement
-
-Draw the Hasse diagram of the divisibility poset on $\{1,2,3,4,6,12\}$.
-
-## Hint
-
-Draw an edge from $a$ to $b$ if $a$ divides $b$, $a\neq b$, and there is no intermediate element.
-
-## Solution
-
-**Order.** $a\le b$ iff $a\mid b$.
-
-**Hasse diagram.**
-
-
 @@@ quantifiers-basic-universal.md
 ---
 title: The universal quantifier
