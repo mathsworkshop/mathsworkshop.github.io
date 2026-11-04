@@ -124,7 +124,7 @@ Apply the MVT to $x<y$ in $[a,b]$.
 
 **Conclusion.** $f(y)\ge f(x)$: $f$ is nondecreasing.
 
-**Strict version.** If $f'>0$, $f$ is strictly increasing.
+**Strict version.** If $f'>0$, the same argument shows that $f$ is strictly increasing.
 
 @@@ mvt-inequality-log.md
 ---
@@ -393,58 +393,6 @@ Let $a<b$ and $f'(a)<k<f'(b)$. Consider $g(x)=f(x)-kx$; show $g'$ vanishes somew
 **Conclusion.** $f'$ attains the intermediate value $k$.
 
 **Remark.** Hence $f'$ has the intermediate value property even when it is not continuous (e.g. $x^2\sin(1/x)$ near the origin).
-
-@@@ mvt-convexity-derivative.md
----
-title: Convexity via the derivative
-category: calculus/single-variable/continuity/mean-value-theorem
-level: l1
-difficulty: 4
-tags: convexity, derivative, MVT
-date: 2026-11-04
----
-
-## Statement
-
-Show that $f$ is convex on $I$ iff $f'$ is nondecreasing on $I$ (when $f$ is differentiable).
-
-## Hint
-
-$(\Rightarrow)$: slopes increase with $x$. $(\Leftarrow)$: apply the MVT between three points.
-
-## Solution
-
-**$(\Leftarrow)$.** Suppose $f'$ nondecreasing. For $a<b$ and $t\in]0,1[$, set $c=ta+(1-t)b$. One shows $f(c)\le tf(a)+(1-t)f(b)$ via two MVT applications on $[a,c]$ and $[c,b]$; the monotonicity of $f'$ provides the inequality.
-
-**$(\Rightarrow)$.** If $f$ is convex and $x<y$, the slopes $\frac{f(x+h)-f(x)}{h}$ are nondecreasing in $h$, and taking limits gives $f'(x)\le f'(y)$.
-
-**Conclusion.** Convexity $\iff f'$ nondecreasing.
-
-@@@ mvt-exp-growth.md
----
-title: Growth comparison via MVT
-category: calculus/single-variable/continuity/mean-value-theorem
-level: l1
-difficulty: 4
-tags: exponential growth, MVT, comparison
-date: 2026-11-04
----
-
-## Statement
-
-Show that for all $x>0$: $e^x>1+x+\frac{x^2}{2}$.
-
-## Hint
-
-Apply the second-order Taylor formula (previous exercise) to $e^x$ on $[0,x]$, or apply MVT twice.
-
-## Solution
-
-**Taylor.** By Taylor's formula with remainder, there is $c\in]0,x[$ with
-$$e^x=1+x+\frac{x^2}{2}+\frac{e^c x^3}{6}.$$
-Since $e^c>1$ for $c>0$, the last term is positive: $e^x>1+x+\frac{x^2}{2}$.
-
-**Conclusion.** The strict inequality holds.
 
 @@@ mvt-rolle-sign-change.md
 ---
