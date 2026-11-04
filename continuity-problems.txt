@@ -138,7 +138,7 @@ date: 2026-11-04
 
 ## Statement
 
-Prove that for all $x>0$, $\sin x<x$.
+Prove that for all $x>0$, $\sin x \leq x$.
 
 ## Hint
 
@@ -148,9 +148,8 @@ Apply the MVT to $\sin$ on $[0,x]$.
 
 **MVT.** There exists $c\in]0,x[$ with $\sin x-\sin0=\cos(c)(x-0)$, i.e. $\sin x=x\cos c$.
 
-**Bound.** Since $\cos c<1$ for $c>0$ small (or $\le1$ generally), and $x>0$: $\sin x\le x$. Strict if $\cos c<1$.
+**Bound.** Since $|\cos c|\le1$ and $x>0$, we have $$\sin x\le |\sin x| = x |\cos c| \le x. $$
 
-**Conclusion.** For $x>0$, $\sin x<x$.
 
 @@@ mvt-inequality-log.md
 ---
