@@ -294,17 +294,23 @@ date: 2026-11-04
 
 ## Statement
 
-Let $P$ have $n$ distinct real roots. Show that $P^{(n-1)}$ has at least one real root.
+Let $P$ be a polynomial with $n$ distinct real roots. Show that $P^{(n-1)}$ has at least one real root.
 
 ## Hint
 
-Apply Rolle iteratively: $P'$ has $\ge n-1$ roots, $P''$ has $\ge n-2$, etc.
+Apply Rolle's theorem repeatedly. If a differentiable function has $k$ distinct real roots, its derivative has at least $k-1$ distinct real roots.
 
 ## Solution
 
-**Iteration.** $P'$ has $\ge n-1$ distinct roots (previous exercise generalized). $P''$ has $\ge n-2$, etc. After $n-1$ steps, $P^{(n-1)}$ has $\ge1$ root.
+**Induction on the number of derivatives.** Let $r_0=n$ be the number of distinct real roots of $P^{(0)}=P$. We prove that for every $k\in\{0,1,\ldots,n-1\}$, $P^{(k)}$ has at least $n-k$ distinct real roots.
 
-**Conclusion.** $P^{(n-1)}$ has at least one real root.
+**Base case.** $k=0$: $P$ has $n$ distinct real roots by hypothesis, and $n-0=n$.
+
+**Inductive step.** Suppose $P^{(k)}$ has at least $n-k$ distinct real roots, call them $x_1<x_2<\cdots<x_{n-k}$ (we can choose a subset of size $n-k$ if there are more). Since $P^{(k)}$ is differentiable on each interval $]x_i,x_{i+1}[$ and continuous on $[x_i,x_{i+1}]$, and $P^{(k)}(x_i)=P^{(k)}(x_{i+1})=0$, Rolle's theorem gives a point $c_i\in]x_i,x_{i+1}[$ with
+$$\bigl(P^{(k)}\bigr)'(c_i)=P^{(k+1)}(c_i)=0.$$
+There are $n-k-1$ such intervals, so $P^{(k+1)}$ has at least $n-k-1$ distinct real roots. This completes the induction.
+
+**Conclusion.** Taking $k=n-1$, $P^{(n-1)}$ has at least $n-(n-1)=1$ real root.
 
 @@@ mvt-lagrange-twice-differentiable.md
 ---
