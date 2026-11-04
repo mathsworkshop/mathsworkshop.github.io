@@ -308,13 +308,12 @@ Apply Rolle to $h(x)=(f(b)-f(a))g(x)-(g(b)-g(a))f(x)$.
 
 ## Solution
 
-**Setup.** $h(a)=(f(b)-f(a))g(a)-(g(b)-g(a))f(a)$; $h(b)=(f(b)-f(a))g(b)-(g(b)-g(a))f(b)$. Compute: $h(b)-h(a)=(f(b)-f(a))(g(b)-g(a))-(g(b)-g(a))(f(b)-f(a))=0$. So $h(a)=h(b)$.
+**Setup.** For $h(x)=(f(b)-f(a))g(x)-(g(b)-g(a))f(x)$, we have 
+$$h(a)=(f(b)-f(a))g(a)-(g(b)-g(a))f(a)$$ and $$h(b)=(f(b)-f(a))g(b)-(g(b)-g(a))f(b).$$ Hence $$h(b)-h(a)=(f(b)-f(a))(g(b)-g(a))-(g(b)-g(a))(f(b)-f(a))=0$$.
 
 **Rolle.** $h$ satisfies $h(a)=h(b)$; there exists $c\in]a,b[$ with $h'(c)=0$:
 $$0=(f(b)-f(a))g'(c)-(g(b)-g(a))f'(c).$$
-Rearranging gives the result (note $g(b)-g(a)\ne0$ since $g'\ne0$ and $g$ is strictly monotone).
-
-**Conclusion.** Cauchy's extended MVT holds.
+Rearranging gives the result (note $g(b)-g(a)\ne0$ since $g'\ne0$).
 
 @@@ mvt-lipschitz-bound.md
 ---
