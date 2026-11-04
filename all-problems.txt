@@ -15777,12 +15777,18 @@ Build the truth table.
 
 ## Solution
 
-| $P$ | $Q$ | $P\Rightarrow Q$ | $\neg P\lor Q$ | $(P\Rightarrow Q)\Leftrightarrow(\neg P\lor Q)$ |
-|---|---|---|---|---|
-| T | T | T | T | T |
-| T | F | F | F | T |
-| F | T | T | T | T |
-| F | F | T | T | T |
+$$
+\begin{array}{|c|c|c|c|c|}
+  \hline
+  P & Q & P \Rightarrow Q & \neg P \lor Q & (P \Rightarrow Q) \Leftrightarrow (\neg P \lor Q) \\
+  \hline
+  \text{T} & \text{T} & \text{T} & \text{T} & \text{T} \\
+  \text{T} & \text{F} & \text{F} & \text{F} & \text{T} \\
+  \text{F} & \text{T} & \text{T} & \text{T} & \text{T} \\
+  \text{F} & \text{F} & \text{T} & \text{T} & \text{T} \\
+  \hline
+\end{array}
+$$
 
 All entries are T.
 
