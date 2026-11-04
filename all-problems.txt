@@ -14709,14 +14709,16 @@ Build a truth table.
 
 ## Solution
 
-\begin{tabular}{|c|c|c|}
+$$
+\begin{array}{|c|c|c|}
   \hline
-  $P$ & $\neg P$ & $\neg\neg P$ \\
+  P & \neg P & \neg\neg P \\
   \hline
-  T & F & T \\
-  F & T & F \\
+  \text{T} & \text{F} & \text{T} \\
+  \text{F} & \text{T} & \text{F} \\
   \hline
-\end{tabular}
+\end{array}
+$$
 
 The third column equals the first.
 
