@@ -12731,6 +12731,211 @@ $$\operatorname{Var}(\hat\theta)\ge\frac{1}{nI(\theta)}.$$
 
 **Conclusion.** The Cramér–Rao bound gives the best possible variance for unbiased estimators; MLEs are asymptotically efficient.
 
+
+@@@ sets-inclusion-complement.md
+---
+title: Inclusion and complement
+category: logic/sets-and-maps
+level: l1
+difficulty: 2
+tags: inclusion, complement, direct proof, contradiction
+date: 2026-11-04
+---
+
+## Statement
+
+Let $A$ and $B$ be subsets of a set $E$, and let $\bar A$ and $\bar B$ be their complements in $E$. Prove:
+$$A\subseteq B\implies\bar B\subseteq\bar A.$$
+Give two proofs: (a) by direct reasoning; (b) by contradiction.
+
+## Hint
+
+For the direct proof, take $x\in\bar B$ and use $A\subseteq B$. For contradiction, suppose $\bar B\not\subseteq\bar A$.
+
+## Solution
+
+**(a) Direct proof.** Let $x\in\bar B$, i.e. $x\notin B$. Since $A\subseteq B$, every element of $A$ belongs to $B$; as $x\notin B$, we get $x\notin A$, i.e. $x\in\bar A$. Hence $\bar B\subseteq\bar A$.
+
+**(b) Proof by contradiction.** Suppose $\bar B\not\subseteq\bar A$. Then there exists $x\in\bar B$ with $x\notin\bar A$, i.e. $x\notin B$ and $x\in A$. But $A\subseteq B$ gives $x\in B$, contradiction.
+
+**Conclusion.** $A\subseteq B\implies\bar B\subseteq\bar A$.
+
+@@@ sets-inclusion-union-equivalence.md
+---
+title: Inclusion and union with the complement
+category: logic/sets-and-maps
+level: l1
+difficulty: 2
+tags: inclusion, complement, equivalence
+date: 2026-11-04
+---
+
+## Statement
+
+Let $A,B\subseteq E$ and $\bar A$ the complement of $A$ in $E$. Prove the equivalence
+$$A\subseteq B\iff\bar A\cup B=E.$$
+
+## Hint
+
+Prove both implications separately, by element chasing.
+
+## Solution
+
+**$\Rightarrow$.** Suppose $A\subseteq B$ and let $x\in E$. If $x\in B$, then $x\in\bar A\cup B$. If $x\notin B$, then $x\notin A$ (since $A\subseteq B$), so $x\in\bar A\subseteq\bar A\cup B$. Hence every element of $E$ is in $\bar A\cup B$.
+
+**$\Leftarrow$.** Suppose $\bar A\cup B=E$. If $A\not\subseteq B$, there is $x\in A$ with $x\notin B$. Then $x\notin\bar A$ and $x\notin B$, so $x\notin\bar A\cup B$, contradicting $\bar A\cup B=E$. Hence $A\subseteq B$.
+
+**Conclusion.** The equivalence holds.
+
+@@@ sets-cartesian-product-seven.md
+---
+title: Cartesian product with seven elements
+category: logic/sets-and-maps
+level: l1
+difficulty: 1
+tags: Cartesian product, cardinality, impossible
+date: 2026-11-04
+---
+
+## Statement
+
+Is there a set $A$ such that $A\times A$ has exactly $7$ elements?
+
+## Hint
+
+If $|A|=n$, then $|A\times A|=n^2$. Is $7$ a perfect square?
+
+## Solution
+
+**Setup.** If $A$ has $n$ elements, then $A\times A$ has $n^2$ elements.
+
+**Check.** $n^2=7$ has no integer solution since $2^2=4<7<9=3^2$.
+
+**Conclusion.** No such set exists.
+
+@@@ sets-power-set-cardinality-induction.md
+---
+title: Cardinality of the power set
+category: logic/sets-and-maps
+level: l1
+difficulty: 2
+tags: power set, cardinality, induction
+date: 2026-11-04
+---
+
+## Statement
+
+Let $E_p=\{a_1,\ldots,a_p\}$ be a set with $p$ elements.
+
+1. Show that $|\mathcal{P}(E_{p+1})|=2|\mathcal{P}(E_p)|$.
+2. Deduce that $|\mathcal{P}(E_n)|=2^n$.
+
+## Hint
+
+A subset of $E_{p+1}$ either contains $a_{p+1}$ or not. Multiply equalities for $p=0,\ldots,n-1$.
+
+## Solution
+
+**1.** The subsets of $E_{p+1}$ split into: (a) those contained in $E_p$, of which there are $|\mathcal{P}(E_p)|$; (b) those of the form $S\cup\{a_{p+1}\}$ with $S\subseteq E_p$, also $|\mathcal{P}(E_p)|$ in number. Hence $|\mathcal{P}(E_{p+1})|=2|\mathcal{P}(E_p)|$.
+
+**2.** Multiplying $|\mathcal{P}(E_{p+1})|=2|\mathcal{P}(E_p)|$ for $p=0,\ldots,n-1$:
+$$|\mathcal{P}(E_n)|=2^n|\mathcal{P}(E_0)|.$$
+Since $E_0=\emptyset$, $\mathcal{P}(E_0)=\{\emptyset\}$, so $|\mathcal{P}(E_0)|=1$, and $|\mathcal{P}(E_n)|=2^n$.
+
+**Conclusion.** $|\mathcal{P}(E_n)|=2^n$.
+
+@@@ proof-two-implications-imply-not-p.md
+---
+title: Two implications imply the negation of $p$
+category: logic/proof-techniques
+level: l1
+difficulty: 3
+tags: implication, truth table, contradiction
+date: 2026-11-04
+---
+
+## Statement
+
+Let $p,q$ be propositions. Suppose both implications are true:
+$$(1)\ p\land q\implies\bar q,\qquad (2)\ \bar p\land\bar q\implies q.$$
+Show that $p$ is false, first directly, then using truth tables.
+
+## Hint
+
+Examine the cases $p=1$ and $p=0$ separately.
+
+## Solution
+
+**Direct reasoning.** If $p$ is false, the antecedents $p\land q$ and $\bar p\land\bar q$ of (1) can be true only if $q=1$, but then (1) requires $\bar q=1$, false. More systematically:
+
+- If $p=1$ and $q=1$: (1) is $1\Rightarrow0$, false.
+- If $p=1$ and $q=0$: (2) is $1\Rightarrow0$, false.
+- If $p=0$: both antecedents are always false, so both implications are vacuously true.
+
+Hence both implications hold simultaneously iff $p=0$.
+
+**Truth table.** Writing $\text{impl}(x,y)=\bar x\lor y$, one checks that (1) and (2) are both true only in the rows where $p=0$.
+
+**Conclusion.** $p$ must be false.
+
+@@@ quantifiers-barber-paradox.md
+---
+title: The barber's paradox
+category: logic/quantifiers
+level: l1
+difficulty: 3
+tags: self-reference, paradox, implication
+date: 2026-11-04
+---
+
+## Statement
+
+A village barber shaves all the men of the village who do not shave themselves, and only those. Does the barber shave himself?
+
+## Hint
+
+Let $p$ be the proposition "the barber shaves all men who do not shave themselves, and only those", and $q$ the proposition "the barber shaves himself". Show $p$ leads to a contradiction via $(p\land q)\Rightarrow\bar q$ and $(p\land\bar q)\Rightarrow q$.
+
+## Solution
+
+**Analysis.** If the barber shaves himself ($q$), then by the rule ($p$) he must belong to the set of men who do not shave themselves, i.e. $\bar q$: $(p\land q)\Rightarrow\bar q$. If he does not shave himself ($\bar q$), then by the rule he must shave himself, i.e. $q$: $(p\land\bar q)\Rightarrow q$.
+
+**Contradiction.** These two implications imply (from the previous exercise) that $p$ is false: no such barber exists.
+
+**Conclusion.** The premise $p$ is self-contradictory; the barber does not exist.
+
+@@@ quantifiers-three-numbers-signs.md
+---
+title: Three numbers with signs
+category: logic/quantifiers
+level: l1
+difficulty: 3
+tags: sign analysis, implications, logic puzzle
+date: 2026-11-04
+---
+
+## Statement
+
+Three numbers $a,b,c$ — one positive, one negative, one zero — satisfy:
+$$a=0\implies b>0,\qquad a>0\implies b<0,\qquad b\ne0\implies c>0.$$
+Determine the sign of each.
+
+## Hint
+
+Test each possible sign of $a$; use the implications and the "one of each sign" constraint.
+
+## Solution
+
+**Test $a=0$.** Then $b>0$, and $b\ne0$ gives $c>0$. We would have two positive numbers $b,c$, contradicting the hypothesis. So $a\ne0$.
+
+**Test $a>0$.** Then $b<0$, and $b\ne0$ gives $c>0$. Again two positives ($a,c$), contradiction. So $a\not>0$; hence $a<0$.
+
+**Test $b>0$.** Then $b\ne0$ gives $c>0$, another positive besides $b$, contradiction. So $b\le0$; since $a<0$ is the negative number and one number must be zero, $b=0$.
+
+**Remaining.** $c>0$ is the positive number.
+
+**Conclusion.** $a<0$, $b=0$, $c>0$.
+
 @@@ cardinality-finite-sets.md
 ---
 title: Cardinality of finite sets
