@@ -522,30 +522,6 @@ If $f'(x)=0$ everywhere, then $f$ is constant (consequence of MVT); but $f\not\e
 
 **Conclusion.** There exists $c\in]a,b[$ with $f'(c)\neq0$.
 
-@@@ mvt-rolle-function-parameters.md
----
-title: Rolle with a parameter
-category: calculus/single-variable/continuity/mean-value-theorem
-level: l1
-difficulty: 4
-tags: Rolle, parameter, existence
-date: 2026-11-04
----
-
-## Statement
-
-Show that for any real $a,b,c$, the polynomial $P(x)=x^3+ax^2+bx+c$ has at least one real root of $P''$ in $\mathbb{R}$.
-
-## Hint
-
-$P''$ is a linear function; compute it.
-
-## Solution
-
-**Computation.** $P''(x)=6x+2a$, whose unique root is $x=-a/3$.
-
-**Conclusion.** $P''$ has the real root $-a/3$.
-
 @@@ mvt-lagrange-small-increments.md
 ---
 title: Small-increment estimate
