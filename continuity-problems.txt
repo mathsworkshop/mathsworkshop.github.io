@@ -306,7 +306,7 @@ Apply Rolle's theorem repeatedly. If a differentiable function has $k$ distinct 
 
 **Base case.** $k=0$: $P$ has $n$ distinct real roots by hypothesis, and $n-0=n$.
 
-**Inductive step.** Suppose $P^{(k)}$ has at least $n-k$ distinct real roots, call them $x_1<x_2<\cdots<x_{n-k}$ (we can choose a subset of size $n-k$ if there are more). Since $P^{(k)}$ is differentiable on each interval $]x_i,x_{i+1}[$ and continuous on $[x_i,x_{i+1}]$, and $P^{(k)}(x_i)=P^{(k)}(x_{i+1})=0$, Rolle's theorem gives a point $c_i\in]x_i,x_{i+1}[$ with
+**Inductive step.** Suppose $P^{(k)}$ has at least $n-k$ distinct real roots, call them $x_1<x_2<\cdots<x_{n-k}$. Since $P^{(k)}$ is differentiable on each interval $]x_i,x_{i+1}[$ and continuous on $[x_i,x_{i+1}]$, and $P^{(k)}(x_i)=P^{(k)}(x_{i+1})=0$, Rolle's theorem gives a point $c_i\in]x_i,x_{i+1}[$ with
 $$\bigl(P^{(k)}\bigr)'(c_i)=P^{(k+1)}(c_i)=0.$$
 There are $n-k-1$ such intervals, so $P^{(k+1)}$ has at least $n-k-1$ distinct real roots. This completes the induction.
 
