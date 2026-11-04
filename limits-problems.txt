@@ -306,7 +306,7 @@ Write $\sin x=\tan x\cos x$ and factor $\tan x$.
 $$\tan x-\sin x=\tan x\,(1-\cos x),$$
 and therefore
 $$\frac{\tan x-\sin x}{x^3}=\frac{\tan x}{x}\cdot\frac{1-\cos x}{x^2}.$$
-We know $\dfrac{\tan x}{x}=\dfrac{\sin x}{x}\cdot\dfrac1{\cos x}\to1\cdot1=1$ and $\dfrac{1-\cos x}{x^2}\to\dfrac12$. The limit is $1\cdot\dfrac12=\dfrac12$.
+We know that $$\dfrac{\tan x}{x}=\dfrac{\sin x}{x}\cdot\dfrac1{\cos x}\to1\cdot1=1$$ and $$\dfrac{1-\cos x}{x^2}\to\dfrac12$$. The limit is $\dfrac12$.
 
 **Remark.** Splitting a quotient into a product of known limits works because the limit of a product is the product of the limits, as long as each factor has a limit.
 @@@ exponential-of-2x-minus-1-over-x.md
