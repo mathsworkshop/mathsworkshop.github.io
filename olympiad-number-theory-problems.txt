@@ -1,0 +1,749 @@
+@@@ nt-the-gcd-of-two-numbers-of-the-form-two-to-the-n-minus-one.md
+---
+title: The gcd of 2ᵃ − 1 and 2ᵇ − 1
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: gcd, Euclidean algorithm, divisibility
+date: 2026-11-04
+---
+
+## Statement
+
+Let $a,b$ be positive integers. Prove that
+$$\gcd(2^a-1,\,2^b-1)=2^{\gcd(a,b)}-1.$$
+Deduce that $2^a-1$ divides $2^b-1$ if and only if $a$ divides $b$.
+
+## Hint
+
+Suppose $a>b$. Write $2^a-1=2^{a-b}(2^b-1)+(2^{a-b}-1)$ and compare with the Euclidean algorithm.
+
+## Solution
+
+**Idea.** The Euclidean algorithm on the exponents is mirrored by the Euclidean algorithm on the numbers $2^k-1$.
+
+**Key step.** For $a>b$,
+$$2^a-1=2^{a-b}\bigl(2^b-1\bigr)+\bigl(2^{a-b}-1\bigr),$$
+so $\gcd(2^a-1,2^b-1)=\gcd(2^b-1,2^{a-b}-1)$, because $\gcd(u,v)=\gcd(v,u-qv)$ for any integer $q$. Thus the pair of exponents $(a,b)$ is replaced by $(b,a-b)$.
+
+**Conclusion.** Repeating the subtraction step, the exponents follow the subtractive Euclidean algorithm and end at $(g,g)$ with $g=\gcd(a,b)$ (or at $(g,0)$ if one uses $\gcd(u,0)=u$, where $2^0-1=0$). Hence the gcd equals $2^g-1$.
+
+**Divisibility.** $2^a-1\mid2^b-1\iff\gcd(2^a-1,2^b-1)=2^a-1\iff2^{\gcd(a,b)}-1=2^a-1\iff\gcd(a,b)=a\iff a\mid b$.
+
+**Check.** $\gcd(2^{12}-1,2^{18}-1)=\gcd(4095,262143)=63=2^6-1$ ✓.
+
+**Lesson.** When a gcd involves a parametrised expression, show that the Euclidean algorithm on the parameter reproduces the Euclidean algorithm on the values.
+@@@ nt-n-divides-two-to-the-n-minus-one.md
+---
+title: n divides 2ⁿ − 1 only for n = 1
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: order, Fermat's little theorem, smallest prime divisor
+date: 2026-11-04
+---
+
+## Statement
+
+Find all positive integers $n$ such that $n$ divides $2^n-1$.
+
+## Hint
+
+If $n>1$, look at the smallest prime divisor $p$ of $n$ and at the order of $2$ modulo $p$.
+
+## Solution
+
+**Answer.** Only $n=1$.
+
+**Idea.** The order of $2$ modulo the smallest prime factor of $n$ must be a divisor of $n$ smaller than that prime.
+
+**Proof.** Let $n>1$ with $n\mid2^n-1$ and let $p$ be the smallest prime divisor of $n$. Since $2^n-1$ is odd, $p$ is odd. Let $d$ be the order of $2$ modulo $p$, i.e. the least $d\ge1$ with $2^d\equiv1\pmod p$.
+
+- From $2^n\equiv1\pmod p$ we get $d\mid n$.
+- From Fermat's little theorem $2^{p-1}\equiv1$ we get $d\mid p-1$.
+
+So $d$ divides both $n$ and $p-1$. Now $d\ne1$ because $2\not\equiv1\pmod p$. Hence $d>1$ has a prime divisor $q$ with $q\le d\le p-1<p$, and $q\mid d\mid n$. This contradicts the minimality of $p$.
+
+**Check.** $n=1$ works trivially; for instance $n=3$ fails since $2^3-1=7$.
+
+**Remark.** The same argument shows that $n\mid2^n-1$ cannot hold for $n>1$, but $n\mid2^n+1$ has infinitely many solutions (e.g. $n=3,9,27,\dots$).
+
+**Lesson.** "Take the smallest prime divisor and use orders" is the standard way to show that a divisibility $n\mid a^n-1$ is impossible.
+@@@ nt-no-nonzero-solution-of-x-squared-plus-y-squared-equals-three-z-squared.md
+---
+title: x² + y² = 3z² has no non-trivial solution
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 2
+tags: infinite descent, squares modulo 3, Diophantine equations
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that the only integer solution of $x^2+y^2=3z^2$ is $x=y=z=0$.
+
+## Hint
+
+Squares modulo $3$ are $0$ or $1$. What does the equation say modulo $3$?
+
+## Solution
+
+**Idea.** Descent: from a non-zero solution build a strictly smaller one.
+
+**Proof.** Suppose there is a solution other than $(0,0,0)$, and choose one with $|z|$ smallest positive (if $z=0$ then $x^2+y^2=0$ forces $x=y=0$).
+
+**Modulo $3$.** $x^2+y^2\equiv0\pmod3$. Since squares are $0$ or $1$ modulo $3$, the sum is $0$ only if both are $0$, so $3\mid x$ and $3\mid y$. Write $x=3x_1$, $y=3y_1$:
+$$9(x_1^2+y_1^2)=3z^2\ \Longrightarrow\ z^2=3(x_1^2+y_1^2),$$
+so $3\mid z$; write $z=3z_1$. Then $9z_1^2=3(x_1^2+y_1^2)$, i.e.
+$$x_1^2+y_1^2=3z_1^2,$$
+a solution with $|z_1|=|z|/3<|z|$ and $z_1\ne0$. Contradiction with minimality.
+
+**Lesson.** Infinite descent: reduce modulo a well-chosen number, show all variables are divisible by it, divide, and get a smaller solution.
+@@@ nt-the-product-of-a-pythagorean-triple-is-divisible-by-sixty.md
+---
+title: 60 divides xyz for every Pythagorean triple
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: Pythagorean triples, residues, squares modulo n
+date: 2026-11-04
+---
+
+## Statement
+
+Let $x,y,z$ be positive integers with $x^2+y^2=z^2$. Prove that $xyz$ is divisible by $60$.
+
+## Hint
+
+Since $60=3\cdot4\cdot5$, prove separately that $3$, $4$ and $5$ divide $xyz$, looking at the possible residues of squares modulo $3$, $8$ and $5$.
+
+## Solution
+
+**Idea.** Squares have very few residues, so each prime power can be handled by a short case check.
+
+**Modulo $3$.** Squares are $0$ or $1$. If $3\nmid x$ and $3\nmid y$, then $z^2\equiv1+1=2\pmod3$, impossible. So $3\mid xy$.
+
+**Modulo $5$.** Squares are $0,1,4\equiv-1$. If $5\nmid xyz$, then $x^2,y^2,z^2\in\{\pm1\}$ and $x^2+y^2\in\{-2,0,2\}$ is never $\equiv\pm1$. So $5\mid xyz$.
+
+**Divisibility by $4$.** Squares modulo $4$ are $0,1$, so $x,y$ are not both odd (else $z^2\equiv2$).
+- If $x,y$ are both even, then $4\mid xy$.
+- Otherwise exactly one is even, say $x$, and $y,z$ are odd. Odd squares are $\equiv1\pmod8$, so $x^2=z^2-y^2\equiv0\pmod8$. Writing $x=2m$, $4m^2\equiv0\pmod8$ forces $m$ even, so $4\mid x$.
+
+**Conclusion.** $3$, $4$ and $5$ are pairwise coprime and each divides $xyz$, so $60\mid xyz$.
+
+**Check.** $(3,4,5)$: $60$. $(5,12,13)$: $780=13\cdot60$. $(8,15,17)$: $2040=34\cdot60$ ✓.
+
+**Lesson.** Reduce to the list of squares modulo $3$, $4$ (or $8$) and $5$: most "which numbers divide..." questions about squares are closed by such a check.
+@@@ nt-infinitely-many-primes-congruent-to-three-modulo-four.md
+---
+title: Infinitely many primes of the form 4k + 3
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: primes, Euclid's argument, residues
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that there are infinitely many prime numbers congruent to $3$ modulo $4$.
+
+## Hint
+
+Imitate Euclid. Assume there are finitely many, $p_1,\dots,p_r$ (including $3$), and consider $N=4p_1p_2\cdots p_r-1$.
+
+## Solution
+
+**Idea.** An integer $\equiv3\pmod4$ cannot be a product of primes all $\equiv1\pmod4$.
+
+**Proof.** Suppose the primes $\equiv3\pmod4$ are exactly $p_1,\dots,p_r$, and let $N=4p_1\cdots p_r-1$. Then $N\ge11$, $N$ is odd, and $N\equiv3\pmod4$.
+
+- If all prime factors of $N$ were $\equiv1\pmod4$, their product $N$ would be $\equiv1\pmod4$. Contradiction.
+- So $N$ has a prime factor $q\equiv3\pmod4$, hence $q=p_i$ for some $i$.
+
+But then $p_i$ divides both $N$ and $4p_1\cdots p_r$, hence divides their difference $1$. Contradiction.
+
+**Remark.** The same trick fails for primes $\equiv1\pmod4$ (a product of primes $\equiv3$ can be $\equiv1$); a different argument (using $x^2+1$) is needed there. Dirichlet's theorem handles all progressions $a\bmod m$ with $\gcd(a,m)=1$.
+
+**Lesson.** Euclid's construction works whenever one can arrange the residue of the auxiliary number so that some prime factor must lie in the class under study.
+@@@ nt-wilson-s-theorem-and-its-converse.md
+---
+title: Wilson's theorem and its converse
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: Wilson's theorem, modular inverses, primality
+date: 2026-11-04
+---
+
+## Statement
+
+1. Prove that for a prime $p$, $(p-1)!\equiv-1\pmod p$.
+2. Prove that an integer $n>1$ is prime if and only if $n\mid(n-1)!+1$.
+
+## Hint
+
+In $\{2,\dots,p-2\}$ pair each number with its inverse modulo $p$. Which numbers are their own inverse?
+
+## Solution
+
+**1.** For $p=2,3$ the claim is checked directly ($1!=1\equiv-1\pmod2$, $2!=2\equiv-1\pmod3$). Let $p\ge5$. Each $a\in\{1,\dots,p-1\}$ has a unique inverse $a^{-1}$ in $\{1,\dots,p-1\}$ modulo $p$. We have $a=a^{-1}$ iff $a^2\equiv1$ iff $p\mid(a-1)(a+1)$ iff $a\equiv\pm1$, i.e. $a\in\{1,p-1\}$.
+
+Hence the $p-3$ numbers $2,3,\dots,p-2$ split into pairs $\{a,a^{-1}\}$ with product $\equiv1$, so $2\cdot3\cdots(p-2)\equiv1$, and
+$$(p-1)!\equiv1\cdot1\cdot(p-1)\equiv-1\pmod p.$$
+
+**2.** ($\Rightarrow$) is part 1. ($\Leftarrow$) Suppose $n$ is composite, with a divisor $d$ such that $1<d<n$. Then $d\mid(n-1)!$, so $d\nmid(n-1)!+1$, and therefore $n\nmid(n-1)!+1$. Hence $n\mid(n-1)!+1$ forces $n$ prime.
+
+**Remark.** Wilson's criterion is a perfect primality test in theory, but useless in practice because $(n-1)!$ is huge.
+
+**Lesson.** In a group of residues, pair every element with its inverse: only the elements with $a^2=1$ survive.
+@@@ nt-vieta-jumping-the-quotient-is-a-perfect-square.md
+---
+title: Vieta jumping: (a² + b²)/(ab + 1) is a square
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 5
+tags: Vieta jumping, descent, Diophantine equations, extremal principle
+date: 2026-11-04
+---
+
+## Statement
+
+Let $a,b$ be positive integers such that $k=\dfrac{a^2+b^2}{ab+1}$ is an integer. Prove that $k$ is a perfect square.
+
+## Hint
+
+Fix $k$ and look at the equation $a^2+b^2=k(ab+1)$ as a quadratic in $a$. If $(a,b)$ is a solution, so is the pair formed with the other root. Then take a solution with $a+b$ minimal.
+
+## Solution
+
+**Idea.** Assume $k$ is not a perfect square. Among all pairs of positive integers $(a,b)$ with $a^2+b^2=k(ab+1)$ pick one with $a+b$ minimal, and with $a\ge b$. We build a smaller pair.
+
+**Case $a=b$.** Then $2a^2=k(a^2+1)$, so $k=\frac{2a^2}{a^2+1}<2$. As $k$ is a positive integer, $k=1$, a perfect square. So assume $a>b$.
+
+**The jump.** Regard the equation as $x^2-kb\,x+(b^2-k)=0$ in the unknown $x$. It has the root $x=a$; by Vieta the other root is
+$$a'=kb-a=\frac{b^2-k}{a},$$
+an integer.
+
+- $a'>0$: if $a'<0$ then $a'\le-1$, and from $a'^2+kb|a'|+b^2-k=0$ (the equation with $x=a'$) together with $kb|a'|\ge k$ we get $a'^2+b^2\le0$, impossible. If $a'=0$ then $b^2=k$ would be a square, excluded. So $a'\ge1$.
+- $a'<b$: indeed $a'=\dfrac{b^2-k}a<\dfrac{b^2}a\le b$ since $a\ge b$.
+
+Thus $(a',b)$ is another pair of positive integers satisfying the equation, with $a'+b<a+b$. This contradicts the minimality of $a+b$.
+
+**Conclusion.** $k$ must be a perfect square.
+
+**Check.** $(a,b)=(8,2)$: $\frac{64+4}{17}=4$; $(27,3)$: $\frac{738}{82}=9$; $(30,8)$: $\frac{964}{241}=4$ ✓.
+
+**Remark.** This is IMO 1988 Problem 6, the most famous Vieta jumping problem.
+
+**Lesson.** Vieta jumping: view the equation as a quadratic in one variable, use the second root to produce a smaller solution, and conclude by minimality.
+@@@ nt-the-lifting-the-exponent-lemma-by-hand.md
+---
+title: The exact power of 3 dividing 2^(3ⁿ) + 1
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: p-adic valuation, lifting the exponent, induction
+date: 2026-11-04
+---
+
+## Statement
+
+Let $v_3(m)$ denote the exponent of $3$ in the prime factorisation of $m$. Prove that for every $n\ge0$,
+$$v_3\left(2^{3^n}+1\right)=n+1.$$
+
+## Hint
+
+Put $x_n=2^{3^n}$, so $x_{n+1}=x_n^3$, and factor $x^3+1=(x+1)(x^2-x+1)$. What is $x^2-x+1$ modulo $9$ when $x\equiv-1\pmod3$?
+
+## Solution
+
+**Idea.** Each cube multiplies the number $x+1$ by a factor having valuation exactly $1$.
+
+**Lemma.** If $x\equiv-1\pmod3$, then $v_3(x^2-x+1)=1$. Indeed write $x=3t-1$: then
+$$x^2-x+1=9t^2-6t+1-3t+1+1=9t^2-9t+3\equiv3\pmod9,$$
+so $3\mid x^2-x+1$ but $9\nmid x^2-x+1$.
+
+**Induction.** Let $x_n=2^{3^n}$. As $3^n$ is odd, $x_n\equiv(-1)^{3^n}=-1\pmod3$, so the lemma applies to $x_n$.
+- $n=0$: $x_0+1=3$, so $v_3=1$.
+- Step: $x_{n+1}+1=x_n^3+1=(x_n+1)(x_n^2-x_n+1)$, so
+$$v_3(x_{n+1}+1)=v_3(x_n+1)+1.$$
+
+Hence $v_3(x_n+1)=n+1$.
+
+**Check.** $2^3+1=9$ ($v_3=2$), $2^9+1=513=27\cdot19$ ($v_3=3$), $2^{27}+1=134217729=81\cdot1657009$ ($v_3=4$).
+
+**Remark.** This is the special case of the *Lifting The Exponent lemma*: for an odd prime $p$ with $p\mid a-b$, $p\nmid ab$: $v_p(a^n-b^n)=v_p(a-b)+v_p(n)$.
+
+**Lesson.** To compute an exact $p$-adic valuation, factor with the cyclotomic identity ($x^p-y^p$ or $x^p+y^p$) and track how the valuation grows at each step.
+@@@ nt-an-integrality-proof-with-floor-functions.md
+---
+title: An integrality proof by Legendre's formula
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: Legendre's formula, floor function, integrality
+date: 2026-11-04
+---
+
+## Statement
+
+Recall Legendre's formula: $v_p(n!)=\sum_{k\ge1}\left\lfloor\frac n{p^k}\right\rfloor$.
+
+1. How many zeros are at the end of the decimal expansion of $2024!$?
+2. Prove that for all non-negative integers $m,n$, the number
+$$\frac{(2m)!\,(2n)!}{m!\,n!\,(m+n)!}$$
+is an integer.
+
+## Hint
+
+For part 2, prove $\lfloor2x\rfloor+\lfloor2y\rfloor\ge\lfloor x\rfloor+\lfloor y\rfloor+\lfloor x+y\rfloor$ for real $x,y$.
+
+## Solution
+
+**1.** The number of trailing zeros is $\min(v_2,v_5)$ of $2024!$, and $v_5\le v_2$ because $\lfloor 2024/5^k\rfloor\le\lfloor 2024/2^k\rfloor$ for every $k$. So
+$$v_5(2024!)=\left\lfloor\frac{2024}5\right\rfloor+\left\lfloor\frac{2024}{25}\right\rfloor+\left\lfloor\frac{2024}{125}\right\rfloor+\left\lfloor\frac{2024}{625}\right\rfloor=404+80+16+3=503.$$
+
+**2. Floor inequality.** Write $x=a+\alpha$, $y=b+\beta$ with $a,b\in\mathbb{Z}$, $\alpha,\beta\in[0,1)$. The inequality becomes
+$$\lfloor2\alpha\rfloor+\lfloor2\beta\rfloor\ge\lfloor\alpha+\beta\rfloor.$$
+If $\alpha+\beta<1$ the right side is $0$. If $\alpha+\beta\ge1$ then one of $\alpha,\beta$ is at least $\frac12$, so the left side is at least $1$, and the right side is exactly $1$ (since $\alpha+\beta<2$).
+
+**Integrality.** For each prime $p$, by Legendre's formula,
+$$v_p(\text{expression})=\sum_{k\ge1}\left(\left\lfloor\frac{2m}{p^k}\right\rfloor+\left\lfloor\frac{2n}{p^k}\right\rfloor-\left\lfloor\frac m{p^k}\right\rfloor-\left\lfloor\frac n{p^k}\right\rfloor-\left\lfloor\frac{m+n}{p^k}\right\rfloor\right)\ge0$$
+by the inequality with $x=\frac m{p^k}$, $y=\frac n{p^k}$. All the valuations are non-negative, so the number is an integer.
+
+**Check.** $(m,n)=(1,1)$: $\frac{2\cdot2}{1\cdot1\cdot2}=2$; $(2,3)$: $\frac{24\cdot720}{2\cdot6\cdot120}=12$ ✓.
+
+**Remark.** These are the "super Catalan numbers". The case $m=n$ gives $\binom{2n}n$.
+
+**Lesson.** To prove that a quotient of factorials is an integer, compare prime by prime using Legendre's formula, and reduce to an elementary inequality for floor functions.
+@@@ nt-consecutive-integers-each-divisible-by-a-square.md
+---
+title: Long runs of non-squarefree numbers
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: Chinese remainder theorem, squarefree numbers
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that for every positive integer $n$ there exist $n$ consecutive positive integers, each divisible by the square of an integer greater than $1$.
+
+## Hint
+
+Choose $n$ distinct primes $p_1,\dots,p_n$ and impose $x+i\equiv0\pmod{p_i^2}$ for each $i$.
+
+## Solution
+
+**Idea.** The Chinese remainder theorem lets us prescribe divisibility conditions independently, as long as the moduli are pairwise coprime.
+
+**Proof.** Take distinct primes $p_1,\dots,p_n$. The moduli $p_1^2,\dots,p_n^2$ are pairwise coprime, so by the Chinese remainder theorem there is a positive integer $x$ with
+$$x\equiv-i\pmod{p_i^2}\qquad(i=1,\dots,n).$$
+Then $p_i^2\mid x+i$ for each $i$, so $x+1,x+2,\dots,x+n$ are $n$ consecutive integers each divisible by a square greater than $1$.
+
+**Example.** $n=3$ with primes $2,3,5$: $x\equiv-1\pmod4$, $x\equiv-2\pmod9$, $x\equiv-3\pmod{25}$ gives $x=547$: $548=4\cdot137$, $549=9\cdot61$, $550=25\cdot22$ ✓.
+
+**Remark.** So the gaps between consecutive squarefree numbers are unbounded.
+
+**Lesson.** To find consecutive integers with prescribed divisibility properties, use the Chinese remainder theorem.
+@@@ nt-thirteen-divides-two-to-the-seventy-plus-three-to-the-seventy.md
+---
+title: 13 divides 2⁷⁰ + 3⁷⁰
+category: olympiad/oly-number-theory
+level: m1
+difficulty: 2
+tags: Fermat's little theorem, modular exponentiation
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that $13$ divides $2^{70}+3^{70}$.
+
+## Hint
+
+By Fermat's little theorem $a^{12}\equiv1\pmod{13}$. Reduce the exponents. Also $3^3=27\equiv1\pmod{13}$.
+
+## Solution
+
+**Powers of $2$.** $70=5\cdot12+10$, so $2^{70}\equiv2^{10}=1024\pmod{13}$. Since $1024=13\cdot78+10$, $2^{70}\equiv10$.
+
+**Powers of $3$.** $3^3=27\equiv1\pmod{13}$, and $70=3\cdot23+1$, so $3^{70}\equiv3^1=3$.
+
+**Sum.** $2^{70}+3^{70}\equiv10+3=13\equiv0\pmod{13}$.
+
+**Remark.** Another approach: $2^{70}+3^{70}$ is divisible by $13$ because $3^2\equiv-4=-2^2\pmod{13}$, hence $3^{70}=(3^2)^{35}\equiv(-4)^{35}=-2^{70}$.
+
+**Lesson.** Reduce the base and the exponent: use Fermat's theorem (or the actual order) to shrink exponents modulo $p-1$ (or modulo the order).
+@@@ nt-prime-factors-of-fermat-numbers.md
+---
+title: Prime factors of Fermat numbers
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: order, Fermat numbers, Fermat's little theorem
+date: 2026-11-04
+---
+
+## Statement
+
+Let $F_k=2^{2^k}+1$. Prove that every prime divisor $p$ of $F_k$ satisfies $p\equiv1\pmod{2^{k+1}}$. Deduce that every prime divisor of $F_5=2^{32}+1$ is of the form $64m+1$, and verify that $641\mid F_5$.
+
+## Hint
+
+Compute the order of $2$ modulo $p$. It divides $2^{k+1}$, but does not divide $2^k$.
+
+## Solution
+
+**Idea.** The order of $2$ modulo $p$ is exactly $2^{k+1}$, and orders divide $p-1$.
+
+**Proof.** Let $p\mid F_k$. Then $p$ is odd and $2^{2^k}\equiv-1\pmod p$. Squaring, $2^{2^{k+1}}\equiv1\pmod p$, so the order $d$ of $2$ divides $2^{k+1}$, hence $d=2^j$ with $j\le k+1$. If $j\le k$, then $2^{2^k}\equiv1$ (as $d\mid2^k$), but we know $2^{2^k}\equiv-1\not\equiv1\pmod p$ since $p>2$. Thus $d=2^{k+1}$. By Fermat's little theorem $d\mid p-1$, so $p\equiv1\pmod{2^{k+1}}$.
+
+**Case $k=5$.** The primes dividing $F_5$ are among $64m+1$: $193,257,449,577,641,\dots$ Only $641=10\cdot64+1$ is needed.
+We use two expressions for $641$: $641=5\cdot2^7+1$ and $641=2^4+5^4$. The first gives $5\cdot2^7\equiv-1\pmod{641}$, so $5^4\cdot2^{28}\equiv1$. The second gives $5^4\equiv-2^4$. Substituting, $-2^4\cdot2^{28}\equiv1$, i.e. $2^{32}\equiv-1\pmod{641}$, so $641\mid F_5$ ✓.
+
+**Remark.** $F_5=641\cdot6\,700\,417$. Euler found $641$ in 1732 using exactly this restriction on divisors, refuting Fermat's belief that all $F_k$ are prime.
+
+**Lesson.** Compute the exact order of an element from a congruence like $a^m\equiv-1$; it restricts the possible primes to an arithmetic progression.
+@@@ nt-when-is-two-to-the-n-plus-one-prime.md
+---
+title: When can 2ⁿ + 1 or 2ⁿ − 1 be prime?
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 2
+tags: factorisation, primes, Fermat primes, Mersenne primes
+date: 2026-11-04
+---
+
+## Statement
+
+1. Prove that if $2^n+1$ is prime ($n\ge1$), then $n$ is a power of $2$.
+2. Prove that if $2^n-1$ is prime, then $n$ is prime.
+
+## Hint
+
+Use $x^m-1=(x-1)(x^{m-1}+\cdots+1)$ and, for odd $m$, $x^m+1=(x+1)(x^{m-1}-x^{m-2}+\cdots+1)$.
+
+## Solution
+
+**1.** Suppose $n$ is not a power of $2$: $n=2^s m$ with $m\ge3$ odd. Let $x=2^{2^s}$. Then $2^n+1=x^m+1$ is divisible by $x+1$, and $1<x+1<x^m+1$. So $2^n+1$ is composite. Hence $n$ must be a power of $2$ (the numbers $2^{2^k}+1$ are the Fermat numbers).
+
+**2.** Suppose $n=ab$ with $a,b\ge2$. Then $2^n-1=(2^a)^b-1$ is divisible by $2^a-1$, and $1<2^a-1<2^n-1$. So $2^n-1$ is composite. Hence $n$ is prime (the numbers $2^p-1$ are Mersenne numbers).
+
+**Remark.** The converses are false: $2^{11}-1=23\cdot89$ and $2^{32}+1=641\cdot6700417$.
+
+**Lesson.** Whenever an exponent has a divisor, a geometric-sum factorisation $x^m\pm1$ produces a proper factor.
+@@@ nt-the-difference-of-two-squares-equal-to-2024.md
+---
+title: x² − y² = 2024
+category: olympiad/oly-number-theory
+level: m1
+difficulty: 2
+tags: Diophantine equations, factoring, parity, divisors
+date: 2026-11-04
+---
+
+## Statement
+
+Find all integer solutions of $x^2-y^2=2024$.
+
+## Hint
+
+Factor $(x-y)(x+y)=2024$. What can you say about the parities of $x-y$ and $x+y$?
+
+## Solution
+
+**Idea.** A product of two integers with prescribed sum parity: enumerate factor pairs.
+
+**Parity.** $x-y$ and $x+y$ have the same parity. Their product $2024=2^3\cdot11\cdot23$ is even, so both factors are even. Write $x-y=2u$, $x+y=2v$ with $uv=506=2\cdot11\cdot23$. Then $x=u+v$, $y=v-u$.
+
+**Positive factor pairs of $506$.** Divisors: $1,2,11,22,23,46,253,506$. With $u\le v$ and $uv=506$:
+$$(1,506),\ (2,253),\ (11,46),\ (22,23).$$
+
+**Non-negative solutions $(x,y)=(u+v,v-u)$.**
+$$(507,505),\ (255,251),\ (57,35),\ (45,1).$$
+
+**All integer solutions.** Changing the signs of $x$ and/or $y$ gives $4\cdot4=16$ solutions: $(\pm507,\pm505)$, $(\pm255,\pm251)$, $(\pm57,\pm35)$, $(\pm45,\pm1)$.
+
+**Check.** $45^2-1=2024$ ✓.
+
+**Remark.** A number $N$ is a difference of two squares iff $N\not\equiv2\pmod4$; $2024\equiv0\pmod4$ works.
+
+**Lesson.** Factor the equation into a product of two integers, then enumerate divisors using parity and size constraints.
+@@@ nt-the-equation-x-cubed-plus-two-y-cubed-plus-four-z-cubed.md
+---
+title: x³ + 2y³ + 4z³ = 0
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: infinite descent, parity, irrationality
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that the only integer solution of $x^3+2y^3+4z^3=0$ is $(0,0,0)$. Deduce that $\sqrt[3]2$ is irrational.
+
+## Hint
+
+Show that $x$, then $y$, then $z$ must all be even.
+
+## Solution
+
+**Descent.** Suppose a non-zero solution exists, and choose one with $|x|+|y|+|z|$ minimal.
+
+- $x^3=-2y^3-4z^3$ is even, so $x$ is even: $x=2x_1$. Then $8x_1^3+2y^3+4z^3=0$, i.e. $4x_1^3+y^3+2z^3=0$.
+- So $y^3$ is even, $y=2y_1$: $4x_1^3+8y_1^3+2z^3=0$, i.e. $2x_1^3+4y_1^3+z^3=0$.
+- So $z$ is even, $z=2z_1$: $2x_1^3+4y_1^3+8z_1^3=0$, i.e. $x_1^3+2y_1^3+4z_1^3=0$.
+
+Thus $(x_1,y_1,z_1)=(x/2,y/2,z/2)$ is a smaller non-zero solution, contradiction.
+
+**Irrationality.** If $\sqrt[3]2=\frac pq$ with $q\ne0$, then $p^3=2q^3$, i.e. $p^3-2q^3=0$. Setting $x=p$, $y=-q$, $z=0$ gives $x^3+2y^3+4z^3=p^3-2q^3=0$ with $(x,y,z)\ne0$, contradiction.
+
+**Remark.** The same argument proves that $x^3+2y^3+4z^3=0$ has no non-trivial *rational* solutions, which is the statement that $1,\sqrt[3]2,\sqrt[3]4$ are linearly independent over $\mathbb{Q}$.
+
+**Lesson.** Descent by parity: when all variables are forced to be even, divide by $2$ and obtain a smaller solution.
+@@@ nt-a-digit-sum-equation.md
+---
+title: n + S(n) + S(S(n)) = 60
+category: olympiad/oly-number-theory
+level: m1
+difficulty: 2
+tags: digit sum, congruence modulo 9, bounding
+date: 2026-11-04
+---
+
+## Statement
+
+Let $S(n)$ denote the sum of the decimal digits of $n$. Find all positive integers $n$ such that
+$$n+S(n)+S(S(n))=60.$$
+
+## Hint
+
+Use $S(m)\equiv m\pmod9$ to restrict $n$ modulo $3$, then bound $n$ from below.
+
+## Solution
+
+**Idea.** A congruence cuts the candidates by a factor of $3$; a size estimate makes the list finite and short.
+
+**Congruence.** $S(n)\equiv n$ and $S(S(n))\equiv n\pmod9$, so the left side is $\equiv3n\pmod9$. Since $60\equiv6\pmod9$, $3n\equiv6\pmod9$, i.e. $n\equiv2\pmod3$.
+
+**Bounds.** Clearly $n<60$, so $S(n)\le S(49)=13$ or $S(59)=14$: at most $14$. Then $S(S(n))\le9$ (the maximum of $S$ over $1,\dots,14$ is $9$). Hence $n\ge60-14-9=37$.
+
+**Candidates.** $n\in[37,59]$ with $n\equiv2\pmod3$: $38,41,44,47,50,53,56,59$.
+- $38$: $38+11+2=51$
+- $41$: $41+5+5=51$
+- $44$: $44+8+8=60$ ✓
+- $47$: $47+11+2=60$ ✓
+- $50$: $50+5+5=60$ ✓
+- $53$: $53+8+8=69$
+- $56$: $56+11+2=69$
+- $59$: $59+14+5=78$
+
+**Answer.** $n\in\{44,47,50\}$.
+
+**Lesson.** For digit-sum equations, combine the congruence $S(n)\equiv n\pmod9$ with a crude bound on $S(n)$, then check the remaining few cases.
+@@@ nt-a-prime-factor-of-a-sum-of-two-squares.md
+---
+title: Primes 3 mod 4 and sums of two squares
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: sum of two squares, quadratic residues, descent
+date: 2026-11-04
+---
+
+## Statement
+
+1. Let $p$ be a prime with $p\equiv3\pmod4$. Prove that if $p\mid a^2+b^2$ then $p\mid a$ and $p\mid b$.
+2. Deduce that if $n=a^2+b^2$, every prime $p\equiv3\pmod4$ divides $n$ to an even power.
+3. Show that $n\cdot m$ is a sum of two squares whenever $n$ and $m$ are.
+
+## Hint
+
+For part 1, if $p\nmid b$ use the inverse of $b$ to get $x^2\equiv-1\pmod p$, then apply Fermat's little theorem to $x^{p-1}$.
+
+## Solution
+
+**1.** Suppose $p\mid a^2+b^2$ and $p\nmid b$. Let $x\equiv ab^{-1}\pmod p$. Then $x^2\equiv-1\pmod p$ and $x\not\equiv0$. By Fermat's little theorem,
+$$1\equiv x^{p-1}=(x^2)^{(p-1)/2}\equiv(-1)^{(p-1)/2}\pmod p.$$
+Since $p\equiv3\pmod4$, $\frac{p-1}2$ is odd, so the right side is $-1$. So $1\equiv-1$, i.e. $p=2$, contradiction. Hence $p\mid b$, and then $p\mid a^2$, so $p\mid a$.
+
+**2.** By strong induction on $n$. Let $n=a^2+b^2$ and $p\equiv3\pmod4$ with $p\mid n$. By part 1, $p\mid a,b$, so $n=p^2(a_1^2+b_1^2)$ where $a=pa_1$, $b=pb_1$, and $n/p^2$ is again a sum of two squares, smaller than $n$. By induction, the exponent of $p$ in $n/p^2$ is even, so the exponent in $n$ is even too. (If $p\nmid n$ the exponent is $0$.)
+
+**3.** Brahmagupta's identity:
+$$(a^2+b^2)(c^2+d^2)=(ac-bd)^2+(ad+bc)^2.$$
+
+**Examples.** $21=3\cdot7$ and $2021=43\cdot47$ are not sums of two squares (primes $\equiv3\pmod4$ with odd exponent); $45=9\cdot5=6^2+3^2$ is.
+
+**Lesson.** To forbid a representation, find a prime for which the representation forces divisibility of both terms, then descend.
+@@@ nt-a-square-sandwiched-between-two-consecutive-squares.md
+---
+title: When is n⁴ + n³ + n² + n + 1 a perfect square?
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: bounding between squares, Diophantine equations
+date: 2026-11-04
+---
+
+## Statement
+
+Find all positive integers $n$ such that $N=n^4+n^3+n^2+n+1$ is a perfect square.
+
+## Hint
+
+Multiply by $4$ to complete a square: compare $4N$ with $(2n^2+n)^2$ and $(2n^2+n+2)^2$.
+
+## Solution
+
+**Answer.** $n=3$ only ($N=121=11^2$).
+
+**Idea.** Trap $4N$ strictly between two consecutive squares of the same parity, leaving a single possible intermediate square, then solve for $n$.
+
+**Bounds.** We have
+$$(2n^2+n)^2=4n^4+4n^3+n^2<4N=4n^4+4n^3+4n^2+4n+4,$$
+and
+$$(2n^2+n+2)^2=4n^4+4n^3+9n^2+4n+4,$$
+so $(2n^2+n+2)^2-4N=5n^2>0$. Hence
+$$(2n^2+n)^2<4N<(2n^2+n+2)^2.$$
+
+**Parity.** If $N=m^2$ then $4N=(2m)^2$ is an even square strictly between the squares of $2n^2+n$ and $2n^2+n+2$, so $2m=2n^2+n+1$. Squaring,
+$$4N=(2n^2+n+1)^2=4n^4+4n^3+5n^2+2n+1,$$
+and comparing with $4N=4n^4+4n^3+4n^2+4n+4$ gives $n^2-2n-3=0$, i.e. $(n-3)(n+1)=0$.
+
+**Conclusion.** $n=3$.
+
+**Check.** $81+27+9+3+1=121$ ✓. (Compare: $n=1$ gives $5$, $n=2$ gives $31$, $n=4$ gives $341$.)
+
+**Lesson.** To solve "polynomial = square", sandwich the polynomial (suitably scaled) between two consecutive squares and treat the few possible intermediate values.
+@@@ nt-counting-divisors-and-the-hundred-lockers.md
+---
+title: Counting divisors and the hundred lockers
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 2
+tags: divisor function, perfect squares, pairing
+date: 2026-11-04
+---
+
+## Statement
+
+Let $d(n)$ be the number of positive divisors of $n$.
+
+1. Prove that $d(n)$ is odd if and only if $n$ is a perfect square.
+2. There are $100$ lockers, all closed. For $k=1,\dots,100$, student number $k$ changes the state (open/closed) of every $k$-th locker. Which lockers are open at the end?
+3. What is the smallest positive integer with exactly $12$ divisors?
+
+## Hint
+
+Pair each divisor $d$ with $n/d$.
+
+## Solution
+
+**1.** The map $d\mapsto n/d$ is an involution on the set of divisors of $n$. Its fixed points satisfy $d^2=n$. So divisors come in pairs $\{d,n/d\}$ with $d\ne n/d$, except when $n$ is a square, where $\sqrt n$ is unpaired. Hence $d(n)$ is odd iff $n$ is a square.
+
+**2.** Locker $m$ is touched once by every student $k$ dividing $m$, i.e. $d(m)$ times. It ends open iff $d(m)$ is odd iff $m$ is a perfect square. The open lockers are $1,4,9,16,25,36,49,64,81,100$ (ten lockers).
+
+**3.** If $n=\prod p_i^{a_i}$ then $d(n)=\prod(a_i+1)$. To get $12$ divisors, the exponents are $\{11\}$, $\{5,1\}$, $\{3,2\}$ or $\{2,1,1\}$. Minimal numbers: $2^{11}=2048$, $2^5\cdot3=96$, $2^3\cdot3^2=72$, $2^2\cdot3\cdot5=60$. The smallest is $60$.
+
+**Lesson.** Pair divisors $d\leftrightarrow n/d$; and recall $d(n)=\prod(a_i+1)$ to optimise over factorisation types.
+@@@ nt-a-floor-identity-with-square-roots.md
+---
+title: ⌊√n + √(n+1)⌋ = ⌊√(4n+2)⌋
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: floor function, square roots, squares modulo 4
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that for every positive integer $n$,
+$$\left\lfloor\sqrt n+\sqrt{n+1}\right\rfloor=\left\lfloor\sqrt{4n+2}\right\rfloor.$$
+
+## Hint
+
+Show that $\sqrt n+\sqrt{n+1}<\sqrt{4n+2}$, then show that no integer lies between the two numbers.
+
+## Solution
+
+**Idea.** The two numbers are very close; an integer between them would be a square near $4n+2$, and $4n+2$ is never a square.
+
+**Upper comparison.** $(\sqrt n+\sqrt{n+1})^2=2n+1+2\sqrt{n(n+1)}$, and $n(n+1)<\left(n+\frac12\right)^2$, so $2\sqrt{n(n+1)}<2n+1$ and
+$$(\sqrt n+\sqrt{n+1})^2<4n+2.$$
+
+**Lower comparison.** $n(n+1)>n^2$ so $2\sqrt{n(n+1)}>2n$ and
+$$(\sqrt n+\sqrt{n+1})^2>4n+1.$$
+
+**No integer in between.** Suppose an integer $k$ satisfies $\sqrt n+\sqrt{n+1}<k\le\sqrt{4n+2}$. Squaring, $4n+1<k^2\le4n+2$, so $k^2=4n+2$. But squares are $\equiv0,1\pmod4$ while $4n+2\equiv2$. Contradiction.
+
+**Conclusion.** The numbers $\sqrt n+\sqrt{n+1}\le\sqrt{4n+2}$ have no integer in $(\sqrt n+\sqrt{n+1},\sqrt{4n+2}]$, so their floors coincide.
+
+**Check.** $n=1$: $1+1.414=2.414$, $\sqrt6=2.449$, both floors $2$.
+
+**Lesson.** To compare floors of two close irrational expressions, show that no integer (or the square of an integer) can separate them, often with a congruence argument.
+@@@ nt-the-gcd-of-two-consecutive-factorials-plus-one.md
+---
+title: gcd(n! + 1, (n + 1)! + 1) = 1
+category: olympiad/oly-number-theory
+level: m1
+difficulty: 2
+tags: gcd, divisibility, factorials
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that for every positive integer $n$, $n!+1$ and $(n+1)!+1$ are coprime.
+
+## Hint
+
+Let $d$ divide both. Express $(n+1)!+1$ in terms of $n!$ and reduce modulo $d$.
+
+## Solution
+
+**Proof.** Let $d$ be a common divisor. Then $n!\equiv-1\pmod d$. Since $(n+1)!=(n+1)\,n!$,
+$$0\equiv(n+1)!+1\equiv-(n+1)+1=-n\pmod d,$$
+so $d\mid n$. But $n\mid n!$, hence $d\mid n!$. Together with $d\mid n!+1$ this gives $d\mid1$.
+
+**Check.** $n=3$: $\gcd(7,25)=1$; $n=4$: $\gcd(25,121)=1$ ✓.
+
+**Remark.** Equivalently, $\gcd(n!+1,(n+1)!+1)=\gcd(n!+1,n)=1$ by the Euclidean algorithm.
+
+**Lesson.** To prove coprimality, assume a common divisor $d$, reduce one expression modulo $d$ using the other, and show that $d$ divides $1$.
+@@@ nt-a-number-of-the-form-eight-k-plus-seven-is-not-a-sum-of-three-squares.md
+---
+title: 8k + 7 is not a sum of three squares
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 2
+tags: squares modulo 8, representation by squares
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that no integer of the form $8k+7$ is a sum of three squares of integers.
+
+## Hint
+
+What are the possible values of a square modulo $8$?
+
+## Solution
+
+**Squares modulo 8.** For $x$ odd, $x^2\equiv1\pmod8$; for $x\equiv2,6\pmod8$, $x^2\equiv4$; for $x\equiv0,4\pmod8$, $x^2\equiv0$. So squares are $0,1,4$ modulo $8$.
+
+**Sums of three.** The sums of three elements of $\{0,1,4\}$ are:
+$$0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 8\equiv0,\ 9\equiv1,\ 12\equiv4.$$
+Precisely, the possible sums are the residues $0,1,2,3,4,5,6$ modulo $8$. The residue $7$ is never obtained (for instance $4+1+1=6$, $4+4+1=9\equiv1$, $1+1+1=3$).
+
+**Conclusion.** No sum of three squares is $\equiv7\pmod8$.
+
+**Remark.** Legendre's three-square theorem states the converse: a positive integer is a sum of three squares iff it is not of the form $4^a(8b+7)$. For example $15$, $23$, $28=4\cdot7$ are not sums of three squares.
+
+**Lesson.** List the residues of squares modulo $8$ ($0,1,4$) and check which sums are attainable: the standard way to rule out representations.
