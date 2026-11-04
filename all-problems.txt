@@ -1,3 +1,444 @@
+@@@ topology-MnR-convergence-entries.md
+---
+title: Convergence in $M_n(\mathbb{R})$ via entries
+category: topology/topology-of-mnr
+level: l1
+difficulty: 2
+tags: matrix convergence, entrywise convergence, sequence of matrices
+date: 2026-11-04
+---
+
+## Statement
+
+A sequence $(A^{(k)})_{k\ge1}$ of matrices in $M_n(\mathbb{R})$ is said to *converge entrywise* to $A\in M_n(\mathbb{R})$ if for every $i,j\in\{1,\ldots,n\}$, the real sequence $(a^{(k)}_{ij})_{k\ge1}$ converges to $a_{ij}$. Show that entrywise convergence is equivalent to convergence for the metric
+$$d(A,B)=\max_{i,j}|a_{ij}-b_{ij}|.$$
+
+## Hint
+
+Compare $d(A^{(k)},A)$ with the largest entrywise difference; use the fact that a maximum of finitely many quantities vanishes iff each one vanishes.
+
+## Solution
+
+**$(\Leftarrow)$.** Suppose $d(A^{(k)},A)\to0$. For each $(i,j)$, $|a^{(k)}_{ij}-a_{ij}|\le d(A^{(k)},A)\to0$, so entrywise convergence holds.
+
+**$(\Rightarrow)$.** Suppose entrywise convergence. For each $(i,j)$, $|a^{(k)}_{ij}-a_{ij}|\to0$. There are finitely many pairs $(i,j)$, so
+$$d(A^{(k)},A)=\max_{i,j}|a^{(k)}_{ij}-a_{ij}|\to0.$$
+
+**Conclusion.** Entrywise convergence and convergence for the sup metric coincide on $M_n(\mathbb{R})$.
+
+@@@ topology-MnR-metrics-equivalent.md
+---
+title: Equivalent metrics on $M_n(\mathbb{R})$
+category: topology/topology-of-mnr
+level: l1
+difficulty: 3
+tags: equivalent metrics, norms on matrices, finite dimension
+date: 2026-11-04
+---
+
+## Statement
+
+Consider the following three norms on $M_n(\mathbb{R})$:
+$$\|A\|_\infty=\max_{i,j}|a_{ij}|,\qquad \|A\|_1=\sum_{i,j}|a_{ij}|,\qquad \|A\|_F=\left(\sum_{i,j}|a_{ij}|^2\right)^{1/2}.$$
+Show that they are equivalent.
+
+## Hint
+
+Bound each by the others using the number of entries $n^2$.
+
+## Solution
+
+**Bounds.** For every $A\in M_n(\mathbb{R})$:
+$$\|A\|_\infty\le\|A\|_F\le\|A\|_1\le n^2\|A\|_\infty.$$
+- $\|A\|_\infty\le\|A\|_F$: each entry squared is $\le\sum|a_{ij}|^2$.
+- $\|A\|_F\le\|A\|_1$: from $\|A\|_F^2=\sum|a_{ij}|^2\le(\sum|a_{ij}|)^2$.
+- $\|A\|_1\le n^2\|A\|_\infty$: sum of $n^2$ terms each $\le\|A\|_\infty$.
+
+**Conclusion.** The three norms define the same topology on $M_n(\mathbb{R})$.
+
+@@@ topology-MnR-complete.md
+---
+title: Completeness of $M_n(\mathbb{R})$
+category: topology/topology-of-mnr
+level: l1
+difficulty: 3
+tags: completeness, Cauchy sequence, identification with R^{n^2}
+date: 2026-11-04
+---
+
+## Statement
+
+Show that $M_n(\mathbb{R})$ equipped with the sup metric is complete.
+
+## Hint
+
+Identify $M_n(\mathbb{R})$ with $\mathbb{R}^{n^2}$; use completeness of $\mathbb{R}$.
+
+## Solution
+
+**Identification.** The map $\Phi:M_n(\mathbb{R})\to\mathbb{R}^{n^2}$ sending $A$ to its entries is an isometry for the sup metric.
+
+**Cauchy sequences.** A Cauchy sequence in $M_n(\mathbb{R})$ corresponds to a Cauchy sequence in $\mathbb{R}^{n^2}$. Since $\mathbb{R}^{n^2}$ is complete, it converges; identifying back gives convergence in $M_n(\mathbb{R})$.
+
+**Conclusion.** $M_n(\mathbb{R})$ is complete.
+
+@@@ topology-MnR-closed-subgroups.md
+---
+title: Classical closed subgroups of $GL_n(\mathbb{R})$
+category: topology/topology-of-mnr
+level: l1
+difficulty: 4
+tags: closed subgroups, GL_n, SL_n, O_n, determinant
+date: 2026-11-04
+---
+
+## Statement
+
+Show that the following subsets of $M_n(\mathbb{R})$ are closed:
+$$SL_n(\mathbb{R})=\{A:\det A=1\},\qquad O_n(\mathbb{R})=\{A:A^TA=I_n\},\qquad S_n(\mathbb{R})=\{A:A^T=A\}.$$
+
+## Hint
+
+Each is the preimage of a closed set under a continuous map.
+
+## Solution
+
+**$SL_n$.** The determinant $\det:M_n(\mathbb{R})\to\mathbb{R}$ is continuous (polynomial in the entries). $SL_n=\det^{-1}(\{1\})$ is closed as preimage of the closed set $\{1\}$.
+
+**$O_n$.** The map $\Phi(A)=A^TA-I_n$ is continuous into the symmetric matrices. $O_n=\Phi^{-1}(\{0\})$ is closed.
+
+**$S_n$.** The map $A\mapsto A^T-A$ is linear (continuous). $S_n$ is its kernel, hence closed.
+
+**Conclusion.** $SL_n$, $O_n$, $S_n$ are closed subgroups (or subspace) of $M_n(\mathbb{R})$.
+
+@@@ topology-MnR-open-GLn.md
+---
+title: $GL_n(\mathbb{R})$ is open in $M_n(\mathbb{R})$
+category: topology/topology-of-mnr
+level: l1
+difficulty: 4
+tags: GL_n, open set, determinant continuity
+date: 2026-11-04
+---
+
+## Statement
+
+Show that $GL_n(\mathbb{R})=\{A:\det A\neq0\}$ is open in $M_n(\mathbb{R})$.
+
+## Hint
+
+$\det$ is continuous and $GL_n=\det^{-1}(\mathbb{R}\setminus\{0\})$.
+
+## Solution
+
+**Argument.** $\det:M_n(\mathbb{R})\to\mathbb{R}$ is continuous, and $\mathbb{R}\setminus\{0\}$ is open. Therefore $GL_n=\det^{-1}(\mathbb{R}\setminus\{0\})$ is open.
+
+**Conclusion.** $GL_n(\mathbb{R})$ is open, and its complement $SL_n$ (as well as $\{\det=0\}$) is closed.
+
+@@@ topology-MnR-compact-groups.md
+---
+title: Compactness of orthogonal and orthogonal groups
+category: topology/topology-of-mnr
+level: l1
+difficulty: 4
+tags: compactness, O_n, SO_n, boundedness
+date: 2026-11-04
+---
+
+## Statement
+
+Show that $O_n(\mathbb{R})$ and $SO_n(\mathbb{R})=\{A\in O_n:\det A=1\}$ are compact subsets of $M_n(\mathbb{R})$.
+
+## Hint
+
+$O_n$ is closed (previous exercise) and bounded: every entry of an orthogonal matrix satisfies $|a_{ij}|\le1$.
+
+## Solution
+
+**Closed.** $O_n=\Phi^{-1}(\{0\})$ with $\Phi(A)=A^TA-I_n$, continuous: closed.
+
+**Bounded.** For $A\in O_n$ and any row $i$: $\|(\text{row }i)\|_2=1$, so $|a_{ij}|\le1$. Hence $\|A\|_\infty\le1$: bounded.
+
+**Conclusion.** $O_n$ is closed and bounded, hence compact (Heine–Borel in $\mathbb{R}^{n^2}$). $SO_n$ is closed (as $O_n\cap SL_n$) and bounded, hence compact.
+
+@@@ topology-MnR-compact-trace-zero.md
+---
+title: A non-compact closed subspace: trace-zero matrices
+category: topology/topology-of-mnr
+level: l1
+difficulty: 3
+tags: closed unbounded, trace, non-compactness
+date: 2026-11-04
+---
+
+## Statement
+
+Let $H=\{A\in M_n(\mathbb{R}):\operatorname{tr}(A)=0\}$. Show that $H$ is closed but not compact.
+
+## Hint
+
+$H$ is the kernel of the trace functional; show it is unbounded.
+
+## Solution
+
+**Closed.** The trace is linear, hence continuous; $H=\operatorname{tr}^{-1}(\{0\})$ is closed.
+
+**Not compact.** The matrices $A_k=k\,E_{12}$ have trace $0$ for every $k$, but $\|A_k\|_\infty=k\to+\infty$: unbounded.
+
+**Conclusion.** $H$ is closed and unbounded, hence not compact.
+
+@@@ topology-MnR-interior.md
+---
+title: Interior and boundary of $GL_n(\mathbb{R})$
+category: topology/topology-of-mnr
+level: l1
+difficulty: 3
+tags: interior, boundary, GL_n
+date: 2026-11-04
+---
+
+## Statement
+
+Determine the interior and the boundary of $GL_n(\mathbb{R})$ in $M_n(\mathbb{R})$.
+
+## Hint
+
+$GL_n$ is open; its boundary is the set of singular matrices.
+
+## Solution
+
+**Interior.** Since $GL_n$ is open, $\mathring{GL_n}=GL_n$.
+
+**Closure.** Every singular matrix $A$ is a limit of invertible matrices: $A+\varepsilon I$ is invertible for small $\varepsilon>0$. So $\overline{GL_n}=M_n(\mathbb{R})$.
+
+**Boundary.** $\partial GL_n=\overline{GL_n}\setminus\mathring{GL_n}=M_n(\mathbb{R})\setminus GL_n$, the set of singular matrices.
+
+**Conclusion.** Interior $=GL_n$; boundary $=$ singular matrices.
+
+@@@ topology-MnR-distance-to-groups.md
+---
+title: Distance to $O_n$ and polar decomposition (statement)
+category: topology/topology-of-mnr
+level: m1
+difficulty: 5
+tags: distance to O_n, singular values, polar decomposition
+date: 2026-11-04
+---
+
+## Statement
+
+Show that for any $A\in M_n(\mathbb{R})$, the distance to $O_n$ for $\|\cdot\|_2$ is
+$$\operatorname{dist}_2(A,O_n)=\max_i\bigl|\sigma_i(A)-1\bigr|,$$
+where $\sigma_i(A)$ are the singular values of $A$.
+
+## Hint
+
+Use the polar decomposition $A=U\Sigma V^T$ with $U,V\in O_n$, $\Sigma$ diagonal nonnegative.
+
+## Solution
+
+**Polar decomposition.** Every real $A$ is $U\Sigma V^T$ with $U,V$ orthogonal and $\Sigma=\operatorname{diag}(\sigma_1,\ldots,\sigma_n)\ge0$.
+
+**Lower bound.** For any $Q\in O_n$, $\|A-Q\|_2=\|\Sigma-V^TQU\|_2=\|\Sigma-R\|_2$ where $R=V^TQU\in O_n$. Since $R$ is orthogonal, its singular values are all $1$, so $\|\Sigma-R\|_2\ge\max_i|\sigma_i-1|$.
+
+**Upper bound.** Setting $Q=UV^T\in O_n$, one has $\|A-Q\|_2=\|\Sigma-I\|_2=\max_i|\sigma_i-1|$.
+
+**Conclusion.** $\operatorname{dist}_2(A,O_n)=\max_i|\sigma_i(A)-1|$.
+
+@@@ topology-MnR-matrix-exponential.md
+---
+title: Continuity of the matrix exponential
+category: topology/topology-of-mnr
+level: m1
+difficulty: 4
+tags: matrix exponential, continuity, series
+date: 2026-11-04
+---
+
+## Statement
+
+Show that $\exp:M_n(\mathbb{R})\to M_n(\mathbb{R})$, $\exp(A)=\sum_{k\ge0}\frac{A^k}{k!}$, is continuous.
+
+## Hint
+
+Bound $\|\exp(A)-\exp(B)\|$ using the series and the inequality $\|A^k-B^k\|\le\|A-B\|\sum_{j=0}^{k-1}\|A\|^j\|B\|^{k-1-j}$. Or use local boundedness and uniform convergence on bounded sets.
+
+## Solution
+
+**Local bound.** Fix $R>0$ and $A,B$ with $\|A\|,\|B\|\le R$. For each $k\ge1$:
+$$\|A^k-B^k\|\le\|A-B\|\cdot kR^{k-1}.$$
+Summing: $\|\exp(A)-\exp(B)\|\le\|A-B\|\sum_{k\ge1}\frac{kR^{k-1}}{k!}=\|A-B\|\,e^R$.
+
+**Conclusion.** $\exp$ is locally Lipschitz on $M_n(\mathbb{R})$, hence continuous.
+
+@@@ topology-MnR-eigenvalue-continuity.md
+---
+title: Continuity of eigenvalues (statement)
+category: topology/topology-of-mnr
+level: m1
+difficulty: 4
+tags: eigenvalues, continuity, roots of polynomial
+date: 2026-11-04
+---
+
+## Statement
+
+Show that the multiset of eigenvalues of a matrix depends continuously on the matrix entries.
+
+## Hint
+
+Eigenvalues are roots of the characteristic polynomial $\chi_A(\lambda)=\det(\lambda I-A)$, whose coefficients depend continuously on $A$; the roots of a monic polynomial depend continuously on its coefficients.
+
+## Solution
+
+**Characteristic polynomial.** $A\mapsto\chi_A$ is continuous (composition of $\det$ and affine maps).
+
+**Root continuity.** A monic polynomial's roots (with multiplicity) depend continuously on the coefficients in the Hausdorff metric on finite multisets of $\mathbb{C}$.
+
+**Conclusion.** Eigenvalues depend continuously on the matrix.
+
+@@@ topology-MnR-separability.md
+---
+title: Separability of $M_n(\mathbb{R})$
+category: topology/topology-of-mnr
+level: l1
+difficulty: 3
+tags: separability, dense countable subset, rational matrices
+date: 2026-11-04
+---
+
+## Statement
+
+Show that $M_n(\mathbb{R})$ is separable.
+
+## Hint
+
+Consider matrices with rational entries.
+
+## Solution
+
+**Countable dense subset.** Let $M_n(\mathbb{Q})$ be the set of matrices with rational entries. It is countable (finite product of countable sets).
+
+**Density.** For any $A\in M_n(\mathbb{R})$ and $\varepsilon>0$, approximate each entry $a_{ij}$ by a rational $q_{ij}$ with $|a_{ij}-q_{ij}|<\varepsilon$. The matrix $Q=(q_{ij})$ satisfies $\|A-Q\|_\infty<\varepsilon$.
+
+**Conclusion.** $M_n(\mathbb{Q})$ is countable and dense in $M_n(\mathbb{R})$, which is separable.
+
+@@@ topology-MnR-norm-submultiplicative.md
+---
+title: Submultiplicativity of matrix norms
+category: topology/topology-of-mnr
+level: l1
+difficulty: 3
+tags: submultiplicative norms, operator norm, matrix norm
+date: 2026-11-04
+---
+
+## Statement
+
+Define $\|A\|_{\mathrm{op}}=\sup_{\|x\|=1}\|Ax\|$ (for $\|\cdot\|$ the Euclidean norm on $\mathbb{R}^n$). Show that $\|AB\|_{\mathrm{op}}\le\|A\|_{\mathrm{op}}\|B\|_{\mathrm{op}}$.
+
+## Hint
+
+Write $\|ABx\|\le\|A\|_{\mathrm{op}}\|Bx\|\le\|A\|_{\mathrm{op}}\|B\|_{\mathrm{op}}\|x\|$.
+
+## Solution
+
+**Inequality.** For every $x$:
+$$\|ABx\|\le\|A\|_{\mathrm{op}}\|Bx\|\le\|A\|_{\mathrm{op}}\|B\|_{\mathrm{op}}\|x\|.$$
+Taking the supremum over $\|x\|=1$: $\|AB\|_{\mathrm{op}}\le\|A\|_{\mathrm{op}}\|B\|_{\mathrm{op}}$.
+
+**Conclusion.** $\|\cdot\|_{\mathrm{op}}$ is a submultiplicative matrix norm.
+
+@@@ topology-MnR-continuity-determinant.md
+---
+title: Continuity of the determinant
+category: topology/topology-of-mnr
+level: l1
+difficulty: 2
+tags: determinant, continuity, polynomial
+date: 2026-11-04
+---
+
+## Statement
+
+Show that $\det:M_n(\mathbb{R})\to\mathbb{R}$ is continuous.
+
+## Hint
+
+The determinant is a polynomial in the entries.
+
+## Solution
+
+**Polynomial in entries.** By the Leibniz formula,
+$$\det(A)=\sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_{i=1}^n a_{i,\sigma(i)}.$$
+Each term is a product of continuous coordinate functions; the sum is continuous.
+
+**Conclusion.** $\det$ is continuous, even polynomial in the entries.
+
+@@@ topology-MnR-homeomorphism-quadratic.md
+---
+title: A homeomorphism of $M_n(\mathbb{R})$
+category: topology/topology-of-mnr
+level: l1
+difficulty: 4
+tags: homeomorphism, matrix map, inverse map
+date: 2026-11-04
+---
+
+## Statement
+
+Consider $\Phi:M_n(\mathbb{R})\to S_n(\mathbb{R})\times A_n(\mathbb{R})$ defined by $\Phi(A)=(A+A^T,A-A^T)$, where $S_n$ (resp. $A_n$) is the set of symmetric (resp. antisymmetric) matrices. Show $\Phi$ is a homeomorphism.
+
+## Hint
+
+Explicitly find the inverse; both maps are polynomial.
+
+## Solution
+
+**Inverse.** Given $(S,A)$ with $S$ symmetric and $A$ antisymmetric, set $M=\frac{S+A}{2}$. Then $M+M^T=S$, $M-M^T=A$; indeed $M=\frac{S+A}{2}$. So $\Phi^{-1}(S,A)=\frac{S+A}{2}$.
+
+**Continuity.** Both $\Phi$ and $\Phi^{-1}$ are linear maps between finite-dimensional spaces, hence continuous.
+
+**Conclusion.** $\Phi$ is a homeomorphism.
+
+@@@ topology-MnR-summary.md
+---
+title: Summary of the topology of $M_n(\mathbb{R})$
+category: topology/topology-of-mnr
+level: lycee
+difficulty: 2
+tags: summary, matrix topology, M_n(R)
+date: 2026-11-04
+---
+
+## Statement
+
+Summarize the main topological properties of $M_n(\mathbb{R})$.
+
+## Hint
+
+Review convergence, completeness, compactness, groups.
+
+## Solution
+
+**Identification.** $M_n(\mathbb{R})\cong\mathbb{R}^{n^2}$ via entries; all norms are equivalent.
+
+**Convergence.** Entrywise convergence $=$ convergence for any matrix norm.
+
+**Completeness.** $M_n(\mathbb{R})$ is a Banach space.
+
+**Compactness.** Heine–Borel: compact $\iff$ closed and bounded. $O_n$ is compact (closed + bounded); $GL_n$, $SL_n$, $S_n$ are closed or open subsets as appropriate.
+
+**Subgroups.** $GL_n$ is open; $SL_n$, $O_n$, $SO_n$ are closed; $O_n$, $SO_n$ are compact.
+
+**Matrix exponential.** $\exp$ is continuous, even locally Lipschitz.
+
+**Eigenvalues.** Depend continuously on the matrix entries.
+
+**Separability.** $M_n(\mathbb{Q})$ is a countable dense subset.
+
+**Conclusion.** $M_n(\mathbb{R})$ inherits from $\mathbb{R}^{n^2}$ all its metric properties; the classical matrix groups add rich geometric structure.
+
 @@@ metric-definition.md
 ---
 title: Metric spaces
