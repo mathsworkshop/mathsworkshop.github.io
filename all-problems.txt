@@ -12900,7 +12900,7 @@ Let $p$ be the proposition "the barber shaves all men who do not shave themselve
 
 **Analysis.** If the barber shaves himself ($q$), then by the rule ($p$) he must belong to the set of men who do not shave themselves, i.e. $\bar q$: $(p\land q)\Rightarrow\bar q$. If he does not shave himself ($\bar q$), then by the rule he must shave himself, i.e. $q$: $(p\land\bar q)\Rightarrow q$.
 
-**Contradiction.** These two implications imply (from the previous exercise) that $p$ is false: no such barber exists.
+**Contradiction.** These two implications imply that $p$ is false: no such barber exists.
 
 **Conclusion.** The premise $p$ is self-contradictory; the barber does not exist.
 
