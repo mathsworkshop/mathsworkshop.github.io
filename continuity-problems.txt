@@ -126,31 +126,6 @@ Apply the MVT to $x<y$ in $[a,b]$.
 
 **Strict version.** If $f'>0$, $f$ is strictly increasing.
 
-@@@ mvt-inequality-sin.md
----
-title: A sine inequality via the MVT
-category: calculus/single-variable/continuity/mean-value-theorem
-level: l1
-difficulty: 3
-tags: mean value theorem, inequality, sine
-date: 2026-11-04
----
-
-## Statement
-
-Prove that for all $x>0$, $\sin x \leq x$.
-
-## Hint
-
-Apply the MVT to $\sin$ on $[0,x]$.
-
-## Solution
-
-**MVT.** There exists $c\in]0,x[$ with $\sin x-\sin0=\cos(c)(x-0)$, i.e. $\sin x=x\cos c$.
-
-**Bound.** Since $|\cos c|\le1$ and $x>0$, we have $$\sin x\le |\sin x| = x |\cos c| \le x. $$
-
-
 @@@ mvt-inequality-log.md
 ---
 title: A logarithm inequality via the MVT
