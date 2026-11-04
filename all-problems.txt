@@ -14709,10 +14709,14 @@ Build a truth table.
 
 ## Solution
 
-| $P$ | $\neg P$ | $\neg\neg P$ |
-|---|---|---|
-| T | F | T |
-| F | T | F |
+\begin{tabular}{|c|c|c|}
+  \hline
+  $P$ & $\neg P$ & $\neg\neg P$ \\
+  \hline
+  T & F & T \\
+  F & T & F \\
+  \hline
+\end{tabular}
 
 The third column equals the first.
 
