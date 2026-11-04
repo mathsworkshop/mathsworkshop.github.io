@@ -14185,32 +14185,6 @@ $$\mathcal{P}(A)=\{\emptyset,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}
 
 **Conclusion.** $\mathcal{P}(A)$ has $8$ elements.
 
-@@@ sets-power-set-cardinality.md
----
-title: Cardinality of the power set
-category: logic/sets-and-maps
-level: l1
-difficulty: 3
-tags: power set, cardinality, proof
-date: 2026-11-03
----
-
-## Statement
-
-Show that if $A$ is a finite set with $n$ elements, then $|\mathcal{P}(A)|=2^n$.
-
-## Hint
-
-Each subset is determined by choosing, for each element, whether to include it or not.
-
-## Solution
-
-**Bijection.** Map each subset $S\subseteq A$ to its characteristic function $\chi_S:A\to\{0,1\}$, with $\chi_S(x)=1$ if $x\in S$, else $0$.
-
-**Count.** The set of such functions has cardinality $2^n$ (each of $n$ elements has $2$ choices). The map $S\mapsto\chi_S$ is a bijection.
-
-**Conclusion.** $|\mathcal{P}(A)|=2^n$.
-
 @@@ sets-cartesian-product.md
 ---
 title: Cartesian product
