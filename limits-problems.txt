@@ -882,7 +882,7 @@ date: 2026-11-01
 
 ## Statement
 
-Let $g(x)=x\,D(x)$, where $D$ is the Dirichlet function (see the previous problem). Show that $\lim_{x\to0}g(x)=0$, and that $g$ has no limit at any point $a\ne0$.
+Let $g(x)=x\,D(x)$, where $D$ is the Dirichlet function ($D(x) = 1$ if $x \in \mathbb{Q}$ and $D(x)= 0$ otherwise). Show that $\lim_{x\to0}g(x)=0$, and that $g$ has no limit at any point $a\ne0$.
 
 ## Hint
 
