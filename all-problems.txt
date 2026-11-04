@@ -14685,7 +14685,7 @@ Find $n$ for which the expression is composite.
 
 ## Solution
 
-**Counterexample.** At $n=40$: $n^2+n+41=1600+40+41=1681=41^2$. Not prime.
+**Counterexample.** At $n=40$: $$n^2+n+41=40^2+40+41=40^2 + 2 \times 40 + 1=41^2$$ which is not prime.
 
 **Conclusion.** The universal statement is false.
 
