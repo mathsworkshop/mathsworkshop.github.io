@@ -537,11 +537,12 @@ Divide the numerator and the denominator by $x$, and split the numerator into tw
 
 ## Solution
 
-**Idea.** Divide top and bottom by $x$ to make familiar quotients appear.
+**Idea.** Divide top and bottom by $x$ to make familiar quotients appear: for $x \neq 0$, 
+$$ \frac{e^x-\cos x}{\sin x} = \frac{\frac{e^x-\cos x}{x}}{\frac{\sin x}{x}}. $$
 
 **Numerator.** For $x\neq0$,
 $$\frac{e^x-\cos x}{x}=\frac{e^x-1}{x}+\frac{1-\cos x}{x}.$$
-The first quotient tends to $1$. For the second, write $\dfrac{1-\cos x}{x}=x\cdot\dfrac{1-\cos x}{x^2}\to0\cdot\dfrac12=0$. So the numerator divided by $x$ tends to $1+0=1$.
+The first quotient tends to $1$. For the second, write $$\dfrac{1-\cos x}{x}=x\cdot\dfrac{1-\cos x}{x^2}\to0\cdot\dfrac12=0.$$ So the numerator divided by $x$ tends to $1+0=1$.
 
 **Denominator.** $\dfrac{\sin x}{x}\to1$.
 
