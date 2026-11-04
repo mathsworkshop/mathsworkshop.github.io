@@ -189,7 +189,7 @@
         },
          {
           "id": "topology-of-mnr",
-          "name": "Topology of M(ℝⁿ)",
+          "name": "Topology of Mn(ℝ)",
           "description": "Open and closed sets, compact sets and connectedness.",
           "subcategories": []
         },
