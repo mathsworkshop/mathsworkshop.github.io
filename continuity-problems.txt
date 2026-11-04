@@ -232,32 +232,6 @@ $$\arctan t>\frac{t}{1+t^2}.$$
 
 **Conclusion.** The inequality holds.
 
-@@@ mvt-lagrange-quadratic-bound.md
----
-title: Bounding a function with the MVT
-category: calculus/single-variable/continuity/mean-value-theorem
-level: l1
-difficulty: 3
-tags: mean value theorem, bound, Lipschitz
-date: 2026-11-04
----
-
-## Statement
-
-Show that for all $x,y\in\mathbb{R}$: $|\sin x-\sin y|\le|x-y|$.
-
-## Hint
-
-Apply the MVT to $\sin$; $|\cos c|\le1$.
-
-## Solution
-
-**MVT.** For $x<y$, there is $c\in]x,y[$ with $\sin y-\sin x=\cos c\cdot(y-x)$.
-
-**Bound.** $|\sin y-\sin x|\le|y-x|$.
-
-**Conclusion.** $\sin$ is 1-Lipschitz.
-
 @@@ mvt-rolle-three-roots.md
 ---
 title: Rolle on a polynomial with three roots
