@@ -14637,7 +14637,7 @@ Use direct proof: assume $x>1$ and multiply by $x>0$.
 
 ## Solution
 
-**Proof.** Let $x\in\mathbb{R}$ with $x>1$. Since $x>0$, multiply $x>1$ by $x$: $x^2>x$. ✓
+**Proof.** Let $x\in\mathbb{R}$ with $x>1$. Since $x>0$, multiplying $x>1$ by $x$ gives $x^2>x$. ✓
 
 **Conclusion.** For every real $x>1$, $x^2>x$.
 
