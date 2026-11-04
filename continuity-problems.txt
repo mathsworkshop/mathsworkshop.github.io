@@ -572,34 +572,6 @@ Apply MVT.
 
 **Conclusion.** The inequality holds.
 
-@@@ mvt-lagrange-symmetry.md
----
-title: A symmetry identity
-category: calculus/single-variable/continuity/mean-value-theorem
-level: l1
-difficulty: 3
-tags: MVT, symmetry, sum
-date: 2026-11-04
----
-
-## Statement
-
-Let $f$ be differentiable on $\mathbb{R}$. Show that for all $a<b$, there exists $c\in]a,b[$ with $f(b)-f(a)=f'(c)(b-a)$ and also there exists $c'\in]a,b[$ with $f(b)-f(a)=f'(c')(b-a)$ where $c+c'$ has some relation... 
-
-Hmm — this is just the MVT twice. Let me state the actual symmetry problem:
-
-Show that if $f$ is differentiable and $f'$ is strictly increasing, then $f$ is strictly convex.
-
-## Hint
-
-Use the MVT on three points.
-
-## Solution
-
-**Convexity.** For $a<b<c$, the slopes $\frac{f(b)-f(a)}{b-a}$ and $\frac{f(c)-f(b)}{c-b}$ are given by $f'(\xi_1)$ and $f'(\xi_2)$ with $\xi_1<b<\xi_2$. Since $f'$ is strictly increasing, $f'(\xi_1)<f'(\xi_2)$, giving strict convexity.
-
-**Conclusion.** $f'$ strictly increasing $\Rightarrow$ $f$ strictly convex.
-
 @@@ mvt-summary.md
 ---
 title: Summary of the mean value theorem
