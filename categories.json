@@ -187,6 +187,12 @@
           "description": "Open and closed sets, compact sets and connectedness.",
           "subcategories": []
         },
+         {
+          "id": "topology-of-mnr",
+          "name": "Topology of M(ℝⁿ)",
+          "description": "Open and closed sets, compact sets and connectedness.",
+          "subcategories": []
+        },
         {
           "id": "metric",
           "name": "Metric and normed spaces",
