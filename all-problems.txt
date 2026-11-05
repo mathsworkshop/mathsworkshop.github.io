@@ -30943,7 +30943,7 @@ Show that between any two distinct rationals, there is an irrational.
 
 ## Hint
 
-If $a<b$ are rationals, then $a+\frac{b-a}{\sqrt2}\cdot\frac{1}{\sqrt2}$ is not the standard construction. Use $a+\frac{b-a}{\sqrt2}$.
+Assume $a<b$ are rationals and consider $ x = a+\frac{b-a}{\sqrt2}$.
 
 ## Solution
 
