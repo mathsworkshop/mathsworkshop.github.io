@@ -39368,7 +39368,7 @@ Let $f=u+iv$ be holomorphic on an open set. Show that $u$ and $v$ are harmonic (
 
 ## Hint
 
-Use the Cauchyâ€“Riemann equations $u_x=v_y$, $u_y=-v_x$.
+Use the Cauchy-Riemann equations $u_x=v_y$, $u_y=-v_x$.
 
 ## Solution
 
@@ -39660,7 +39660,7 @@ Factor $X^n-1$ and evaluate at $X=1$.
 
 @@@ complex-cauchy-riemann.md
 ---
-title: Cauchyâ€“Riemann equations
+title: Cauchy-Riemann equations
 category: algebra/complex-numbers
 level: m1
 difficulty: 4
@@ -39684,7 +39684,7 @@ Compute the limit $\lim_{h\to0}(f(z_0+h)-f(z_0))/h$ along $h$ real and $h$ purel
 
 **Equality.** For $f$ to be holomorphic, both must be equal: $u_x+iv_x=v_y-iu_y$, i.e. $u_x=v_y$ and $v_x=-u_y$.
 
-**Conclusion.** Cauchyâ€“Riemann equations are necessary (and, with continuity of partial derivatives, sufficient) for holomorphy.
+**Conclusion.** Cauchy-Riemann equations are necessary (and, with continuity of partial derivatives, sufficient) for holomorphy.
 
 @@@ complex-modulus-maximum.md
 ---
