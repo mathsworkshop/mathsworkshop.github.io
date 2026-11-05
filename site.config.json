@@ -3,6 +3,7 @@
   "tagline": "Maths problems with full solutions",
   "description": "A growing collection of original maths problems with hints and complete solutions: algebra, analysis, linear algebra, probability, number theory and more.",
   "url": "https://mathsworkshop.github.io",
+  "sort": "difficulty",
   "owner": "Maths Workshop",
   "email": "mathsworkshop01@gmail.com",
   "adsenseClient": "",
