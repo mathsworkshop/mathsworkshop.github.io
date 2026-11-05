@@ -65,6 +65,12 @@
               "name": "Integration",
               "description": "Integrals of functions of one variable.",
               "subcategories": [
+                   {
+                  "id": "riemann",
+                  "name": "Riemann integral",
+                  "description": "Riemann sums and the Riemann integral, integrals and primitives.",
+                  "subcategories": []
+                },
                 {
                   "id": "techniques",
                   "name": "Integration techniques",
