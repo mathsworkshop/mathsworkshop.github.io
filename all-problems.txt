@@ -29858,7 +29858,7 @@ Suppose $\sqrt2=p/q$ in lowest terms. Square and use parity.
 
 @@@ irrationality-sqrt3.md
 ---
-title: Irrationality of $\sqrt3$
+title: Irrationality of √3
 category: number/irrationality
 level: lycee
 difficulty: 2
@@ -30729,7 +30729,7 @@ Consider $\sqrt2$ and $-\sqrt2$.
 
 @@@ irrationality-sqrt-2-algebraic.md
 ---
-title: $\sqrt2$ is algebraic
+title: √2 is algebraic
 category: number/irrationality
 level: lycee
 difficulty: 2
@@ -30743,13 +30743,13 @@ Show that $\sqrt2$ is algebraic over $\mathbb{Q}$ and determine its minimal poly
 
 ## Hint
 
-$\sqrt2$ satisfies $X^2-2=0$, which is irreducible by the rational root test.
+$\sqrt2$ is a root of $X^2-2=0$, which is irreducible by the rational root test.
 
 ## Solution
 
 **Algebraic.** $\sqrt2$ is a root of $X^2-2\in\mathbb{Q}[X]$.
 
-**Irreducibility.** $X^2-2$ has no rational root (candidates $\pm1,\pm2$ fail), so it is irreducible over $\mathbb{Q}$.
+**Irreducibility.** $X^2-2$ has no rational root, so it is irreducible over $\mathbb{Q}$.
 
 **Conclusion.** The minimal polynomial of $\sqrt2$ is $X^2-2$, and $[\mathbb{Q}(\sqrt2):\mathbb{Q}]=2$.
 
