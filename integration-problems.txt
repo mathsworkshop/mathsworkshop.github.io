@@ -1,3 +1,106 @@
+@@@ riemann-mean-value-log.md
+---
+title: A limit via the mean value theorem for integrals
+category: calculus/single-variable/integration/riemann/riemann-int
+level: l1
+difficulty: 3
+order: 2
+tags: mean value theorem for integrals, logarithm, limit
+date: 2026-11-06
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to0^+}\int_x^{3x}\frac{1}{te^t}\,dt.$$
+
+## Hint
+
+Apply the mean value theorem for integrals: for continuous $f$ and $g$ with $g\ge0$, there exists $c$ between the bounds with $\int_a^b f g=f(c)\int_a^b g$.
+
+## Solution
+
+**Mean value theorem.** Fix $x>0$. On $[x,3x]$, take $f(t)=\dfrac{1}{e^t}$ (continuous) and $g(t)=\dfrac{1}{t}$ (continuous, positive on $[x,3x]$). There exists $c_x\in[x,3x]$ such that
+$$\int_x^{3x}\frac{1}{te^t}\,dt=\frac{1}{e^{c_x}}\int_x^{3x}\frac{1}{t}\,dt=\frac{\ln 3}{e^{c_x}}.$$
+
+**Limit.** Since $c_x\in[x,3x]$ and $x\to0^+$, we have $c_x\to0^+$, hence $e^{c_x}\to1$. Therefore
+$$\lim_{x\to0^+}\int_x^{3x}\frac{1}{te^t}\,dt=\frac{\ln 3}{1}=\ln 3.$$
+
+
+@@@ riemann-mean-value-arctan.md
+---
+title: Limit of an integral with arctan
+category: calculus/single-variable/integration/riemann/riemann-int
+level: l1
+difficulty: 4
+order: 2
+tags: mean value theorem for integrals, arctan, limit
+date: 2026-11-06
+---
+
+## Statement
+
+Compute
+$$\lim_{n\to+\infty}\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt.$$
+
+## Hint
+
+Apply the mean value theorem for integrals with $f(t)=\arctan(t^2)$ and $g(t)=1/\sqrt t$; estimate $c_n\in[n^2+1,n^2+n+1]$ and use $\arctan(c_n^2)\to\pi/2$.
+
+## Solution
+
+**Mean value theorem.** On $[n^2+1,n^2+n+1]$, $f(t)=\arctan(t^2)$ is continuous and $g(t)=1/\sqrt t$ is continuous and positive. There exists $c_n\in[n^2+1,n^2+n+1]$ with
+$$\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt=\arctan(c_n^2)\int_{n^2+1}^{n^2+n+1}\frac{dt}{\sqrt t}.$$
+
+**Compute the remaining integral.**
+$$\int_{n^2+1}^{n^2+n+1}\frac{dt}{\sqrt t}=\bigl[2\sqrt t\bigr]_{n^2+1}^{n^2+n+1}=2\sqrt{n^2+n+1}-2\sqrt{n^2+1}.$$
+Rationalize:
+$$2\sqrt{n^2+n+1}-2\sqrt{n^2+1}=\frac{2n}{\sqrt{n^2+n+1}+\sqrt{n^2+1}}.$$
+As $n\to+\infty$, the denominator is $\sim 2n$, so the quotient tends to $1$. More precisely, it equals
+$$\frac{2n}{n\sqrt{1+\frac1n+\frac1{n^2}}+n\sqrt{1+\frac1{n^2}}}=\frac{2}{\sqrt{1+\frac1n+\frac1{n^2}}+\sqrt{1+\frac1{n^2}}}\to\frac{2}{1+1}=1.$$
+
+**Limit of $\arctan(c_n^2)$.** Since $c_n\ge n^2+1\to+\infty$, we have $c_n^2\to+\infty$, so $\arctan(c_n^2)\to\pi/2$.
+
+**Conclusion.** The product of these two limits gives
+$$\lim_{n\to+\infty}\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt=\frac{\pi}{2}\cdot1=\frac{\pi}{2}.$$
+
+@@@ riemann-mean-value-cos-log.md
+---
+title: Limit of an integral with cosine and logarithm
+category: calculus/single-variable/integration/riemann/riemann-int
+level: l1
+difficulty: 4
+order: 2
+tags: mean value theorem for integrals, cosine, logarithm
+date: 2026-11-06
+---
+
+## Statement
+
+Compute
+$$\lim_{x\to1^+}\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt.$$
+
+## Hint
+
+The integrand is singular at $t=1$, so rewrite the integral using the mean value theorem with $f(t)=t\cos(\pi t)$ and $g(t)=\frac{1}{t\ln t}$. Then estimate $c_x\in[x,x^2]$ and let $x\to1^+$.
+
+## Solution
+
+**Rewriting the integrand.** Note that for $t>1$,
+$$\frac{\cos(\pi t)}{\ln t}=t\cos(\pi t)\cdot\frac{1}{t\ln t}.$$
+
+**Mean value theorem for integrals.** On $[x,x^2]$ (with $1<x$), the function $t\mapsto t\cos(\pi t)$ is continuous and $t\mapsto\frac{1}{t\ln t}$ is continuous and positive. There exists $c_x\in[x,x^2]$ with
+$$\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=c_x\cos(\pi c_x)\int_x^{x^2}\frac{dt}{t\ln t}.$$
+
+**Compute the remaining integral.**
+$$\int_x^{x^2}\frac{dt}{t\ln t}=\bigl[\ln(\ln t)\bigr]_x^{x^2}=\ln(\ln(x^2))-\ln(\ln x)=\ln 2.$$
+So
+$$\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=c_x\cos(\pi c_x)\ln 2.$$
+
+**Limit as $x\to1^+$.** Since $c_x\in[x,x^2]$ and $x\to1^+$, we have $c_x\to1$. Thus $c_x\cos(\pi c_x)\to1\cdot\cos(\pi)=-1$. Therefore
+$$\lim_{x\to1^+}\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=(-1)\cdot\ln 2=-\ln 2.$$
+
+
 @@@ riemann-sum-product-limit.md
 ---
 title: A limit of a product via Riemann sums
