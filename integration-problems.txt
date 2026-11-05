@@ -1,3 +1,70 @@
+@@@ riemann-integral-parameter-arctan.md
+---
+title: A parameter integral equal to arctan
+category: calculus/single-variable/integration/riemann/riemann-int
+level: l1
+difficulty: 3
+order: 2
+tags: parameter integral, fundamental theorem, arctan
+date: 2026-11-05
+---
+
+## Statement
+
+For $x>0$, define
+$$F(x)=\int_{1/x}^{x}\frac{t}{1+t+t^2+t^3}\,dt.$$
+
+(a) Show that $F$ is of class $C^1$ on $]0,+\infty[$ and that
+$$F'(x)=\frac{1}{1+x^2},\quad \forall x>0.$$
+
+(b) Deduce that
+$$\int_{1/x}^{x}\frac{t}{1+t+t^2+t^3}\,dt=\arctan(x)-\frac{\pi}{4},\quad \forall x>0.$$
+In particular, for $x=\sqrt3$,
+$$\int_{1/\sqrt3}^{\sqrt3}\frac{t}{1+t+t^2+t^3}\,dt=\frac{\pi}{12}.$$
+
+## Hint
+
+For (a), write $F(x)=G(x)-G(1/x)$ where $G$ is an antiderivative of $t\mapsto\frac{t}{1+t+t^2+t^3}$, then differentiate using the chain rule. Simplify the resulting expression using the factorization $1+t+t^2+t^3=(1+t)(1+t^2)$. For (b), determine $F(1)$ and use the fact that two functions with the same derivative differ by a constant.
+
+## Solution
+
+**(a) Differentiability.** Let $g(t)=\dfrac{t}{1+t+t^2+t^3}$, which is continuous on $]0,+\infty[$ (the denominator is positive for $t>0$). By the fundamental theorem of calculus, $G(x)=\int_1^x g(t)\,dt$ is $C^1$ on $]0,+\infty[$ with $G'(x)=g(x)$. Now
+$$F(x)=G(x)-G(1/x).$$
+The map $x\mapsto 1/x$ is $C^1$ on $]0,+\infty[$, so by composition $G(1/x)$ is $C^1$ and
+$$\frac{d}{dx}G(1/x)=g(1/x)\cdot\left(-\frac{1}{x^2}\right).$$
+Thus
+$$F'(x)=g(x)+\frac{1}{x^2}\,g(1/x).$$
+
+**Computation.** We have
+$$g(x)=\frac{x}{1+x+x^2+x^3},\qquad \frac{1}{x^2}\,g(1/x)=\frac{1}{x^2}\cdot\frac{1/x}{1+1/x+1/x^2+1/x^3}.$$
+Multiply numerator and denominator of $g(1/x)$ by $x^3$:
+$$g(1/x)=\frac{x^2}{x^3+x^2+x+1}.$$
+Hence
+$$\frac{1}{x^2}\,g(1/x)=\frac{1}{x^3+x^2+x+1}.$$
+Adding:
+$$F'(x)=\frac{x}{1+x+x^2+x^3}+\frac{1}{1+x+x^2+x^3}=\frac{x+1}{1+x+x^2+x^3}.$$
+Now factor the denominator:
+$$1+x+x^2+x^3=(1+x)(1+x^2).$$
+Indeed $(1+x)(1+x^2)=1+x+x^2+x^3$. Therefore
+$$F'(x)=\frac{x+1}{(1+x)(1+x^2)}=\frac{1}{1+x^2}.$$
+
+**Conclusion (a).** $F$ is $C^1$ on $]0,+\infty[$ and $F'(x)=\dfrac{1}{1+x^2}$.
+
+**(b) Identification.** The function $x\mapsto\arctan(x)$ has derivative $\dfrac{1}{1+x^2}$ on $]0,+\infty[$. Therefore $F-\arctan$ is constant on $]0,+\infty[$:
+$$F(x)-\arctan(x)=C.$$
+Evaluate at $x=1$: the lower and upper bounds coincide, so $F(1)=0$. Also $\arctan(1)=\pi/4$. Hence
+$$C=0-\frac{\pi}{4}=-\frac{\pi}{4},$$
+i.e.
+$$F(x)=\arctan(x)-\frac{\pi}{4}.$$
+
+**Special value.** For $x=\sqrt3$, $\arctan(\sqrt3)=\pi/3$, so
+$$F(\sqrt3)=\frac{\pi}{3}-\frac{\pi}{4}=\frac{\pi}{12}.$$
+
+**Conclusion (b).** For every $x>0$,
+$$\int_{1/x}^{x}\frac{t}{1+t+t^2+t^3}\,dt=\arctan(x)-\frac{\pi}{4},$$
+and in particular
+$$\int_{1/\sqrt3}^{\sqrt3}\frac{t}{1+t+t^2+t^3}\,dt=\frac{\pi}{12}.$$
+
 @@@ riemann-step-floor-sign.md
 ---
 title: A step function built from the floor
