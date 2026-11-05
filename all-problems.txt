@@ -30643,7 +30643,7 @@ Forward: long division produces periodic remainders. Converse: compute $0.\overl
 
 **Forward.** For $x=p/q$, long division: remainders mod $q$ are among $0,\ldots,q-1$, so by pigeonhole some remainder repeats within $q$ steps. From that point the decimal is periodic. (If the remainder $0$ is hit, the decimal is finite, considered periodic with period $0$.)
 
-**Converse.** For $x=0.\overline{a_1\cdots a_k}$, multiply by $10^k$ and subtract: $x(10^k-1)=\overline{a_1\cdots a_k}$, so $x=\frac{\overline{a_1\cdots a_k}}{10^k-1}\in\mathbb{Q}$.
+**Converse.** Up to adding an integer to $x$, we can assume $x=0.\overline{a_1\cdots a_k}$. Multiplying $x$ by $10^k$ and subtracting x gives $x(10^k-1)=\overline{a_1\cdots a_k} \in \mathbb{N}$, so $x=\frac{\overline{a_1\cdots a_k}}{10^k-1}\in\mathbb{Q}$.
 
 **Conclusion.** Rationals are exactly the eventually periodic decimals.
 
