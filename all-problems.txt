@@ -1013,6 +1013,55 @@ In $\ell^2$, the closed unit ball is closed and bounded but not compact.
 
 **Note.** Riesz's theorem: the closed unit ball of a normed space is compact iff the space is finite-dimensional.
 
+@@@ topology-Rn-continuity-method-system.md
+---
+title: Solving a non-linear system via the continuity method
+category: topology/topology-of-Rn
+level: m1
+difficulty: 5
+tags: continuity method, implicit function theorem, connectedness, nonlinear system
+date: 2026-11-06
+---
+
+## Statement
+
+Prove that the nonlinear system
+$$\begin{cases}
+x+\tfrac{1}{2}\sin(y)=3,\\[2mm]
+y+\tfrac{1}{2}\cos(x)=4
+\end{cases}$$
+has at least one solution $(x,y)\in\mathbb{R}^2$.
+
+## Hint
+
+For $t\in[0,1]$, consider the deformed system
+$$\begin{cases}
+x+\tfrac{t}{2}\sin(y)=3,\\[2mm]
+y+\tfrac{t}{2}\cos(x)=4.
+\end{cases}$$
+Let $S\subseteq[0,1]$ be the set of parameters $t$ for which the system is solvable. Show that $S$ is nonempty, closed, and open. Conclude by connectedness of $[0,1]$.
+
+## Solution
+
+**Setup.** Define $F:[0,1]\times\mathbb{R}^2\to\mathbb{R}^2$ by
+$$F(t,x,y)=\bigl(x+\tfrac{t}{2}\sin(y)-3,\ y+\tfrac{t}{2}\cos(x)-4\bigr).$$
+This map is continuous ($C^\infty$ in all variables). Let
+$$S=\{t\in[0,1]:\exists(x,y)\in\mathbb{R}^2,\ F(t,x,y)=(0,0)\}.$$
+
+**Nonemptiness.** For $t=0$, the system reduces to $x-3=0$ and $y-4=0$, giving the unique solution $(3,4)$. Hence $0\in S$, so $S\neq\emptyset$.
+
+**Closedness.** Let $(t_k)\subseteq S$ with $t_k\to t^*\in[0,1]$, and choose $(x_k,y_k)$ with $F(t_k,x_k,y_k)=0$. From the equations,
+$$|x_k|=\Bigl|3-\tfrac{t_k}{2}\sin(y_k)\Bigr|\le3+\tfrac12=\tfrac72,\qquad |y_k|=\Bigl|4-\tfrac{t_k}{2}\cos(x_k)\Bigr|\le4+\tfrac12=\tfrac92.$$
+Thus $(x_k,y_k)$ lies in the compact rectangle $[-\tfrac72,\tfrac72]\times[-\tfrac92,\tfrac92]$. By Bolzano–Weierstrass, extract a convergent subsequence $(x_{k_j},y_{k_j})\to(x^*,y^*)$. By continuity of $F$, passing to the limit gives $F(t^*,x^*,y^*)=0$, so $t^*\in S$. Thus $S$ is closed.
+
+**Openness.** Let $t_0\in S$ with a solution $(x_0,y_0)$, so $F(t_0,x_0,y_0)=0$. The Jacobian of $F$ with respect to $(x,y)$ at $(t_0,x_0,y_0)$ is
+$$J_{(x,y)}F=\begin{pmatrix}1&\tfrac{t_0}{2}\cos(y_0)\\[2mm]-\tfrac{t_0}{2}\sin(x_0)&1\end{pmatrix}.$$
+Its determinant is
+$$\det J_{(x,y)}F=1+\tfrac{t_0^2}{4}\sin(x_0)\cos(y_0)\ge 1-\tfrac14=\tfrac34>0.$$
+Therefore $J_{(x,y)}F$ is invertible, and the implicit function theorem gives a neighbourhood $]t_0-\delta,t_0+\delta[\,\cap[0,1]$ on which $F(t,x,y)=0$ has a solution. Hence $S$ is open in $[0,1]$.
+
+**Conclusion.** $S$ is a nonempty subset of the connected set $[0,1]$ that is both open and closed in $[0,1]$. Therefore $S=[0,1]$. In particular $1\in S$: the original system $x+\tfrac12\sin(y)=3,\ y+\tfrac12\cos(x)=4$ has a real solution.
+
 @@@ topology-Rn-open-ball.md
 ---
 title: Open balls in $\mathbb{R}^n$
