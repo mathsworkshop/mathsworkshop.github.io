@@ -1,3 +1,50 @@
+@@@ riemann-sum-product-limit.md
+---
+title: A limit of a product via Riemann sums
+category: calculus/single-variable/integration/riemann/riemann-sum
+level: l1
+difficulty: 4
+tags: Riemann sums, logarithm, limit, product
+date: 2026-11-06
+---
+
+## Statement
+
+Show that
+$$\lim_{n\to+\infty}\frac{1}{n}\sqrt[n]{(n+1)(n+2)\cdots(2n)}=\frac{4}{e}.$$
+
+## Hint
+
+Take the logarithm of the product, factor out $n$ in each factor, and recognize a Riemann sum for $\int_1^2\ln t\,dt$.
+
+## Solution
+
+**Step 1: take logarithms.** Let
+$$u_n=\frac{1}{n}\sqrt[n]{(n+1)(n+2)\cdots(2n)}>0.$$
+Then
+$$\ln(u_n)=-\ln n+\frac{1}{n}\sum_{k=1}^{n}\ln(n+k).$$
+Factor $n$ in each factor inside the sum:
+$$\ln(n+k)=\ln n+\ln\!\left(1+\frac{k}{n}\right).$$
+Therefore
+$$\frac{1}{n}\sum_{k=1}^{n}\ln(n+k)=\frac{1}{n}\sum_{k=1}^{n}\left(\ln n+\ln\!\left(1+\frac{k}{n}\right)\right)=\ln n+\frac{1}{n}\sum_{k=1}^{n}\ln\!\left(1+\frac{k}{n}\right),$$
+since the constant $\ln n$ is summed $n$ times and then divided by $n$. Hence
+$$\ln(u_n)=\frac{1}{n}\sum_{k=1}^{n}\ln\!\left(1+\frac{k}{n}\right).$$
+
+**Step 2: Riemann sum.** The expression
+$$\frac{1}{n}\sum_{k=1}^{n}\ln\!\left(1+\frac{k}{n}\right)$$
+is a left Riemann sum for the continuous function $t\mapsto\ln(1+t)$ on $[0,1]$: the sample points are $t_k=k/n$ with step $1/n$, for $k=1,\ldots,n$, i.e. on the partition $[0,1/n],[1/n,2/n],\ldots,[(n-1)/n,1]$. As $n\to+\infty$,
+$$\frac{1}{n}\sum_{k=1}^{n}\ln\!\left(1+\frac{k}{n}\right)\longrightarrow\int_0^1\ln(1+t)\,dt.$$
+
+**Step 3: compute the integral.** Substituting $s=1+t$, $ds=dt$, with $s$ from $1$ to $2$:
+$$\int_0^1\ln(1+t)\,dt=\int_1^2\ln s\,ds.$$
+An antiderivative of $\ln s$ is $s\ln s-s$; hence
+$$\int_1^2\ln s\,ds=\bigl[s\ln s-s\bigr]_1^2=(2\ln2-2)-(0-1)=2\ln2-1.$$
+So
+$$\ln(u_n)\longrightarrow 2\ln 2-1=\ln 4-\ln e=\ln\!\left(\frac{4}{e}\right).$$
+
+**Step 4: exponentiate.** By continuity of $\exp$,
+$$u_n=\exp(\ln u_n)\longrightarrow\exp\!\left(\ln\frac{4}{e}\right)=\frac{4}{e}.$$
+
 @@@ riemann-integral-parameter-arctan.md
 ---
 title: A parameter integral equal to arctan
