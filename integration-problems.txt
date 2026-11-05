@@ -1081,11 +1081,11 @@ $$\int_0^{x_0}(k\cos x-\sin x)\,dx=\bigl[k\sin x+\cos x\bigr]_0^{x_0}=\sqrt{1+k^
 $$\int_{x_0}^{\pi/2}(\sin x-k\cos x)\,dx=\bigl[-\cos x-k\sin x\bigr]_{x_0}^{\pi/2}=\sqrt{1+k^2}-k.$$
 The total is $2\sqrt{1+k^2}-k-1$. Setting it equal to $1$:
 $$2\sqrt{1+k^2}=k+2\ \Longrightarrow\ 4+4k^2=k^2+4k+4\ \Longrightarrow\ 3k^2=4k.$$
-Since $k>0$, $k=\frac43$ (and then $k+2>0$, so the squaring was legitimate).
+Since $k>0$, $k=\frac43$.
 
 **Answer.** $t=0$ or $t=-\dfrac43$.
 
-**Check.** For $t=-\frac43$: $2\sqrt{1+\frac{16}9}-\frac43-1=\frac{10}3-\frac73=1$ ✓.
+
 @@@ the-integral-of-ln-one-plus-tangent.md
 ---
 title: An integral that equals its own mirror image
