@@ -68,21 +68,8 @@
                    {
                   "id": "riemann",
                   "name": "Riemann integral",
-                  "description": "Riemann sums and the Riemann integral, integrals and primitives.",
-                  "subcategories": [
-                    {
-                  "id": "riemann-int",
-                  "name": "The Riemann integral",
-                  "description": "The Riemann integral, calculation of integrals and the fundamental theorem of Calculus",
+                  "description": "The Riemann integral, calculation of integrals and the fundamental theorem of Calculus.",
                   "subcategories": []
-                },
-                {
-                  "id": "riemann-sum",
-                  "name": "Riemann sums",
-                  "description": "Limit of series and calculation of integrals",
-                  "subcategories": []
-                }
-                  ]
                 },
                 {
                   "id": "techniques",
