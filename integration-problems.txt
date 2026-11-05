@@ -1,7 +1,7 @@
 @@@ basic-antiderivatives-and-definite-integrals.md
 ---
 title: Recognising antiderivatives
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 tags: antiderivatives, definite integrals, fundamental theorem
@@ -31,7 +31,7 @@ Look for a function whose derivative is the integrand: $-\frac1t$, $\ln(\ln x)$ 
 @@@ area-with-an-absolute-value.md
 ---
 title: An area with an absolute value
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 tags: definite integrals, absolute value, sign of a function
@@ -61,7 +61,7 @@ So the integral equals $\frac56+\frac16=1$.
 @@@ area-between-a-parabola-and-a-line.md
 ---
 title: Area between a parabola and a line
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 tags: area, definite integrals, intersection points
@@ -89,7 +89,7 @@ $$\int_{-1}^2\left(x+2-x^2\right)dx=\left[\frac{x^2}2+2x-\frac{x^3}3\right]_{-1}
 @@@ integrals-simplified-by-parity.md
 ---
 title: Integrals that simplify by parity
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 tags: symmetry, odd and even functions
@@ -121,7 +121,7 @@ If $f$ is odd, $\int_{-a}^af=0$. If $f$ is even, $\int_{-a}^af=2\int_0^af$.
 @@@ riemann-sums-and-limits-of-sums.md
 ---
 title: Limits of sums as Riemann sums
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 tags: Riemann sums, limits, pi, ln 2
@@ -154,8 +154,8 @@ $$B=\int_0^1\frac{dx}{1+x}=\ln2.$$
 @@@ darboux-sums-and-the-dirichlet-function.md
 ---
 title: Darboux sums of the Dirichlet function
-category: calculus/single-variable/integration
-level: l3
+category: calculus/single-variable/integration/riemann
+level: l1
 difficulty: 3
 tags: Riemann integrability, Darboux sums, density
 date: 2026-11-02
@@ -183,8 +183,8 @@ $$s_\sigma(f)=0,\qquad S_\sigma(f)=\sum(x_i-x_{i-1})=1.$$
 @@@ integrability-with-one-discontinuity.md
 ---
 title: Integrability with one wild point
-category: calculus/single-variable/integration
-level: l3
+category: calculus/single-variable/integration/riemann
+level: l1
 difficulty: 4
 tags: Riemann integrability, Darboux criterion, oscillation
 date: 2026-11-02
@@ -217,7 +217,7 @@ By the Darboux criterion, $f$ is integrable on $[0,1]$.
 @@@ the-derivative-of-an-integral-with-variable-bounds.md
 ---
 title: The derivative of an integral with variable bounds
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 2
 tags: fundamental theorem of calculus, chain rule, limits
@@ -247,8 +247,8 @@ $$\frac{H(x)}x=\frac{H(x)-H(0)}{x-0}\longrightarrow H'(0)=\cos0=1.$$
 @@@ limits-of-integrals-depending-on-n.md
 ---
 title: Limits of integrals depending on n
-category: calculus/single-variable/integration
-level: l2
+category: calculus/single-variable/integration/riemann
+level: l1
 difficulty: 4
 tags: limits of integrals, squeeze theorem, integration by parts
 date: 2026-11-02
@@ -279,8 +279,8 @@ $$0\le1-\int_0^1\frac{dx}{1+x^n}\le\frac1{n+1}\to0.$$
 @@@ the-cauchy-schwarz-inequality-for-integrals.md
 ---
 title: The Cauchy–Schwarz inequality for integrals
-category: calculus/single-variable/integration
-level: l2
+category: calculus/single-variable/integration/riemann
+level: l1
 difficulty: 3
 tags: inequalities, Cauchy-Schwarz, quadratic polynomial
 date: 2026-11-02
@@ -311,7 +311,7 @@ So the integral is at most $\sqrt{\pi/2}\approx1.2533$.
 @@@ comparing-the-harmonic-sum-with-the-logarithm.md
 ---
 title: Comparing the harmonic sum with the logarithm
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 tags: integral comparison, harmonic series, monotonicity
@@ -347,8 +347,8 @@ and both bounds tend to $1$.
 @@@ bounds-for-the-factorial-by-integration.md
 ---
 title: Bounds for n! by comparing with an integral
-category: calculus/single-variable/integration
-level: l2
+category: calculus/single-variable/integration/riemann
+level: l1
 difficulty: 4
 tags: factorial, integral comparison, Stirling
 date: 2026-11-02
@@ -382,7 +382,7 @@ so $\ln n!\le n\ln n-n+1+\ln n$.
 @@@ an-integral-equation.md
 ---
 title: Solving an integral equation
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 tags: integral equations, fundamental theorem, differential equation
@@ -410,7 +410,7 @@ Conversely $\int_0^xe^t\,dt=e^x-1$, so $1+\int_0^xe^t\,dt=e^x$. The unique solut
 @@@ an-absolute-value-integral-with-a-parameter.md
 ---
 title: An absolute value integral with a parameter
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/riemann
 level: olympiad
 difficulty: 5
 tags: absolute value, parameters, trigonometry
@@ -445,7 +445,7 @@ Since $k>0$, $k=\frac43$ (and then $k+2>0$, so the squaring was legitimate).
 @@@ the-integral-of-ln-one-plus-tangent.md
 ---
 title: An integral that equals its own mirror image
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/techniques
 level: olympiad
 difficulty: 5
 tags: symmetry, substitution, logarithm, tangent
@@ -478,7 +478,7 @@ $$I=\frac{\pi\ln2}8.$$
 @@@ the-king-property-of-definite-integrals.md
 ---
 title: Using the substitution x → a + b − x
-category: calculus/single-variable/integration
+category: calculus/single-variable/integration/techniques
 level: l1
 difficulty: 3
 tags: symmetry, substitution, trigonometric integrals
@@ -570,7 +570,7 @@ $$\int_0^4te^{t^2}\,dt=\frac12\int_0^{16}e^u\,du=\frac{e^{16}-1}2.$$
 ---
 title: Simplifying and decomposing rational integrands
 category: calculus/single-variable/integration/techniques
-level: l2
+level: l1
 difficulty: 2
 tags: partial fractions, rational functions
 date: 2026-11-02
@@ -726,7 +726,7 @@ $$I_n=\bigl[x^ne^x\bigr]_0^1-n\int_0^1x^{n-1}e^x\,dx=e-nI_{n-1}.$$
 ---
 title: Wallis integrals
 category: calculus/single-variable/integration/techniques
-level: m1
+level: l1
 difficulty: 4
 tags: Wallis integrals, recurrence, asymptotics, pi
 date: 2026-11-02
@@ -760,7 +760,7 @@ $$W_nW_{n+1}\le W_n^2\le W_nW_{n-1}\ \Longrightarrow\ \frac\pi{2(n+1)}\le W_n^2\
 ---
 title: The tangent half-angle substitution
 category: calculus/single-variable/integration/techniques
-level: l2
+level: l1
 difficulty: 4
 tags: Weierstrass substitution, trigonometric integrals, rational functions
 date: 2026-11-02
@@ -817,7 +817,7 @@ $$\mathcal A=4ab\int_0^{\pi/2}\cos^2\theta\,d\theta=4ab\cdot\frac\pi4=\pi ab.$$
 ---
 title: Completing the square before integrating
 category: calculus/single-variable/integration/techniques
-level: l2
+level: l1
 difficulty: 3
 tags: rational functions, completing the square, arctangent
 date: 2026-11-02
@@ -874,7 +874,7 @@ $$\int_0^{+\infty}\frac{dx}{1+x^2}=\frac\pi2.$$
 ---
 title: When do integrals of powers converge?
 category: calculus/single-variable/integration/improper-integrals
-level: l2
+level: l1
 difficulty: 2
 tags: improper integrals, p-test, Riemann integrals
 date: 2026-11-02
@@ -975,7 +975,7 @@ since $x^ne^{-x}\to0$ at infinity. With $G_0=1$, $G_n=n!$.
 ---
 title: Proving convergence by comparison
 category: calculus/single-variable/integration/improper-integrals
-level: l2
+level: l1
 difficulty: 3
 tags: improper integrals, comparison test, divergence
 date: 2026-11-02
