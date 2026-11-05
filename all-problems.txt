@@ -29828,7 +29828,7 @@ A full binary tree has $n$ internal nodes, $n+1$ leaves. Traverse left-to-right 
 **Examples.** $n=1$: $1$; $n=2$: $2$; $n=3$: $5$.
 @@@ irrationality-sqrt2.md
 ---
-title: Irrationality of $\sqrt2$
+title: Irrationality of √2
 category: number/irrationality
 level: lycee
 difficulty: 2
@@ -29888,7 +29888,7 @@ Same structure as $\sqrt2$, but use divisibility by $3$ instead of parity.
 
 @@@ irrationality-sqrt-prime.md
 ---
-title: Irrationality of $\sqrt p$ for prime $p$
+title: Irrationality of √p for prime p
 category: number/irrationality
 level: lycee
 difficulty: 3
@@ -29918,7 +29918,7 @@ Same argument as $\sqrt2$ and $\sqrt3$, using Euclid's lemma: $p\mid n^2\Rightar
 
 @@@ irrationality-sqrt-n.md
 ---
-title: Irrationality of $\sqrt n$ for non-square $n$
+title: Irrationality of √n for non-square n
 category: number/irrationality
 level: l1
 difficulty: 3
@@ -29948,7 +29948,7 @@ Use the prime factorization of $n$: some prime has an odd exponent. Apply the sa
 
 @@@ irrationality-sqrt2-sqrt3.md
 ---
-title: Irrationality of $\sqrt2+\sqrt3$
+title: Irrationality of √2+√3
 category: number/irrationality
 level: l1
 difficulty: 3
@@ -29978,7 +29978,7 @@ Compute $\alpha^2=5+2\sqrt6$. If $\alpha\in\mathbb{Q}$, then $\sqrt6\in\mathbb{Q
 
 @@@ irrationality-log2.md
 ---
-title: Irrationality of $\log_2 3$
+title: Irrationality of log₂ 3
 category: number/irrationality
 level: l1
 difficulty: 3
@@ -30004,7 +30004,7 @@ Suppose $\log_2 3=p/q$ with $p,q\in\mathbb{N}^*$. Then $2^p=3^q$, impossible by 
 
 @@@ irrationality-log10.md
 ---
-title: Irrationality of $\log_{10} 2$
+title: Irrationality of log₁₀ 2
 category: number/irrationality
 level: l1
 difficulty: 3
@@ -30206,7 +30206,7 @@ Let $\alpha=\sqrt{2+\sqrt2}$. Then $\alpha^2-2=\sqrt2$, which is irrational.
 
 @@@ irrationality-cube-root2.md
 ---
-title: Irrationality of $\sqrt[3]{2}$
+title: Irrationality of ∛2
 category: number/irrationality
 level: l1
 difficulty: 3
@@ -30234,7 +30234,7 @@ Suppose $\sqrt[3]{2}=p/q$ with $\gcd(p,q)=1$. Cube and use unique factorization.
 
 @@@ irrationality-cube-root-n.md
 ---
-title: Irrationality of $\sqrt[n]{2}$
+title: Irrationality of ⁿ√2
 category: number/irrationality
 level: l1
 difficulty: 3
@@ -30785,7 +30785,7 @@ Suppose $ae^2+be+c=0$ with $a,b,c\in\mathbb{Q}$, not all zero. Use the series ex
 
 @@@ irrationality-sqrt2-plus-rational.md
 ---
-title: Irrationality of $\sqrt2+\sqrt[3]{2}$
+title: Irrationality of $√2 + √3$
 category: number/irrationality
 level: olympiad
 difficulty: 4
@@ -30843,7 +30843,7 @@ If $a\log2+b\log3=0$ with $a,b\in\mathbb{Q}$ not both zero, then $2^a3^b=1$.
 
 @@@ irrationality-log2-log3.md
 ---
-title: Irrationality of $\log_2 3$
+title: Irrationality of log₂ 3
 category: number/irrationality
 level: l1
 difficulty: 3
