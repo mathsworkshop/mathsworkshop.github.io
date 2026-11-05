@@ -1016,7 +1016,7 @@ In $\ell^2$, the closed unit ball is closed and bounded but not compact.
 @@@ topology-Rn-continuity-method-system.md
 ---
 title: Solving a non-linear system via the continuity method
-category: topology/topology-of-Rn
+category: topology/topology-of-rn
 level: m1
 difficulty: 5
 tags: continuity method, implicit function theorem, connectedness, nonlinear system
