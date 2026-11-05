@@ -1,0 +1,720 @@
+@@@ nt2-the-sum-of-phi-over-the-divisors.md
+---
+title: The sum of φ(d) over the divisors of n
+category: olympiad/oly-number-theory
+level: m1
+difficulty: 2
+tags: Euler totient, divisors, counting, fractions
+date: 2026-11-05
+---
+
+## Statement
+
+Let $\varphi$ be Euler's totient function ($\varphi(d)$ is the number of integers $a$ with $1\le a\le d$ and $\gcd(a,d)=1$). Prove that for every positive integer $n$,
+$$\sum_{d\mid n}\varphi(d)=n.$$
+
+## Hint
+
+Look at the $n$ fractions $\frac1n,\frac2n,\dots,\frac nn$ and write each in lowest terms. What can you say about the denominators?
+
+## Solution
+
+**Idea.** Count the same set of $n$ objects in two ways: all together, and grouped according to the denominator in lowest terms.
+
+**Grouping.** Take $k\in\{1,\dots,n\}$ and write $\frac kn=\frac ad$ in lowest terms, i.e. $\gcd(a,d)=1$ and $1\le a\le d$. The denominator $d$ divides $n$ (because $\frac kn=\frac ad$ gives $kd=an$, and $\gcd(a,d)=1$ forces $d\mid n$).
+
+**Counting a group.** Fix a divisor $d$ of $n$. A fraction $\frac kn$ has lowest-terms denominator $d$ exactly when it equals $\frac ad$ with $1\le a\le d$ and $\gcd(a,d)=1$. Each such $a$ gives exactly one $k=a\cdot\frac nd$, and distinct $a$ give distinct fractions. Hence exactly $\varphi(d)$ of the fractions $\frac kn$ have denominator $d$.
+
+**Conclusion.** Every one of the $n$ fractions has exactly one lowest-terms denominator $d\mid n$, so
+$$n=\sum_{d\mid n}\varphi(d).$$
+
+**Check.** $n=12$: $\varphi(1)+\varphi(2)+\varphi(3)+\varphi(4)+\varphi(6)+\varphi(12)=1+1+2+2+2+4=12$.
+
+**Lesson.** Classify the elements of a set by an invariant (here the reduced denominator) and count each class.
+@@@ nt2-prime-divisors-of-n-squared-plus-n-plus-one.md
+---
+title: Prime divisors of n² + n + 1
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: order, Fermat's little theorem, primes in progressions
+date: 2026-11-05
+---
+
+## Statement
+
+1. Let $p$ be a prime dividing $n^2+n+1$ for some integer $n$. Prove that $p=3$ or $p\equiv1\pmod 3$.
+2. Deduce that there are infinitely many primes $p\equiv1\pmod3$.
+
+## Hint
+
+$n^3-1=(n-1)(n^2+n+1)$. What can you say about the multiplicative order of $n$ modulo $p$?
+
+## Solution
+
+**1.** Since $p\mid n^2+n+1$, we have $p\nmid n$ (otherwise $p\mid1$), and $p\mid n^3-1$, so $n^3\equiv1\pmod p$. The order $d$ of $n$ modulo $p$ divides $3$, so $d\in\{1,3\}$.
+
+- If $d=1$, then $n\equiv1$ and $0\equiv n^2+n+1\equiv3\pmod p$, so $p=3$.
+- If $d=3$, then by Fermat's little theorem $n^{p-1}\equiv1$, so $d=3$ divides $p-1$, that is $p\equiv1\pmod3$.
+
+**2.** Let $k\ge3$ and put $m=k!$, $N=m^2+m+1$. For every prime $q\le k$ we have $q\mid m$, hence $N\equiv1\pmod q$. So every prime divisor of $N$ is larger than $k$, in particular different from $3$. By part 1 each prime divisor of $N$ is $\equiv1\pmod 3$; and $N>1$ has at least one. So for every $k$ there is a prime $\equiv1\pmod3$ larger than $k$.
+
+**Lesson.** A prime factor of $\Phi_d(n)$ (here $\Phi_3(n)=n^2+n+1$) is $\equiv1\pmod d$ unless it divides $d$: this is the standard route to "infinitely many primes $\equiv1\pmod d$".
+@@@ nt2-the-sum-of-the-quadratic-residues.md
+---
+title: The sum of the quadratic residues modulo p
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: quadratic residues, sum of squares, divisibility
+date: 2026-11-05
+---
+
+## Statement
+
+Let $p\ge5$ be a prime. The nonzero quadratic residues modulo $p$ are the residues $r\in\{1,\dots,p-1\}$ for which $x^2\equiv r\pmod p$ has a solution. Prove that the sum of all of them is divisible by $p$.
+
+## Hint
+
+Show first that the residues are exactly the squares $1^2,2^2,\dots,m^2$ with $m=\frac{p-1}2$, all distinct modulo $p$.
+
+## Solution
+
+**Step 1: there are exactly $m$ residues, represented by $1^2,\dots,m^2$.** Any $x\not\equiv0$ is congruent to $\pm j$ for some $j\in\{1,\dots,m\}$, so $x^2\equiv j^2$. For $1\le i<j\le m$, $j^2-i^2=(j-i)(j+i)$ with $0<j-i<p$ and $0<j+i\le p-1<p$, so $p\nmid j^2-i^2$: the squares are distinct modulo $p$.
+
+**Step 2: the sum.** Each residue $r$ is congruent to some $j^2$, so
+$$\sum r\equiv\sum_{j=1}^mj^2=\frac{m(m+1)(2m+1)}6=\frac{p\,(p-1)(p+1)}{24}\pmod p,$$
+using $m=\frac{p-1}2$, $m+1=\frac{p+1}2$, $2m+1=p$.
+
+**Step 3: divisibility.** For a prime $p\ge5$, $p$ is odd and not a multiple of $3$, so $(p-1)(p+1)$ is divisible by $8$ (two consecutive even numbers, one divisible by $4$) and by $3$ (one of $p-1,p,p+1$ is a multiple of $3$ and it is not $p$). Hence $24\mid(p-1)(p+1)$ and $\frac{p(p-1)(p+1)}{24}=p\cdot\frac{p^2-1}{24}$ is a multiple of $p$.
+
+**Check.** $p=7$: residues $1,2,4$, sum $7$ ✓. $p=11$: residues $1,3,4,5,9$, sum $22$ ✓.
+
+**Lesson.** To sum a set of residues, replace each by a convenient representative, here the squares $j^2$ with $j\le\frac{p-1}2$.
+@@@ nt2-triangular-numbers-that-are-squares.md
+---
+title: Infinitely many triangular numbers that are squares
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: Pell equation, recurrence, infinitely many
+date: 2026-11-05
+---
+
+## Statement
+
+Show that there are infinitely many positive integers $n$ for which $T_n=\dfrac{n(n+1)}2$ is a perfect square.
+
+## Hint
+
+Complete the square: $n(n+1)=2m^2$ is equivalent to $(2n+1)^2-8m^2=1$. Find a way to produce a new solution of $x^2-8y^2=1$ from an old one.
+
+## Solution
+
+**Reduction.** $\frac{n(n+1)}2=m^2\iff 4n^2+4n=8m^2\iff(2n+1)^2-8m^2=1$. So it suffices to find infinitely many solutions $(x,y)$ of $x^2-8y^2=1$ in positive integers with $x$ odd: then $n=\frac{x-1}2$ and $m=y$.
+
+**Generating solutions.** Suppose $x^2-8y^2=1$. Put $x'=3x+8y$, $y'=x+3y$. Then
+$$x'^2-8y'^2=9x^2+48xy+64y^2-8x^2-48xy-72y^2=x^2-8y^2=1.$$
+Also $x'\equiv x\pmod 2$ (since $8y$ is even), so $x'$ is odd if $x$ is, and $x'>x$, $y'>y$.
+
+**Start.** $(x,y)=(3,1)$ satisfies $9-8=1$ and $x$ is odd. The recurrence gives $(3,1)\to(17,6)\to(99,35)\to(577,204)\to\cdots$, an infinite strictly increasing sequence of solutions with $x$ odd.
+
+**Result.** The corresponding $n=\frac{x-1}2$ are $1,8,49,288,\dots$, with $T_1=1^2$, $T_8=36=6^2$, $T_{49}=1225=35^2$, $T_{288}=41616=204^2$.
+
+**Remark.** Pell's theory shows these are *all* the solutions (they come from powers of $3+2\sqrt2$).
+
+**Lesson.** A Pell-type equation has an infinite family generated by multiplying by a unit such as $3+\sqrt8$; reduce a problem to $x^2-Dy^2=1$ by completing the square.
+@@@ nt2-fermat-s-theorem-on-sums-of-two-squares.md
+---
+title: Every prime ≡ 1 (mod 4) is a sum of two squares
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: sum of two squares, Thue's lemma, pigeonhole, Wilson
+date: 2026-11-05
+---
+
+## Statement
+
+Let $p$ be a prime with $p\equiv1\pmod4$. Prove that $p=a^2+b^2$ for some positive integers $a,b$.
+
+## Hint
+
+First find $x$ with $x^2\equiv-1\pmod p$ (use Wilson's theorem). Then apply the pigeonhole principle to the numbers $u+xv$ with $0\le u,v\le\lfloor\sqrt p\rfloor$.
+
+## Solution
+
+**Step 1: $-1$ is a square modulo $p$.** Let $m=\frac{p-1}2$, which is even. By Wilson, $-1\equiv(p-1)!=\prod_{k=1}^m k(p-k)\equiv\prod_{k=1}^mk(-k)=(-1)^m(m!)^2=(m!)^2\pmod p$. So $x=m!$ satisfies $x^2\equiv-1$.
+
+**Step 2: Thue's lemma.** Let $s=\lfloor\sqrt p\rfloor$. Since $p$ is prime, it is not a square, so $s<\sqrt p<s+1$ and $(s+1)^2>p$. Consider the $(s+1)^2$ numbers
+$$u+xv,\qquad0\le u,v\le s.$$
+There are more of them than residues modulo $p$, so two different pairs $(u,v)\neq(u',v')$ satisfy $u+xv\equiv u'+xv'\pmod p$. Put $A=u-u'$, $B=v'-v$. Then $A\equiv xB\pmod p$, $|A|,|B|\le s<\sqrt p$, and $(A,B)\ne(0,0)$.
+
+**Step 3: conclusion.** $A^2\equiv x^2B^2\equiv-B^2$, so $p\mid A^2+B^2$. Moreover $0<A^2+B^2<p+p=2p$. Hence $A^2+B^2=p$. Neither $A$ nor $B$ is $0$ (otherwise $p$ would be a square), so $p=|A|^2+|B|^2$ with positive integers.
+
+**Check.** $p=13$: $x=6!=720\equiv5$, $25\equiv-1$ ✓, and $13=4+9$. $p=29=4+25$.
+
+**Lesson.** Pigeonhole on a lattice of values forces a short vector in a congruence class (Thue's lemma); combined with $x^2\equiv-1$ it produces a sum of two squares.
+@@@ nt2-the-frobenius-coin-problem.md
+---
+title: The Frobenius coin problem for two coins
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: Frobenius number, linear Diophantine, Chicken McNugget
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a,b$ be coprime positive integers. Prove that $ab-a-b$ cannot be written as $ax+by$ with integers $x,y\ge0$, but every integer $n>ab-a-b$ can.
+
+## Hint
+
+Given $n$, choose the representation $n=ax+by$ in which $0\le x\le b-1$. When is $y\ge0$?
+
+## Solution
+
+**Normalising.** Since $\gcd(a,b)=1$, $a$ is invertible modulo $b$, so for each integer $n$ there is a unique $x_0\in\{0,\dots,b-1\}$ with $ax_0\equiv n\pmod b$. Put $y_0=\frac{n-ax_0}b\in\mathbb Z$. Every integer solution of $ax+by=n$ is $(x_0+tb,\ y_0-ta)$ for $t\in\mathbb Z$.
+
+**Criterion.** $n$ is representable with $x,y\ge0$ iff $y_0\ge0$. Indeed, a representation needs $x_0+tb\ge0$, which forces $t\ge0$ (as $0\le x_0<b$), and then $y_0-ta\le y_0$ must be $\ge0$, so $y_0\ge0$. Conversely $y_0\ge0$ gives the representation $(x_0,y_0)$.
+
+**The number $n=ab-a-b$.** We need $ax_0\equiv-a-b\equiv-a\pmod b$, so $x_0\equiv-1$, i.e. $x_0=b-1$. Then $y_0=\frac{ab-a-b-a(b-1)}b=\frac{-b}b=-1<0$. Not representable.
+
+**Larger $n$.** If $n>ab-a-b$, then since $x_0\le b-1$,
+$$y_0=\frac{n-ax_0}b\ge\frac{n-a(b-1)}b>\frac{ab-a-b-ab+a}b=-1,$$
+so $y_0>-1$, and being an integer, $y_0\ge0$.
+
+**Example.** For $a=5$, $b=7$ the largest amount that cannot be paid is $35-12=23$.
+
+**Lesson.** Reduce one variable modulo the other coefficient to get a canonical representative, then the sign of the other variable decides everything.
+@@@ nt2-egyptian-fractions-for-one.md
+---
+title: Writing 1 as a sum of unit fractions
+category: olympiad/oly-number-theory
+level: m1
+difficulty: 2
+tags: Egyptian fractions, bounding, Diophantine
+date: 2026-11-05
+---
+
+## Statement
+
+1. Find all positive integers $a\le b\le c$ with $\dfrac1a+\dfrac1b+\dfrac1c=1$.
+2. Prove that for every $k\ge3$, the number $1$ is a sum of $k$ **distinct** unit fractions.
+
+## Hint
+
+For part 1, the smallest denominator $a$ must satisfy $\frac3a\ge1$. For part 2, use $\frac1m=\frac1{m+1}+\frac1{m(m+1)}$.
+
+## Solution
+
+**1. Bounding.** $1=\frac1a+\frac1b+\frac1c\le\frac3a$ gives $a\le3$; and $a\ge2$ (else the sum exceeds $1$).
+
+- $a=2$: $\frac1b+\frac1c=\frac12$ with $b\le c$, so $\frac2b\ge\frac12$, $b\le4$; also $b>2$. If $b=3$: $\frac1c=\frac16$, $c=6$. If $b=4$: $\frac1c=\frac14$, $c=4$.
+- $a=3$: $\frac1b+\frac1c=\frac23$ with $b\ge3$, so $\frac2b\ge\frac23$ gives $b\le3$; thus $b=3$ and $c=3$.
+
+The solutions are $(2,3,6)$, $(2,4,4)$, $(3,3,3)$.
+
+**2. Distinct denominators.** For $k=3$: $1=\frac12+\frac13+\frac16$. From a representation with $k$ distinct denominators, take the largest denominator $m$ and replace $\frac1m$ by $\frac1{m+1}+\frac1{m(m+1)}$ (true because $\frac1m-\frac1{m+1}=\frac1{m(m+1)}$). Both new denominators exceed $m$, hence all the others, and they are different from each other. This gives a representation with $k+1$ distinct denominators. Induction finishes.
+
+**Example.** $1=\frac12+\frac13+\frac17+\frac1{42}$.
+
+**Lesson.** In equations with a symmetric sum, order the variables and bound the smallest one; the identity $\frac1m=\frac1{m+1}+\frac1{m(m+1)}$ is the basic splitting step for unit fractions.
+@@@ nt2-a-multiple-written-with-zeros-and-ones.md
+---
+title: A multiple of n written with only 0s and 1s
+category: olympiad/oly-number-theory
+level: m1
+difficulty: 3
+tags: pigeonhole, repunits, decimal digits
+date: 2026-11-05
+---
+
+## Statement
+
+1. Prove that every positive integer $n$ has a nonzero multiple whose decimal digits are all $0$ or $1$.
+2. Prove that if $\gcd(n,10)=1$, then $n$ divides some repunit $11\ldots1$.
+
+## Hint
+
+Part 1: consider the repunits $R_k=\underbrace{11\ldots1}_{k}$ for $k=0,1,\dots,n$ (with $R_0=0$) modulo $n$. Part 2: use Euler's theorem for the modulus $9n$.
+
+## Solution
+
+**1.** The $n+1$ numbers $R_0,R_1,\dots,R_n$ have only $n$ possible remainders modulo $n$, so $R_i\equiv R_j\pmod n$ for some $0\le i<j\le n$. Then $n\mid R_j-R_i$. But $R_j-R_i$ is the number made of $j-i\ge1$ ones followed by $i$ zeros, which is positive and uses only the digits $0$ and $1$.
+
+**2.** Assume $\gcd(n,10)=1$. Then $\gcd(9n,10)=1$ as well, so by Euler $10^{k}\equiv1\pmod{9n}$ for $k=\varphi(9n)$. Hence $9n\mid10^k-1=9R_k$, so $n\mid R_k$.
+
+**Check.** $n=7$: $7\mid111111$ ($=7\cdot15873$). $n=3$: $3\mid111$.
+
+**Remark.** If $n$ has factors $2$ or $5$, part 2 fails (a repunit is odd and not divisible by $5$), but part 1 still holds: $2\mid10$, $5\mid10$.
+
+**Lesson.** Pigeonhole on a sequence of residues gives a nonzero difference divisible by $n$; the structure of the sequence ($R_j-R_i$) tells you what that difference looks like.
+@@@ nt2-even-perfect-numbers.md
+---
+title: Even perfect numbers (Euclid–Euler)
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: perfect numbers, sigma function, multiplicativity, Mersenne primes
+date: 2026-11-05
+---
+
+## Statement
+
+A positive integer $n$ is **perfect** if $\sigma(n)=2n$, where $\sigma(n)$ is the sum of all positive divisors of $n$. Prove that an even number $n$ is perfect if and only if $n=2^k(2^{k+1}-1)$ with $k\ge1$ and $2^{k+1}-1$ prime.
+
+## Hint
+
+Write $n=2^km$ with $m$ odd. Use that $\sigma$ is multiplicative and that $\gcd(2^{k+1}-1,2^{k+1})=1$.
+
+## Solution
+
+**Converse (easy).** If $q=2^{k+1}-1$ is prime and $n=2^kq$, then $\sigma(n)=\sigma(2^k)\sigma(q)=(2^{k+1}-1)(q+1)=q\cdot2^{k+1}=2n$.
+
+**Direct part.** Let $n$ be even and perfect, $n=2^km$ with $k\ge1$ and $m$ odd. By multiplicativity,
+$$\sigma(n)=(2^{k+1}-1)\,\sigma(m)=2n=2^{k+1}m.$$
+
+Since $2^{k+1}-1$ is odd, it is coprime to $2^{k+1}$, so $2^{k+1}-1$ divides $m$: $m=(2^{k+1}-1)\,t$, and then $\sigma(m)=2^{k+1}t$.
+
+**Claim: $t=1$.** Suppose $t>1$. Since $2^{k+1}-1\ge3$, the numbers $1<t<m$ are three distinct divisors of $m$, so
+$$\sigma(m)\ge1+t+m=1+t+(2^{k+1}-1)t=1+2^{k+1}t>\sigma(m),$$
+a contradiction. So $t=1$, $m=2^{k+1}-1$ and $\sigma(m)=2^{k+1}=m+1$.
+
+**Primality.** $\sigma(m)=m+1$ means $m$ has no divisors other than $1$ and $m$, i.e. $m=2^{k+1}-1$ is prime.
+
+**Examples.** $6=2\cdot3$, $28=4\cdot7$, $496=16\cdot31$, $8128=64\cdot127$.
+
+**Remark.** Whether an odd perfect number exists is a famous open problem.
+
+**Lesson.** Split off the power of $2$, use multiplicativity, then compare the exact value of $\sigma$ with a lower bound given by a few obvious divisors.
+@@@ nt2-odd-entries-in-pascal-s-triangle.md
+---
+title: Counting odd entries in a row of Pascal's triangle
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: binomial coefficients, parity, binary expansion, generating function
+date: 2026-11-05
+---
+
+## Statement
+
+Let $s(n)$ be the number of ones in the binary expansion of $n$. Prove that exactly $2^{s(n)}$ of the numbers $\binom n0,\binom n1,\dots,\binom nn$ are odd.
+
+## Hint
+
+Work with polynomials modulo $2$. Why is $(1+x)^{2^i}\equiv1+x^{2^i}\pmod 2$?
+
+## Solution
+
+**Idea.** The coefficients of $(1+x)^n$ are the binomial coefficients; reducing modulo $2$ turns the expansion into a product of very simple factors.
+
+**Frobenius step.** Modulo $2$, $(1+x)^2=1+2x+x^2\equiv1+x^2$. Repeating, $(1+x)^{2^i}\equiv(1+x^{2^i})$ for all $i\ge0$ (square both sides: $(1+x^{2^i})^2\equiv1+x^{2^{i+1}}$).
+
+**Factorising.** Write $n=\sum_{i\in S}2^i$ with $S$ the set of positions of ones in the binary expansion, so $|S|=s(n)$. Then
+$$(1+x)^n=\prod_{i\in S}(1+x)^{2^i}\equiv\prod_{i\in S}\left(1+x^{2^i}\right)=\sum_{T\subseteq S}x^{\sum_{i\in T}2^i}\pmod2.$$
+
+**Counting.** The exponents $\sum_{i\in T}2^i$ for different subsets $T\subseteq S$ are pairwise different (uniqueness of the binary representation). So the right side is a sum of $2^{|S|}$ distinct monomials with coefficient $1$, and every other coefficient is $0$ modulo $2$. Thus exactly $2^{s(n)}$ coefficients $\binom nk$ are odd.
+
+**Check.** $n=6=110_2$: row $1,6,15,20,15,6,1$ has $4=2^2$ odd entries.
+
+**Remark.** In particular the whole row consists of odd numbers iff $2^{s(n)}=n+1$, i.e. iff $n=2^j-1$.
+
+**Lesson.** Reduce a polynomial identity modulo a prime and use $(1+x)^p\equiv1+x^p$; binary expansions turn $(1+x)^n$ into a product.
+@@@ nt2-primes-that-cannot-divide-the-central-binomial-coefficient.md
+---
+title: Which primes divide C(2n, n)?
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: Legendre's formula, central binomial coefficient, Bertrand's postulate
+date: 2026-11-05
+---
+
+## Statement
+
+Let $n\ge1$ and let $p$ be a prime.
+
+1. If $n<p\le2n$, prove that $p\mid\binom{2n}n$.
+2. If $\frac{2n}3<p\le n$ and $p^2>2n$, prove that $p\nmid\binom{2n}n$.
+
+## Hint
+
+Use Legendre's formula $v_p(m!)=\sum_{k\ge1}\lfloor m/p^k\rfloor$ and write $v_p\binom{2n}n=\sum_k\left(\lfloor 2n/p^k\rfloor-2\lfloor n/p^k\rfloor\right)$.
+
+## Solution
+
+**1.** $\binom{2n}n=\frac{(2n)!}{n!\,n!}$. The prime $p\le2n$ divides $(2n)!$, but $p>n$ does not divide $n!$. So $p$ divides the numerator and not the denominator.
+
+**2.** Legendre's formula gives
+$$v_p\binom{2n}n=\sum_{k\ge1}\left(\left\lfloor\frac{2n}{p^k}\right\rfloor-2\left\lfloor\frac n{p^k}\right\rfloor\right).$$
+
+- For $k\ge2$: $p^k\ge p^2>2n$, so both floors are $0$.
+- For $k=1$: from $\frac{2n}3<p\le n$ we get $1\le\frac np<\frac32$, so $\lfloor\frac np\rfloor=1$ and $2\le\frac{2n}p<3$, so $\lfloor\frac{2n}p\rfloor=2$. The term is $2-2\cdot1=0$.
+
+So $v_p\binom{2n}n=0$.
+
+**Check.** $n=10$: $\binom{20}{10}=184756=2^2\cdot11\cdot13\cdot17\cdot19$. Primes in $(10,20]$: $11,13,17,19$ all divide it ✓. Primes in $(\frac{20}3,10]$ with $p^2>20$: only $7$, and $7\nmid184756$ ✓.
+
+**Remark.** These two facts are the heart of Erdős's proof of Bertrand's postulate: the prime factorisation of $\binom{2n}n$ cannot be made of small primes alone.
+
+**Lesson.** Express $v_p$ of a binomial coefficient via Legendre's formula as a sum of terms $\lfloor2x\rfloor-2\lfloor x\rfloor\in\{0,1\}$ and control each term.
+@@@ nt2-an-integrality-proof-by-counting.md
+---
+title: (n²)! is divisible by (n!)^(n+1)
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: integrality, factorials, double counting, multinomial
+date: 2026-11-05
+---
+
+## Statement
+
+Prove that $\dfrac{(n^2)!}{(n!)^{n+1}}$ is an integer for every positive integer $n$.
+
+## Hint
+
+Count the number of ways to split $n^2$ people into $n$ unordered teams of $n$ people each.
+
+## Solution
+
+**Idea.** Interpret the quotient as the number of something, which is automatically an integer.
+
+**Counting.** Let $N$ be the number of ways to partition a set of $n^2$ distinct objects into $n$ unlabelled groups of size $n$. Line the $n^2$ objects up in a row in any of $(n^2)!$ orders, and cut the row into consecutive blocks of $n$: this gives a partition. Each partition arises from exactly $(n!)^n\cdot n!$ orderings: $n!$ orders inside each of the $n$ groups, and $n!$ orders in which the groups appear. Hence
+$$N=\frac{(n^2)!}{(n!)^n\cdot n!}=\frac{(n^2)!}{(n!)^{n+1}}.$$
+
+Since $N$ is a number of objects, it is a positive integer.
+
+**Check.** $n=2$: $\frac{4!}{(2!)^3}=\frac{24}8=3$, the three ways to split four people into two pairs.
+
+**Remark.** More generally $\dfrac{(kn)!}{(n!)^kk!}$ is an integer.
+
+**Lesson.** To prove that an expression is an integer, find a set of objects that it counts.
+@@@ nt2-legendre-s-formula-in-base-p.md
+---
+title: v_p(n!) from the digits of n in base p
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: Legendre's formula, digit sum, p-adic valuation, base p
+date: 2026-11-05
+---
+
+## Statement
+
+Let $p$ be a prime and $s_p(n)$ the sum of the digits of $n$ in base $p$.
+
+1. Prove that $v_p(n!)=\dfrac{n-s_p(n)}{p-1}$.
+2. Deduce that $2^{n-1}\mid n!$ iff $n$ is a power of $2$, and that $v_2\binom{2n}n=s_2(n)$.
+
+## Hint
+
+Write $n=\sum a_ip^i$. What is $\lfloor n/p^k\rfloor$ in terms of the digits?
+
+## Solution
+
+**1.** Write $n=\sum_{i\ge0}a_ip^i$ with $0\le a_i\le p-1$. Then $\lfloor n/p^k\rfloor=\sum_{i\ge k}a_ip^{i-k}$. By Legendre's formula,
+$$v_p(n!)=\sum_{k\ge1}\sum_{i\ge k}a_ip^{i-k}=\sum_{i\ge1}a_i\left(1+p+\dots+p^{i-1}\right)=\sum_{i\ge1}a_i\frac{p^i-1}{p-1}.$$
+Since the term $i=0$ contributes $a_0\frac{p^0-1}{p-1}=0$, the sum equals $\dfrac{\sum a_ip^i-\sum a_i}{p-1}=\dfrac{n-s_p(n)}{p-1}$.
+
+**2.** For $p=2$: $v_2(n!)=n-s_2(n)$. Since $s_2(n)\ge1$, $v_2(n!)\le n-1$, with equality iff $s_2(n)=1$, i.e. $n$ is a power of $2$. So $2^{n-1}\mid n!$ iff $n$ is a power of $2$.
+
+Next, $s_2(2n)=s_2(n)$ (append a zero), so
+$$v_2\binom{2n}n=v_2((2n)!)-2v_2(n!)=(2n-s_2(n))-2(n-s_2(n))=s_2(n).$$
+
+**Check.** $\binom63=20=2^2\cdot5$ and $s_2(3)=2$ ✓. $\binom{8}{4}=70$, $s_2(4)=1$, $v_2(70)=1$ ✓.
+
+**Lesson.** Legendre's formula is just a statement about the digits of $n$ in base $p$; switching to digits often turns a messy floor sum into a clean closed form.
+@@@ nt2-a-sum-of-factorials-that-is-a-square.md
+---
+title: When is 1! + 2! + … + n! a perfect square?
+category: olympiad/oly-number-theory
+level: m1
+difficulty: 2
+tags: squares modulo n, factorials, Diophantine
+date: 2026-11-05
+---
+
+## Statement
+
+Find all positive integers $n$ such that $1!+2!+\dots+n!$ is a perfect square.
+
+## Hint
+
+For large $n$ most of the terms are multiples of $5$. Which residues can a square have modulo $5$?
+
+## Solution
+
+**Small cases.** $n=1$: $1=1^2$. $n=2$: $3$, not a square. $n=3$: $1+2+6=9=3^2$. $n=4$: $33$, not a square.
+
+**Large $n$.** For $k\ge5$, $5\mid k!$. So for $n\ge4$,
+$$1!+\dots+n!\equiv1+2+6+24=33\equiv3\pmod5.$$
+But squares modulo $5$ are only $0,1,4$ (from $0^2,1^2,2^2,3^2,4^2\equiv0,1,4,4,1$), so $3$ is not a square modulo $5$.
+
+**Answer.** $n=1$ and $n=3$.
+
+**Lesson.** To show that an equation has no solutions, find a modulus in which the sum stabilises and the target is not a square (here $5$, where the factorials die out).
+@@@ nt2-from-a-p-congruent-b-p-to-a-p-congruent-b-p-modulo-p-squared.md
+---
+title: If aᵖ ≡ bᵖ (mod p) then aᵖ ≡ bᵖ (mod p²)
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: Fermat's little theorem, binomial theorem, lifting
+date: 2026-11-05
+---
+
+## Statement
+
+Let $p$ be a prime and $a,b$ integers with $a^p\equiv b^p\pmod p$. Prove that $a^p\equiv b^p\pmod{p^2}$.
+
+## Hint
+
+By Fermat's little theorem $a\equiv b\pmod p$. Write $a=b+kp$ and expand $(b+kp)^p$.
+
+## Solution
+
+**Step 1.** By Fermat's little theorem $a^p\equiv a$ and $b^p\equiv b\pmod p$. The hypothesis gives $a\equiv b\pmod p$, so $a=b+kp$ for some integer $k$.
+
+**Step 2: binomial expansion.**
+$$a^p=(b+kp)^p=b^p+\binom p1b^{p-1}kp+\sum_{j\ge2}\binom pjb^{p-j}(kp)^j.$$
+The second term is $p\cdot b^{p-1}\cdot kp$, a multiple of $p^2$. For $j\ge2$ the factor $(kp)^j$ is a multiple of $p^2$. Hence $a^p\equiv b^p\pmod{p^2}$.
+
+**Example.** $17\equiv2\pmod5$, and indeed $17^5-2^5=1419825=25\cdot56793$.
+
+**Remark.** This is the first step of "lifting the exponent": $v_p(a^p-b^p)=v_p(a-b)+1$ when $p\mid a-b$ and $p$ is odd.
+
+**Lesson.** When two numbers are congruent modulo $p$, write one as the other plus a multiple of $p$; the binomial expansion then shows the $p$-th powers agree one power of $p$ higher.
+@@@ nt2-the-gcd-of-fibonacci-numbers.md
+---
+title: gcd(F_m, F_n) = F_gcd(m,n)
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: Fibonacci numbers, gcd, Euclidean algorithm, divisibility sequences
+date: 2026-11-05
+---
+
+## Statement
+
+Let $F_0=0$, $F_1=1$, $F_{k+2}=F_{k+1}+F_k$. Prove that for all positive integers $m,n$,
+$$\gcd(F_m,F_n)=F_{\gcd(m,n)}.$$
+
+## Hint
+
+Prove first the addition formula $F_{a+b}=F_aF_{b+1}+F_{a-1}F_b$, and that consecutive Fibonacci numbers are coprime. Then imitate the Euclidean algorithm.
+
+## Solution
+
+**Step 1: addition formula.** For $a\ge1$ and $b\ge0$: $F_{a+b}=F_aF_{b+1}+F_{a-1}F_b$. Induction on $b$: for $b=0$ it says $F_a=F_a\cdot1+F_{a-1}\cdot0$; for $b=1$, $F_{a+1}=F_aF_2+F_{a-1}F_1=F_a+F_{a-1}$ ✓. If it holds for $b$ and $b+1$, adding the two identities gives it for $b+2$ because $F_{b+3}=F_{b+2}+F_{b+1}$ and $F_{a+b+2}=F_{a+b+1}+F_{a+b}$.
+
+**Step 2: consecutive terms are coprime.** $\gcd(F_{k+1},F_k)=\gcd(F_k+F_{k-1},F_k)=\gcd(F_{k-1},F_k)$, and so on down to $\gcd(F_1,F_0)=\gcd(1,0)=1$.
+
+**Step 3: subtractive Euclid.** Let $m>n\ge1$. Apply the formula with $a=m-n\ge1$, $b=n$:
+$$F_m=F_{m-n}F_{n+1}+F_{m-n-1}F_n.$$
+Hence $\gcd(F_m,F_n)=\gcd(F_{m-n}F_{n+1},F_n)$. Since $\gcd(F_{n+1},F_n)=1$ (Step 2), any common divisor of $F_{m-n}F_{n+1}$ and $F_n$ is a common divisor of $F_{m-n}$ and $F_n$, so
+$$\gcd(F_m,F_n)=\gcd(F_{m-n},F_n).$$
+
+**Step 4: conclusion.** Applying Step 3 repeatedly mimics the subtractive Euclidean algorithm on the indices $(m,n)$; it ends at $(d,d)$ with $d=\gcd(m,n)$, and $\gcd(F_d,F_d)=F_d$.
+
+**Check.** $\gcd(F_{12},F_{18})=\gcd(144,2584)=8=F_6$.
+
+**Remark.** Consequently, if $F_n$ is prime then $n$ is prime, or $n=4$ ($F_4=3$): $F_d\mid F_n$ for every $d\mid n$.
+
+**Lesson.** A sequence with the "addition formula" structure inherits the Euclidean algorithm on its indices; look for an identity that lets you reduce $(m,n)$ to $(m-n,n)$.
+@@@ nt2-infinitely-many-n-with-n-dividing-two-to-the-n-plus-one.md
+---
+title: Infinitely many n dividing 2ⁿ + 1
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: induction, lifting the exponent, infinitely many, factorisation
+date: 2026-11-05
+---
+
+## Statement
+
+Prove that for every integer $k\ge0$, $3^{k+1}\mid2^{3^k}+1$. Deduce that $n=3^k$ satisfies $n\mid2^n+1$, so there are infinitely many positive integers $n$ with $n\mid2^n+1$.
+
+## Hint
+
+Use induction and the factorisation $x^3+1=(x+1)(x^2-x+1)$ with $x=2^{3^k}$.
+
+## Solution
+
+**Base case.** $k=0$: $3^1\mid2^1+1=3$ ✓.
+
+**Induction step.** Assume $3^{k+1}\mid2^{3^k}+1$, and let $x=2^{3^k}$. Then
+$$2^{3^{k+1}}+1=x^3+1=(x+1)(x^2-x+1).$$
+The first factor is divisible by $3^{k+1}$. For the second, $x\equiv-1\pmod3$ (since $3\mid x+1$), so $x^2-x+1\equiv1+1+1=3\equiv0\pmod3$. Therefore $3^{k+2}$ divides the product.
+
+**Conclusion.** So $3^{k+1}\mid2^{3^k}+1$, in particular $3^k\mid2^{3^k}+1$: with $n=3^k$, $n\mid2^n+1$. There are infinitely many such $n$.
+
+**Check.** $k=2$: $2^9+1=513=27\cdot19$ ✓ ($3^3=27$).
+
+**Lesson.** To gain one more power of a prime, factor $x^p\pm1$ and show that the cofactor is divisible by $p$ exactly once (the lifting-the-exponent mechanism).
+@@@ nt2-infinitely-many-primes-congruent-to-one-modulo-four.md
+---
+title: Infinitely many primes ≡ 1 (mod 4)
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: infinitely many primes, order, Euclid's argument
+date: 2026-11-05
+---
+
+## Statement
+
+Prove that there are infinitely many primes $p\equiv1\pmod4$.
+
+## Hint
+
+Take a prime divisor $q$ of $(n!)^2+1$. What is the order of $n!$ modulo $q$?
+
+## Solution
+
+**Construction.** For $n\ge2$ let $N=(n!)^2+1$ and let $q$ be any prime divisor of $N$.
+
+**$q>n$.** If $q\le n$, then $q\mid n!$, so $N\equiv1\pmod q$, contradicting $q\mid N$.
+
+**$q$ is odd.** For $n\ge2$, $n!$ is even, so $N$ is odd.
+
+**The order of $x=n!$ modulo $q$.** We have $x^2\equiv-1\not\equiv1\pmod q$ ($q$ odd), and $x^4\equiv1$. So the order of $x$ is exactly $4$. By Fermat's little theorem $x^{q-1}\equiv1$, hence $4\mid q-1$, i.e. $q\equiv1\pmod4$.
+
+**Conclusion.** For every $n\ge2$ there is a prime $q\equiv1\pmod4$ with $q>n$. So there are infinitely many.
+
+**Check.** $n=3$: $37=36+1$, and $37\equiv1\pmod4$. $n=4$: $577$ is prime, $\equiv1\pmod4$.
+
+**Lesson.** If $x^2\equiv-1\pmod q$, then $x$ has order $4$ and $4\mid q-1$; build a number that forces such an $x$ and Euclid's argument does the rest.
+@@@ nt2-n-divides-phi-of-a-to-the-n-minus-one.md
+---
+title: n divides φ(aⁿ − 1)
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 4
+tags: order, Euler's theorem, totient
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a\ge2$ and $n\ge1$ be integers. Prove that $n\mid\varphi(a^n-1)$.
+
+## Hint
+
+Let $N=a^n-1$. Compute the order of $a$ modulo $N$ exactly.
+
+## Solution
+
+**Setup.** Put $N=a^n-1\ge1$. If $N=1$ ($a=2$, $n=1$) then $\varphi(1)=1$ and $1\mid1$, fine. Assume $N\ge2$.
+
+**Coprimality.** $a\cdot a^{n-1}=a^n\equiv1\pmod N$, so $a$ is invertible modulo $N$.
+
+**The order is $n$.** $a^n\equiv1\pmod N$. If $1\le k<n$, then $0<a^k-1<a^n-1=N$, so $N\nmid a^k-1$, i.e. $a^k\not\equiv1\pmod N$. Hence the order of $a$ modulo $N$ is exactly $n$.
+
+**Euler.** $a^{\varphi(N)}\equiv1\pmod N$, so the order $n$ divides $\varphi(N)=\varphi(a^n-1)$.
+
+**Check.** $a=2$, $n=4$: $N=15$, $\varphi(15)=8$, $4\mid8$ ✓. $a=3$, $n=3$: $N=26$, $\varphi(26)=12$, $3\mid12$ ✓.
+
+**Lesson.** To show $n\mid\varphi(N)$, exhibit an element of order exactly $n$ modulo $N$; the size of $a^k-1$ compared with $N$ pins the order down.
+@@@ nt2-the-existence-of-primitive-roots.md
+---
+title: Primitive roots exist modulo every prime
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 5
+tags: primitive root, order, totient, polynomial roots
+date: 2026-11-05
+---
+
+## Statement
+
+Let $p$ be a prime. Prove that there exists an integer $g$ whose multiplicative order modulo $p$ is $p-1$ (a **primitive root**), so that $g,g^2,\dots,g^{p-1}$ are all the nonzero residues.
+
+## Hint
+
+For $d\mid p-1$ let $\psi(d)$ be the number of residues of order $d$. Show $\psi(d)\le\varphi(d)$ using that a polynomial of degree $d$ has at most $d$ roots modulo $p$, and compare $\sum\psi(d)$ with $\sum\varphi(d)$.
+
+## Solution
+
+**Setup.** Work in the field $\mathbb F_p$. Every nonzero residue has an order dividing $p-1$ (Fermat), so
+$$\sum_{d\mid p-1}\psi(d)=p-1.$$
+
+**Claim: $\psi(d)\le\varphi(d)$ for all $d\mid p-1$.** If $\psi(d)=0$ there is nothing to prove. Otherwise let $g$ have order $d$. The $d$ numbers $1,g,\dots,g^{d-1}$ are pairwise distinct and all satisfy $x^d=1$. A polynomial of degree $d$ over a field has at most $d$ roots, so these are *all* the roots of $x^d-1$. Any element of order $d$ is a root of $x^d-1$, hence of the form $g^j$ with $0\le j<d$. The order of $g^j$ is $\frac d{\gcd(j,d)}$, which equals $d$ iff $\gcd(j,d)=1$. So $\psi(d)=\varphi(d)$ in this case.
+
+**Comparison.** We know $\sum_{d\mid p-1}\varphi(d)=p-1$ (the sum of $\varphi$ over the divisors of $p-1$). Combined with $\psi(d)\le\varphi(d)$ and $\sum\psi(d)=p-1$, equality must hold for every $d$:
+$$\psi(d)=\varphi(d)\quad\text{for all }d\mid p-1.$$
+In particular $\psi(p-1)=\varphi(p-1)\ge1$: a primitive root exists.
+
+**Example.** $p=7$: $3$ is a primitive root ($3,2,6,4,5,1$), and there are $\varphi(6)=2$ of them ($3$ and $5$).
+
+**Remark.** The same argument shows that the multiplicative group of any finite field is cyclic.
+
+**Lesson.** Count elements of each order, bound each count by a polynomial-root argument, and use the identity $\sum_{d\mid m}\varphi(d)=m$ to force equality.
+@@@ nt2-prime-divisors-of-mersenne-numbers.md
+---
+title: Prime divisors of 2ᵖ − 1
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: Mersenne numbers, order, primality testing
+date: 2026-11-05
+---
+
+## Statement
+
+Let $p$ be an odd prime and $q$ a prime dividing $2^p-1$.
+
+1. Prove that $q\equiv1\pmod{2p}$.
+2. Use this to show that $8191=2^{13}-1$ is prime.
+
+## Hint
+
+The order of $2$ modulo $q$ divides $p$. It cannot be $1$.
+
+## Solution
+
+**1.** $q$ is odd (since $2^p-1$ is odd). From $2^p\equiv1\pmod q$, the order $d$ of $2$ modulo $q$ divides $p$, so $d\in\{1,p\}$. If $d=1$ then $2\equiv1\pmod q$, impossible. So $d=p$. By Fermat's little theorem $2^{q-1}\equiv1$, hence $p\mid q-1$. Since $q-1$ is also even and $p$ is odd, $2p\mid q-1$.
+
+**2.** Suppose $8191$ is composite. Then it has a prime factor $q\le\sqrt{8191}<91$, and by part 1, $q\equiv1\pmod{26}$. The numbers $\equiv1\pmod{26}$ below $91$ are $27,53,79$. Among them $27$ is not prime. Check the others: $8191=53\cdot154+29$ and $8191=79\cdot103+54$, so neither divides $8191$. Contradiction: $8191$ is prime.
+
+**Another check.** $2^{11}-1=2047=23\cdot89$, and $23=1+2\cdot11$, $89=1+8\cdot11$ ✓.
+
+**Remark.** Part 1 shows $2^p-1$ has only prime factors larger than $p$, giving yet another proof that there are infinitely many primes.
+
+**Lesson.** The multiplicative order of $a$ modulo a prime $q\mid a^p-1$ is $p$, so $q\equiv1\pmod p$: use it to cut down the divisors you must test.
+@@@ nt2-the-factorial-of-half-of-p-minus-one.md
+---
+title: ((p − 1)/2)! modulo a prime p ≡ 3 (mod 4)
+category: olympiad/oly-number-theory
+level: olympiad
+difficulty: 3
+tags: Wilson's theorem, factorials modulo p, quadratic residues
+date: 2026-11-05
+---
+
+## Statement
+
+Let $p\equiv3\pmod4$ be a prime and $m=\frac{p-1}2$. Prove that $m!\equiv\pm1\pmod p$.
+
+## Hint
+
+Pair $k$ with $p-k$ in Wilson's product $(p-1)!$.
+
+## Solution
+
+**Pairing.** Wilson's theorem: $(p-1)!\equiv-1\pmod p$. Write
+$$(p-1)!=\prod_{k=1}^m k\cdot\prod_{k=1}^m(p-k)\equiv\prod_{k=1}^mk\cdot\prod_{k=1}^m(-k)=(-1)^m(m!)^2\pmod p.$$
+
+**Parity of $m$.** Since $p\equiv3\pmod4$, $p-1\equiv2\pmod4$ and $m=\frac{p-1}2$ is odd, so $(-1)^m=-1$.
+
+**Conclusion.** $-1\equiv-(m!)^2$, i.e. $(m!)^2\equiv1\pmod p$. Since $p$ is prime, $p\mid(m!-1)(m!+1)$ gives $m!\equiv\pm1\pmod p$.
+
+**Check.** $p=7$: $3!=6\equiv-1$. $p=11$: $5!=120\equiv-1$. $p=23$: $11!\equiv1\pmod{23}$.
+
+**Remark.** For $p\equiv1\pmod4$ the same computation gives $(m!)^2\equiv-1$, which is the key to writing such a prime as a sum of two squares.
+
+**Lesson.** Wilson's theorem plus the pairing $k\leftrightarrow p-k$ turns $(p-1)!$ into a square (up to sign) of half the product.

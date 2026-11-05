@@ -1,0 +1,731 @@
+@@@ comb2-tilings-by-dominoes-and-squares-jacobsthal.md
+---
+title: Tiling a 2 × n board with dominoes and squares
+category: olympiad/oly-combinatorics
+level: m1
+difficulty: 2
+tags: recurrence, tilings, generating functions
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a_n$ be the number of ways to tile a $2\times n$ board with $1\times2$ dominoes (placed either way) and $2\times2$ squares. Find a recurrence for $a_n$, then prove
+$$a_n=\frac{2^{n+1}+(-1)^n}3.$$
+How many tilings are there for $n=10$?
+
+## Hint
+
+Look at the rightmost column. How can it be covered? Then solve the recurrence by its characteristic equation or by a generating function.
+
+## Solution
+
+**Idea.** Condition on what covers the last column(s).
+
+**Recurrence.** Put $a_0=1$ (empty tiling) and $a_1=1$ (one vertical domino). For $n\ge2$, look at the right end of the board:
+- a vertical domino covers the last column: $a_{n-1}$ tilings of the rest;
+- otherwise the top-right cell is covered by a horizontal domino, which then forces a second horizontal domino directly below it (the bottom-right cell cannot be covered by a vertical domino, and a horizontal one must be aligned): this covers the last two columns, $a_{n-2}$ tilings of the rest;
+- a $2\times2$ square covers the last two columns: $a_{n-2}$ tilings of the rest.
+
+These three cases are exhaustive and disjoint, so
+$$a_n=a_{n-1}+2a_{n-2}.$$
+
+**Solving.** The characteristic equation $r^2=r+2$ has roots $2$ and $-1$, so $a_n=A\,2^n+B(-1)^n$. From $a_0=1$ and $a_1=1$: $A+B=1$ and $2A-B=1$, giving $A=\frac23$, $B=\frac13$. Hence $a_n=\frac{2^{n+1}+(-1)^n}3$.
+
+**Generating function check.** With $F(x)=\sum a_nx^n$, the recurrence gives $F(x)(1-x-2x^2)=1$, that is $F(x)=\dfrac1{(1-2x)(1+x)}=\dfrac13\left(\dfrac2{1-2x}+\dfrac1{1+x}\right)$, the same formula.
+
+**Value.** $a_{10}=\dfrac{2^{11}+1}3=683$. The first values are $1,1,3,5,11,21,43,\dots$ (a brute-force enumeration confirms them for $n\le8$).
+
+**Lesson.** Condition on the last block, turn the count into a linear recurrence, solve it with the characteristic equation or a generating function.
+@@@ comb2-distinct-parts-equal-odd-parts.md
+---
+title: Partitions into distinct parts and into odd parts
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 3
+tags: generating functions, partitions, Euler
+date: 2026-11-05
+---
+
+## Statement
+
+Prove that for every $n\ge1$, the number of partitions of $n$ into **distinct** positive parts equals the number of partitions of $n$ into **odd** parts.
+
+For example, for $n=6$: $6,\ 5+1,\ 4+2,\ 3+2+1$ against $5+1,\ 3+3,\ 3+1+1+1,\ 1+1+1+1+1+1$.
+
+## Hint
+
+Write the generating function of each family as an infinite product. A partition into distinct parts uses each size $k$ zero or one time.
+
+## Solution
+
+**Idea.** Compare two infinite products as formal power series.
+
+**Distinct parts.** Choosing, for every $k\ge1$, whether $k$ appears (0 or 1 times) shows that
+$$D(x)=\sum_{n\ge0}d_nx^n=\prod_{k\ge1}(1+x^k),$$
+where $d_n$ is the number of partitions of $n$ into distinct parts (the coefficient of $x^n$ collects the choices whose parts add up to $n$).
+
+**Odd parts.** A part $2k-1$ can be used any number of times: it contributes the factor $1+x^{2k-1}+x^{2(2k-1)}+\cdots=\dfrac1{1-x^{2k-1}}$. So
+$$O(x)=\sum_{n\ge0}o_nx^n=\prod_{k\ge1}\frac1{1-x^{2k-1}}.$$
+
+**Equality.** Since $1+x^k=\dfrac{1-x^{2k}}{1-x^k}$,
+$$D(x)=\prod_{k\ge1}\frac{1-x^{2k}}{1-x^k}=\frac{\prod_{k\ge1}(1-x^{2k})}{\prod_{k\ge1}(1-x^{k})}.$$
+The numerator contains exactly the factors of the denominator with even index, which cancel; what remains in the denominator is $\prod_{k\ge1}(1-x^{2k-1})$. Therefore $D(x)=O(x)$ and $d_n=o_n$. (Every coefficient of the product depends on finitely many factors, so these manipulations are legitimate for formal power series.)
+
+**Check.** The values $d_n=o_n$ for $n=1,\dots,12$ are $1,1,2,2,3,4,5,6,8,10,12,15$ (computed by brute force).
+
+**Lesson.** Encode a counting problem as a product of simple series and compare the products algebraically.
+@@@ comb2-a-weighted-sum-of-squared-binomials.md
+---
+title: Vandermonde's identity and a weighted sum of squares
+category: olympiad/oly-combinatorics
+level: m1
+difficulty: 3
+tags: binomial identities, Vandermonde, double counting
+date: 2026-11-05
+---
+
+## Statement
+
+1. Prove Vandermonde's identity $\displaystyle\sum_{k}\binom mk\binom n{r-k}=\binom{m+n}r$.
+2. Deduce that for $n\ge1$,
+$$\sum_{k=0}^nk\binom nk^2=n\binom{2n-1}{n-1}.$$
+
+## Hint
+
+For part 1 choose $r$ people from a group made of $m$ men and $n$ women. For part 2 use $k\binom nk=n\binom{n-1}{k-1}$ and $\binom nk=\binom n{n-k}$.
+
+## Solution
+
+**1.** Count the committees of $r$ people chosen among $m$ men and $n$ women in two ways. Directly: $\binom{m+n}r$. By the number $k$ of men: choose the $k$ men in $\binom mk$ ways and the $r-k$ women in $\binom n{r-k}$ ways. Summing over $k$ gives the identity.
+
+**2.** Use $k\binom nk=n\binom{n-1}{k-1}$ (choose a committee of $k$ among $n$ people with a chair, in two orders). Then
+$$\sum_{k=0}^nk\binom nk^2=n\sum_{k=1}^n\binom{n-1}{k-1}\binom nk=n\sum_{k=1}^n\binom{n-1}{k-1}\binom n{n-k}.$$
+In the last sum the lower indices add up to $(k-1)+(n-k)=n-1$, so with $j=k-1$ we have $\binom nk=\binom n{n-1-j}$ and Vandermonde (with $m=n-1$, $n$, $r=n-1$) gives $\sum_{j}\binom{n-1}{j}\binom{n}{n-1-j}=\binom{2n-1}{n-1}$. Hence the sum equals $n\binom{2n-1}{n-1}$.
+
+**Check.** $n=3$: $1\cdot3^2+2\cdot3^2+3\cdot1^2=9+18+3=30=3\binom52$ ✓.
+
+**Lesson.** To prove a binomial identity, find a set counted in two ways; extract factors with $k\binom nk=n\binom{n-1}{k-1}$ to reduce to Vandermonde.
+@@@ comb2-ramsey-r-3-3-equals-6.md
+---
+title: Six people: three friends or three strangers
+category: olympiad/oly-combinatorics
+level: m1
+difficulty: 2
+tags: Ramsey theory, pigeonhole, colouring
+date: 2026-11-05
+---
+
+## Statement
+
+1. Prove that among any $6$ people, there are $3$ who are pairwise friends or $3$ who are pairwise strangers. (Friendship is mutual.)
+2. Show that $6$ cannot be replaced by $5$.
+
+## Hint
+
+Fix one person. Of the other five, how many are friends with them, or how many are strangers to them?
+
+## Solution
+
+**1.** Colour each pair of the six people red (friends) or blue (strangers). Fix a person $v$. Among the $5$ pairs containing $v$, at least $3$ have the same colour (pigeonhole); say red, towards $a,b,c$.
+- If one of the pairs $ab$, $bc$, $ca$ is red, say $ab$, then $v,a,b$ are pairwise friends.
+- Otherwise $ab$, $bc$, $ca$ are all blue and $a,b,c$ are pairwise strangers.
+
+The case of three blue pairs at $v$ is symmetric.
+
+**2.** Put $5$ people on a regular pentagon: two people are friends if they are adjacent on the pentagon, strangers otherwise. Friends form the $5$-cycle and strangers the "pentagram" cycle $0-2-4-1-3-0$. Neither graph contains a triangle (both are $5$-cycles), so there is no group of three friends and no group of three strangers.
+
+**Lesson.** A pigeonhole argument at one vertex, then a case analysis; extremal sharpness comes from a symmetric colouring.
+@@@ comb2-turan-s-theorem.md
+---
+title: Turán's theorem
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 4
+tags: graph theory, extremal, induction, Turán
+date: 2026-11-05
+---
+
+## Statement
+
+Let $r\ge1$ and let $G$ be a graph on $n$ vertices that contains no complete subgraph on $r+1$ vertices. Prove that the number of edges satisfies
+$$e(G)\le\left(1-\frac1r\right)\frac{n^2}2.$$
+
+## Hint
+
+Induct on $r$. Take a vertex $v$ of maximum degree $\Delta$ and split the vertices into the neighbourhood $A$ of $v$ and the rest $B$. What do you know about the graph induced on $A$?
+
+## Solution
+
+**Idea.** The neighbours of a vertex of largest degree form a graph with no $K_r$; the outside vertices have degree at most $\Delta$.
+
+**Base case $r=1$.** No $K_2$ means no edge, and the bound is $0$ ✓.
+
+**Induction step.** Let $r\ge2$ and assume the statement for $r-1$ (for every number of vertices). Let $v$ have maximum degree $\Delta$, let $A=N(v)$ ($|A|=\Delta$) and $B=V\setminus A$ ($|B|=n-\Delta$).
+- The graph induced on $A$ contains no $K_r$ (together with $v$ it would give a $K_{r+1}$). By induction, $e(A)\le\left(1-\frac1{r-1}\right)\frac{\Delta^2}2$.
+- Every edge not inside $A$ has at least one endpoint in $B$. Therefore the number of such edges is at most $\sum_{u\in B}\deg u\le(n-\Delta)\Delta$.
+
+Adding,
+$$e(G)\le\frac{r-2}{r-1}\cdot\frac{\Delta^2}2+(n-\Delta)\Delta=n\Delta-\frac r{2(r-1)}\Delta^2.$$
+
+**Maximising over $\Delta$.** The right side is a concave quadratic in $\Delta$, maximal at $\Delta=\frac{(r-1)n}r$, where its value is
+$$\frac{(r-1)n^2}r-\frac r{2(r-1)}\cdot\frac{(r-1)^2n^2}{r^2}=\frac{(r-1)n^2}{2r}=\left(1-\frac1r\right)\frac{n^2}2.$$
+So $e(G)\le\left(1-\frac1r\right)\frac{n^2}2$ ∎.
+
+**Sharpness.** Splitting the vertices into $r$ groups of equal size and joining vertices of different groups (the Turán graph) gives a $K_{r+1}$-free graph with this many edges when $r\mid n$. For $r=2$ this is Mantel's theorem.
+
+**Lesson.** Take a vertex of maximum degree, bound what happens inside and outside its neighbourhood, and let induction on the clique size do the rest.
+@@@ comb2-colourings-and-the-number-of-edges.md
+---
+title: How many colours does a graph with m edges need?
+category: olympiad/oly-combinatorics
+level: m1
+difficulty: 2
+tags: graph colouring, chromatic number, extremal
+date: 2026-11-05
+---
+
+## Statement
+
+A proper colouring of a graph colours its vertices so that adjacent vertices get different colours. Let $G$ be a graph with $m$ edges and let $k=\chi(G)$ be the smallest number of colours of a proper colouring.
+
+1. Prove that $\dbinom k2\le m$, hence $k\le\dfrac{1+\sqrt{8m+1}}2$.
+2. What does this give for $m=10$? Is the bound attained?
+
+## Hint
+
+Take a proper colouring with the minimum number $k$ of colours. If two colour classes had no edge between them, what could you do?
+
+## Solution
+
+**1.** Take a proper colouring with exactly $k$ colours and consider two colour classes $C_i,C_j$. If there were no edge between $C_i$ and $C_j$, we could recolour $C_j$ with the colour of $C_i$ and still have a proper colouring, with $k-1$ colours, contradicting minimality. So for each of the $\binom k2$ pairs of classes there is an edge joining them, and these edges are distinct (an edge joins exactly one pair of classes). Hence $m\ge\binom k2$, i.e. $k^2-k-2m\le0$, which gives $k\le\dfrac{1+\sqrt{1+8m}}2$.
+
+**2.** For $m=10$: $k\le\dfrac{1+9}2=5$. The bound is attained by the complete graph $K_5$, which has $10$ edges and needs $5$ colours.
+
+**Remark.** Equality $m=\binom k2$ forces exactly one edge between any two classes; $K_k$ is the typical example.
+
+**Lesson.** In a minimal colouring every pair of colour classes must be linked: use minimality to produce edges.
+@@@ comb2-drawing-k8-with-the-fewest-strokes.md
+---
+title: Drawing K₈ without lifting the pen
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 3
+tags: Euler trail, graph theory, degrees, construction
+date: 2026-11-05
+---
+
+## Statement
+
+The complete graph $K_8$ has $8$ vertices and an edge between every pair. We draw all its $28$ edges, each exactly once, in several strokes, where a stroke is a walk along edges that does not repeat any edge. What is the minimum number of strokes?
+
+## Hint
+
+Every vertex has odd degree $7$. How many odd-degree vertices can a single stroke start or end at? For the construction, add four extra edges to make all degrees even.
+
+## Solution
+
+**Lower bound.** Suppose the edges are covered by $s$ strokes. Count, for a fixed vertex $v$, the edges of $v$ covered by one stroke: if $v$ is not an endpoint of that stroke, each visit uses two edges at $v$, so the number is even (also when the stroke is closed and starts and ends at $v$: it then uses an even number of edges at $v$). The total degree $7$ is odd, so some stroke uses an odd number of edges at $v$, and that stroke has $v$ as exactly one of its two ends (its start and end are different vertices). Each stroke has two ends, hence is such a stroke for at most $2$ vertices, while all $8$ vertices need one. Hence $2s\ge8$, $s\ge4$.
+
+**Construction with $4$ strokes.** Pair the vertices into four pairs $\{1,2\},\{3,4\},\{5,6\},\{7,8\}$ and add a second, extra copy of each of these four edges. Now every vertex has degree $8$ (even) and the multigraph is connected, so it has an Eulerian circuit (a closed walk using every edge exactly once). Delete the four extra edges from the circuit: cutting a closed circuit at $4$ places leaves at most $4$ walks, which together use every original edge exactly once. So $4$ strokes suffice.
+
+**Answer.** $4$ strokes.
+
+**Lesson.** Parity of degrees gives the lower bound (count endpoints); to match it, fix the parity by adding edges and use Euler's theorem.
+@@@ comb2-a-bipartite-subgraph-with-half-the-edges.md
+---
+title: A cut containing at least half of the edges
+category: olympiad/oly-combinatorics
+level: m1
+difficulty: 3
+tags: probabilistic method, expectation, graph theory, local improvement
+date: 2026-11-05
+---
+
+## Statement
+
+Let $G$ be a graph with $m$ edges. Prove that its vertices can be split into two sets $X,Y$ so that at least $\frac m2$ edges join $X$ to $Y$. Give two proofs: one by averaging and one by moving vertices.
+
+## Hint
+
+(a) Assign each vertex to $X$ or $Y$ by a fair coin flip and compute the expected number of crossing edges. (b) If a vertex has more neighbours on its own side than on the other, move it.
+
+## Solution
+
+**Proof 1 (average).** Put each vertex independently in $X$ or $Y$ with probability $\frac12$. A fixed edge $uv$ crosses iff $u,v$ land on different sides, which has probability $\frac12$. By linearity of expectation the expected number of crossing edges is $\frac m2$. A random variable cannot always be below its mean, so some choice of $X,Y$ gives at least $\frac m2$ crossing edges.
+
+**Proof 2 (local improvement).** Start with any split. While some vertex $v$ has strictly more neighbours on its own side than on the other, move $v$ to the other side. This replaces the $a$ non-crossing edges at $v$ by crossing ones and the $b<a$ crossing edges by non-crossing ones, so the number of crossing edges increases by $a-b\ge1$. It cannot exceed $m$, so the process stops. At the end, each vertex $v$ has at least half of its edges crossing; summing over all vertices, every crossing edge is counted twice: $2\cdot(\text{crossing})\ge\sum_v\frac{\deg v}2=m$, so crossing $\ge\frac m2$.
+
+**Remark.** For $K_n$ the best possible cut has $\lfloor n^2/4\rfloor$ edges, a proportion slightly above $\frac12$: the constant $\frac12$ cannot be improved in general.
+
+**Lesson.** When you need an object that is at least as good as average, compute the average (probabilistic method), or run a monovariant that improves a counter.
+@@@ comb2-erdos-lower-bound-for-ramsey-numbers.md
+---
+title: Erdős's lower bound for Ramsey numbers
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 4
+tags: probabilistic method, Ramsey theory, expectation
+date: 2026-11-05
+---
+
+## Statement
+
+Let $k\ge3$ and $n=\lfloor2^{k/2}\rfloor$. Prove that the edges of the complete graph $K_n$ can be coloured with two colours without creating a monochromatic $K_k$. (In other words, $R(k,k)>2^{k/2}$ roughly.) For example, $k=10$ gives a colouring of $K_{32}$ with no monochromatic $K_{10}$.
+
+## Hint
+
+Colour every edge red or blue at random with probability $\frac12$. Compute the expected number of monochromatic $k$-subsets and show it is below $1$.
+
+## Solution
+
+**Idea.** If the expected number of bad sets is below $1$, some colouring has none.
+
+**Expectation.** A fixed set of $k$ vertices has $\binom k2$ edges and is monochromatic with probability $2\cdot2^{-\binom k2}$. By linearity of expectation, the expected number of monochromatic $k$-sets is
+$$E=\binom nk2^{1-\binom k2}.$$
+
+**Estimate.** Using $\binom nk\le\dfrac{n^k}{k!}\le\dfrac{2^{k^2/2}}{k!}$ (since $n\le2^{k/2}$),
+$$E\le\frac{2^{k^2/2}}{k!}\cdot2^{1-\frac{k(k-1)}2}=\frac{2^{1+k/2}}{k!}.$$
+For $k=3$ this is $\frac{2^{2.5}}6\approx0.94<1$ and for $k=4$ it is $\frac8{24}<1$. When $k$ increases by one, the numerator is multiplied by $\sqrt2$ and the denominator by $k+1\ge5$, so the bound stays below $1$ for all $k\ge3$.
+
+**Conclusion.** Since $E<1$, there is a colouring in which the number of monochromatic $k$-sets is $0$ (the number is a non-negative integer with mean below $1$). ∎
+
+**Lesson.** Probabilistic method: show existence by exhibiting a random object whose expected number of defects is less than $1$.
+@@@ comb2-oddtown.md
+---
+title: Oddtown
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 4
+tags: linear algebra method, parity, set systems, F2
+date: 2026-11-05
+---
+
+## Statement
+
+In a town of $n$ inhabitants, some clubs are formed (all different) such that every club has an **odd** number of members and any two different clubs share an **even** number of members. Prove that there are at most $n$ clubs. Show that $n$ clubs are possible.
+
+## Hint
+
+Associate to each club its $0/1$ incidence vector in $\mathbb{F}_2^n$ and prove these vectors are linearly independent over $\mathbb{F}_2$.
+
+## Solution
+
+**Idea.** The dot product mod $2$ of incidence vectors counts the size of the intersection mod $2$.
+
+**Setup.** For clubs $A_1,\dots,A_m$ let $v_i\in\mathbb{F}_2^n$ be the vector whose coordinate $p$ is $1$ iff person $p$ belongs to $A_i$. Then
+$$v_i\cdot v_j=|A_i\cap A_j|\bmod2=\begin{cases}1&i=j,\\0&i\ne j.\end{cases}$$
+
+**Independence.** Suppose $\sum_ic_iv_i=0$ with $c_i\in\mathbb{F}_2$. Taking the dot product with $v_j$ gives $c_j\cdot1=0$, so $c_j=0$ for all $j$. The $m$ vectors are linearly independent in an $n$-dimensional space, hence $m\le n$.
+
+**Construction.** Take the $n$ clubs $\{1\},\{2\},\dots,\{n\}$: each has odd size $1$, and two distinct clubs share $0$ members.
+
+**Remark.** In "Eventown" (even sizes, even intersections) the answer is much larger, $2^{\lfloor n/2\rfloor}$: parity conditions can change the answer drastically.
+
+**Lesson.** Translate set conditions into inner products over $\mathbb{F}_2$ and use dimension counting.
+@@@ comb2-erdos-ko-rado-by-katona-s-circle.md
+---
+title: The Erdős–Ko–Rado theorem
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 5
+tags: set systems, double counting, intersecting families, Katona
+date: 2026-11-05
+---
+
+## Statement
+
+Let $n\ge2k$ and let $\mathcal F$ be a family of $k$-element subsets of $\{1,\dots,n\}$ such that any two sets of $\mathcal F$ intersect. Prove that
+$$|\mathcal F|\le\binom{n-1}{k-1}.$$
+
+## Hint
+
+Place the numbers around a circle in some order and look at the $n$ arcs of $k$ consecutive numbers. Show that an intersecting family contains at most $k$ arcs, then double count over all circular orders.
+
+## Solution
+
+**Idea (Katona).** Count pairs (circular arrangement, arc of the arrangement belonging to $\mathcal F$).
+
+**Step 1: at most $k$ arcs.** Fix an arrangement of $1,\dots,n$ at positions $0,\dots,n-1$ of a circle, and call $I_t$ the arc of $k$ consecutive positions starting at $t$. Suppose $I_0\in\mathcal F$. Any other arc meeting $I_0$ starts at a position $t\in\{1,\dots,k-1\}$ (starts inside $I_0$) or $t\in\{-1,\dots,-(k-1)\}$ (ends inside $I_0$). For $i=1,\dots,k-1$ the two arcs $I_i$ and $I_{i-k}$ are consecutive blocks of $k$ positions, hence disjoint because $2k\le n$. Being intersecting, $\mathcal F$ contains at most one of $I_i$, $I_{i-k}$. These $k-1$ pairs cover all other arcs meeting $I_0$, so at most $1+(k-1)=k$ arcs of the arrangement are in $\mathcal F$.
+
+**Step 2: double counting.** Over all $n!$ arrangements (as permutations placed at positions $0,\dots,n-1$), the number $N$ of pairs (arrangement, arc in $\mathcal F$) satisfies $N\le k\cdot n!$. On the other hand, a given set $A\in\mathcal F$ is an arc in exactly $n\cdot k!\,(n-k)!$ arrangements ($n$ starting positions, then $k!$ orders of $A$ inside the arc and $(n-k)!$ orders of the rest). So
+$$N=|\mathcal F|\cdot n\,k!\,(n-k)!\le k\cdot n!\ \Longrightarrow\ |\mathcal F|\le\frac kn\binom nk=\binom{n-1}{k-1}.$$
+∎
+
+**Sharpness.** All $k$-sets containing the element $1$ form an intersecting family of size $\binom{n-1}{k-1}$. (Brute force for $(n,k)=(5,2)$ and $(6,3)$ gives the maxima $4$ and $10$.)
+
+**Lesson.** A cyclic arrangement turns a global set-system problem into a local one; then double count.
+@@@ comb2-a-seven-by-seven-matrix-without-a-rectangle.md
+---
+title: A 7 × 7 grid with no rectangle of marked cells
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 3
+tags: double counting, convexity, Fano plane, extremal
+date: 2026-11-05
+---
+
+## Statement
+
+Some cells of a $7\times7$ board are marked so that no four marked cells are the corners of a rectangle with sides parallel to the grid. What is the largest possible number of marked cells?
+
+## Hint
+
+Count pairs of marked cells that lie in the same row. Each pair of columns can occur in at most one row. Then use convexity.
+
+## Solution
+
+**Idea.** Count (row, pair of marked columns in that row).
+
+**Upper bound.** Let $r_i$ be the number of marked cells in row $i$, and $T=\sum r_i$. A pair of columns can appear in at most one row (two rows sharing two columns would give a rectangle). There are $\binom72=21$ pairs of columns, so
+$$\sum_{i=1}^7\binom{r_i}2\le21.$$
+By convexity of $x\mapsto\frac{x(x-1)}2$ (Jensen), $\sum\binom{r_i}2\ge7\cdot\frac{T}7\left(\frac T7-1\right)\frac12=\frac{T(T-7)}{14}$. If $T\ge22$, this is at least $\frac{22\cdot15}{14}>23>21$, a contradiction (and the lower bound increases with $T$). So $T\le21$.
+
+**Construction with $21$.** Number the rows and columns $0,\dots,6$ and mark in row $i$ the columns $i,\ i+1,\ i+3\pmod7$. The differences $1,2,3$ between these three columns are such that any two rows $i\ne j$ have exactly one marked column in common (the set $\{0,1,3\}$ is a perfect difference set modulo $7$: its differences $\pm1,\pm2,\pm3$ cover every nonzero residue exactly once). Hence no two rows share two columns and there is no rectangle; there are $7\cdot3=21$ marked cells.
+
+**Answer.** $21$. (This is the incidence matrix of the Fano plane.)
+
+**Lesson.** Count pairs inside each row, apply convexity, and look for a design (projective plane) that achieves the bound.
+@@@ comb2-the-fifteen-puzzle-parity.md
+---
+title: The 15-puzzle with two tiles swapped
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 3
+tags: invariant, parity, inversions, puzzle
+date: 2026-11-05
+---
+
+## Statement
+
+The 15-puzzle has $15$ numbered tiles in a $4\times4$ frame with one empty cell; a move slides a tile into the empty cell. Starting from the solved position (tiles $1,\dots,15$ in reading order, the empty cell in the bottom-right corner), can we reach the position in which tiles $14$ and $15$ are swapped and everything else is as before?
+
+## Hint
+
+Read the tiles row by row, ignoring the empty cell, and count inversions. Find a quantity combining the number of inversions with the row of the empty cell that is preserved by every move.
+
+## Solution
+
+**Idea.** Find an invariant that mixes the parity of inversions with the row of the blank.
+
+**Invariant.** For a position, let $N$ be the number of inversions of the sequence of the $15$ tiles read row by row from left to right and top to bottom (pairs of tiles $a<b$ with $b$ read before $a$), and let $r\in\{1,2,3,4\}$ be the row of the empty cell counted from the top. We claim that the parity of $N+r$ does not change under a move.
+- **Horizontal move.** The tile moves past the empty cell only, so the reading order of the tiles is unchanged: $N$ and $r$ are unchanged.
+- **Vertical move.** The empty cell moves one row up or down, so $r$ changes by $\pm1$. The moved tile jumps over exactly $3$ other tiles in the reading order (the three cells between its old and new cell). Its relation to each of them flips, so $N$ changes by $\pm1$ or $\pm3$ (an odd number). Hence $N$ and $r$ both change parity and $N+r$ keeps its parity.
+
+**Conclusion.** The solved position has $N=0$ and $r=4$, so $N+r$ is even. The position with tiles $14,15$ swapped has $N=1$ and $r=4$, so $N+r$ is odd. Since moves preserve the parity of $N+r$, this position cannot be reached. ∎
+
+**Remark.** This is Sam Loyd's famous unsolvable puzzle. Exactly half of all positions are reachable.
+
+**Lesson.** Parity of inversions is the invariant of sliding puzzles; correct it with the position of the blank.
+@@@ comb2-nim-and-bouton-s-theorem.md
+---
+title: Nim and the XOR rule
+category: olympiad/oly-combinatorics
+level: m1
+difficulty: 3
+tags: combinatorial games, Nim, XOR, binary
+date: 2026-11-05
+---
+
+## Statement
+
+In the game of Nim there are several piles of stones. Two players alternately remove any positive number of stones from one pile; the player who cannot move (all piles empty) loses. Prove that the player to move wins if and only if the bitwise XOR of the pile sizes is non-zero. Which move wins from $(3,4,5)$?
+
+## Hint
+
+Show that from XOR $=0$ every move produces XOR $\ne0$, and that from XOR $\ne0$ there is a move to XOR $=0$ (look at the leading bit of the XOR).
+
+## Solution
+
+**Idea.** Call a position *balanced* if the XOR $s$ of the pile sizes is $0$. Show that balanced positions are exactly the losing ones for the player to move.
+
+**Balanced to unbalanced.** If the position is balanced and a pile $a$ is replaced by $a'<a$, the new XOR is $a\oplus a'\ne0$ (as $a\ne a'$), so the new position is unbalanced.
+
+**Unbalanced to balanced.** Let $s\ne0$ be the XOR and let $t$ be the position of its leading bit. An odd number of piles have bit $t$ set, so at least one pile $a$ does. Replace $a$ by $a'=a\oplus s$. Since $s$ has leading bit $t$ and $a$ has that bit equal to $1$, flipping it makes $a'<a$ (the highest changed bit goes from $1$ to $0$), so removing $a-a'$ stones is a legal move, and the new XOR is $s\oplus a\oplus a'=0$.
+
+**Conclusion.** The terminal position (all empty) is balanced. A player facing a balanced position can only move to unbalanced positions, from which the opponent can restore balance; so the player who faces a balanced position loses, and from an unbalanced position the player to move wins. ∎
+
+**Example.** $3\oplus4\oplus5=011\oplus100\oplus101=010=2\ne0$. The pile $3$ has the bit of value $2$: replace it by $3\oplus2=1$, i.e. remove $2$ stones from the pile of $3$. The position $(1,4,5)$ has XOR $1\oplus4\oplus5=0$ ✓.
+
+**Lesson.** For impartial games, find the invariant set of losing positions ($P$-positions) and prove the two closure properties.
+@@@ comb2-a-subtraction-game-with-1-3-4.md
+---
+title: A subtraction game with moves 1, 3 and 4
+category: olympiad/oly-combinatorics
+level: m1
+difficulty: 2
+tags: combinatorial games, losing positions, induction, periodicity
+date: 2026-11-05
+---
+
+## Statement
+
+There are $n$ stones. Two players alternately remove $1$, $3$ or $4$ stones; the player who cannot move loses. Determine for which $n$ the first player has a winning strategy. Who wins with $100$ stones?
+
+## Hint
+
+Compute the first few losing positions: $0$ is losing. Guess a period and prove it by induction.
+
+## Solution
+
+**Idea.** A position is losing iff all its moves lead to winning positions. Compute the losing positions and find the pattern.
+
+**Claim.** The losing positions (for the player to move) are exactly the $n$ with $n\equiv0$ or $2\pmod7$.
+
+**Proof by strong induction on $n$.** We check that the claimed set $L$ is closed in the right way.
+- *From a position in $L$ every move leads outside $L$:* if $n\equiv0$, the moves lead to $n-1\equiv6$, $n-3\equiv4$, $n-4\equiv3$; if $n\equiv2$, they lead to $n-1\equiv1$, $n-3\equiv6$, $n-4\equiv5$ (when available). None of these is $0$ or $2$ mod $7$.
+- *From a position outside $L$ there is a move into $L$:* $n\equiv1$: remove $1$ (to $\equiv0$); $n\equiv3$: remove $1$ (to $\equiv2$); $n\equiv4$: remove $4$ (to $\equiv0$); $n\equiv5$: remove $3$ (to $\equiv2$); $n\equiv6$: remove $4$ (to $\equiv2$). In each case the number of stones is large enough for the move (for example $n\equiv6$ means $n\ge6$).
+
+Together with the fact that $n=0$ is losing, positions in $L$ are exactly the losing ones.
+
+**Answer.** The first player wins iff $n\not\equiv0,2\pmod7$. For $n=100\equiv2\pmod7$ the first player **loses**: the second player always answers to return to a multiple of $7$ or $2$ more than a multiple of $7$. (A direct computation confirms the losing positions $0,2,7,9,14,16,21,23,\dots$.)
+
+**Lesson.** Compute small cases, guess the periodic set of losing positions, then verify the two properties (no move stays inside, every outside position can enter).
+@@@ comb2-chomp-and-strategy-stealing.md
+---
+title: Chomp and the strategy-stealing argument
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 4
+tags: combinatorial games, strategy stealing, Chomp, invariant
+date: 2026-11-05
+---
+
+## Statement
+
+A rectangular chocolate bar has $m$ rows and $n$ columns of squares. The bottom-left square is poisoned. Two players alternately choose a remaining square and eat it together with all squares above and to its right (all remaining squares in the rectangle whose row is at least and column is at least that of the chosen square). The player who eats the poisoned square loses.
+
+1. Prove that if the bar has more than one square, the first player has a winning strategy.
+2. For a bar with $2$ rows, describe the winning strategy explicitly.
+
+## Hint
+
+1. Consider the move that eats only the top-right square. 2. After the first move, try to keep the bottom row exactly one square longer than the top row.
+
+## Solution
+
+**Idea.** The game is finite and has no draws, so exactly one of the players has a winning strategy.
+
+**1. Strategy stealing.** The first player considers the move $M$ that eats only the top-right corner square. This is a legal move since the bar has more than one square.
+- If $M$ leads to a position that is losing for the player to move (the opponent), the first player wins by playing $M$.
+- Otherwise, the opponent has a winning reply: some move $X$ in that position, after which the player to move (the first player) is in a losing position. The square chosen by $X$ was present at the start, and eating it together with everything above and to its right also removes the top-right corner square, so playing $X$ at the very start leads to exactly the same position as $M$ followed by $X$. That position is losing for the player to move, so the first player wins by playing $X$ at once.
+
+In both cases the first player has a winning strategy (without having shown what it is).
+
+**2. Two rows, explicit strategy.** Let the top row have $t$ squares and the bottom row $b\ge t$ squares, counted from the left. The first player starts by eating the top-right square, creating $t=n-1$, $b=n$. He keeps the invariant $b=t+1$ after each of his moves, until he reaches $t=0$, $b=1$ (only the poisoned square left), after which the opponent has to eat it. Suppose the opponent faces $b=t+1$ and moves:
+- he eats in the top row from column $c$ ($c\le t$): now the top row has $c-1$ squares and the bottom row $b=t+1\ge c+1$. The first player eats the bottom row from column $c+1$ on: the bottom row becomes $c$, restoring $b=t'+1$ with $t'=c-1$;
+- he eats in the bottom row from column $c$ ($2\le c\le b$): the bottom row has $c-1$ squares and every top square from column $c$ on disappears, so the top row has $\min(t,c-1)=c-1$ squares (as $c\le b=t+1$). The first player then eats the end of the top row (column $c-1$, if $c\ge2$), leaving $t'=c-2$ and $b'=c-1$, so $b'=t'+1$ again.
+The total number of squares decreases at each turn, so eventually the opponent is left with the single poisoned square.
+
+**Remark.** For rectangles with at least three rows and columns no explicit winning strategy is known in general.
+
+**Lesson.** Strategy stealing proves the existence of a winning strategy for the first player without constructing it; explicit strategies come from maintaining an invariant shape.
+@@@ comb2-five-points-contain-a-convex-quadrilateral.md
+---
+title: Five points contain a convex quadrilateral
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 3
+tags: combinatorial geometry, convex position, pigeonhole, Happy Ending
+date: 2026-11-05
+---
+
+## Statement
+
+Five points are given in the plane, no three on a line. Prove that four of them are the vertices of a convex quadrilateral.
+
+## Hint
+
+Consider the convex hull of the five points. How many vertices can it have? If it is a triangle, look at the line through the two interior points.
+
+## Solution
+
+**Idea.** Split according to the number of vertices of the convex hull.
+
+**Hull with $4$ or $5$ vertices.** Then any $4$ hull vertices are in convex position (they lie on the boundary of a convex polygon, and no three are collinear), and we are done.
+
+**Hull a triangle $ABC$.** The other two points $D,E$ are inside the triangle. The line $DE$ does not pass through $A,B,C$ (no three points are collinear), so each of $A,B,C$ is on one side of it. By pigeonhole, two of them, say $B$ and $C$, lie on the same side of $DE$.
+
+We claim $B,C,E,D$ are in convex position, i.e. none of the four points lies in the triangle formed by the other three.
+- $B$ and $C$ are vertices of the hull of all five points, so they cannot lie in the convex hull of other points.
+- $D$ is not in triangle $BCE$: this triangle touches the line $DE$ only at $E$ (since $B,C$ are strictly on one side), while $D\ne E$ is on that line. Symmetrically $E$ is not in triangle $BCD$.
+
+So the quadrilateral with vertices $B,C,E,D$ (in the appropriate order) is convex. ∎
+
+**Remark.** This is the first case of the Erdős–Szekeres "Happy Ending" problem: $9$ points in general position contain a convex pentagon, and the general bound is conjectured to be $2^{n-2}+1$ points for a convex $n$-gon.
+
+**Lesson.** Case on the convex hull, then use pigeonhole on which side of a well-chosen line the vertices lie.
+@@@ comb2-sylvester-gallai-by-kelly.md
+---
+title: The Sylvester–Gallai theorem
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 4
+tags: combinatorial geometry, extremal principle, minimal distance
+date: 2026-11-05
+---
+
+## Statement
+
+Let $S$ be a finite set of points in the plane, not all on one line. Prove that there is a line containing exactly two points of $S$.
+
+## Hint
+
+Among all pairs (point $P$ of $S$, line $\ell$ through at least two points of $S$ with $P\notin\ell$), choose one with the smallest distance from $P$ to $\ell$. Show that $\ell$ contains no third point.
+
+## Solution
+
+**Idea (Kelly).** Extremal principle: minimise a distance, then find a smaller one if the line has three points.
+
+**Setup.** Since the points are not all collinear, such pairs $(P,\ell)$ exist, and there are finitely many, so one pair minimises $d(P,\ell)=PQ>0$, where $Q$ is the foot of the perpendicular from $P$ to $\ell$.
+
+**Claim.** $\ell$ contains exactly two points of $S$. Suppose it contains at least three. Among three points of $\ell$, two (say $B\ne C$) lie on the same side of $Q$ on $\ell$ (or one of them is $Q$ itself); label them so that $B$ lies between $Q$ and $C$ (possibly $B=Q$). Then $BC\le QC<PC$, because $PC$ is the hypotenuse of the right triangle $PQC$.
+
+Consider the line $m=PC$ (it contains the two points $P,C$ of $S$) and the point $B\in S$. The point $B$ is not on $m$, since $m$ meets $\ell$ only at $C\ne B$. The distance from $B$ to $m$ is
+$$d(B,m)=BC\sin\angle PCQ=BC\cdot\frac{PQ}{PC}<PQ$$
+because $BC<PC$. This contradicts the minimality of $PQ$. Hence $\ell$ contains exactly two points of $S$. ∎
+
+**Remark.** Equivalently: if a finite set of points is not collinear, there is an "ordinary line". Finiteness is needed: for the set of all points of the plane with rational coordinates every line through two points contains infinitely many.
+
+**Lesson.** Extremal principle: pick the configuration minimising a distance or an area, then show a violation would produce a smaller one.
+@@@ comb2-conway-s-soldiers.md
+---
+title: Conway's soldiers cannot reach the fifth row
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 5
+tags: weight function, potential, golden ratio, infinite board
+date: 2026-11-05
+---
+
+## Statement
+
+Soldiers occupy every lattice point $(x,y)$ with $y\le0$ of the plane, one per point. A move: a soldier jumps over an adjacent soldier (horizontally or vertically) onto the empty point just behind, and the soldier jumped over is removed. Prove that no finite sequence of moves can bring a soldier to the point $(0,5)$.
+
+## Hint
+
+Give each lattice point $(x,y)$ the weight $\sigma^{|x|+(5-y)}$ with $\sigma=\frac{\sqrt5-1}2$ (so $\sigma^2+\sigma=1$). Show that the total weight of the soldiers never increases and that the initial total weight is exactly $1$.
+
+## Solution
+
+**Idea.** Use a potential function with the golden ratio so that jumps toward the target keep the total unchanged and all other jumps decrease it.
+
+**Weights.** Let $\sigma=\frac{\sqrt5-1}2\approx0.618$, so $\sigma^2=1-\sigma$. The weight of the point $P=(x,y)$ is $\sigma^{d(P)}$ with $d(P)=|x|+|5-y|$, the taxicab distance to the target $T=(0,5)$. The weight of a position is the sum of the weights of all occupied points; $T$ itself has weight $\sigma^0=1$.
+
+**Initial weight.** Use $\sum_{k\ge0}\sigma^k=\frac1{1-\sigma}=\frac1{\sigma^2}$ and $\sum_{x\in\mathbb Z}\sigma^{|x|}=1+\frac{2\sigma}{1-\sigma}=1+\frac2\sigma$. For $y\le0$ we have $|5-y|=5-y$, so
+$$W_0=\sigma^5\left(\sum_{j\ge0}\sigma^j\right)\left(\sum_x\sigma^{|x|}\right)=\sigma^5\cdot\frac1{\sigma^2}\left(1+\frac2\sigma\right)=\sigma^3+2\sigma^2.$$
+With $\sigma^2=1-\sigma$ and $\sigma^3=\sigma-\sigma^2=2\sigma-1$: $W_0=2\sigma-1+2-2\sigma=1$.
+
+**A move does not increase the weight.** A move takes three consecutive points $P,Q,R$ on a line (soldiers on $P,Q$, empty $R$) and replaces soldiers on $P,Q$ by one on $R$: the change in weight is $w(R)-w(P)-w(Q)$. Along a line, the taxicab distance to $T$ changes by $\pm1$ between consecutive points and is a convex function along the line (because $|x|$ and $|5-y|$ are convex), so the triple $(d(P),d(Q),d(R))$ has one of the forms:
+- $(n+2,n+1,n)$ (jump toward $T$): change $\sigma^n-\sigma^{n+1}-\sigma^{n+2}=\sigma^n(1-\sigma-\sigma^2)=0$;
+- $(n,n+1,n+2)$ (jump away): change $\sigma^{n+2}-\sigma^{n+1}-\sigma^n<0$;
+- $(n+1,n,n+1)$ (jump across the closest point): change $\sigma^{n+1}-\sigma^n-\sigma^{n+1}<0$.
+(The pattern $(n+1,n+2,n+1)$ is impossible by convexity.) So the total weight never increases.
+
+**Conclusion.** After any finite sequence of moves the weight is at most $W_0=1$. Suppose a soldier reached $T$. It contributes weight $1$; but infinitely many other soldiers (all but finitely many have not moved) remain, each with positive weight, so the total would exceed $1$. Contradiction. ∎
+
+**Remark.** The golden ratio $\sigma$ is exactly the value making jumps toward the target neutral, which is why the bound is sharp in the sense that row $4$, i.e. the point $(0,4)$, can be reached (by a known construction), while the weight argument shows row $5$ cannot.
+
+**Lesson.** Weight/potential functions: choose weights that make the dangerous move neutral and every other move a decrease, then compare initial and target weights.
+@@@ comb2-hall-s-marriage-theorem-and-a-deck-of-cards.md
+---
+title: Hall's marriage theorem and a deck of cards
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 4
+tags: Hall's theorem, matchings, bipartite graphs, induction
+date: 2026-11-05
+---
+
+## Statement
+
+1. (Hall) Let $X$ and $Y$ be the two sides of a bipartite graph. Suppose that for every subset $A\subseteq X$, the set $N(A)$ of vertices of $Y$ adjacent to at least one vertex of $A$ satisfies $|N(A)|\ge|A|$. Prove that there is a matching that covers all of $X$.
+2. The $52$ cards of a deck (13 ranks, four cards of each rank) are dealt into $13$ piles of $4$ cards. Prove that one can choose one card from each pile so that the $13$ chosen cards have $13$ different ranks.
+
+## Hint
+
+For 1, induct on $|X|$. Distinguish whether every proper non-empty $A$ has $|N(A)|>|A|$ or whether some $A$ has $|N(A)|=|A|$. For 2, let $X$ be the set of piles and $Y$ the set of ranks.
+
+## Solution
+
+**1. Induction on $|X|$.** If $|X|=1$, the single vertex has a neighbour (as $|N(X)|\ge1$): match it.
+
+Let $|X|\ge2$ and assume the theorem for smaller $X$.
+
+*Case 1: $|N(A)|\ge|A|+1$ for every non-empty proper subset $A\subset X$.* Pick any $x\in X$ and one of its neighbours $y$; match them and delete both. For any non-empty $A\subseteq X\setminus\{x\}$ we have $|N'(A)|\ge|N(A)|-1\ge|A|$ in the remaining graph, so Hall's condition still holds and induction gives a matching of the rest.
+
+*Case 2: some non-empty proper $A\subset X$ has $|N(A)|=|A|$.* The subgraph induced on $A\cup N(A)$ satisfies Hall's condition (the neighbours of a subset of $A$ all lie in $N(A)$), so by induction $A$ can be matched into $N(A)$. In the remaining graph on $(X\setminus A)\cup(Y\setminus N(A))$, for $B\subseteq X\setminus A$,
+$$|N(B)\setminus N(A)|=|N(A\cup B)|-|N(A)|\ge|A|+|B|-|A|=|B|,$$
+so Hall's condition holds there too and induction gives a matching covering $X\setminus A$. The two matchings together cover $X$. ∎
+
+**2. The cards.** Let $X$ be the set of $13$ piles, $Y$ the set of $13$ ranks, and join a pile to a rank if the pile contains a card of that rank. Take any $k$ piles: they contain $4k$ cards, and each rank has exactly $4$ cards, so these piles contain cards of at least $\frac{4k}4=k$ distinct ranks, i.e. $|N(A)|\ge|A|$. By Hall there is a matching assigning to each pile a distinct rank present in it: choose that card from each pile. ∎
+
+**Lesson.** When you need a system of distinct representatives, check Hall's condition: for every group of $k$ objects there must be at least $k$ available choices.
+@@@ comb2-sperner-s-theorem-by-lym.md
+---
+title: Sperner's theorem and the LYM inequality
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 4
+tags: antichains, double counting, chains, Sperner
+date: 2026-11-05
+---
+
+## Statement
+
+A family $\mathcal F$ of subsets of $\{1,\dots,n\}$ is an *antichain* if no set of $\mathcal F$ is contained in another. Prove the LYM inequality
+$$\sum_{A\in\mathcal F}\frac1{\binom n{|A|}}\le1,$$
+and deduce Sperner's theorem: $|\mathcal F|\le\dbinom n{\lfloor n/2\rfloor}$.
+
+## Hint
+
+Count pairs (set $A\in\mathcal F$, maximal chain $\emptyset=C_0\subset C_1\subset\dots\subset C_n=\{1,\dots,n\}$ passing through $A$).
+
+## Solution
+
+**Idea.** A maximal chain adds one element at a time, so it corresponds to a permutation of $\{1,\dots,n\}$; an antichain meets each chain at most once.
+
+**LYM.** There are $n!$ maximal chains. Each set $A$ of size $a$ lies on exactly $a!\,(n-a)!$ of them (order the elements of $A$ first, then the rest). Since $\mathcal F$ is an antichain, each chain contains at most one member of $\mathcal F$. Therefore
+$$\sum_{A\in\mathcal F}|A|!\,(n-|A|)!\le n!.$$
+Dividing by $n!$ gives $\sum_{A\in\mathcal F}\dfrac1{\binom n{|A|}}\le1$.
+
+**Sperner.** For every $a$, $\binom na\le\binom n{\lfloor n/2\rfloor}$, so $\dfrac1{\binom n{|A|}}\ge\dfrac1{\binom n{\lfloor n/2\rfloor}}$ for each $A$. Hence
+$$\frac{|\mathcal F|}{\binom n{\lfloor n/2\rfloor}}\le\sum_{A\in\mathcal F}\frac1{\binom n{|A|}}\le1.$$
+∎
+
+**Sharpness.** All subsets of size $\lfloor n/2\rfloor$ form an antichain of that size. For $n=4$ the maximum is $\binom42=6$.
+
+**Lesson.** Double count (set, maximal chain) pairs: chains correspond to permutations and give clean factorial weights.
+@@@ comb2-a-large-sum-free-subset.md
+---
+title: Every set of n integers contains a sum-free subset of more than n/3 elements
+category: olympiad/oly-combinatorics
+level: olympiad
+difficulty: 5
+tags: probabilistic method, averaging, sum-free sets, modular arithmetic
+date: 2026-11-05
+---
+
+## Statement
+
+A set of integers is *sum-free* if it contains no $a,b,c$ (with $a=b$ allowed) such that $a+b=c$. Prove that every set $A$ of $n$ non-zero integers has a sum-free subset with more than $\frac n3$ elements.
+
+## Hint
+
+Pick a prime $p=3k+2$ larger than every $|a|$, $a\in A$. The residues $k+1,\dots,2k+1$ form a sum-free set modulo $p$. Choose a random $x$ and keep the elements $a$ with $ax\bmod p$ in that middle third; compute the expected size.
+
+## Solution
+
+**Idea.** Multiply by a random unit modulo a prime and keep the elements landing in a sum-free "middle third".
+
+**A suitable prime.** There are infinitely many primes $p\equiv2\pmod3$ (if $p_1,\dots,p_r$ were all of them, $3p_1\cdots p_r-1\equiv2\pmod3$ is not divisible by $3$ and cannot have all its prime factors $\equiv1\pmod3$, since their product would be $\equiv1$; so it has a prime factor $\equiv2$, which is none of the $p_i$, a contradiction). Choose such a prime $p=3k+2$ with $p>|a|$ for all $a\in A$; then no $a\in A$ is divisible by $p$.
+
+**The middle third.** Let $S=\{k+1,k+2,\dots,2k+1\}\subset\mathbb Z_p$, so $|S|=k+1$. If $u,v\in S$, then $2k+2\le u+v\le4k+2$. Modulo $p=3k+2$ these sums are the residues $2k+2,\dots,3k+1$ and $0,\dots,k$ (as $3k+2\equiv0$ and $4k+2\equiv k$). None of these lies in $S$. So $S$ is sum-free modulo $p$.
+
+**Averaging.** For $x$ chosen uniformly in $\{1,\dots,p-1\}$ and a fixed $a\in A$ (not divisible by $p$), $ax\bmod p$ is uniform on the non-zero residues. So
+$$\Pr[ax\in S]=\frac{|S|}{p-1}=\frac{k+1}{3k+1}>\frac13.$$
+By linearity of expectation, the expected number of $a\in A$ with $ax\bmod p\in S$ is more than $\frac n3$. Hence there is a value $x$ for which the set $B=\{a\in A:ax\bmod p\in S\}$ has more than $\frac n3$ elements.
+
+**$B$ is sum-free.** If $a+b=c$ with $a,b,c\in B$, then multiplying by $x$ gives $ax+bx\equiv cx\pmod p$ with $ax\bmod p,\ bx\bmod p,\ cx\bmod p\in S$, contradicting the sum-freeness of $S$ modulo $p$. ∎
+
+**Lesson.** Randomise by a dilation in a finite field to bring a hard structure into a nice fixed set, and use linearity of expectation.

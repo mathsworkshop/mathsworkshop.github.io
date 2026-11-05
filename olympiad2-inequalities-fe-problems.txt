@@ -1,0 +1,703 @@
+@@@ ineq2-holder-s-inequality-from-am-gm.md
+---
+title: Hölder's inequality for three sequences
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 4
+tags: Hölder, AM-GM, normalisation
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a_i,x_i,u_i\ge0$ for $i=1,\dots,n$. Prove Hölder's inequality
+$$\left(\sum a_i^3\right)\left(\sum x_i^3\right)\left(\sum u_i^3\right)\ge\left(\sum a_ix_iu_i\right)^3.$$
+Deduce that $(a^3+b^3+c^3)\cdot3\cdot3\ge(a+b+c)^3$ for $a,b,c\ge0$.
+
+## Hint
+
+Divide each sum by its total so that the three sums become $1$. Then apply AM-GM to $a_i^3,x_i^3,u_i^3$ (after normalisation) for each $i$ and add.
+
+## Solution
+
+**Idea.** Normalise, then use AM-GM on each triple.
+
+**Normalisation.** Let $A=\sum a_i^3$, $X=\sum x_i^3$, $U=\sum u_i^3$. If one of them is $0$, the corresponding sequence is $0$ and both sides vanish. Otherwise, for each $i$ AM-GM on three non-negative numbers gives
+$$\frac{a_i^3}A+\frac{x_i^3}X+\frac{u_i^3}U\ \ge\ 3\,\frac{a_ix_iu_i}{(AXU)^{1/3}}.$$
+
+**Summation.** Summing over $i$, the left side is $1+1+1=3$, so
+$$3\ge3\,\frac{\sum a_ix_iu_i}{(AXU)^{1/3}}\ \Longrightarrow\ \sum a_ix_iu_i\le(AXU)^{1/3},$$
+which is the claim after cubing.
+
+**Consequence.** Take $x_i=u_i=1$ and $n=3$: $(a^3+b^3+c^3)\cdot3\cdot3\ge(a+b+c)^3$, i.e. $a^3+b^3+c^3\ge\frac{(a+b+c)^3}9$.
+
+**Remark.** Equality holds iff the three sequences $(a_i^3),(x_i^3),(u_i^3)$ are proportional.
+
+**Lesson.** To prove a product-of-sums inequality, normalise every factor to $1$ and let AM-GM do the work term by term.
+@@@ ineq2-a-telescoping-trick-for-a-cubic-over-a-quadratic.md
+---
+title: A symmetrisation trick: Σ a³/(a² + ab + b²)
+category: olympiad/oly-inequalities
+level: m1
+difficulty: 3
+tags: symmetrisation, cyclic sums, tangent-style bound
+date: 2026-11-05
+---
+
+## Statement
+
+For $a,b,c>0$ prove that
+$$\frac{a^3}{a^2+ab+b^2}+\frac{b^3}{b^2+bc+c^2}+\frac{c^3}{c^2+ca+a^2}\ \ge\ \frac{a+b+c}3.$$
+
+## Hint
+
+Compare the sum with the "twin" sum $\sum\frac{b^3}{a^2+ab+b^2}$ and look at the difference of the two.
+
+## Solution
+
+**Idea.** Let $S=\sum\frac{a^3}{a^2+ab+b^2}$ and $T=\sum\frac{b^3}{a^2+ab+b^2}$, both over the cyclic pairs $(a,b),(b,c),(c,a)$.
+
+**The difference vanishes.** Since $a^3-b^3=(a-b)(a^2+ab+b^2)$,
+$$S-T=\sum(a-b)=(a-b)+(b-c)+(c-a)=0.$$
+So $S=T=\dfrac{S+T}2$ and
+$$S=\frac12\sum_{\rm cyc}\frac{a^3+b^3}{a^2+ab+b^2}.$$
+
+**A pair estimate.** For $a,b>0$,
+$$\frac{a^3+b^3}{a^2+ab+b^2}\ge\frac{a+b}3\iff3(a+b)(a^2-ab+b^2)\ge(a+b)(a^2+ab+b^2)\iff2(a-b)^2\ge0.$$
+
+**Conclusion.** Summing the three pair estimates, $S\ge\frac12\cdot\frac{2(a+b+c)}3=\frac{a+b+c}3$, with equality iff $a=b=c$.
+
+**Lesson.** When a cyclic sum has numerators and denominators that differ by a nice factor, add the "mirror" sum: the difference telescopes and the symmetrised sum is easier to bound.
+@@@ ineq2-muirhead-through-weighted-am-gm.md
+---
+title: Muirhead's idea with weighted AM-GM
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 3
+tags: Muirhead, majorization, weighted AM-GM
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a,b,c>0$. Prove that
+$$a^5+b^5+c^5\ \ge\ abc\,(a^2+b^2+c^2).$$
+
+## Hint
+
+Write $a^3bc=(a^5)^{3/5}(b^5)^{1/5}(c^5)^{1/5}$ and use weighted AM-GM.
+
+## Solution
+
+**Idea.** The exponent vector $(5,0,0)$ majorises $(3,1,1)$: each term $a^3bc$ is a weighted geometric mean of $a^5,b^5,c^5$.
+
+**Weighted AM-GM.** With weights $\frac35,\frac15,\frac15$,
+$$a^3bc=(a^5)^{3/5}(b^5)^{1/5}(c^5)^{1/5}\le\frac{3a^5+b^5+c^5}5.$$
+The same holds for $b^3ca$ and $c^3ab$.
+
+**Summation.**
+$$abc(a^2+b^2+c^2)=a^3bc+b^3ca+c^3ab\le\frac{5(a^5+b^5+c^5)}5=a^5+b^5+c^5.$$
+Equality iff $a=b=c$.
+
+**Remark.** Muirhead's theorem says that $\sum_{\rm sym}a^{\alpha_1}b^{\alpha_2}c^{\alpha_3}\ge\sum_{\rm sym}a^{\beta_1}b^{\beta_2}c^{\beta_3}$ whenever $\alpha$ majorises $\beta$ (same total, partial sums of the sorted $\alpha$ are at least those of $\beta$). Each instance can be proved exactly as above.
+
+**Lesson.** An inequality between symmetric sums of monomials of the same degree is an application of weighted AM-GM: find the weights that turn the smaller monomial into a geometric mean of the larger ones.
+@@@ ineq2-a-cyclic-inequality-and-the-middle-variable.md
+---
+title: A cyclic inequality: a²b + b²c + c²a + abc ≤ 4
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 4
+tags: cyclic inequality, WLOG ordering, AM-GM
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a,b,c\ge0$ with $a+b+c=3$. Prove that
+$$a^2b+b^2c+c^2a+abc\le4.$$
+When does equality hold?
+
+## Hint
+
+The expression is only cyclic, so you cannot assume $a\ge b\ge c$, but you can assume that $b$ is the middle value. Compare with $b(a+c)^2$.
+
+## Solution
+
+**Idea.** Choose the variable in the middle and merge the other two.
+
+**Reduction.** The expression is invariant under the cyclic shift $(a,b,c)\to(b,c,a)$, and one of the three numbers is between the other two, so we may assume $b$ is between $a$ and $c$. Then $(a-b)(b-c)\ge0$.
+
+**Key identity.** Expanding,
+$$b(a+c)^2-\left(a^2b+b^2c+c^2a+abc\right)=abc+bc^2-b^2c-c^2a=c(a-b)(b-c)\ \ge0.$$
+(To check the factorisation: $(a-b)(b-c)=ab-ac-b^2+bc$, and multiplying by $c$ gives $abc-ac^2-b^2c+bc^2$.)
+
+**AM-GM.** Hence the expression is at most $b(a+c)^2=4\cdot b\cdot\frac{a+c}2\cdot\frac{a+c}2\le4\left(\frac{b+(a+c)}3\right)^3=4$, since $b+(a+c)=3$.
+
+**Equality.** We need $c(a-b)(b-c)=0$ and $b=\frac{a+c}2=1$. This gives $a=b=c=1$ or $c=0$, $b=1$, $a=2$ (and the cyclic shifts of the latter).
+
+**Lesson.** For cyclic inequalities, "middle variable" arguments replace the symmetry you do not have: the sign of $(a-b)(b-c)$ gives the one extra inequality you need.
+@@@ ineq2-imo-1984-the-pqr-method.md
+---
+title: IMO 1984: yz + zx + xy − 2xyz
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 3
+tags: IMO 1984, pqr method, case analysis, AM-GM
+date: 2026-11-05
+---
+
+## Statement
+
+Let $x,y,z\ge0$ with $x+y+z=1$. Prove that
+$$0\le xy+yz+zx-2xyz\le\frac7{27}.$$
+
+## Hint
+
+Expand $(1-2x)(1-2y)(1-2z)$ and compare with $xy+yz+zx-2xyz$.
+
+## Solution
+
+**Notation.** Let $q=xy+yz+zx$ and $r=xyz$.
+
+**Lower bound.** Since $x,y,z\le1$,
+$$q-2r=\bigl[xy(1-z)+yz(1-x)+zx(1-y)\bigr]+r\ge0,$$
+because $xy(1-z)+yz(1-x)+zx(1-y)=q-3r$.
+
+**Upper bound.** Expanding, using $x+y+z=1$,
+$$(1-2x)(1-2y)(1-2z)=1-2+4q-8r=-1+4q-8r,$$
+so $q-2r=\dfrac{1+P}4$ with $P=(1-2x)(1-2y)(1-2z)$. We must show $P\le\frac1{27}$.
+- Two of the factors cannot be negative: $1-2x<0$ and $1-2y<0$ would give $x+y>1$, so $z<0$.
+- If exactly one factor is negative, the others are non-negative and $P\le0$.
+- If none is negative, their sum is $3-2=1$ and AM-GM gives $P\le\left(\frac13\right)^3=\frac1{27}$.
+
+In all cases $P\le\frac1{27}$, hence $q-2r\le\frac{28}{27\cdot4}=\frac7{27}$.
+
+**Equality.** Upper bound: $x=y=z=\frac13$. Lower bound: e.g. $(1,0,0)$.
+
+**Lesson.** Rewriting a symmetric expression through $p=x+y+z$, $q$, $r$ (the pqr method) can turn it into a product whose sign analysis and AM-GM finish the job.
+@@@ ineq2-ravi-substitution-and-the-triangle-product.md
+---
+title: Ravi substitution: abc ≥ (a + b − c)(b + c − a)(c + a − b)
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 3
+tags: Ravi substitution, triangle inequality, AM-GM
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a,b,c$ be the sides of a triangle. Prove that
+1. $abc\ge(a+b-c)(b+c-a)(c+a-b)$,
+2. $\dfrac a{b+c-a}+\dfrac b{c+a-b}+\dfrac c{a+b-c}\ge3$.
+
+## Hint
+
+Set $x=\frac{b+c-a}2$, $y=\frac{c+a-b}2$, $z=\frac{a+b-c}2$. What do you know about $x,y,z$?
+
+## Solution
+
+**Ravi substitution.** The triangle inequalities say exactly that $x,y,z>0$, and conversely $a=y+z$, $b=z+x$, $c=x+y$. So the sides of a triangle correspond to arbitrary positive numbers.
+
+**1.** In terms of $x,y,z$ the inequality reads
+$$(x+y)(y+z)(z+x)\ge(2z)(2x)(2y)=8xyz,$$
+which is true by AM-GM on each factor: $x+y\ge2\sqrt{xy}$, etc. Equality iff $x=y=z$, i.e. the triangle is equilateral.
+
+**2.** Since $b+c-a=2x$, etc.,
+$$\sum\frac a{b+c-a}=\frac{y+z}{2x}+\frac{z+x}{2y}+\frac{x+y}{2z}=\frac12\left[\left(\frac xy+\frac yx\right)+\left(\frac yz+\frac zy\right)+\left(\frac zx+\frac xz\right)\right]\ge\frac12\cdot6=3.$$
+
+**Lesson.** A triangle condition is a hidden positivity condition: the Ravi substitution replaces it by three free positive variables, which makes many geometric inequalities routine.
+@@@ ineq2-minkowski-and-a-sum-of-square-roots.md
+---
+title: Minkowski's inequality and a sum of two square roots
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 3
+tags: Minkowski, triangle inequality, optimisation
+date: 2026-11-05
+---
+
+## Statement
+
+1. Prove that for real numbers $p_1,q_1,p_2,q_2$,
+$$\sqrt{p_1^2+q_1^2}+\sqrt{p_2^2+q_2^2}\ \ge\ \sqrt{(p_1+p_2)^2+(q_1+q_2)^2}.$$
+2. Find the minimum over $x\in\mathbb{R}$ of $\sqrt{x^2+4}+\sqrt{(6-x)^2+9}$ and the $x$ where it is reached.
+
+## Hint
+
+For part 1, interpret $(p_i,q_i)$ as vectors and expand the square of the right-hand side. For part 2, apply part 1 with well-chosen $p_i,q_i$.
+
+## Solution
+
+**1.** Let $u=(p_1,q_1)$ and $v=(p_2,q_2)$. By Cauchy–Schwarz, $u\cdot v\le|u||v|$, so
+$$|u+v|^2=|u|^2+2u\cdot v+|v|^2\le|u|^2+2|u||v|+|v|^2=(|u|+|v|)^2.$$
+Taking square roots gives the inequality. Equality iff $u,v$ are parallel with the same direction.
+
+**2.** Write the expression as $\sqrt{x^2+2^2}+\sqrt{(6-x)^2+3^2}$ and apply part 1 with $(p_1,q_1)=(x,2)$ and $(p_2,q_2)=(6-x,3)$:
+$$\ge\sqrt{6^2+5^2}=\sqrt{61}.$$
+
+**Equality.** The vectors $(x,2)$ and $(6-x,3)$ must be parallel with the same direction: $3x=2(6-x)$, i.e. $x=\frac{12}5>0$ (and both vectors point up-right). So the minimum is $\sqrt{61}$, reached at $x=\frac{12}5$.
+
+**Remark.** Geometrically, the expression is the length of the broken line from $(0,2)$ to $(x,0)$ to $(6,-3)$; it is shortest when the line is straight, of length $\sqrt{6^2+5^2}$. The Minkowski form avoids drawing the figure.
+
+**Lesson.** A sum of square roots of sums of two squares is a sum of lengths: think "triangle inequality", and choose the vectors so that the unknown cancels in the sum.
+@@@ ineq2-a-chain-of-squares.md
+---
+title: A chain of squares: a⁴ + b⁴ + c⁴ ≥ abc(a + b + c)
+category: olympiad/oly-inequalities
+level: m1
+difficulty: 2
+tags: sum of squares, SOS, real numbers
+date: 2026-11-05
+---
+
+## Statement
+
+Prove that for all real numbers $a,b,c$,
+$$a^4+b^4+c^4\ \ge\ abc\,(a+b+c).$$
+
+## Hint
+
+Show the chain $a^4+b^4+c^4\ge a^2b^2+b^2c^2+c^2a^2\ge abc(a+b+c)$, each step being a sum of squares.
+
+## Solution
+
+**Idea.** Prove a stronger intermediate inequality twice with $x^2+y^2+z^2\ge xy+yz+zx$.
+
+**Basic fact.** For all real $x,y,z$,
+$$x^2+y^2+z^2-xy-yz-zx=\frac12\left[(x-y)^2+(y-z)^2+(z-x)^2\right]\ge0.$$
+
+**Step 1.** With $x=a^2$, $y=b^2$, $z=c^2$:
+$$a^4+b^4+c^4\ge a^2b^2+b^2c^2+c^2a^2.$$
+
+**Step 2.** With $x=ab$, $y=bc$, $z=ca$: $xy=ab^2c$, $yz=bc^2a$, $zx=ca^2b$, so
+$$a^2b^2+b^2c^2+c^2a^2\ge ab^2c+abc^2+a^2bc=abc(a+b+c).$$
+
+**Equality.** Step 1 is an equality iff $a^2=b^2=c^2$, and step 2 iff $ab=bc=ca$. Together, $|a|=|b|=|c|$ and the signs agree, so $a=b=c$.
+
+**Lesson.** Look for a chain of simpler true inequalities, each of which is "square $\ge0$" after a substitution such as $x=ab$.
+@@@ ineq2-jensen-and-the-product-of-sines.md
+---
+title: The product of the sines of a triangle
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 3
+tags: Jensen, concavity, logarithm, triangle
+date: 2026-11-05
+---
+
+## Statement
+
+Let $A,B,C$ be the angles of a triangle. Prove that
+$$\sin A\sin B\sin C\le\frac{3\sqrt3}8.$$
+
+## Hint
+
+Take logarithms and show that $\ln\sin$ is concave on $(0,\pi)$.
+
+## Solution
+
+**Concavity.** On $(0,\pi)$ the function $g=\ln\sin$ has $g'=\cot$ and $g''=-\dfrac1{\sin^2}<0$, so $g$ is strictly concave.
+
+**Jensen.** For the three angles with equal weights,
+$$\frac{g(A)+g(B)+g(C)}3\le g\!\left(\frac{A+B+C}3\right)=g\!\left(\frac\pi3\right)=\ln\frac{\sqrt3}2.$$
+Hence $\ln(\sin A\sin B\sin C)\le3\ln\frac{\sqrt3}2$, i.e.
+$$\sin A\sin B\sin C\le\left(\frac{\sqrt3}2\right)^3=\frac{3\sqrt3}8.$$
+
+**Equality.** By strict concavity, iff $A=B=C=\frac\pi3$.
+
+**Remark.** The same method gives $\sin\frac A2\sin\frac B2\sin\frac C2\le\frac18$ (use concavity of $\ln\sin$ at $\frac\pi6$).
+
+**Lesson.** A product under a fixed-sum constraint is a sum after taking logarithms: check the concavity of $\ln f$ and use Jensen.
+@@@ ineq2-induction-on-the-number-of-variables.md
+---
+title: Two inequalities by induction on the number of variables
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 4
+tags: induction, AM-GM, Bernoulli, smoothing
+date: 2026-11-05
+---
+
+## Statement
+
+1. If $x_1,\dots,x_n>0$ and $x_1x_2\cdots x_n=1$, then $x_1+\dots+x_n\ge n$.
+2. If $x_1,\dots,x_n>-1$ all have the same sign, then $(1+x_1)\cdots(1+x_n)\ge1+x_1+\dots+x_n$.
+
+Deduce AM-GM from part 1.
+
+## Hint
+
+For part 1, among $n+1$ numbers with product $1$, one is $\ge1$ and one is $\le1$: merge them. For part 2, multiply the inductive inequality by $1+x_{n+1}>0$.
+
+## Solution
+
+**1.** For $n=1$, $x_1=1$. Assume it holds for $n$ numbers and take $x_1,\dots,x_{n+1}$ with product $1$. Not all are $<1$ and not all $>1$; reorder so that $x_n\ge1\ge x_{n+1}$. The $n$ numbers $x_1,\dots,x_{n-1},x_nx_{n+1}$ have product $1$, so by induction
+$$x_1+\dots+x_{n-1}+x_nx_{n+1}\ge n.$$
+Therefore
+$$\sum_{i=1}^{n+1}x_i\ \ge\ n+x_n+x_{n+1}-x_nx_{n+1}=n+1+(x_n-1)(1-x_{n+1})\ \ge\ n+1.$$
+
+**2.** For $n=1$ it is an equality. Suppose it holds for $n$, and let $S_n=x_1+\dots+x_n$. Since $1+x_{n+1}>0$,
+$$\prod_{i=1}^{n+1}(1+x_i)\ge(1+x_{n+1})(1+S_n)=1+S_{n+1}+x_{n+1}S_n\ge1+S_{n+1},$$
+because $x_{n+1}$ and $S_n$ have the same sign, so $x_{n+1}S_n\ge0$.
+
+**AM-GM.** For positive $a_1,\dots,a_n$ with geometric mean $g$, set $x_i=a_i/g$: the product of the $x_i$ is $1$, so $\sum a_i/g\ge n$, i.e. $\frac{a_1+\dots+a_n}n\ge g$.
+
+**Lesson.** Induction on the number of variables works when two variables can be merged into one while keeping the constraint: choose the pair on opposite sides of $1$.
+@@@ ineq2-abc-equals-one-and-three-fractions.md
+---
+title: With abc = 1: Σ 1/(a² + a + 1) ≥ 1
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 4
+tags: constraint abc=1, clearing denominators, expansion
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a,b,c>0$ with $abc=1$. Prove that
+$$\frac1{a^2+a+1}+\frac1{b^2+b+1}+\frac1{c^2+c+1}\ge1.$$
+
+## Hint
+
+Clear the denominators and use $abc=1$ to simplify the many terms containing $abc$.
+
+## Solution
+
+**Idea.** The constraint kills most terms after expansion.
+
+**Clearing denominators.** Let $D=\prod(a^2+a+1)$. The inequality is
+$$\sum_{\rm cyc}(b^2+b+1)(c^2+c+1)-D\ge0.$$
+
+**Expansion.** Expanding the left-hand side mechanically (checked with a computer algebra system) gives
+$$-a^2b^2c^2-a^2b^2c-a^2bc^2-a^2bc+a^2-ab^2c^2-ab^2c-abc^2-abc+a+b^2+b+c^2+c+2.$$
+Now substitute $abc=1$:
+- $-a^2b^2c^2=-1$,
+- $-a^2b^2c-a^2bc^2-ab^2c^2=-ab-ac-bc$,
+- $-a^2bc-ab^2c-abc^2=-a-b-c$,
+- $-abc=-1$.
+
+Summing everything with the positive terms $a^2+b^2+c^2+a+b+c+2$:
+$$a^2+b^2+c^2+a+b+c+2-1-(ab+bc+ca)-(a+b+c)-1=a^2+b^2+c^2-ab-bc-ca\ \ge0.$$
+
+**Equality.** Iff $a=b=c=1$.
+
+**Lesson.** With a multiplicative constraint, expand fully and use $abc=1$ to cancel: often the inequality collapses to a classical one such as $a^2+b^2+c^2\ge ab+bc+ca$.
+@@@ ineq2-the-cube-substitution.md
+---
+title: The cube substitution: Σ 1/(a + b + 1) ≤ 1
+category: olympiad/oly-inequalities
+level: olympiad
+difficulty: 4
+tags: substitution, abc=1, cubes, AM-GM
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a,b,c>0$ with $abc=1$. Prove that
+$$\frac1{a+b+1}+\frac1{b+c+1}+\frac1{c+a+1}\le1.$$
+
+## Hint
+
+Write $a=x^3$, $b=y^3$, $c=z^3$ with $xyz=1$, and use $x^3+y^3\ge xy(x+y)$.
+
+## Solution
+
+**Substitution.** Let $x=a^{1/3}$, $y=b^{1/3}$, $z=c^{1/3}$, so $xyz=1$.
+
+**Key lemma.** For $x,y>0$, $x^3+y^3-xy(x+y)=(x+y)(x-y)^2\ge0$.
+
+**Estimate.** Using $1=xyz$,
+$$a+b+1=x^3+y^3+xyz\ge xy(x+y)+xyz=xy(x+y+z).$$
+Since $xy=\frac1z$,
+$$\frac1{a+b+1}\le\frac1{xy(x+y+z)}=\frac z{x+y+z}.$$
+
+**Summation.** The same holds for the other two terms, with $x$ and $y$ in place of $z$, and adding gives
+$$\sum\frac1{a+b+1}\le\frac{z+x+y}{x+y+z}=1.$$
+
+**Equality.** Iff $x=y=z=1$.
+
+**Lesson.** The constraint $abc=1$ with cubes in the lemma $x^3+y^3\ge xy(x+y)$ suggests the substitution $a=x^3$: the "1" becomes $xyz$ and the denominators become homogeneous.
+@@@ fe2-f-of-f-of-n-equals-n-plus-2.md
+---
+title: Solving f(f(n)) = n + 2 on the positive integers
+category: olympiad/oly-functional-equations
+level: olympiad
+difficulty: 4
+tags: functional equation, integers, parity, recursion
+date: 2026-11-05
+---
+
+## Statement
+
+Find all functions $f:\mathbb{N}^*\to\mathbb{N}^*$ (positive integers) such that $f(f(n))=n+2$ for all $n\ge1$.
+
+## Hint
+
+Apply $f$ to both sides to show that $f(n+2)=f(n)+2$. Then everything is determined by $f(1)$ and $f(2)$.
+
+## Solution
+
+**Step 1: a recursion.** Apply $f$ to $f(f(n))=n+2$ and use the equation with $n$ replaced by $f(n)$:
+$$f(n+2)=f\bigl(f(f(n))\bigr)=f(n)+2.$$
+Let $a=f(1)$ and $b=f(2)$. Then for $k\ge1$:
+$$f(2k+1)=a+2k,\qquad f(2k)=b+2k-2.$$
+
+**Step 2: using the equation at $n=1$.** $f(a)=3$.
+- If $a$ is odd, $a=2m+1$, then $f(a)=a+2m=2a-1$; setting this equal to $3$ gives $a=2$, which is not odd. Contradiction.
+- So $a$ is even, $a=2m$, and $f(a)=b+a-2=3$ gives $b=5-a\ge1$, so $a\in\{2,4\}$.
+
+**Step 3: two candidates.**
+- $a=2$, $b=3$: $f(2k+1)=2k+2$ and $f(2k)=2k+1$, i.e. $f(n)=n+1$.
+- $a=4$, $b=1$: $f(2k+1)=2k+4$ and $f(2k)=2k-1$, i.e. $f(n)=n+3$ for odd $n$ and $f(n)=n-1$ for even $n$.
+
+**Step 4: verification.** For $f(n)=n+1$: $f(f(n))=n+2$. For the second function, if $n$ is odd then $f(n)=n+3$ is even, so $f(f(n))=n+3-1=n+2$; if $n$ is even then $f(n)=n-1$ is odd (and $\ge1$), so $f(f(n))=n-1+3=n+2$.
+
+**Answer.** Exactly two functions: $f(n)=n+1$, and $f(n)=n+3$ for odd $n$, $f(n)=n-1$ for even $n$.
+
+**Lesson.** Reduce $f(f(n))=g(n)$ to a recursion by applying $f$ again, then use the small values to pin down the free parameters, and always check whether more than one solution survives.
+@@@ fe2-cauchy-s-equation-on-the-rationals.md
+---
+title: Cauchy's equation on the rationals
+category: olympiad/oly-functional-equations
+level: m1
+difficulty: 2
+tags: Cauchy equation, additive function, rationals
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:\mathbb{Q}\to\mathbb{R}$ satisfy $f(x+y)=f(x)+f(y)$ for all rationals $x,y$. Prove that $f(x)=cx$ for all $x\in\mathbb{Q}$, where $c=f(1)$.
+
+## Hint
+
+Show first $f(0)=0$ and $f(-x)=-f(x)$, then $f(n)=nf(1)$ for integers, then treat $\frac mn$.
+
+## Solution
+
+**Step 1.** $x=y=0$ gives $f(0)=2f(0)$, so $f(0)=0$. Then $0=f(x+(-x))=f(x)+f(-x)$, so $f$ is odd.
+
+**Step 2: integers.** By induction $f(n)=nf(1)$ for $n\ge0$: $f(n+1)=f(n)+f(1)$. For negative integers use oddness.
+
+**Step 3: rationals.** Let $x=\frac mn$ with $n\ge1$. Then
+$$n\,f\!\left(\frac mn\right)=f\!\left(\underbrace{\frac mn+\dots+\frac mn}_{n}\right)=f(m)=mf(1),$$
+hence $f\!\left(\frac mn\right)=\frac mnf(1)$.
+
+**Conclusion.** $f(x)=cx$ with $c=f(1)$, and conversely every such function satisfies the equation.
+
+**Remark.** On $\mathbb{R}$ the same argument only gives $f(x)=cx$ for rational $x$: there exist additive functions $\mathbb{R}\to\mathbb{R}$ that are not linear (they are wild and nowhere continuous). One needs an extra assumption (monotone, bounded on an interval, continuous at a point) to conclude.
+
+**Lesson.** Start every additive equation with $f(0)=0$, oddness, and the integer case; the rationals follow by "multiply by the denominator".
+@@@ fe2-imo-2010-floor-function-equation.md
+---
+title: IMO 2010: f(⌊x⌋y) = f(x)⌊f(y)⌋
+category: olympiad/oly-functional-equations
+level: olympiad
+difficulty: 4
+tags: IMO 2010, floor function, functional equation, case analysis
+date: 2026-11-05
+---
+
+## Statement
+
+Find all functions $f:\mathbb{R}\to\mathbb{R}$ such that $f(\lfloor x\rfloor y)=f(x)\lfloor f(y)\rfloor$ for all real $x,y$.
+
+## Hint
+
+Put $x=0$ to find that either $f(0)\ne0$, which forces $\lfloor f(y)\rfloor=1$ for all $y$, or $f(0)=0$. In the second case, prove that $f$ vanishes on $(0,1)$ first.
+
+## Solution
+
+**Case 1: $f(0)\ne0$.** Setting $x=0$: $f(0)=f(0)\lfloor f(y)\rfloor$, so $\lfloor f(y)\rfloor=1$ for every $y$. The equation becomes $f(\lfloor x\rfloor y)=f(x)$ for all $x,y$; with $y=0$ we get $f(0)=f(x)$, so $f$ is a constant $c$ with $\lfloor c\rfloor=1$, i.e. $c\in[1,2)$. These constants satisfy the equation: both sides equal $c$.
+
+**Case 2: $f(0)=0$.**
+
+*Step 1: $f=0$ on $(0,1)$.* For $0<x<1$, $\lfloor x\rfloor=0$ and the equation reads $0=f(x)\lfloor f(y)\rfloor$ for all $y$. If $f(x)\ne0$ for some $x\in(0,1)$, then $\lfloor f(y)\rfloor=0$ for all $y$. Now put $x=1$: $f(y)=f(1)\lfloor f(y)\rfloor=0$ for all $y$, contradicting $f(x)\ne0$. Hence $f=0$ on $(0,1)$.
+
+*Step 2: $f=0$ on $(0,\infty)$.* Take $z>0$ and an integer $n\ge1$ with $z/n<1$. Putting $x=n$ and $y=z/n$: $f(z)=f(n)\lfloor f(z/n)\rfloor=f(n)\lfloor0\rfloor=0$.
+
+*Step 3: $f=0$ on $(-\infty,0)$.* Put $x=-1$: $f(-y)=f(-1)\lfloor f(y)\rfloor$. For $y\in(0,1)$, $f(y)=0$ so $f(-y)=0$: $f$ vanishes on $(-1,0)$. For $z<0$, take an integer $m\ge1$ with $|z|/m<1$, and put $x=-m$ and $y=z/(-m)\in(0,1)$. Then $\lfloor x\rfloor y=z$ and $f(z)=f(-m)\lfloor f(y)\rfloor=f(-m)\lfloor0\rfloor=0$.
+
+So $f\equiv0$.
+
+**Answer.** $f\equiv0$, or $f\equiv c$ for a constant $c\in[1,2)$.
+
+**Lesson.** Case-split on the "degenerate" value ($f(0)=0$ or not) first, then propagate zeros from a small interval outward using the scaling built into the equation.
+@@@ fe2-imo-1968-a-periodic-function.md
+---
+title: IMO 1968: f(x + a) = ½ + √(f(x) − f(x)²)
+category: olympiad/oly-functional-equations
+level: olympiad
+difficulty: 4
+tags: IMO 1968, periodicity, squaring, completing squares
+date: 2026-11-05
+---
+
+## Statement
+
+Let $a>0$ and let $f:\mathbb{R}\to\mathbb{R}$ satisfy
+$$f(x+a)=\frac12+\sqrt{f(x)-f(x)^2}\quad\text{for all }x.$$
+Prove that $f$ is periodic with period $2a$. Give a non-constant example.
+
+## Hint
+
+Note that $f(x)\ge\frac12$ for all $x$. Square the relation in the form $\left(f(x+a)-\frac12\right)^2=\ldots$ and complete the square on the right.
+
+## Solution
+
+**Lower bound.** The square root is defined, so $f(x)-f(x)^2\ge0$ and the equation shows $f(x+a)\ge\frac12$ for every $x$. Hence $f(t)\ge\frac12$ for all real $t$ (put $x=t-a$).
+
+**Squaring.** From the equation, $\left(f(x+a)-\frac12\right)^2=f(x)-f(x)^2=\frac14-\left(f(x)-\frac12\right)^2$. Thus
+$$\left(f(x+a)-\tfrac12\right)^2+\left(f(x)-\tfrac12\right)^2=\tfrac14\qquad\text{for all }x.$$
+
+**Shifting by $a$.** Replace $x$ by $x+a$:
+$$\left(f(x+2a)-\tfrac12\right)^2+\left(f(x+a)-\tfrac12\right)^2=\tfrac14.$$
+Subtracting the two displayed relations,
+$$\left(f(x+2a)-\tfrac12\right)^2=\left(f(x)-\tfrac12\right)^2.$$
+Since $f(x+2a)-\frac12\ge0$ and $f(x)-\frac12\ge0$, we get $f(x+2a)=f(x)$.
+
+**Example.** $f(x)=\dfrac12+\dfrac12\left|\sin\dfrac{\pi x}{2a}\right|$. Put $\theta=\frac{\pi x}{2a}$. Then $f(x+a)=\frac12+\frac12|\cos\theta|$, and $f(x)-f(x)^2=\frac14-\frac14\sin^2\theta=\frac14\cos^2\theta$, whose square root is $\frac12|\cos\theta|$ ✓.
+
+**Lesson.** When a relation contains a square root, isolate it and square: the resulting symmetric identity in $f(x)$ and $f(x+a)$ often yields periodicity by shifting once.
+@@@ fe2-f-of-f-of-x-plus-y.md
+---
+title: f(f(x) + y) = 2x + f(f(y) − x)
+category: olympiad/oly-functional-equations
+level: olympiad
+difficulty: 4
+tags: surjectivity, substitution, linear functions
+date: 2026-11-05
+---
+
+## Statement
+
+Find all $f:\mathbb{R}\to\mathbb{R}$ such that $f(f(x)+y)=2x+f(f(y)-x)$ for all real $x,y$.
+
+## Hint
+
+Choose $y$ so that the left side becomes $f(0)$, to show that $f$ is surjective. Then take $x=a$ with $f(a)=0$.
+
+## Solution
+
+**Step 1: surjectivity.** Put $y=-f(x)$: $f(0)=2x+f\bigl(f(-f(x))-x\bigr)$, so
+$$f\bigl(f(-f(x))-x\bigr)=f(0)-2x.$$
+As $x$ ranges over $\mathbb{R}$, the right side takes every real value, so $f$ is surjective.
+
+**Step 2: a zero.** Let $a$ be such that $f(a)=0$ and put $x=a$:
+$$f(y)=2a+f\bigl(f(y)-a\bigr)\qquad\text{for all }y.$$
+
+**Step 3: linear form.** Let $u=f(y)-a$. Since $f$ is surjective, $u$ ranges over $\mathbb{R}$. Then $f(y)=u+a$ and the relation becomes $u+a=2a+f(u)$, i.e.
+$$f(u)=u-a\qquad\text{for all }u.$$
+So $f(x)=x+c$ with $c=-a$.
+
+**Step 4: verification.** For $f(x)=x+c$: the left side is $f(x+c+y)=x+y+2c$, and the right side is $2x+f(y+c-x)=2x+y+c-x+c=x+y+2c$ ✓.
+
+**Answer.** $f(x)=x+c$ for any constant $c\in\mathbb{R}$.
+
+**Lesson.** Surjectivity (via a substitution that makes one side independent of the argument) lets you replace $f(y)$ by a free variable: this is the standard route from a messy equation to a linear one.
+@@@ fe2-additive-with-squares.md
+---
+title: Additive functions with f(x²) = f(x)²
+category: olympiad/oly-functional-equations
+level: olympiad
+difficulty: 4
+tags: additive function, monotonicity, Cauchy equation
+date: 2026-11-05
+---
+
+## Statement
+
+Find all $f:\mathbb{R}\to\mathbb{R}$ such that $f(x+y)=f(x)+f(y)$ and $f(x^2)=f(x)^2$ for all real $x,y$.
+
+## Hint
+
+Show that $f$ is non-negative on $[0,\infty)$, hence monotone, and then that an additive monotone function is linear.
+
+## Solution
+
+**Positivity.** For every $t\ge0$, $t=x^2$ for some $x$, so $f(t)=f(x)^2\ge0$.
+
+**Monotonicity.** If $x\le y$ then $f(y)=f(x)+f(y-x)\ge f(x)$.
+
+**Linearity.** As in Cauchy's equation over $\mathbb{Q}$, $f(q)=cq$ for every rational $q$, with $c=f(1)\ge0$. Take $x\in\mathbb{R}$ and rationals $p<x<q$. By monotonicity, $cp\le f(x)\le cq$. Letting $p,q\to x$ gives $f(x)=cx$.
+
+**The constant.** The condition $f(1)=f(1)^2$ gives $c=c^2$, so $c\in\{0,1\}$.
+
+**Answer.** $f\equiv0$ and $f(x)=x$, which clearly satisfy both conditions.
+
+**Lesson.** Wild additive functions are killed by any condition that gives a sign or boundedness: look for a hidden square.
+@@@ fe2-f-of-f-of-n-equals-3n.md
+---
+title: A strictly increasing f with f(f(n)) = 3n
+category: olympiad/oly-functional-equations
+level: olympiad
+difficulty: 5
+tags: functional equation, monotone, integers, ternary structure
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:\mathbb{N}^*\to\mathbb{N}^*$ be strictly increasing with $f(f(n))=3n$ for all $n\ge1$. Determine $f(n)$ completely and compute $f(2024)$.
+
+## Hint
+
+First show $f(3n)=3f(n)$ and $n<f(n)<3n$. Then find $f(1)$ and $f(2)$, and use monotonicity on the blocks $[3^k,2\cdot3^k]$.
+
+## Solution
+
+**Step 1: $f(3n)=3f(n)$.** $f(3n)=f(f(f(n)))=3f(n)$ (apply the equation to $f(n)$).
+
+**Step 2: $n<f(n)<3n$.** If $f(n)\le n$, monotonicity gives $3n=f(f(n))\le f(n)\le n$, impossible. If $f(n)\ge3n$, then $3n=f(f(n))\ge f(3n)=3f(n)\ge9n$, impossible.
+
+**Step 3: small values.** $1<f(1)<3$ so $f(1)=2$, and $f(2)=f(f(1))=3$. By Step 1, $f(3^k)=2\cdot3^k$ and $f(2\cdot3^k)=3^{k+1}$.
+
+**Step 4: first half of each block.** The integers $3^k,\dots,2\cdot3^k$ are $3^k+1$ numbers, and $f$ maps them strictly increasingly into $\{2\cdot3^k,\dots,3^{k+1}\}$, which also has $3^k+1$ elements, with the end points matching. So the map is the shift:
+$$f(3^k+j)=2\cdot3^k+j,\qquad0\le j\le3^k.$$
+
+**Step 5: second half.** For $0\le j\le3^k$, $f(2\cdot3^k+j)=f\bigl(f(3^k+j)\bigr)=3(3^k+j)=3^{k+1}+3j$.
+
+**Formula.** For $3^k\le n\le2\cdot3^k$: $f(n)=n+3^k$. For $2\cdot3^k\le n\le3^{k+1}$: $f(n)=3n-3^{k+1}$. (The two formulas agree at the common point $n=2\cdot3^k$: $f=3^{k+1}$ in both. Both pieces are increasing and they match at the junction, so $f$ is strictly increasing.)
+
+**Verification.** For $n$ in the first range, $f(n)=n+3^k$ lies in the second range, $f(f(n))=3(n+3^k)-3^{k+1}=3n$ ✓. For $n$ in the second range, $f(n)=3n-3^{k+1}$ lies in $[3^{k+1},2\cdot3^{k+1}]$ and $f(f(n))=3n-3^{k+1}+3^{k+1}=3n$ ✓.
+
+**The value.** $3^6=729$, $2\cdot3^6=1458$, $3^7=2187$. Since $1458\le2024\le2187$ we use the second formula with $k=6$:
+$$f(2024)=3\cdot2024-2187=3885.$$
+
+**Lesson.** For $f(f(n))=g(n)$ with $f$ monotone, trap $f$ between two bounds, find the values on a geometric sequence, and use the pigeonhole/order argument to fill in the blocks.
+@@@ fe2-the-product-minus-product-equation.md
+---
+title: f(x)f(y) − f(xy) = x + y
+category: olympiad/oly-functional-equations
+level: m1
+difficulty: 3
+tags: functional equation, substitution, polynomial identity
+date: 2026-11-05
+---
+
+## Statement
+
+Find all $f:\mathbb{R}\to\mathbb{R}$ such that $f(x)f(y)-f(xy)=x+y$ for all real $x,y$.
+
+## Hint
+
+Put $y=0$ and write $c=f(0)$. Show $c\ne0$, then use $x=0$ to find the form of $f$.
+
+## Solution
+
+**Step 1.** Put $y=0$: $c\,f(x)-c=x$, i.e. $c(f(x)-1)=x$ for all $x$. If $c=0$, this gives $x=0$ for all $x$, absurd. So $c\ne0$ and
+$$f(x)=1+\frac xc.$$
+
+**Step 2.** Substitute into the equation:
+$$\left(1+\frac xc\right)\left(1+\frac yc\right)-1-\frac{xy}c=x+y,$$
+which simplifies to
+$$(x+y)\left(\frac1c-1\right)+xy\left(\frac1{c^2}-\frac1c\right)=0\qquad\text{for all }x,y.$$
+Taking $y=0$, $x=1$: $\frac1c-1=0$, so $c=1$. (Then the second coefficient is $1-1=0$ as well.)
+
+**Answer.** $f(x)=x+1$. Check: $(x+1)(y+1)-(xy+1)=x+y$ ✓.
+
+**Lesson.** Substituting $0$ for a variable often makes the equation linear in $f(x)$: always try it first, and remember to exclude the degenerate value ($c=0$) before dividing.
