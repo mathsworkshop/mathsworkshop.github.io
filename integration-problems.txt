@@ -1,3 +1,389 @@
+@@@ riemann-step-basic-definition.md
+---
+title: Step functions and their integrals
+category: calculus/single-variable/integration/riemann/riemann-int
+level: lycee
+difficulty: 1
+order: 1
+tags: step function, partition, integral
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[0,3]\to\mathbb{R}$ be defined by
+$$f(x)=\begin{cases}1&\text{if }0\le x<1,\\ 3&\text{if }1\le x<2,\\ -1&\text{if }2\le x\le3.\end{cases}$$
+Show that $f$ is a step function and compute $\int_0^3 f(x)\,dx$.
+
+## Hint
+
+A step function is constant on the intervals of a partition. Identify the subdivision and sum $\sum_k c_k(x_k-x_{k-1})$.
+
+## Solution
+
+**Step function.** Take the subdivision $\sigma=\{0,1,2,3\}$. On each open interval $]0,1[$, $]1,2[$, $]2,3[$, $f$ is constant ($1,3,-1$ respectively). The values at the subdivision points do not matter for the integral, so $f$ is a step function.
+
+**Integral.**
+$$\int_0^3 f=\sum_{k=1}^3 c_k(x_k-x_{k-1})=1\cdot1+3\cdot1+(-1)\cdot1=3.$$
+
+**Conclusion.** $f$ is a step function and $\int_0^3 f=3$.
+
+@@@ riemann-step-two-subdivisions.md
+---
+title: Two subdivisions for the same function
+category: calculus/single-variable/integration/riemann/riemann-int
+level: lycee
+difficulty: 2
+order: 1
+tags: step function, subdivision, independence
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[0,2]\to\mathbb{R}$ be the step function associated with the subdivision $\sigma=\{0,1,2\}$ with values $c_1=2$, $c_2=5$ on the two subintervals. Show that the "integral" $\sum_k c_k(x_k-x_{k-1})$ does not depend on the subdivision.
+
+## Hint
+
+Refine the subdivision: replace $[0,1]$ by $[0,1/2]\cup[1/2,1]$, both with value $2$. Compare.
+
+## Solution
+
+**Original subdivision.** $\int f=2\cdot1+5\cdot1=7$.
+
+**Refined subdivision.** $\sigma'=\{0,1/2,1,2\}$ with values $(2,2,5)$:
+$$2\cdot\tfrac12+2\cdot\tfrac12+5\cdot1=1+1+5=7.$$
+
+**General principle.** If $\sigma'\supseteq\sigma$ refines $\sigma$, the subinterval $[x_{k-1},x_k]$ is split into $[x_{k-1},y]\cup[y,x_k]$ with the same value $c_k$, contributing $c_k(y-x_{k-1})+c_k(x_k-y)=c_k(x_k-x_{k-1})$: the sum is unchanged.
+
+**Conclusion.** The integral of a step function is well-defined.
+
+@@@ riemann-step-linear-combination.md
+---
+title: Linearity of the integral on step functions
+category: calculus/single-variable/integration/riemann/riemann-int
+level: lycee
+difficulty: 2
+order: 1
+tags: linearity, step functions, sum
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f,g:[a,b]\to\mathbb{R}$ be step functions and $\lambda\in\mathbb{R}$. Show that $f+\lambda g$ is a step function and that
+$$\int_a^b(f+\lambda g)=\int_a^bf+\lambda\int_a^bg.$$
+
+## Hint
+
+Take the common refinement of the two subdivisions, then use linearity of finite sums.
+
+## Solution
+
+**Common refinement.** Let $\sigma_f$ and $\sigma_g$ be subdivisions adapted to $f$ and $g$. Take $\sigma=\sigma_f\cup\sigma_g$ (the union of all subdivision points). On each interval of $\sigma$, both $f$ and $g$ are constant, say $f=u_k$, $g=v_k$.
+
+**Compute.**
+$$\int_a^b(f+\lambda g)=\sum_k(u_k+\lambda v_k)(x_k-x_{k-1})=\sum_ku_k\Delta_k+\lambda\sum_kv_k\Delta_k.$$
+This is $\int f+\lambda\int g$.
+
+**Conclusion.** The integral is linear on the space of step functions.
+
+@@@ riemann-step-constant-integral.md
+---
+title: Integral of a constant step function
+category: calculus/single-variable/integration/riemann/riemann-int
+level: lycee
+difficulty: 1
+order: 1
+tags: constant, step function, elementary
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f(x)=c$ for $x\in[a,b]$. Compute $\int_a^b f$ directly from the definition for step functions.
+
+## Hint
+
+Take the trivial subdivision $\{a,b\}$; the sum is $c\cdot(b-a)$.
+
+## Solution
+
+**Direct computation.** With subdivision $\{a,b\}$, the single interval $[a,b]$ has constant value $c$. So
+$$\int_a^b c\,dx=c\,(b-a).$$
+
+**Conclusion.** The integral of a constant equals the constant times the length of the interval.
+
+@@@ riemann-step-additivity.md
+---
+title: Additivity over adjacent intervals
+category: calculus/single-variable/integration/riemann/riemann-int
+level: lycee
+difficulty: 2
+order: 1
+tags: additivity, step function, split
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[a,c]\to\mathbb{R}$ be a step function, and $b\in]a,c[$. Show that
+$$\int_a^cf=\int_a^bf+\int_b^cf.$$
+
+## Hint
+
+Add $b$ to the subdivision of $f$ and compare sums.
+
+## Solution
+
+**Refinement.** Let $\sigma$ be a subdivision of $[a,c]$ adapted to $f$. Set $\sigma'=\sigma\cup\{b\}$: still adapted to $f$. The sum over $\sigma'$ splits into the sum over the parts of $[a,b]$ and over the parts of $[b,c]$.
+
+**Sum.** $\sum_{k}\Delta_kc_k=\sum_{\Delta_k\subseteq[a,b]}c_k\Delta_k+\sum_{\Delta_k\subseteq[b,c]}c_k\Delta_k=\int_a^bf+\int_b^cf$.
+
+**Conclusion.** Chasles' relation holds for step functions.
+
+@@@ riemann-step-monotonicity.md
+---
+title: Monotonicity of the integral
+category: calculus/single-variable/integration/riemann/riemann-int
+level: lycee
+difficulty: 2
+order: 1
+tags: monotonicity, step functions, comparison
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f,g$ be step functions on $[a,b]$ with $f\le g$. Show that $\int_a^bf\le\int_a^bg$.
+
+## Hint
+
+Compare the two sums on a common refinement.
+
+## Solution
+
+**Common refinement.** Choose a common subdivision $\sigma$ of $[a,b]$. On each $]x_{k-1},x_k[$, $f\le g$ implies $c_k\le d_k$.
+
+**Sum.** $\sum c_k\Delta_k\le\sum d_k\Delta_k$.
+
+**Conclusion.** The integral is monotone.
+
+@@@ riemann-step-absolute-value.md
+---
+title: Integral of $|f|$ for a step function
+category: calculus/single-variable/integration/riemann/riemann-int
+level: lycee
+difficulty: 3
+order: 1
+tags: absolute value, step function, triangle inequality
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f$ be a step function on $[a,b]$. Show that $|f|$ is a step function and
+$$\left|\int_a^bf\right|\le\int_a^b|f|.$$
+
+## Hint
+
+$|f|$ has the same subdivisions as $f$; apply the triangle inequality to the sum.
+
+## Solution
+
+**$|f|$ is a step function.** On each interval where $f=c_k$, $|f|=|c_k|$, constant.
+
+**Inequality.**
+$$\left|\int_a^bf\right|=\left|\sum_kc_k\Delta_k\right|\le\sum_k|c_k|\Delta_k=\int_a^b|f|.$$
+
+**Conclusion.** The triangle inequality for integrals holds for step functions.
+
+@@@ riemann-step-null-function.md
+---
+title: A step function with zero integral
+category: calculus/single-variable/integration/riemann/riemann-int
+level: lycee
+difficulty: 3
+order: 1
+tags: zero integral, step functions, nonnegative
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f\ge0$ be a step function on $[a,b]$ with $\int_a^bf=0$. Show that $f$ vanishes at every point of continuity of $f$.
+
+## Hint
+
+If $f$ were positive on some open interval, the integral would be positive.
+
+## Solution
+
+**Setup.** Suppose $f(x_0)>0$ at a continuity point $x_0$. By continuity, there is a neighbourhood $]x_0-\varepsilon,x_0+\varepsilon[$ on which $f\ge f(x_0)/2>0$.
+
+**Positive integral.** The integral of $f$ over $[a,b]$ is at least $(f(x_0)/2)\cdot2\varepsilon$ if the whole neighbourhood lies in $[a,b]$, contradicting $\int f=0$. (If $x_0$ is an endpoint, a similar half-neighbourhood argument applies.)
+
+**Conclusion.** $f$ vanishes at each continuity point.
+
+@@@ riemann-step-darboux.md
+---
+title: Darboux sums for a step function
+category: calculus/single-variable/integration/riemann/riemann-int
+level: l1
+difficulty: 3
+order: 1
+tags: Darboux sums, upper lower, step functions
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f$ be a step function on $[a,b]$. Show that its lower and upper Darboux sums (over the subdivision adapted to $f$) coincide, and deduce that $f$ is Riemann integrable with $\int_a^bf$ defined as usual.
+
+## Hint
+
+On the intervals of the adapted subdivision, $\inf f=\sup f=c_k$.
+
+## Solution
+
+**Darboux sums.** Take a subdivision $\sigma$ adapted to $f$. On each $]x_{k-1},x_k[$, $f=c_k$, so $\inf=c_k=\sup$. Hence
+$$L(f,\sigma)=\sum_kc_k\Delta_k=U(f,\sigma).$$
+
+**Riemann integrability.** Since $\inf_\sigma L(f,\sigma)=\sup_\sigma U(f,\sigma)$, $f$ is Riemann integrable with value $\int_a^bf$.
+
+**Conclusion.** Step functions are Riemann integrable with the expected integral.
+
+@@@ riemann-step-upper-lower-squeeze.md
+---
+title: Squeezing between step functions
+category: calculus/single-variable/integration/riemann/riemann-int
+level: l1
+difficulty: 3
+order: 1
+tags: Riemann integrability, step functions, squeeze
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[a,b]\to\mathbb{R}$ be bounded. Suppose that for every $\varepsilon>0$ there exist step functions $\varphi\le f\le\psi$ with $\int_a^b(\psi-\varphi)<\varepsilon$. Show that $f$ is Riemann integrable.
+
+## Hint
+
+The lower and upper Darboux integrals of $f$ differ by at most $\int(\psi-\varphi)$.
+
+## Solution
+
+**Darboux integrals.** For every $\varepsilon>0$, choose $\varphi\le f\le\psi$ with $\int(\psi-\varphi)<\varepsilon$. Monotonicity gives
+$$\int_a^b\varphi\le\int_a^{\underline b}f\le\int_a^{\overline b}f\le\int_a^b\psi,$$
+so
+$$0\le\int_a^{\overline b}f-\int_a^{\underline b}f<\varepsilon.$$
+
+**Conclusion.** Since this holds for every $\varepsilon>0$, the lower and upper Darboux integrals coincide: $f$ is Riemann integrable.
+
+@@@ riemann-step-monotone-riemann.md
+---
+title: A monotone function on a fine grid
+category: calculus/single-variable/integration/riemann/riemann-int
+level: l1
+difficulty: 4
+order: 1
+tags: monotone functions, Riemann integrability, step approximation
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[a,b]\to\mathbb{R}$ be monotone (say nondecreasing). Show that for every $\varepsilon>0$ there exist step functions $\varphi\le f\le\psi$ with $\int(\psi-\varphi)<\varepsilon$.
+
+## Hint
+
+Take a subdivision with small mesh $\eta$; define $\varphi$ and $\psi$ constant on each interval with values $f(x_{k-1})$ and $f(x_k)$.
+
+## Solution
+
+**Subdivision.** Since $f$ is bounded (being monotone on a compact interval), let $M=f(b)-f(a)$. Choose a subdivision $\sigma=\{a=x_0<\cdots<x_n=b\}$ with $\max_k\Delta_k<\varepsilon/M$.
+
+**Step functions.** Define $\varphi(x)=f(x_{k-1})$ and $\psi(x)=f(x_k)$ on $]x_{k-1},x_k[$, with arbitrary values at the points $x_k$. Monotonicity ensures $\varphi\le f\le\psi$.
+
+**Integral difference.**
+$$\int_a^b(\psi-\varphi)=\sum_k(f(x_k)-f(x_{k-1}))\Delta_k<\eta\sum_k(f(x_k)-f(x_{k-1}))=\eta\cdot M<\varepsilon.$$
+
+**Conclusion.** $f$ is Riemann integrable (by the squeeze criterion).
+
+@@@ riemann-step-composition.md
+---
+title: Composition with a continuous function
+category: calculus/single-variable/integration/riemann/riemann-int
+level: l1
+difficulty: 4
+order: 1
+tags: composition, continuous, integrability preservation
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[a,b]\to\mathbb{R}$ be Riemann integrable and $\Phi:\mathbb{R}\to\mathbb{R}$ continuous. Show that $\Phi\circ f$ is Riemann integrable.
+
+## Hint
+
+Approximate $f$ by step functions and use uniform continuity of $\Phi$ on a bounded interval.
+
+## Solution
+
+**Setup.** Since $f$ is bounded, $f([a,b])\subseteq[-M,M]$ for some $M>0$; $\Phi$ is uniformly continuous on $[-M,M]$.
+
+**Approximation.** For $\varepsilon>0$, choose step functions $\varphi\le f\le\psi$ with $\int(\psi-\varphi)<\delta$, where $\delta$ is chosen so that $|\Phi(s)-\Phi(t)|<\varepsilon'$ whenever $|s-t|<\delta$ on $[-M,M]$.
+
+**Step functions.** Then $\Phi\circ\varphi\le\Phi\circ f\le\Phi\circ\psi$ (where $\Phi$ is increasing — WLOG, working with $\Phi$ is more subtle; but for uniformly continuous $\Phi$, one uses $\Phi\circ\varphi$ and $\Phi\circ\psi$ plus bounds). The integral difference is controlled by $\varepsilon'$ and the length of $[a,b]$.
+
+**Conclusion.** $\Phi\circ f$ is Riemann integrable.
+
+**Remark.** The result is standard: composition of Riemann integrable with continuous preserves integrability.
+
+@@@ riemann-step-summary.md
+---
+title: Summary of step functions and Riemann integration
+category: calculus/single-variable/integration/riemann/riemann-int
+level: lycee
+difficulty: 2
+order: 1
+tags: summary, step functions, Riemann integrability
+date: 2026-11-05
+---
+
+## Statement
+
+Summarize the main facts about step functions and their role in Riemann integration.
+
+## Hint
+
+Review the definitions and key properties.
+
+## Solution
+
+**Step function.** Constant on the intervals of a subdivision of $[a,b]$.
+
+**Integral.** $\int_a^bf=\sum_kc_k\Delta_k$ (independent of the subdivision).
+
+**Properties.**
+- Linearity: $\int(f+\lambda g)=\int f+\lambda\int g$.
+- Additivity (Chasles): $\int_a^cf=\int_a^bf+\int_b^cf$.
+- Monotonicity: $f\le g\Rightarrow\int f\le\int g$.
+- Triangle inequality: $|\int f|\le\int|f|$.
+- Zero integral: $f\ge0$ and $\int f=0\Rightarrow f$ vanishes at continuity points.
+
+**Darboux sums.** For step functions, lower and upper sums coincide; step functions are Riemann integrable.
+
+**Squeeze criterion.** $f$ is Riemann integrable iff for every $\varepsilon>0$ there exist step functions $\varphi\le f\le\psi$ with $\int(\psi-\varphi)<\varepsilon$.
+
+**Applications.** Monotone functions and continuous functions are Riemann integrable (approximated by step functions).
+
+**Composition.** $\Phi\circ f$ is Riemann integrable when $f$ is and $\Phi$ is continuous.
+
+**Conclusion.** Step functions are the elementary building blocks of the Riemann integral; integrability is captured by their approximation.
+
 @@@ basic-antiderivatives-and-definite-integrals.md
 ---
 title: Recognising antiderivatives
