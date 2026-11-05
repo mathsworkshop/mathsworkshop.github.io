@@ -1,7 +1,7 @@
 @@@ riemann-mean-value-log.md
 ---
 title: A limit via the mean value theorem for integrals
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 order: 2
@@ -30,7 +30,7 @@ $$\lim_{x\to0^+}\int_x^{3x}\frac{1}{te^t}\,dt=\frac{\ln 3}{1}=\ln 3.$$
 @@@ riemann-mean-value-arctan.md
 ---
 title: Limit of an integral with arctan
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
 order: 2
@@ -67,7 +67,7 @@ $$\lim_{n\to+\infty}\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt=\frac
 @@@ riemann-mean-value-cos-log.md
 ---
 title: Limit of an integral with cosine and logarithm
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
 order: 2
@@ -152,7 +152,7 @@ $$u_n=\exp(\ln u_n)\longrightarrow\exp\!\left(\ln\frac{4}{e}\right)=\frac{4}{e}.
 @@@ riemann-integral-parameter-arctan.md
 ---
 title: A parameter integral equal to arctan
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 order: 2
@@ -219,7 +219,7 @@ $$\int_{1/\sqrt3}^{\sqrt3}\frac{t}{1+t+t^2+t^3}\,dt=\frac{\pi}{12}.$$
 @@@ riemann-step-floor-sign.md
 ---
 title: A step function built from the floor
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 2
 order: 1
@@ -258,7 +258,7 @@ $$\int_0^4(-1)^{\lfloor x\rfloor}\,\lfloor x\rfloor\,dx=-2.$$
 @@@ riemann-step-basic-definition.md
 ---
 title: Step functions and their integrals
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 order: 1
@@ -288,7 +288,7 @@ $$\int_0^3 f=\sum_{k=1}^3 c_k(x_k-x_{k-1})=1\cdot1+3\cdot1+(-1)\cdot1=3.$$
 @@@ riemann-step-two-subdivisions.md
 ---
 title: Two subdivisions for the same function
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 2
 order: 1
@@ -318,7 +318,7 @@ $$2\cdot\tfrac12+2\cdot\tfrac12+5\cdot1=1+1+5=7.$$
 @@@ riemann-step-linear-combination.md
 ---
 title: Linearity of the integral on step functions
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 2
 order: 1
@@ -348,7 +348,7 @@ This is $\int f+\lambda\int g$.
 @@@ riemann-step-constant-integral.md
 ---
 title: Integral of a constant step function
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 order: 1
@@ -374,7 +374,7 @@ $$\int_a^b c\,dx=c\,(b-a).$$
 @@@ riemann-step-additivity.md
 ---
 title: Additivity over adjacent intervals
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 2
 order: 1
@@ -402,7 +402,7 @@ Add $b$ to the subdivision of $f$ and compare sums.
 @@@ riemann-step-monotonicity.md
 ---
 title: Monotonicity of the integral
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 2
 order: 1
@@ -429,7 +429,7 @@ Compare the two sums on a common refinement.
 @@@ riemann-step-absolute-value.md
 ---
 title: Integral of $|f|$ for a step function
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 3
 order: 1
@@ -458,7 +458,7 @@ $$\left|\int_a^bf\right|=\left|\sum_kc_k\Delta_k\right|\le\sum_k|c_k|\Delta_k=\i
 @@@ riemann-step-null-function.md
 ---
 title: A step function with zero integral
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 3
 order: 1
@@ -485,7 +485,7 @@ If $f$ were positive on some open interval, the integral would be positive.
 @@@ riemann-step-darboux.md
 ---
 title: Darboux sums for a step function
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 order: 1
@@ -513,7 +513,7 @@ $$L(f,\sigma)=\sum_kc_k\Delta_k=U(f,\sigma).$$
 @@@ riemann-step-upper-lower-squeeze.md
 ---
 title: Squeezing between step functions
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 order: 1
@@ -541,7 +541,7 @@ $$0\le\int_a^{\overline b}f-\int_a^{\underline b}f<\varepsilon.$$
 @@@ riemann-step-monotone-riemann.md
 ---
 title: A monotone function on a fine grid
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
 order: 1
@@ -571,7 +571,7 @@ $$\int_a^b(\psi-\varphi)=\sum_k(f(x_k)-f(x_{k-1}))\Delta_k<\eta\sum_k(f(x_k)-f(x
 @@@ riemann-step-composition.md
 ---
 title: Composition with a continuous function
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
 order: 1
@@ -602,7 +602,7 @@ Approximate $f$ by step functions and use uniform continuity of $\Phi$ on a boun
 @@@ riemann-step-summary.md
 ---
 title: Summary of step functions and Riemann integration
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 2
 order: 1
@@ -644,7 +644,7 @@ Review the definitions and key properties.
 @@@ basic-antiderivatives-and-definite-integrals.md
 ---
 title: Recognising antiderivatives
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 tags: antiderivatives, definite integrals, fundamental theorem
@@ -674,7 +674,7 @@ Look for a function whose derivative is the integrand: $-\frac1t$, $\ln(\ln x)$ 
 @@@ area-with-an-absolute-value.md
 ---
 title: An area with an absolute value
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 tags: definite integrals, absolute value, sign of a function
@@ -704,7 +704,7 @@ So the integral equals $\frac56+\frac16=1$.
 @@@ area-between-a-parabola-and-a-line.md
 ---
 title: Area between a parabola and a line
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 tags: area, definite integrals, intersection points
@@ -732,7 +732,7 @@ $$\int_{-1}^2\left(x+2-x^2\right)dx=\left[\frac{x^2}2+2x-\frac{x^3}3\right]_{-1}
 @@@ integrals-simplified-by-parity.md
 ---
 title: Integrals that simplify by parity
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 1
 tags: symmetry, odd and even functions
@@ -798,7 +798,7 @@ $$B=\int_0^1\frac{dx}{1+x}=\ln2.$$
 @@@ darboux-sums-and-the-dirichlet-function.md
 ---
 title: Darboux sums of the Dirichlet function
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 tags: Riemann integrability, Darboux sums, density
@@ -827,7 +827,7 @@ $$s_\sigma(f)=0,\qquad S_\sigma(f)=\sum(x_i-x_{i-1})=1.$$
 @@@ integrability-with-one-discontinuity.md
 ---
 title: Integrability with one wild point
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
 tags: Riemann integrability, Darboux criterion, oscillation
@@ -861,7 +861,7 @@ By the Darboux criterion, $f$ is integrable on $[0,1]$.
 @@@ the-derivative-of-an-integral-with-variable-bounds.md
 ---
 title: The derivative of an integral with variable bounds
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 2
 tags: fundamental theorem of calculus, chain rule, limits
@@ -891,7 +891,7 @@ $$\frac{H(x)}x=\frac{H(x)-H(0)}{x-0}\longrightarrow H'(0)=\cos0=1.$$
 @@@ limits-of-integrals-depending-on-n.md
 ---
 title: Limits of integrals depending on n
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
 tags: limits of integrals, squeeze theorem, integration by parts
@@ -923,7 +923,7 @@ $$0\le1-\int_0^1\frac{dx}{1+x^n}\le\frac1{n+1}\to0.$$
 @@@ the-cauchy-schwarz-inequality-for-integrals.md
 ---
 title: The Cauchy–Schwarz inequality for integrals
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 tags: inequalities, Cauchy-Schwarz, quadratic polynomial
@@ -955,7 +955,7 @@ So the integral is at most $\sqrt{\pi/2}\approx1.2533$.
 @@@ comparing-the-harmonic-sum-with-the-logarithm.md
 ---
 title: Comparing the harmonic sum with the logarithm
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 tags: integral comparison, harmonic series, monotonicity
@@ -991,7 +991,7 @@ and both bounds tend to $1$.
 @@@ bounds-for-the-factorial-by-integration.md
 ---
 title: Bounds for n! by comparing with an integral
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
 tags: factorial, integral comparison, Stirling
@@ -1026,7 +1026,7 @@ so $\ln n!\le n\ln n-n+1+\ln n$.
 @@@ an-integral-equation.md
 ---
 title: Solving an integral equation
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
 tags: integral equations, fundamental theorem, differential equation
@@ -1054,7 +1054,7 @@ Conversely $\int_0^xe^t\,dt=e^x-1$, so $1+\int_0^xe^t\,dt=e^x$. The unique solut
 @@@ an-absolute-value-integral-with-a-parameter.md
 ---
 title: An absolute value integral with a parameter
-category: calculus/single-variable/integration/riemann/riemann-int
+category: calculus/single-variable/integration/riemann
 level: olympiad
 difficulty: 5
 tags: absolute value, parameters, trigonometry
