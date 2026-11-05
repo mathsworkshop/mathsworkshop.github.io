@@ -104,9 +104,10 @@ $$\lim_{x\to1^+}\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=(-1)\cdot\ln 2=-\ln 2.
 @@@ riemann-sum-product-limit.md
 ---
 title: A limit of a product via Riemann sums
-category: calculus/single-variable/integration/riemann/riemann-sum
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
+order: 4
 tags: Riemann sums, logarithm, limit, product
 date: 2026-11-06
 ---
@@ -763,9 +764,10 @@ If $f$ is odd, $\int_{-a}^af=0$. If $f$ is even, $\int_{-a}^af=2\int_0^af$.
 @@@ riemann-sums-and-limits-of-sums.md
 ---
 title: Limits of sums as Riemann sums
-category: calculus/single-variable/integration/riemann/riemann-sum
+category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
+order: 4
 tags: Riemann sums, limits, pi, ln 2
 date: 2026-11-02
 ---
