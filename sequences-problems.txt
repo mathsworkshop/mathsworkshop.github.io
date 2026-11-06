@@ -103,7 +103,7 @@ $$u_n=2-2^{1-n}\longrightarrow2.$$
 ---
 title: A telescoping sum
 category: calculus/single-variable/sequences
-level: l1
+level: lycee
 difficulty: 1
 tags: telescoping, series, partial sums
 date: 2026-11-02
@@ -122,7 +122,6 @@ Write out the first few terms and watch what cancels.
 $$S_n=\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\dots+\left(\frac1{n+1}-\frac1{n+2}\right)=1-\frac1{n+2},$$
 because every intermediate term appears once with each sign. As $n\to\infty$, $S_n\to1$.
 
-**Remark.** Note that $u_n=\frac1{(n+1)(n+2)}$: this is how one sums series whose terms are rational functions, by splitting them into partial fractions that cancel in pairs.
 @@@ a-linear-recurrence-of-order-two.md
 ---
 title: A linear recurrence of order two
