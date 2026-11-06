@@ -644,7 +644,7 @@ So $M(1,2)\approx1.4567910$. Convergence is extremely fast (the number of correc
 ---
 title: Heron's method for √2
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 3
 tags: Newton's method, quadratic convergence, square roots
 date: 2026-11-02
