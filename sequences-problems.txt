@@ -243,7 +243,11 @@ In the inductive step, add $(n+1)^2$ to the formula and factor.
 **1. Base case.** $n=1$: $1=\frac{1\cdot2\cdot3}6$.
 
 **Inductive step.** Assume the formula for $n$. Then
-$$\sum_{k=1}^{n+1}k^2=\frac{n(n+1)(2n+1)}6+(n+1)^2=\frac{(n+1)\bigl[n(2n+1)+6(n+1)\bigr]}6=\frac{(n+1)(2n^2+7n+6)}6.$$
+$$
+\begin{aligned}
+\sum_{k=1}^{n+1}k^2&=\frac{n(n+1)(2n+1)}6+(n+1)^2 \\ &=\frac{(n+1)\bigl[n(2n+1)+6(n+1)\bigr]}6 \\ &=\frac{(n+1)(2n^2+7n+6)}6.
+\end{aligned}
+$$
 Since $2n^2+7n+6=(n+2)(2n+3)$, this equals $\frac{(n+1)(n+2)(2n+3)}6$, the formula at rank $n+1$.
 
 **2.**
