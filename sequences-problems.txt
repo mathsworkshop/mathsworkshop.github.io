@@ -315,6 +315,7 @@ title: The ε–N definition of a limit
 category: calculus/single-variable/sequences
 level: l1
 difficulty: 2
+order: 2
 tags: definition of a limit, epsilon-N, divergence
 date: 2026-11-02
 ---
@@ -332,7 +333,9 @@ For part 1, compute $\left|u_n-3\right|$. For part 2, assume a limit $\ell$ exis
 
 **Definition.** $u_n\to\ell$ means: for every $\varepsilon>0$ there exists $N$ such that $n\ge N\Rightarrow|u_n-\ell|<\varepsilon$.
 
-**1.** $\left|\dfrac{3n+1}{n+2}-3\right|=\dfrac{5}{n+2}<\dfrac5n$. Given $\varepsilon>0$ take $N=\lceil5/\varepsilon\rceil+1$; for $n\ge N$ we get $\frac5n<\varepsilon$.
+**1.** We have $$ \left|\dfrac{3n+1}{n+2}-3\right|=\dfrac{5}{n+2}<\dfrac5n, \, \, \forall n \geq 0. $$ 
+Given $\varepsilon>0$ take $N=\lceil5/\varepsilon\rceil+1$; for $n\ge N$ we get $\frac5n<\varepsilon$, hence 
+$ \left|\dfrac{3n+1}{n+2}-3\right| \leq \varepsilon$. 
 
 **2.** Suppose $(-1)^n\to\ell$. With $\varepsilon=1$ there is $N$ such that $|(-1)^n-\ell|<1$ for $n\ge N$. Then for $n\ge N$,
 $$2=\left|(-1)^{n+1}-(-1)^n\right|\le\left|(-1)^{n+1}-\ell\right|+\left|\ell-(-1)^n\right|<1+1=2,$$
@@ -392,7 +395,11 @@ For part 1, choose $q$ with $L<q<1$: eventually $u_{n+1}\le qu_n$. For part 2, c
 
 ## Solution
 
-**1.** Pick $q\in(L,1)$. There is $N$ such that $u_{n+1}\le qu_n$ for $n\ge N$. By induction $u_n\le u_Nq^{n-N}\to0$.
+**1.** Pick $q\in(L,1)$. Since $\dfrac{u_{n+1}}{u_n}\to L$, for $\varepsilon = q - L$, there is $N$ such that 
+$$ \dfrac{u_{n+1}}{u_n}\to L + \varepsilon = q, \, \, \forall n\ge N. $$
+Hence 
+$$ u_{n+1} \le qu_n, \, \, \forall n\ge N. $$ 
+By induction, we get  $u_n\le u_N q^{n-N}\to0$.
 
 **2.**
 - For $u_n=\frac{n^k}{a^n}$: $\frac{u_{n+1}}{u_n}=\left(1+\frac1n\right)^k\frac1a\to\frac1a<1$.
