@@ -91,7 +91,7 @@ Subtract the fixed-point equation from the recurrence.
 
 **1.** $\ell=\frac12\ell+1\iff\ell=2$.
 
-**2.** Subtracting $\ell=\frac12\ell+1$ from $u_{n+1}=\frac12u_n+1$ gives
+**2.** Subtracting $\ell=2$ from $u_{n+1}=\frac12u_n+1$ gives
 $$v_{n+1}=u_{n+1}-2=\frac12(u_n-2)=\frac12v_n.$$
 So $(v_n)$ is geometric with ratio $\frac12$.
 
@@ -150,7 +150,6 @@ Look for solutions $u_n=r^n$. This leads to the characteristic equation $r^2-3r+
 
 **Answer.** $u_n=1+2^{n+1}$.
 
-**Check.** $u_2=3\cdot5-2\cdot3=9=1+2^3$ ✓.
 @@@ three-cases-of-order-two-recurrences.md
 ---
 title: Three cases of order-two recurrences
@@ -279,7 +278,6 @@ $$\frac k{(k+1)!}=\frac{(k+1)-1}{(k+1)!}=\frac1{k!}-\frac1{(k+1)!}.$$
 **Telescoping.**
 $$S_n=\sum_{k=1}^n\left(\frac1{k!}-\frac1{(k+1)!}\right)=1-\frac1{(n+1)!}\longrightarrow1.$$
 
-**Check.** $S_5=\frac12+\frac26+\frac3{24}+\frac4{120}+\frac5{720}=0.99861=1-\frac1{720}$ ✓.
 @@@ a-telescoping-product.md
 ---
 title: A telescoping product
