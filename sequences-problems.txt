@@ -57,6 +57,9 @@ For part 1, look at the differences $u_{n+1}-u_n$. For part 2, check the base ca
 **2. Base case.** $u_0=1=\frac{1\cdot2}2$.
 
 **Inductive step.** Assume $u_n=\frac{(n+1)(n+2)}2$. Then
+\begin{align*}
+u_{n+1}&=\frac{(n+1)(n+2)}2+(n+2) \\ &=\frac{(n+2)\bigl[(n+1)+2\bigr]}2 \\ &=\frac{(n+2)(n+3)}2
+\end{align*}
 $$u_{n+1}=\frac{(n+1)(n+2)}2+(n+2)=\frac{(n+2)\bigl[(n+1)+2\bigr]}2=\frac{(n+2)(n+3)}2,$$
 which is the formula at rank $n+1$. 
 
