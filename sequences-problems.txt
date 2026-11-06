@@ -785,7 +785,7 @@ Hence $|x_n-\varphi|\le\left(\frac49\right)^{n-1}|x_1-\varphi|\to0$.
 ---
 title: A recurrence with a double fixed point
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 4
 tags: fixed points, monotone sequences, parameter dependence
 date: 2026-11-02
@@ -809,7 +809,6 @@ Compute $u_{n+1}-u_n$ and write it as a square. Then split into cases $|u_0|\le\
 
 **Summary.** $u_n\to\frac12$ if $|u_0|\le\frac12$, and $u_n\to+\infty$ otherwise.
 
-**Remark.** The fixed point is "double": $f(x)=x^2+\frac14$ has $f'\left(\frac12\right)=1$. Setting $e_n=\frac12-u_n$ gives $e_{n+1}=e_n(1-e_n)$, the sequence of the next problem, so the convergence is slow, like $\frac1n$.
 @@@ the-cesaro-lemma.md
 ---
 title: The Cesàro lemma
