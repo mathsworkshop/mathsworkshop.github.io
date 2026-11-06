@@ -34,6 +34,7 @@ title: A recurrence and a proof by induction
 category: calculus/single-variable/sequences
 level: lycee
 difficulty: 1
+order: 1
 tags: induction, recurrence, closed form
 date: 2026-11-02
 ---
@@ -57,9 +58,9 @@ For part 1, look at the differences $u_{n+1}-u_n$. For part 2, check the base ca
 
 **Inductive step.** Assume $u_n=\frac{(n+1)(n+2)}2$. Then
 $$u_{n+1}=\frac{(n+1)(n+2)}2+(n+2)=\frac{(n+2)\bigl[(n+1)+2\bigr]}2=\frac{(n+2)(n+3)}2,$$
-which is the formula at rank $n+1$.
+which is the formula at rank $n+1$. 
 
-**Remark.** The numbers $1,3,6,10,\dots$ are the triangular numbers: $u_n=\binom{n+2}2$ counts pairs among $n+2$ objects.
+**Conclusion.** We conclude $u_n=\frac{(n+1)(n+2)}2$.
 @@@ an-arithmetico-geometric-sequence.md
 ---
 title: An arithmetico-geometric sequence
