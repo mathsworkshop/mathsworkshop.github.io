@@ -10,6 +10,12 @@
           "name": "Single-variable calculus",
           "description": "Functions of one real variable.",
           "subcategories": [
+              {
+              "id": "sequences",
+              "name": "Sequences",
+              "description": "Convergence of real sequences and recursive sequences.",
+              "subcategories": []
+            },
             {
               "id": "limits",
               "name": "Limits",
@@ -84,12 +90,6 @@
                   "subcategories": []
                 }
               ]
-            },
-            {
-              "id": "sequences",
-              "name": "Sequences",
-              "description": "Convergence of real sequences and recursive sequences.",
-              "subcategories": []
             },
             {
               "id": "series",
