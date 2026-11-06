@@ -248,7 +248,7 @@ date: 2026-11-03
 
 ## Statement
 
-Show that the continuous image of a compact set is compact, and deduce the existence of extrema.
+Show that the image of a compact set by a continuous map is compact.
 
 ## Hint
 
@@ -256,11 +256,8 @@ Use sequential compactness; continuous images of convergent sequences converge.
 
 ## Solution
 
-**Image of compact.** Let $K$ compact and $f$ continuous. Given a sequence $(f(x_n))$ in $f(K)$, extract a subsequence $x_{n_k}\to x\in K$; then $f(x_{n_k})\to f(x)\in f(K)$. So $f(K)$ is sequentially compact.
+**Image of compact.** Let $K$ compact and $f$ continuous. Fix a sequence $y_n$ in $f(K)$. There is $x_n \in K$ such that $y_n = (f(x_n))$. By compacity of $K$, we can extract a subsequence $x_{n_k} \subset (x_n)$ such that  $x_{n_k} \to x\in K$. Since $f$ is continuous, we have $f(x_{n_k})\to f(x)\in f(K)$. Any sequence of $f(K)$ has a converging subsequence, hence $f(K)$ is compact.
 
-**Extrema.** On a compact set, a continuous function attains max and min.
-
-**Conclusion.** Continuous functions on compact sets attain their bounds.
 
 @@@ continuity-heine-cantor.md
 ---
