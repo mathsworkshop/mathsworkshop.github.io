@@ -2109,13 +2109,14 @@ title: Continuity of a rational function
 category: calculus/multivariable/continuity
 level: lycee
 difficulty: 1
+order: 2
 tags: rational function, domain, continuity
 date: 2026-11-03
 ---
 
 ## Statement
 
-Where is $f(x,y)=\dfrac{x+2y}{x^2+y^2-1}$ continuous?
+Where is $f(x,y)=\dfrac{x+2y}{x^2+y^2+1}$ continuous?
 
 ## Hint
 
@@ -2123,11 +2124,10 @@ A quotient of continuous functions is continuous wherever the denominator is non
 
 ## Solution
 
-**Denominator.** $x^2+y^2-1\neq0$, i.e. $(x,y)\notin\{(x,y):x^2+y^2=1\}$.
+**Denominator.** $x^2+y^2+1\neq0$ for every $(x,y)$.
 
-**Continuity.** $f$ is continuous on $\mathbb{R}^2\setminus S^1$.
+**Continuity.** $f$ is continuous on $\mathbb{R}^2$.
 
-**Conclusion.** $f$ is continuous on its domain of definition.
 
 @@@ continuity-check-definition.md
 ---
