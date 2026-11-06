@@ -396,10 +396,10 @@ For part 1, choose $q$ with $L<q<1$: eventually $u_{n+1}\le qu_n$. For part 2, c
 ## Solution
 
 **1.** Pick $q\in(L,1)$. Since $\dfrac{u_{n+1}}{u_n}\to L$, for $\varepsilon = q - L$, there is $N$ such that 
-$$ \dfrac{u_{n+1}}{u_n}\to L + \varepsilon = q, \, \, \forall n\ge N. $$
+$$ \dfrac{u_{n+1}}{u_n}\leq L + \varepsilon = q, \, \, \forall n\ge N. $$
 Hence 
 $$ u_{n+1} \le qu_n, \, \, \forall n\ge N. $$ 
-By induction, we get  $u_n\le u_N q^{n-N}\to0$.
+By induction, we get  $u_n\le u_N q^{n-N}\to0$ as $n \to +\infty$.
 
 **2.**
 - For $u_n=\frac{n^k}{a^n}$: $\frac{u_{n+1}}{u_n}=\left(1+\frac1n\right)^k\frac1a\to\frac1a<1$.
