@@ -1485,13 +1485,122 @@ $$\int\frac{dx}{x^2+x+1}=\frac43\cdot\frac{\sqrt3}2\int\frac{du}{u^2+1}=\frac2{\
 **Definite integral.**
 $$\frac2{\sqrt3}\left(\arctan\sqrt3-\arctan\frac1{\sqrt3}\right)=\frac2{\sqrt3}\left(\frac\pi3-\frac\pi6\right)=\frac\pi{3\sqrt3}\approx0.6046.$$
 
-**Check.** The integrand decreases from $1$ to $\frac13$, so the integral lies in $[\frac13,1]$ ✓.
+@@@ improper-integral-logistic.md
+---
+title: An improper integral with exponentials
+category: calculus/single-variable/integration/improper-integrals
+level: l1
+difficulty: 1
+order: 1
+tags: improper integral, exponential, partial fraction
+date: 2026-11-06
+---
+
+## Statement
+
+Compute
+$$\int_0^{+\infty}\frac{dx}{(1+e^x)(1+e^{-x})}.$$
+
+## Hint
+
+Simplify the integrand by multiplying numerator and denominator by $e^x$, then find an antiderivative of the form $\frac{-1}{1+e^x}$.
+
+## Solution
+
+**Simplification.** For every $x\in\mathbb{R}$,
+$$\frac{1}{(1+e^x)(1+e^{-x})}=\frac{e^x}{(1+e^x)(e^x+1)}=\frac{e^x}{(1+e^x)^2}.$$
+Indeed $1+e^{-x}=\frac{e^x+1}{e^x}$, so $(1+e^x)(1+e^{-x})=\frac{(1+e^x)^2}{e^x}$.
+
+**Antiderivative on $[0,a]$.** For $a>0$,
+$$\int_0^a\frac{e^x}{(1+e^x)^2}\,dx=\left[-\frac{1}{1+e^x}\right]_0^a=-\frac{1}{1+e^a}+\frac{1}{1+e^0}=\frac{1}{2}-\frac{1}{1+e^a}.$$
+
+
+**Improper integral.** The integrand is continuous and positive on $[0,+\infty[$, and
+$$\int_0^{+\infty}\frac{dx}{(1+e^x)(1+e^{-x})}=\lim_{a\to+\infty}\left(\frac12-\frac{1}{1+e^a}\right) = \frac12.$$
+
+@@@ improper-integral-log-over-square.md
+---
+title: An improper integral of $\ln x/x^2$ by parts
+category: calculus/single-variable/integration/improper-integrals
+level: l1
+difficulty: 3
+order: 1
+tags: improper integral, integration by parts, logarithm
+date: 2026-11-06
+---
+
+## Statement
+
+Compute
+$$\int_1^{+\infty}\frac{\ln x}{x^2}\,dx.$$
+
+## Hint
+
+Integrate by parts on $[1,a]$ with $u=\ln x$, $dv=\frac{dx}{x^2}$; then take the limit $a\to+\infty$ and use the growth comparison $\frac{\ln a}{a}\to0$.
+
+## Solution
+
+**Integration by parts on $[1,a]$.** For $a>1$, take $u(x)=\ln x$ and $v'(x)=\frac{1}{x^2}$, so $u'(x)=\frac1x$ and $v(x)=-\frac1x$. Then
+$$\int_1^a\frac{\ln x}{x^2}\,dx=\left[-\frac{\ln x}{x}\right]_1^a+\int_1^a\frac{dx}{x^2}.$$
+
+**Evaluate.**
+$$\left[-\frac{\ln x}{x}\right]_1^a=-\frac{\ln a}{a}+0=-\frac{\ln a}{a},\qquad \int_1^a\frac{dx}{x^2}=\left[-\frac1x\right]_1^a=-\frac1a+1.$$
+
+**Limit as $a\to+\infty$.** Since $\frac{\ln a}{a}\to0$ and $\frac1a\to0$,
+$$\int_1^{+\infty}\frac{\ln x}{x^2}\,dx=\lim_{a\to+\infty}\left(-\frac{\ln a}{a}-\frac1a+1\right)=1.$$
+
+@@@ improper-integral-log-over-oneplusx-squared.md
+---
+title: A convergent improper integral of $\ln x/(1+x)^2$
+category: calculus/single-variable/integration/improper-integrals
+level: l1
+difficulty: 3
+order: 1 
+tags: improper integral, integration by parts, logarithm
+date: 2026-11-06
+---
+
+## Statement
+
+Compute
+$$I=\int_0^1\frac{\ln x}{(1+x)^2}\,dx.$$
+
+## Hint
+
+The integrand has an integrable singularity at $0$: $\ln x/(1+x)^2\sim\ln x$, and $\int_0^1\ln x\,dx$ converges. Integrate by parts on $[X,1]$ with $u=\ln x$, $dv=\frac{dx}{(1+x)^2}$, then let $X\to0^+$ using $X\ln X\to0$.
+
+**Warning.** One must take $X>0$ and pass to the limit; do **not** write $[-\ln x/(1+x)]_0^1$ directly, since $\ln x$ is not defined at $0$.
+
+## Solution
+
+**Integration by parts on $[X,1]$.** For $0<X<1$, set $u(x)=\ln x$ and $v'(x)=\frac{1}{(1+x)^2}$, so $u'(x)=\frac1x$ and $v(x)=-\frac{1}{1+x}$. Then
+$$I(X):=\int_X^1\frac{\ln x}{(1+x)^2}\,dx=\left[-\frac{\ln x}{1+x}\right]_X^1+\int_X^1\frac{dx}{x(1+x)}.$$
+
+**First term.**
+$$\left[-\frac{\ln x}{1+x}\right]_X^1=-\frac{\ln 1}{2}-\left(-\frac{\ln X}{1+X}\right)=\frac{\ln X}{1+X}.$$
+
+**Second term.** Partial fractions: $\frac{1}{x(1+x)}=\frac1x-\frac1{1+x}$. So
+$$\int_X^1\frac{dx}{x(1+x)}=\bigl[\ln x-\ln(1+x)\bigr]_X^1=-\ln 2-\bigl(\ln X-\ln(1+X)\bigr).$$
+
+**Combine.**
+$$I(X)=\frac{\ln X}{1+X}-\ln X+\ln(1+X)-\ln 2=-\frac{X\ln X}{1+X}+\ln(1+X)-\ln 2.$$
+(The simplification uses $\frac{1}{1+X}-1=-\frac{X}{1+X}$.)
+
+**Limit as $X\to0^+$.** Since $X\ln X\to0$ and $\ln(1+X)\to0$, we get
+$$I=\lim_{X\to0^+}I(X)=0+0-\ln 2=-\ln 2.$$
+
+
+**Remark.** The naive computation
+$$\int_0^1\frac{\ln x}{(1+x)^2}\,dx\overset{?}{=}\left[-\frac{\ln x}{1+x}\right]_0^1+\int_0^1\frac{dx}{x(1+x)}$$
+is meaningless because $\ln x$ is not defined at $0$ and $\int_0^1\frac{dx}{x}$ diverges. The correct procedure is to integrate over $[X,1]$ with $X>0$ and let $X\to0^+$.
+
 @@@ the-improper-integral-of-one-over-one-plus-x-squared.md
 ---
 title: An improper integral of a rational function
 category: calculus/single-variable/integration/improper-integrals
 level: m1
 difficulty: 2
+order: 1
 tags: improper integrals, arctangent, convergence
 date: 2026-11-02
 ---
@@ -1519,7 +1628,8 @@ $$\int_0^{+\infty}\frac{dx}{1+x^2}=\frac\pi2.$$
 title: When do integrals of powers converge?
 category: calculus/single-variable/integration/improper-integrals
 level: l1
-difficulty: 2
+difficulty: 1
+order: 1
 tags: improper integrals, p-test, Riemann integrals
 date: 2026-11-02
 ---
@@ -1557,7 +1667,8 @@ So $\int_0^1x^{-p}dx$ converges **iff $p<1$**.
 title: An integral whose integrand blows up
 category: calculus/single-variable/integration/improper-integrals
 level: l1
-difficulty: 2
+difficulty: 1
+order: 1
 tags: improper integrals, logarithm, limits
 date: 2026-11-02
 ---
@@ -1621,6 +1732,7 @@ title: Proving convergence by comparison
 category: calculus/single-variable/integration/improper-integrals
 level: l1
 difficulty: 3
+order: 1
 tags: improper integrals, comparison test, divergence
 date: 2026-11-02
 ---
@@ -1703,4 +1815,4 @@ As $R\to+\infty$, $\frac{\cos R}R\to0$, and $\int_1^\infty\frac{|\cos x|}{x^2}dx
 $$\int_{k\pi}^{(k+1)\pi}\frac{|\sin x|}x\,dx\ge\frac2{(k+1)\pi}.$$
 Summing over $k=0,\dots,N-1$ gives at least $\frac2\pi\sum_{k=1}^N\frac1k=\frac2\pi H_N\to+\infty$ (harmonic series). So the absolute integral diverges.
 
-**Remark.** The integral converges only thanks to cancellations between positive and negative lobes. Its exact value is $\frac\pi2$ (the Dirichlet integral), which can be computed with differentiation under the integral sign or complex analysis.
+**Remark.** The integral converges only thanks to cancellations between positive and negative lobes. Its exact value is $\frac\pi2$ (the Dirichlet integral).
