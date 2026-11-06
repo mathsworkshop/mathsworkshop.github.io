@@ -256,34 +256,7 @@ Use sequential compactness; continuous images of convergent sequences converge.
 
 ## Solution
 
-**Image of compact.** Let $K$ compact and $f$ continuous. Fix a sequence $y_n$ in $f(K)$. There is $x_n \in K$ such that $y_n = (f(x_n))$. By compacity of $K$, we can extract a subsequence $x_{n_k} \subset (x_n)$ such that  $x_{n_k} \to x\in K$. Since $f$ is continuous, we have $f(x_{n_k})\to f(x)\in f(K)$. Any sequence of $f(K)$ has a converging subsequence, hence $f(K)$ is compact.
-
-
-@@@ continuity-heine-cantor.md
----
-title: Heine–Cantor theorem
-category: calculus/multivariable/continuity
-level: m1
-difficulty: 4
-tags: uniform continuity, compact, Heine
-date: 2026-11-03
----
-
-## Statement
-
-State and prove that a continuous function on a compact set is uniformly continuous.
-
-## Hint
-
-Argue by contradiction: assume $\exists\varepsilon>0$ such that $\forall\delta>0$ there are $x,y$ with $\|x-y\|<\delta$ and $\|f(x)-f(y)\|\ge\varepsilon$.
-
-## Solution
-
-**Contradiction.** If $f$ is not uniformly continuous, there is $\varepsilon>0$ and sequences $x_n,y_n$ in $K$ with $\|x_n-y_n\|\to0$ but $\|f(x_n)-f(y_n)\|\ge\varepsilon$.
-
-**Subsequence.** By compactness, extract $x_{n_k}\to x\in K$. Then $y_{n_k}\to x$ too. Continuity gives $f(x_{n_k})\to f(x)$ and $f(y_{n_k})\to f(x)$, contradicting the gap.
-
-**Conclusion.** $f$ is uniformly continuous on $K$.
+**Image of compact.** Let $K$ compact and $f$ continuous. Fix a sequence $y_n$ in $f(K)$. There is $x_n \in K$ such that $y_n = (f(x_n))$. By compacity of $K$, we can extract a subsequence $(x_{n_k}) \subset (x_n)$ such that  $x_{n_k} \to x\in K$. Since $f$ is continuous, we have $y_{n_k} = f(x_{n_k})\to f(x)\in f(K)$. Any sequence of $f(K)$ has a converging subsequence, hence $f(K)$ is compact.
 
 @@@ continuity-norm-continuous.md
 ---
