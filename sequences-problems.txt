@@ -310,7 +310,7 @@ $$P_n=\prod_{k=2}^n\frac{k-1}k\cdot\prod_{k=2}^n\frac{k+1}k.$$
 **Result.**
 $$P_n=\frac{n+1}{2n}\longrightarrow\frac12.$$
 
-**Check.** For $n=10$: $\frac{11}{20}=0.55$, matching the direct product.
+
 @@@ the-epsilon-n-definition-of-a-limit.md
 ---
 title: The ε–N definition of a limit
