@@ -118,7 +118,7 @@ date: 2026-11-03
 ## Statement
 
 Show that the functions 
-$$ f(x,y)=\dfrac{x}{x+y} \, \text{and} \, g(x,y)=\dfrac{xy}{x+y} $$ 
+$$ f(x,y)=\dfrac{x}{x+y} \, \, \text{and} \, \, g(x,y)=\dfrac{xy}{x+y} $$ 
 with $f(0,0)= g(0,0)=0$ are not continuous at the origin.
 
 ## Hint
