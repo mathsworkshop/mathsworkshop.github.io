@@ -566,9 +566,10 @@ $$\left(1+\frac1n\right)^{n/(n+1)}\le1+\frac1{n+1}\ \Longrightarrow\ a_n\le a_{n
 $$\left(\frac n{n+1}\right)^{(n+1)/(n+2)}\le\frac{n+1}{n+2}\ \Longrightarrow\ \left(\frac{n}{n+1}\right)^{n+1}\le\left(\frac{n+1}{n+2}\right)^{n+2}.$$
 Taking inverses, $\left(\frac{n+1}n\right)^{n+1}\ge\left(\frac{n+2}{n+1}\right)^{n+2}$, i.e. $b_n\ge b_{n+1}$.
 
-**2.** $a_n\le b_n$ for all $n$, and $b_n-a_n=\frac1n a_n\le\frac{b_1}n\to0$ (since $a_n\le b_n\le b_1=4$). So $a_n$ increasing and bounded above by $b_1$ converges, $b_n$ decreasing and bounded below by $a_1$ converges, and they have the same limit, which is called $e$.
+**2.** We have $a_n\le b_n$ for all $n$, and 
+$$ b_n-a_n=\frac1n a_n\le\frac{b_1}n\to0 $$ 
+since $a_n\le b_n\le b_1$. Therefore $a_n$ is increasing and bounded above by $b_1$, so it converges. Also $b_n$ is decreasing and bounded below by $a_1$, so it converges. they have the same limit, which is called $e$.
 
-**Remark.** This gives the bounds $2\le a_n<e<b_n\le4$, and in fact $2.59<e<2.86$ already for $n=10$.
 @@@ the-cauchy-criterion.md
 ---
 title: The Cauchy criterion
