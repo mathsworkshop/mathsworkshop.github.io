@@ -1485,6 +1485,51 @@ $$\int\frac{dx}{x^2+x+1}=\frac43\cdot\frac{\sqrt3}2\int\frac{du}{u^2+1}=\frac2{\
 **Definite integral.**
 $$\frac2{\sqrt3}\left(\arctan\sqrt3-\arctan\frac1{\sqrt3}\right)=\frac2{\sqrt3}\left(\frac\pi3-\frac\pi6\right)=\frac\pi{3\sqrt3}\approx0.6046.$$
 
+@@@ improper-integral-cos-power.md
+---
+title: When the equivalence rule for improper integrals fails
+category: calculus/single-variable/integration/improper-integrals
+level: l1
+difficulty: 4
+order: 2
+tags: improper integral, integration by parts, absolute convergence, conditional convergence
+date: 2026-11-06
+---
+
+## Statement
+
+1. (a) For $\alpha>0$, study the convergence of $\displaystyle\int_1^{+\infty}\frac{\cos t}{t^\alpha}\,dt$.
+   (b) Study the convergence of $\displaystyle\int_1^{+\infty}\frac{\cos^2 t}{t}\,dt$.
+
+2. (a) Show that $\displaystyle\int_1^{+\infty}\frac{|\cos t|}{t}\,dt$ diverges, so $\displaystyle\int_1^{+\infty}\frac{\cos t}{t}\,dt$ is not absolutely convergent.
+   (b) Let $f(t)=\dfrac{\cos t}{\sqrt t}$ and $g(t)=\dfrac{\cos t}{\sqrt t}+\dfrac{\cos^2 t}{t}$. Show that $f\sim g$ at $+\infty$ but that $\int f$ converges while $\int g$ diverges.
+   (c) Explain why the equivalence rule for improper integrals fails here.
+
+## Hint
+
+For 1(a), integrate by parts with $u=1/t^\alpha$, $dv=\cos t\,dt$. For 1(b), linearize $\cos^2 t=\frac{1+\cos 2t}{2}$. For 2(a), use $|\cos t|\ge\cos^2 t$. For 2(c), recall that the equivalence rule requires functions of constant sign.
+
+## Solution
+
+**(a) Convergence of $\int_1^{+\infty}\frac{\cos t}{t^\alpha}\,dt$ for $\alpha>0$.** Integrate by parts on $[1,X]$:
+$$\int_1^X\frac{\cos t}{t^\alpha}\,dt=\left[\frac{\sin t}{t^\alpha}\right]_1^X+\alpha\int_1^X\frac{\sin t}{t^{\alpha+1}}\,dt=\frac{\sin X}{X^\alpha}-\sin 1+\alpha\int_1^X\frac{\sin t}{t^{\alpha+1}}\,dt.$$
+Since $\left|\frac{\sin t}{t^{\alpha+1}}\right|\le\frac{1}{t^{\alpha+1}}$ and $\alpha+1>1$, the integral on the right converges absolutely. The boundary term $\frac{\sin X}{X^\alpha}\to0$. Hence $\int_1^{+\infty}\frac{\cos t}{t^\alpha}\,dt$ converges.
+
+**(b) Divergence of $\int_1^{+\infty}\frac{\cos^2 t}{t}\,dt$.** Linearization:
+$$\frac{\cos^2 t}{t}=\frac{1}{2t}+\frac{\cos 2t}{2t}.$$
+By (a) with $\alpha=1$, $\int_1^{+\infty}\frac{\cos 2t}{2t}\,dt$ converges. But $\int_1^{+\infty}\frac{1}{2t}\,dt$ diverges (Riemann with $\alpha=1$). A sum of a convergent and a divergent integral diverges, so $\int_1^{+\infty}\frac{\cos^2 t}{t}\,dt$ diverges.
+
+**(2a) Non-absolute convergence.** Since $|\cos t|\ge\cos^2 t$,
+$$\frac{|\cos t|}{t}\ge\frac{\cos^2 t}{t}.$$
+By comparison with (1b), $\int_1^{+\infty}\frac{|\cos t|}{t}\,dt$ diverges. Hence $\int_1^{+\infty}\frac{\cos t}{t}\,dt$ converges (by (a) with $\alpha=1$) but not absolutely: it is conditionally convergent.
+
+**(2b) An equivalence that misleads.** Let $f(t)=\frac{\cos t}{\sqrt t}$ and $g(t)=f(t)+\frac{\cos^2 t}{t}$. Then
+$$\frac{g(t)}{f(t)}=1+\frac{\cos t}{\sqrt t}\xrightarrow[t\to+\infty]{}1,$$
+so $f\sim g$ at $+\infty$. However, by (a) with $\alpha=1/2$, $\int_1^{+\infty}f$ converges. But $\int_1^{+\infty}g=\int_1^{+\infty}f+\int_1^{+\infty}\frac{\cos^2 t}{t}$ diverges (sum of a convergent and a divergent integral by (1b)). So the equivalence of integrands does **not** preserve convergence.
+
+**(2c) Why the equivalence rule fails.** The rule "$f\sim g\Rightarrow\int f$ and $\int g$ have the same nature" requires that $f$ and $g$ have a **constant sign** near $+\infty$. Here, the oscillations of $\cos t$ change sign infinitely often, so the comparison fails: even though $f(t)/g(t)\to1$, the small "correction" $\frac{\cos^2 t}{t}$ accumulates a divergent contribution, since $\cos^2 t\ge0$ is not sign-changing.
+
+
 @@@ improper-integral-logistic.md
 ---
 title: An improper integral with exponentials
