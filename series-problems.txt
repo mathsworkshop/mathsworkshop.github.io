@@ -1,3 +1,290 @@
+@@@ series-four-nature-studies.md
+---
+title: Four series involving logarithms
+category: calculus/single-variable/series
+level: l1
+difficulty: 4
+tags: root test, comparison, equivalent, logarithm
+date: 2026-11-06
+---
+
+## Statement
+
+Study the nature of the following series:
+
+1. $\displaystyle\sum_{n\ge2}\frac{1}{(\ln n)^n}$;
+2. $\displaystyle\sum_{n\ge2}\frac{H_n}{\ln(n!)}$ where $H_n=1+\frac12+\cdots+\frac1n$;
+3. $\displaystyle\sum_{n\ge1}\frac1n\ln(n)\ln\!\left(1+\frac1n\right)$;
+4. $\displaystyle\sum_{n\ge2}\frac{1}{(\ln n)^{\ln n}}$.
+
+## Hint
+
+1. Cauchy's root test. 2. Compare $\ln(n!)$ with $n\ln n$ and $H_n$ with $\ln n$. 3. Use $\ln(1+1/n)\sim 1/n$, then compare $\ln n/n^2$ with $1/n^{3/2}$. 4. Write $(\ln n)^{\ln n}=n^{\ln\ln n}$ and compare with $1/n^2$.
+
+## Solution
+
+**(1) $\sum\frac{1}{(\ln n)^n}$.** By Cauchy's root test:
+$$\sqrt[n]{\frac{1}{(\ln n)^n}}=\frac{1}{\ln n}\longrightarrow0<1.$$
+The series **converges**.
+
+**(2) $\sum\frac{H_n}{\ln(n!)}$.** First compare $\ln(n!)$ with $n\ln n$: for $1\le k\le n$, $\ln k\le\ln n$, hence
+$$\ln(n!)=\sum_{k=1}^{n}\ln k\le n\ln n.$$
+Therefore
+$$\frac{H_n}{\ln(n!)}\ge\frac{H_n}{n\ln n}.$$
+Moreover $H_n\ge\ln n$ (comparison of the harmonic sum with $\int_1^n\frac{dx}{x}$), so
+$$\frac{H_n}{n\ln n}\ge\frac{\ln n}{n\ln n}=\frac1n.$$
+Since $\sum\frac1n$ diverges, by comparison the series **diverges**.
+
+**(3) $\sum\frac1n\ln(n)\ln(1+1/n)$.** Since $\ln(1+1/n)\sim\frac1n$ as $n\to\infty$, the general term satisfies
+$$u_n=\frac{\ln n}{n}\cdot\ln\!\left(1+\frac1n\right)\sim\frac{\ln n}{n^2}.$$
+Now $\frac{\ln n}{n^2}=o\!\left(\frac{1}{n^{3/2}}\right)$ (since $\ln n/\sqrt n\to0$), and $\sum n^{-3/2}$ converges (Riemann, $\alpha=3/2>1$). By comparison, the series **converges**.
+
+**(4) $\sum\frac{1}{(\ln n)^{\ln n}}$.** Rewrite
+$$\frac{1}{(\ln n)^{\ln n}}=\frac{1}{\exp(\ln n\cdot\ln\ln n)}=\frac{1}{n^{\ln\ln n}}.$$
+Since $x\mapsto\ln\ln x$ is increasing and tends to $+\infty$ on $[e,+\infty[$, there exists $N$ with $\ln\ln n\ge2$ for all $n\ge N$. For such $n$,
+$$u_n\le\frac{1}{n^2},$$
+the general term of a convergent Riemann series. By comparison, the series **converges**.
+
+@@@ series-log-1-plus-u.md
+---
+title: Equivalence between $\sum u_n$ and $\sum\ln(1+u_n)$
+category: calculus/single-variable/series
+level: l1
+difficulty: 4
+tags: equivalence, logarithm, ratio test, convergence
+date: 2026-11-06
+---
+
+## Statement
+
+Let $(u_n)_{n\ge0}$ be a sequence with $u_n\ge0$ for all $n$.
+
+1. Show that $\displaystyle\sum_{n\ge0}u_n$ converges if and only if $\displaystyle\sum_{n\ge0}\ln(1+u_n)$ converges.
+2. Study the convergence of the series with general term
+$$v_n=\ln\!\left(1+e^{-n}\frac{n!}{n^n}\right).$$
+
+## Hint
+
+For 1., use $\ln(1+u_n)\sim u_n$ as $u_n\to0$. For 2., apply 1. with $u_n=e^{-n}\frac{n!}{n^n}$, and compute the ratio $u_{n+1}/u_n$ to use d'Alembert's test.
+
+## Solution
+
+**1. Equivalence of the two series.** Both series have nonnegative terms, so we can use the equivalence test.
+
+- Suppose $\sum u_n$ converges. Then $u_n\to0$, hence $\ln(1+u_n)\sim u_n$. Since the terms are nonnegative and equivalent, $\sum\ln(1+u_n)$ converges.
+
+- Conversely, suppose $\sum\ln(1+u_n)$ converges. Then $\ln(1+u_n)\to0$, hence $u_n\to0$ (as $u_n=e^{\ln(1+u_n)}-1\to0$). Therefore $\ln(1+u_n)\sim u_n$, and by the equivalence test $\sum u_n$ converges.
+
+
+**2. Convergence of $\sum v_n$.** By 1., it suffices to study the series with nonnegative term $u_n=e^{-n}\dfrac{n!}{n^n}$. Compute the ratio:
+$$\frac{u_{n+1}}{u_n}=e^{-(n+1)}\frac{(n+1)!}{(n+1)^{n+1}}\cdot e^{n}\frac{n^n}{n!}=e^{-1}\left(\frac{n}{n+1}\right)^n=e^{-1}\left(1+\frac1n\right)^{-n}.$$
+Since $\left(1+\frac1n\right)^n\to e$, we get
+$$\frac{u_{n+1}}{u_n}\longrightarrow e^{-1}\cdot e^{-1}=e^{-2}<1.$$
+By d'Alembert's ratio test, $\sum u_n$ converges. By 1., $\sum v_n$ **converges**.
+
+@@@ series-three-sums.md
+---
+title: Three convergent series with explicit sums
+category: calculus/single-variable/series
+level: l1
+difficulty: 3
+tags: geometric series, telescoping, arctangent identity, d'Alembert
+date: 2026-11-06
+---
+
+## Statement
+
+Show that the following numerical series converge and compute their sums:
+
+1. $\displaystyle\sum_{n\ge1}\frac{2^{n+1}}{3^n}$;
+2. $\displaystyle\sum_{n\ge1}\ln\!\left(1-\frac{2}{n(n+1)}\right)$;
+3. $\displaystyle\sum_{n\ge1}\arctan\!\left(\frac{1}{n^2+n+1}\right)$.
+
+## Hint
+
+1. Recognize a geometric series with ratio $\frac23$, and apply d'Alembert's ratio test. 2. Expand $\ln\frac{(n-1)(n+2)}{n(n+1)}$ and telescope. 3. Use $\arctan x+\arctan y=\arctan\frac{x+y}{1-xy}$ with $x=-n$, $y=n+1$.
+
+## Solution
+
+**(1) Geometric series.** For $n\ge1$,
+$$\frac{u_{n+1}}{u_n}=\frac{2^{n+2}}{3^{n+1}}\cdot\frac{3^n}{2^{n+1}}=\frac{2}{3}<1,$$
+so by d'Alembert's ratio test the series **converges**. We recognize
+$$\sum_{n\ge1}\frac{2^{n+1}}{3^n}=2\sum_{n\ge1}\left(\frac{2}{3}\right)^n,$$
+a geometric series with ratio $\frac23$. Its partial sums are
+$$S_n=2\sum_{k=1}^n\left(\frac{2}{3}\right)^k=2\cdot\frac{2}{3}\cdot\frac{1-(2/3)^n}{1-2/3}.$$
+Taking $n\to+\infty$:
+$$S=2\cdot\frac{2/3}{1/3}=2\cdot 2=4.$$
+
+**(2) Logarithmic telescoping series.** For $n\ge1$,
+$$1-\frac{2}{n(n+1)}=\frac{(n-1)(n+2)}{n(n+1)},$$
+hence
+$$\ln\!\left(1-\frac{2}{n(n+1)}\right)=\ln(n-1)+\ln(n+2)-\ln n-\ln(n+1).$$
+Regroup the terms as
+$$\ln(n+2)-\ln(n+1)-\bigl(\ln n-\ln(n-1)\bigr).$$
+The partial sum of order $n$ telescopes:
+$$S_n=\ln(n+2)-\ln n-\ln 3=\ln\!\left(1+\frac2n\right)-\ln 3.$$
+Since $\ln(1+2/n)\to0$, we get $S_n\to-\ln 3$. The series **converges** with sum $-\ln 3$.
+
+**(3) Arctangent telescoping series.** Using $\arctan x+\arctan y=\arctan\frac{x+y}{1-xy}$ with $x=-n$ and $y=n+1$:
+$$\arctan(-n)+\arctan(n+1)=\arctan\frac{1}{1+n(n+1)}=\arctan\!\left(\frac{1}{n^2+n+1}\right).$$
+Since $\arctan(-n)=-\arctan n$,
+$$\arctan\!\left(\frac{1}{n^2+n+1}\right)=\arctan(n+1)-\arctan n.$$
+The partial sum telescopes:
+$$S_n=\arctan(n+1)-\arctan(1)=\arctan(n+1)-\frac{\pi}{4}.$$
+As $n\to+\infty$, $\arctan(n+1)\to\frac{\pi}{2}$, so $S_n\to\frac{\pi}{2}-\frac{\pi}{4}=\frac{\pi}{4}$. The series **converges** with sum $\frac{\pi}{4}$.
+
+@@@ series-three-telescoping-solutions.md
+---
+title: Three series with computed sums
+category: calculus/single-variable/series
+level: l1
+difficulty: 3
+tags: geometric series, telescoping, arctan identity
+date: 2026-11-06
+---
+
+## Statement
+
+Study the nature and, in case of convergence, compute the sum of the following series:
+
+1. $\displaystyle\sum_{n\ge1}\frac{2^{n+1}}{3^n}$;
+2. $\displaystyle\sum_{n\ge1}\ln\!\left(1-\frac{2}{n(n+1)}\right)$;
+3. $\displaystyle\sum_{n\ge1}\arctan\!\left(\frac{1}{n^2+n+1}\right)$.
+
+## Hint
+
+For 1., factor as a geometric series. For 2., expand $\ln\frac{(n-1)(n+2)}{n(n+1)}$ and telescope. For 3., use $\arctan a+\arctan b=\arctan\frac{a+b}{1-ab}$ with $x=-n$, $y=n+1$.
+
+## Solution
+
+**(1)** For $n\ge1$,
+$$\frac{u_{n+1}}{u_n}=\frac{2^{n+2}}{3^{n+1}}\cdot\frac{3^n}{2^{n+1}}=\frac{2}{3}<1,$$
+so by d'Alembert's ratio test the series **converges**. Moreover,
+$$\sum_{n\ge1}\frac{2^{n+1}}{3^n}=2\sum_{n\ge1}\left(\frac{2}{3}\right)^n=2\cdot\frac{2/3}{1-2/3}=2\cdot2=4.$$
+Hence the series converges with sum $4$.
+
+**(2)** For $n\ge1$,
+$$1-\frac{2}{n(n+1)}=\frac{(n-1)(n+2)}{n(n+1)},$$
+so
+$$\ln\!\left(1-\frac{2}{n(n+1)}\right)=\ln(n-1)+\ln(n+2)-\ln n-\ln(n+1).$$
+Regroup as
+$$\ln(n+2)-\ln(n+1)-\bigl(\ln n-\ln(n-1)\bigr).$$
+The partial sum telescopes:
+$$S_n=\ln(n+2)-\ln n-\ln 3.$$
+As $n\to+\infty$, $\ln(n+2)-\ln n=\ln\!\left(1+\frac2n\right)\to0$, so $S_n\to-\ln3$.
+The series **converges** with sum $-\ln 3$.
+
+**(3)** Using $\arctan a+\arctan b=\arctan\frac{a+b}{1-ab}$ with $x=-n$ and $y=n+1$:
+$$\arctan(-n)+\arctan(n+1)=\arctan\frac{1}{1+n(n+1)}=\arctan\!\left(\frac{1}{n^2+n+1}\right).$$
+Since $\arctan(-n)=-\arctan(n)$,
+$$\arctan\!\left(\frac{1}{n^2+n+1}\right)=\arctan(n+1)-\arctan(n).$$
+The partial sum telescopes:
+$$S_n=\arctan(n+1)-\arctan(1)=\arctan(n+1)-\frac{\pi}{4}.$$
+As $n\to+\infty$, $\arctan(n+1)\to\pi/2$. Hence $S_n\to\frac{\pi}{4}$: the series **converges** with sum $\pi/4$.
+
+**Conclusion.** (1) converges, sum $4$; (2) converges, sum $-\ln3$; (3) converges, sum $\pi/4$.
+
+@@@ series-six-nature-studies.md
+---
+title: Six numeric series: convergence study
+category: calculus/single-variable/series
+level: l1
+difficulty: 4
+tags: ratio test, root test, comparison, absolute convergence
+date: 2026-11-06
+---
+
+## Statement
+
+Study the nature of the following numeric series:
+
+1. $\displaystyle\sum_{n\ge1}\frac{n!}{n^n}$;
+2. $\displaystyle\sum_{n\ge1}\frac{n!}{a^n}$ with $a>0$;
+3. $\displaystyle\sum_{n\ge1}\frac{2n}{n+2^n}$;
+4. $\displaystyle\sum_{n\ge2}\frac{1}{n\ln n\,(\ln\ln n)^\beta}$, $\beta\in\mathbb{R}$;
+5. $\displaystyle\sum_{n\ge1}\frac{n^{\ln n}}{(\ln n)^n}$;
+6. $\displaystyle\sum_{n\ge1}\frac{\cos^2 n}{\sqrt n}$.
+
+## Hint
+
+1. Ratio test. 2. Ratio test, discuss $a$. 3. Compare with $2^{-n}$. 4. Bertrand series with substitution. 5. Rewrite $n^{\ln n}=e^{(\ln n)^2}$ and $(\ln n)^n=e^{n\ln\ln n}$, compare to $1/n^2$. 6. Use $\cos^2 n\ge0$ and comparison with harmonic.
+
+## Solution
+
+**(1) $\sum\frac{n!}{n^n}$.** Ratio:
+$$\frac{u_{n+1}}{u_n}=\frac{(n+1)!}{(n+1)^{n+1}}\cdot\frac{n^n}{n!}=\left(\frac{n}{n+1}\right)^n=\left(1+\frac1n\right)^{-n}\to\frac1e<1.$$
+By d'Alembert, the series **converges**.
+
+**(2) $\sum\frac{n!}{a^n}$, $a>0$.** Ratio:
+$$\frac{u_{n+1}}{u_n}=\frac{(n+1)!}{a^{n+1}}\cdot\frac{a^n}{n!}=\frac{n+1}{a}\to+\infty.$$
+For every fixed $a>0$, the ratio eventually exceeds $1$, so $u_n\not\to0$: the series **diverges**.
+
+**(3) $\sum\frac{2n}{n+2^n}$.** For $n\ge1$,
+$$0\le\frac{2n}{n+2^n}\le\frac{2n}{2^n}=2n\cdot2^{-n}.$$
+The series $\sum 2n\cdot2^{-n}$ converges (ratio test: $(n+1)/2n\to1/2<1$). By comparison, the series **converges**.
+
+**(4) $\sum\frac{1}{n\ln n(\ln\ln n)^\beta}$.** Use the substitution $u=\ln\ln t$; the integral $\int\frac{dt}{t\ln t(\ln\ln t)^\beta}=\int\frac{du}{u^\beta}$ converges iff $\beta>1$. Hence the series **converges if $\beta>1$** and **diverges if $\beta\le1$**.
+
+**(5) $\sum\frac{n^{\ln n}}{(\ln n)^n}$.** Write
+$$n^{\ln n}=\exp((\ln n)^2),\qquad (\ln n)^n=\exp(n\ln\ln n),$$
+so
+$$u_n=\exp\bigl((\ln n)^2-n\ln\ln n\bigr).$$
+Since $n\ln\ln n$ dominates $(\ln n)^2$, one has $u_n=o(n^{-2})$. By comparison with $\sum n^{-2}$, the series **converges**.
+
+**(6) $\sum\frac{\cos^2 n}{\sqrt n}$.** Since $\cos^2 n\ge0$ and $\cos^2 n\ge\frac12$ along a positive density of integers (e.g. $n\equiv0\pmod{2\pi}$ approximation), one gets $\frac{\cos^2 n}{\sqrt n}\not\to0$ fast enough. More directly: $\cos^2 n=\frac{1+\cos 2n}{2}$, so
+$$\frac{\cos^2 n}{\sqrt n}=\frac{1}{2\sqrt n}+\frac{\cos 2n}{2\sqrt n}.$$
+The first term gives a divergent series ($\sum n^{-1/2}$), while the second converges by Dirichlet's test. Hence the series **diverges** (to $+\infty$).
+
+@@@ series-log-telescoping-three.md
+---
+title: Three logarithmic series
+category: calculus/single-variable/series
+level: l1
+difficulty: 3
+tags: logarithmic series, telescoping, conditional convergence
+date: 2026-11-06
+---
+
+## Statement
+
+Study the nature of the following series and, in case of convergence, compute their sum:
+$$u_n=\ln\!\left(1+\frac1n\right),\qquad v_n=\ln\!\left(1-\frac1n\right),\qquad w_n=\ln\!\left(1+\frac{(-1)^n}{n}\right).$$
+
+## Hint
+
+Use $\ln(1+x)=\ln a-\ln b$ when $1+x=a/b$, and write partial sums to observe telescoping.
+
+## Solution
+
+**1. Series $\sum u_n$.** For $n\ge1$,
+$$u_n=\ln\!\left(\frac{n+1}{n}\right)=\ln(n+1)-\ln n.$$
+The partial sum from $n=1$ to $N$ telescopes:
+$$S_N=\sum_{n=1}^{N}(\ln(n+1)-\ln n)=\ln(N+1)-\ln 1=\ln(N+1).$$
+As $N\to+\infty$, $S_N\to+\infty$: the series **diverges**.
+
+**2. Series $\sum v_n$.** The term $v_n$ is defined for $n\ge2$. For $n\ge2$,
+$$v_n=\ln\!\left(\frac{n-1}{n}\right)=\ln(n-1)-\ln n.$$
+The partial sum from $n=2$ to $N$ telescopes:
+$$T_N=\sum_{n=2}^{N}(\ln(n-1)-\ln n)=\ln 1-\ln N=-\ln N.$$
+As $N\to+\infty$, $T_N\to-\infty$: the series **diverges** (to $-\infty$).
+
+**3. Series $\sum w_n$.** The term $w_n$ is defined for $n\ge2$. Split the partial sum into blocks:
+$$w_{2p}=\ln\!\left(\frac{2p+1}{2p}\right),\qquad w_{2p+1}=\ln\!\left(\frac{2p}{2p+1}\right).$$
+Note that $w_{2p}+w_{2p+1}=0$ for every $p\ge1$, since $\frac{2p+1}{2p}\cdot\frac{2p}{2p+1}=1$.
+
+**Odd partial sums.** For $N\ge1$:
+$$Z_{2N+1}=\sum_{n=2}^{2N+1}w_n=\sum_{p=1}^{N}(w_{2p}+w_{2p+1})=0.$$
+
+**Even partial sums.** For $N\ge1$:
+$$Z_{2N}=\sum_{n=2}^{2N}w_n=\ln\!\left(\frac{3}{2}\right)+\sum_{p=2}^{N}(w_{2p-1}+w_{2p}).$$
+But for $p\ge2$, $w_{2p-1}+w_{2p}=\ln\!\left(\frac{2p-1}{2p}\right)+\ln\!\left(\frac{2p+1}{2p}\right)$ — the cancellation now leaves $\ln\frac{2N+1}{2N}$:
+$$Z_{2N}=\ln\frac{3}{2}+\ln\frac{3}{4}+\ln\frac{5}{4}+\cdots+\ln\frac{2N+1}{2N}=\ln\frac{2N+1}{2N}.$$
+Indeed the product telescopes:
+$$\frac{3}{2}\cdot\frac{3}{4}\cdot\frac{5}{4}\cdot\frac{5}{6}\cdots\frac{2N+1}{2N}=\frac{2N+1}{2N}.$$
+As $N\to+\infty$, $Z_{2N}=\ln\!\left(1+\frac{1}{2N}\right)\to0$.
+
+**Conclusion.** Both $Z_{2N}$ and $Z_{2N+1}$ tend to $0$, so the sequence of partial sums $(Z_N)$ converges to $0$. Hence the series $\sum w_n$ **converges** with sum $0$.
+
 @@@ geometric-series-and-repeating-decimals.md
 ---
 title: Geometric series and repeating decimals
