@@ -190,7 +190,7 @@ $$u_n=2^{n/2}\sin\frac{n\pi}4.$$
 ---
 title: Binet's formula for the Fibonacci numbers
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 3
 tags: Fibonacci, golden ratio, linear recurrence, limits
 date: 2026-11-02
@@ -214,9 +214,9 @@ $$F_n=\frac{\varphi^n-\psi^n}{\sqrt5}.$$
 
 **2.** Since $|\psi|<1<\varphi$, we have $\left(\frac\psi\varphi\right)^n\to0$ and
 Dividing numerator and denominator by $\varphi^n$:
-$$\frac{F_{n+1}}{F_n}=\frac{\varphi-\psi\left(\frac\psi\varphi\right)^n}{1-\left(\frac\psi\varphi\right)^n}\longrightarrow\varphi.$$
+$$\frac{F_{n+1}}{F_n} = \frac{\varphi^{n+1}-\psi^{n+1}}{\varphi^n-\psi^n}=\frac{\varphi-\psi\left(\frac\psi\varphi\right)^n}{1-\left(\frac\psi\varphi\right)^n}\longrightarrow\varphi.$$
 
-**Remark.** Since $\psi^n\to0$, $F_n$ is the integer closest to $\frac{\varphi^n}{\sqrt5}$: for instance $\frac{\varphi^{10}}{\sqrt5}\approx55.004$ and $F_{10}=55$.
+
 @@@ sum-of-squares-and-induction.md
 ---
 title: The sum of the first n squares
