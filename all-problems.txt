@@ -1,3 +1,341 @@
+@@@ continuity-summary.md
+---
+title: Summary of continuity
+category: calculus/multivariable/continuity
+level: l2
+difficulty: 2
+order: 1
+tags: summary, continuity
+date: 2026-11-03
+---
+
+## Statement
+
+Summarize the key points of continuity for several variables.
+
+## Hint
+
+Review methods and theorems.
+
+## Solution
+
+**Basic.** Polynomials and quotients of continuous functions (where denominator nonzero) are continuous.
+
+**Continuity at a point.** Show $f(x,y)\to f(x_0,y_0)$; use bounding, polar coordinates, or the squeeze theorem.
+
+**Discontinuity.** Exhibit two paths with different limits, or a path where the limit diverges or doesn't exist.
+
+**Notable counterexamples.** $f(x,y)=\frac{x}{x+y}$ at origin, $f(x,y) = \sin(1/(x^2+y^2))$ at origin.
+
+
+**Key theorems.** Continuous image of compact is compact; continuous on compact is uniformly continuous (Heine–Cantor); norm and projections are continuous.
+
+@@@ continuity-simple-poly.md
+---
+title: Continuity of a polynomial
+category: calculus/multivariable/continuity
+level: lycee
+difficulty: 1
+tags: continuity, polynomial, continuity everywhere
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=x^2+3xy-y^2+2x-1$ is continuous on $\mathbb{R}^2$.
+
+## Hint
+
+Polynomials in several variables are continuous (sums and products of continuous coordinate projections).
+
+## Solution
+
+**Continuity of polynomials.** The functions $(x,y)\mapsto x$ and $(x,y)\mapsto y$ are continuous, and sums/products of continuous functions are continuous.
+
+**Conclusion.** $f$ is continuous on $\mathbb{R}^2$ by the composition rules.
+
+@@@ continuity-rational-off-singular.md
+---
+title: Continuity of a rational function
+category: calculus/multivariable/continuity
+level: lycee
+difficulty: 1
+order: 2
+tags: rational function, domain, continuity
+date: 2026-11-03
+---
+
+## Statement
+
+Where is $f(x,y)=\dfrac{x+2y}{x^2+y^2+1}$ continuous?
+
+## Hint
+
+A quotient of continuous functions is continuous wherever the denominator is nonzero.
+
+## Solution
+
+**Denominator.** $x^2+y^2+1\neq0$ for every $(x,y) \in \mathbb{R}^2$.
+
+**Continuity.** $f$ is continuous on $\mathbb{R}^2$.
+
+@@@ continuity-polar-trick.md
+---
+title: Continuity via polar coordinates
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: polar, continuity, bound
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=\dfrac{x^3+y^3}{x^2+y^2}$ (with $f(0,0)=0$) is continuous at $(0,0)$.
+
+## Hint
+
+Use Polar coordinates. 
+
+## Solution
+
+**Polar coordinates.** For $(x,y) = (r\cos \theta, r \sin \theta)$, 
+$$ |f(x,y)|  =r|\cos^3\theta+\sin^3\theta| \leq 2r = 2 \sqrt{x^2 + y^2} \rightarrow 0 $$
+as $(x,y) \rightarrow (0,0)$. 
+
+**Conclusion.** $\lim_{(x,y)\to(0,0)}f=0=f(0,0)$: $f$ is continuous at the origin.
+
+@@@ continuity-discontinuous-two-paths.md
+---
+title: Discontinuity via two paths
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: discontinuity, paths, limits
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the functions 
+$$ f(x,y)=\dfrac{x}{x+y} \, \text{and} \, g(x,y)=\dfrac{xy}{x+y} $$ 
+with $f(0,0)= g(0,0)=0$ are not continuous at the origin.
+
+## Hint
+
+Check the paths $y=ax$ and $y = ax + b x^2$.
+
+## Solution
+
+**Continuity of $f$.** On $y=ax$, $f(x,ax)=\frac{1}{1+a}$. As $x\to0$, this tends to $\frac{1}{1+a}$ for each $a \neq -1$. Hence $f$ is not continuous at the origin. 
+\par
+**Continuity of $g$.** On $y=ax$, $g(x,ax)=\frac{ax}{1+a} \rightarrow 0$ as $x\to0$ for any $a \neq -1$ (this does not mean $g$ is continuous!). Along $y=ax+bx^2$ with $a=-1$, $b\neq0$: 
+$$ g(x,-x+bx^2)=\frac{x(-x+bx^2)}{bx^2}=\frac{-x+bx^2}{bx}=\frac{-1}{b}+x \rightarrow \frac{-1}{b} $$ 
+as $x \rightarrow 0$. Limits differ along different paths; $g$ is not continuous at the origin.
+
+**Remark.** The example of $g$ shows that checking limits along all straight lines through the origin is necessary but *not* sufficient for the existence of a two-variable limit.
+
+@@@ continuity-radial-dependence.md
+---
+title: A function that is not continuous despite radial limits
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 4
+tags: continuity, radial limit, counterexample
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=\dfrac{x^2y}{x^4+y^2}$ (with $f(0,0)=0$) is not continuous at $(0,0)$, even though $f(x,ax)\to0$ for every $a$.
+
+## Hint
+
+Test the path $y=x^2$.
+
+## Solution
+
+**Radial limits.** $f(x,ax)=\frac{ax^3}{x^4+a^2x^2}=\frac{ax}{x^2+a^2}\to0$ for fixed $a$.
+
+**Parabolic path.** $f(x,x^2)=\frac{x^4}{2x^4}=\frac12\not\to0$.
+
+**Conclusion.** $f$ is not continuous at the origin despite radial limits being zero.
+
+@@@ continuity-piecewise-xy.md
+---
+title: Continuity of a piecewise function
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: piecewise, continuity, xy
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=\frac{xy}{\sqrt{x^2+y^2}}$ (with $f(0,0)=0$) is continuous at $(0,0)$.
+
+## Hint
+
+$|xy|\le\frac12(x^2+y^2)$.
+
+## Solution
+
+**Bound.** $|f(x,y)| = \frac{|xy|}{\sqrt{x^2+y^2}} \le\frac12\sqrt{x^2+y^2}\to0$.
+
+@@@ continuity-discontinuous-bounded.md
+---
+title: A discontinuous function with bounded values
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: discontinuity, bounded, counterexample
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the function
+$$f(x,y)=\sin\!\left(\frac{1}{x^2+y^2}\right) \, \text{for} \, (x,y)\neq(0,0), \, \, f(0,0)=0 $$
+is not continuous at the origin.
+
+## Hint
+
+Test the path $(x,0)$ and analyze the oscillation.
+
+## Solution
+
+**Along $(x,0)$.** $f(x,0)=\sin(1/x^2)$ oscillates in $[-1,1]$ with no limit.
+
+**Conclusion.** $f$ has no limit at $(0,0)$; not continuous there.
+
+@@@ continuity-prolongement.md
+---
+title: Continuous extension
+category: calculus/multivariable/continuity
+level: lycee
+difficulty: 3
+tags: continuous extension, removable singularity
+date: 2026-11-03
+---
+
+## Statement
+
+Can $f(x,y)=\dfrac{\sin(xy)}{xy}$ be extended by continuity at $(0,0)$?
+
+## Hint
+
+Use $\sin t/t\to1$.
+
+## Solution
+
+**Limit.** Along $(x,y)\to(0,0)$ with $xy\neq0$, $\frac{\sin(xy)}{xy}\to1$.
+
+**Extension.** Define $f(0,0)=1$; $f$ becomes continuous.
+
+**Conclusion.** Yes, extension by $f(0,0)=1$ exists.
+
+@@@ continuity-image-compact.md
+---
+title: Image of a compact set under a continuous function
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 4
+tags: compactness, continuous image, extrema
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the continuous image of a compact set is compact, and deduce the existence of extrema.
+
+## Hint
+
+Use sequential compactness; continuous images of convergent sequences converge.
+
+## Solution
+
+**Image of compact.** Let $K$ compact and $f$ continuous. Given a sequence $(f(x_n))$ in $f(K)$, extract a subsequence $x_{n_k}\to x\in K$; then $f(x_{n_k})\to f(x)\in f(K)$. So $f(K)$ is sequentially compact.
+
+**Extrema.** On a compact set, a continuous function attains max and min.
+
+**Conclusion.** Continuous functions on compact sets attain their bounds.
+
+@@@ continuity-heine-cantor.md
+---
+title: Heine–Cantor theorem
+category: calculus/multivariable/continuity
+level: m1
+difficulty: 4
+tags: uniform continuity, compact, Heine
+date: 2026-11-03
+---
+
+## Statement
+
+State and prove that a continuous function on a compact set is uniformly continuous.
+
+## Hint
+
+Argue by contradiction: assume $\exists\varepsilon>0$ such that $\forall\delta>0$ there are $x,y$ with $\|x-y\|<\delta$ and $\|f(x)-f(y)\|\ge\varepsilon$.
+
+## Solution
+
+**Contradiction.** If $f$ is not uniformly continuous, there is $\varepsilon>0$ and sequences $x_n,y_n$ in $K$ with $\|x_n-y_n\|\to0$ but $\|f(x_n)-f(y_n)\|\ge\varepsilon$.
+
+**Subsequence.** By compactness, extract $x_{n_k}\to x\in K$. Then $y_{n_k}\to x$ too. Continuity gives $f(x_{n_k})\to f(x)$ and $f(y_{n_k})\to f(x)$, contradicting the gap.
+
+**Conclusion.** $f$ is uniformly continuous on $K$.
+
+@@@ continuity-norm-continuous.md
+---
+title: Norm and distance are continuous
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: norm, distance, continuity
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the Euclidean norm $\|\cdot\|:\mathbb{R}^n\to\mathbb{R}$ is continuous.
+
+## Hint
+
+Use the reverse triangle inequality: $|\|x\|-\|y\||\le\|x-y\|$.
+
+## Solution
+
+**Inequality.** By the reverse triangle inequality, for any $x,y$: $|\|x\|-\|y\||\le\|x-y\|$.
+
+**Conclusion.** $\|x_n\|\to\|x\|$ whenever $x_n\to x$: the norm is continuous.
+
+@@@ continuity-projection.md
+---
+title: Coordinate projections are continuous
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 2
+order: 3
+tags: projection, continuity, coordinates
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the projection $\pi_1:\mathbb{R}^n\to\mathbb{R}$, $(x_1,\ldots,x_n)\mapsto x_1$, is continuous.
+
+## Hint
+
+$|\pi_1(x)-\pi_1(y)|=|x_1-y_1|\le\|x-y\|_1$.
+
+## Solution
+
+**Bound.** $|\pi_1(x)-\pi_1(y)|\le\|x-y\|_1$.
+
+**Conclusion.** $\pi_1$ is 1-Lipschitz, hence continuous.
+
 @@@ topology-MnR-convergence-entries.md
 ---
 title: Convergence in $M_n(\mathbb{R})$ via entries
