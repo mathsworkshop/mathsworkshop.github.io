@@ -182,6 +182,7 @@ $|xy|\le\frac12(x^2+y^2)$.
 ## Solution
 
 **Bound.** $|f(x,y)| = \frac{|xy|}{\sqrt{x^2+y^2}} \le\frac12\sqrt{x^2+y^2}\to0$.
+**Conclusion.**  $f$  is continuous at $(0,0)$.
 
 @@@ continuity-discontinuous-bounded.md
 ---
