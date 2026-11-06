@@ -126,7 +126,7 @@ because every intermediate term appears once with each sign. As $n\to\infty$, $S
 ---
 title: A linear recurrence of order two
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 2
 tags: linear recurrence, characteristic equation
 date: 2026-11-02
