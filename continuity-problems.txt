@@ -1250,7 +1250,7 @@ So $g$ satisfies $g(2x)=g(x)$ and is continuous at $0$. By part 1, $g$ is a cons
 
 @@@ cauchy-functional-equation.md
 ---
-title: Cauchy's equation f(x + y) = f(x)f(y)
+title: Cauchy's equation f(x + y) = f(x) + f(y)
 category: calculus/single-variable/continuity/functional-equations
 level: l1
 difficulty: 1
