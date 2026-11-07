@@ -44,13 +44,7 @@
           "name": "Functional equations",
           "description": "Cauchy-type functional equations.",
           "subcategories": []
-        },
-                {
-                  "id": "mean-value-theorem",
-                  "name": "Mean Value Theorem",
-                  "description": "Rolle's theorem, the mean value theorem and its consequences.",
-                  "subcategories": []
-                }
+        }
               ]
             },
             {
@@ -58,6 +52,18 @@
               "name": "Differentiation",
               "description": "Derivatives, variations, convexity and inequalities from derivatives.",
               "subcategories": [
+                    {
+                  "id": "diff-fcts",
+                  "name": "Differentiable functions",
+                  "description": "Differentiable functions, functions of class $\mathcal{C}^k$.",
+                  "subcategories": []
+                },
+                    {
+                  "id": "mean-value-theorem",
+                  "name": "Mean Value Theorem",
+                  "description": "Rolle's theorem, the mean value theorem and its consequences.",
+                  "subcategories": []
+                },
                 {
                   "id": "taylor-expansions",
                   "name": "Taylor expansions",
