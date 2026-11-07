@@ -2,8 +2,9 @@
 ---
 title: f(x)f(y) − f(xy) = x + y
 category: calculus/single-variable/continuity/functional-equations
-level: m1
-difficulty: 2
+level: l1
+difficulty: 1
+order: 1
 tags: substitution, special values, verification
 date: 2026-11-04
 ---
