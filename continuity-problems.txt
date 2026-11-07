@@ -176,6 +176,7 @@ title: f(x² + f(y)) = y + f(x)²
 category: calculus/single-variable/continuity/functional-equations
 level: olympiad
 difficulty: 4
+order: 2
 tags: injectivity, surjectivity, oddness, Cauchy equation
 date: 2026-11-04
 ---
@@ -193,7 +194,7 @@ Put $x=0$ to get injectivity and surjectivity. Then use a $t$ with $f(t)=0$. Sho
 
 Let $a=f(0)$.
 
-**Step 1.** $x=0$: $f(f(y))=y+a^2$. Thus $f$ is injective (as in the previous problem) and surjective (the right side takes every real value).
+**Step 1.** $x=0$: $f(f(y))=y+a^2$. Thus $f$ is injective and surjective (the right side takes every real value).
 
 **Step 2.** By surjectivity pick $t$ with $f(t)=0$. Putting $y=t$ gives
 $$f(x^2)=t+f(x)^2\qquad(\ast)$$
