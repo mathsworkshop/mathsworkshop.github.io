@@ -929,33 +929,8 @@ $$\ln\cos x=\ln(1+h)=h+o(h)=-\frac{x^2}2+o(x^2).$$
 Hence $\dfrac{\ln\cos x}{x^2}\to-\dfrac12$, and by continuity of $\exp$ the limit is $e^{-1/2}=\dfrac1{\sqrt e}$.
 
 **Remark.** The pattern is general: if $u(x)\to1$, then $u(x)^{1/x^2}$ is governed by the limit of $\dfrac{u(x)-1}{x^2}$.
-@@@ the-nth-root-of-n.md
----
-title: The n-th root of n
-category: calculus/single-variable/limits
-level: l1
-difficulty: 2
-tags: sequences, logarithm, growth comparison
-date: 2026-11-01
----
 
-## Statement
 
-Compute $\displaystyle\lim_{n\to\infty}n^{1/n}$.
-
-## Hint
-
-Write $n^{1/n}=e^{(\ln n)/n}$ and use the result on the logarithm versus powers.
-
-## Solution
-
-**Idea.** The base $n$ grows, while the exponent $\frac1n$ shrinks. Who wins? Taking the logarithm shows that the exponent wins.
-
-**Computation.** For $n\ge1$,
-$$n^{1/n}=\exp\!\left(\frac{\ln n}{n}\right).$$
-We know that $\dfrac{\ln x}x\to0$ as $x\to+\infty$ (see the problem *The logarithm is slower than any power*), in particular along the integers. By continuity of $\exp$, $n^{1/n}\to e^0=1$.
-
-**Numerical feeling.** $10^{1/10}\approx1.259$, $100^{1/100}\approx1.047$, $10000^{1/10000}\approx1.0009$: the values decrease slowly towards $1$.
 @@@ tangent-of-sine-minus-sine-of-tangent.md
 ---
 title: Tangent of sine minus sine of tangent
