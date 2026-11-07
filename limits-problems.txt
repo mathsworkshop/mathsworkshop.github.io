@@ -282,7 +282,7 @@ Use the identity $1-\cos x=2\sin^2\frac x2$.
 $$\frac{1-\cos x}{x^2}=\frac{2\sin^2\frac x2}{x^2}=\frac12\left(\frac{\sin\frac x2}{\frac x2}\right)^2.$$
 As $x\to0$, $\frac x2\to0$ and $\frac{\sin(x/2)}{x/2}\to1$. So the limit is $\dfrac12\cdot1^2=\dfrac12$.
 
-**Remark.** This tells us that $\cos x\approx1-\dfrac{x^2}2$ near $0$, the beginning of the Taylor expansion of cosine. We will use this limit many times.
+**Remark.** This tells us that $\cos x\approx1-\dfrac{x^2}2$ near $0$, the beginning of the Taylor expansion of cosine.
 @@@ tangent-minus-sine-over-x-cubed.md
 ---
 title: Tangent minus sine over x cubed
@@ -555,7 +555,7 @@ $$\frac{e^x-\cos x}{\sin x}=\frac{(e^x-\cos x)/x}{(\sin x)/x}\longrightarrow\fra
 ---
 title: sin x − x cos x over x cubed
 category: calculus/single-variable/limits
-level: l1
+level: l2
 difficulty: 3
 tags: Taylor expansion, little-o notation, cancellation
 date: 2026-11-01
@@ -588,7 +588,7 @@ Dividing by $x^3$ gives $\frac13+o(1)$, so the limit is $\dfrac13$.
 ---
 title: Difference of two infinite reciprocals
 category: calculus/single-variable/limits
-level: l1
+level: l2
 difficulty: 3
 tags: infinity minus infinity, Taylor expansion
 date: 2026-11-01
@@ -905,7 +905,7 @@ Since $a\ne0$, these two limits are different, so $g$ has no limit at $a$.
 ---
 title: Cosine to the power 1/x²
 category: calculus/single-variable/limits
-level: l1
+level: l2
 difficulty: 3
 tags: exponential form, Taylor expansion, indeterminate forms
 date: 2026-11-01
