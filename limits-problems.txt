@@ -334,7 +334,6 @@ Recall that $\dfrac{e^u-1}{u}\to1$ as $u\to0$.
 
 ## Solution
 
-**Idea.** Same trick as for $\sin(3x)$: make the exponent appear in the denominator.
 
 **Computation.** For $x\neq0$,
 $$\frac{e^{2x}-1}{x}=2\cdot\frac{e^{2x}-1}{2x}.$$
