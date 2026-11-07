@@ -1,3 +1,43 @@
+@@@ continuity-functional-equation-cos.md
+---
+title: A continuous $f$ with $f\circ f=\cos$ cannot exist
+category: calculus/single-variable/continuity/functional-equations
+level: l1
+difficulty: 4
+order: 2
+tags: functional equation, cosine, continuity, monotonicity
+date: 2026-11-07
+---
+
+## Statement
+
+Let $f:\mathbb{R}\to\mathbb{R}$ satisfy $f\circ f=\cos$. Show that $f$ is not continuous on $\mathbb{R}$.
+
+## Hint
+
+First show that $f$ commutes with $\cos$. Then focus on the interval $J=[\cos 1,1]$, where $\cos$ is strictly decreasing and maps $J$ into itself. Assume $f$ continuous on $J$ and derive a contradiction from the monotonicity of $f$ and $f\circ f$.
+
+## Solution
+
+**Step 1: $f$ commutes with $\cos$.** Composing $f\circ f=\cos$ on the left and on the right by $f$:
+$$f\circ\cos=f\circ(f\circ f)=(f\circ f)\circ f=\cos\circ f.$$
+So $f(\cos x)=\cos(f(x))$ for every $x\in\mathbb{R}$.
+
+**Step 2: $f$ sends $[-1,1]$ into $[-1,1]$.** Since $\cos(\mathbb{R})=[-1,1]$, for $y\in[-1,1]$ we have $y=\cos x$ for some $x$, hence $y=f(f(x))\in f(\mathbb{R})$. Thus
+$$f([-1,1])=f(\cos\mathbb{R})=\cos(f(\mathbb{R}))\subseteq[-1,1].$$
+
+**Step 3: consider $J=[\cos1,1]$.** Since $0<\cos1<1$, the map $\cos$ is strictly decreasing on $[0,1]$, hence on $J\subseteq[0,1]$. Moreover $\cos(J)\subseteq J$: for $x\in J$, $x\le 1$ gives $\cos x\ge\cos1$, and $x\ge\cos1\ge0$ gives $\cos x\le 1$. So $\cos$ maps $J$ into $J$, strictly decreasing.
+
+**Step 4: $f$ is injective on $J$.** If $x,y\in J$ and $f(x)=f(y)$, then $\cos x=f(f(x))=f(f(y))=\cos y$. Since $\cos$ is injective on $J$, $x=y$. Hence $f|_J$ is injective.
+
+**Step 5: contradiction if $f$ is continuous.** Suppose $f$ continuous. Then $f|_J$ is continuous and injective on the interval $J$, hence **strictly monotonic** on $J$.
+
+- If $f|_J$ is increasing, then for $x<y$ in $J$: $f(x)<f(y)$, so $f(f(x))<f(f(y))$, i.e. $\cos x<\cos y$. But $\cos$ is decreasing on $J$, so $x<y\Rightarrow\cos x>\cos y$ — contradiction.
+- If $f|_J$ is decreasing, then for $x<y$: $f(x)>f(y)$, so $f(f(x))<f(f(y))$, i.e. $\cos x<\cos y$. Again, $\cos$ decreasing on $J$ gives $\cos x>\cos y$ — contradiction.
+
+So $f$ cannot be continuous on $J$, hence **$f$ is not continuous on $\mathbb{R}$**.
+
+
 @@@ fe-the-solution-of-fxfy-minus-fxy.md
 ---
 title: f(x)f(y) − f(xy) = x + y
