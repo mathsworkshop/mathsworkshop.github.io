@@ -217,6 +217,7 @@ title: f(x + y) + f(x − y) = 2f(x)f(y)
 category: calculus/single-variable/continuity/functional-equations
 level: olympiad
 difficulty: 4
+order: 2
 tags: d'Alembert, cosine, differential equation, differentiability
 date: 2026-11-04
 ---
@@ -233,9 +234,10 @@ Show $f(0)=1$ and that $f$ is even. Differentiate twice with respect to $y$ and 
 
 ## Solution
 
-**$f(0)=1$.** $x=y=0$: $2f(0)=2f(0)^2$, so $f(0)\in\{0,1\}$. If $f(0)=0$, then $y=0$ gives $2f(x)=0$ for all $x$, excluded. So $f(0)=1$.
+**$f(0)=1$.** For $x=y=0$, we have $2f(0)=2f(0)^2$, so $f(0)\in\{0,1\}$. If $f(0)=0$, then $y=0$ gives $2f(x)=0$ for all $x$, excluded. So $f(0)=1$.
 
-**Evenness.** $x=0$: $f(y)+f(-y)=2f(y)$, i.e. $f(-y)=f(y)$. Hence $f'(0)=0$.
+**Evenness.** $x=0$: $f(y)+f(-y)=2f(y)$, i.e. $f(-y)=f(y)$ and $f$ is even. Observe also that
+$$ f'(0) = \lim_{y \rightarrow 0} \frac{f(y) - f(-y)}{2y} =0$.
 
 **Differential equation.** Fix $x$ and differentiate twice with respect to $y$:
 $$f''(x+y)+f''(x-y)=2f(x)f''(y).$$
@@ -1287,6 +1289,7 @@ title: The midpoint functional equation
 category: calculus/single-variable/continuity/functional-equations
 level: l1
 difficulty: 4
+order: 1
 tags: functional equations, affine functions
 date: 2026-11-02
 ---
