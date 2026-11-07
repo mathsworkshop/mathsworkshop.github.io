@@ -1,6 +1,6 @@
 @@@ continuity-functional-equation-cos.md
 ---
-title: A continuous $f$ with $f\circ f=\cos$ cannot exist
+title: A continuous f with f o f= cos cannot exist
 category: calculus/single-variable/continuity/functional-equations
 level: l1
 difficulty: 4
