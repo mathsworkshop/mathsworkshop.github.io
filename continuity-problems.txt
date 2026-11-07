@@ -1222,7 +1222,7 @@ title: A functional equation with f(2x)
 category: calculus/single-variable/continuity/functional-equations
 level: l1
 difficulty: 1
-order: 2
+order: 1
 tags: functional equations, continuity at a point, sequences
 date: 2026-11-02
 ---
@@ -1244,11 +1244,6 @@ Repeat the relation to get $f(x)=f\!\left(\frac x{2^n}\right)$ and let $n\to\inf
 $$g(2x)-g(x)=\bigl(f(2x)-2x\bigr)-\bigl(f(x)-x\bigr)=\bigl(f(2x)-f(x)\bigr)-x=0.$$
 So $g$ satisfies $g(2x)=g(x)$ and is continuous at $0$. By part 1, $g$ is a constant $c$. Hence $f(x)=x+c$.
 
-**Check.** If $f(x)=x+c$ then $f(2x)-f(x)=(2x+c)-(x+c)=x$.
-
-**Answer.** The solutions are exactly $f(x)=x+c$ with $c\in\mathbb{R}$.
-
-**Remark.** Continuity at $0$ is crucial. Without it, there exist wild solutions of $f(2x)=f(x)$ built from a choice of representatives modulo powers of $2$.
 @@@ cauchy-functional-equation.md
 ---
 title: Cauchy's functional equation
