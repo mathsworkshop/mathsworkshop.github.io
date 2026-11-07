@@ -4716,7 +4716,7 @@ Differentiate $f_x$ and $f_y$ once more; compare $f_{xy}$ and $f_{yx}$.
 
 @@@ partial-derivatives-schwarz.md
 ---
-title: Schwarz's theorem
+title: Schwarz's theorem and a counterexample
 category: calculus/multivariable/partial-derivatives
 level: l1
 difficulty: 3
@@ -4726,22 +4726,29 @@ date: 2026-11-03
 
 ## Statement
 
-State Schwarz's theorem and give an example where mixed partials differ at a point.
+State Schwarz's theorem on mixed partial derivatives. Then consider the function
+$$f(x,y)=\begin{cases}\dfrac{xy(x^2-y^2)}{x^2+y^2}&\text{if }(x,y)\neq(0,0),\\[2mm]0&\text{if }(x,y)=(0,0).\end{cases}$$
+Compute $f_{xy}(0,0)$ and $f_{yx}(0,0)$ and verify that they differ. Explain why this does not contradict Schwarz's theorem.
 
 ## Hint
 
-Schwarz requires continuity of second partials. Counterexample: $f(x,y)=xy(x^2-y^2)/(x^2+y^2)$.
+Compute the first partial derivatives at $(0,0)$ via the definition, then the second mixed partials via the definition at the origin. Schwarz's theorem requires $C^2$ regularity near the point.
 
 ## Solution
 
-**Theorem.** If $f$ is $C^2$ in a neighbourhood of a point, then $f_{xy}=f_{yx}$ there.
+**Schwarz's theorem.** If $f$ has continuous second partial derivatives in a neighbourhood of a point $(a,b)$, then $f_{xy}(a,b)=f_{yx}(a,b)$.
 
-**Counterexample.** $f(x,y)=xy(x^2-y^2)/(x^2+y^2)$ for $(x,y)\neq(0,0)$, $f(0,0)=0$. Then $f_{xy}(0,0)=-1$ but $f_{yx}(0,0)=1$.
+**First partials at the origin.** For $x\neq0$,
+$$\frac{f(x,0)-f(0,0)}{x}=\frac{0}{x}=0,$$
+so $f_x(0,0)=0$. Similarly $f_y(0,0)=0$.
 
-**Diagnosis.** The second partials are not continuous at $(0,0)$.
+**Mixed partials at the origin.**
+$$f_{xy}(0,0)=\lim_{y\to0}\frac{f_x(0,y)-f_x(0,0)}{y},\qquad f_{yx}(0,0)=\lim_{x\to0}\frac{f_y(x,0)-f_y(0,0)}{x}.$$
+A direct computation gives $f_{xy}(0,0)=-1$ and $f_{yx}(0,0)=1$.
 
-**Conclusion.** Schwarz's theorem requires $C^2$ regularity; the counterexample fails this hypothesis.
+**Why no contradiction.** The second partial derivatives are not continuous at $(0,0)$: along paths approaching the origin, $f_{xy}$ and $f_{yx}$ do not admit a limit equal to $-1$ and $1$ respectively. Schwarz's hypothesis ($C^2$ regularity near the point) fails, so the conclusion need not hold.
 
+**Conclusion.** Schwarz's theorem is compatible with the existence of such counterexamples: only $C^2$ functions are guaranteed to have symmetric mixed partials.
 @@@ partial-derivatives-tangent-plane.md
 ---
 title: Tangent plane to a graph
@@ -5064,12 +5071,12 @@ Give the Taylor expansion of $f(x,y)=e^{x+y}$ at $(0,0)$ up to order $2$.
 
 ## Hint
 
-$f(0)=1$, $\nabla f=(1,1)$, $H(0,0)=\begin{pmatrix}1&1\\1&1\end{pmatrix}$.
+$f(0)=1$, $\nabla f (0,0)=(1,1)$, $H(0,0)=\begin{pmatrix}1&1\\1&1\end{pmatrix}$.
 
 ## Solution
 
-**Expansion.**
-$$f(h,k)=1+(h+k)+\frac{1}{2}(h+k)^2+o((h^2+k^2)).$$
+**Expression.**
+$$f(h,k)=f(0,0)+ \nabla f(0,0) \cdot (h,k)+\frac{1}{2}(h,k) \cdot H(0,0) \cdot (h,k) +o((h^2+k^2)).$$
 
 **Simplified.** $f(h,k)=1+h+k+\frac{h^2}{2}+hk+\frac{k^2}{2}+o(h^2+k^2)$.
 
