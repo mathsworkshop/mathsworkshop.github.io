@@ -4,7 +4,7 @@ title: A continuous f with f o f= cos cannot exist
 category: calculus/single-variable/continuity/functional-equations
 level: l1
 difficulty: 4
-order: 2
+order: 3
 tags: functional equation, cosine, continuity, monotonicity
 date: 2026-11-07
 ---
