@@ -383,7 +383,7 @@ $$f^{(n)}(x)=\frac{(-1)^nn!}2\left(\frac1{(x-1)^{n+1}}-\frac1{(x+1)^{n+1}}\right
 @@@ rolle-on-a-quartic.md
 ---
 title: Rolle's theorem on a quartic
-category: calculus/single-variable/differentiation/diff-fcts
+category: calculus/single-variable/differentiation/mean-value-theorem
 level: l1
 difficulty: 1
 tags: Rolle's theorem, polynomials
@@ -408,7 +408,7 @@ $P$ is a polynomial, hence continuous on $[0,1]$ and differentiable on $(0,1)$. 
 @@@ rolle-and-the-roots-of-legendre-polynomials.md
 ---
 title: Legendre polynomials have all their roots in (-1, 1)
-category: calculus/single-variable/differentiation/diff-fcts
+category: calculus/single-variable/differentiation/mean-value-theorem
 level: m1
 difficulty: 5
 tags: Rolle's theorem, polynomials, induction, Legendre
@@ -443,7 +443,7 @@ Moreover, differentiating a product $(x^2-1)^{m}R$ with $m=n-k\ge1$ leaves a fac
 @@@ mean-value-theorem-and-an-arctangent-inequality.md
 ---
 title: The mean value theorem and an arctangent inequality
-category: calculus/single-variable/differentiation/diff-fcts
+category: calculus/single-variable/differentiation/mean-value-theorem
 level: l2
 difficulty: 2
 tags: mean value theorem, inequalities, arctangent
@@ -470,7 +470,7 @@ $$\arctan t=\frac t{1+c^2}>\frac t{1+t^2}.$$
 @@@ mean-value-theorem-and-logarithm-bounds.md
 ---
 title: Two-sided bounds for the logarithm
-category: calculus/single-variable/differentiation/diff-fcts
+category: calculus/single-variable/differentiation/mean-value-theorem
 level: l1
 difficulty: 2
 tags: mean value theorem, inequalities, logarithm
@@ -503,7 +503,7 @@ Multiplying by $n$ in the right inequality: $n\ln(1+\frac1n)<1$, so $\left(1+\fr
 @@@ if-the-derivative-has-a-limit-then-differences-do.md
 ---
 title: If f′ tends to ℓ, then f(x+1) − f(x) tends to ℓ
-category: calculus/single-variable/differentiation/diff-fcts
+category: calculus/single-variable/differentiation/mean-value-theorem
 level: l1
 difficulty: 3
 tags: mean value theorem, limits at infinity
@@ -568,7 +568,7 @@ Apply part 1 to $x\mapsto f(x/a)$ if $a\ne0$, or directly: $g(x)=f(x)e^{-ax}$ ha
 @@@ the-limit-of-the-derivative.md
 ---
 title: The limit of the derivative theorem
-category: calculus/single-variable/differentiation/diff-fcts
+category: calculus/single-variable/differentiation/mean-value-theorem
 level: l2
 difficulty: 3
 tags: mean value theorem, derivative at a point, extension
@@ -762,7 +762,7 @@ $$f(x+y)=\frac{(x+y)^2}2+a(x+y)=\frac{x^2}2+xy+\frac{y^2}2+ax+ay=f(x)+f(y)+xy.$$
 @@@ a-contraction-has-a-unique-fixed-point.md
 ---
 title: Fixed point and a derivative bounded by one
-category: calculus/single-variable/differentiation/diff-fcts
+category: calculus/single-variable/differentiation/mean-value-theorem
 level: l2
 difficulty: 3
 tags: fixed points, mean value theorem, intermediate value theorem
