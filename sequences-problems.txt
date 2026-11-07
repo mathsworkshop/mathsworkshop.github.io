@@ -354,7 +354,7 @@ date: 2026-11-02
 
 ## Statement
 
-Compute:
+Compute the limit of the following sequences:
 1. $A_n=\displaystyle\sum_{k=1}^n\frac n{n^2+k}$,
 2. $B_n=\left(1+2^n+3^n\right)^{1/n}$,
 3. $C_n=\left(a_1^n+\dots+a_p^n\right)^{1/n}$ for fixed positive numbers $a_1,\dots,a_p$.
