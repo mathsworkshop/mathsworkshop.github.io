@@ -507,7 +507,7 @@ date: 2026-11-01
 
 ## Hint
 
-Set $y=\frac1x$ and use the previous problem.
+Set $y=\frac1x$.
 
 ## Solution
 
@@ -895,7 +895,7 @@ At $0$, use the bound $0\le D(x)\le1$. At $a\ne0$, use the same two sequences as
 
 **At $0$.** For every $x$, $0\le|g(x)|=|x|\,D(x)\le|x|$. By the squeeze theorem, $g(x)\to0$ as $x\to0$. Since $g(0)=0$, the function $g$ is continuous at $0$.
 
-**At $a\ne0$.** Take the sequences $r_n\to a$ (rationals) and $s_n\to a$ (irrationals, with $r_n,s_n\ne a$) as in the previous problem. Then
+**At $a\ne0$.** Take the sequences $r_n\to a$ (rationals) and $s_n\to a$ (irrationals, with $r_n,s_n\ne a$). Then
 $$g(r_n)=r_n\longrightarrow a,\qquad g(s_n)=0\longrightarrow0.$$
 Since $a\ne0$, these two limits are different, so $g$ has no limit at $a$.
 
