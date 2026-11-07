@@ -933,7 +933,7 @@ Define $\varphi(t)=f(y_t)-f(x_t)$. It is continuous on $[0,1]$. Since $x_t\neq y
 @@@ a-functional-equation-with-f-of-2x.md
 ---
 title: A functional equation with f(2x)
-category: calculus/single-variable/continuity/uniform-continuity
+category: calculus/single-variable/continuity/functional-equations
 level: l1
 difficulty: 1
 order: 2
@@ -966,7 +966,7 @@ So $g$ satisfies $g(2x)=g(x)$ and is continuous at $0$. By part 1, $g$ is a cons
 @@@ cauchy-functional-equation.md
 ---
 title: Cauchy's functional equation
-category: calculus/single-variable/continuity/uniform-continuity
+category: calculus/single-variable/continuity/functional-equations
 level: l1
 difficulty: 4
 tags: functional equations, density, rational numbers
@@ -997,7 +997,7 @@ Work step by step: first integers, then rationals, then all real numbers by dens
 @@@ the-midpoint-functional-equation.md
 ---
 title: The midpoint functional equation
-category: calculus/single-variable/continuity/uniform-continuity
+category: calculus/single-variable/continuity/functional-equations
 level: l1
 difficulty: 4
 tags: functional equations, affine functions
