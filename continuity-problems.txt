@@ -510,7 +510,7 @@ Review the statements and main applications.
 @@@ continuity-with-parameters.md
 ---
 title: Continuity with parameters
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: lycee
 difficulty: 1
 tags: continuity, piecewise functions, parameters
@@ -541,7 +541,7 @@ Each piece is continuous on its own. Only the two points where the formula chang
 @@@ where-is-one-over-ln-abs-x-continuous.md
 ---
 title: Where is 1/ln|x| continuous?
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
 tags: continuity, limits, logarithm
@@ -570,7 +570,7 @@ At each of the three special points, ask whether the limit exists and equals $0$
 @@@ floor-plus-square-root-of-the-fractional-part.md
 ---
 title: Floor plus square root of the fractional part
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
 tags: continuity, floor function, one-sided limits
@@ -600,7 +600,7 @@ On each interval $(n,n+1)$ the integer part is constant. The only question is wh
 @@@ a-continuous-function-vanishing-on-the-rationals.md
 ---
 title: A continuous function that vanishes on the rationals
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
 tags: density, continuity, sequences
@@ -626,7 +626,7 @@ Every real number is a limit of rational numbers (for instance its decimal trunc
 @@@ glued-along-rationals-and-irrationals.md
 ---
 title: Glued along the rationals and the irrationals
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
 tags: continuity, density, sequences, pathological functions
@@ -651,7 +651,7 @@ Let $f,g:\mathbb{R}\to\mathbb{R}$ be continuous, and define $h(x)=f(x)$ if $x$ i
 @@@ the-popcorn-function.md
 ---
 title: The popcorn function
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l2
 difficulty: 5
 tags: continuity, rationals, density, pathological functions
@@ -683,7 +683,7 @@ $$\delta=\min\Bigl(1,\ \min_{b\in B}|a-b|\Bigr)>0.$$
 @@@ the-absolute-value-of-a-continuous-function.md
 ---
 title: The absolute value of a continuous function
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
 tags: continuity, absolute value, counterexamples
@@ -709,7 +709,7 @@ For part 1, use the reverse triangle inequality $\bigl||u|-|v|\bigr|\le|u-v|$. F
 @@@ maximum-and-minimum-of-two-continuous-functions.md
 ---
 title: Maximum and minimum of two continuous functions
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
 tags: continuity, absolute value, algebra of continuous functions
@@ -736,7 +736,7 @@ To check the first one, distinguish $u\ge v$ (then $|u-v|=u-v$ and the right sid
 @@@ extending-a-rational-function-by-continuity.md
 ---
 title: Extending a rational function by continuity
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: lycee
 difficulty: 1
 tags: extension by continuity, factoring, removable singularity
@@ -763,7 +763,7 @@ The denominator $x^2-x+1$ has no real root (its discriminant is $-3<0$), and at 
 @@@ which-of-these-functions-extend-by-continuity.md
 ---
 title: Which of these functions extend by continuity?
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
 tags: extension by continuity, one-sided limits, exponential
@@ -798,7 +798,7 @@ There is no finite limit at $0$, so $f_2$ cannot be extended.
 @@@ extensions-by-continuity-and-oscillation.md
 ---
 title: Extensions by continuity and oscillation
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
 tags: extension by continuity, oscillation, squeeze theorem
@@ -829,7 +829,7 @@ For a negative answer, use two sequences tending to $0$ along which the values d
 @@@ a-continuous-periodic-function-is-bounded.md
 ---
 title: A continuous periodic function is bounded
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
 tags: extreme value theorem, periodic functions, boundedness
@@ -856,7 +856,7 @@ The extreme value theorem applies on a closed bounded interval. Which interval c
 @@@ limit-of-an-iterated-sequence-is-a-fixed-point.md
 ---
 title: The limit of an iterated sequence is a fixed point
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
 tags: sequences, fixed points, continuity, golden ratio
@@ -918,7 +918,7 @@ Define $\varphi(t)=f(y_t)-f(x_t)$. It is continuous on $[0,1]$. Since $x_t\neq y
 @@@ a-functional-equation-with-f-of-2x.md
 ---
 title: A functional equation with f(2x)
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
 tags: functional equations, continuity at a point, sequences
@@ -950,7 +950,7 @@ So $g$ satisfies $g(2x)=g(x)$ and is continuous at $0$. By part 1, $g$ is a cons
 @@@ cauchy-functional-equation.md
 ---
 title: Cauchy's functional equation
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 4
 tags: functional equations, density, rational numbers
@@ -981,7 +981,7 @@ Work step by step: first integers, then rationals, then all real numbers by dens
 @@@ the-midpoint-functional-equation.md
 ---
 title: The midpoint functional equation
-category: calculus/single-variable/continuity
+category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 4
 tags: functional equations, affine functions
