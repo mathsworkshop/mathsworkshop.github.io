@@ -51478,7 +51478,7 @@ Adding the two equations gives $2b=4$, so $b=2$ and $a=1$. The remainder is $x+2
 @@@ sine-is-1-lipschitz.md
 ---
 title: Sine is 1-Lipschitz
-category: calculus/single-variable/continuity/mean-value-theorem
+category: calculus/single-variable/differentiation/mean-value-theorem
 level: l1
 difficulty: 2
 tags: mean value theorem, inequalities
