@@ -35,6 +35,7 @@ title: Expansions of 1/(1 + x + x²) and ln(1 + x + x²)
 category: calculus/single-variable/differentiation/taylor-expansions
 level: l1
 difficulty: 3
+order: 1
 tags: Taylor expansion, geometric series, factorisation trick
 date: 2026-11-03
 ---
@@ -613,7 +614,8 @@ $$y(x)=1+x+\frac32x^2+\frac43x^3+o(x^3).$$
 title: lim (1/x² − 1/sin² x)
 category: calculus/single-variable/differentiation/taylor-expansions
 level: l1
-difficulty: 3
+difficulty: 2
+order: 1
 tags: limits, expansions, difference of fractions
 date: 2026-11-03
 ---
@@ -645,7 +647,8 @@ $$\frac{-\frac{x^4}3+o(x^4)}{x^4+o(x^4)}\longrightarrow-\frac13.$$
 title: lim ((1 + x)^(1/x) / e)^(1/x)
 category: calculus/single-variable/differentiation/taylor-expansions
 level: l2
-difficulty: 3
+difficulty: 2
+order: 1
 tags: limits, indeterminate form 1^∞, logarithm, expansions
 date: 2026-11-03
 ---
@@ -735,6 +738,7 @@ title: lim cos(1/n)^(n²)
 category: calculus/single-variable/differentiation/taylor-expansions
 level: l1
 difficulty: 2
+order: 1
 tags: sequences, expansions, indeterminate form 1^∞
 date: 2026-11-03
 ---
@@ -793,6 +797,7 @@ title: Position of a curve relative to its tangent
 category: calculus/single-variable/differentiation/taylor-expansions
 level: l1
 difficulty: 3
+order: 1
 tags: tangent line, inflection, local behaviour
 date: 2026-11-03
 ---
@@ -885,6 +890,7 @@ title: How many terms are needed to compute sin 1?
 category: calculus/single-variable/differentiation/taylor-expansions
 level: l1
 difficulty: 2
+order: 2
 tags: Taylor-Lagrange, error bound, numerical computation
 date: 2026-11-03
 ---
