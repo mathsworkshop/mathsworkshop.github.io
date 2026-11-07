@@ -529,7 +529,7 @@ Each piece is continuous on its own. Only the two points where the formula chang
 
 ## Solution
 
-**Idea.** A function defined by several formulas is continuous inside each interval, because every formula is a polynomial. The only danger is at the junctions, where the pieces must connect without a jump.
+**Idea.** The function $F$ is continuous inside each interval, because every formula is a polynomial. The only danger is at the junctions, where the pieces must connect without a jump.
 
 **At $x=1$.** The left value is $f(1)=2$, and the right limit is $a+b$. We need $a+b=2$.
 
