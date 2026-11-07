@@ -1338,10 +1338,11 @@ So $n=9$ guarantees the precision (and it is the first $n$ for which this *bound
 @@@ polynomial-inequalities-for-sine-and-cosine.md
 ---
 title: Polynomial bounds for sine and cosine
-category: calculus/single-variable/differentiation/taylor-expansions
+category: calculus/single-variable/differentiation/diff-fcts
 level: l1
-difficulty: 3
-tags: inequalities, monotonicity, Taylor polynomials
+difficulty: 1
+order: 1
+tags: inequalities, monotonicity
 date: 2026-11-02
 ---
 
@@ -1362,7 +1363,6 @@ Chain the three inequalities: each one is obtained by studying the sign of the d
 
 **Step 3: $\sin x\ge x-\frac{x^3}6$.** Let $g_3(x)=\sin x-x+\frac{x^3}6$. Then $g_3'(x)=\cos x-1+\frac{x^2}2=g_2(x)\ge0$ by Step 2, and $g_3(0)=0$, so $g_3\ge0$ on $[0,+\infty)$.
 
-**Pattern.** Each step integrates the previous inequality from $0$: the polynomials $x$, $1-\frac{x^2}2$, $x-\frac{x^3}6$ are the Taylor polynomials of $\sin$, $\cos$, $\sin$, and the inequalities alternate in direction.
 
 **Application.** Together they give $1-\frac{x^2}6\le\frac{\sin x}x\le1$ for $x>0$, which re-proves $\frac{\sin x}x\to1$ by squeezing.
 @@@ classifying-critical-points-with-taylor-expansions.md
