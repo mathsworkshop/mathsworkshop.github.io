@@ -173,38 +173,7 @@ For $u<0$, use oddness: $f(u+y)=-f((-u)+(-y))=-f(-u)-f(-y)=f(u)+f(y)$. So $f$ is
 **Answer.** $f(x)=x$ (check: $f(x^2+y)=x^2+y$ ✓).
 
 **Lesson.** A strong sequence of moves: injective $\to$ locate the zero $\to$ oddness $\to$ $f(f(y))=y$ $\to$ additivity $\to$ monotonicity from nonnegativity of squares.
-@@@ fe-the-exponential-functional-equation.md
----
-title: f(x + y) = f(x)f(y)
-category: calculus/single-variable/continuity/functional-equations
-level: olympiad
-difficulty: 3
-tags: exponential, Cauchy equation, logarithm, continuity
-date: 2026-11-04
----
 
-## Statement
-
-1. Find all $f:\mathbb{N}^*\to\mathbb{N}^*$ with $f(m+n)=f(m)f(n)$ for all positive integers $m,n$.
-2. Find all **continuous** functions $f:\mathbb{R}\to\mathbb{R}$, not identically zero, with $f(x+y)=f(x)f(y)$.
-
-## Hint
-
-For 1, induction. For 2, show $f>0$ and take $\ln f$, which satisfies Cauchy's equation.
-
-## Solution
-
-**1.** $f(n+1)=f(n)f(1)$, so by induction $f(n)=f(1)^n$. Any value $f(1)=a\in\mathbb{N}^*$ works: $f(n)=a^n$.
-
-**2. Positivity.** $f(x)=f\left(\frac x2\right)^2\ge0$. If $f(x_0)=0$ for some $x_0$, then $f(x)=f(x_0)f(x-x_0)=0$ for all $x$, which was excluded. So $f(x)>0$ for all $x$.
-
-**Logarithm.** $g=\ln f$ is continuous and $g(x+y)=g(x)+g(y)$. By Cauchy ($g(q)=qg(1)$ on $\mathbb{Q}$ and continuity), $g(x)=cx$ with $c=g(1)=\ln f(1)$.
-
-**Answer.** $f(x)=e^{cx}=a^x$ with $a=f(1)>0$.
-
-**Remark.** Continuity at a single point is enough, and so is measurability, but without any hypothesis there are exotic solutions.
-
-**Lesson.** Multiplicative $\leftrightarrow$ additive via $\ln$; the only thing to check is positivity.
 @@@ fe-d-alembert-s-cosine-equation.md
 ---
 title: f(x + y) + f(x − y) = 2f(x)f(y)
@@ -1245,7 +1214,7 @@ So $g$ satisfies $g(2x)=g(x)$ and is continuous at $0$. By part 1, $g$ is a cons
 
 @@@ cauchy-functional-equation.md
 ---
-title: Cauchy's functional equation
+title: Cauchy's equation f(x + y) = f(x)f(y)
 category: calculus/single-variable/continuity/functional-equations
 level: l1
 difficulty: 1
