@@ -823,8 +823,9 @@ Expand to the first order at which the expansion differs from the tangent $y=f(0
 ---
 title: Expanding √x at x = 4
 category: calculus/single-variable/differentiation/taylor-expansions
-level: lycee
-difficulty: 2
+level: l1
+difficulty: 1
+order: 1
 tags: Taylor expansion, shifted point, numerical estimate
 date: 2026-11-03
 ---
