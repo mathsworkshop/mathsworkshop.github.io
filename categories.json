@@ -39,6 +39,12 @@
                   "description": "Existence of solutions and of zeros.",
                   "subcategories": []
                 },
+                  {
+          "id": "functional-equations",
+          "name": "Functional equations",
+          "description": "Cauchy-type functional equations.",
+          "subcategories": []
+        },
                 {
                   "id": "mean-value-theorem",
                   "name": "Mean Value Theorem",
