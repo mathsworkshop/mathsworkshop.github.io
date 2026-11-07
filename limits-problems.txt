@@ -943,7 +943,7 @@ At $0$, use the bound $0\le D(x)\le1$.
 
 **At $0$.** For every $x$, $0\le|g(x)|=|x|\,D(x)\le|x|$. By the squeeze theorem, $g(x)\to0$ as $x\to0$. Since $g(0)=0$, the function $g$ is continuous at $0$.
 
-**At $a\ne0$.** Take the sequences $r_n\to a$ (rationals) and $s_n\to a$ (irrationals, with $r_n,s_n\ne a$). Then
+**At $a\ne0$.** For every $n\ge1$, the interval $\left(a,a+\frac1n\right)$ contains a rational number $r_n$ and an irrational number $s_n$. Then $r_n\to a$ and $s_n\to a$, with $r_n\ne a$ and $s_n\ne a$ and
 $$g(r_n)=r_n\longrightarrow a,\qquad g(s_n)=0\longrightarrow0.$$
 Since $a\ne0$, these two limits are different, so $g$ has no limit at $a$.
 
