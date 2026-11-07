@@ -27,7 +27,7 @@ Hence $\dfrac{\sin x-x}{x^3}=-\dfrac16+o(1)$, and the limit is $-\dfrac16$.
 ---
 title: A limit with the exponential
 category: calculus/single-variable/limits
-level: l1
+level: l2
 difficulty: 2
 tags: limits, taylor
 date: 2026-10-31
