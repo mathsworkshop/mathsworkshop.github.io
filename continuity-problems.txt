@@ -1248,7 +1248,8 @@ So $g$ satisfies $g(2x)=g(x)$ and is continuous at $0$. By part 1, $g$ is a cons
 title: Cauchy's functional equation
 category: calculus/single-variable/continuity/functional-equations
 level: l1
-difficulty: 4
+difficulty: 1
+order: 1
 tags: functional equations, density, rational numbers
 date: 2026-11-02
 ---
