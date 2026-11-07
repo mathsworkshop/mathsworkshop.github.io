@@ -889,8 +889,7 @@ Let $g(x)=x\,D(x)$, where $D$ is the Dirichlet function ($D(x) = 1$ if $x \in \m
 
 ## Hint
 
-At $0$, use the bound $0\le D(x)\le1$. At $a\ne0$, use the same two sequences as before.
-
+At $0$, use the bound $0\le D(x)\le1$.
 ## Solution
 
 **At $0$.** For every $x$, $0\le|g(x)|=|x|\,D(x)\le|x|$. By the squeeze theorem, $g(x)\to0$ as $x\to0$. Since $g(0)=0$, the function $g$ is continuous at $0$.
