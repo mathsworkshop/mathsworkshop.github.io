@@ -4,6 +4,7 @@ title: Rolle's theorem on a polynomial
 category: calculus/single-variable/continuity/mean-value-theorem
 level: lycee
 difficulty: 1
+order: 1
 tags: Rolle, polynomial, existence
 date: 2026-11-04
 ---
@@ -30,6 +31,7 @@ title: The mean value theorem
 category: calculus/single-variable/continuity/mean-value-theorem
 level: lycee
 difficulty: 1
+order: 1
 tags: mean value theorem, Lagrange, existence
 date: 2026-11-04
 ---
@@ -56,6 +58,7 @@ title: Mean value theorem for $f(x)=x^3$
 category: calculus/single-variable/continuity/mean-value-theorem
 level: lycee
 difficulty: 2
+order: 1
 tags: mean value theorem, cubic, existence
 date: 2026-11-04
 ---
@@ -473,6 +476,7 @@ title: Summary of the mean value theorem
 category: calculus/single-variable/continuity/mean-value-theorem
 level: lycee
 difficulty: 2
+order: 1
 tags: summary, MVT, Rolle
 date: 2026-11-04
 ---
@@ -513,6 +517,7 @@ title: Continuity with parameters
 category: calculus/single-variable/continuity/uniform-continuity
 level: lycee
 difficulty: 1
+order: 1
 tags: continuity, piecewise functions, parameters
 date: 2026-11-02
 ---
@@ -544,6 +549,7 @@ title: Where is 1/ln|x| continuous?
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
+order: 1
 tags: continuity, limits, logarithm
 date: 2026-11-02
 ---
@@ -573,6 +579,7 @@ title: Floor plus square root of the fractional part
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
+order: 1
 tags: continuity, floor function, one-sided limits
 date: 2026-11-02
 ---
@@ -628,7 +635,8 @@ Every real number is a limit of rational numbers (for instance its decimal trunc
 title: Glued along the rationals and the irrationals
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
-difficulty: 3
+difficulty: 2
+order: 2
 tags: continuity, density, sequences, pathological functions
 date: 2026-11-02
 ---
@@ -686,6 +694,7 @@ title: The absolute value of a continuous function
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
+order: 2
 tags: continuity, absolute value, counterexamples
 date: 2026-11-02
 ---
@@ -712,6 +721,7 @@ title: Maximum and minimum of two continuous functions
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
+order: 2
 tags: continuity, absolute value, algebra of continuous functions
 date: 2026-11-02
 ---
@@ -739,6 +749,7 @@ title: Extending a rational function by continuity
 category: calculus/single-variable/continuity/uniform-continuity
 level: lycee
 difficulty: 1
+order: 1
 tags: extension by continuity, factoring, removable singularity
 date: 2026-11-02
 ---
@@ -765,7 +776,8 @@ The denominator $x^2-x+1$ has no real root (its discriminant is $-3<0$), and at 
 title: Which of these functions extend by continuity?
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
-difficulty: 3
+difficulty: 2
+order: 1
 tags: extension by continuity, one-sided limits, exponential
 date: 2026-11-02
 ---
@@ -801,6 +813,7 @@ title: Extensions by continuity and oscillation
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
+order: 1
 tags: extension by continuity, oscillation, squeeze theorem
 date: 2026-11-02
 ---
@@ -832,6 +845,7 @@ title: A continuous periodic function is bounded
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
+order: 2
 tags: extreme value theorem, periodic functions, boundedness
 date: 2026-11-02
 ---
@@ -858,7 +872,8 @@ The extreme value theorem applies on a closed bounded interval. Which interval c
 title: The limit of an iterated sequence is a fixed point
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
-difficulty: 3
+difficulty: 2
+order: 2
 tags: sequences, fixed points, continuity, golden ratio
 date: 2026-11-02
 ---
@@ -920,7 +935,8 @@ Define $\varphi(t)=f(y_t)-f(x_t)$. It is continuous on $[0,1]$. Since $x_t\neq y
 title: A functional equation with f(2x)
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
-difficulty: 3
+difficulty: 1
+order: 2
 tags: functional equations, continuity at a point, sequences
 date: 2026-11-02
 ---
@@ -1016,6 +1032,7 @@ title: Locating the roots of a cubic
 category: calculus/single-variable/continuity/intermediate-value-theorem
 level: lycee
 difficulty: 2
+order: 1
 tags: intermediate value theorem, polynomial roots, bracketing
 date: 2026-11-02
 ---
@@ -1178,6 +1195,7 @@ title: A fixed point for every continuous self-map of [0,1]
 category: calculus/single-variable/continuity/intermediate-value-theorem
 level: lycee
 difficulty: 2
+order: 1
 tags: fixed points, intermediate value theorem
 date: 2026-11-02
 ---
@@ -1237,6 +1255,7 @@ title: The monk on the mountain
 category: calculus/single-variable/continuity/intermediate-value-theorem
 level: lycee
 difficulty: 3
+order: 1
 tags: intermediate value theorem, classic puzzle
 date: 2026-11-02
 ---
@@ -1343,6 +1362,7 @@ title: How long is the drug effective?
 category: calculus/single-variable/continuity/intermediate-value-theorem
 level: lycee
 difficulty: 2
+order: 1
 tags: applications, intermediate value theorem, bracketing
 date: 2026-11-02
 ---
@@ -1405,6 +1425,7 @@ title: Lipschitz functions are uniformly continuous
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 2
+order: 3
 tags: Lipschitz, uniform continuity, epsilon-delta
 date: 2026-11-02
 ---
@@ -1435,6 +1456,7 @@ title: The square root: uniformly continuous, not Lipschitz
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
+order: 3
 tags: uniform continuity, Lipschitz, square root
 date: 2026-11-02
 ---
@@ -1466,6 +1488,7 @@ title: x² is not uniformly continuous on the real line
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
+order: 3
 tags: uniform continuity, sequences, counterexamples
 date: 2026-11-02
 ---
@@ -1495,6 +1518,7 @@ title: 1/x on (0,1] is not uniformly continuous
 category: calculus/single-variable/continuity/uniform-continuity
 level: l1
 difficulty: 3
+order: 3
 tags: uniform continuity, open intervals, Heine theorem
 date: 2026-11-02
 ---
