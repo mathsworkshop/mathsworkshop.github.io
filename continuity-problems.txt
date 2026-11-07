@@ -1,3 +1,289 @@
+@@@ fe-the-solution-of-fxfy-minus-fxy.md
+---
+title: f(x)f(y) − f(xy) = x + y
+category: calculus/single-variable/continuity/functional-equations
+level: m1
+difficulty: 2
+tags: substitution, special values, verification
+date: 2026-11-04
+---
+
+## Statement
+
+Find all functions $f:\mathbb{R}\to\mathbb{R}$ such that for all real $x,y$,
+$$f(x)f(y)-f(xy)=x+y.$$
+
+## Hint
+
+Try $y=0$: the term $f(xy)$ becomes a constant.
+
+## Solution
+
+**Substitution $y=0$.** $f(x)f(0)-f(0)=x$, i.e.
+$$f(0)\bigl(f(x)-1\bigr)=x\quad\text{for all }x.$$
+If $f(0)=0$ the left side is $0$ for all $x$, which is absurd (take $x=1$). So $f(0)\ne0$ and
+$$f(x)=1+\frac x{f(0)}.$$
+
+**Determining the constant.** Setting $x=0$ in this formula gives $f(0)=1$. Hence $f(x)=x+1$.
+
+**Verification.** $(x+1)(y+1)-(xy+1)=x+y$ ✓.
+
+**Answer.** $f(x)=x+1$ is the only solution.
+
+**Lesson.** Always: (1) try $x=0$, $y=0$, $x=y$, $y=1$; (2) when an equation is solved by a formula, plug the formula back to check it is a solution.
+@@@ fe-cauchy-s-equation-with-monotonicity.md
+---
+title: Cauchy's equation with monotonicity
+category: calculus/single-variable/continuity/functional-equations
+level: olympiad
+difficulty: 3
+tags: Cauchy equation, rationals, density
+date: 2026-11-04
+---
+
+## Statement
+
+Let $f:\mathbb{R}\to\mathbb{R}$ be a **monotone** function such that $f(x+y)=f(x)+f(y)$ for all real $x,y$. Prove that there is a constant $c$ with $f(x)=cx$ for all $x$.
+
+## Hint
+
+First show $f(q)=qf(1)$ for rational $q$ by pure algebra, then squeeze an arbitrary real number between two rationals, using the monotonicity.
+
+## Solution
+
+We assume $f$ non-decreasing (otherwise replace $f$ by $-f$).
+
+**Step 1: algebra.** $x=y=0$ gives $f(0)=0$. Then $0=f(x+(-x))=f(x)+f(-x)$, so $f$ is odd. By induction $f(nx)=nf(x)$ for $n\in\mathbb{N}$. For $q=\frac mn$ with $m\in\mathbb{Z}$, $n\ge1$: $nf\left(\frac mn\right)=f(m)=mf(1)$, hence $f(q)=qc$ where $c=f(1)$. Note $c=f(1)\ge f(0)=0$.
+
+**Step 2: squeeze.** Let $x$ be real and $q_1<x<q_2$ rationals. Since $f$ is non-decreasing,
+$$cq_1=f(q_1)\le f(x)\le f(q_2)=cq_2.$$
+Letting $q_1,q_2\to x$ (rationals are dense), $f(x)=cx$.
+
+**Verification.** $f(x)=cx$ is additive.
+
+**Remark.** Without any regularity assumption, there exist additive functions $f:\mathbb{R}\to\mathbb{R}$ that are not linear (their construction needs the axiom of choice, via a Hamel basis). Their graphs are dense in the plane. That is why olympiad problems usually add: continuity, monotonicity, boundedness on an interval, or work on $\mathbb{Q}$.
+
+**Lesson.** Cauchy: algebra gives $\mathbb{Q}$; a regularity condition extends it to $\mathbb{R}$.
+@@@ fe-additive-and-multiplicative-functions.md
+---
+title: Additive and multiplicative functions
+category: calculus/single-variable/continuity/functional-equations
+level: olympiad
+difficulty: 3
+tags: Cauchy equation, squares are nonnegative, monotonicity
+date: 2026-11-04
+---
+
+## Statement
+
+Find all functions $f:\mathbb{R}\to\mathbb{R}$ such that for all real $x,y$:
+$$f(x+y)=f(x)+f(y)\qquad\text{and}\qquad f(xy)=f(x)f(y).$$
+
+## Hint
+
+Compute $f(x^2)$ in two ways to prove that $f$ takes nonnegative values on $[0,\infty)$; deduce monotonicity and use Cauchy's equation.
+
+## Solution
+
+**Nonnegativity.** For $x\ge0$ write $x=t^2$. Then $f(x)=f(t\cdot t)=f(t)^2\ge0$.
+
+**Monotonicity.** If $x\le y$ then $f(y)-f(x)=f(y-x)\ge0$ (additivity and nonnegativity on $[0,\infty)$). So $f$ is non-decreasing.
+
+**Cauchy.** An additive monotone function is linear: $f(x)=cx$ (previous problem).
+
+**The constant.** Multiplicativity: $f(1\cdot1)=f(1)^2$, so $c=c^2$, hence $c\in\{0,1\}$.
+
+**Answer.** $f(x)=0$ for all $x$, or $f(x)=x$ for all $x$. Both satisfy both equations.
+
+**Remark.** The same argument shows there is no "wild" ring homomorphism $\mathbb{R}\to\mathbb{R}$, in contrast with $\mathbb{C}$, which has wild automorphisms.
+
+**Lesson.** The relation $f(t^2)=f(t)^2$ is the standard way to get *positivity*, and positivity gives monotonicity.
+@@@ fe-an-involution-on-the-rationals.md
+---
+title: f(x + f(y)) = f(x) + y on the rationals
+category: calculus/single-variable/continuity/functional-equations
+level: olympiad
+difficulty: 3
+tags: injectivity, involution, Cauchy equation on Q
+date: 2026-11-04
+---
+
+## Statement
+
+Find all functions $f:\mathbb{Q}\to\mathbb{Q}$ such that $f(x+f(y))=f(x)+y$ for all rational $x,y$.
+
+## Hint
+
+Put $x=0$ to see that $f$ is injective, then put $y=0$.
+
+## Solution
+
+Let $c=f(0)$.
+
+**Injectivity.** $x=0$: $f(f(y))=c+y$. If $f(y_1)=f(y_2)$ then $f(f(y_1))=f(f(y_2))$, so $y_1=y_2$.
+
+**$c=0$.** $y=0$: $f(x+c)=f(x)$. By injectivity $x+c=x$, so $c=0$. Hence $f(f(y))=y$ ($f$ is an involution).
+
+**Additivity.** Replace $y$ by $f(y)$ in the equation: $f(x+f(f(y)))=f(x)+f(y)$, i.e.
+$$f(x+y)=f(x)+f(y).$$
+
+**Solving on $\mathbb{Q}$.** As in the Cauchy problem, $f(q)=qa$ for every rational $q$, where $a=f(1)\in\mathbb{Q}$. Now $f(f(1))=1$ gives $a\cdot a=1$, so $a=\pm1$.
+
+**Answer.** $f(x)=x$ and $f(x)=-x$. Check: for $f(x)=-x$, $f(x+f(y))=-(x-y)=y-x=f(x)+y$ ✓.
+
+**Remark.** Over $\mathbb{R}$ without regularity, the same argument shows that $f$ is an *additive involution*, and there are exotic ones, so the problem on $\mathbb{R}$ needs an extra hypothesis (continuity, for example).
+
+**Lesson.** Injectivity from $f(f(y))=\ldots$ is the first thing to look for; then show an involution and replace $y$ by $f(y)$ to simplify.
+@@@ fe-surjectivity-and-oddness-in-fx2-plus-fy.md
+---
+title: f(x² + f(y)) = y + f(x)²
+category: calculus/single-variable/continuity/functional-equations
+level: olympiad
+difficulty: 4
+tags: injectivity, surjectivity, oddness, Cauchy equation
+date: 2026-11-04
+---
+
+## Statement
+
+Find all functions $f:\mathbb{R}\to\mathbb{R}$ such that for all real $x,y$,
+$$f\left(x^2+f(y)\right)=y+f(x)^2.$$
+
+## Hint
+
+Put $x=0$ to get injectivity and surjectivity. Then use a $t$ with $f(t)=0$. Show $f$ is odd, $f(0)=0$, and that $f$ is additive and nonnegative on $[0,\infty)$.
+
+## Solution
+
+Let $a=f(0)$.
+
+**Step 1.** $x=0$: $f(f(y))=y+a^2$. Thus $f$ is injective (as in the previous problem) and surjective (the right side takes every real value).
+
+**Step 2.** By surjectivity pick $t$ with $f(t)=0$. Putting $y=t$ gives
+$$f(x^2)=t+f(x)^2\qquad(\ast)$$
+for all $x$.
+
+**Step 3: oddness.** Replacing $x$ by $-x$ in $(\ast)$ gives $f(x)^2=f(-x)^2$, so $f(-x)=\pm f(x)$. If $x\neq0$, the case $f(-x)=f(x)$ contradicts injectivity. Hence $f(-x)=-f(x)$ for all $x\ne0$. If $t\ne0$, then $f(-t)=-f(t)=0=f(t)$, contradicting injectivity again. Therefore $t=0$, i.e. $f(0)=0$ and $f$ is odd.
+
+**Step 4.** Now $a=0$, so $f(f(y))=y$ and $(\ast)$ becomes $f(x^2)=f(x)^2\ge0$: $f\ge0$ on $[0,\infty)$. The original equation reads $f(x^2+f(y))=y+f(x^2)$. For every $u\ge0$ (taking $x=\sqrt u$): $f(u+f(y))=y+f(u)$; replacing $y$ by $f(y)$,
+$$f(u+y)=f(u)+f(y)\qquad(u\ge0,\ y\in\mathbb{R}).$$
+For $u<0$, use oddness: $f(u+y)=-f((-u)+(-y))=-f(-u)-f(-y)=f(u)+f(y)$. So $f$ is additive on $\mathbb{R}$.
+
+**Step 5.** An additive function that is $\ge0$ on $[0,\infty)$ is non-decreasing, hence $f(x)=cx$ (Cauchy with monotonicity). From $f(f(x))=x$: $c^2=1$, and $f(1)=c\ge0$ gives $c=1$.
+
+**Answer.** $f(x)=x$ (check: $f(x^2+y)=x^2+y$ ✓).
+
+**Lesson.** A strong sequence of moves: injective $\to$ locate the zero $\to$ oddness $\to$ $f(f(y))=y$ $\to$ additivity $\to$ monotonicity from nonnegativity of squares.
+@@@ fe-the-exponential-functional-equation.md
+---
+title: f(x + y) = f(x)f(y)
+category: calculus/single-variable/continuity/functional-equations
+level: olympiad
+difficulty: 3
+tags: exponential, Cauchy equation, logarithm, continuity
+date: 2026-11-04
+---
+
+## Statement
+
+1. Find all $f:\mathbb{N}^*\to\mathbb{N}^*$ with $f(m+n)=f(m)f(n)$ for all positive integers $m,n$.
+2. Find all **continuous** functions $f:\mathbb{R}\to\mathbb{R}$, not identically zero, with $f(x+y)=f(x)f(y)$.
+
+## Hint
+
+For 1, induction. For 2, show $f>0$ and take $\ln f$, which satisfies Cauchy's equation.
+
+## Solution
+
+**1.** $f(n+1)=f(n)f(1)$, so by induction $f(n)=f(1)^n$. Any value $f(1)=a\in\mathbb{N}^*$ works: $f(n)=a^n$.
+
+**2. Positivity.** $f(x)=f\left(\frac x2\right)^2\ge0$. If $f(x_0)=0$ for some $x_0$, then $f(x)=f(x_0)f(x-x_0)=0$ for all $x$, which was excluded. So $f(x)>0$ for all $x$.
+
+**Logarithm.** $g=\ln f$ is continuous and $g(x+y)=g(x)+g(y)$. By Cauchy ($g(q)=qg(1)$ on $\mathbb{Q}$ and continuity), $g(x)=cx$ with $c=g(1)=\ln f(1)$.
+
+**Answer.** $f(x)=e^{cx}=a^x$ with $a=f(1)>0$.
+
+**Remark.** Continuity at a single point is enough, and so is measurability, but without any hypothesis there are exotic solutions.
+
+**Lesson.** Multiplicative $\leftrightarrow$ additive via $\ln$; the only thing to check is positivity.
+@@@ fe-d-alembert-s-cosine-equation.md
+---
+title: f(x + y) + f(x − y) = 2f(x)f(y)
+category: calculus/single-variable/continuity/functional-equations
+level: olympiad
+difficulty: 4
+tags: d'Alembert, cosine, differential equation, differentiability
+date: 2026-11-04
+---
+
+## Statement
+
+Let $f:\mathbb{R}\to\mathbb{R}$ be twice differentiable, not identically zero, with
+$$f(x+y)+f(x-y)=2f(x)f(y)\quad\text{for all }x,y.$$
+Find $f$.
+
+## Hint
+
+Show $f(0)=1$ and that $f$ is even. Differentiate twice with respect to $y$ and set $y=0$: you get a differential equation $f''=kf$.
+
+## Solution
+
+**$f(0)=1$.** $x=y=0$: $2f(0)=2f(0)^2$, so $f(0)\in\{0,1\}$. If $f(0)=0$, then $y=0$ gives $2f(x)=0$ for all $x$, excluded. So $f(0)=1$.
+
+**Evenness.** $x=0$: $f(y)+f(-y)=2f(y)$, i.e. $f(-y)=f(y)$. Hence $f'(0)=0$.
+
+**Differential equation.** Fix $x$ and differentiate twice with respect to $y$:
+$$f''(x+y)+f''(x-y)=2f(x)f''(y).$$
+Put $y=0$: $2f''(x)=2f(x)f''(0)$, i.e.
+$$f''(x)=kf(x),\qquad k=f''(0),$$
+with $f(0)=1$, $f'(0)=0$. By uniqueness of solutions of linear ODEs:
+- $k=0$: $f(x)=1$;
+- $k=\omega^2>0$: $f(x)=\cosh(\omega x)$;
+- $k=-\omega^2<0$: $f(x)=\cos(\omega x)$.
+
+**Verification.** $\cos(x+y)+\cos(x-y)=2\cos x\cos y$ and $\cosh(x+y)+\cosh(x-y)=2\cosh x\cosh y$; constant $1$ gives $2=2$ ✓.
+
+**Remark.** This is d'Alembert's equation; the name "cosine functional equation" comes from the trigonometric identity. Continuity alone (without differentiability) is already enough, but needs a more delicate argument (integrate against a bump function to get smoothness).
+
+**Lesson.** When a functional equation has a smoothness hypothesis, differentiating in one variable and plugging a special value often produces an ODE.
+@@@ fe-imo-1977-f-of-n-plus-1-greater-than-f-of-f-of-n.md
+---
+title: An inequality as a functional equation (IMO 1977)
+category: calculus/single-variable/continuity/functional-equations
+level: olympiad
+difficulty: 4
+tags: IMO, natural numbers, induction, monotonicity
+date: 2026-11-04
+---
+
+## Statement
+
+Let $f:\mathbb{N}^*\to\mathbb{N}^*$ satisfy $f(n+1)>f(f(n))$ for every positive integer $n$. Prove that $f(n)=n$ for all $n$.
+
+## Hint
+
+Prove by induction on $n$ the statement $P(n)$: "$f(k)\ge n$ for all $k\ge n$". Deduce that $f(n)\ge n$, then that $f$ is strictly increasing, and finally compare.
+
+## Solution
+
+**Claim.** $P(n)$: for every $k\ge n$, $f(k)\ge n$.
+
+*Base.* $P(1)$: all values of $f$ are at least $1$.
+
+*Step.* Assume $P(n)$. Let $k\ge n+1$. Then $k-1\ge n$, so $f(k-1)\ge n$ by $P(n)$. Applying $P(n)$ again to the argument $f(k-1)\ge n$: $f(f(k-1))\ge n$. Therefore
+$$f(k)>f(f(k-1))\ge n,$$
+so $f(k)\ge n+1$. This proves $P(n+1)$.
+
+**Consequence 1.** Taking $k=n$ in $P(n)$: $f(n)\ge n$ for all $n$.
+
+**Consequence 2: $f$ is strictly increasing.** Apply Consequence 1 to $m=f(n)$: $f(f(n))\ge f(n)$. Hence $f(n+1)>f(f(n))\ge f(n)$.
+
+**Conclusion.** Suppose $f(n)\ge n+1$ for some $n$. Since $f$ is increasing, $f(f(n))\ge f(n+1)$, contradicting $f(n+1)>f(f(n))$. So $f(n)\le n$. Together with $f(n)\ge n$: $f(n)=n$.
+
+**Verification.** $f(n)=n$: $n+1>n$ ✓.
+
+**Lesson.** For $f:\mathbb{N}\to\mathbb{N}$ with an inequality, prove a *lower bound by induction* (here "$f(k)\ge n$ for $k\ge n$"), then show monotonicity, which lets you "cancel" $f$ from both sides of an inequality.
+
 @@@ mvt-rolle-basic.md
 ---
 title: Rolle's theorem on a polynomial
