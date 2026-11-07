@@ -55,7 +55,7 @@
                     {
                   "id": "diff-fcts",
                   "name": "Differentiable functions",
-                  "description": "Differentiable functions, functions of class C^k.",
+                  "description": "Differentiable and continuously differentiable functions.",
                   "subcategories": []
                 },
                     {
