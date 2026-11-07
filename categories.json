@@ -27,6 +27,12 @@
               "name": "Continuity",
               "description": "Continuous functions and their main theorems.",
               "subcategories": [
+                 {
+                  "id": "uniform-continuity",
+                  "name": "Continuous and discontinuous functions",
+                  "description": "Examples of continuous and discontinuous functions.",
+                  "subcategories": []
+                },
                 {
                   "id": "intermediate-value-theorem",
                   "name": "Intermediate Value Theorem",
@@ -37,12 +43,6 @@
                   "id": "mean-value-theorem",
                   "name": "Mean Value Theorem",
                   "description": "Rolle's theorem, the mean value theorem and its consequences.",
-                  "subcategories": []
-                },
-                {
-                  "id": "uniform-continuity",
-                  "name": "Uniform continuity",
-                  "description": "Uniform continuity and the Heine theorem.",
                   "subcategories": []
                 }
               ]
