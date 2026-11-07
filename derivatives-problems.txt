@@ -600,7 +600,7 @@ With $u=\frac1{x^2}\to+\infty$, $|f'(x)|=2|x|^{-3}e^{-u}=2u^{3/2}e^{-u}\to0$ (th
 ---
 title: L'Hôpital's rule, twice
 category: calculus/single-variable/differentiation/diff-fcts
-level: m1
+level: l1
 difficulty: 3
 tags: L'Hôpital's rule, indeterminate forms
 date: 2026-11-02
@@ -622,7 +622,11 @@ $$\frac{(x-x\cos x)'}{(x-\sin x)'}=\frac{1-\cos x+x\sin x}{1-\cos x}.$$
 This is again a $\frac00$ form.
 
 **Second application.**
-$$\frac{(1-\cos x+x\sin x)'}{(1-\cos x)'}=\frac{\sin x+\sin x+x\cos x}{\sin x}=2+\frac x{\sin x}\cos x\longrightarrow2+1\cdot1=3.$$
+$$
+\begin{aligned} 
+\frac{(1-\cos x+x\sin x)'}{(1-\cos x)'}&=\frac{\sin x+\sin x+x\cos x}{\sin x}\\&=2+\frac x{\sin x}\cos x\longrightarrow2+1\cdot1\\&=3.
+\end{aligned}
+$$
 
 **Conclusion.** The limit is $3$, since each application preserves the limit once the new limit exists.
 
