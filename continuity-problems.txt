@@ -88,13 +88,11 @@ Compute $f(x^2)$ in two ways to prove that $f$ takes nonnegative values on $[0,\
 
 **Monotonicity.** If $x\le y$ then $f(y)-f(x)=f(y-x)\ge0$ (additivity and nonnegativity on $[0,\infty)$). So $f$ is non-decreasing.
 
-**Cauchy.** An additive monotone function is linear: $f(x)=cx$ (previous problem).
+**Cauchy.** An additive monotone function is linear: $f(x)=cx$ (see the problem "Cauchy's equation with monotonicity").
 
 **The constant.** Multiplicativity: $f(1\cdot1)=f(1)^2$, so $c=c^2$, hence $c\in\{0,1\}$.
 
 **Answer.** $f(x)=0$ for all $x$, or $f(x)=x$ for all $x$. Both satisfy both equations.
-
-**Remark.** The same argument shows there is no "wild" ring homomorphism $\mathbb{R}\to\mathbb{R}$, in contrast with $\mathbb{C}$, which has wild automorphisms.
 
 **Lesson.** The relation $f(t^2)=f(t)^2$ is the standard way to get *positivity*, and positivity gives monotonicity.
 @@@ fe-an-involution-on-the-rationals.md
