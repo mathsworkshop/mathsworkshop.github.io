@@ -5023,7 +5023,7 @@ Set both partial derivatives to zero.
 @@@ partial-derivatives-hessian.md
 ---
 title: The Hessian matrix
-category: calculus/multivariable/partial-derivatives
+category: calculus/multivariable/constrained-optimisation
 level: l1
 difficulty: 4
 tags: Hessian, second derivatives, quadratic form
@@ -5104,7 +5104,7 @@ Compute partial derivatives along the axes; check continuity along $y=x$.
 @@@ partial-derivatives-critical-saddle.md
 ---
 title: Saddle point
-category: calculus/multivariable/partial-derivatives
+category: calculus/multivariable/constrained-optimisation
 level: l1
 difficulty: 3
 tags: saddle point, Hessian, classification
