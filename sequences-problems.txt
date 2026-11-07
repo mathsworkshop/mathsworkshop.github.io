@@ -154,7 +154,7 @@ Look for solutions $u_n=r^n$. This leads to the characteristic equation $r^2-3r+
 ---
 title: Three cases of order-two recurrences
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 3
 tags: linear recurrence, double root, complex roots
 date: 2026-11-02
@@ -414,7 +414,7 @@ $$\ln n\ll n^k\ll a^n\ll n!\ll n^n.$$
 ---
 title: Supremum, infimum, limsup and liminf
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 3
 tags: supremum, limsup, liminf, bounded sequences
 date: 2026-11-02
@@ -444,7 +444,7 @@ $$\sup v_n=\frac32\ \text{(attained)},\quad\inf v_n=-1\ \text{(not attained)},\q
 ---
 title: The sequence sin(n) does not converge
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 4
 tags: divergence, trigonometry, subsequences, contradiction
 date: 2026-11-02
@@ -504,7 +504,7 @@ So $(S_{2n})$ is increasing and $(S_{2n+1})$ is decreasing.
 ---
 title: Adjacent sequences and the irrationality of e
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 4
 tags: adjacent sequences, number e, irrationality
 date: 2026-11-02
@@ -574,7 +574,7 @@ since $a_n\le b_n\le b_1$. Therefore $a_n$ is increasing and bounded above by $b
 ---
 title: The Cauchy criterion
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 4
 tags: Cauchy sequences, completeness, series
 date: 2026-11-02
@@ -604,7 +604,7 @@ Given $\varepsilon$, take $N>\frac1\varepsilon$: for $m>n\ge N$, $|u_m-u_n|<\var
 ---
 title: The arithmetic–geometric mean
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 4
 tags: adjacent sequences, AM-GM, means
 date: 2026-11-02
@@ -720,7 +720,7 @@ Since $\xi_n\to\ell$ and $f'$ is continuous, $v_n=|f'(\xi_n)|\to|f'(\ell)|$.
 ---
 title: A recurrent sequence and its fixed point
 category: calculus/single-variable/sequences
-level: m1
+level: l2
 difficulty: 3
 tags: fixed point, contraction, mean value theorem
 date: 2026-11-02
@@ -753,7 +753,7 @@ so $|u_n-\alpha|\le4^{-n}|u_0-\alpha|\to0$.
 ---
 title: Convergence to the golden ratio
 category: calculus/single-variable/sequences
-level: m1
+level: l1
 difficulty: 3
 tags: golden ratio, contraction, fixed point
 date: 2026-11-02
@@ -813,7 +813,7 @@ Compute $u_{n+1}-u_n$ and write it as a square. Then split into cases $|u_0|\le\
 ---
 title: The Cesàro lemma
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 4
 tags: Cesaro mean, epsilon-N, averages
 date: 2026-11-02
@@ -846,7 +846,7 @@ by part 1 applied to the sequence $u_{k+1}-u_k$.
 ---
 title: The logistic sequence decays like 1/n
 category: calculus/single-variable/sequences
-level: m1
+level: l2
 difficulty: 5
 tags: Cesaro lemma, asymptotic equivalent, recurrence
 date: 2026-11-02
@@ -878,7 +878,7 @@ $$\frac1{u_{n+1}}-\frac1{u_n}=\frac{u_n-u_{n+1}}{u_nu_{n+1}}=\frac{u_n^2}{u_n\cd
 ---
 title: From the ratio to the n-th root
 category: calculus/single-variable/sequences
-level: m1
+level: l2
 difficulty: 4
 tags: Cesaro lemma, n-th root, ratio, Stirling
 date: 2026-11-02
@@ -912,7 +912,7 @@ So $\binom{2n}n^{1/n}\to4$.
 ---
 title: The root of x^n + x = 1
 category: calculus/single-variable/sequences
-level: l2
+level: l1
 difficulty: 5
 tags: implicit sequences, monotonicity, intermediate value theorem
 date: 2026-11-02
