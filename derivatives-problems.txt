@@ -409,7 +409,7 @@ $P$ is a polynomial, hence continuous on $[0,1]$ and differentiable on $(0,1)$. 
 ---
 title: Legendre polynomials have all their roots in (-1, 1)
 category: calculus/single-variable/differentiation/mean-value-theorem
-level: m1
+level: l2
 difficulty: 5
 tags: Rolle's theorem, polynomials, induction, Legendre
 date: 2026-11-02
@@ -635,7 +635,7 @@ $$
 ---
 title: When L'Hôpital's rule gives no answer
 category: calculus/single-variable/differentiation/diff-fcts
-level: m1
+level: l1
 difficulty: 3
 tags: L'Hôpital's rule, counterexamples, squeeze theorem
 date: 2026-11-02
@@ -666,7 +666,7 @@ For part 1, divide by $x$ and use $|\sin x|\le1$.
 ---
 title: Convexity forces the derivative to be continuous
 category: calculus/single-variable/differentiation/diff-fcts
-level: m1
+level: l1
 difficulty: 4
 tags: convexity, Darboux theorem, monotone functions, continuity
 date: 2026-11-02
@@ -702,7 +702,7 @@ So $f'$ never takes the value $y$. But Darboux's theorem, applied on $[x_0,x_1]$
 ---
 title: A convex function and its asymptote
 category: calculus/single-variable/differentiation/diff-fcts
-level: m1
+level: l1
 difficulty: 4
 tags: convexity, slopes, asymptotes
 date: 2026-11-02
@@ -729,7 +729,6 @@ $$\frac{f(x)-f(y)}{x-y}\le\ell\ \Longrightarrow\ f(x)-\ell x\le f(y)-\ell y.$$
 
 **Conclusion.** $x\mapsto f(x)-\ell x$ is non-increasing.
 
-**Remark.** So the graph of $f$ stays *above* its asymptotic line $y=\ell x+c$, where $c=\lim(f(x)-\ell x)$ if it is finite. Geometrically: a convex curve with a slanted asymptote approaches it from above.
 @@@ a-functional-equation-solved-with-derivatives.md
 ---
 title: A functional equation solved with derivatives
