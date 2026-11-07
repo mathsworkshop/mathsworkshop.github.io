@@ -1008,7 +1008,9 @@ Both functions have the same expansion up to order $5$, so everything happens at
 **Idea.** For small $x$, $\tan(\sin x)$ and $\sin(\tan x)$ are both close to $x$, and, surprisingly, they agree up to order $5$. The limit measures how they differ at order $7$. This is a challenge in careful bookkeeping.
 
 **Step 1: the building blocks.** As $u\to0$,
-$$\sin u=u-\frac{u^3}6+\frac{u^5}{120}-\frac{u^7}{5040}+o(u^7),\qquad \tan u=u+\frac{u^3}3+\frac{2u^5}{15}+\frac{17u^7}{315}+o(u^7).$$
+$$ \sin u=u-\frac{u^3}6+\frac{u^5}{120}-\frac{u^7}{5040}+o(u^7), $$
+and 
+$$ \tan u=u+\frac{u^3}3+\frac{2u^5}{15}+\frac{17u^7}{315}+o(u^7).$$
 
 **Step 2: powers of $\sin x$ and $\tan x$, up to order $7$.** Using $\sin x=x-\frac{x^3}6+\frac{x^5}{120}-\frac{x^7}{5040}$ and $\tan x=x+\frac{x^3}3+\frac{2x^5}{15}+\frac{17x^7}{315}$ and expanding:
 
@@ -1037,7 +1039,11 @@ So $\tan(\sin x)=x+\frac{x^3}6-\frac{x^5}{40}-\frac{107\,x^7}{5040}+o(x^7)$.
 So $\sin(\tan x)=x+\frac{x^3}6-\frac{x^5}{40}-\frac{275\,x^7}{5040}+o(x^7)$.
 
 **Step 5: the difference.** The terms up to order $5$ cancel, and
-$$\tan(\sin x)-\sin(\tan x)=\frac{-107+275}{5040}\,x^7+o(x^7)=\frac{168}{5040}\,x^7+o(x^7)=\frac{x^7}{30}+o(x^7).$$
+$$ 
+\begin{aligned}
+\tan(\sin x)-\sin(\tan x)&=\frac{-107+275}{5040}\,x^7+o(x^7) \\&=\frac{168}{5040}\,x^7+o(x^7)\\&=\frac{x^7}{30}+o(x^7).
+\end{aligned}
+$$
 
 **Conclusion.** The limit is $\dfrac1{30}$.
 
