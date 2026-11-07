@@ -105,8 +105,9 @@ Letting $q_1,q_2\to x$ (rationals are dense), $f(x)=cx$.
 ---
 title: Additive and multiplicative functions
 category: calculus/single-variable/continuity/functional-equations
-level: olympiad
+level: l1
 difficulty: 3
+order: 2
 tags: Cauchy equation, squares are nonnegative, monotonicity
 date: 2026-11-04
 ---
