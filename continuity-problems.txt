@@ -76,6 +76,7 @@ title: Cauchy's equation with monotonicity
 category: calculus/single-variable/continuity/functional-equations
 level: olympiad
 difficulty: 3
+order: 2
 tags: Cauchy equation, rationals, density
 date: 2026-11-04
 ---
@@ -100,9 +101,6 @@ Letting $q_1,q_2\to x$ (rationals are dense), $f(x)=cx$.
 
 **Verification.** $f(x)=cx$ is additive.
 
-**Remark.** Without any regularity assumption, there exist additive functions $f:\mathbb{R}\to\mathbb{R}$ that are not linear (their construction needs the axiom of choice, via a Hamel basis). Their graphs are dense in the plane. That is why olympiad problems usually add: continuity, monotonicity, boundedness on an interval, or work on $\mathbb{Q}$.
-
-**Lesson.** Cauchy: algebra gives $\mathbb{Q}$; a regularity condition extends it to $\mathbb{R}$.
 @@@ fe-additive-and-multiplicative-functions.md
 ---
 title: Additive and multiplicative functions
