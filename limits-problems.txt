@@ -197,7 +197,6 @@ Use the bound $|\sin t|\le1$ for every real $t$.
 $$0\le\left|x\sin\frac1x\right|\le|x|.$$
 Since $|x|\to0$ as $x\to0$, the squeeze theorem gives $\left|x\sin\frac1x\right|\to0$, hence $x\sin\frac1x\to0$.
 
-**Remark.** Compare with the next problem: $\sin\frac1x$ alone has no limit at $0$. Multiplying by $x$ is enough to repair that.
 @@@ sine-of-one-over-x-has-no-limit.md
 ---
 title: sin(1/x) has no limit at 0
@@ -458,7 +457,7 @@ $$e^x\ge\frac{x^{n+1}}{(n+1)!}.$$
 $$0<\frac{x^n}{e^x}\le\frac{(n+1)!\,x^n}{x^{n+1}}=\frac{(n+1)!}{x}\longrightarrow0.$$
 By the squeeze theorem, $\dfrac{x^n}{e^x}\to0$.
 
-**Remark.** Exponential, powers, logarithms form a hierarchy at $+\infty$: $\ln x\ll x^a\ll e^x$. The next problem handles the logarithm.
+**Remark.** Exponential, powers, logarithms form a hierarchy at $+\infty$: $\ln x\ll x^a\ll e^x$.
 @@@ logarithm-versus-powers.md
 ---
 title: The logarithm is slower than any power
@@ -873,7 +872,7 @@ Between any two distinct real numbers there is a rational number and an irration
 
 **Conclusion.** If $D$ had a limit $\ell$ at $a$, both $1$ and $0$ would equal $\ell$. This is impossible, so $D$ has no limit at any point $a$.
 
-**Remark.** In particular $D$ is not continuous anywhere. The next problem shows how multiplying by $x$ changes this.
+**Remark.** In particular $D$ is not continuous anywhere. The problem "$x$ times the Dirichlet function" shows how multiplying by $x$ changes this.
 @@@ x-times-dirichlet-function.md
 ---
 title: x times the Dirichlet function
