@@ -683,7 +683,11 @@ Combine the fractions and factor $\tan^2x-x^2=(\tan x-x)(\tan x+x)$. You need th
 ## Solution
 
 **Step 1: the expansion of $\tan x$.** As $x\to0$,
-$$\tan x=\frac{\sin x}{\cos x}=\frac{x-\frac{x^3}6+o(x^3)}{1-\frac{x^2}2+o(x^2)}=\left(x-\frac{x^3}6\right)\left(1+\frac{x^2}2\right)+o(x^3)=x+\frac{x^3}3+o(x^3).$$
+$$
+\begin{aligned} 
+\tan x&=\frac{\sin x}{\cos x}=\frac{x-\frac{x^3}6+o(x^3)}{1-\frac{x^2}2+o(x^2)}\\&=\left(x-\frac{x^3}6\right)\left(1+\frac{x^2}2\right)+o(x^3)\\&=x+\frac{x^3}3+o(x^3).
+\end{aligned} 
+$$
 
 **Step 2: combine.**
 $$\frac1{x^2}-\frac1{\tan^2x}=\frac{\tan^2x-x^2}{x^2\tan^2x}=\frac{(\tan x-x)(\tan x+x)}{x^2\tan^2x}.$$
