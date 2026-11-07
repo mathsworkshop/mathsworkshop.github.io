@@ -27,8 +27,6 @@ $$f(x)=1+\frac x{f(0)}.$$
 
 **Determining the constant.** Setting $x=0$ in this formula gives $f(0)=1$. Hence $f(x)=x+1$.
 
-**Verification.** $(x+1)(y+1)-(xy+1)=x+y$ ✓.
-
 **Answer.** $f(x)=x+1$ is the only solution.
 
 **Lesson.** Always: (1) try $x=0$, $y=0$, $x=y$, $y=1$; (2) when an equation is solved by a formula, plug the formula back to check it is a solution.
