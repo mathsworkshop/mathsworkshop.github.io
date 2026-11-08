@@ -56,12 +56,14 @@ a) The numerator tends to $\ln 2\neq0$; study left and right. b) The numerator t
 
 ## Solution
 
-**a)** As $x\to0$, $e^{-x}\to1$, so $\ln(1+e^{-x})\to\ln2$. Hence $\dfrac{\ln 2}{x}\to+\infty$ on the right and $-\infty$ on the left. The limit does not exist at $0$.
+**a)** As $x\to0$, $e^{-x}\to1$, so $\ln(1+e^{-x})\to\ln2$. Hence
+$$ \lim_{x \to 0^-} \frac{\ln(1+e^{-x})}{x} = -\infty, \, \text{and} \, \lim_{x \to 0^+} \frac{\ln(1+e^{-x})}{x} = +\infty. $$
+ The limit does not exist.
 
 **b)** As $x\to+\infty$, $e^{-x}\to0$, so $\ln(1+e^{-x})\to0$. The quotient is of the form $0/+\infty$, giving $0$.
 
-**c)** Write $x^{x^x-1}=\exp\bigl((x^x-1)\ln x\bigr)$. As $x\to0^+$, $x\ln x\to0$ and $x^x-1=e^{x\ln x}-1\sim x\ln x$. Hence
-$$(x^x-1)\ln x\sim(x\ln x)\ln x=x(\ln x)^2\longrightarrow0.$$
+**c)** Write $x^{x^x-1}=\exp\bigl((x^x-1)\ln x\bigr)$. As $x\to0^+$, $x(\ln x)^2\to0$ and 
+$$ (x^x-1) \ln x = \frac{e^{x\ln x}-1}{x \ln x} \cdot x (\ln x)^2 \to 0.$$
 By continuity of $\exp$, the limit is $e^0=1$.
 
 @@@ limits-abs-quadratic-trig.md
