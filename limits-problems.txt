@@ -1,3 +1,39 @@
+@@@ limits-conjugate-roots.md
+---
+title: Three basic limits by conjugation and standard limits
+category: calculus/single-variable/limits
+level: lycee
+difficulty: 1
+order: 1
+tags: conjugate, standard limit, sine
+date: 2026-11-08
+---
+
+## Statement
+
+Compute the following limits:
+
+a) $\displaystyle\lim_{x\to0}\frac{\sqrt{1+x}-\sqrt{1-x}}{x}$;
+b) $\displaystyle\lim_{x\to1}\frac{\frac1x-1}{x-1}$;
+c) $\displaystyle\lim_{x\to0}\frac{\sin 2x}{\sin 3x}$.
+
+## Hint
+
+a) Multiply numerator and denominator by the conjugate $\sqrt{1+x}+\sqrt{1-x}$. b) Combine the numerator over a common denominator, then factor $x-1$. c) Use $\lim_{u\to0}\sin u/u=1$ by inserting $2x$ and $3x$.
+
+## Solution
+
+**a)** Direct substitution gives $0/0$. Multiply by the conjugate:
+$$\frac{\sqrt{1+x}-\sqrt{1-x}}{x}=\frac{(1+x)-(1-x)}{x(\sqrt{1+x}+\sqrt{1-x})}=\frac{2}{\sqrt{1+x}+\sqrt{1-x}}.$$
+As $x\to0$, the denominator tends to $\sqrt1+\sqrt1=2$, so the limit is $1$.
+
+**b)** Direct substitution gives $0/0$. Simplify:
+$$\frac{\frac1x-1}{x-1}=\frac{(1-x)/x}{x-1}=-\frac{1}{x}\quad(x\neq1).$$
+Hence the limit as $x\to1$ is $-1$.
+
+**c)** Direct substitution gives $0/0$. Write
+$$\frac{\sin 2x}{\sin 3x}=\frac{2}{3}\cdot\frac{\sin 2x/(2x)}{\sin 3x/(3x)}\longrightarrow\frac{2}{3}\cdot\frac{1}{1}=\frac{2}{3}.$$
+
 @@@ a-limit-with-sine.md
 ---
 title: A limit with sine
