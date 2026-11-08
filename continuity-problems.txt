@@ -60,36 +60,27 @@ Both cases are impossible, so the assumption $\phi\neq0$ everywhere fails. By co
 title: Continuity of a piecewise function with an essential singularity
 category: calculus/single-variable/continuity
 level: l1
-difficulty: 4
-order: 1
-tags: piecewise, one-sided limits, exponential singularity
+difficulty: 3
+tags: piecewise, continuity, exponential singularity
 date: 2026-11-08
 ---
 
 ## Statement
 
-Let $a\in\mathbb{R}$. Discuss the continuity at $x=a$ of the function
+Let $a\in\mathbb{R}$. Discuss the continuity at $x=a$ of
 $$f(x)=\begin{cases}\dfrac{(x-a)\,e^{1/(x-a)}}{1+e^{1/(x-a)}}&\text{if }x\neq a,\\[2mm]0&\text{if }x=a.\end{cases}$$
 
 ## Hint
 
-Compute the left-hand limit with $x=a-h$ ($h\to0^+$), using $e^{-1/h}\to0$. Compute the right-hand limit with $x=a+h$, dividing numerator and denominator by $e^{1/h}$ and using $h\,e^{-1/h}\to0$. Compare both with $f(a)$.
+For $x=a+h$, factor out $h$ in the numerator and bound the remaining factor.
 
 ## Solution
 
-We compute the left-hand limit, the right-hand limit, and compare with $f(a)=0$.
-
-**Left-hand limit.** Write $x=a-h$ with $h>0$, $h\to0^+$. Then $x-a=-h$ and $1/(x-a)=-1/h$, so
-$$f(a-h)=\frac{-h\,e^{-1/h}}{1+e^{-1/h}}.$$
-Since $e^{-1/h}\to0$ as $h\to0^+$ and $h\,e^{-1/h}\to0$ (exponential dominates any polynomial),
-$$\lim_{x\to a^-}f(x)=\lim_{h\to0^+}\frac{-h\,e^{-1/h}}{1+e^{-1/h}}=\frac{0}{1}=0.$$
-
-**Right-hand limit.** Write $x=a+h$ with $h>0$, $h\to0^+$. Then $x-a=h$ and $1/(x-a)=1/h$, so
-$$f(a+h)=\frac{h\,e^{1/h}}{1+e^{1/h}}.$$
-Divide numerator and denominator by $e^{1/h}$:
-$$f(a+h)=\frac{h}{e^{-1/h}+1}.$$
-Since $e^{-1/h}\to0$ and $h\to0$,
-$$\lim_{x\to a^+}f(x)=\lim_{h\to0^+}\frac{h}{e^{-1/h}+1}=\frac{0}{1}=0.$$
+For $x=a+h$ with $h\neq0$,
+$$f(a+h)=h\cdot\frac{e^{1/h}}{1+e^{1/h}}.$$
+Since $e^{1/h}>0$, we have $0<\dfrac{e^{1/h}}{1+e^{1/h}}<1$. Hence
+$$|f(a+h)-f(a)|=|f(a+h)|<|h|.$$
+As $h\to0$, $|h|\to0$, so $f(a+h)\to f(a)=0$. Therefore $f$ is continuous at $a$.
 
 **Conclusion.** The two one-sided limits both equal $0$, which equals $f(a)$. Hence $f$ is **continuous at $x=a$**.
 @@@ continuity-functional-equation-cos.md
