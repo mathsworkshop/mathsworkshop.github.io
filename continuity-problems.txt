@@ -1,3 +1,60 @@
+@@@ continuity-commuting-maps-shared-point.md
+---
+title: Commuting maps on $[0,1]$ share a fixed point
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l1
+difficulty: 5
+order: 2
+tags: commuting maps, IVT, extreme value theorem, induction
+date: 2026-11-08
+---
+
+## Statement
+
+Let $f,g:[0,1]\to[0,1]$ be continuous and commute under composition:
+$$f\circ g=g\circ f.$$
+
+1. Assume $f(x)>g(x)$ for every $x\in[0,1]$. Show there is $\alpha>0$ such that, for every $n\ge1$ and every $x\in[0,1]$,
+$$f^{[n]}(x)\ge g^{[n]}(x)+n\alpha,$$
+where $f^{[n]}$ denotes the $n$-fold iterate of $f$.
+
+2. Deduce that there exists $c\in[0,1]$ with $f(c)=g(c)$.
+
+## Hint
+
+1. Apply the extreme value theorem to $\phi=f-g$ to get $\alpha=\min_{[0,1]}\phi>0$; then argue by induction, using that $f^{[n]}$ and $g^{[n]}$ also commute (a consequence of $f\circ g=g\circ f$).
+
+2. Argue by contradiction: if $\phi$ never vanishes, it keeps a constant strict sign by the IVT, contradicting 1. since both iterates stay in $[0,1]$.
+
+## Solution
+
+**Preliminary: iterates commute.** From $f\circ g=g\circ f$ one checks by induction that $f^{[n]}\circ g=g\circ f^{[n]}$ and, more generally, that $f^{[n]}\circ g^{[n]}=g^{[n]}\circ f^{[n]}$ for all $n\ge1$. We will use this in the inductive step.
+
+**Part 1.** Let $\phi=f-g$. Since $\phi$ is continuous on the compact interval $[0,1]$, the extreme value theorem gives
+$$\alpha=\min_{x\in[0,1]}\phi(x).$$
+Because $\phi(x)>0$ for every $x$, we have $\alpha>0$, and
+$$f(x)\ge g(x)+\alpha\quad\forall x\in[0,1].\tag{$\ast$}$$
+
+*Base case $n=1$.* This is exactly $(\ast)$.
+
+*Inductive step.* Suppose $f^{[n]}(x)\ge g^{[n]}(x)+n\alpha$ for all $x\in[0,1]$. Fix $x\in[0,1]$. Since $f(x)\in[0,1]$, we may apply the inductive hypothesis to the point $f(x)$:
+$$f^{[n]}(f(x))\ge g^{[n]}(f(x))+n\alpha.$$
+The left-hand side is $f^{[n+1]}(x)$. By the preliminary commutation, $g^{[n]}(f(x))=f(g^{[n]}(x))$. Applying $(\ast)$ at the point $y=g^{[n]}(x)\in[0,1]$ gives
+$$f(g^{[n]}(x))\ge g(g^{[n]}(x))+\alpha=g^{[n+1]}(x)+\alpha.$$
+Combining,
+$$f^{[n+1]}(x)\ge g^{[n+1]}(x)+n\alpha+\alpha=g^{[n+1]}(x)+(n+1)\alpha.$$
+This completes the induction.
+
+**Part 2.** Suppose, for contradiction, that $\phi(x)\neq0$ for every $x\in[0,1]$. Since $\phi$ is continuous on the interval $[0,1]$, the intermediate value theorem forces $\phi$ to have a constant strict sign on $[0,1]$.
+
+*Case 1: $\phi>0$ on $[0,1]$.* Part 1 then gives $f^{[n]}(x)\ge g^{[n]}(x)+n\alpha$ for every $n\ge1$ and $x\in[0,1]$. In particular,
+$$f^{[n]}(x)\ge n\alpha.$$
+Fix any $x\in[0,1]$. Since $f$ takes its values in $[0,1]$, we have $f^{[n]}(x)\le 1$ for all $n$. Hence $n\alpha\le1$ for all $n\ge1$, which is impossible because $\alpha>0$ and $n\to+\infty$.
+
+*Case 2: $\phi<0$ on $[0,1]$.* Exchanging the roles of $f$ and $g$ in Part 1 produces the same contradiction.
+
+Both cases are impossible, so the assumption $\phi\neq0$ everywhere fails. By continuity, there is $c\in[0,1]$ with $\phi(c)=0$, i.e. $f(c)=g(c)$.
+
 @@@ continuity-piecewise-exp-singularity.md
 ---
 title: Continuity of a piecewise function with an essential singularity
