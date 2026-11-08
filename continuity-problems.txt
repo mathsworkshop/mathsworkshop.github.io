@@ -766,7 +766,7 @@ $$L=\frac{1+\sqrt5}2.$$
 
 @@@ continuity-square-equals-one.md
 ---
-title: Continuous functions with $f^2=1$ on an interval
+title: Continuous functions with f^2=1 on an interval
 category: calculus/single-variable/continuity/intermediate-value-theorem
 level: lycee
 difficulty: 2
@@ -793,7 +793,7 @@ Since $I$ is an interval, it contains the whole segment between $x_0$ and $y_0$.
 
 @@@ continuity-fixed-point-unit-interval.md
 ---
-title: Fixed point on $[0,1]$
+title: Fixed point on [0,1]
 category: calculus/single-variable/continuity/intermediate-value-theorem
 level: lycee
 difficulty: 2
