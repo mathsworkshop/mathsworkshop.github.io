@@ -5140,8 +5140,8 @@ Compute the Hessian: one positive and one negative eigenvalue.
 ---
 title: Euler's theorem for homogeneous functions
 category: calculus/multivariable/partial-derivatives
-level: m1
-difficulty: 4
+level: l1
+difficulty: 2
 tags: homogeneous functions, Euler, partial derivatives
 date: 2026-11-03
 ---
@@ -5162,8 +5162,6 @@ Differentiate the homogeneity identity with respect to $t$ and evaluate at $t=1$
 **Differentiate.** $\frac{d}{dt}$: $x f_x(tx,ty)+y f_y(tx,ty)=k t^{k-1}f(x,y)$.
 
 **At $t=1$.** $xf_x(x,y)+yf_y(x,y)=kf(x,y)$.
-
-**Conclusion.** Euler's theorem for homogeneous functions.
 
 @@@ partial-derivatives-laplacian.md
 ---
