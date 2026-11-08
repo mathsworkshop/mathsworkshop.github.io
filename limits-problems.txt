@@ -1,3 +1,36 @@
+@@@ limits-log-exp-tower.md
+---
+title: Three limits involving logarithm and exponentials
+category: calculus/single-variable/limits
+level: l1
+difficulty: 3
+order: 1
+tags: exponential form, logarithm, indeterminate forms
+date: 2026-11-08
+---
+
+## Statement
+
+Compute the following limits:
+
+a) $\displaystyle\lim_{x\to0}\frac{\ln(1+e^{-x})}{x}$;
+b) $\displaystyle\lim_{x\to+\infty}\frac{\ln(1+e^{-x})}{x}$;
+c) $\displaystyle\lim_{x\to0^+}x^{x^x-1}$.
+
+## Hint
+
+a) The numerator tends to $\ln 2\neq0$; study left and right. b) The numerator tends to $0$; the quotient is not indeterminate. c) Write $x^{x^x-1}=\exp((x^x-1)\ln x)$ and use $x^x-1\sim x\ln x$.
+
+## Solution
+
+**a)** As $x\to0$, $e^{-x}\to1$, so $\ln(1+e^{-x})\to\ln2$. Hence $\dfrac{\ln 2}{x}\to+\infty$ on the right and $-\infty$ on the left. The limit does not exist at $0$.
+
+**b)** As $x\to+\infty$, $e^{-x}\to0$, so $\ln(1+e^{-x})\to0$. The quotient is of the form $0/+\infty$, giving $0$.
+
+**c)** Write $x^{x^x-1}=\exp\bigl((x^x-1)\ln x\bigr)$. As $x\to0^+$, $x\ln x\to0$ and $x^x-1=e^{x\ln x}-1\sim x\ln x$. Hence
+$$(x^x-1)\ln x\sim(x\ln x)\ln x=x(\ln x)^2\longrightarrow0.$$
+By continuity of $\exp$, the limit is $e^0=1$.
+
 @@@ limits-abs-quadratic-trig.md
 ---
 title: Four limits with absolute value and trigonometry
