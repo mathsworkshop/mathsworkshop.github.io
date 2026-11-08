@@ -678,6 +678,30 @@ $$L=\frac{1+\sqrt5}2.$$
 **Check.** The first terms are $1,\,2,\,1.5,\,1.667,\,1.6,\,1.625,\dots$ and the golden ratio is $1.618\dots$
 
 **Warning.** Part 1 does *not* prove that the sequence converges: it only says that *if* it converges, the limit must be a fixed point. Convergence has to be established separately. For this sequence, the terms alternate around $L$ and get closer.
+@@@ continuity-fixed-point-unit-interval.md
+---
+title: Fixed point on $[0,1]$
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: lycee
+difficulty: 2
+tags: fixed point, IVT, auxiliary function
+date: 2026-11-08
+---
+
+## Statement
+
+Let $f:[0,1]\to[0,1]$ be continuous. Show that $f$ has a fixed point, i.e. there exists $x_0\in[0,1]$ with $f(x_0)=x_0$.
+
+## Hint
+
+Apply the IVT to $g(x)=f(x)-x$.
+
+## Solution
+
+Define $g(x)=f(x)-x$ on $[0,1]$. Since $f$ and $x\mapsto x$ are continuous, $g$ is continuous on $[0,1]$.
+
+At the endpoints: Since $f([0,1])\subseteq[0,1]$, we have $0 \leq f \leq 1$, hence $g(0)=f(0)\ge0$ and $g(1)=f(1)-1\le0$.
+The IVT provides $x_0\in[0,1]$ with $g(x_0)=0$, i.e. $f(x_0)=x_0$.
 @@@ continuous-injective-functions-are-monotone.md
 ---
 title: Continuous injective functions are monotone
