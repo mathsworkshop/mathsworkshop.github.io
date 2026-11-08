@@ -1,3 +1,34 @@
+@@@ limits-squeeze-log.md
+---
+title: Three more classical limits
+category: calculus/single-variable/limits
+level: l1
+difficulty: 2
+order: 1
+tags: squeeze theorem, logarithm, exponential form
+date: 2026-11-08
+---
+
+## Statement
+
+Compute the following limits:
+
+a) $\displaystyle\lim_{x\to0}x\left(2+\sin\frac1x\right)$;
+b) $\displaystyle\lim_{x\to0^+}\frac{\ln(1+3x)}{2x}$;
+c) $\displaystyle\lim_{x\to0^+}(1+x)^{\ln x}$.
+
+## Hint
+
+a) Squeeze $-1\le\sin(1/x)\le1$. b) Use $\ln(1+u)/u\to1$ with $u=3x$. c) Write as $\exp(\ln x\cdot\ln(1+x))$ and use $\ln(1+x)\sim x$.
+
+## Solution
+
+**a)** For $x\neq0$, $-1\le\sin(1/x)\le1$, so $1\le 2+\sin(1/x)\le3$. Multiplying by $x>0$ gives $x\le x(2+\sin(1/x))\le3x$; both bounds tend to $0$, so the right limit is $0$. Multiplying by $x<0$ reverses the inequalities; again both bounds tend to $0$. The limit is $0$.
+
+**b)** Write
+$$\frac{\ln(1+3x)}{2x}=\frac{3}{2}\cdot\frac{\ln(1+3x)}{3x}\longrightarrow\frac{3}{2}\cdot1=\frac{3}{2}.$$
+
+**c)** Write $(1+x)^{\ln x}=\exp(\ln x\cdot\ln(1+x))$. As $x\to0^+$, $\ln(1+x)\sim x$, so $\ln x\cdot\ln(1+x)\sim x\ln x\to0$. Hence the limit is $e^0=1$.
 @@@ limits-log-exp-tower.md
 ---
 title: Three limits involving logarithm and exponentials
