@@ -28,7 +28,9 @@ a) Squeeze $-1\le\sin(1/x)\le1$. b) Use $\ln(1+u)/u\to1$ with $u=3x$. c) Write a
 **b)** Write
 $$\frac{\ln(1+3x)}{2x}=\frac{3}{2}\cdot\frac{\ln(1+3x)}{3x}\longrightarrow\frac{3}{2}\cdot1=\frac{3}{2}.$$
 
-**c)** Write $(1+x)^{\ln x}=\exp(\ln x\cdot\ln(1+x))$. As $x\to0^+$, $\ln(1+x)\sim x$, so $\ln x\cdot\ln(1+x)\sim x\ln x\to0$. Hence the limit is $e^0=1$.
+**c)** Write $(1+x)^{\ln x}=\exp(\ln x\cdot\ln(1+x))$. As $x\to0^+$,
+$$ \ln x \cdot \ln(1+x) = x \ln x \cdot \dfrac{\ln(1+x)}{x} \rightarrow 0. $$
+Hence the limit is $e^0=1$.
 @@@ limits-log-exp-tower.md
 ---
 title: Three limits involving logarithm and exponentials
