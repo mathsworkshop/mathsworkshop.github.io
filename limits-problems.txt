@@ -1,3 +1,46 @@
+@@@ limits-abs-quadratic-trig.md
+---
+title: Four limits with absolute value and trigonometry
+category: calculus/single-variable/limits
+level: lycee
+difficulty: 2
+order: 1
+tags: absolute value, one-sided limits, factorization
+date: 2026-11-08
+---
+
+## Statement
+
+Compute the following limits:
+
+a) $\displaystyle\lim_{x\to0}\frac{x^2+2|x|}{x}$;
+b) $\displaystyle\lim_{x\to-\infty}\frac{x^2+2|x|}{x}$;
+c) $\displaystyle\lim_{x\to2}\frac{x^2-4}{x^2-3x+2}$;
+d) $\displaystyle\lim_{x\to\pi}\frac{\sin^2 x}{1+\cos x}$.
+
+## Hint
+
+a) Study $x\to0^+$ and $x\to0^-$ separately (with $|x|=x$ resp. $-x$). b) For $x\to-\infty$, $|x|=-x$. c) Factor by $(x-2)$. d) Use $\sin^2 x=(1-\cos x)(1+\cos x)$.
+
+## Solution
+
+**a)** For $x\neq0$, $\dfrac{x^2+2|x|}{x}=x+2\dfrac{|x|}{x}$.
+- On $x>0$: $|x|/x=1$, so the expression equals $x+2\to2$.
+- On $x<0$: $|x|/x=-1$, so the expression equals $x-2\to-2$.
+
+Left and right limits differ, so the limit does not exist.
+
+**b)** For $x<0$, $|x|=-x$, so
+$$\frac{x^2-2x}{x}=x-2\longrightarrow-\infty.$$
+The limit is $-\infty$.
+
+**c)** Factor: $x^2-4=(x-2)(x+2)$, $x^2-3x+2=(x-2)(x-1)$. For $x\neq2$:
+$$\frac{x+2}{x-1}\longrightarrow\frac{2+2}{2-1}=4.$$
+The limit is $4$.
+
+**d)** Factor $\sin^2 x=(1-\cos x)(1+\cos x)$. For $\cos x\neq-1$:
+$$\frac{\sin^2 x}{1+\cos x}=1-\cos x\longrightarrow 1-(-1)=2.$$
+The limit is $2$.
 @@@ limits-conjugate-roots.md
 ---
 title: Three basic limits by conjugation and standard limits
