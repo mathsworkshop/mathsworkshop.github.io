@@ -678,12 +678,41 @@ $$L=\frac{1+\sqrt5}2.$$
 **Check.** The first terms are $1,\,2,\,1.5,\,1.667,\,1.6,\,1.625,\dots$ and the golden ratio is $1.618\dots$
 
 **Warning.** Part 1 does *not* prove that the sequence converges: it only says that *if* it converges, the limit must be a fixed point. Convergence has to be established separately. For this sequence, the terms alternate around $L$ and get closer.
+
+@@@ continuity-square-equals-one.md
+---
+title: Continuous functions with $f^2=1$ on an interval
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: lycee
+difficulty: 2
+order: 3
+tags: IVT, sign, constant functions
+date: 2026-11-08
+---
+
+## Statement
+
+Let $I$ be an interval of $\mathbb{R}$ and $f:I\to\mathbb{R}$ continuous with $(f(x))^2=1$ for all $x\in I$. Show that $f=1$ or $f=-1$.
+
+## Hint
+
+Assume $f$ takes both values and apply the IVT to reach $f(z)=0$, contradicting $(f(z))^2=1$.
+
+## Solution
+
+At each $x\in I$, $(f(x))^2=1$ gives $f(x)\in\{-1,1\}$. Suppose $f$ is neither identically $1$ nor identically $-1$. Then there exist $x_0,y_0\in I$ with $f(x_0)=1$ and $f(y_0)=-1$.
+
+Since $I$ is an interval, it contains the whole segment between $x_0$ and $y_0$. The IVT applied to the continuous $f$ on this segment provides $z$ between $x_0$ and $y_0$ with $f(z)=0$. But then $(f(z))^2=0\neq1$: contradiction.
+
+**Conclusion.** $f$ is constant on $I$, with value $1$ or $-1$.
+
 @@@ continuity-fixed-point-unit-interval.md
 ---
 title: Fixed point on $[0,1]$
 category: calculus/single-variable/continuity/intermediate-value-theorem
 level: lycee
 difficulty: 2
+order: 2
 tags: fixed point, IVT, auxiliary function
 date: 2026-11-08
 ---
