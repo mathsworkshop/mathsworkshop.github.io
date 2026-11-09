@@ -85,7 +85,7 @@ By d'Alembert's ratio test, $\sum u_n$ converges. By 1., $\sum v_n$ **converges*
 @@@ series-three-sums.md
 ---
 title: Three convergent series with explicit sums
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: l1
 difficulty: 3
 tags: geometric series, telescoping, arctangent identity, d'Alembert
@@ -136,7 +136,7 @@ As $n\to+\infty$, $\arctan(n+1)\to\frac{\pi}{2}$, so $S_n\to\frac{\pi}{2}-\frac{
 @@@ series-three-telescoping-solutions.md
 ---
 title: Three series with computed sums
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: l1
 difficulty: 3
 tags: geometric series, telescoping, arctan identity
@@ -238,7 +238,7 @@ The first term gives a divergent series ($\sum n^{-1/2}$), while the second conv
 @@@ series-log-telescoping-three.md
 ---
 title: Three logarithmic series
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: l1
 difficulty: 3
 tags: logarithmic series, telescoping, conditional convergence
@@ -288,7 +288,7 @@ As $N\to+\infty$, $Z_{2N}=\ln\!\left(1+\frac{1}{2N}\right)\to0$.
 @@@ geometric-series-and-repeating-decimals.md
 ---
 title: Geometric series and repeating decimals
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: lycee
 difficulty: 1
 tags: geometric series, decimals, sum
@@ -318,7 +318,7 @@ $$\frac{-2/3}{1+2/3}=-\frac25.$$
 @@@ telescoping-series-and-partial-fractions.md
 ---
 title: Telescoping series with partial fractions
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: l1
 difficulty: 2
 tags: telescoping, partial fractions, sums
@@ -347,7 +347,7 @@ $$S_N=\frac12\left(\frac1{1\cdot2}-\frac1{(N+1)(N+2)}\right)\longrightarrow\frac
 @@@ telescoping-series-with-logarithms.md
 ---
 title: Telescoping with logarithms
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: l1
 difficulty: 2
 tags: telescoping, logarithm, divergence
@@ -440,7 +440,7 @@ $$\int_{N+1}^\infty\frac{dx}{x^2}<S-S_N<\int_N^\infty\frac{dx}{x^2},\qquad\text{
 @@@ even-and-odd-terms-of-zeta-2.md
 ---
 title: Splitting the sum of 1/n² into even and odd terms
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: l2
 difficulty: 3
 tags: absolute convergence, rearrangement, pi squared
@@ -577,7 +577,7 @@ $$|c_n|\ge(n+1)\cdot\frac2{n+2}\ge1\quad\text{for all }n\ge0.$$
 @@@ series-involving-the-exponential-function.md
 ---
 title: Series with factorials and the number e
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: l1
 difficulty: 2
 tags: exponential series, factorials, e
@@ -1156,7 +1156,7 @@ The series has infinite radius of convergence (ratio test), so the term-by-term 
 @@@ geometric-series-with-parameters.md
 ---
 title: Geometric series with a parameter
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: lycee
 difficulty: 1
 tags: geometric series, convergence domain, parameters
@@ -1184,7 +1184,7 @@ Each is $\sum r^k$ for a ratio $r$. It converges iff $|r|<1$, and then the sum i
 @@@ telescoping-sum-with-a-shift-p.md
 ---
 title: Telescoping with a shift p
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: l1
 difficulty: 2
 tags: telescoping, partial fractions, harmonic numbers
@@ -1530,7 +1530,7 @@ $$\sum_{n=1}^N\left(\frac1n-\ln\left(1+\frac1n\right)\right)=H_N-\ln(N+1).$$
 @@@ an-arctangent-telescoping-series.md
 ---
 title: An arctangent telescoping series
-category: calculus/single-variable/series
+category: calculus/single-variable/series/find-sum
 level: olympiad
 difficulty: 4
 tags: telescoping, arctangent, subtraction formula
@@ -1561,7 +1561,7 @@ $$S_N=\sum_{n=0}^N\bigl(\arctan(n+1)-\arctan n\bigr)=\arctan(N+1).$$
 @@@ a-zeta-type-telescoping-sum.md
 ---
 title: A telescoping sum that proves ζ(2) converges
-category: calculus/single-variable/series
+category: calculus/single-variable/series/convergence-tests
 level: l1
 difficulty: 3
 tags: telescoping, comparison, zeta function
