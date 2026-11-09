@@ -325,7 +325,6 @@ Now $C_2 \leftarrow C_2 - C_1$, $C_3 \leftarrow C_3 - C_1$:
 $$\begin{vmatrix} 1 & 0 & 0 \\ 1 & m-1 & 0 \\ m & 1-m & 1-m \end{vmatrix} = (m-1)(1-m) = -(m-1)^2.$$
 Hence
 $$\det A_m = -(m+2)(m-1)^2.$$
-(Check: for $m=0$ the matrix $\begin{pmatrix} 1&1&0\\1&0&1\\0&1&1\end{pmatrix}$ has determinant $-2$. The sign differs from the determinant of the matrix of the previous exercise because swapping columns $1$ and $3$ of that matrix gives $A_m$.)
 
 Case $m \neq -2$ and $m \neq 1$. $\det A_m \neq 0$, so $\operatorname{rank}(A_m) = 3$.
 
@@ -707,8 +706,6 @@ $$\chi_A(\lambda) = (4-\lambda)(1-\lambda)^2.$$
 
 Conclusion. The eigenvalues are $4$ (simple) and $1$ (double).
 
-Checks. $A(1,1,1)^T = (4,4,4)^T$, so $(1,1,1)^T$ is an eigenvector for $4$. Moreover $4+1+1 = 6 = \operatorname{tr}(A)$ and $4\cdot1\cdot1 = 4 = \det(A)$ (Sarrus: $8+1+1-2-2-2 = 4$).
-
 @@@ matrix-diagonalization-2x2.md
 ---
 title: Diagonalizing a 2x2 matrix
@@ -744,7 +741,6 @@ $$PDP^{-1} = \frac13\begin{pmatrix} 2 & 5 \\ -4 & 5 \end{pmatrix}\begin{pmatrix}
 
 Powers. Since $A^k = PD^kP^{-1}$,
 $$A^k = \frac13\begin{pmatrix} 1 & 1 \\ -2 & 1 \end{pmatrix}\begin{pmatrix} 2^k & 0 \\ 0 & 5^k \end{pmatrix}\begin{pmatrix} 1 & -1 \\ 2 & 1 \end{pmatrix} = \frac13\begin{pmatrix} 2^k + 2\cdot5^k & -2^k + 5^k \\ -2\cdot2^k + 2\cdot5^k & 2\cdot2^k + 5^k \end{pmatrix}.$$
-(Check: $k=1$ gives $A$, and $k=0$ gives $I$.)
 
 @@@ matrix-diagonalization-3x3.md
 ---
