@@ -365,7 +365,9 @@ Use $\ln\frac ab=\ln a-\ln b$ so that the partial sums telescope.
 **1.** $\ln\left(1+\frac1n\right)=\ln(n+1)-\ln n$, so $S_N=\ln(N+1)\to+\infty$. The series diverges, even though $\ln(1+\frac1n)\to0$: the terms tend to $0$ too slowly (they behave like $\frac1n$).
 
 **2.** $1-\frac1{n^2}=\frac{(n-1)(n+1)}{n^2}$, so
-$$\ln\left(1-\frac1{n^2}\right)=\ln(n-1)-2\ln n+\ln(n+1)=\bigl[\ln(n+1)-\ln n\bigr]-\bigl[\ln n-\ln(n-1)\bigr].$$
+$$\begin{aligned} 
+\ln\left(1-\frac1{n^2}\right)&=\ln(n-1)-2\ln n+\ln(n+1)\\ &=\bigl[\ln(n+1)-\ln n\bigr]-\bigl[\ln n-\ln(n-1)\bigr].
+\end{aligned}$$
 Summing from $2$ to $N$, the brackets telescope:
 $$S_N=\ln(N+1)-\ln N-\bigl(\ln2-\ln1\bigr)\longrightarrow-\ln2.$$
 
