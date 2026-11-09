@@ -341,8 +341,6 @@ The terms cancel *two* steps apart, so two terms of each end survive.
 
 **Second series.** $\frac1{n(n+1)(n+2)}=\frac12\left(\frac1{n(n+1)}-\frac1{(n+1)(n+2)}\right)$. The sum telescopes:
 $$S_N=\frac12\left(\frac1{1\cdot2}-\frac1{(N+1)(N+2)}\right)\longrightarrow\frac14.$$
-
-**Check.** $\sum_{n<10000}\frac1{n(n+1)(n+2)}=0.2499999\dots$ ✓.
 @@@ telescoping-series-with-logarithms.md
 ---
 title: Telescoping with logarithms
@@ -435,7 +433,6 @@ The series converges absolutely, so you may split it into the even-indexed and o
 
 **Alternating sum.** $B=A-\frac{\pi^2}{24}=\frac{\pi^2}8-\frac{\pi^2}{24}=\dfrac{\pi^2}{12}.$
 
-**Check.** $\frac{\pi^2}{12}=0.822467$ lies between the partial sums $S_9=0.82796$ and $S_{10}=0.81796$, as the alternating series test predicts.
 @@@ rearranging-the-alternating-harmonic-series.md
 ---
 title: Rearranging a conditionally convergent series
@@ -1054,7 +1051,6 @@ With $u=-4x$, $\binom{-1/2}nu^n=\binom{2n}nx^n$, which proves the formula for $|
 **Value.** At $x=\frac15<\frac14$:
 $$\sum_{n\ge0}\binom{2n}n\frac1{5^n}=\frac1{\sqrt{1-\frac45}}=\sqrt5.$$
 
-**Check.** The first terms are $1+\frac25+\frac6{25}+\frac{20}{125}+\frac{70}{625}+\dots=1+0.4+0.24+0.16+0.112+\dots$, increasing to $\sqrt5\approx2.236$.
 @@@ the-exponential-law-from-the-cauchy-product.md
 ---
 title: e^x e^y = e^(x+y) from power series
@@ -1174,7 +1170,6 @@ The second group has $p$ terms, each tending to $0$.
 **Sum.**
 $$\sum_{k=1}^\infty\frac1{k(k+p)}=\frac1p\sum_{k=1}^p\frac1k=\frac{H_p}p.$$
 
-**Check.** $p=1$ gives $1$; $p=2$ gives $\frac12\left(1+\frac12\right)=\frac34$, matching the classical $\sum\frac1{n(n+2)}$.
 @@@ telescoping-with-square-roots.md
 ---
 title: Telescoping with square roots
