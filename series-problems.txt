@@ -1360,7 +1360,6 @@ so the terms do not tend to $0$: the series diverges.
 
 **Conclusion.** The series converges iff $0<a<e$.
 
-**Remark.** In fact for $a=e$ the ratio $\frac{u_{n+1}}{u_n}=e\left(1+\frac1n\right)^{-n}$ is always $>1$ (because $\left(1+\frac1n\right)^n<e$), which already shows divergence without Stirling.
 @@@ the-central-binomial-series-diverges.md
 ---
 title: A ratio test that fails, and how to conclude
