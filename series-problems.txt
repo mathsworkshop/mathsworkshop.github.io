@@ -1397,7 +1397,7 @@ where the last inequality is equivalent (squaring) to $(2n+1)^2\ge4n(n+1)$, i.e.
 ---
 title: The sine of an alternating term
 category: calculus/single-variable/series/convergence-tests
-level: l2
+level: l1
 difficulty: 3
 tags: alternating series, odd function, conditional convergence
 date: 2026-11-02
