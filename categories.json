@@ -115,6 +115,12 @@
                   "subcategories": []
                 },
                 {
+                  "id": "find-sum",
+                  "name": "Find the sum",
+                  "description": "Evaluating Convergent Series: Examples and Problems",
+                  "subcategories": []
+                },
+                {
                   "id": "power-series",
                   "name": "Power series",
                   "description": "Radius of convergence and sums of power series.",
