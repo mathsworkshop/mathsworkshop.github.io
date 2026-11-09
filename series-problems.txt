@@ -486,8 +486,8 @@ which is exactly the rearrangement (every positive term $\frac1{2k+1}$ and every
 ---
 title: Reciprocals of integers with no digit 9
 category: calculus/single-variable/series/convergence-tests
-level: l2
-difficulty: 4
+level: l1
+difficulty: 5
 tags: comparison test, counting, harmonic series, Kempner
 date: 2026-11-02
 ---
@@ -516,8 +516,8 @@ All terms are positive, so the partial sums are bounded and increasing: the seri
 ---
 title: A Cauchy product that diverges
 category: calculus/single-variable/series/convergence-tests
-level: l2
-difficulty: 3
+level: l1
+difficulty: 4
 tags: Cauchy product, conditional convergence, Mertens theorem
 date: 2026-11-02
 ---
@@ -609,8 +609,8 @@ Three ranges: $p>1$, $0<p\le1$ and $p\le0$. Use the $p$-series test and the alte
 ---
 title: Alternating series and the error bound
 category: calculus/single-variable/series/convergence-tests
-level: l2
-difficulty: 2
+level: l1
+difficulty: 3
 tags: alternating series test, remainder, error estimate
 date: 2026-11-02
 ---
@@ -674,7 +674,7 @@ For positive terms, if $0\le u_n\le v_n$ and $\sum v_n$ converges, so does $\sum
 ---
 title: The limit comparison test
 category: calculus/single-variable/series/convergence-tests
-level: l2
+level: l1
 difficulty: 3
 tags: limit comparison, equivalents, Taylor expansion
 date: 2026-11-02
@@ -739,7 +739,7 @@ If $\frac{u_{n+1}}{u_n}\to L$, the series converges for $L<1$ and diverges for $
 ---
 title: The root test
 category: calculus/single-variable/series/convergence-tests
-level: l2
+level: l1
 difficulty: 3
 tags: root test, Cauchy, exponential limits
 date: 2026-11-02
@@ -769,7 +769,7 @@ If $\sqrt[n]{u_n}\to L$, the series converges for $L<1$ and diverges for $L>1$.
 ---
 title: The integral test and Bertrand series
 category: calculus/single-variable/series/convergence-tests
-level: l2
+level: l1
 difficulty: 3
 tags: integral test, Bertrand series, logarithm
 date: 2026-11-02
@@ -1268,8 +1268,8 @@ So the terms are positive for large $n$ and equivalent to $\frac1{6n^3}$.
 ---
 title: The series of 1/(ln n)^(ln n)
 category: calculus/single-variable/series/convergence-tests
-level: l2
-difficulty: 3
+level: l1
+difficulty: 4
 tags: comparison test, exponential form, logarithm
 date: 2026-11-02
 ---
@@ -1333,8 +1333,8 @@ For $\beta\le0$, $\frac1{n(\ln n)^\beta}\ge\frac1n$ for $n\ge3$: divergence.
 ---
 title: The ratio test with a parameter
 category: calculus/single-variable/series/convergence-tests
-level: l2
-difficulty: 3
+level: l1
+difficulty: 4
 tags: ratio test, Stirling formula, critical case
 date: 2026-11-02
 ---
@@ -1364,7 +1364,7 @@ so the terms do not tend to $0$: the series diverges.
 ---
 title: A ratio test that fails, and how to conclude
 category: calculus/single-variable/series/convergence-tests
-level: l2
+level: l1
 difficulty: 4
 tags: ratio test, central binomial coefficients, induction, Stirling
 date: 2026-11-02
@@ -1423,7 +1423,7 @@ The sine is odd. What is $\sin\!\left(\frac{(-1)^n}n\right)$ in terms of $\sin\f
 ---
 title: Two alternating series with logarithms
 category: calculus/single-variable/series/convergence-tests
-level: l2
+level: l1
 difficulty: 3
 tags: alternating series test, monotonicity, conditional convergence
 date: 2026-11-02
