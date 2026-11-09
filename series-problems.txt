@@ -1466,7 +1466,6 @@ $$=\frac{1+\frac1n}{\sqrt{1+\frac1n+\frac1{n^2}}+1}\longrightarrow\frac12.$$
 
 **Conclusion.** The general term tends to $\frac12\ne0$, so the series **diverges** (divergence test).
 
-**Remark.** Compare with the problem $\sqrt{n^2+n}-n\to\frac12$ in the limits section: the difference of square roots has the same limit, which is why this series is hopelessly divergent.
 @@@ the-euler-mascheroni-constant-as-a-sum.md
 ---
 title: The Euler-Mascheroni constant as a series
