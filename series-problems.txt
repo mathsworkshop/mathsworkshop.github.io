@@ -1212,6 +1212,7 @@ title: Equivalents, and a sign trap
 category: calculus/single-variable/series/convergence-tests
 level: l1
 difficulty: 2
+order: 1
 tags: equivalents, comparison test, positive series
 date: 2026-11-02
 ---
@@ -1226,10 +1227,10 @@ $$\text{(a) }\sum_{n\ge1}\left(1-\cos\frac\pi n\right),\qquad\text{(b) }\sum_{n\
 For positive terms, $u_n\sim v_n$ implies that $\sum u_n$ and $\sum v_n$ have the same nature. Use $1-\cos x\sim\frac{x^2}2$ and $\ln(1+x)\sim x$ at $0$.
 
 ## Solution
+All the considered series are positive. 
+**(a)** $1-\cos\frac\pi n\sim\frac{\pi^2}{2n^2}$, and $\sum \frac{1}{n^2}$ converges: **converges**.
 
-**(a)** $1-\cos\frac\pi n\sim\frac{\pi^2}{2n^2}$, a convergent $p$-series: **converges**.
-
-**(b)** $\ln\left(1+\frac1n\right)\sim\frac1n$: **diverges**. (Directly: the partial sums are $\ln(N+1)$.)
+**(b)** $\ln\left(1+\frac1n\right)\sim\frac1n$: **diverges**.
 
 **(c)** The numerator $n+(-1)^n$ is positive for $n\ge2$, and $\frac{n+(-1)^n}{n^2+1}\sim\frac1n$: **diverges**.
 
