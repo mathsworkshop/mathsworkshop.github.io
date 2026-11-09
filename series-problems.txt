@@ -314,7 +314,6 @@ $$\frac{-2/3}{1+2/3}=-\frac25.$$
 
 **3.** $0.999\dots=9\sum_{n\ge1}10^{-n}=9\cdot\frac{1/10}{1-1/10}=1$. The number $0.999\dots$ is *by definition* the limit of the partial sums $0.9,0.99,0.999,\dots$, and this limit is exactly $1$.
 
-**Remark.** Every repeating decimal is a rational number, and conversely.
 @@@ telescoping-series-and-partial-fractions.md
 ---
 title: Telescoping series with partial fractions
@@ -572,7 +571,6 @@ $$\sum_{n\ge0}\frac{n^2}{n!}=\sum_{n\ge2}\frac1{(n-2)!}+\sum_{n\ge1}\frac1{(n-1)
 
 **Third.** $\sum_{n\ge0}\frac1{(n+1)!}=\sum_{m\ge1}\frac1{m!}=e-1$.
 
-**Remark.** These are the first moments of a Poisson random variable with mean $1$: the mean is $1$ and $E[X^2]=2$, so the variance is $1$.
 @@@ absolute-and-conditional-convergence-of-p-series.md
 ---
 title: Absolute, conditional or no convergence
@@ -826,8 +824,6 @@ $$2^ku_{2^{k+1}}\le\sum_{n=2^k}^{2^{k+1}-1}u_n\le2^ku_{2^k}.$$
 **If the condensed series diverges,** the left inequality gives $\sum_n u_n\ge\sum_k2^ku_{2^{k+1}}=\frac12\sum_{k\ge1}2^ku_{2^k}$, which diverges.
 
 **Application.** For $u_n=\frac1{n^p}$ with $p>0$ (decreasing): $2^ku_{2^k}=2^{k(1-p)}$, a geometric series that converges iff $2^{1-p}<1$, i.e. $p>1$. For $p\le0$ the terms do not tend to $0$.
-
-**Remark.** The condensation test says: the behaviour of a decreasing series is already encoded in a very sparse sample of its terms.
 @@@ when-the-alternating-series-test-fails.md
 ---
 title: A series with an equivalent that converges but does not
@@ -1025,8 +1021,6 @@ $$\frac x{(1-\varphi x)(1-\psi x)}=\frac1{\sqrt5}\left(\frac1{1-\varphi x}-\frac
 Identifying coefficients: $F_n=\dfrac{\varphi^n-\psi^n}{\sqrt5}$.
 
 **Check.** Expanding $\frac x{1-x-x^2}=x+x^2+2x^3+3x^4+5x^5+8x^6+\cdots$ ✓.
-
-**Remark.** Generating functions turn a recurrence into an algebraic equation, and the *radius of convergence reveals the growth rate* of the coefficients.
 @@@ the-binomial-series-and-central-binomial-coefficients.md
 ---
 title: The generating function of central binomial coefficients
