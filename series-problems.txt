@@ -703,7 +703,7 @@ If $u_n,v_n>0$ and $u_n\sim v_n$ (that is $\frac{u_n}{v_n}\to1$), the series $\s
 
 **4.** $\sqrt{n+1}-\sqrt n=\dfrac1{\sqrt{n+1}+\sqrt n}\sim\dfrac1{2\sqrt n}$, and $\sum\frac1{\sqrt n}$ diverges ($p=\frac12$): **diverges**. (Alternatively, the partial sums telescope to $\sqrt{N+1}-1\to\infty$.)
 
-**Remark.** Equivalents are the most efficient tool for positive series. They work only for positive terms (or terms of constant sign): for alternating series an equivalent is not enough, as the next-but-one problems show.
+**Remark.** Equivalents are the most efficient tool for positive series. They work only for positive terms (or terms of constant sign): for alternating series an equivalent is not enough.
 @@@ the-ratio-test.md
 ---
 title: The ratio test
