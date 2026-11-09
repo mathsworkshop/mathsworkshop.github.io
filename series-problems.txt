@@ -1317,11 +1317,17 @@ Split into $\alpha>1$, $\alpha<1$ and $\alpha=1$. A power of $n$, however small,
 
 **$\alpha=1$.** For $\beta>0$ the function $\frac1{x(\ln x)^\beta}$ is positive and decreasing. With $u=\ln x$,
 $$\int_2^\infty\frac{dx}{x(\ln x)^\beta}=\int_{\ln2}^\infty\frac{du}{u^\beta},$$
-finite iff $\beta>1$. For $\beta\le0$, $\frac1{n(\ln n)^\beta}\ge\frac1n$ for $n\ge3$: divergence.
+finite iff $\beta>1$. Fix an integer $n\geq 2$. On $[n:n+1]$, we have
+$$ \frac1{(n+1)^\alpha(\ln (n+1))^\beta} \leq f \leq \frac1{n^\alpha(\ln n)^\beta}. $$
+Integrating on $[N:N+1]$ gives 
+$$ \frac1{(n+1)^\alpha(\ln (n+1))^\beta} \leq \int_n^{n+1} f(x) dx \leq \frac1{n^\alpha(\ln n)^\beta}. $$
+Taking the sum from $n=2$ to yields 
+$$ \sum_{n\geq 2} \frac1{(n+1)^\alpha(\ln (n+1))^\beta} \leq \int_2^{=\infty} f(x) dx \leq \sum_{n=2}^{+\infty} \frac1{n^\alpha(\ln n)^\beta}. $$
+Thus the serie $\sum_{n\geq 2} \frac1{(n+1)^\alpha(\ln (n+1))^\beta}$ and the integral $\int_2^{+\infty} f(x) dx$ have the same nature.  
+
+For $\beta\le0$, $\frac1{n(\ln n)^\beta}\ge\frac1n$ for $n\ge3$: divergence.
 
 **Conclusion.** The series converges iff $\alpha>1$, or $\alpha=1$ and $\beta>1$.
-
-**Remark.** The case $\alpha=1,\beta\le1$ shows that $\sum\frac1{n\ln n}$ diverges, even though $\frac1{n\ln n}$ is far smaller than $\frac1n$. This is the borderline of the scale of $p$-series.
 @@@ the-ratio-test-with-a-parameter.md
 ---
 title: The ratio test with a parameter
