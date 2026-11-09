@@ -1,3 +1,53 @@
+
+@@@ inverse-of-a-2x2-matrix.md
+---
+title: Inverse of a 2×2 matrix
+category: linear/matrices
+level: lycee
+difficulty: 1
+tags: inverse, determinants
+date: 2026-10-31
+---
+
+## Statement
+
+Show that $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$ is invertible and compute $A^{-1}$.
+
+## Hint
+
+For $\begin{pmatrix}a&b\\c&d\end{pmatrix}$ with determinant $\Delta=ad-bc\ne0$, the inverse is $\frac1\Delta\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$.
+
+## Solution
+
+$\det A=1\cdot4-2\cdot3=-2\ne0$, so $A$ is invertible, and
+$$A^{-1}=\frac1{-2}\begin{pmatrix}4&-2\\-3&1\end{pmatrix}=\begin{pmatrix}-2&1\\\tfrac32&-\tfrac12\end{pmatrix}.$$
+
+@@@ inverting-i-minus-a.md
+---
+title: Inverting I − A
+category: linear/matrices
+level: l2
+difficulty: 2
+tags: matrices, nilpotent
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A$ be a square matrix with $A^2=0$. Show that $I-A$ is invertible and give its inverse.
+
+## Hint
+
+Multiply $I-A$ by $I+A$.
+
+## Solution
+
+Using $A^2=0$,
+$$(I-A)(I+A)=I-A^2=I\qquad\text{and}\qquad(I+A)(I-A)=I-A^2=I.$$
+
+So $I-A$ is invertible and $(I-A)^{-1}=I+A$.
+
+
 @@@ matrix-operations-basic.md
 ---
 title: Matrix addition and scalar multiplication
