@@ -410,7 +410,7 @@ If $\sum u_n$ converges, then $u_n\to0$ (because $u_n=S_n-S_{n-1}$).
 ---
 title: Splitting the sum of 1/n² into even and odd terms
 category: calculus/single-variable/series/find-sum
-level: l2
+level: l1
 difficulty: 2
 tags: absolute convergence, rearrangement, pi squared
 date: 2026-11-02
@@ -439,7 +439,7 @@ The series converges absolutely, so you may split it into the even-indexed and o
 ---
 title: Rearranging a conditionally convergent series
 category: calculus/single-variable/series/find-sum
-level: m1
+level: l1
 difficulty: 5
 tags: conditional convergence, rearrangement, Riemann theorem, ln 2
 date: 2026-11-02
@@ -1467,7 +1467,7 @@ $$=\frac{1+\frac1n}{\sqrt{1+\frac1n+\frac1{n^2}}+1}\longrightarrow\frac12.$$
 ---
 title: The Euler-Mascheroni constant as a series
 category: calculus/single-variable/series/find-sum
-level: l2
+level: l1
 difficulty: 4
 tags: Euler-Mascheroni constant, harmonic numbers, telescoping, logarithm
 date: 2026-11-02
@@ -1493,37 +1493,6 @@ $$\sum_{n=1}^N\left(\frac1n-\ln\left(1+\frac1n\right)\right)=H_N-\ln(N+1).$$
 **Conclusion.** The sum equals $\gamma$.
 
 **Remark.** This turns the *definition* of $\gamma$ as a limit into a convergent series, and the series converges fast: its terms behave like $\frac1{2n^2}$.
-@@@ an-arctangent-telescoping-series.md
----
-title: An arctangent telescoping series
-category: calculus/single-variable/series/find-sum
-level: olympiad
-difficulty: 4
-tags: telescoping, arctangent, subtraction formula
-date: 2026-11-02
----
-
-## Statement
-
-Compute $\displaystyle\sum_{n=0}^\infty\arctan\frac1{n^2+n+1}$.
-
-## Hint
-
-Use $\arctan a-\arctan b=\arctan\frac{a-b}{1+ab}$ with $a=n+1$ and $b=n$.
-
-## Solution
-
-**Key identity.** For $a>b\ge0$, $\tan(\arctan a-\arctan b)=\frac{a-b}{1+ab}$, and $\arctan a-\arctan b\in\left(0,\frac\pi2\right)$, so $\arctan a-\arctan b=\arctan\frac{a-b}{1+ab}$. With $a=n+1$, $b=n$:
-$$\arctan(n+1)-\arctan n=\arctan\frac1{1+n(n+1)}=\arctan\frac1{n^2+n+1}.$$
-
-**Telescoping.**
-$$S_N=\sum_{n=0}^N\bigl(\arctan(n+1)-\arctan n\bigr)=\arctan(N+1).$$
-
-**Limit.** $S_N\to\frac\pi2$.
-
-**Answer.** The sum is $\dfrac\pi2$.
-
-**Remark.** Each term is positive and about $\frac1{n^2}$, so the series converges quickly, and the infinite sum of small angles adds up to a right angle.
 @@@ a-zeta-type-telescoping-sum.md
 ---
 title: A telescoping sum that proves ζ(2) converges
