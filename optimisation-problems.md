@@ -1,0 +1,1096 @@
+@@@ a-fence-along-a-river.md
+---
+title: A fence along a river
+order: 1
+category: calculus/single-variable/differentiation/optimisation
+level: lycee
+difficulty: 1
+tags: optimisation, area, quadratic function
+date: 2026-11-04
+---
+
+## Statement
+
+A farmer has $100$ m of fence and wants to enclose a rectangular field along a straight river. No fence is needed along the river. Which dimensions maximise the area?
+
+## Hint
+
+Call $x$ the length of each side perpendicular to the river. What is the length of the side parallel to the river?
+
+## Solution
+
+**Setup.** Two sides of length $x$ and one of length $100-2x$, with $0<x<50$. The area is
+$$A(x)=x(100-2x)=100x-2x^2.$$
+
+**Maximum.** $A'(x)=100-4x$ vanishes at $x=25$, with $A'>0$ on $(0,25)$ and $A'<0$ on $(25,50)$. So $A$ is increasing then decreasing on the whole interval, and $x=25$ gives the global maximum.
+
+**Answer.** $25$ m by $50$ m, area $1250$ m².
+
+**Remark.** If the field were fenced on all four sides, the best rectangle would be a square. Here the free side lets the field be twice as long as it is wide. In general, with a fence of length $L$, the maximum is at $x=\frac L4$, and the side parallel to the river is $L-2x=\frac L2=2x$: always twice each perpendicular side.
+
+@@@ the-apple-orchard.md
+---
+title: How many trees in the orchard?
+order: 2
+category: calculus/single-variable/differentiation/optimisation
+level: lycee
+difficulty: 2
+tags: optimisation, modelling, quadratic function
+date: 2026-11-04
+---
+
+## Statement
+
+An orchard has $50$ apple trees, each giving $800$ apples per year. Each additional tree planted reduces the yield of every tree by $10$ apples (they compete for light and water). How many trees should be added to maximise the total harvest?
+
+## Hint
+
+With $x$ extra trees there are $50+x$ trees, each giving $800-10x$ apples.
+
+## Solution
+
+**Total harvest.** $H(x)=(50+x)(800-10x)=40\,000+300x-10x^2$ for $0\le x\le80$ (beyond $80$ the yield per tree would be negative).
+
+**Maximum.** $H'(x)=300-20x=0\iff x=15$. $H$ is a concave parabola, so this is the global maximum. Since $15$ is an integer, it is admissible as a number of trees.
+
+**Answer.** Plant $15$ more trees: $65$ trees, each giving $650$ apples, for a total of $42\,250$ apples (compared with $40\,000$ at the start).
+
+**Remark.** Whenever "more of something reduces the yield of each", the optimum balances the gain from the extra unit against the loss on all the others.
+
+@@@ the-closest-point-of-a-line-by-calculus.md
+---
+title: Distance to a line, without a formula
+order: 3
+category: calculus/single-variable/differentiation/optimisation
+level: lycee
+difficulty: 2
+tags: optimisation, distance, line, quadratic function
+date: 2026-11-04
+---
+
+## Statement
+
+Find the point of the line $3x+4y=10$ closest to the origin, and the distance from the origin to the line.
+
+## Hint
+
+Write $y$ in terms of $x$ and minimise the squared distance $x^2+y^2$.
+
+## Solution
+
+**Squared distance.** $y=\dfrac{10-3x}4$, so
+$$D(x)=x^2+\frac{(10-3x)^2}{16}=\frac{25x^2-60x+100}{16}.$$
+Minimising $D$ (the squared distance) is equivalent to minimising the distance, since the square root is increasing.
+
+**Minimum.** $D'(x)=\dfrac{50x-60}{16}=0\iff x=\dfrac65$, hence $y=\dfrac{10-18/5}4=\dfrac85$. $D$ is a convex parabola, so this is the global minimum, and $D\left(\frac65\right)=\frac{36+64}{25}=4$.
+
+**Answer.** The closest point is $\left(\frac65,\frac85\right)$ and the distance is $\sqrt4=2$.
+
+**Check.** The formula $\dfrac{|3\cdot0+4\cdot0-10|}{\sqrt{3^2+4^2}}=\frac{10}5=2$ agrees. Also, the vector $\left(\frac65,\frac85\right)$ is proportional to the normal vector $(3,4)$ of the line, as it must be.
+
+@@@ a-least-squares-line-through-the-origin.md
+---
+title: Least squares for a line through the origin
+order: 4
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 2
+tags: least squares, regression, statistics, quadratic
+date: 2026-11-04
+---
+
+## Statement
+
+We have the data points $(1,2)$, $(2,3)$, $(3,7)$ and want a line $y=ax$ through the origin fitting them best in the least squares sense, i.e. minimising $S(a)=\sum_i(y_i-ax_i)^2$.
+
+1. Find $a$.
+2. Find the general formula for $n$ points.
+
+## Hint
+
+$S$ is a quadratic polynomial in $a$.
+
+## Solution
+
+**1.** $S(a)=(2-a)^2+(3-2a)^2+(7-3a)^2=14a^2-58a+62$. Then $S'(a)=28a-58=0$ gives
+$$a=\frac{29}{14}\approx2.07.$$
+The minimal value is $S=62-\dfrac{29^2}{14}=\dfrac{27}{14}\approx1.93$.
+
+**2.** For $n$ points, $S(a)=a^2\sum x_i^2-2a\sum x_iy_i+\sum y_i^2$ and
+$$S'(a)=0\iff a=\frac{\sum x_iy_i}{\sum x_i^2}$$
+(provided not all $x_i$ are $0$). For the data above, $\sum x_iy_i=29$ and $\sum x_i^2=14$.
+
+**Remark.** Convexity ($S''=2\sum x_i^2>0$) guarantees that the critical point is the global minimum. With a free intercept ($y=ax+b$) one has two parameters and gets the usual regression line, but the idea is the same.
+
+@@@ the-most-economical-speed-of-a-truck.md
+---
+title: The most economical speed of a truck
+order: 5
+category: calculus/single-variable/differentiation/optimisation
+level: lycee
+difficulty: 2
+tags: optimisation, modelling, economics, cost per kilometre
+date: 2026-11-04
+---
+
+## Statement
+
+A truck driver is paid $18$ € per hour. At speed $v$ (in km/h) the fuel costs $0.005\,v^2$ € per hour. At which speed is the cost **per kilometre** minimal? What is this cost?
+
+## Hint
+
+Per hour the cost is $18+0.005v^2$. To get the cost per kilometre, divide by the number of kilometres travelled per hour.
+
+## Solution
+
+**Cost per km.**
+$$c(v)=\frac{18+0.005v^2}{v}=\frac{18}v+0.005v,\qquad v>0.$$
+
+**Derivative.** $c'(v)=-\dfrac{18}{v^2}+0.005$, which vanishes when $v^2=3600$, i.e. $v=60$. It is negative on $(0,60)$ and positive on $(60,\infty)$, so $v=60$ is the global minimum on $(0,\infty)$.
+
+**Answer.** $60$ km/h, at a cost of $c(60)=0.30+0.30=0.60$ €/km.
+
+**Comparison.** At $80$ km/h: $c(80)=0.225+0.40=0.625$ €/km, and at $40$ km/h: $c(40)=0.45+0.20=0.65$ €/km.
+
+**Remark.** At the optimum the two parts of the cost are equal ($0.30$ each). This is typical of $\frac av+bv$: the minimum is where the two terms balance.
+
+@@@ the-economic-order-quantity.md
+---
+title: The economic order quantity
+order: 6
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 2
+tags: optimisation, economics, inventory, modelling
+date: 2026-11-04
+---
+
+## Statement
+
+A shop sells $D=1200$ items per year at a steady rate. Each order costs $K=50$ € whatever its size, and keeping one item in stock costs $h=3$ € per year. If the shop orders $q$ items each time, the average stock is $\frac q2$. Find the order size $q$ that minimises the total annual cost.
+
+## Hint
+
+The number of orders per year is $\frac Dq$.
+
+## Solution
+
+**Total cost.**
+$$C(q)=\underbrace{\frac{KD}q}_{\text{ordering}}+\underbrace{\frac{hq}2}_{\text{storage}}=\frac{60\,000}q+1.5\,q,\qquad q>0.$$
+
+**Minimum.** $C'(q)=-\frac{60\,000}{q^2}+1.5=0\iff q^2=40\,000\iff q=200$. Since $C\to+\infty$ at $0^+$ and at $+\infty$ and $q=200$ is the only critical point, it is the global minimum (equivalently, $C'<0$ on $(0,200)$ and $C'>0$ on $(200,\infty)$).
+
+**Answer.** Order $200$ items at a time ($6$ orders a year). The cost is $C(200)=300+300=600$ € per year.
+
+**General formula.** $q^*=\sqrt{\dfrac{2KD}h}$ (the Wilson formula). Here $\sqrt{2\cdot50\cdot1200/3}=200$.
+
+**Remark.** Again, ordering cost and storage cost are equal at the optimum. Treating $q$ as a real number is harmless here, because the optimum happens to be an integer.
+
+@@@ maximising-profit-where-marginal-revenue-equals-marginal-cost.md
+---
+title: Maximising profit
+order: 7
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 2
+tags: optimisation, economics, marginal cost, modelling
+date: 2026-11-04
+---
+
+## Statement
+
+A company sells $q$ units at price $p(q)=80-0.5q$ (€ per unit). Producing $q$ units costs $C(q)=200+20q+0.25q^2$.
+
+1. Write the profit $\Pi(q)$ and find the production level that maximises it.
+2. Check that, at the optimum, the marginal revenue equals the marginal cost.
+
+## Hint
+
+Revenue is $R(q)=q\,p(q)$. Marginal revenue and marginal cost are $R'(q)$ and $C'(q)$.
+
+## Solution
+
+**1.** The price is nonnegative for $0\le q\le160$. $R(q)=80q-0.5q^2$, so
+$$\Pi(q)=R(q)-C(q)=60q-0.75q^2-200.$$
+$\Pi'(q)=60-1.5q=0$ gives $q=40$, which lies in $[0,160]$; the parabola is concave, so this is the global maximum. Then $p=80-20=60$ € and $\Pi(40)=2400-1200-200=1000$ €.
+
+**2.** $R'(q)=80-q=40$ and $C'(q)=20+0.5q=40$ at $q=40$. They are equal.
+
+**Remark.** $\Pi'=0$ is exactly $R'=C'$: it is worth producing one more unit as long as the extra revenue exceeds the extra cost. This "marginal" reasoning is the heart of microeconomics.
+
+@@@ the-strongest-beam-in-a-log.md
+---
+title: The strongest beam cut from a log
+order: 8
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 2
+tags: optimisation, geometry, engineering, Pythagoras
+date: 2026-11-04
+---
+
+## Statement
+
+A rectangular beam is cut from a circular log of diameter $d$. Its strength is proportional to $wh^2$, where $w$ is its width and $h$ its height. What dimensions give the strongest beam?
+
+## Hint
+
+The cross-section is inscribed in the circle, so $w^2+h^2=d^2$. Express $wh^2$ with $w$ only.
+
+## Solution
+
+**Strength.** $h^2=d^2-w^2$, so $S(w)=w(d^2-w^2)=d^2w-w^3$ for $0<w<d$.
+
+**Maximum.** $S'(w)=d^2-3w^2=0\iff w=\dfrac d{\sqrt3}$. Since $S'>0$ on $\left(0,\frac d{\sqrt3}\right)$ and $S'<0$ on $\left(\frac d{\sqrt3},d\right)$, it is the global maximum on $(0,d)$.
+
+**Dimensions.**
+$$w=\frac d{\sqrt3}\approx0.577\,d,\qquad h=\sqrt{d^2-\frac{d^2}3}=d\sqrt{\frac23}\approx0.816\,d.$$
+Thus $\dfrac hw=\sqrt2$.
+
+**Remark.** The strongest beam is not the one of largest area (that would be the square, $w=h$). Tall beams resist bending better, which is why floor joists are laid on edge.
+
+@@@ the-window-with-a-semicircle-on-top.md
+---
+title: A window with a semicircular top
+order: 9
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 2
+tags: optimisation, area, perimeter, geometry
+date: 2026-11-04
+---
+
+## Statement
+
+A window is a rectangle surmounted by a semicircle whose diameter is the width of the rectangle. Its perimeter (the frame) is fixed, equal to $P$. Find the dimensions that let in the most light, i.e. that maximise the area.
+
+## Hint
+
+Let $r$ be the radius of the semicircle and $h$ the height of the rectangle. The width is $2r$. Express $h$ from the perimeter condition.
+
+## Solution
+
+**Perimeter.** The frame consists of the two vertical sides, the bottom side of length $2r$, and the semicircular arc of length $\pi r$ (the diameter of the semicircle is not part of the frame). So $2h+2r+\pi r=P$, hence $h=\dfrac{P-(2+\pi)r}2$, and $h>0$ requires $0<r<\frac P{2+\pi}$.
+
+**Area.**
+$$A(r)=2rh+\frac{\pi r^2}2=Pr-(2+\pi)r^2+\frac{\pi r^2}2=Pr-\frac{4+\pi}2\,r^2.$$
+
+**Maximum.** $A'(r)=P-(4+\pi)r=0\iff r=\dfrac P{4+\pi}$, which lies in $\left(0,\frac P{2+\pi}\right)$. The parabola is concave, so this is the maximum, and
+$$A_{\max}=\frac{P^2}{2(4+\pi)}.$$
+
+**Shape.** Then $h=\dfrac{P-(2+\pi)r}2=\dfrac{(4+\pi)-(2+\pi)}{2}\,r=r$.
+
+**Answer.** The height of the rectangular part equals the radius of the semicircle.
+
+@@@ the-trapezoid-with-three-equal-sides.md
+---
+title: The trapezoid of largest area with three equal sides
+order: 10
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: optimisation, trigonometry, geometry, trapezoid
+date: 2026-11-04
+---
+
+## Statement
+
+An isosceles trapezoid has its two legs and its short base all equal to $1$. Let $\theta\in\left(0,\frac\pi2\right)$ be the base angle (between a leg and the long base). Find $\theta$ maximising the area, and the maximal area.
+
+## Hint
+
+The height is $\sin\theta$. The long base is $1+2\cos\theta$.
+
+## Solution
+
+**Area.** The average of the bases is $\frac{1+(1+2\cos\theta)}2=1+\cos\theta$, so
+$$A(\theta)=\sin\theta\,(1+\cos\theta).$$
+
+**Derivative.**
+$$A'(\theta)=\cos\theta(1+\cos\theta)-\sin^2\theta=2\cos^2\theta+\cos\theta-1=(2\cos\theta-1)(\cos\theta+1).$$
+On $\left(0,\frac\pi2\right)$, $\cos\theta+1>0$ and $2\cos\theta-1>0\iff\theta<\frac\pi3$. So $A$ increases until $\theta=\frac\pi3$, then decreases.
+
+**Answer.** $\theta=\dfrac\pi3$, and
+$$A_{\max}=\frac{\sqrt3}2\cdot\frac32=\frac{3\sqrt3}4\approx1.30.$$
+
+**Remark.** At $\theta=\frac\pi3$ the trapezoid is **half of a regular hexagon** of side $1$: the best shape is the natural one. A regular hexagon has area $\frac{3\sqrt3}2$, twice the answer.
+
+@@@ the-triangle-of-least-area-through-a-point.md
+---
+title: The triangle of least area through a point
+order: 11
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: optimisation, lines, triangle, area
+date: 2026-11-04
+---
+
+## Statement
+
+Through the point $P=(a,b)$ with $a,b>0$, we draw a line cutting the positive axes at $(p,0)$ and $(0,q)$. Find the line for which the triangle formed with the axes has the least area.
+
+## Hint
+
+Write that $P$ lies on the line: $\frac ap+\frac bq=1$. Express $q$ in terms of $p$, with $p>a$.
+
+## Solution
+
+**Elimination.** From $\frac ap+\frac bq=1$: $\frac bq=\frac{p-a}p$, so $q=\dfrac{bp}{p-a}$. For $q>0$ we need $p>a$.
+
+**Area.**
+$$S(p)=\frac{pq}2=\frac b2\cdot\frac{p^2}{p-a},\qquad p>a.$$
+
+**Derivative.**
+$$S'(p)=\frac b2\cdot\frac{2p(p-a)-p^2}{(p-a)^2}=\frac b2\cdot\frac{p(p-2a)}{(p-a)^2}.$$
+It is negative on $(a,2a)$ and positive on $(2a,\infty)$, and $S\to+\infty$ at both ends of $(a,\infty)$: the global minimum is at $p=2a$, hence $q=2b$.
+
+**Answer.** The minimal area is $S=2ab$, attained when $P$ is the **midpoint** of the segment of the line between the axes (the midpoint of $(2a,0)$ and $(0,2b)$ is $(a,b)$).
+
+**Example.** $P=(3,2)$: intercepts $6$ and $4$, area $12$.
+
+@@@ the-isosceles-triangle-has-the-largest-area.md
+---
+title: Among triangles with a given base and perimeter, the isosceles one is the largest
+order: 12
+category: calculus/single-variable/differentiation/optimisation
+level: l2
+difficulty: 3
+tags: optimisation, Heron's formula, triangle
+date: 2026-11-04
+---
+
+## Statement
+
+A triangle has a fixed base $b$ and the sum of its other two sides is a fixed number $s>b$. Show that its area is maximal when the two other sides are equal, and compute this maximal area.
+
+## Hint
+
+Call $x$ and $s-x$ the other two sides and use Heron's formula $A^2=\sigma(\sigma-a_1)(\sigma-a_2)(\sigma-a_3)$ where $\sigma$ is the semi-perimeter.
+
+## Solution
+
+**Heron.** The semi-perimeter $\sigma=\frac{b+s}2$ is constant. The sides are $b$, $x$, $s-x$, hence
+$$A^2=\sigma(\sigma-b)\cdot(\sigma-x)\bigl(\sigma-(s-x)\bigr).$$
+Since $A>0$, maximising $A$ is equivalent to maximising $A^2$.
+
+**The variable part.** With $u=x-\frac s2$, we have $\sigma-x=\frac b2-u$ and $\sigma-(s-x)=\frac b2+u$, so
+$$(\sigma-x)\bigl(\sigma-s+x\bigr)=\frac{b^2}4-u^2.$$
+The triangle inequalities hold exactly when $|u|<\frac b2$, and on this range the expression above is maximal at $u=0$, i.e. $x=\frac s2$: the isosceles triangle.
+
+**Value.** $\sigma(\sigma-b)=\dfrac{(s+b)(s-b)}4=\dfrac{s^2-b^2}4$, so
+$$A_{\max}^2=\frac{s^2-b^2}4\cdot\frac{b^2}4,\qquad A_{\max}=\frac b4\sqrt{s^2-b^2}.$$
+
+**Remark.** Geometrically: the apex moves on an ellipse with foci at the endpoints of the base (the sum of the distances $s$ is constant), and the highest point of this ellipse is above the middle of the base.
+
+@@@ the-rectangle-of-largest-area-in-an-ellipse.md
+---
+title: The largest rectangle inscribed in an ellipse
+order: 13
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: optimisation, ellipse, parametrisation, trigonometry
+date: 2026-11-04
+---
+
+## Statement
+
+Find the rectangle of largest area, with sides parallel to the axes, inscribed in the ellipse $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$.
+
+## Hint
+
+A vertex in the first quadrant is $(a\cos\theta,b\sin\theta)$ with $\theta\in\left(0,\frac\pi2\right)$.
+
+## Solution
+
+**Symmetry.** Let the vertices be $(x_1,y_1),(x_2,y_1),(x_1,y_2),(x_2,y_2)$ on the ellipse, with $x_1\neq x_2$ and $y_1\neq y_2$. From the first two vertices, $\frac{x_1^2}{a^2}=1-\frac{y_1^2}{b^2}=\frac{x_2^2}{a^2}$, so $x_2=-x_1$; likewise $y_2=-y_1$. So the rectangle is centred at the origin, and it is determined by its vertex in the first quadrant, $(a\cos\theta,b\sin\theta)$.
+
+**Area.** The rectangle has sides $2a\cos\theta$ and $2b\sin\theta$:
+$$A(\theta)=4ab\sin\theta\cos\theta=2ab\sin2\theta.$$
+
+**Maximum.** $A'(\theta)=4ab\cos2\theta=0$ on $\left(0,\frac\pi2\right)$ only at $\theta=\frac\pi4$, where $A$ goes from increasing to decreasing. So
+$$A_{\max}=2ab,\qquad\text{sides }a\sqrt2\text{ and }b\sqrt2.$$
+
+**Remark.** The ellipse has area $\pi ab$: the best rectangle fills $\frac2\pi\approx64\%$ of it, whatever the ellipse. This is no coincidence: an ellipse is a stretched circle, and stretching multiplies all areas by the same factor $\frac ba$. For a circle ($a=b=r$), the best rectangle is a square of area $2r^2$.
+
+@@@ shapes-inscribed-in-a-sphere.md
+---
+title: The largest cone and the largest cylinder inscribed in a sphere
+order: 14
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: optimisation, volume, sphere, solids
+date: 2026-11-04
+---
+
+## Statement
+
+A sphere has radius $R$.
+
+1. Find the right circular cylinder of largest volume inscribed in the sphere (both base circles on the sphere).
+2. Find the right circular cone of largest volume inscribed in the sphere (apex and base circle on the sphere).
+
+Compare the maximal volumes with that of the sphere.
+
+## Hint
+
+Call $h$ the height of the solid and $r$ the radius of its base. In both cases $r$ is linked to $h$ by Pythagoras in a cross-section.
+
+## Solution
+
+**Position of the axis.** The centre $O$ of the sphere is equidistant from all points of a circle lying on the sphere, so $O$ lies on the axis of that circle (the line through its centre, perpendicular to its plane).
+
+**1. Cylinder.** The two base circles have the same radius $r$, so their planes are at the same distance from $O$, on opposite sides: they are at distance $\frac h2$ from $O$, and $r^2+\left(\frac h2\right)^2=R^2$. So
+$$V(h)=\pi\left(R^2-\frac{h^2}4\right)h,\qquad V'(h)=\pi\left(R^2-\frac{3h^2}4\right),$$
+which vanishes at $h=\dfrac{2R}{\sqrt3}$ in $(0,2R)$, with $V'>0$ before and $V'<0$ after. Then $r^2=\frac{2R^2}3$ and
+$$V_{\max}=\frac{4\pi R^3}{3\sqrt3}\approx0.577\cdot\frac{4\pi R^3}3.$$
+
+**2. Cone.** The axis of the cone passes through $O$ and the apex is on the axis and on the sphere, so it is one of the two points where the axis meets the sphere, i.e. one end of a diameter. Let the base plane be at distance $h$ from the apex, $0<h<2R$. The base circle satisfies $r^2=R^2-(R-h)^2=h(2R-h)$. So
+$$V(h)=\frac\pi3h^2(2R-h),\qquad V'(h)=\frac\pi3(4Rh-3h^2),$$
+which vanishes at $h=\dfrac{4R}3$ (for $0<h<2R$), with $V'>0$ before and $V'<0$ after. Then
+$$V_{\max}=\frac\pi3\cdot\frac{16R^2}9\cdot\frac{2R}3=\frac{32\pi R^3}{81}.$$
+
+**Comparison.** The sphere has volume $\frac{4\pi R^3}3$, so the best cylinder fills $\frac1{\sqrt3}\approx57.7\%$ of it, and the best cone fills $\frac{32/81}{4/3}=\frac8{27}\approx29.6\%$.
+
+@@@ the-cone-made-from-a-sector.md
+---
+title: The paper cup of largest capacity
+order: 15
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: optimisation, cone, volume, geometry
+date: 2026-11-04
+---
+
+## Statement
+
+From a circular disc of radius $R$, we cut a sector and roll the remaining part into a cone (a paper cup). What central angle should the remaining sector have to give the largest volume?
+
+## Hint
+
+If the remaining sector has angle $\varphi$, the slant height of the cone is $R$ and the base circumference is $R\varphi$. Parametrise by the base radius $r$.
+
+## Solution
+
+**Geometry.** The slant height is $R$. If the base radius is $r$, the base circumference $2\pi r$ equals the arc length $R\varphi$, so $\varphi=\dfrac{2\pi r}R$. The height is $h=\sqrt{R^2-r^2}$.
+
+**Volume.**
+$$V=\frac\pi3r^2\sqrt{R^2-r^2},\qquad0<r<R.$$
+
+**Maximisation.** $V>0$, so $V$ is maximal when $V^2=\frac{\pi^2}9u^2(R^2-u)$ is, with $u=r^2\in(0,R^2)$. The derivative of $u^2(R^2-u)$ is $2uR^2-3u^2=u(2R^2-3u)$, zero at $u=\frac{2R^2}3$, with a sign change from $+$ to $-$.
+
+**Answer.** $r=R\sqrt{\dfrac23}$, $h=\dfrac R{\sqrt3}$, and
+$$\varphi=2\pi\sqrt{\frac23}\approx5.13\text{ rad}\approx294^\circ.$$
+The maximal volume is $\dfrac{2\pi R^3}{9\sqrt3}$.
+
+**Remark.** One cuts out only about $66^\circ$ of the disc.
+
+@@@ at-which-height-should-a-lamp-be-hung.md
+---
+title: At which height should a lamp be hung?
+order: 16
+category: calculus/single-variable/differentiation/optimisation
+level: l2
+difficulty: 3
+tags: optimisation, physics, illumination, Lambert's law
+date: 2026-11-04
+---
+
+## Statement
+
+A lamp hangs at height $h$ above a table. At a point of the table at horizontal distance $a$ from the foot of the lamp, the illumination is $I=\dfrac{k\cos\theta}{d^2}$, where $d$ is the distance to the lamp and $\theta$ the angle between the light ray and the vertical. At which height is the illumination at this point maximal?
+
+## Hint
+
+Express $d$ and $\cos\theta$ using $a$ and $h$: $d^2=a^2+h^2$ and $\cos\theta=\frac hd$.
+
+## Solution
+
+**Illumination as a function of $h$.**
+$$I(h)=\frac{k\,h}{(a^2+h^2)^{3/2}},\qquad h>0.$$
+
+**Derivative.**
+$$I'(h)=k\,\frac{(a^2+h^2)-3h^2}{(a^2+h^2)^{5/2}}=k\,\frac{a^2-2h^2}{(a^2+h^2)^{5/2}}.$$
+Positive for $h<\frac a{\sqrt2}$ and negative afterwards.
+
+**Answer.** The best height is $h=\dfrac a{\sqrt2}\approx0.71\,a$, and
+$$I_{\max}=\frac{2k}{3\sqrt3\,a^2}.$$
+
+**Remark.** Two effects compete: a high lamp is far (the $\frac1{d^2}$ factor), a low lamp shines at a grazing angle (the $\cos\theta$ factor). The compromise is not at all obvious without calculus.
+
+@@@ maximum-sustainable-yield.md
+---
+title: Maximum sustainable yield
+order: 17
+category: calculus/single-variable/differentiation/optimisation
+level: l2
+difficulty: 3
+tags: optimisation, modelling, ecology, logistic growth
+date: 2026-11-04
+---
+
+## Statement
+
+A fish population $N$ grows logistically: without fishing, $\dfrac{dN}{dt}=rN\left(1-\dfrac NK\right)$. With fishing effort $E$ (with $0\le E<r$), the catch rate is $EN$ and the population satisfies $\dfrac{dN}{dt}=rN\left(1-\dfrac NK\right)-EN$.
+
+1. Find the positive equilibrium population $N^*(E)$ and the sustainable yield $Y(E)=EN^*(E)$.
+2. Which effort $E$ maximises the yield? What are the corresponding population and yield?
+
+## Hint
+
+At equilibrium, $\frac{dN}{dt}=0$ with $N\ne0$.
+
+## Solution
+
+**1. Equilibrium.** $r\left(1-\frac NK\right)=E$ gives $N^*=K\left(1-\dfrac Er\right)>0$ and
+$$Y(E)=EK\left(1-\frac Er\right)=KE-\frac{K}rE^2.$$
+This equilibrium is stable: the equation can be rewritten $\dfrac{dN}{dt}=(r-E)N\left(1-\dfrac N{N^*}\right)$, a logistic equation with growth rate $r-E>0$ and carrying capacity $N^*$, so every positive solution tends to $N^*$. This is why $Y(E)$ is a yield that can be sustained.
+
+**2. Maximum.** $Y'(E)=K-\dfrac{2K}rE=0\iff E=\dfrac r2$, a maximum of the concave parabola on $[0,r)$.
+- $N^*=\dfrac K2$: the population is kept at **half** its carrying capacity.
+- $Y_{\max}=\dfrac{rK}4$.
+
+**Remark.** $\dfrac K2$ is also the population at which the natural growth rate $rN\left(1-\frac NK\right)$ is largest (it is the top of that parabola), so harvesting exactly this growth is the most one can sustainably take. For an effort $E\ge r$, $\frac{dN}{dt}=N\left[(r-E)-\frac rKN\right]<0$ for every $N>0$, so the population tends to $0$: in this model, a fishing effort of at least $r$ leads to extinction.
+
+@@@ the-shortest-path-touching-a-line.md
+---
+title: The shortest path touching a line
+order: 18
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: optimisation, reflection, geometry, sums of square roots
+date: 2026-11-04
+---
+
+## Statement
+
+Let $A=(0,1)$ and $B=(4,3)$. We look for a point $M=(x,0)$ on the horizontal axis such that the path $A\to M\to B$ is as short as possible.
+
+1. Minimise $L(x)=AM+MB$ with calculus.
+2. Recover the result geometrically with a reflection.
+
+## Hint
+
+$L(x)=\sqrt{x^2+1}+\sqrt{(4-x)^2+9}$. For part 2, reflect $B$ in the axis.
+
+## Solution
+
+**1. Derivative.**
+$$L'(x)=\frac x{\sqrt{x^2+1}}-\frac{4-x}{\sqrt{(4-x)^2+9}}.$$
+$L'(x)=0$ means $\dfrac x{\sqrt{x^2+1}}=\dfrac{4-x}{\sqrt{(4-x)^2+9}}$. Both sides must have the same sign, so $x$ and $4-x$ have the same sign, i.e. $x\in(0,4)$. Squaring,
+$$x^2\bigl((4-x)^2+9\bigr)=(4-x)^2(x^2+1)\ \Longrightarrow\ 9x^2=(4-x)^2\ \Longrightarrow\ 3x=\pm(4-x),$$
+and the condition $x\in(0,4)$ rejects $3x=-(4-x)$ (i.e. $x=-2$) and keeps $3x=4-x$, i.e. $x=1$.
+$L$ is convex, as a sum of two functions of the form $x\mapsto\sqrt{(x-c)^2+d^2}$ (the norm of an affine function of $x$), so this critical point is the global minimum, and
+$$L(1)=\sqrt2+\sqrt{18}=4\sqrt2.$$
+
+**2. Reflection.** Let $B'=(4,-3)$. For every $M$ on the axis, $MB=MB'$, so $AM+MB=AM+MB'\ge AB'=\sqrt{16+16}=4\sqrt2$, with equality when $M$ is on the segment $AB'$. This segment lies on the line $y=1-x$, which meets the axis at $x=1$, in agreement with part 1.
+
+**Remark.** At the optimum, the angles of incidence and reflection are equal: this is the law of reflection of light (Heron of Alexandria's principle).
+
+@@@ the-closest-point-of-an-ellipse.md
+---
+title: The closest point of an ellipse
+order: 19
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: optimisation, ellipse, distance, constrained minimum
+date: 2026-11-04
+---
+
+## Statement
+
+Find the point of the ellipse $\dfrac{x^2}4+y^2=1$ that is closest to $F=(1,0)$, and the corresponding distance.
+
+## Hint
+
+Minimise the squared distance $(x-1)^2+y^2$, replacing $y^2$ by $1-\frac{x^2}4$. Don't forget that $x\in[-2,2]$.
+
+## Solution
+
+**Squared distance.**
+$$D(x)=(x-1)^2+1-\frac{x^2}4=\frac34x^2-2x+2,\qquad x\in[-2,2].$$
+
+**Minimum.** $D'(x)=\frac32x-2=0\iff x=\frac43\in[-2,2]$. The parabola opens upward so this is the global minimum on $[-2,2]$:
+$$D\left(\frac43\right)=\frac34\cdot\frac{16}9-\frac83+2=\frac23.$$
+
+**Answer.** $x=\frac43$, $y=\pm\sqrt{1-\frac49}=\pm\frac{\sqrt5}3$, and the distance is $\sqrt{\dfrac23}\approx0.816$.
+
+**Check.** The vertex $(2,0)$ is at distance $1>0.816$, so the closest point is indeed not the nearest vertex.
+
+**Remark.** At a closest point, the segment from $F$ to the point is perpendicular to the tangent. Here the tangent at $\left(\frac43,\frac{\sqrt5}3\right)$ has slope $-\frac{x}{4y}=-\frac1{\sqrt5}$ and the segment has slope $\frac{\sqrt5/3}{1/3}=\sqrt5$: indeed $-\frac1{\sqrt5}\cdot\sqrt5=-1$.
+
+@@@ minimising-a-over-x-plus-b-over-one-minus-x.md
+---
+title: Minimising a/x + b/(1 − x)
+order: 20
+category: calculus/single-variable/differentiation/optimisation
+level: l2
+difficulty: 3
+tags: optimisation, inequalities, Cauchy–Schwarz, parameters
+date: 2026-11-04
+---
+
+## Statement
+
+Let $a,b>0$. Find the minimum of $f(x)=\dfrac ax+\dfrac b{1-x}$ on $(0,1)$, and deduce that for $x,y>0$ with $x+y=1$,
+$$\frac ax+\frac by\ge(\sqrt a+\sqrt b)^2.$$
+
+## Hint
+
+$f'(x)=0$ leads to $\frac a{x^2}=\frac b{(1-x)^2}$.
+
+## Solution
+
+**Critical point.** $f'(x)=-\dfrac a{x^2}+\dfrac b{(1-x)^2}=0\iff\dfrac{1-x}x=\sqrt{\dfrac ba}$ (both sides positive on $(0,1)$). So $x_0=\dfrac{\sqrt a}{\sqrt a+\sqrt b}$ and $1-x_0=\dfrac{\sqrt b}{\sqrt a+\sqrt b}$.
+
+**Nature.** $f''(x)=\frac{2a}{x^3}+\frac{2b}{(1-x)^3}>0$: $f$ is convex, and $f\to+\infty$ at both ends, so $x_0$ is the global minimum.
+
+**Value.**
+$$f(x_0)=\frac{a(\sqrt a+\sqrt b)}{\sqrt a}+\frac{b(\sqrt a+\sqrt b)}{\sqrt b}=(\sqrt a+\sqrt b)(\sqrt a+\sqrt b)=(\sqrt a+\sqrt b)^2.$$
+
+**Consequence.** For all $x\in(0,1)$ (and $y=1-x$): $\frac ax+\frac by\ge(\sqrt a+\sqrt b)^2$, with equality iff $x=x_0$.
+
+**Remark.** For $a=b=1$: $\frac1x+\frac1y\ge4$ when $x+y=1$, the classical AM-HM inequality. The general inequality is a form of the Cauchy–Schwarz inequality: $\left(\frac ax+\frac by\right)(x+y)\ge(\sqrt a+\sqrt b)^2$.
+
+@@@ best-constant-approximation-of-x-squared.md
+---
+title: The best constant approximating x²
+order: 21
+category: calculus/single-variable/differentiation/optimisation
+level: l2
+difficulty: 3
+tags: minimax, uniform approximation, absolute value
+date: 2026-11-04
+---
+
+## Statement
+
+Find the real number $c$ that minimises $E(c)=\displaystyle\max_{x\in[-1,1]}|x^2-c|$, and the minimal error.
+
+## Hint
+
+As $x$ ranges over $[-1,1]$, $x^2$ takes all the values in $[0,1]$. What is the largest distance from $c$ to a point of $[0,1]$?
+
+## Solution
+
+**Computing $E(c)$.** Since $x^2$ covers exactly $[0,1]$, $E(c)=\max_{t\in[0,1]}|t-c|$. The function $t\mapsto|t-c|$ is convex, so its maximum on $[0,1]$ is at an endpoint:
+$$E(c)=\max\bigl(|c|,\,|1-c|\bigr).$$
+
+**Minimising.** For $c\le\frac12$, $E(c)=1-c$ (it is decreasing); for $c\ge\frac12$, $E(c)=c$ (increasing). So the minimum is at $c=\frac12$ with
+$$E\left(\tfrac12\right)=\frac12.$$
+
+**Interpretation.** $x^2-\frac12$ takes the values $+\frac12$ (at $x=-1$), $-\frac12$ (at $x=0$), $+\frac12$ (at $x=1$): the error reaches its extremal value three times, with alternating signs.
+
+**Remark.** This minimax problem is the first step towards Chebyshev polynomials: $x^2-\frac12=\frac12T_2(x)$ with $T_2(x)=2x^2-1$. Contrast with the *least squares* approximation, which would minimise $\int_{-1}^1(x^2-c)^2dx$ and give $c=\frac13$ (the mean of $x^2$ on $[-1,1]$).
+
+@@@ the-projectile-on-an-inclined-plane.md
+---
+title: Firing up a slope: the best angle
+order: 22
+category: calculus/single-variable/differentiation/optimisation
+level: l2
+difficulty: 4
+tags: optimisation, trigonometry, physics, projectile
+date: 2026-11-04
+---
+
+## Statement
+
+A projectile is launched with speed $v$ from the foot of a slope of angle $\alpha\in\left[0,\frac\pi2\right)$ with the horizontal, in the vertical plane containing the line of greatest slope, at angle $\theta$ with the horizontal ($\alpha<\theta<\frac\pi2$). Ignoring friction and air resistance, the distance covered along the slope before landing on it is
+$$R(\theta)=\frac{2v^2\cos\theta\,\sin(\theta-\alpha)}{g\cos^2\alpha}.$$
+Find the angle $\theta$ that maximises $R$ and the maximal range.
+
+## Hint
+
+Use the product-to-sum formula $2\cos\theta\sin(\theta-\alpha)=\sin(2\theta-\alpha)-\sin\alpha$.
+
+## Solution
+
+**Origin of the formula (for completeness).** With $x=vt\cos\theta$ and $y=vt\sin\theta-\frac12gt^2$, the projectile lands on the slope $y=x\tan\alpha$ when $v\sin\theta-\frac12gt=v\cos\theta\tan\alpha$, i.e. at $t=\frac{2v\sin(\theta-\alpha)}{g\cos\alpha}$. The distance along the slope is $\frac{x}{\cos\alpha}=\frac{vt\cos\theta}{\cos\alpha}$, which gives the formula above.
+
+**Simplification.**
+$$R(\theta)=\frac{v^2}{g\cos^2\alpha}\bigl(\sin(2\theta-\alpha)-\sin\alpha\bigr).$$
+Only $\sin(2\theta-\alpha)$ depends on $\theta$.
+
+**Maximum.** $R'(\theta)=\dfrac{2v^2}{g\cos^2\alpha}\cos(2\theta-\alpha)$ vanishes for $2\theta-\alpha=\frac\pi2$, i.e.
+$$\theta=\frac\pi4+\frac\alpha2,$$
+which lies in $\left(\alpha,\frac\pi2\right)$. On the interval, $2\theta-\alpha$ goes from $\alpha$ to $\pi-\alpha$ and $\sin$ is maximal at $\frac\pi2$. The optimal direction **bisects the angle** between the slope (direction $\alpha$) and the vertical (direction $\frac\pi2$).
+
+**Maximal range.** With $\sin(2\theta-\alpha)=1$ and $\cos^2\alpha=(1-\sin\alpha)(1+\sin\alpha)$,
+$$R_{\max}=\frac{v^2(1-\sin\alpha)}{g\cos^2\alpha}=\frac{v^2}{g(1+\sin\alpha)}.$$
+
+**Checks.** $\alpha=0$ gives the classical $\theta=\frac\pi4$ and $R_{\max}=\frac{v^2}g$. Firing downhill (replace $\alpha$ by $-\alpha$) gives $\frac{v^2}{g(1-\sin\alpha)}$, larger, as expected.
+
+@@@ the-extreme-values-of-a-sine-and-cosine-combination.md
+---
+title: The maximum of 3 sin x + 4 cos x
+order: 23
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 2
+tags: extrema, trigonometry, amplitude
+date: 2026-11-04
+---
+
+## Statement
+
+Find the maximum and minimum of $f(x)=3\sin x+4\cos x$ with calculus, then check with the phase-shift method.
+
+## Hint
+
+$f'(x)=3\cos x-4\sin x$. At a critical point, $\tan x=\frac34$.
+
+## Solution
+
+**Critical points.** $f'(x)=0\iff\tan x=\frac34$. The solutions in $[0,2\pi)$ are $x_0=\arctan\frac34$ (first quadrant) and $x_0+\pi$ (third quadrant).
+
+**Values.** At $x_0$, $\sin x_0=\frac35$, $\cos x_0=\frac45$ (a $3$-$4$-$5$ triangle), so $f(x_0)=\frac95+\frac{16}5=5$. At $x_0+\pi$ both $\sin$ and $\cos$ change sign: $f=-5$.
+
+**Conclusion.** $f$ is continuous and $2\pi$-periodic, so it attains its extreme values on $[0,2\pi]$, and since it is differentiable everywhere these are attained at critical points: **maximum $5$**, **minimum $-5$**.
+
+**Phase shift.** $3\sin x+4\cos x=5\sin(x+\varphi)$ with $\cos\varphi=\frac35$, $\sin\varphi=\frac45$: values in $[-5,5]$, in agreement.
+
+**Remark.** In general, $a\sin x+b\cos x$ has maximum $\sqrt{a^2+b^2}$. This is also the Cauchy–Schwarz inequality $a\cos t+b\sin t\le\sqrt{a^2+b^2}$.
+
+@@@ extrema-of-a-cubic-on-a-closed-interval.md
+---
+title: Global extrema of x³ − 3x on [−2, 3]
+order: 24
+category: calculus/single-variable/differentiation/optimisation
+level: lycee
+difficulty: 1
+tags: global extrema, closed interval, critical points
+date: 2026-11-04
+---
+
+## Statement
+
+Find the maximum and minimum of $f(x)=x^3-3x$ on the interval $[-2,3]$.
+
+## Hint
+
+A continuous function on a segment reaches its extrema either at a critical point or at an endpoint. Compare these values.
+
+## Solution
+
+**Critical points.** $f'(x)=3x^2-3=0$ at $x=\pm1$, both in $[-2,3]$.
+
+**Candidates.**
+- $f(-2)=-8+6=-2$,
+- $f(-1)=-1+3=2$,
+- $f(1)=1-3=-2$,
+- $f(3)=27-9=18$.
+
+**Answer.**
+- Maximum: $18$, at $x=3$ (an endpoint, not a critical point).
+- Minimum: $-2$, attained **twice**: at $x=-2$ (endpoint) and at $x=1$ (critical point).
+
+**Remark.** On $\mathbb{R}$ this function has no global extremum (it goes to $\pm\infty$), yet on a segment the extreme value theorem guarantees both. The local maximum $f(-1)=2$ is not the global one.
+
+@@@ extrema-with-absolute-values.md
+---
+title: Extrema of |x² − 3x + 2| on [0, 3]
+order: 25
+category: calculus/single-variable/differentiation/optimisation
+level: lycee
+difficulty: 2
+tags: absolute value, global extrema, non-differentiable points
+date: 2026-11-04
+---
+
+## Statement
+
+Find the maximum and minimum of $f(x)=|x^2-3x+2|$ on $[0,3]$. Where is $f$ not differentiable?
+
+## Hint
+
+Factor: $x^2-3x+2=(x-1)(x-2)$. Remove the absolute value interval by interval.
+
+## Solution
+
+**Without the absolute value.**
+- On $[0,1]\cup[2,3]$, $(x-1)(x-2)\ge0$ and $f(x)=x^2-3x+2$ (decreasing on $[0,1]$ from $2$ to $0$; increasing on $[2,3]$ from $0$ to $2$).
+- On $[1,2]$, $f(x)=-(x^2-3x+2)$, which rises from $0$ at $x=1$ to its maximum $\frac14$ at $x=\frac32$, then falls back to $0$ at $x=2$.
+
+**Extrema.**
+- **Minimum**: $f=0$, attained at $x=1$ and $x=2$.
+- **Maximum**: $2$, attained at the endpoints $x=0$ and $x=3$ (the interior local maximum $\frac14$ at $\frac32$ is much lower).
+
+**Non-differentiable points.** At $x=1$ and $x=2$, where the expression inside the absolute value changes sign. At $x=1$ the left derivative is $-1$ and the right derivative is $+1$; the same holds at $x=2$ (left $-1$, right $+1$). Both are corners.
+
+**Remark.** The minima occur *exactly at the points where $f$ is not differentiable*. This is why the theorem "an extremum of a differentiable function has zero derivative" requires differentiability at the extremum.
+
+@@@ the-maximum-of-x-to-the-n-times-e-to-the-minus-x.md
+---
+title: The maximum of xⁿe^(−x)
+order: 26
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: extrema, inequalities, exponential, growth
+date: 2026-11-04
+---
+
+## Statement
+
+Let $n\ge1$ be an integer.
+
+1. Find the maximum of $f(x)=x^ne^{-x}$ on $[0,+\infty)$.
+2. Deduce that $e^x\ge\left(\dfrac en\right)^nx^n$ for all $x\ge0$.
+3. Apply it with $n=2$ to show that $e^x\ge\dfrac{e^2}4x^2$, and compare with $e^x\ge1+x+\frac{x^2}2$.
+
+## Hint
+
+$f'(x)=x^{n-1}(n-x)e^{-x}$.
+
+## Solution
+
+**1.** $f'$ is positive on $(0,n)$ and negative on $(n,\infty)$, so $f$ attains its maximum at $x=n$:
+$$\max f=f(n)=n^ne^{-n}=\left(\frac ne\right)^n.$$
+
+**2.** $x^ne^{-x}\le\left(\frac ne\right)^n$, i.e. $e^x\ge\left(\frac en\right)^nx^n$.
+
+**3.** For $n=2$: $e^x\ge\frac{e^2}4x^2\approx1.85\,x^2$, with equality only at $x=2$. Compare with the series bound $e^x\ge1+x+\frac{x^2}2$: for large $x$ the new bound is better (it grows like $1.85\,x^2$ against $0.5\,x^2$), while for small $x$ the series bound is better (the new one tends to $0$).
+
+**Remark.** Part 2 shows that $e^x$ dominates every power of $x$ in a quantitative way: $\dfrac{e^x}{x^n}\ge\left(\dfrac en\right)^n>0$ for all $x>0$, and the bound is sharp.
+
+@@@ the-minimum-of-x-to-the-x.md
+---
+title: The minimum of x^x
+order: 27
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: logarithmic differentiation, extrema, limits
+date: 2026-11-04
+---
+
+## Statement
+
+Study $f(x)=x^x=e^{x\ln x}$ on $(0,+\infty)$: limit at $0^+$, variations, minimum.
+
+## Hint
+
+$f'(x)=f(x)\cdot(x\ln x)'$.
+
+## Solution
+
+**Limit.** $x\ln x\to0$ as $x\to0^+$, so $f(x)\to e^0=1$: $f$ extends continuously to $0$ with $f(0)=1$.
+
+**Derivative.** $(x\ln x)'=\ln x+1$, so $f'(x)=x^x(\ln x+1)$. It is negative for $x<\frac1e$ and positive for $x>\frac1e$.
+
+**Variations.** $f$ decreases from $1$ (at $0^+$) to its minimum, then increases to $+\infty$:
+$$f_{\min}=f\left(\frac1e\right)=e^{-1/e}\approx0.692.$$
+Also $f(1)=1$, so $f$ takes the value $1$ again at $x=1$.
+
+**Consequence.** For every $x>0$, $x^x\ge e^{-1/e}$, with equality only at $x=\frac1e$. Also $f(x)\to+\infty$ as $x\to+\infty$ (faster than any exponential $a^x$, since $\frac{x^x}{a^x}=\left(\frac xa\right)^x\to\infty$).
+
+**Remark.** Since $f'(x)\to-\infty$ as $x\to0^+$, the curve leaves the point $(0,1)$ with a vertical tangent, heading downward.
+
+@@@ the-family-x-squared-plus-m-over-x.md
+---
+title: A family of functions: x² + m/x
+order: 28
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: parameters, extrema, monotonicity, discussion
+date: 2026-11-04
+---
+
+## Statement
+
+For $m\in\mathbb{R}$, let $f_m(x)=x^2+\dfrac mx$ on $(0,+\infty)$. According to $m$, study the variations of $f_m$ and find its minimum when it exists.
+
+## Hint
+
+$f_m'(x)=2x-\dfrac m{x^2}=\dfrac{2x^3-m}{x^2}$.
+
+## Solution
+
+**Case $m\le0$.** $2x^3-m>0$ for $x>0$: $f_m$ is strictly increasing on $(0,\infty)$. It has no minimum: for $m<0$, $f_m(x)\to-\infty$ as $x\to0^+$; for $m=0$, $f_0(x)=x^2$ has infimum $0$ which is not attained on $(0,\infty)$.
+
+**Case $m>0$.** $f_m'$ vanishes at $x_0=\left(\dfrac m2\right)^{1/3}$, is negative before and positive after: $f_m$ decreases on $(0,x_0]$ and increases on $[x_0,\infty)$. Since $m=2x_0^3$,
+$$f_m(x_0)=x_0^2+\frac{2x_0^3}{x_0}=3x_0^2=3\left(\frac m2\right)^{2/3}.$$
+This is the global minimum. Also $f_m\to+\infty$ at both ends.
+
+**Application.** For $m=16$: $x_0=2$ and the minimum is $f(2)=4+8=12=3\cdot8^{2/3}$.
+
+**Remark.** The qualitative behaviour changes at $m=0$, a **bifurcation value**: for $m>0$ the term $\frac mx$ creates a minimum, for $m\le0$ it does not.
+
+@@@ the-study-of-x-times-e-to-the-minus-x.md
+---
+title: Complete study of x e^(−x)
+order: 29
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 2
+tags: curve sketching, inflection point, number of solutions
+date: 2026-11-04
+---
+
+## Statement
+
+Study $f(x)=xe^{-x}$ on $\mathbb{R}$: limits, variations, convexity, graph. Deduce the number of real solutions of $xe^{-x}=a$ according to the real number $a$.
+
+## Hint
+
+$f'(x)=(1-x)e^{-x}$. For the limit at $+\infty$, recall $\frac{x}{e^x}\to0$.
+
+## Solution
+
+**Limits.** $f(x)\to-\infty$ as $x\to-\infty$ (since $x\to-\infty$ and $e^{-x}\to+\infty$), and $f(x)=\frac x{e^x}\to0$ as $x\to+\infty$, so $y=0$ is a horizontal asymptote at $+\infty$.
+
+**Variations.** $f'(x)=(1-x)e^{-x}$: increasing on $(-\infty,1]$, decreasing on $[1,\infty)$. Maximum $f(1)=\frac1e\approx0.368$.
+
+**Convexity.** $f''(x)=(x-2)e^{-x}$: concave on $(-\infty,2]$, convex on $[2,\infty)$, inflection point at $\left(2,\frac2{e^2}\right)$.
+
+**Graph.** It rises from $-\infty$ through the origin, peaks at $\left(1,\frac1e\right)$, then decays to $0$ from above (it is positive for $x>0$ and negative for $x<0$).
+
+**Number of solutions of $xe^{-x}=a$.**
+- $a>\frac1e$: none,
+- $a=\frac1e$: one ($x=1$),
+- $0<a<\frac1e$: two (one in $(0,1)$, one in $(1,\infty)$),
+- $a\le0$: one. For $a=0$, $x=0$. For $a<0$: on $(-\infty,1]$ the function increases from $-\infty$ to $\frac1e$ and takes the value $a$ exactly once (at a negative $x$, since $f(0)=0>a$), while on $[1,\infty)$ it is positive, so it never equals $a$.
+
+**Remark.** The solutions of $xe^{-x}=a$ are given by the Lambert $W$ function: the equation is $(-x)e^{-x}=-a$, so $x=-W(-a)$. The two real branches of $W$ correspond to the two monotonic pieces of $f$ on either side of $x=1$.
+
+@@@ the-study-of-the-logarithm-over-x.md
+---
+title: Complete study of (ln x)/x
+order: 30
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: curve sketching, asymptotes, inflection point, logarithm
+date: 2026-11-04
+---
+
+## Statement
+
+Study $f(x)=\dfrac{\ln x}x$ on $(0,+\infty)$: limits, asymptotes, variations, convexity, graph. Deduce that $\ln x\le\dfrac xe$ for all $x>0$.
+
+## Hint
+
+$f'(x)=\dfrac{1-\ln x}{x^2}$. For the second derivative, differentiate the quotient again.
+
+## Solution
+
+**Limits.** As $x\to0^+$: $\ln x\to-\infty$, $\frac1x\to+\infty$, so $f\to-\infty$: the line $x=0$ is a vertical asymptote. As $x\to+\infty$: $f\to0$ (growth comparison), so $y=0$ is a horizontal asymptote. The only zero is $x=1$.
+
+**Variations.** $f'>0$ for $x<e$ and $f'<0$ for $x>e$: increasing on $(0,e]$, decreasing on $[e,\infty)$. Maximum $f(e)=\frac1e$.
+
+**Convexity.** $f''(x)=\dfrac{2\ln x-3}{x^3}$: concave on $(0,e^{3/2}]$, convex on $[e^{3/2},\infty)$, inflection point at $x=e^{3/2}\approx4.48$, where $f=\frac3{2e^{3/2}}\approx0.335$.
+
+**The inequality.** $f(x)\le f(e)=\frac1e$, i.e. $\ln x\le\frac xe$ for $x>0$ (equality at $x=e$). It is the tangent line of $\ln$ at $e$.
+
+**Remark.** $f(a)=f(b)$ with $a<b$ forces $a<e<b$. For positive integers, the only pair $a<b$ with $a^b=b^a$ is $(2,4)$, as $f(2)=f(4)=\frac{\ln2}2$ (indeed $2^4=4^2=16$). (For negative integers, $a^b=b^a$ is not equivalent to $f(a)=f(b)$, since $\ln$ is not defined there.)
+
+@@@ a-curve-with-an-oblique-asymptote-and-a-stationary-inflection.md
+---
+title: Sketching x³/(x² − 1)
+order: 31
+category: calculus/single-variable/differentiation/optimisation
+level: l2
+difficulty: 3
+tags: curve sketching, oblique asymptote, odd function, inflection point
+date: 2026-11-04
+---
+
+## Statement
+
+Study and sketch $f(x)=\dfrac{x^3}{x^2-1}$: domain, parity, asymptotes and position, variations, convexity.
+
+## Hint
+
+Divide: $\dfrac{x^3}{x^2-1}=x+\dfrac x{x^2-1}$. For $f'$, you should find a factor $x^2$ in the numerator.
+
+## Solution
+
+**Domain and parity.** $f$ is defined on $\mathbb{R}\setminus\{\pm1\}$ and is odd: we study $x\ge0$ and use the symmetry about the origin.
+
+**Asymptotes.** $x=\pm1$ are vertical asymptotes. Since $f(x)-x=\frac x{x^2-1}\to0$ at $\pm\infty$, the line $y=x$ is an oblique asymptote. The curve lies above it for $x>1$ and below it for $x<-1$ (the sign of $\frac x{x^2-1}$ is positive for $x>1$ and negative for $x<-1$).
+
+**First derivative.**
+$$f'(x)=\frac{x^2(x^2-3)}{(x^2-1)^2}.$$
+So $f'<0$ on $(0,1)$ and $(1,\sqrt3)$, $f'>0$ for $x>\sqrt3$, and $f'(0)=0$.
+
+**Variations on $[0,\infty)$.** $f$ decreases from $f(0)=0$ to $-\infty$ on $[0,1)$ (since $f\to-\infty$ as $x\to1^-$), then decreases from $+\infty$ (as $x\to1^+$) to the local minimum $f(\sqrt3)=\frac{3\sqrt3}2\approx2.6$ on $(1,\sqrt3]$, and then increases to $+\infty$, approaching the asymptote. By oddness there is a local maximum $f(-\sqrt3)=-\frac{3\sqrt3}2$.
+
+**Second derivative.** $f''(x)=\dfrac{2x(x^2+3)}{(x^2-1)^3}$. It changes sign at $0$ (and at the poles $\pm1$): the origin is an inflection point where the tangent is **horizontal** ($f'(0)=0$), and the curve crosses it ($f(x)\approx-x^3$ near $0$).
+
+**Remark.** The origin is a *stationary inflection point*: $f'(0)=0$ but $0$ is not an extremum, since $f'\le0$ on both sides of $0$ (it does not change sign there).
+
+@@@ a-curve-with-vertical-tangents-at-its-endpoints.md
+---
+title: Sketching x√(1 − x²)
+order: 32
+category: calculus/single-variable/differentiation/optimisation
+level: l2
+difficulty: 3
+tags: curve sketching, vertical tangent, odd function, domain
+date: 2026-11-04
+---
+
+## Statement
+
+Study and sketch $f(x)=x\sqrt{1-x^2}$: domain, parity, variations, behaviour at the endpoints, convexity.
+
+## Hint
+
+Domain: $[-1,1]$. At the endpoints, look at $\frac{f(x)-f(1)}{x-1}$.
+
+## Solution
+
+**Domain and parity.** $f$ is defined on $[-1,1]$ and is odd.
+
+**Derivative.** On $(-1,1)$,
+$$f'(x)=\sqrt{1-x^2}-\frac{x^2}{\sqrt{1-x^2}}=\frac{1-2x^2}{\sqrt{1-x^2}}.$$
+Positive for $|x|<\frac1{\sqrt2}$ and negative for $|x|>\frac1{\sqrt2}$. Maximum $f\left(\frac1{\sqrt2}\right)=\frac12$, minimum $f\left(-\frac1{\sqrt2}\right)=-\frac12$.
+
+**Endpoints.** $f(1)=0$ and $\dfrac{f(x)-f(1)}{x-1}=-x\sqrt{\dfrac{1+x}{1-x}}\to-\infty$ as $x\to1^-$: the tangent at $(1,0)$ is vertical. Likewise at $(-1,0)$.
+
+**Convexity.** $f''(x)=\dfrac{x(2x^2-3)}{(1-x^2)^{3/2}}$, and $2x^2-3<0$ on the domain: concave on $[0,1)$, convex on $(-1,0]$, inflection point at the origin with slope $f'(0)=1$.
+
+**Graph.** An "S" shape from $(-1,0)$ down to the minimum $-\frac12$, up through the origin to the maximum $\frac12$, then down to $(1,0)$, with vertical tangents at both endpoints.
+
+**Remark.** The union of this graph and its reflection $y=-x\sqrt{1-x^2}$ is the **figure eight** (closed curve) $y^2=x^2-x^4$.
+
+@@@ a-parameter-and-the-number-of-solutions-of-e-to-the-x-equals-a-x.md
+---
+title: How many solutions does eˣ = ax have?
+order: 33
+category: calculus/single-variable/differentiation/optimisation
+level: l1
+difficulty: 3
+tags: number of solutions, parameter, tangent, extrema
+date: 2026-11-04
+---
+
+## Statement
+
+Discuss, according to the real number $a$, the number of real solutions of $e^x=ax$.
+
+## Hint
+
+For $a>0$ the solutions are positive: study $g(x)=\dfrac{e^x}x$ on $(0,\infty)$.
+
+## Solution
+
+**Case $a=0$.** $e^x=0$ has no solution.
+
+**Case $a<0$.** Let $h(x)=e^x-ax$. Then $h'(x)=e^x-a>0$, so $h$ is strictly increasing, with $h(x)\to-\infty$ at $-\infty$ (since $-ax\to-\infty$ and $e^x\to0$) and $\to+\infty$ at $+\infty$. Exactly **one** solution.
+
+**Case $a>0$.** Then $x=0$ is not a solution, and $x>0$ necessarily (as $e^x>0$ and $ax$ must be positive). Solutions are those of $g(x)=a$ with $g(x)=\dfrac{e^x}x$:
+$$g'(x)=\frac{(x-1)e^x}{x^2}.$$
+$g$ decreases from $+\infty$ (at $0^+$) to the minimum $g(1)=e$, then increases to $+\infty$. Hence:
+- $0<a<e$: **no** solution,
+- $a=e$: **one** solution, $x=1$,
+- $a>e$: **two** solutions (one in $(0,1)$, one in $(1,\infty)$).
+
+**Geometric meaning.** The line $y=ax$ through the origin meets the curve $y=e^x$ iff its slope is at least $e$ (or negative): for $a=e$ it is tangent to the exponential at the point $(1,e)$. Consequently $e^x\ge ex$ for all $x$.
