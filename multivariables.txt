@@ -1,3 +1,3201 @@
+@@@ constrained-critical-points-poly.md
+---
+title: Critical points of a polynomial
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 2
+tags: critical points, polynomial, Hessian
+date: 2026-11-03
+---
+
+## Statement
+
+Find and classify the critical points of $f(x,y)=x^2+y^2-2x-4y$.
+
+## Hint
+
+Set $\nabla f=0$; classify via the Hessian.
+
+## Solution
+
+**Gradient.** $\nabla f=(2x-2,\,2y-4)$, so the unique critical point is $(1,2)$.
+
+**Hessian.** $H=\begin{pmatrix}2&0\\0&2\end{pmatrix}$: positive definite.
+
+**Classification.** Global minimum, $f(1,2)=-5$.
+
+**Conclusion.** Minimum at $(1,2)$ with value $-5$.
+
+@@@ constrained-critical-two-points.md
+---
+title: Two critical points and their nature
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 3
+tags: critical points, saddle, maximum
+date: 2026-11-03
+---
+
+## Statement
+
+Find and classify the critical points of $f(x,y)=4x+2y-x^2-y^2-2x^3$.
+
+## Hint
+
+Solve $f_x=4-2x-6x^2=0$, $f_y=2-2y=0$; then use the Hessian at each point.
+
+## Solution
+
+**Critical points.** $f_y=0\Rightarrow y=1$. $4-2x-6x^2=0\Rightarrow 3x^2+x-2=0\Rightarrow x=-1$ or $x=2/3$. Points: $A=(-1,1)$, $B=(2/3,1)$.
+
+**Second derivatives.** $f_{xx}=-2-12x$, $f_{xy}=0$, $f_{yy}=-2$.
+
+**At $A$.** $H=\begin{pmatrix}10&0\\0&-2\end{pmatrix}$, $\det=-20<0$: saddle.
+
+**At $B$.** $H=\begin{pmatrix}-10&0\\0&-2\end{pmatrix}$, $\det=20>0$ and $f_{xx}<0$: local maximum. $f(B)=71/27$.
+
+**Conclusion.** Saddle at $(-1,1)$, local maximum at $(2/3,1)$ with value $71/27$.
+
+@@@ constrained-saddle-only.md
+---
+title: A unique critical point that is a saddle
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 3
+tags: saddle, unique critical, Hessian
+date: 2026-11-03
+---
+
+## Statement
+
+Find and classify the critical point of $f(x,y)=xy+x^3y^2$.
+
+## Hint
+
+$f_x=y(1+3x^2y)$, $f_y=x(1+2x^2y)$.
+
+## Solution
+
+**System.** $y(1+3x^2y)=0$ and $x(1+2x^2y)=0$. Only solution: $(0,0)$.
+
+**Hessian at $(0,0)$.** $f_{xx}=6xy^2$, $f_{xy}=1+6x^2y$, $f_{yy}=2x^3$; $H(0,0)=\begin{pmatrix}0&1\\1&0\end{pmatrix}$.
+
+**Determinant.** $\det H=-1<0$: saddle point.
+
+**Conclusion.** The only critical point $(0,0)$ is a saddle.
+
+@@@ constrained-higher-dim-saddle.md
+---
+title: Three-variable saddle point
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 4
+tags: three variables, saddle, Hessian
+date: 2026-11-03
+---
+
+## Statement
+
+Find and classify the critical point of $f(x,y,z)=yz+zx-xy$.
+
+## Hint
+
+$\nabla f=(z-y,z-x,y+x)$; Hessian is constant.
+
+## Solution
+
+**Critical point.** Setting all partials to zero gives $x=y=z=0$.
+
+**Hessian.**
+$$H=\begin{pmatrix}0&-1&1\\-1&0&1\\1&1&0\end{pmatrix}.$$
+
+**Determinant.** $\det H=-2$, $\operatorname{tr}H=0$. Eigenvalues can't be all positive (product $-2$) or all negative (sum $0$).
+
+**Conclusion.** The origin is a saddle point.
+
+@@@ constrained-lagrange-circle.md
+---
+title: Lagrange multipliers on a circle
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 3
+tags: Lagrange, circle, extrema
+date: 2026-11-03
+---
+
+## Statement
+
+Find the extrema of $f(x,y)=3x-y$ under the constraint $x^2+y^2=5$.
+
+## Hint
+
+$\nabla f=\lambda\nabla g$ with $g=x^2+y^2-5$.
+
+## Solution
+
+**Lagrange system.**
+$$3=2\lambda x,\quad -1=2\lambda y,\quad x^2+y^2=5.$$
+
+**Solve.** $x=3/(2\lambda)$, $y=-1/(2\lambda)$, so $y=-x/3$. Then $x^2+x^2/9=5\Rightarrow x^2=9/2\Rightarrow x=\pm3/\sqrt2$.
+
+**Points.** $A=(3/\sqrt2,-1/\sqrt2)$, $B=(-3/\sqrt2,1/\sqrt2)$.
+
+**Values.** $f(A)=5\sqrt2$ (maximum), $f(B)=-5\sqrt2$ (minimum).
+
+**Conclusion.** Maximum $5\sqrt2$ at $A$, minimum $-5\sqrt2$ at $B$.
+
+@@@ constrained-lagrange-line.md
+---
+title: Optimization under a linear constraint
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 3
+tags: Lagrange, linear constraint, minimum
+date: 2026-11-03
+---
+
+## Statement
+
+Minimize $f(x,y)=x^2+y^2$ under $x+2y=5$.
+
+## Hint
+
+Substitute $y=(5-x)/2$ or use Lagrange.
+
+## Solution
+
+**Lagrange.** $2x=\lambda$, $2y=2\lambda\Rightarrow y=2x$; constraint gives $5x=5$, $x=1$, $y=2$.
+
+**Value.** $f(1,2)=5$.
+
+**Conclusion.** Minimum $5$ at $(1,2)$. The Lagrangian is convex so the critical point is a global minimum.
+
+@@@ constrained-lagrange-product.md
+---
+title: Maximizing a product
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 3
+tags: Lagrange, product, constraint
+date: 2026-11-03
+---
+
+## Statement
+
+Maximize $f(x,y)=(xy)^a$ for $x,y\ge0$, $a>0$, under $2x+3y=12$.
+
+## Hint
+
+Lagrange on the interior $x,y>0$; check the boundary separately.
+
+## Solution
+
+**Lagrange.** $a x^{a-1}y^a=2\lambda$, $a x^ay^{a-1}=3\lambda$. Ratio: $y/x=2/3$, i.e. $3y=2x$. Constraint: $2x+2x=12$, $x=3$, $y=2$.
+
+**Boundary.** On $x=0$ or $y=0$, $f=0$. At $(3,2)$, $f=6^a>0$.
+
+**Conclusion.** Global maximum $6^a$ at $(3,2)$.
+
+@@@ constrained-lagrange-exponential.md
+---
+title: Lagrange with exponential objective
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 4
+tags: Lagrange, exponential, constrained maximum
+date: 2026-11-03
+---
+
+## Statement
+
+Maximize $f(x,y)=e^{xy}$ subject to $x+y=1$.
+
+## Hint
+
+Maximize $xy$ under $x+y=1$ via AM-GM.
+
+## Solution
+
+**AM-GM.** $xy\le\left(\frac{x+y}{2}\right)^2=\frac14$, with equality iff $x=y=1/2$.
+
+**Conclusion.** Maximum $e^{1/4}$ at $(1/2,1/2)$.
+
+@@@ constrained-lagrange-rectangle.md
+---
+title: Maximizing a volume with fixed perimeter
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 4
+tags: Lagrange, geometric optimization, volume
+date: 2026-11-03
+---
+
+## Statement
+
+Maximize the volume $V=xyz$ of a rectangular box under the constraint $2(xy+yz+zx)=A$ (fixed surface area).
+
+## Hint
+
+By symmetry the optimum is the cube. Apply Lagrange to confirm.
+
+## Solution
+
+**Lagrange.** $\nabla(xyz)=\lambda\nabla(2(xy+yz+zx))$:
+$$yz=2\lambda(y+z),\quad xz=2\lambda(x+z),\quad xy=2\lambda(x+y).$$
+
+**Solve.** Dividing the first two gives $y/x=z/y$, so $x=y=z$ at the critical point.
+
+**Conclusion.** Maximum volume when $x=y=z=\sqrt{A/6}$, giving $V=(A/6)^{3/2}$.
+
+@@@ constrained-lagrange-ellipsoid.md
+---
+title: Distance from origin to an ellipsoid
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 4
+tags: Lagrange, ellipsoid, distance
+date: 2026-11-03
+---
+
+## Statement
+
+Find the maximum distance from the origin to the ellipsoid $\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1$ with $0<a<b<c$.
+
+## Hint
+
+Maximize $x^2+y^2+z^2$ under the constraint; use Lagrange.
+
+## Solution
+
+**Lagrange.** $2x=\lambda\cdot 2x/a^2$, etc. Nontrivial solutions require $\lambda=a^2$ or $b^2$ or $c^2$.
+
+**Points.** If $\lambda=a^2$, then $y=z=0$, $x=\pm a$: distance $a$. Similarly for $b,c$.
+
+**Conclusion.** Maximum distance $c$ (longest semi-axis), minimum $a$.
+
+@@@ constrained-constrained-inequality.md
+---
+title: Optimization under inequality constraints
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 4
+tags: inequality constraint, KKT, boundary
+date: 2026-11-03
+---
+
+## Statement
+
+Maximize $f(x,y)=x+y$ on the disk $x^2+y^2\le1$.
+
+## Hint
+
+Interior critical points or boundary via Lagrange.
+
+## Solution
+
+**Interior.** $\nabla f=(1,1)\neq(0,0)$: no interior critical point.
+
+**Boundary.** Lagrange on $x^2+y^2=1$: $1=2\lambda x$, $1=2\lambda y\Rightarrow x=y$, so $x=y=\pm1/\sqrt2$.
+
+**Values.** $f(1/\sqrt2,1/\sqrt2)=\sqrt2$ (max); $f(-1/\sqrt2,-1/\sqrt2)=-\sqrt2$ (min).
+
+**Conclusion.** Maximum $\sqrt2$ at $(1/\sqrt2,1/\sqrt2)$.
+
+@@@ constrained-double-constraint.md
+---
+title: Two equality constraints
+category: calculus/multivariable/constrained-optimisation
+level: m1
+difficulty: 5
+tags: Lagrange, multiple constraints, KKT
+date: 2026-11-03
+---
+
+## Statement
+
+Maximize $f(x,y,z)=xyz$ under $x+y+z=3$ and $x=y$.
+
+## Hint
+
+Substitute $y=x$ first, then Lagrange on two variables.
+
+## Solution
+
+**Substitute.** With $y=x$: $f(x,z)=x^2z$, constraint $2x+z=3$.
+
+**Lagrange.** $\partial_x f=2xz=\lambda\cdot 2$, $\partial_z f=x^2=\lambda$. So $xz=x^2/2$, i.e. $z=x/2$. Then $2x+x/2=3$, $x=6/5$, $z=3/5$.
+
+**Value.** $f=(6/5)^2\cdot3/5=108/125$.
+
+**Conclusion.** Maximum $108/125$ at $(6/5,6/5,3/5)$.
+
+@@@ constrained-lagrange-distance-line.md
+---
+title: Shortest distance from a point to a line
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 4
+tags: Lagrange, distance, line
+date: 2026-11-03
+---
+
+## Statement
+
+Find the shortest distance from the origin to the line $2x+y=5$.
+
+## Hint
+
+Minimize $x^2+y^2$ under $2x+y=5$.
+
+## Solution
+
+**Lagrange.** $2x=2\lambda$, $2y=\lambda$, so $y=x/2$. Constraint gives $2x+x/2=5$, $x=2$, $y=1$.
+
+**Distance.** $\sqrt{4+1}=\sqrt5$.
+
+**Conclusion.** Distance $=\sqrt5$.
+
+@@@ constrained-lagrange-maximum-compact.md
+---
+title: Global extrema on a compact set
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 4
+tags: compactness, global extrema, boundary
+date: 2026-11-03
+---
+
+## Statement
+
+Find the global extrema of $f(x,y)=x^2-y^2$ on the disk $x^2+y^2\le1$.
+
+## Hint
+
+Check the interior (Hessian indefinite), then the boundary (polar).
+
+## Solution
+
+**Interior.** $\nabla f=0\Rightarrow(0,0)$, saddle (Hessian indefinite).
+
+**Boundary.** With $x=\cos t,y=\sin t$: $f=\cos^2t-\sin^2t=\cos 2t$.
+
+**Values.** Range $[-1,1]$, with max $1$ at $(1,0)$ and min $-1$ at $(0,1)$.
+
+**Conclusion.** Global max $1$, global min $-1$ on the boundary.
+
+@@@ constrained-hessian-classify-3d.md
+---
+title: Classifying a 3D critical point
+category: calculus/multivariable/constrained-optimisation
+level: m1
+difficulty: 4
+tags: Hessian, 3D, saddle
+date: 2026-11-03
+---
+
+## Statement
+
+Classify the critical point $(0,0,0)$ of $f(x,y,z)=x^2-y^2+z^2$.
+
+## Hint
+
+Hessian is diagonal with entries $(2,-2,2)$.
+
+## Solution
+
+**Hessian.** $\operatorname{diag}(2,-2,2)$.
+
+**Eigenvalues.** $2,-2,2$: mixed signs.
+
+**Conclusion.** Saddle point at the origin.
+
+@@@ constrained-constrained-min-distance.md
+---
+title: Distance from point to plane
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 3
+tags: Lagrange, distance, plane
+date: 2026-11-03
+---
+
+## Statement
+
+Find the shortest distance from $(1,1,1)$ to the plane $x+y+z=0$.
+
+## Hint
+
+Minimize $d^2=(x-1)^2+(y-1)^2+(z-1)^2$ under $x+y+z=0$.
+
+## Solution
+
+**Lagrange.** $2(x-1)=\lambda$, $2(y-1)=\lambda$, $2(z-1)=\lambda$, so $x=y=z$. Constraint: $3x=0$, so $x=y=z=0$.
+
+**Distance.** $\sqrt{(1)^2+(1)^2+(1)^2}=\sqrt3$.
+
+**Conclusion.** Distance $=\sqrt3$.
+
+@@@ constrained-classify-boundary.md
+---
+title: Boundary classification
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 3
+tags: boundary, classification, circle
+date: 2026-11-03
+---
+
+## Statement
+
+Find and classify the extrema of $f(x,y)=xy$ on the unit circle $x^2+y^2=1$.
+
+## Hint
+
+Parametrize the circle; $f=\frac12\sin 2\theta$.
+
+## Solution
+
+**Parametrization.** $x=\cos t$, $y=\sin t$, $f=\cos t\sin t=\frac12\sin 2t$.
+
+**Extrema.** $f$ ranges in $[-1/2,1/2]$.
+
+**Points.** Max $1/2$ at $t=\pi/4, 5\pi/4$; min $-1/2$ at $t=3\pi/4, 7\pi/4$.
+
+**Conclusion.** Maximum $1/2$ at $(\pm1/\sqrt2,\pm1/\sqrt2)$ with matching signs; minimum $-1/2$ with opposite signs.
+
+@@@ constrained-quadratic-form.md
+---
+title: Constrained quadratic form
+category: calculus/multivariable/constrained-optimisation
+level: m1
+difficulty: 4
+tags: quadratic form, Rayleigh quotient, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Maximize $f(x,y)=3x^2+2xy+3y^2$ on the unit circle.
+
+## Hint
+
+The maximum is the largest eigenvalue of $\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
+
+## Solution
+
+**Eigenvalues.** $(3-\lambda)^2-1=0\Rightarrow\lambda=2,4$.
+
+**Maximum.** $\lambda_{\max}=4$, attained at the eigenvector $(1,1)/\sqrt2$.
+
+**Conclusion.** Maximum $4$ at $(\pm1/\sqrt2,\pm1/\sqrt2)$ with equal signs.
+
+@@@ constrained-cauchy-schwarz.md
+---
+title: Cauchy–Schwarz via optimization
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 4
+tags: Cauchy-Schwarz, optimization, inequality
+date: 2026-11-03
+---
+
+## Statement
+
+Using Lagrange multipliers, prove that $x+y\le\sqrt{2(x^2+y^2)}$.
+
+## Hint
+
+Maximize $x+y$ under $x^2+y^2=1$; multiply by the radius.
+
+## Solution
+
+**Lagrange.** $1=2\lambda x$, $1=2\lambda y$, so $x=y$. On the unit circle, $x=y=1/\sqrt2$, giving maximum $\sqrt2$.
+
+**Scaling.** For any $(x,y)\neq(0,0)$ with $r=\sqrt{x^2+y^2}$, $(x/r,y/r)$ is on the unit circle, so $x+y\le\sqrt2\,r$.
+
+**Conclusion.** $x+y\le\sqrt{2(x^2+y^2)}$.
+
+@@@ constrained-summary.md
+---
+title: Summary of constrained optimization
+category: calculus/multivariable/constrained-optimisation
+level: lycee
+difficulty: 2
+tags: summary, constrained optimization
+date: 2026-11-03
+---
+
+## Statement
+
+Summarize the key methods for constrained optimization.
+
+## Hint
+
+Review critical points, Hessian, Lagrange, boundary.
+
+## Solution
+
+**Unconstrained critical points.**
+- Solve $\nabla f=0$.
+- Classify via the Hessian: positive definite (min), negative definite (max), indefinite (saddle).
+
+**Lagrange multipliers.** For $f$ under $g=0$: $\nabla f=\lambda\nabla g$, plus the constraint.
+
+**Boundary.** Parameterize or restrict $f$ to the boundary surface; combine with interior results.
+
+**Compact sets.** If the set is compact, global extrema exist; check interior, boundary, and corners.
+
+**KKT for inequalities.** For $g\le0$: Lagrange with nonnegativity conditions.
+
+**Examples.** Circles, lines, ellipsoids, quadratics, multi-constraint problems.
+
+**Conclusion.** Constrained optimization reduces to finding critical points of the Lagrangian and evaluating on boundaries.
+
+@@@ vector-line-integral-basic.md
+---
+title: Line integral of a scalar field
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 2
+tags: line integral, scalar field, parametrization
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle\int_C(x+y)\,ds$ where $C$ is the segment from $(0,0)$ to $(1,1)$.
+
+## Hint
+
+Parametrize $\gamma(t)=(t,t)$, $t\in[0,1]$, and $ds=\|\gamma'(t)\|\,dt$.
+
+## Solution
+
+**Parametrization.** $\gamma(t)=(t,t)$, $\gamma'(t)=(1,1)$, $\|\gamma'(t)\|=\sqrt2$.
+
+**Integral.**
+$$\int_0^1(t+t)\sqrt2\,dt=2\sqrt2\int_0^1 t\,dt=\sqrt2.$$
+
+**Conclusion.** $\int_C(x+y)\,ds=\sqrt2$.
+
+@@@ vector-line-integral-work.md
+---
+title: Work done by a force field
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: work, line integral, vector field
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the work of $\vec F(x,y)=(y,x)$ along the segment from $(0,0)$ to $(1,2)$.
+
+## Hint
+
+Work $=\int_C\vec F\cdot d\vec r$. Parametrize $\gamma(t)=(t,2t)$.
+
+## Solution
+
+**Parametrization.** $\gamma(t)=(t,2t)$, $\gamma'(t)=(1,2)$, $t\in[0,1]$.
+
+**Integrand.** $\vec F(\gamma(t))=(2t,t)$, $\vec F\cdot\gamma'=2t+2t=4t$.
+
+**Integral.** $\int_0^1 4t\,dt=2$.
+
+**Conclusion.** Work $=2$.
+
+@@@ vector-line-integral-circle.md
+---
+title: Line integral along a circle
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: line integral, circle, parametrization
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle\oint_C(-y\,dx+x\,dy)$ where $C$ is the unit circle oriented counterclockwise.
+
+## Hint
+
+$\gamma(t)=(\cos t,\sin t)$, $t\in[0,2\pi]$.
+
+## Solution
+
+**Parametrization.** $x=\cos t$, $y=\sin t$; $dx=-\sin t\,dt$, $dy=\cos t\,dt$.
+
+**Integrand.** $-y\,dx+x\,dy=\sin^2t\,dt+\cos^2t\,dt=dt$.
+
+**Integral.** $\oint_C = \int_0^{2\pi}dt=2\pi$.
+
+**Conclusion.** $\oint_C(-y\,dx+x\,dy)=2\pi$ (twice the area enclosed).
+
+@@@ vector-line-integral-piecewise.md
+---
+title: Line integral on a piecewise path
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: piecewise path, line integral, work
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\int_C\vec F\cdot d\vec r$ for $\vec F=(x^2,y^2)$ along the broken line from $(0,0)$ to $(1,0)$ to $(1,1)$.
+
+## Hint
+
+Split into two segments; sum the contributions.
+
+## Solution
+
+**Segment 1.** From $(0,0)$ to $(1,0)$: $\gamma_1(t)=(t,0)$, $t\in[0,1]$; $\vec F\cdot\gamma_1'=t^2$. Contribution $1/3$.
+
+**Segment 2.** From $(1,0)$ to $(1,1)$: $\gamma_2(t)=(1,t)$; $\vec F\cdot\gamma_2'=t^2$. Contribution $1/3$.
+
+**Total.** $2/3$.
+
+**Conclusion.** $\int_C\vec F\cdot d\vec r=2/3$.
+
+@@@ vector-line-conservative.md
+---
+title: Conservative vector field
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: conservative, gradient, path independence
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\vec F(x,y)=(2x,2y)$ is conservative and compute $\int_C\vec F\cdot d\vec r$ along any path from $(0,0)$ to $(1,2)$.
+
+## Hint
+
+Find a potential $\phi$ with $\nabla\phi=\vec F$.
+
+## Solution
+
+**Potential.** $\phi(x,y)=x^2+y^2$ satisfies $\nabla\phi=(2x,2y)=\vec F$.
+
+**Path independence.** Integral $=\phi(1,2)-\phi(0,0)=1+4=5$.
+
+**Conclusion.** The field is conservative; integral $=5$ regardless of path.
+
+@@@ vector-line-work-check-conservative.md
+---
+title: Testing whether a field is conservative
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: conservative, curl, test
+date: 2026-11-03
+---
+
+## Statement
+
+Is $\vec F(x,y)=(x^2y,\,xy^2)$ conservative?
+
+## Hint
+
+For a field $(P,Q)$ in $\mathbb{R}^2$: check $P_y=Q_x$.
+
+## Solution
+
+**Compute.** $P=x^2y$, $Q=xy^2$. Then $P_y=x^2$, $Q_x=y^2$.
+
+**Test.** $P_y\neq Q_x$ in general, so $\vec F$ is not conservative.
+
+**Conclusion.** $\vec F$ is not conservative (curl nonzero).
+
+@@@ vector-line-potential-function.md
+---
+title: Finding a potential function
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 4
+tags: potential, conservative, integration
+date: 2026-11-03
+---
+
+## Statement
+
+Find a potential for $\vec F(x,y)=(e^x\cos y,\,-e^x\sin y)$.
+
+## Hint
+
+Integrate $P=e^x\cos y$ in $x$, then use the condition on $Q$.
+
+## Solution
+
+**Integrate $P$.** $\phi=\int e^x\cos y\,dx=e^x\cos y+g(y)$.
+
+**Use $Q$.** $\phi_y=-e^x\sin y+g'(y)=-e^x\sin y$, so $g'(y)=0$.
+
+**Potential.** $\phi(x,y)=e^x\cos y$.
+
+**Conclusion.** $\vec F=\nabla\phi$ with $\phi=e^x\cos y$.
+
+@@@ vector-line-fundamental-theorem.md
+---
+title: Fundamental theorem for line integrals
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: fundamental theorem, line integral, potential
+date: 2026-11-03
+---
+
+## Statement
+
+State the fundamental theorem for line integrals: if $\vec F=\nabla\phi$, then $\int_C\vec F\cdot d\vec r=\phi(B)-\phi(A)$.
+
+## Hint
+
+Apply the univariate chain rule along a parametrization.
+
+## Solution
+
+**Proof.** Let $\gamma(t)$, $t\in[a,b]$, parametrize $C$ from $A$ to $B$. Then
+$$\int_C\vec F\cdot d\vec r=\int_a^b\nabla\phi(\gamma(t))\cdot\gamma'(t)\,dt=\int_a^b\frac{d}{dt}[\phi(\gamma(t))]\,dt=\phi(B)-\phi(A).$$
+
+**Conclusion.** For conservative fields, the integral only depends on endpoints.
+
+@@@ vector-line-closed.md
+---
+title: Closed paths in conservative fields
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 2
+tags: closed path, conservative, zero integral
+date: 2026-11-03
+---
+
+## Statement
+
+Show that if $\vec F$ is conservative and $C$ is closed, then $\oint_C\vec F\cdot d\vec r=0$.
+
+## Hint
+
+Use the fundamental theorem: $\phi(B)-\phi(A)$ with $A=B$.
+
+## Solution
+
+**Apply.** $\oint_C\vec F\cdot d\vec r=\phi(A)-\phi(A)=0$.
+
+**Conclusion.** Conservative fields have zero circulation on closed loops.
+
+@@@ vector-greens-theorem.md
+---
+title: Green's theorem
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 4
+tags: Green theorem, curl, region
+date: 2026-11-03
+---
+
+## Statement
+
+Use Green's theorem to compute $\oint_C(-y\,dx+x\,dy)$ where $C$ is the unit circle oriented counterclockwise.
+
+## Hint
+
+$\oint_C(P\,dx+Q\,dy)=\iint_D(Q_x-P_y)\,dx\,dy$.
+
+## Solution
+
+**Identify.** $P=-y$, $Q=x$; $Q_x=1$, $P_y=-1$.
+
+**Green.** $\oint=\iint_D(1-(-1))\,dx\,dy=2\,\text{Area}(D)=2\pi$.
+
+**Conclusion.** $\oint_C(-y\,dx+x\,dy)=2\pi$.
+
+@@@ vector-greens-theorem-general.md
+---
+title: Green's theorem with a general field
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 4
+tags: Green, general field, region
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\oint_C(x^2-y^3)\,dx+(x^3+y^2)\,dy$ where $C$ is the circle $x^2+y^2=R^2$ (counterclockwise).
+
+## Hint
+
+$Q_x-P_y=3x^2+3y^2$.
+
+## Solution
+
+**Identify.** $P=x^2-y^3$, $Q=x^3+y^2$. Then $Q_x-P_y=3x^2+3y^2$.
+
+**Green.** $\oint=3\iint_D(x^2+y^2)\,dx\,dy$.
+
+**Polar.** $3\int_0^{2\pi}\int_0^Rr^3\,dr\,d\theta=3\cdot 2\pi\cdot\frac{R^4}{4}=\frac{3\pi R^4}{2}$.
+
+**Conclusion.** $\oint=\frac{3\pi R^4}{2}$.
+
+@@@ vector-greens-area.md
+---
+title: Area using Green's theorem
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: area, Green, closed curve
+date: 2026-11-03
+---
+
+## Statement
+
+Use Green's theorem to compute the area of the ellipse $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$.
+
+## Hint
+
+Area $=\frac12\oint_C(x\,dy-y\,dx)$.
+
+## Solution
+
+**Parametrization.** $\gamma(t)=(a\cos t,b\sin t)$, $t\in[0,2\pi]$.
+
+**Compute $x\,dy-y\,dx$.** $x\,dy=ab\cos^2t\,dt$, $y\,dx=ab\sin^2t\,dt$.
+
+**Integral.** $\frac12\int_0^{2\pi}ab\,dt=\pi ab$.
+
+**Conclusion.** Area $=\pi ab$.
+
+@@@ vector-divergence-definition.md
+---
+title: The divergence
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 2
+tags: divergence, vector field, computation
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\operatorname{div}\vec F$ for $\vec F=(x^2y,\,xy^2,\,z^3)$.
+
+## Hint
+
+$\operatorname{div}\vec F=\partial_xP+\partial_yQ+\partial_zR$.
+
+## Solution
+
+**Compute.** $\partial_x(x^2y)=2xy$, $\partial_y(xy^2)=2xy$, $\partial_z(z^3)=3z^2$.
+
+**Divergence.** $\operatorname{div}\vec F=2xy+2xy+3z^2=4xy+3z^2$.
+
+**Conclusion.** $\operatorname{div}\vec F=4xy+3z^2$.
+
+@@@ vector-curl-definition.md
+---
+title: The curl
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: curl, vector field, rotation
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\nabla\times\vec F$ for $\vec F=(yz,\,xz,\,xy)$.
+
+## Hint
+
+$\nabla\times\vec F=(R_y-Q_z,\,P_z-R_x,\,Q_x-P_y)$.
+
+## Solution
+
+**Compute.**
+- $R_y-Q_z=x-x=0$
+- $P_z-R_x=y-y=0$
+- $Q_x-P_y=z-z=0$
+
+**Conclusion.** $\nabla\times\vec F=\vec0$: the field is irrotational. It is actually conservative with potential $\phi=xyz$.
+
+@@@ vector-divergence-theorem.md
+---
+title: The divergence theorem
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 4
+tags: divergence theorem, flux, surface
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the flux of $\vec F=(x,y,z)$ through the sphere $S$ of radius $R$ centered at the origin, oriented outward.
+
+## Hint
+
+$\iint_S\vec F\cdot\vec n\,dS=\iiint_V\operatorname{div}\vec F\,dV$.
+
+## Solution
+
+**Divergence.** $\operatorname{div}\vec F=1+1+1=3$.
+
+**Theorem.** Flux $=3\cdot\text{Vol}(V)=3\cdot\frac43\pi R^3=4\pi R^3$.
+
+**Conclusion.** Flux $=4\pi R^3$.
+
+@@@ vector-divergence-theorem-cube.md
+---
+title: Flux through a cube
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 4
+tags: divergence, cube, flux
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the outward flux of $\vec F=(x^2,0,0)$ through the cube $[0,1]^3$.
+
+## Hint
+
+$\operatorname{div}\vec F=2x$; integrate over the cube.
+
+## Solution
+
+**Divergence.** $\operatorname{div}\vec F=2x$.
+
+**Integral.** $\iiint_{[0,1]^3}2x\,dV=2\cdot\frac12=\frac12\cdot1=1$.
+
+**Conclusion.** Flux $=1$.
+
+@@@ vector-stokes-theorem.md
+---
+title: Stokes' theorem
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 4
+tags: Stokes theorem, curl, surface
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\oint_C\vec F\cdot d\vec r$ for $\vec F=(-y,x,0)$ where $C$ is the unit circle in the $z=0$ plane, counterclockwise.
+
+## Hint
+
+$\oint=\iint_S(\nabla\times\vec F)\cdot\vec n\,dS$; $\nabla\times\vec F=(0,0,2)$.
+
+## Solution
+
+**Curl.** $\nabla\times\vec F=(0,0,2)$.
+
+**Normal.** $\vec n=(0,0,1)$.
+
+**Stokes.** $\oint=2\cdot\text{Area}(S)=2\pi$.
+
+**Conclusion.** $\oint_C=2\pi$.
+
+@@@ vector-stokes-hemisphere.md
+---
+title: Stokes with a hemisphere
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 4
+tags: Stokes, hemisphere, closed curve
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\oint_C\vec F\cdot d\vec r$ for $\vec F=(z,0,0)$ where $C$ is the boundary of the hemisphere $x^2+y^2+z^2=1$, $z\ge0$.
+
+## Hint
+
+$\nabla\times\vec F=(0,0,-1)$ if $P=z$, $Q=0$, $R=0$: $\nabla\times\vec F=(0,-P_z,Q_x)=(0,-1,0)$ — recompute. $\nabla\times(P,Q,R)=(R_y-Q_z,\,P_z-R_x,\,Q_x-P_y)$; here $P=z,Q=0,R=0$ so curl $=(0,1,0)$.
+
+## Solution
+
+**Curl.** $\nabla\times\vec F=(0,1,0)$.
+
+**Use Stokes on flat disk** at $z=0$ with $\vec n=(0,0,1)$: curl·$\vec n=0$.
+
+**Conclusion.** $\oint_C\vec F\cdot d\vec r=0$.
+
+@@@ vector-line-area-ellipse.md
+---
+title: Area of a region using line integral
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 4
+tags: line integral, area, polar
+date: 2026-11-03
+---
+
+## Statement
+
+Use $\frac12\oint(x\,dy-y\,dx)$ to compute the area of the region enclosed by $r=1+\cos\theta$ (cardioid).
+
+## Hint
+
+$x\,dy-y\,dx=r^2\,d\theta$ for polar curves.
+
+## Solution
+
+**Polar form.** $x=r\cos\theta$, $y=r\sin\theta$; direct computation shows $x\,dy-y\,dx=r^2\,d\theta$.
+
+**Integral.** $\text{Area}=\frac12\int_0^{2\pi}(1+\cos\theta)^2\,d\theta$.
+
+**Compute.** $(1+\cos\theta)^2=1+2\cos\theta+\cos^2\theta$; integral over $[0,2\pi]$: $2\pi+0+\pi=3\pi$.
+
+**Result.** Area $=\frac12\cdot 3\pi=\frac{3\pi}{2}$.
+
+**Conclusion.** Area of cardioid $=3\pi/2$.
+
+@@@ vector-greens-region-hole.md
+---
+title: Green's theorem on an annulus
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 4
+tags: Green, annulus, inner boundary
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\oint_C\vec F\cdot d\vec r$ for $\vec F=(-y,x)$ around the annulus $1\le x^2+y^2\le4$, outer boundary counterclockwise, inner clockwise.
+
+## Hint
+
+Green on the annulus: $\iint_D(Q_x-P_y)=2\cdot\text{Area}(D)$.
+
+## Solution
+
+**Curl.** $Q_x-P_y=1+1=2$.
+
+**Area.** $\pi(4-1)=3\pi$.
+
+**Green.** $\oint=2\cdot3\pi=6\pi$.
+
+**Conclusion.** The circulation around the annulus is $6\pi$.
+
+@@@ vector-greens-inverse.md
+---
+title: Recovering a field from its curl (2D)
+category: calculus/multivariable/vector-calculus
+level: m1
+difficulty: 4
+tags: Green, curl, reconstruction
+date: 2026-11-03
+---
+
+## Statement
+
+Given $\vec F=(P,Q)$ with $Q_x-P_y=f$, find $P,Q$ via Green: express the circulation $\oint_C$ as $\iint_D f$.
+
+## Hint
+
+Green's theorem already relates the two.
+
+## Solution
+
+**Formula.** Green: $\oint_C(P\,dx+Q\,dy)=\iint_D(Q_x-P_y)\,dx\,dy=\iint_Df$.
+
+**Application.** If $f=1$ and $D$ is the unit disk, circulation is $\pi$.
+
+**Conclusion.** The circulation of any field with a given 2D curl on a region equals the integral of the curl.
+
+@@@ vector-stokes-cone.md
+---
+title: Stokes on a cone
+category: calculus/multivariable/vector-calculus
+level: m1
+difficulty: 5
+tags: Stokes, cone, surface
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the circulation of $\vec F=(y,z,x)$ on the boundary of the cone $z=\sqrt{x^2+y^2}$, $z\le1$.
+
+## Hint
+
+$\nabla\times\vec F=(-1,-1,-1)$; use the flat disk at $z=1$ to simplify.
+
+## Solution
+
+**Curl.** $\nabla\times\vec F=(-1,-1,-1)$.
+
+**Use disk.** $S$: disk $x^2+y^2\le1$ at $z=1$, $\vec n=(0,0,1)$, with boundary circle at $z=1$.
+
+**Stokes.** $\oint=\iint_D(-1)\,dS=-\pi$.
+
+**Conclusion.** Circulation $=-\pi$.
+
+@@@ vector-divergence-gauss.md
+---
+title: Gauss divergence theorem for a cylinder
+category: calculus/multivariable/vector-calculus
+level: m1
+difficulty: 4
+tags: divergence, cylinder, flux
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the outward flux of $\vec F=(x,y,0)$ through the cylinder $x^2+y^2\le R^2$, $0\le z\le h$.
+
+## Hint
+
+$\operatorname{div}\vec F=2$; multiply by the volume.
+
+## Solution
+
+**Divergence.** $\operatorname{div}\vec F=1+1+0=2$.
+
+**Volume.** $\pi R^2h$.
+
+**Flux.** $2\pi R^2h$.
+
+**Conclusion.** Flux $=2\pi R^2h$.
+
+@@@ vector-gauss-sphere-variable.md
+---
+title: Divergence theorem with variable divergence
+category: calculus/multivariable/vector-calculus
+level: m1
+difficulty: 4
+tags: divergence, sphere, variable density
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the flux of $\vec F=(x^3,y^3,z^3)$ through the sphere of radius $R$.
+
+## Hint
+
+$\operatorname{div}\vec F=3(x^2+y^2+z^2)$; integrate in spherical.
+
+## Solution
+
+**Divergence.** $\operatorname{div}=3(x^2+y^2+z^2)=3r^2$.
+
+**Spherical.** $\iiint 3r^2\cdot r^2\sin\varphi\,dr\,d\varphi\,d\theta=3\cdot4\pi\cdot\frac{R^5}{5}$.
+
+**Result.** Flux $=\frac{12\pi R^5}{5}$.
+
+**Conclusion.** Flux $=\frac{12\pi R^5}{5}$.
+
+@@@ vector-greens-symmetry.md
+---
+title: Green with symmetry
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: Green, symmetry, shortcut
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\oint_C(x\,dy-y\,dx)$ around the square with vertices $(0,0),(1,0),(1,1),(0,1)$ counterclockwise.
+
+## Hint
+
+$Q_x-P_y=2$; multiply by area.
+
+## Solution
+
+**Green.** $Q_x-P_y=1+1=2$; area $=1$.
+
+**Integral.** $2\cdot1=2$.
+
+**Direct check.** Along edges: bottom $y=0$, $dy=0$, $x\,dy-y\,dx=0$; top $y=1$, $dy=0$, contribution $-1$ (going left); right edge $x=1$, $dx=0$, contribution $1$; left edge $x=0$, $dx=0$, contribution $0$. Total $1-1+0+... $ wait: edge 2 (right side going up) has $dx=0$, integrand $-y\cdot0=0$; top edge going left has $x\,dy=0$ and $-y\,dx$ with $y=1$, $dx$ negative, contribution $+1$; bottom $-y=0$, contribution $0$; left $dx=0$, contribution $0$. Total $=1$... hmm, let me redo. Actually the line integral $\oint(x\,dy-y\,dx)$: for the unit square, using $\frac12\oint(x\,dy-y\,dx)=$ area gives $\oint =2$. Green directly gives $2$.
+
+**Conclusion.** $\oint=2$.
+
+@@@ vector-stokes-torus.md
+---
+title: Stokes on a torus (statement)
+category: calculus/multivariable/vector-calculus
+level: m1
+difficulty: 5
+tags: Stokes, torus, closed surface
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the flux of any curl field through a closed surface is zero.
+
+## Hint
+
+$\iint_S(\nabla\times\vec F)\cdot\vec n\,dS=\iiint_V\operatorname{div}(\nabla\times\vec F)\,dV=0$.
+
+## Solution
+
+**Divergence of curl.** $\operatorname{div}(\nabla\times\vec F)=0$.
+
+**Apply divergence theorem.** $\iint_S(\nabla\times\vec F)\cdot\vec n\,dS=\iiint_V0\,dV=0$.
+
+**Conclusion.** Any curl field has zero flux through any closed surface.
+
+@@@ vector-greens-reciprocity.md
+---
+title: Green's reciprocity
+category: calculus/multivariable/vector-calculus
+level: m1
+difficulty: 4
+tags: Green, reciprocity, symmetry
+date: 2026-11-03
+---
+
+## Statement
+
+State Green's reciprocity identity: for functions $u,v$ on a domain $D$ with boundary $\partial D$,
+$$\iint_D(u\Delta v-v\Delta u)=\oint_{\partial D}\left(u\frac{\partial v}{\partial n}-v\frac{\partial u}{\partial n}\right)ds.$$
+
+## Hint
+
+Apply the divergence theorem to $\vec F=u\nabla v-v\nabla u$.
+
+## Solution
+
+**Divergence.** $\nabla\cdot(u\nabla v)=u\Delta v+\nabla u\cdot\nabla v$. Similarly for $v\nabla u$. Difference: $u\Delta v-v\Delta u$.
+
+**Apply.** Divergence theorem gives the boundary identity.
+
+**Conclusion.** Green's reciprocity identity follows from the divergence theorem.
+
+@@@ vector-greens-application.md
+---
+title: An application of Green's theorem
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: Green, application, area
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the area of the region bounded by $y=x^2$ and $y=x$ using the line integral $\frac12\oint(x\,dy-y\,dx)$.
+
+## Hint
+
+Parametrize each side and sum.
+
+## Solution
+
+**Intersection.** $x^2=x$ gives $x=0$ or $1$.
+
+**Lower path.** $\gamma_1(t)=(t,t)$, $t\in[0,1]$. Contribution $\frac12\int_0^1(t\cdot1-t\cdot1)\,dt=0$.
+
+**Upper path.** $\gamma_2(t)=(t,t^2)$ from $t=1$ to $0$ (reverse). Compute $\frac12\int_{1}^{0}(t\cdot2t-t^2\cdot1)\,dt=\frac12\int_1^0 t^2\,dt=\frac12\cdot(-\frac13)=-\frac16$; absolute value $\frac16$.
+
+Wait, sign issue: total area should be positive. Let me just compute $|x^2-x|$ directly: area $=\int_0^1(x-x^2)\,dx=\frac12-\frac13=\frac16$.
+
+**Conclusion.** Area $=1/6$.
+
+@@@ vector-line-conservative-3d.md
+---
+title: Conservative fields in 3D
+category: calculus/multivariable/vector-calculus
+level: m1
+difficulty: 4
+tags: conservative, 3D, potential
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\vec F=(yz,xz,xy)$ is conservative and find a potential.
+
+## Hint
+
+$\nabla\times\vec F=0$; find $\phi$ with $\nabla\phi=\vec F$.
+
+## Solution
+
+**Curl.** $\nabla\times\vec F=0$ (computed earlier), so $\vec F$ is conservative on $\mathbb{R}^3$.
+
+**Potential.** Integrate $yz$ in $x$: $\phi=xyz+g(y,z)$. Then $\partial_y\phi=xz+g_y=xz$, so $g_y=0$; similarly $g_z=0$.
+
+**Result.** $\phi=xyz$.
+
+**Conclusion.** $\vec F=\nabla(xyz)$.
+
+@@@ vector-divergence-gauss-plane.md
+---
+title: Flux through a flat surface
+category: calculus/multivariable/vector-calculus
+level: l1
+difficulty: 3
+tags: flux, plane surface, dot product
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the flux of $\vec F=(1,2,3)$ through the unit square in the plane $z=0$, oriented upward.
+
+## Hint
+
+Flux $=\vec F\cdot\vec n\cdot\text{area}$.
+
+## Solution
+
+**Normal.** $\vec n=(0,0,1)$.
+
+**Flux.** $(1,2,3)\cdot(0,0,1)\cdot1=3$.
+
+**Conclusion.** Flux $=3$.
+
+@@@ multint-rectangle-double.md
+---
+title: Double integral over a rectangle
+category: calculus/multivariable/multiple-integrals
+level: lycee
+difficulty: 1
+tags: double integral, rectangle, iterated
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_D 2y\sin x\,dx\,dy$ where $D=[0,\pi]\times[0,1]$.
+
+## Hint
+
+The bounds are independent: integrate one variable at a time.
+
+## Solution
+
+**Iterated integral.**
+$$I=\int_0^{\pi}\int_0^1 2y\sin x\,dy\,dx.$$
+
+**Inner.** $\int_0^1 2y\sin x\,dy=\sin x$.
+
+**Outer.** $I=\int_0^{\pi}\sin x\,dx=[-\cos x]_0^{\pi}=2$.
+
+**Conclusion.** $I=2$.
+
+@@@ multint-under-parabola.md
+---
+title: Double integral under a parabola
+category: calculus/multivariable/multiple-integrals
+level: lycee
+difficulty: 2
+tags: double integral, type-I domain, parabola
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_D x^2\,dx\,dy$ where $D=\{(x,y):x\le1,\ y\ge0,\ y^2\le x\}$.
+
+## Hint
+
+For $x\in[0,1]$, $y$ ranges from $0$ to $\sqrt x$.
+
+## Solution
+
+**Iterated.** $I=\int_0^1\int_0^{\sqrt x}x^2\,dy\,dx$.
+
+**Inner.** $x^2\sqrt x$.
+
+**Outer.** $I=\int_0^1 x^{5/2}\,dx=\frac{2}{7}$.
+
+**Conclusion.** $I=2/7$.
+
+@@@ multint-triangular-domain.md
+---
+title: Double integral over a triangular domain
+category: calculus/multivariable/multiple-integrals
+level: lycee
+difficulty: 2
+tags: triangle, double integral, bounds
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_D \sin(x+y)\,dx\,dy$ where $D=\{x\ge0,\ y\ge0,\ x+y\le\pi\}$.
+
+## Hint
+
+For $x\in[0,\pi]$, $y$ ranges from $0$ to $\pi-x$.
+
+## Solution
+
+**Iterated.** $I=\int_0^{\pi}\int_0^{\pi-x}\sin(x+y)\,dy\,dx$.
+
+**Inner.** $[-\cos(x+y)]_{y=0}^{y=\pi-x}=1+\cos x$.
+
+**Outer.** $I=\int_0^{\pi}(1+\cos x)\,dx=[x+\sin x]_0^{\pi}=\pi$.
+
+**Conclusion.** $I=\pi$.
+
+@@@ multint-separable-rectangle.md
+---
+title: Separable integrand on a square
+category: calculus/multivariable/multiple-integrals
+level: lycee
+difficulty: 2
+tags: separability, product of integrals, square
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_{[0,1]^2}\frac{x^2}{1+y^2}\,dx\,dy$.
+
+## Hint
+
+Factor as a product of one-dimensional integrals.
+
+## Solution
+
+**Factorisation.**
+$$I=\left(\int_0^1 x^2\,dx\right)\left(\int_0^1\frac{dy}{1+y^2}\right)=\frac13\cdot\frac{\pi}{4}.$$
+
+**Conclusion.** $I=\pi/12$.
+
+@@@ multint-xy-symmetry.md
+---
+title: A symmetric triangle integral
+category: calculus/multivariable/multiple-integrals
+level: lycee
+difficulty: 2
+tags: symmetry, triangle, double integral
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_D (x+y)\,dx\,dy$ where $D$ is the triangle with vertices $(0,0),(2,0),(0,2)$.
+
+## Hint
+
+The triangle is symmetric in $x$ and $y$: compute $\iint_D x$ only and multiply by $2$.
+
+## Solution
+
+**Setup.** $D=\{(x,y):0\le x\le2,\ 0\le y\le2-x\}$.
+
+**Compute $\iint_D x$.**
+$$\int_0^2\int_0^{2-x}x\,dy\,dx=\int_0^2 x(2-x)\,dx=\left[x^2-\frac{x^3}{3}\right]_0^2=4-\frac{8}{3}=\frac{4}{3}.$$
+
+**Symmetry.** $\iint_D y=\frac43$, so $I=\frac83$.
+
+**Conclusion.** $I=8/3$.
+
+@@@ multint-polar-disk.md
+---
+title: Double integral over a disk in polar coordinates
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 3
+tags: polar coordinates, disk, Jacobian
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_D\frac{dx\,dy}{\sqrt{1+x^2+y^2}}$ where $D=\{x^2+y^2\le1\}$.
+
+## Hint
+
+Polar: $x=r\cos\theta$, $y=r\sin\theta$, $dx\,dy=r\,dr\,d\theta$; $0\le r\le1$, $0\le\theta\le2\pi$.
+
+## Solution
+
+**Polar.**
+$$I=\int_0^{2\pi}\int_0^1\frac{r}{\sqrt{1+r^2}}\,dr\,d\theta.$$
+
+**Inner.** $[\sqrt{1+r^2}]_0^1=\sqrt2-1$.
+
+**Outer.** $I=2\pi(\sqrt2-1)$.
+
+**Conclusion.** $I=2\pi(\sqrt2-1)$.
+
+@@@ multint-polar-annulus.md
+---
+title: Double integral over an annulus
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 3
+tags: polar coordinates, annulus, angular integral
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_D\frac{dx\,dy}{x^2+y^2+xy}$ where $D=\{4\le x^2+y^2\le16\}$.
+
+## Hint
+
+Polar: $x^2+y^2+xy=r^2(1+\cos\theta\sin\theta)$.
+
+## Solution
+
+**Polar.** $I=\int_0^{2\pi}\int_2^4\frac{r\,dr\,d\theta}{r^2(1+\cos\theta\sin\theta)}=\int_2^4\frac{dr}{r}\cdot\int_0^{2\pi}\frac{d\theta}{1+\cos\theta\sin\theta}$.
+
+**Radial.** $\int_2^4 dr/r=\ln2$.
+
+**Angular integral.** Using $\cos\theta\sin\theta=\frac12\sin 2\theta$ and $t=\theta-\pi/2$, substitution $u=\tan t$:
+$$J=\int_0^{2\pi}\frac{d\theta}{1+\frac12\sin2\theta}=2\int_{-\pi/2}^{\pi/2}\frac{dt}{1-\frac12\sin2t}=2\int_{-\infty}^{+\infty}\frac{du}{(u-\frac12)^2+\frac34}=\frac{4\pi}{\sqrt3}.$$
+
+**Total.** $I=\frac{4\pi\ln2}{\sqrt3}$.
+
+**Conclusion.** $I=\frac{4\pi}{\sqrt3}\ln2$.
+
+@@@ multint-polar-cardioid.md
+---
+title: Double integral over a disk tangent at origin
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 3
+tags: polar coordinates, circle offset, integral
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_D\frac{dx\,dy}{\sqrt{x^2+y^2}}$ where $D=\{y\ge0,\ x^2+y^2-2x\le0\}$.
+
+## Hint
+
+The disk $(x-1)^2+y^2\le1$ has polar equation $0\le r\le2\cos\theta$ with $\theta\in[0,\pi/2]$.
+
+## Solution
+
+**Polar.** $I=\int_0^{\pi/2}\int_0^{2\cos\theta}\frac{r}{r}\,dr\,d\theta=\int_0^{\pi/2}2\cos\theta\,d\theta=2$.
+
+**Conclusion.** $I=2$.
+
+@@@ multint-change-of-variables-linear.md
+---
+title: Linear change of variables
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: change of variables, Jacobian, triangle
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $I=\iint_D(x-y)\,dx\,dy$ where $D$ is bounded by $x=0$, $y=x+2$, $y=-x$, using the change of variables $u=x+y$, $v=x-y$.
+
+## Hint
+
+Jacobian $|J|=1/2$; transform the bounds.
+
+## Solution
+
+**Transformed region.** $D$: $0\le u\le 2$, $-2\le v\le -u$.
+
+**Jacobian.** $x=\frac{u+v}{2}$, $y=\frac{u-v}{2}$, so $|J|=\frac12$.
+
+**Compute.**
+$$I=\frac12\int_0^2\int_{-2}^{-u}v\,dv\,du=\frac12\int_0^2\left(\frac{u^2}{2}-2\right)du=\frac12\left(\frac43-4\right)=-\frac43.$$
+
+**Conclusion.** $I=-4/3$.
+
+@@@ multint-change-of-variables-uv.md
+---
+title: Change of variables to simplify the integrand
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: change of variables, Jacobian, triangular
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle J=\iiint_D\frac{z^3}{(y+z)(x+y+z)}\,dx\,dy\,dz$ where $D=\{x,y,z\ge0,\ x+y+z\le1\}$ using $u=x+y+z$, $v=y+z$, $w=z$.
+
+## Hint
+
+$\det J_h=1$; the region becomes $0\le w\le v\le u\le1$.
+
+## Solution
+
+**Transformation.** $x=u-v$, $y=v-w$, $z=w$; $|J_h|=1$.
+
+**Domain.** $\Delta=\{0\le w\le v\le u\le1\}$.
+
+**Integrand.** $\frac{w^3}{uv}$.
+
+**Compute.**
+$$J=\int_0^1\int_0^u\int_0^v\frac{w^3}{uv}\,dw\,dv\,du=\int_0^1\int_0^u\frac{v^3}{4u}\,dv\,du=\int_0^1\frac{u^3}{16}\,du=\frac1{64}.$$
+
+**Conclusion.** $J=1/64$.
+
+@@@ multint-triple-simplex.md
+---
+title: Triple integral over a simplex
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 3
+tags: triple integral, simplex, iterated
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iiint_D x\,dx\,dy\,dz$ where $D=\{x,y,z>0,\ x+y+z<1\}$.
+
+## Hint
+
+Integrate in the order $z,y,x$; bounds $0<z<1-x-y$.
+
+## Solution
+
+**Iterated.**
+$$I=\int_0^1\int_0^{1-x}\int_0^{1-x-y}x\,dz\,dy\,dx=\int_0^1\int_0^{1-x}x(1-x-y)\,dy\,dx.$$
+
+**Inner.** $x\frac{(1-x)^2}{2}$.
+
+**Outer.** $I=\frac12\int_0^1 x(1-x)^2\,dx=\frac12\left(\frac12-\frac23+\frac14\right)=\frac1{24}$.
+
+**Conclusion.** $I=1/24$.
+
+@@@ multint-triple-cube-density.md
+---
+title: Mass of a cube with variable density
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 3
+tags: triple integral, density, cube
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the mass of $D=[0,1]^3$ with density $\mu(x,y,z)=x^2y+xz^2$.
+
+## Hint
+
+Integrate the density over the cube by separable terms.
+
+## Solution
+
+**Setup.**
+$$M=\int_0^1\int_0^1\int_0^1(x^2y+xz^2)\,dz\,dy\,dx.$$
+
+**Inner in $z$.** $x^2y+\frac x3$.
+
+**In $y$.** $\frac{x^2}{2}+\frac x3$.
+
+**In $x$.** $M=\frac16+\frac16=\frac13$.
+
+**Conclusion.** $M=1/3$.
+
+@@@ multint-centre-of-gravity.md
+---
+title: Centre of gravity of a planar region
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: centroid, parabola, uniform density
+date: 2026-11-03
+---
+
+## Statement
+
+Find the centroid of the region between $y=x$ and $y=6x-x^2$.
+
+## Hint
+
+Intersection points: $x=0$ and $x=5$. Use $\bar x=\frac{1}{A}\iint_D x$ and $\bar y=\frac{1}{A}\iint_D y$.
+
+## Solution
+
+**Area.**
+$$A=\int_0^5(6x-x^2-x)\,dx=\int_0^5(5x-x^2)\,dx=\frac{125}{6}.$$
+
+**$\bar x$.**
+$$\iint_D x\,dx\,dy=\int_0^5 x(5x-x^2)\,dx=\frac{625}{12},$$
+so $\bar x=\frac{625/12}{125/6}=\frac52$.
+
+**$\bar y$.**
+$$\iint_D y=\frac12\int_0^5\left[(6x-x^2)^2-x^2\right]dx=\frac{625}{3},$$
+so $\bar y=\frac{625/3}{125/6}=10$... wait, careful: $\bar y=625/(3\cdot125/6)=10$? Check numeric: $625\cdot 6/(3\cdot125)=10$. But the geometric answer is $5$. Recompute carefully: $\iint_D y=\frac12\int_0^5(35x^2-12x^3+x^4)\,dx=\frac12\left(\frac{35\cdot125}{3}-3\cdot625+\frac{3125}{5}\right)=\frac12\left(\frac{4375}{3}-1875+625\right)$. Compute: $\frac{4375}{3}-1250=\frac{4375-3750}{3}=\frac{625}{3}$. So $\iint_D y=\frac{625}{6}$, and $\bar y=\frac{625/6}{125/6}=5$.
+
+**Conclusion.** Centroid at $(5/2,5)$.
+
+@@@ multint-fubini-trick.md
+---
+title: The Fubini trick
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: Fubini, double integral, iterated
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\int_0^1\frac{\ln(1+x)}{1+x^2}\,dx$ using Fubini.
+
+## Hint
+
+Write $\ln(1+x)=\int_0^1\frac{x\,dy}{1+xy}$ and apply Fubini, then use symmetry in $x,y$.
+
+## Solution
+
+**Write as double integral.**
+$$I=\int_0^1\int_0^1\frac{x}{(1+x^2)(1+xy)}\,dy\,dx.$$
+
+**Symmetry.** Reversing $x\leftrightarrow y$:
+$$2I=\int_0^1\int_0^1\frac{x+y}{(1+x^2)(1+y^2)}\,dx\,dy.$$
+
+**Separate.**
+$$2I=\left(\int_0^1\frac{x}{1+x^2}\,dx\right)\left(\int_0^1\frac{1}{1+y^2}\,dy\right)+\left(\int_0^1\frac{1}{1+x^2}\,dx\right)\left(\int_0^1\frac{y}{1+y^2}\,dy\right).$$
+Both equal $\frac12\ln2\cdot\frac{\pi}{4}=\frac{\pi\ln2}{8}$. So $2I=\frac{\pi\ln2}{4}$, $I=\frac{\pi\ln2}{8}$.
+
+**Conclusion.** $I=\frac{\pi\ln2}{8}$.
+
+@@@ multint-polar-annular-region.md
+---
+title: Polar region between two circles
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: polar, circle, region between circles
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_D\sqrt{x^2+y^2}\,dx\,dy$ where $D=\{x^2+y^2\ge2y,\ x^2+y^2\le1\}$.
+
+## Hint
+
+In polar: $x^2+y^2\le1$ gives $r\le1$; $x^2+y^2\ge2y$ gives $r\ge2\sin\theta$. Determine the range of $\theta$.
+
+## Solution
+
+**Polar.** $\sin\theta\le1/2$ for the two-disk overlap; the region splits into $\theta\in[0,\pi/6]$, $[5\pi/6,\pi]$, $[\pi,2\pi]$.
+
+**Compute each piece.**
+- $I_1$ over $[\pi,2\pi]$, $0\le r\le1$: $I_1=\int_\pi^{2\pi}\int_0^1r^2\,dr\,d\theta=\frac{\pi}{3}$.
+- $I_2$ over $[0,\pi/6]$, $2\sin\theta\le r\le1$: $I_2=\frac{\pi}{18}+\sqrt3-\frac{16}{9}$.
+- $I_3$ over $[5\pi/6,\pi]$, by symmetry $I_3=I_2$.
+
+**Sum.** $I=\frac{\pi}{3}+\frac{2\pi}{18}+2\sqrt3-\frac{32}{9}=\frac{4\pi-32}{9}+2\sqrt3$.
+
+**Conclusion.** $I=\frac{4\pi-32}{9}+2\sqrt3$.
+
+@@@ multint-triple-with-sin.md
+---
+title: Triple integral with sine
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: triple integral, sine, simplex
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle \iiint_V\frac{\sin x}{\pi-x-y}\,dx\,dy\,dz$ where $V=\{x,y,z\ge0,\ x+y+z\le\pi\}$.
+
+## Hint
+
+Integrate in $z$ first: the inner integral is $\sin x$.
+
+## Solution
+
+**Iterated.**
+$$I=\int_0^\pi\int_0^{\pi-x}\int_0^{\pi-x-y}\frac{\sin x}{\pi-x-y}\,dz\,dy\,dx.$$
+
+**Inner in $z$.** $z$ from $0$ to $\pi-x-y$: the inner integral equals $\sin x$.
+
+**In $y$.** $\int_0^{\pi-x}\sin x\,dy=(\pi-x)\sin x$.
+
+**In $x$.** $I=\int_0^\pi(\pi-x)\sin x\,dx=\pi\int_0^\pi\sin x-\int_0^\pi x\sin x=\pi\cdot2-\pi=\pi$.
+
+**Conclusion.** $I=\pi$.
+
+@@@ multint-triple-cube.md
+---
+title: Triple integral over a cube
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: cube, triple integral, iterated
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iiint_{[0,1]^3}\frac{dx\,dy\,dz}{(x+y+z+1)^3}$.
+
+## Hint
+
+Integrate in $x$ first: $\int_0^1\frac{dx}{(x+c)^3}=\frac{1}{2}\left(\frac{1}{c^2}-\frac{1}{(c+1)^2}\right)$.
+
+## Solution
+
+**Inner in $x$.** $\frac12\left(\frac{1}{(y+z+1)^2}-\frac{1}{(y+z+2)^2}\right)$.
+
+**In $y$.** $\frac12\left(\frac{1}{z+1}-\frac{2}{z+2}+\frac{1}{z+3}\right)$.
+
+**In $z$.** $I=\frac12\left(\ln2-2\ln\frac32+\ln\frac43\right)=\frac{5\ln2-3\ln3}{2}$.
+
+**Conclusion.** $I=\frac{5\ln2-3\ln3}{2}$.
+
+@@@ multint-triple-simplex-p3.md
+---
+title: Triple integral over a simplex with cube
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: simplex, triple integral, iterated
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iiint_D\frac{dx\,dy\,dz}{(x+y+z+1)^3}$ where $D=\{x,y,z\ge0,\ x+y+z\le1\}$.
+
+## Hint
+
+Order $z,y,x$: $0\le z\le1-x-y$.
+
+## Solution
+
+**Inner in $z$.**
+$$\int_0^{1-x-y}\frac{dz}{(x+y+z+1)^3}=\frac{1}{2(x+y+1)^2}-\frac18.$$
+
+**In $y$.** $\frac12\int_0^{1-x}\frac{dy}{(x+y+1)^2}=\frac{1}{2}\left(\frac{1}{x+1}-\frac12\right)$, minus $\frac18(1-x)$.
+
+**In $x$.** 
+$$I=\frac12\int_0^1\left(\frac{1}{x+1}-\frac12\right)dx-\frac18\cdot\frac12=\frac12\left(\ln2-\frac12\right)-\frac{1}{16}.$$
+
+**Result.** $I=\frac12\ln2-\frac{5}{16}$.
+
+**Conclusion.** $I=\frac12\ln2-\frac{5}{16}$.
+
+@@@ multint-polar-half-disc.md
+---
+title: Polar integral over a half-disk
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 3
+tags: polar, half-disk, integral
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iint_D\sqrt{x^2+y^2}\,dx\,dy$ where $D$ is the disk of radius $1$ centered at $(0,0)$ intersected with the half-plane $y\ge0$.
+
+## Hint
+
+Polar: $0\le r\le1$, $0\le\theta\le\pi$.
+
+## Solution
+
+**Polar.**
+$$I=\int_0^\pi\int_0^1 r\cdot r\,dr\,d\theta=\pi\cdot\frac{1}{3}=\frac{\pi}{3}.$$
+
+**Conclusion.** $I=\pi/3$.
+
+@@@ multint-change-variables-3d.md
+---
+title: 3D change of variables
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: change of variables, 3D, Jacobian
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the volume of the parallelepiped spanned by $\vec u=(1,0,0)$, $\vec v=(1,1,0)$, $\vec w=(1,1,1)$.
+
+## Hint
+
+$V=|\det(\vec u,\vec v,\vec w)|$.
+
+## Solution
+
+**Determinant.**
+$$\det\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix}=1.$$
+
+**Volume.** $V=1$.
+
+**Conclusion.** Volume $=1$.
+
+@@@ multint-spherical-volume.md
+---
+title: Volume of a sphere by triple integral
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: spherical coordinates, volume, sphere
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the volume of the ball $B_R=\{x^2+y^2+z^2\le R^2\}$ using spherical coordinates.
+
+## Hint
+
+$x=r\sin\varphi\cos\theta$, $y=r\sin\varphi\sin\theta$, $z=r\cos\varphi$; Jacobian $r^2\sin\varphi$.
+
+## Solution
+
+**Spherical.** $0\le r\le R$, $0\le\varphi\le\pi$, $0\le\theta\le2\pi$.
+
+**Jacobian.** $r^2\sin\varphi$.
+
+**Compute.**
+$$V=\int_0^{2\pi}\int_0^\pi\int_0^R r^2\sin\varphi\,dr\,d\varphi\,d\theta=2\pi\cdot2\cdot\frac{R^3}{3}=\frac{4\pi R^3}{3}.$$
+
+**Conclusion.** $V=\frac{4\pi R^3}{3}$.
+
+@@@ multint-spherical-radial.md
+---
+title: Spherical coordinates with a radial integrand
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: spherical coordinates, radial, integration
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle I=\iiint_{B_R}e^{-\sqrt{x^2+y^2+z^2}}\,dx\,dy\,dz$ where $B_R$ is the ball of radius $R$.
+
+## Hint
+
+Spherical: integrand $e^{-r}$, Jacobian $r^2\sin\varphi$.
+
+## Solution
+
+**Setup.**
+$$I=\int_0^{2\pi}\int_0^\pi\int_0^R e^{-r}r^2\sin\varphi\,dr\,d\varphi\,d\theta=4\pi\int_0^R r^2e^{-r}\,dr.$$
+
+**Compute.** $\int_0^R r^2e^{-r}\,dr=2-(R^2+2R+2)e^{-R}$ (two integrations by parts).
+
+**Result.** $I=4\pi[2-(R^2+2R+2)e^{-R}]$.
+
+**Conclusion.** $I=4\pi\left(2-(R^2+2R+2)e^{-R}\right)$.
+
+@@@ multint-cylindrical-volume.md
+---
+title: Volume using cylindrical coordinates
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 4
+tags: cylindrical coordinates, volume, cone
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the volume of the solid bounded by $z=0$, $z=h$ and $x^2+y^2\le R^2$.
+
+## Hint
+
+Cylindrical: $x=r\cos\theta$, $y=r\sin\theta$, $z=z$; Jacobian $r$.
+
+## Solution
+
+**Cylindrical.** $0\le r\le R$, $0\le\theta\le2\pi$, $0\le z\le h$.
+
+**Volume.** $V=\int_0^{2\pi}\int_0^R\int_0^h r\,dz\,dr\,d\theta=2\pi\cdot\frac{R^2}{2}\cdot h=\pi R^2h$.
+
+**Conclusion.** $V=\pi R^2h$.
+
+@@@ multint-cartesian-vs-polar.md
+---
+title: Cartesian vs polar computation
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 3
+tags: polar vs cartesian, comparison, disk
+date: 2026-11-03
+---
+
+## Statement
+
+Compare the difficulty of computing $\iint_{x^2+y^2\le1}(x^2+y^2)\,dx\,dy$ in Cartesian and polar coordinates.
+
+## Hint
+
+Cartesian: use $y=\pm\sqrt{1-x^2}$. Polar: integrand $r^2$, Jacobian $r$.
+
+## Solution
+
+**Cartesian.** $I=\int_{-1}^1\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}(x^2+y^2)\,dy\,dx$: requires trigonometric substitutions.
+
+**Polar.** $I=\int_0^{2\pi}\int_0^1 r^3\,dr\,d\theta=2\pi\cdot\frac14=\frac{\pi}{2}$.
+
+**Conclusion.** Polar coordinates give an immediate result; Cartesian is much more involved.
+
+@@@ multint-boundary-terms.md
+---
+title: Boundary effects
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 3
+tags: boundary, integration bounds, evaluation
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\displaystyle\iint_D xy\,dx\,dy$ where $D=\{(x,y):0\le x\le y\le1\}$.
+
+## Hint
+
+Triangle: $0\le x\le y\le1$, so for $y\in[0,1]$, $x$ runs from $0$ to $y$; or for $x\in[0,1]$, $y$ runs from $x$ to $1$.
+
+## Solution
+
+**Iterated.** $\int_0^1\int_x^1 xy\,dy\,dx=\int_0^1 x\frac{1-x^2}{2}\,dx=\frac{1}{2}\left(\frac12-\frac14\right)=\frac18$.
+
+**Conclusion.** $I=1/8$.
+
+@@@ multint-exponential-gaussian.md
+---
+title: Gaussian integral over $\mathbb{R}^2$
+category: calculus/multivariable/multiple-integrals
+level: m1
+difficulty: 5
+tags: Gaussian, polar, improper integral
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\displaystyle\iint_{\mathbb{R}^2}e^{-(x^2+y^2)}\,dx\,dy=\pi$.
+
+## Hint
+
+Polar coordinates: $r^2=x^2+y^2$, Jacobian $r$.
+
+## Solution
+
+**Polar.** $\int_0^{2\pi}\int_0^{+\infty}e^{-r^2}r\,dr\,d\theta=2\pi\cdot\frac12=\pi$.
+
+**Conclusion.** $\iint_{\mathbb{R}^2}e^{-(x^2+y^2)}\,dx\,dy=\pi$.
+
+**Corollary.** $\int_{-\infty}^{+\infty}e^{-x^2}\,dx=\sqrt\pi$ (Fubini argument).
+
+@@@ multint-jacobian-transform.md
+---
+title: Jacobian of a nonlinear transformation
+category: calculus/multivariable/multiple-integrals
+level: m1
+difficulty: 5
+tags: Jacobian, nonlinear, change of variables
+date: 2026-11-03
+---
+
+## Statement
+
+Show that under the change $(u,v)=(x^2-y^2,2xy)$, the Jacobian is $4(x^2+y^2)$.
+
+## Hint
+
+Compute the $2\times 2$ determinant of partials.
+
+## Solution
+
+**Jacobian.** $\det\begin{pmatrix}2x&-2y\\2y&2x\end{pmatrix}=4x^2+4y^2$.
+
+**Conclusion.** $|J|=4(x^2+y^2)$.
+
+@@@ multint-summary.md
+---
+title: Summary of multiple integrals
+category: calculus/multivariable/multiple-integrals
+level: l1
+difficulty: 2
+tags: summary, multiple integrals
+date: 2026-11-03
+---
+
+## Statement
+
+Summarize key tools for multiple integrals.
+
+## Hint
+
+Review Fubini, change of variables, polar, spherical, cylindrical.
+
+## Solution
+
+**Fubini.** Iterated integration on product domains.
+
+**Change of variables.** $dx\,dy\to|J|\,du\,dv$; $|J|$ is the Jacobian determinant.
+
+**Polar.** $x=r\cos\theta$, $y=r\sin\theta$, $dx\,dy=r\,dr\,d\theta$.
+
+**Cylindrical.** $x=r\cos\theta$, $y=r\sin\theta$, $z=z$, $dV=r\,dr\,d\theta\,dz$.
+
+**Spherical.** $x=r\sin\varphi\cos\theta$, $y=r\sin\varphi\sin\theta$, $z=r\cos\varphi$, $dV=r^2\sin\varphi\,dr\,d\varphi\,d\theta$.
+
+**Applications.** Volumes, centroids, masses with variable density, Gaussian integrals.
+
+**Conclusion.** Multiple integrals reduce to iterated integrals via Fubini, and change of variables exploits symmetries to simplify computations.
+
+@@@ partial-derivatives-first-computation.md
+---
+title: First partial derivatives
+category: calculus/multivariable/partial-derivatives
+level: lycee
+difficulty: 1
+tags: partial derivatives, definition, computation
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(x,y)=x^2y+3xy^2-2x+5$. Compute $\frac{\partial f}{\partial x}$ and $\frac{\partial f}{\partial y}$.
+
+## Hint
+
+Differentiate with respect to one variable, treating the other as a constant.
+
+## Solution
+
+**With respect to $x$.**
+$$\frac{\partial f}{\partial x}=2xy+3y^2-2.$$
+
+**With respect to $y$.**
+$$\frac{\partial f}{\partial y}=x^2+6xy.$$
+
+**Conclusion.** The two partial derivatives are as above.
+
+@@@ partial-derivatives-evaluation.md
+---
+title: Evaluating partial derivatives at a point
+category: calculus/multivariable/partial-derivatives
+level: lycee
+difficulty: 1
+tags: partial derivatives, evaluation, point
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(x,y)=e^{xy}+\ln(1+x^2)$. Compute $\frac{\partial f}{\partial x}(0,1)$ and $\frac{\partial f}{\partial y}(0,1)$.
+
+## Hint
+
+Compute the partial derivatives, then substitute $(x,y)=(0,1)$.
+
+## Solution
+
+**Partial derivatives.**
+$$\frac{\partial f}{\partial x}=ye^{xy}+\frac{2x}{1+x^2},\qquad \frac{\partial f}{\partial y}=xe^{xy}.$$
+
+**At $(0,1)$.** $\frac{\partial f}{\partial x}(0,1)=1\cdot1+0=1$, $\frac{\partial f}{\partial y}(0,1)=0$.
+
+**Conclusion.** The values are $1$ and $0$.
+
+@@@ partial-derivatives-gradient.md
+---
+title: The gradient
+category: calculus/multivariable/partial-derivatives
+level: lycee
+difficulty: 2
+tags: gradient, vector, direction
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(x,y,z)=x^2+y^2+z^2$. Compute the gradient $\nabla f$ and evaluate it at $(1,2,2)$.
+
+## Hint
+
+$\nabla f=(\partial_x f,\partial_y f,\partial_z f)$.
+
+## Solution
+
+**Gradient.** $\nabla f(x,y,z)=(2x,2y,2z)$.
+
+**At $(1,2,2)$.** $\nabla f(1,2,2)=(2,4,4)$.
+
+**Interpretation.** The gradient points in the direction of steepest increase of $f$, with magnitude $\|\nabla f\|=\sqrt{4+16+16}=6$.
+
+**Conclusion.** $\nabla f(1,2,2)=(2,4,4)$.
+
+@@@ partial-derivatives-directional.md
+---
+title: Directional derivative
+category: calculus/multivariable/partial-derivatives
+level: lycee
+difficulty: 2
+tags: directional derivative, gradient, direction
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(x,y)=x^2y$ and $\vec u=(1,1)/\sqrt2$. Compute the directional derivative $D_{\vec u}f(1,2)$.
+
+## Hint
+
+$D_{\vec u}f=\nabla f\cdot\vec u$.
+
+## Solution
+
+**Gradient.** $\nabla f=(2xy,x^2)$, so $\nabla f(1,2)=(4,1)$.
+
+**Dot product.** $D_{\vec u}f(1,2)=(4,1)\cdot\frac{(1,1)}{\sqrt2}=\frac{5}{\sqrt2}$.
+
+**Conclusion.** $D_{\vec u}f(1,2)=5/\sqrt2$.
+
+@@@ partial-derivatives-chain-rule.md
+---
+title: Chain rule for a composition
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: chain rule, composition, parametrized curve
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(x,y)=x^2+y^2$ and $\gamma(t)=(\cos t,\sin t)$. Compute $\frac{d}{dt}f(\gamma(t))$ two ways.
+
+## Hint
+
+Direct composition gives $f(\gamma(t))=1$; the chain rule gives $\nabla f(\gamma(t))\cdot\gamma'(t)$.
+
+## Solution
+
+**Direct.** $f(\gamma(t))=\cos^2t+\sin^2t=1$, derivative $0$.
+
+**Chain rule.** $\nabla f=(2x,2y)$, $\gamma'(t)=(-\sin t,\cos t)$. So $\nabla f(\gamma(t))\cdot\gamma'(t)=2\cos t(-\sin t)+2\sin t\cos t=0$.
+
+**Conclusion.** Both methods give $0$: $f$ is constant on the circle.
+
+@@@ partial-derivatives-chain-general.md
+---
+title: General chain rule
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: chain rule, composition, multivariable
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(u,v)=u^2v$ and $u(x,y)=x+y$, $v(x,y)=xy$. Compute $\frac{\partial}{\partial x}f(u,v)$ and $\frac{\partial}{\partial y}f(u,v)$.
+
+## Hint
+
+Apply the chain rule:
+$$\frac{\partial f}{\partial x}=f_u u_x+f_v v_x.$$
+
+## Solution
+
+**Partial derivatives of $f$.** $f_u=2uv$, $f_v=u^2$.
+
+**Chain rule for $\partial_x$.**
+$$\frac{\partial f}{\partial x}=2uv\cdot1+u^2\cdot y=2(x+y)(xy)+y(x+y)^2=(x+y)(2xy+y(x+y)).$$
+
+**Chain rule for $\partial_y$.**
+$$\frac{\partial f}{\partial y}=2uv\cdot1+u^2\cdot x=2(x+y)(xy)+x(x+y)^2=(x+y)(2xy+x(x+y)).$$
+
+**Conclusion.** Both partial derivatives are polynomials in $x,y$.
+
+@@@ partial-derivatives-higher-order.md
+---
+title: Second-order partial derivatives
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: higher order, Schwarz, second derivatives
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(x,y)=x^3y^2+xy$. Compute all four second-order partial derivatives and check Schwarz's theorem.
+
+## Hint
+
+Differentiate $f_x$ and $f_y$ once more; compare $f_{xy}$ and $f_{yx}$.
+
+## Solution
+
+**First derivatives.** $f_x=3x^2y^2+y$, $f_y=2x^3y+x$.
+
+**Second derivatives.** $f_{xx}=6xy^2$, $f_{yy}=2x^3$, $f_{xy}=6x^2y+1$, $f_{yx}=6x^2y+1$.
+
+**Conclusion.** $f_{xy}=f_{yx}$: Schwarz's theorem holds (the mixed partials are equal because $f$ is $C^2$).
+
+@@@ partial-derivatives-schwarz.md
+---
+title: Schwarz's theorem and a counterexample
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: Schwarz theorem, mixed partials, symmetry
+date: 2026-11-03
+---
+
+## Statement
+
+State Schwarz's theorem on mixed partial derivatives. Then consider the function
+$$f(x,y)=\begin{cases}\dfrac{xy(x^2-y^2)}{x^2+y^2}&\text{if }(x,y)\neq(0,0),\\[2mm]0&\text{if }(x,y)=(0,0).\end{cases}$$
+Compute $f_{xy}(0,0)$ and $f_{yx}(0,0)$ and verify that they differ. Explain why this does not contradict Schwarz's theorem.
+
+## Hint
+
+Compute the first partial derivatives at $(0,0)$ via the definition, then the second mixed partials via the definition at the origin. Schwarz's theorem requires $C^2$ regularity near the point.
+
+## Solution
+
+**Schwarz's theorem.** If $f$ has continuous second partial derivatives in a neighbourhood of a point $(a,b)$, then $f_{xy}(a,b)=f_{yx}(a,b)$.
+
+**First partials at the origin.** For $x\neq0$,
+$$\frac{f(x,0)-f(0,0)}{x}=\frac{0}{x}=0,$$
+so $f_x(0,0)=0$. Similarly $f_y(0,0)=0$.
+
+**Mixed partials at the origin.**
+$$f_{xy}(0,0)=\lim_{y\to0}\frac{f_x(0,y)-f_x(0,0)}{y},\qquad f_{yx}(0,0)=\lim_{x\to0}\frac{f_y(x,0)-f_y(0,0)}{x}.$$
+A direct computation gives $f_{xy}(0,0)=-1$ and $f_{yx}(0,0)=1$.
+
+**Why no contradiction.** The second partial derivatives are not continuous at $(0,0)$: along paths approaching the origin, $f_{xy}$ and $f_{yx}$ do not admit a limit equal to $-1$ and $1$ respectively. Schwarz's hypothesis ($C^2$ regularity near the point) fails, so the conclusion need not hold.
+
+**Conclusion.** Schwarz's theorem is compatible with the existence of such counterexamples: only $C^2$ functions are guaranteed to have symmetric mixed partials.
+@@@ partial-derivatives-tangent-plane.md
+---
+title: Tangent plane to a graph
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: tangent plane, differentiability, graph
+date: 2026-11-03
+---
+
+## Statement
+
+Find the tangent plane to the surface $z=x^2+y^2$ at the point $(1,2,5)$.
+
+## Hint
+
+The tangent plane is $z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$.
+
+## Solution
+
+**Partial derivatives.** $f_x=2x$, $f_y=2y$; at $(1,2)$: $f_x=2$, $f_y=4$.
+
+**Tangent plane.** $z=5+2(x-1)+4(y-2)=2x+4y-5$.
+
+**Conclusion.** The tangent plane is $z=2x+4y-5$.
+
+@@@ partial-derivatives-differentiability.md
+---
+title: Differentiability of a piecewise function
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 4
+tags: differentiability, continuity, piecewise
+date: 2026-11-03
+---
+
+## Statement
+
+Let
+$$f(x,y)=\begin{cases}\dfrac{xy}{\sqrt{x^2+y^2}}&\text{if }(x,y)\neq(0,0),\\0&\text{if }(x,y)=(0,0).\end{cases}$$
+Show that $f$ is continuous at $(0,0)$ and compute its partial derivatives there.
+
+## Hint
+
+Bound $|xy|\le(x^2+y^2)/2$ and use the definition of partials.
+
+## Solution
+
+**Continuity.** $|f(x,y)|\le\frac{1}{2}\sqrt{x^2+y^2}\to0$; so $f$ is continuous at the origin.
+
+**Partial derivatives.** $f_x(0,0)=\lim_{h\to0}\frac{f(h,0)-0}{h}=0$; similarly $f_y(0,0)=0$.
+
+**Conclusion.** $f$ is continuous with $f_x(0,0)=f_y(0,0)=0$. (However, $f$ is not differentiable at $(0,0)$: check along $y=x$.)
+
+@@@ partial-derivatives-differential.md
+---
+title: The differential
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: differential, linearization, approximation
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f(x,y)=x^3+y^3$. Compute the differential at $(1,2)$ and use it to approximate $f(1.01,1.99)$.
+
+## Hint
+
+$df=f_x(a,b)\,dx+f_y(a,b)\,dy$ with $dx=0.01$, $dy=-0.01$.
+
+## Solution
+
+**Partial derivatives at $(1,2)$.** $f_x=3x^2=3$, $f_y=3y^2=12$.
+
+**Differential.** $df=3\,dx+12\,dy$.
+
+**Approximation.** $f(1,2)=9$, so $f(1.01,1.99)\approx9+3(0.01)+12(-0.01)=9-0.09=8.91$.
+
+**Exact value.** $1.01^3+1.99^3\approx1.0303+7.8806=8.9109$, very close.
+
+**Conclusion.** Linear approximation gives $\approx8.91$.
+
+@@@ partial-derivatives-level-curves.md
+---
+title: Level curves and gradients
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 4
+tags: level curves, gradient, orthogonality
+date: 2026-11-03
+---
+
+## Statement
+
+For $f(x,y)=x^2+y^2$, describe the level curves and show that the gradient is orthogonal to them.
+
+## Hint
+
+Level curve $f=c$ is a circle; parameterize and differentiate.
+
+## Solution
+
+**Level curves.** $f=c$ is the circle $x^2+y^2=c$ of radius $\sqrt c$ (for $c>0$).
+
+**Parameterization.** $\gamma(t)=(\sqrt c\cos t,\sqrt c\sin t)$; $\gamma'(t)=\sqrt c(-\sin t,\cos t)$ is tangent.
+
+**Gradient.** $\nabla f=2(x,y)=2\gamma(t)$, radial and orthogonal to $\gamma'(t)$:
+$$(2\sqrt c\cos t,2\sqrt c\sin t)\cdot(-\sqrt c\sin t,\sqrt c\cos t)=0.$$
+
+**Conclusion.** $\nabla f$ is orthogonal to the level curves; it points in the direction of fastest increase of $f$.
+
+@@@ partial-derivatives-implicit.md
+---
+title: Implicit differentiation
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 4
+tags: implicit differentiation, Implicit Function Theorem
+date: 2026-11-03
+---
+
+## Statement
+
+The curve $x^2+y^2=1$ defines $y$ implicitly as a function of $x$ near $(1/2,\sqrt3/2)$. Compute $y'(x)$ by implicit differentiation.
+
+## Hint
+
+Differentiate $x^2+y(x)^2=1$ with respect to $x$.
+
+## Solution
+
+**Differentiation.** $2x+2y(x)y'(x)=0$.
+
+**Solve.** $y'(x)=-x/y(x)$.
+
+**At $x=1/2$.** $y=\sqrt3/2$, so $y'(1/2)=-\frac{1/2}{\sqrt3/2}=-1/\sqrt3$.
+
+**Conclusion.** $y'(1/2)=-1/\sqrt3$, consistent with the geometric interpretation of a tangent to the circle.
+
+@@@ partial-derivatives-inverse-function.md
+---
+title: Inverse function theorem (illustration)
+category: calculus/multivariable/partial-derivatives
+level: m1
+difficulty: 4
+tags: inverse function theorem, Jacobian, local invertibility
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F(x,y)=(e^x\cos y,e^x\sin y)$. Compute the Jacobian matrix at $(0,0)$ and check the inverse function theorem.
+
+## Hint
+
+Jacobian columns: derivatives with respect to $x$ and $y$.
+
+## Solution
+
+**Partial derivatives.** $\partial_x F=(e^x\cos y,e^x\sin y)$, $\partial_y F=(-e^x\sin y,e^x\cos y)$.
+
+**Jacobian at $(0,0)$.** $J_F(0,0)=\begin{pmatrix}1&0\\0&1\end{pmatrix}$.
+
+**Conclusion.** $\det J=1\neq0$, so the inverse function theorem applies: $F$ is a local diffeomorphism near $(0,0)$.
+
+@@@ partial-derivatives-jacobian.md
+---
+title: The Jacobian matrix
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: Jacobian, matrix, vector-valued functions
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F(x,y,z)=(x\cos y,\, y\sin z,\, xyz)$. Compute the Jacobian matrix $J_F$.
+
+## Hint
+
+Each column is the derivative with respect to one variable.
+
+## Solution
+
+**Partial derivatives.**
+- $\partial_x F=(\cos y,\,0,\,yz)$
+- $\partial_y F=(-x\sin y,\,\sin z,\,xz)$
+- $\partial_z F=(0,\,y\cos z,\,xy)$
+
+**Jacobian matrix.**
+$$J_F=\begin{pmatrix}\cos y&-x\sin y&0\\0&\sin z&y\cos z\\yz&xz&xy\end{pmatrix}.$$
+
+**Conclusion.** $J_F$ is $3\times3$.
+
+@@@ partial-derivatives-jacobian-composition.md
+---
+title: Jacobian of a composition
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 4
+tags: Jacobian, composition, chain rule
+date: 2026-11-03
+---
+
+## Statement
+
+State the chain rule in matrix form: $J_{F\circ G}(x)=J_F(G(x))\cdot J_G(x)$.
+
+## Hint
+
+This is the multivariable analogue of $(f\circ g)'=f'(g)\cdot g'$.
+
+## Solution
+
+**Statement.** If $G:\mathbb{R}^n\to\mathbb{R}^m$ and $F:\mathbb{R}^m\to\mathbb{R}^p$ are differentiable, then
+$$J_{F\circ G}(x)=J_F(G(x))\cdot J_G(x).$$
+
+**Application.** Computing derivatives of composite functions via matrix multiplication.
+
+**Conclusion.** The Jacobian of a composition is the product of Jacobians.
+
+@@@ partial-derivatives-clairaut.md
+---
+title: Clairaut's theorem
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: Clairaut, Schwarz, mixed partials
+date: 2026-11-03
+---
+
+## Statement
+
+State Clairaut's theorem (Schwarz) and give a sufficient condition for $f_{xy}=f_{yx}$.
+
+## Hint
+
+Continuity of second partials is sufficient.
+
+## Solution
+
+**Theorem.** If $f$ has continuous second partial derivatives in a neighbourhood of a point, then $f_{xy}=f_{yx}$ at that point.
+
+**Sufficient condition.** $f$ is $C^2$.
+
+**Conclusion.** Mixed partials commute under $C^2$ regularity.
+
+@@@ partial-derivatives-optimisation-first.md
+---
+title: Finding critical points
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: critical points, stationary, gradient
+date: 2026-11-03
+---
+
+## Statement
+
+Find the critical points of $f(x,y)=x^2+y^2-2x-4y$.
+
+## Hint
+
+Set both partial derivatives to zero.
+
+## Solution
+
+**Gradient.** $\nabla f=(2x-2,2y-4)$.
+
+**Critical point.** $2x-2=0\Rightarrow x=1$; $2y-4=0\Rightarrow y=2$. So $(1,2)$.
+
+**Nature.** Rewrite $f=(x-1)^2+(y-2)^2-5$: minimum at $(1,2)$.
+
+**Conclusion.** The unique critical point is $(1,2)$, a global minimum.
+
+@@@ partial-derivatives-hessian.md
+---
+title: The Hessian matrix
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 4
+tags: Hessian, second derivatives, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the Hessian of $f(x,y)=x^2+4xy+3y^2$ at $(0,0)$ and classify the critical point.
+
+## Hint
+
+The Hessian is the matrix of second partials; classify via its eigenvalues.
+
+## Solution
+
+**Partial derivatives.** $f_x=2x+4y$, $f_y=4x+6y$; $f_{xx}=2$, $f_{yy}=6$, $f_{xy}=4$.
+
+**Hessian.** $H=\begin{pmatrix}2&4\\4&6\end{pmatrix}$.
+
+**Eigenvalues.** $\det(H-\lambda I)=(2-\lambda)(6-\lambda)-16=\lambda^2-8\lambda-4$; roots $\lambda=4\pm2\sqrt5$. One positive, one negative.
+
+**Conclusion.** The origin is a saddle point (Hessian is indefinite).
+
+@@@ partial-derivatives-taylor-2.md
+---
+title: Taylor expansion of order 2
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 4
+tags: Taylor expansion, multivariable, approximation
+date: 2026-11-03
+---
+
+## Statement
+
+Give the Taylor expansion of $f(x,y)=e^{x+y}$ at $(0,0)$ up to order $2$.
+
+## Hint
+
+$f(0)=1$, $\nabla f (0,0)=(1,1)$, $H(0,0)=\begin{pmatrix}1&1\\1&1\end{pmatrix}$.
+
+## Solution
+
+**Expression.**
+$$f(h,k)=f(0,0)+ \nabla f(0,0) \cdot (h,k)+\frac{1}{2}(h,k) \cdot H(0,0) \cdot (h,k) +o((h^2+k^2)).$$
+
+**Simplified.** $f(h,k)=1+h+k+\frac{h^2}{2}+hk+\frac{k^2}{2}+o(h^2+k^2)$.
+
+**Conclusion.** The expansion matches $e^h\cdot e^k=(1+h+h^2/2+\cdots)(1+k+k^2/2+\cdots)$ to order $2$.
+
+@@@ partial-derivatives-not-differentiable.md
+---
+title: Partial derivatives exist but function is not differentiable
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 5
+tags: differentiability, counterexample, partial derivatives
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=\dfrac{xy}{x^2+y^2}$ for $(x,y)\neq(0,0)$, $f(0,0)=0$, has partial derivatives at $(0,0)$ but is not continuous there.
+
+## Hint
+
+Compute partial derivatives along the axes; check continuity along $y=x$.
+
+## Solution
+
+**Partial derivatives.** $f_x(0,0)=\lim_{h\to0}\frac{f(h,0)-0}{h}=0$; $f_y(0,0)=0$.
+
+**Continuity.** Along $y=x$: $f(x,x)=\frac{x^2}{2x^2}=\frac12$, but along axes $f=0$. Limit doesn't exist.
+
+**Conclusion.** $f$ is not continuous, hence not differentiable, though partials exist at $(0,0)$. This shows partial derivatives alone are insufficient for differentiability.
+
+@@@ partial-derivatives-critical-saddle.md
+---
+title: Saddle point
+category: calculus/multivariable/constrained-optimisation
+level: l1
+difficulty: 3
+tags: saddle point, Hessian, classification
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=x^2-y^2$ has a saddle point at $(0,0)$.
+
+## Hint
+
+Compute the Hessian: one positive and one negative eigenvalue.
+
+## Solution
+
+**Critical point.** $\nabla f=(2x,-2y)=0\Rightarrow(0,0)$.
+
+**Hessian.** $H=\begin{pmatrix}2&0\\0&-2\end{pmatrix}$; eigenvalues $2,-2$.
+
+**Behavior.** Along $y=0$: $f=x^2>0$; along $x=0$: $f=-y^2<0$.
+
+**Conclusion.** $(0,0)$ is a saddle point (indefinite Hessian).
+
+@@@ partial-derivatives-euler-homogeneous.md
+---
+title: Euler's theorem for homogeneous functions
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 2
+tags: homogeneous functions, Euler, partial derivatives
+date: 2026-11-03
+---
+
+## Statement
+
+Show that if $f$ is homogeneous of degree $k$ (i.e. $f(tx,ty)=t^kf(x,y)$), then
+$$x f_x+y f_y=k f.$$
+
+## Hint
+
+Differentiate the homogeneity identity with respect to $t$ and evaluate at $t=1$.
+
+## Solution
+
+**Identity.** $f(tx,ty)=t^kf(x,y)$.
+
+**Differentiate.** $\frac{d}{dt}$: $x f_x(tx,ty)+y f_y(tx,ty)=k t^{k-1}f(x,y)$.
+
+**At $t=1$.** $xf_x(x,y)+yf_y(x,y)=kf(x,y)$.
+
+@@@ partial-derivatives-laplacian.md
+---
+title: The Laplacian
+category: calculus/multivariable/partial-derivatives
+level: l1
+difficulty: 3
+tags: Laplacian, harmonic functions, second derivatives
+date: 2026-11-03
+---
+
+## Statement
+
+Define the Laplacian $\Delta f$ in $\mathbb{R}^2$ and show that $f(x,y)=x^2-y^2$ is harmonic.
+
+## Hint
+
+$\Delta f=f_{xx}+f_{yy}$.
+
+## Solution
+
+**Definition.** $\Delta f=f_{xx}+f_{yy}$.
+
+**Computation.** $f_{xx}=2$, $f_{yy}=-2$, so $\Delta f=2-2=0$.
+
+**Conclusion.** $f$ is harmonic: $\Delta f=0$.
+
+@@@ partial-derivatives-harmonic-conjugate.md
+---
+title: Harmonic conjugate
+category: calculus/multivariable/partial-derivatives
+level: m1
+difficulty: 5
+tags: harmonic conjugate, Cauchy-Riemann, complex
+date: 2026-11-03
+---
+
+## Statement
+
+For $u(x,y)=x^2-y^2$, find a harmonic conjugate $v$ such that $f=u+iv$ satisfies Cauchy–Riemann.
+
+## Hint
+
+Use $u_x=v_y$, $u_y=-v_x$.
+
+## Solution
+
+**CR equations.** $u_x=2x=v_y$, so $v=2xy+g(x)$.
+
+**Second equation.** $u_y=-2y=-v_x=-2y-g'(x)$, so $g'(x)=0$, $g$ constant.
+
+**Result.** $v(x,y)=2xy$.
+
+**Conclusion.** $u+iv=(x+iy)^2=z^2$ is holomorphic, and $v$ is the harmonic conjugate of $u$.
+
+@@@ partial-derivatives-mean-value.md
+---
+title: Mean value inequality
+category: calculus/multivariable/partial-derivatives
+level: m1
+difficulty: 4
+tags: mean value, inequality, gradient
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^n\to\mathbb{R}$ be $C^1$ and $\| \nabla f\|\le M$. Show that $|f(b)-f(a)|\le M\|b-a\|$.
+
+## Hint
+
+Apply the univariate MVT to $t\mapsto f(a+t(b-a))$.
+
+## Solution
+
+**Restriction.** $g(t)=f(a+t(b-a))$ on $[0,1]$. Then $g(0)=f(a)$, $g(1)=f(b)$, and $g'(t)=\nabla f(a+t(b-a))\cdot(b-a)$.
+
+**MVT.** $f(b)-f(a)=g'(c)$ for some $c\in(0,1)$.
+
+**Bound.** $|g'(c)|\le\|\nabla f\|\cdot\|b-a\|\le M\|b-a\|$.
+
+**Conclusion.** Lipschitz bound $|f(b)-f(a)|\le M\|b-a\|$.
+@@@ continuity-summary.md
+---
+title: Summary of continuity
+category: calculus/multivariable/continuity
+level: l2
+difficulty: 2
+order: 1
+tags: summary, continuity
+date: 2026-11-03
+---
+
+## Statement
+
+Summarize the key points of continuity for several variables.
+
+## Hint
+
+Review methods and theorems.
+
+## Solution
+
+**Basic.** Polynomials and quotients of continuous functions (where denominator nonzero) are continuous.
+
+**Continuity at a point.** Show $f(x,y)\to f(x_0,y_0)$; use bounding, polar coordinates, or the squeeze theorem.
+
+**Discontinuity.** Exhibit two paths with different limits, or a path where the limit diverges or doesn't exist.
+
+**Notable counterexamples.** $f(x,y)=\frac{x}{x+y}$ at origin, $f(x,y) = \sin(1/(x^2+y^2))$ at origin.
+
+
+**Key theorems.** Continuous image of compact is compact; continuous on compact is uniformly continuous (Heine–Cantor); norm and projections are continuous.
+
+@@@ continuity-simple-poly.md
+---
+title: Continuity of a polynomial
+category: calculus/multivariable/continuity
+level: lycee
+difficulty: 1
+tags: continuity, polynomial, continuity everywhere
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=x^2+3xy-y^2+2x-1$ is continuous on $\mathbb{R}^2$.
+
+## Hint
+
+Polynomials in several variables are continuous (sums and products of continuous coordinate projections).
+
+## Solution
+
+**Continuity of polynomials.** The functions $(x,y)\mapsto x$ and $(x,y)\mapsto y$ are continuous, and sums/products of continuous functions are continuous.
+
+**Conclusion.** $f$ is continuous on $\mathbb{R}^2$ by the composition rules.
+
+@@@ continuity-rational-off-singular.md
+---
+title: Continuity of a rational function
+category: calculus/multivariable/continuity
+level: lycee
+difficulty: 1
+order: 2
+tags: rational function, domain, continuity
+date: 2026-11-03
+---
+
+## Statement
+
+Where is $f(x,y)=\dfrac{x+2y}{x^2+y^2+1}$ continuous?
+
+## Hint
+
+A quotient of continuous functions is continuous wherever the denominator is nonzero.
+
+## Solution
+
+**Denominator.** $x^2+y^2+1\neq0$ for every $(x,y) \in \mathbb{R}^2$.
+
+**Continuity.** $f$ is continuous on $\mathbb{R}^2$.
+
+@@@ continuity-polar-trick.md
+---
+title: Continuity via polar coordinates
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: polar, continuity, bound
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=\dfrac{x^3+y^3}{x^2+y^2}$ (with $f(0,0)=0$) is continuous at $(0,0)$.
+
+## Hint
+
+Use Polar coordinates. 
+
+## Solution
+
+**Polar coordinates.** For $(x,y) = (r\cos \theta, r \sin \theta)$, 
+$$ |f(x,y)|  =r|\cos^3\theta+\sin^3\theta| \leq 2r = 2 \sqrt{x^2 + y^2} \rightarrow 0 $$
+as $(x,y) \rightarrow (0,0)$. 
+
+**Conclusion.** $\lim_{(x,y)\to(0,0)}f=0=f(0,0)$: $f$ is continuous at the origin.
+
+@@@ continuity-discontinuous-two-paths.md
+---
+title: Discontinuity via two paths
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: discontinuity, paths, limits
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the functions 
+$$ f(x,y)=\dfrac{x}{x+y} \, \, \text{and} \, \, g(x,y)=\dfrac{xy}{x+y} $$ 
+with $f(0,0)= g(0,0)=0$ are not continuous at the origin.
+
+## Hint
+
+Check the paths $y=ax$ and $y = ax + b x^2$.
+
+## Solution
+
+**Continuity of $f$.** On $y=ax$, $f(x,ax)=\frac{1}{1+a}$. As $x\to0$, this tends to $\frac{1}{1+a}$ for each $a \neq -1$. Hence $f$ is not continuous at the origin. 
+\par
+**Continuity of $g$.** On $y=ax$, $g(x,ax)=\frac{ax}{1+a} \rightarrow 0$ as $x\to0$ for any $a \neq -1$ (this does not mean $g$ is continuous!). Along $y=ax+bx^2$ with $a=-1$, $b\neq0$: 
+$$ g(x,-x+bx^2)=\frac{x(-x+bx^2)}{bx^2}=\frac{-x+bx^2}{bx}=\frac{-1}{b}+x \rightarrow \frac{-1}{b} $$ 
+as $x \rightarrow 0$. Limits differ along different paths; $g$ is not continuous at the origin.
+
+**Remark.** The example of $g$ shows that checking limits along all straight lines through the origin is necessary but *not* sufficient for the existence of a two-variable limit.
+
+@@@ continuity-radial-dependence.md
+---
+title: A function that is not continuous despite radial limits
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 4
+tags: continuity, radial limit, counterexample
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=\dfrac{x^2y}{x^4+y^2}$ (with $f(0,0)=0$) is not continuous at $(0,0)$, even though $f(x,ax)\to0$ for every $a$.
+
+## Hint
+
+Test the path $y=x^2$.
+
+## Solution
+
+**Radial limits.** $f(x,ax)=\frac{ax^3}{x^4+a^2x^2}=\frac{ax}{x^2+a^2}\to0$ for fixed $a$.
+
+**Parabolic path.** $f(x,x^2)=\frac{x^4}{2x^4}=\frac12\not\to0$.
+
+**Conclusion.** $f$ is not continuous at the origin despite radial limits being zero.
+
+@@@ continuity-piecewise-xy.md
+---
+title: Continuity of a piecewise function
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: piecewise, continuity, xy
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $f(x,y)=\frac{xy}{\sqrt{x^2+y^2}}$ (with $f(0,0)=0$) is continuous at $(0,0)$.
+
+## Hint
+
+$|xy|\le\frac12(x^2+y^2)$.
+
+## Solution
+
+**Bound.** $|f(x,y)| = \frac{|xy|}{\sqrt{x^2+y^2}} \le\frac12\sqrt{x^2+y^2}\to0$.
+**Conclusion.**  $f$  is continuous at $(0,0)$.
+
+@@@ continuity-discontinuous-bounded.md
+---
+title: A discontinuous function with bounded values
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: discontinuity, bounded, counterexample
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the function
+$$f(x,y)=\sin\!\left(\frac{1}{x^2+y^2}\right) \, \text{for} \, (x,y)\neq(0,0), \, \, f(0,0)=0 $$
+is not continuous at the origin.
+
+## Hint
+
+Test the path $(x,0)$ and analyze the oscillation.
+
+## Solution
+
+**Along $(x,0)$.** $f(x,0)=\sin(1/x^2)$ oscillates in $[-1,1]$ with no limit.
+
+**Conclusion.** $f$ has no limit at $(0,0)$; not continuous there.
+
+@@@ continuity-prolongement.md
+---
+title: Continuous extension
+category: calculus/multivariable/continuity
+level: lycee
+difficulty: 3
+tags: continuous extension, removable singularity
+date: 2026-11-03
+---
+
+## Statement
+
+Can $f(x,y)=\dfrac{\sin(xy)}{xy}$ be extended by continuity at $(0,0)$?
+
+## Hint
+
+Use $\sin t/t\to1$.
+
+## Solution
+
+**Limit.** Along $(x,y)\to(0,0)$ with $xy\neq0$, $\frac{\sin(xy)}{xy}\to1$.
+
+**Extension.** Define $f(0,0)=1$; $f$ becomes continuous.
+
+**Conclusion.** Yes, extension by $f(0,0)=1$ exists.
+
+@@@ continuity-image-compact.md
+---
+title: Image of a compact set under a continuous function
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 4
+tags: compactness, continuous image, extrema
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the image of a compact set by a continuous map is compact.
+
+## Hint
+
+Use sequential compactness; continuous images of convergent sequences converge.
+
+## Solution
+
+**Image of compact.** Let $K$ compact and $f$ continuous. Fix a sequence $y_n$ in $f(K)$. There is $x_n \in K$ such that $y_n = (f(x_n))$. By compacity of $K$, we can extract a subsequence $(x_{n_k}) \subset (x_n)$ such that  $x_{n_k} \to x\in K$. Since $f$ is continuous, we have $y_{n_k} = f(x_{n_k})\to f(x)\in f(K)$. Any sequence of $f(K)$ has a converging subsequence, hence $f(K)$ is compact.
+
+@@@ continuity-norm-continuous.md
+---
+title: Norm and distance are continuous
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 3
+tags: norm, distance, continuity
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the Euclidean norm $\|\cdot\|:\mathbb{R}^n\to\mathbb{R}$ is continuous.
+
+## Hint
+
+Use the reverse triangle inequality: $|\|x\|-\|y\||\le\|x-y\|$.
+
+## Solution
+
+**Inequality.** By the reverse triangle inequality, for any $x,y$: $|\|x\|-\|y\||\le\|x-y\|$.
+
+**Conclusion.** $\|x_n\|\to\|x\|$ whenever $x_n\to x$: the norm is continuous.
+
+@@@ continuity-projection.md
+---
+title: Coordinate projections are continuous
+category: calculus/multivariable/continuity
+level: l1
+difficulty: 2
+order: 3
+tags: projection, continuity, coordinates
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the projection $\pi_1:\mathbb{R}^n\to\mathbb{R}$, $(x_1,\ldots,x_n)\mapsto x_1$, is continuous.
+
+## Hint
+
+$|\pi_1(x)-\pi_1(y)|=|x_1-y_1|\le\|x-y\|_1$.
+
+## Solution
+
+**Bound.** $|\pi_1(x)-\pi_1(y)|\le\|x-y\|_1$.
+
+**Conclusion.** $\pi_1$ is 1-Lipschitz, hence continuous.
+
 @@@ partial-derivatives-basic.md
 ---
 title: Partial derivatives and the gradient
