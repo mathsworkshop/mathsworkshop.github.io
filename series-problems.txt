@@ -989,7 +989,7 @@ $$\ln2=1-\frac12+\frac13-\cdots,\qquad\frac\pi4=1-\frac13+\frac15-\cdots$$
 ---
 title: The generating function of Fibonacci numbers
 category: calculus/single-variable/series/power-series
-level: m1
+level: l2
 difficulty: 4
 tags: generating function, Fibonacci, partial fractions, radius of convergence
 date: 2026-11-02
@@ -1010,7 +1010,12 @@ Multiply the recurrence by $x^{n+2}$ and sum. For part 3, decompose $\frac1{1-x-
 ## Solution
 
 **1.** Multiply $F_{n+2}=F_{n+1}+F_n$ by $x^{n+2}$ and sum over $n\ge0$:
-$$G(x)-F_0-F_1x=x\bigl(G(x)-F_0\bigr)+x^2G(x),$$
+$$
+\begin{aligned} 
+G(x)-F_0-F_1x&= \sum_{n\geq 2} F_nx^n = \sum_{n\geq 0} F_{n+2}x^{n+2} \\
+&= \sum_{n\geq 0} F_{n+1}x^{n+2} + \sum_{n\geq 0} F_{n}x^{n+2} \\
+&= x\bigl(G(x)-F_0\bigr)+x^2G(x),
+\end{aligned}$$
 so $G(x)-x=xG(x)+x^2G(x)$ and $G(x)=\dfrac x{1-x-x^2}$.
 
 **2.** The singularities of $G$ are the roots of $1-x-x^2$, namely $-\varphi$ and $-\psi=\frac1\varphi\approx0.618$. The smaller in absolute value is $\frac1\varphi$, so $R=\frac1\varphi=\frac{\sqrt5-1}2$. (This agrees with $\frac{F_n}{F_{n+1}}\to\frac1\varphi$.)
@@ -1024,7 +1029,7 @@ Identifying coefficients: $F_n=\dfrac{\varphi^n-\psi^n}{\sqrt5}$.
 ---
 title: The generating function of central binomial coefficients
 category: calculus/single-variable/series/power-series
-level: m1
+level: l2
 difficulty: 4
 tags: binomial series, generalised binomial coefficients, radius of convergence
 date: 2026-11-02
@@ -1057,7 +1062,7 @@ $$\sum_{n\ge0}\binom{2n}n\frac1{5^n}=\frac1{\sqrt{1-\frac45}}=\sqrt5.$$
 ---
 title: e^x e^y = e^(x+y) from power series
 category: calculus/single-variable/series/power-series
-level: m1
+level: l2
 difficulty: 4
 tags: Cauchy product, exponential series, binomial theorem
 date: 2026-11-02
@@ -1524,7 +1529,7 @@ $$S_N=\frac12\sum_{n=2}^N\left(\frac1{n-1}-\frac1{n+1}\right)=\frac12\left(1+\fr
 ---
 title: A series of functions
 category: calculus/single-variable/series/power-series
-level: m1
+level: l2
 difficulty: 4
 tags: series of functions, normal convergence, pointwise convergence
 date: 2026-11-02
@@ -1547,5 +1552,3 @@ The series converges.
 **Normally.** The bound $0\le u_n(x)\le\frac1{n^2}$ holds for all $x\ge0$, and $\sum\frac1{n^2}<\infty$. So $\sum\sup_x|u_n|<\infty$: the convergence is normal, hence uniform, on $[0,+\infty)$.
 
 **Consequence.** Each $u_n$ is continuous on $[0,+\infty)$, and a uniformly convergent series of continuous functions has a continuous sum. So $f$ is continuous on $[0,+\infty)$, with $f(0)=0$.
-
-**Remark.** One can check that $f$ is not differentiable at $0$ from the right: $\frac{f(x)}x=\sum\frac1{n(1+nx)}\to\sum\frac1n=\infty$ as $x\to0^+$, a classic example where the derivative of a uniformly convergent series cannot be computed term by term.
