@@ -1,7 +1,7 @@
 @@@ nt2-the-sum-of-phi-over-the-divisors.md
 ---
 title: The sum of φ(d) over the divisors of n
-category: olympiad/oly-number-theory
+category: number
 level: m1
 difficulty: 2
 tags: Euler totient, divisors, counting, fractions
@@ -34,7 +34,7 @@ $$n=\sum_{d\mid n}\varphi(d).$$
 @@@ nt2-prime-divisors-of-n-squared-plus-n-plus-one.md
 ---
 title: Prime divisors of n² + n + 1
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: order, Fermat's little theorem, primes in progressions
@@ -63,7 +63,7 @@ $n^3-1=(n-1)(n^2+n+1)$. What can you say about the multiplicative order of $n$ m
 @@@ nt2-the-sum-of-the-quadratic-residues.md
 ---
 title: The sum of the quadratic residues modulo p
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: quadratic residues, sum of squares, divisibility
@@ -94,7 +94,7 @@ using $m=\frac{p-1}2$, $m+1=\frac{p+1}2$, $2m+1=p$.
 @@@ nt2-triangular-numbers-that-are-squares.md
 ---
 title: Infinitely many triangular numbers that are squares
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: Pell equation, recurrence, infinitely many
@@ -127,7 +127,7 @@ Also $x'\equiv x\pmod 2$ (since $8y$ is even), so $x'$ is odd if $x$ is, and $x'
 @@@ nt2-fermat-s-theorem-on-sums-of-two-squares.md
 ---
 title: Every prime ≡ 1 (mod 4) is a sum of two squares
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 4
 tags: sum of two squares, Thue's lemma, pigeonhole, Wilson
@@ -158,7 +158,7 @@ There are more of them than residues modulo $p$, so two different pairs $(u,v)\n
 @@@ nt2-the-frobenius-coin-problem.md
 ---
 title: The Frobenius coin problem for two coins
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: Frobenius number, linear Diophantine, Chicken McNugget
@@ -191,7 +191,7 @@ so $y_0>-1$, and being an integer, $y_0\ge0$.
 @@@ nt2-egyptian-fractions-for-one.md
 ---
 title: Writing 1 as a sum of unit fractions
-category: olympiad/oly-number-theory
+category: number
 level: m1
 difficulty: 2
 tags: Egyptian fractions, bounding, Diophantine
@@ -224,7 +224,7 @@ The solutions are $(2,3,6)$, $(2,4,4)$, $(3,3,3)$.
 @@@ nt2-a-multiple-written-with-zeros-and-ones.md
 ---
 title: A multiple of n written with only 0s and 1s
-category: olympiad/oly-number-theory
+category: number
 level: m1
 difficulty: 3
 tags: pigeonhole, repunits, decimal digits
@@ -254,7 +254,7 @@ Part 1: consider the repunits $R_k=\underbrace{11\ldots1}_{k}$ for $k=0,1,\dots,
 @@@ nt2-even-perfect-numbers.md
 ---
 title: Even perfect numbers (Euclid–Euler)
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 4
 tags: perfect numbers, sigma function, multiplicativity, Mersenne primes
@@ -292,7 +292,7 @@ a contradiction. So $t=1$, $m=2^{k+1}-1$ and $\sigma(m)=2^{k+1}=m+1$.
 @@@ nt2-odd-entries-in-pascal-s-triangle.md
 ---
 title: Counting odd entries in a row of Pascal's triangle
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: binomial coefficients, parity, binary expansion, generating function
@@ -326,7 +326,7 @@ $$(1+x)^n=\prod_{i\in S}(1+x)^{2^i}\equiv\prod_{i\in S}\left(1+x^{2^i}\right)=\s
 @@@ nt2-primes-that-cannot-divide-the-central-binomial-coefficient.md
 ---
 title: Which primes divide C(2n, n)?
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 4
 tags: Legendre's formula, central binomial coefficient, Bertrand's postulate
@@ -364,7 +364,7 @@ So $v_p\binom{2n}n=0$.
 @@@ nt2-an-integrality-proof-by-counting.md
 ---
 title: (n²)! is divisible by (n!)^(n+1)
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: integrality, factorials, double counting, multinomial
@@ -396,7 +396,7 @@ Since $N$ is a number of objects, it is a positive integer.
 @@@ nt2-legendre-s-formula-in-base-p.md
 ---
 title: v_p(n!) from the digits of n in base p
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: Legendre's formula, digit sum, p-adic valuation, base p
@@ -431,7 +431,7 @@ $$v_2\binom{2n}n=v_2((2n)!)-2v_2(n!)=(2n-s_2(n))-2(n-s_2(n))=s_2(n).$$
 @@@ nt2-a-sum-of-factorials-that-is-a-square.md
 ---
 title: When is 1! + 2! + … + n! a perfect square?
-category: olympiad/oly-number-theory
+category: number
 level: m1
 difficulty: 2
 tags: squares modulo n, factorials, Diophantine
@@ -460,7 +460,7 @@ But squares modulo $5$ are only $0,1,4$ (from $0^2,1^2,2^2,3^2,4^2\equiv0,1,4,4,
 @@@ nt2-from-a-p-congruent-b-p-to-a-p-congruent-b-p-modulo-p-squared.md
 ---
 title: If aᵖ ≡ bᵖ (mod p) then aᵖ ≡ bᵖ (mod p²)
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: Fermat's little theorem, binomial theorem, lifting
@@ -491,7 +491,7 @@ The second term is $p\cdot b^{p-1}\cdot kp$, a multiple of $p^2$. For $j\ge2$ th
 @@@ nt2-the-gcd-of-fibonacci-numbers.md
 ---
 title: gcd(F_m, F_n) = F_gcd(m,n)
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 4
 tags: Fibonacci numbers, gcd, Euclidean algorithm, divisibility sequences
@@ -528,7 +528,7 @@ $$\gcd(F_m,F_n)=\gcd(F_{m-n},F_n).$$
 @@@ nt2-infinitely-many-n-with-n-dividing-two-to-the-n-plus-one.md
 ---
 title: Infinitely many n dividing 2ⁿ + 1
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: induction, lifting the exponent, infinitely many, factorisation
@@ -559,7 +559,7 @@ The first factor is divisible by $3^{k+1}$. For the second, $x\equiv-1\pmod3$ (s
 @@@ nt2-infinitely-many-primes-congruent-to-one-modulo-four.md
 ---
 title: Infinitely many primes ≡ 1 (mod 4)
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: infinitely many primes, order, Euclid's argument
@@ -592,7 +592,7 @@ Take a prime divisor $q$ of $(n!)^2+1$. What is the order of $n!$ modulo $q$?
 @@@ nt2-n-divides-phi-of-a-to-the-n-minus-one.md
 ---
 title: n divides φ(aⁿ − 1)
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 4
 tags: order, Euler's theorem, totient
@@ -623,7 +623,7 @@ Let $N=a^n-1$. Compute the order of $a$ modulo $N$ exactly.
 @@@ nt2-the-existence-of-primitive-roots.md
 ---
 title: Primitive roots exist modulo every prime
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 5
 tags: primitive root, order, totient, polynomial roots
@@ -657,7 +657,7 @@ In particular $\psi(p-1)=\varphi(p-1)\ge1$: a primitive root exists.
 @@@ nt2-prime-divisors-of-mersenne-numbers.md
 ---
 title: Prime divisors of 2ᵖ − 1
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: Mersenne numbers, order, primality testing
@@ -689,7 +689,7 @@ The order of $2$ modulo $q$ divides $p$. It cannot be $1$.
 @@@ nt2-the-factorial-of-half-of-p-minus-one.md
 ---
 title: ((p − 1)/2)! modulo a prime p ≡ 3 (mod 4)
-category: olympiad/oly-number-theory
+category: number
 level: olympiad
 difficulty: 3
 tags: Wilson's theorem, factorials modulo p, quadratic residues
