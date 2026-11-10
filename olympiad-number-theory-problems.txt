@@ -1,7 +1,7 @@
 @@@ nt-the-gcd-of-two-numbers-of-the-form-two-to-the-n-minus-one.md
 ---
 title: The gcd of 2ᵃ − 1 and 2ᵇ − 1
-category: number
+category: number/divisibility
 level: olympiad
 difficulty: 3
 tags: gcd, Euclidean algorithm, divisibility
@@ -36,7 +36,7 @@ so $\gcd(2^a-1,2^b-1)=\gcd(2^b-1,2^{a-b}-1)$, because $\gcd(u,v)=\gcd(v,u-qv)$ f
 @@@ nt-n-divides-two-to-the-n-minus-one.md
 ---
 title: n divides 2ⁿ − 1 only for n = 1
-category: number
+category: number/primes
 level: olympiad
 difficulty: 3
 tags: order, Fermat's little theorem, smallest prime divisor
@@ -72,7 +72,7 @@ So $d$ divides both $n$ and $p-1$. Now $d\ne1$ because $2\not\equiv1\pmod p$. He
 @@@ nt-no-nonzero-solution-of-x-squared-plus-y-squared-equals-three-z-squared.md
 ---
 title: x² + y² = 3z² has no non-trivial solution
-category: number
+category: number/eqts
 level: olympiad
 difficulty: 2
 tags: infinite descent, squares modulo 3, Diophantine equations
@@ -103,7 +103,7 @@ a solution with $|z_1|=|z|/3<|z|$ and $z_1\ne0$. Contradiction with minimality.
 @@@ nt-the-product-of-a-pythagorean-triple-is-divisible-by-sixty.md
 ---
 title: 60 divides xyz for every Pythagorean triple
-category: number
+category: number/divisibility
 level: olympiad
 difficulty: 3
 tags: Pythagorean triples, residues, squares modulo n
@@ -138,7 +138,7 @@ Since $60=3\cdot4\cdot5$, prove separately that $3$, $4$ and $5$ divide $xyz$, l
 @@@ nt-infinitely-many-primes-congruent-to-three-modulo-four.md
 ---
 title: Infinitely many primes of the form 4k + 3
-category: number
+category: number/primes
 level: olympiad
 difficulty: 3
 tags: primes, Euclid's argument, residues
@@ -170,7 +170,7 @@ But then $p_i$ divides both $N$ and $4p_1\cdots p_r$, hence divides their differ
 @@@ nt-wilson-s-theorem-and-its-converse.md
 ---
 title: Wilson's theorem and its converse
-category: number
+category: number/primes
 level: olympiad
 difficulty: 3
 tags: Wilson's theorem, modular inverses, primality
@@ -201,7 +201,7 @@ $$(p-1)!\equiv1\cdot1\cdot(p-1)\equiv-1\pmod p.$$
 @@@ nt-vieta-jumping-the-quotient-is-a-perfect-square.md
 ---
 title: Vieta jumping: (a² + b²)/(ab + 1) is a square
-category: number
+category: number/eqts
 level: olympiad
 difficulty: 5
 tags: Vieta jumping, descent, Diophantine equations, extremal principle
@@ -241,7 +241,7 @@ Thus $(a',b)$ is another pair of positive integers satisfying the equation, with
 @@@ nt-the-lifting-the-exponent-lemma-by-hand.md
 ---
 title: The exact power of 3 dividing 2^(3ⁿ) + 1
-category: number
+category: number/primes
 level: olympiad
 difficulty: 4
 tags: p-adic valuation, lifting the exponent, induction
@@ -280,7 +280,7 @@ Hence $v_3(x_n+1)=n+1$.
 @@@ nt-an-integrality-proof-with-floor-functions.md
 ---
 title: An integrality proof by Legendre's formula
-category: number
+category: number/primes
 level: olympiad
 difficulty: 4
 tags: Legendre's formula, floor function, integrality
@@ -321,7 +321,7 @@ by the inequality with $x=\frac m{p^k}$, $y=\frac n{p^k}$. All the valuations ar
 @@@ nt-consecutive-integers-each-divisible-by-a-square.md
 ---
 title: Long runs of non-squarefree numbers
-category: number
+category: number/divisibility
 level: olympiad
 difficulty: 3
 tags: Chinese remainder theorem, squarefree numbers
@@ -352,7 +352,7 @@ Then $p_i^2\mid x+i$ for each $i$, so $x+1,x+2,\dots,x+n$ are $n$ consecutive in
 @@@ nt-thirteen-divides-two-to-the-seventy-plus-three-to-the-seventy.md
 ---
 title: 13 divides 2⁷⁰ + 3⁷⁰
-category: number
+category: number/divisibility
 level: m1
 difficulty: 2
 tags: Fermat's little theorem, modular exponentiation
@@ -381,7 +381,7 @@ By Fermat's little theorem $a^{12}\equiv1\pmod{13}$. Reduce the exponents. Also 
 @@@ nt-prime-factors-of-fermat-numbers.md
 ---
 title: Prime factors of Fermat numbers
-category: number
+category: number/divisibility
 level: olympiad
 difficulty: 4
 tags: order, Fermat numbers, Fermat's little theorem
@@ -411,7 +411,7 @@ We use two expressions for $641$: $641=5\cdot2^7+1$ and $641=2^4+5^4$. The first
 @@@ nt-when-is-two-to-the-n-plus-one-prime.md
 ---
 title: When can 2ⁿ + 1 or 2ⁿ − 1 be prime?
-category: number
+category: number/primes
 level: olympiad
 difficulty: 2
 tags: factorisation, primes, Fermat primes, Mersenne primes
@@ -439,7 +439,7 @@ Use $x^m-1=(x-1)(x^{m-1}+\cdots+1)$ and, for odd $m$, $x^m+1=(x+1)(x^{m-1}-x^{m-
 @@@ nt-the-difference-of-two-squares-equal-to-2024.md
 ---
 title: x² − y² = 2024
-category: number
+category: number/eqts
 level: m1
 difficulty: 2
 tags: Diophantine equations, factoring, parity, divisors
@@ -476,7 +476,7 @@ $$(507,505),\ (255,251),\ (57,35),\ (45,1).$$
 @@@ nt-the-equation-x-cubed-plus-two-y-cubed-plus-four-z-cubed.md
 ---
 title: x³ + 2y³ + 4z³ = 0
-category: number
+category: number/irrationality
 level: olympiad
 difficulty: 3
 tags: infinite descent, parity, irrationality
@@ -509,7 +509,7 @@ Thus $(x_1,y_1,z_1)=(x/2,y/2,z/2)$ is a smaller non-zero solution, contradiction
 @@@ nt-a-digit-sum-equation.md
 ---
 title: n + S(n) + S(S(n)) = 60
-category: number
+category: number/congruences
 level: m1
 difficulty: 2
 tags: digit sum, congruence modulo 9, bounding
@@ -549,7 +549,7 @@ Use $S(m)\equiv m\pmod9$ to restrict $n$ modulo $3$, then bound $n$ from below.
 @@@ nt-a-prime-factor-of-a-sum-of-two-squares.md
 ---
 title: Primes 3 mod 4 and sums of two squares
-category: number
+category: number/primes
 level: olympiad
 difficulty: 4
 tags: sum of two squares, quadratic residues, descent
@@ -583,7 +583,7 @@ $$(a^2+b^2)(c^2+d^2)=(ac-bd)^2+(ad+bc)^2.$$
 @@@ nt-a-square-sandwiched-between-two-consecutive-squares.md
 ---
 title: When is n⁴ + n³ + n² + n + 1 a perfect square?
-category: number
+category: number/eqts
 level: olympiad
 difficulty: 4
 tags: bounding between squares, Diophantine equations
@@ -623,7 +623,7 @@ and comparing with $4N=4n^4+4n^3+4n^2+4n+4$ gives $n^2-2n-3=0$, i.e. $(n-3)(n+1)
 @@@ nt-counting-divisors-and-the-hundred-lockers.md
 ---
 title: Counting divisors and the hundred lockers
-category: number
+category: number/divisibility
 level: olympiad
 difficulty: 2
 tags: divisor function, perfect squares, pairing
@@ -654,7 +654,7 @@ Pair each divisor $d$ with $n/d$.
 @@@ nt-a-floor-identity-with-square-roots.md
 ---
 title: ⌊√n + √(n+1)⌋ = ⌊√(4n+2)⌋
-category: number
+category: number/divisibility
 level: olympiad
 difficulty: 4
 tags: floor function, square roots, squares modulo 4
@@ -690,7 +690,7 @@ $$(\sqrt n+\sqrt{n+1})^2>4n+1.$$
 @@@ nt-the-gcd-of-two-consecutive-factorials-plus-one.md
 ---
 title: gcd(n! + 1, (n + 1)! + 1) = 1
-category: number
+category: number/divisibility
 level: m1
 difficulty: 2
 tags: gcd, divisibility, factorials
@@ -719,7 +719,7 @@ so $d\mid n$. But $n\mid n!$, hence $d\mid n!$. Together with $d\mid n!+1$ this 
 @@@ nt-a-number-of-the-form-eight-k-plus-seven-is-not-a-sum-of-three-squares.md
 ---
 title: 8k + 7 is not a sum of three squares
-category: number
+category: number/congruences
 level: olympiad
 difficulty: 2
 tags: squares modulo 8, representation by squares
