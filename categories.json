@@ -342,6 +342,12 @@
           "subcategories": []
         },
         {
+          "id": "eqts",
+          "name": "Diophantine equations",
+          "description": "Diophantine equations.",
+          "subcategories": []
+        },
+        {
           "id": "irrationality",
           "name": "Irrationality",
           "description": "Proofs of irrationality for roots, logarithms and fundamental constants.",
