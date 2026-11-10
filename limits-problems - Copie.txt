@@ -11,7 +11,7 @@ date: 2026-11-02
 ## Statement
 
 Solve the differential equation
-$$y' = \frac{x}{1+2y}$$
+$$y' = \frac{x}{1+2y} $$
 with the initial condition $y(0)=0$.
 
 ## Hint
@@ -441,7 +441,7 @@ title: Complex eigenvalues
 category: differential-equations/linear-systems
 level: l3
 difficulty: 4
-tags: complex eigenvalues, real solutions, coefficients indéterminés
+tags: complex eigenvalues, real solutions, coefficients indÃ©terminÃ©s
 date: 2026-11-02
 ---
 
