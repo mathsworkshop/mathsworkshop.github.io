@@ -594,12 +594,6 @@
           "subcategories": []
         },
         {
-          "id": "oly-functional-equations",
-          "name": "Functional equations",
-          "description": "Standard substitutions, injectivity, surjectivity and Cauchy-type equations.",
-          "subcategories": []
-        },
-        {
           "id": "oly-algebra",
           "name": "Polynomials, sequences and trigonometry",
           "description": "Polynomials, recurrences, complex numbers and trigonometric identities.",
