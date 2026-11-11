@@ -1,7 +1,7 @@
 @@@ comb-two-people-with-the-same-number-of-friends.md
 ---
 title: Two people with the same number of friends
-category: combinatorics/pigeonhole
+category:  combi/pigeonhole
 level: m1
 difficulty: 2
 tags: pigeonhole, graphs, degrees
@@ -34,7 +34,7 @@ In both cases the $n$ people take at most $n-1$ different values, so two people 
 @@@ comb-a-block-of-consecutive-terms-divisible-by-n.md
 ---
 title: A block of consecutive terms divisible by n
-category: combinatorics/pigeonhole
+category:  combi/pigeonhole
 level: m1
 difficulty: 2
 tags: pigeonhole, prefix sums, remainders
@@ -63,7 +63,7 @@ Taking $i=p+1$ and $j=q$ gives the required block.
 @@@ comb-monotone-subsequences-erdos-szekeres.md
 ---
 title: Monotone subsequences (Erdős–Szekeres)
-category: combinatorics/pigeonhole
+category:  combi/pigeonhole
 level: olympiad
 difficulty: 3
 tags: pigeonhole, sequences, Erdős–Szekeres
@@ -96,7 +96,7 @@ In both cases $(x_i,y_i)\ne(x_j,y_j)$.
 @@@ comb-one-number-divides-another.md
 ---
 title: Choosing n + 1 numbers among 1, …, 2n
-category: combinatorics/pigeonhole
+category:  combi/pigeonhole
 level: olympiad
 difficulty: 3
 tags: pigeonhole, divisibility, odd part
