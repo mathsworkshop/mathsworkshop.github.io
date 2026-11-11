@@ -11,7 +11,7 @@ date: 2026-11-04
 ## Statement
 
 Let $a,b$ be positive integers. Prove that
-$$\gcd(2^a-1,\,2^b-1)=2^{\gcd(a,b)}-1.$$
+$$\gcd(2^a-1,\,2^b-1)=2^{\gcd(a,b)}-1. $$
 Deduce that $2^a-1$ divides $2^b-1$ if and only if $a$ divides $b$.
 
 ## Hint
