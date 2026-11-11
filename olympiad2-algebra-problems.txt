@@ -1,7 +1,7 @@
 @@@ alg2-the-derivative-of-a-polynomial-with-only-real-roots.md
 ---
 title: The derivative keeps all roots real
-category: olympiad/oly-algebra
+category: algebra/polynomials
 level: m1
 difficulty: 3
 tags: polynomials, Rolle's theorem, multiplicity, real roots
@@ -32,7 +32,7 @@ Let $r_1<\dots<r_k$ be the distinct roots of $P$, with multiplicities $m_1,\dots
 @@@ alg2-counting-real-roots-of-x-to-the-fifth-minus-5x-plus-a.md
 ---
 title: How many real roots does x⁵ − 5x + a have?
-category: olympiad/oly-algebra
+category: algebra/polynomials
 level: m1
 difficulty: 2
 tags: polynomials, derivative, number of roots, parameter
@@ -57,14 +57,14 @@ $P_a'(x)=5(x^4-1)$. A polynomial is monotone between consecutive critical points
 - $|a|<4$: $P_a(-1)>0>P_a(1)$. One root in each piece: **three** roots.
 - $a=4$: $P_a(-1)=8>0$ and $P_a(1)=0$. The root $x=1$ is a double root and there is one more root on $(-\infty,-1)$: **two** distinct roots.
 - $a=-4$: symmetric: $P_a(-1)=0$ is a double root and there is one root on $(1,\infty)$: **two** distinct roots.
-- $a>4$: $P_a(1)>0$, so $P_a>0$ on $[-1,\infty)$ (it is $\ge P_a(1)$ on $[1,\infty)$ and $\ge P_a(1)>0$ on $[-1,1]$). One root, on $(-\infty,-1)$: **one** root.
+- $a>4$: $P_a(1)>0$, so $P_a>0$ on $[-1,\infty)$. One root, on $(-\infty,-1)$: **one** root.
 - $a<-4$: symmetric, **one** root on $(1,\infty)$.
 
 **Lesson.** To count the real roots of a polynomial depending on a parameter, study the critical values: roots appear or disappear exactly when a critical value crosses $0$.
 @@@ alg2-polynomials-satisfying-p-of-x-times-p-of-x-minus-one-equals-p-of-x-squared.md
 ---
 title: P(x)P(x − 1) = P(x²)
-category: olympiad/oly-algebra
+category: algebra/polynomials
 level: olympiad
 difficulty: 4
 tags: polynomial equation, roots, unit circle, functional equation
@@ -85,7 +85,7 @@ Check that $x^2+x+1$ works, using $(x^2+x+1)(x^2-x+1)=x^4+x^2+1$. For the conver
 
 **These work.** $(x^2+x+1)^n\bigl((x-1)^2+(x-1)+1\bigr)^n=(x^2+x+1)^n(x^2-x+1)^n=(x^4+x^2+1)^n=P(x^2)$.
 
-**Converse.** Let $P\ne0$ be a solution and let $R$ be its (finite) set of complex roots. If $R=\varnothing$, $P$ is a constant $c$ with $c^2=c$, so $c=1=(x^2+x+1)^0$. Assume $R\ne\varnothing$ and let $a\in R$.
+**Converse.** Let $P\ne0$ be a solution and let $R$ be its (finite) set of complex roots. If $R=\varnothing$, $P$ is a constant $c$ with $c^2=c$, so $c=1$. Assume $R\ne\varnothing$ and let $a\in R$.
 
 *Two closure properties.* Putting $x=a$ gives $P(a^2)=P(a)P(a-1)=0$, so $a^2\in R$. Putting $x=a+1$ gives $P((a+1)^2)=P(a+1)P(a)=0$, so $(a+1)^2\in R$.
 
@@ -95,13 +95,13 @@ Check that $x^2+x+1$ works, using $(x^2+x+1)(x^2-x+1)=x^4+x^2+1$. For the conver
 
 *All roots are $\omega,\bar\omega$.* So every root has $|a|=1$ and $|a+1|=1$. From $|a+1|^2=|a|^2+2\operatorname{Re}a+1=2+2\operatorname{Re}a=1$ we get $\operatorname{Re}a=-\tfrac12$, so $a=-\tfrac12\pm\tfrac{\sqrt3}2i$, the roots of $x^2+x+1$.
 
-*Conclusion.* $P(x)=c\,(x-\omega)^p(x-\bar\omega)^q$. Real coefficients force $p=q=n$, so $P=c(x^2+x+1)^n$. Comparing leading coefficients in the equation gives $c^2=c$, so $c=1$. $\blacksquare$
+*Conclusion.* $P(x)=c\,(x-\omega)^p(x-\bar\omega)^q$. Real coefficients force $p=q=n$, so $P=c(x^2+x+1)^n$. Comparing leading coefficients gives $c^2=c$, so $c=1$. $\blacksquare$
 
-**Lesson.** For $P(f(x))$-type equations, study how the equation moves roots around: it produces infinite orbits of roots, which a polynomial cannot have unless the orbit is finite (roots of unity, $0$).
+**Lesson.** For $P(f(x))$-type equations, study how the equation moves roots around: it produces infinite orbits of roots, which a polynomial cannot have unless the orbit is finite.
 @@@ alg2-finite-differences-and-binomial-alternating-sums.md
 ---
 title: Finite differences and alternating binomial sums
-category: olympiad/oly-algebra
+category: algebra/polynomials
 level: olympiad
 difficulty: 3
 tags: finite differences, polynomials, binomial coefficients, degree
@@ -129,13 +129,13 @@ $$\Delta^n=(E-I)^n=\sum_{k=0}^n(-1)^{n-k}\binom nkE^k,\qquad\text{so}\qquad(\Del
 $$\sum_{k=0}^n(-1)^k\binom nkP(k)=(-1)^n(\Delta^nP)(0).$$
 By Step 1 this is $0$ if $d<n$ and $(-1)^n\,n!\,a$ if $d=n$. $\blacksquare$
 
-**Check.** For $P(x)=x^m$ with $n=4$: the sums for $m=0,\dots,4$ are $0,0,0,0,24$, as computed directly.
+**Check.** For $P(x)=x^m$ with $n=4$: the sums for $m=0,\dots,4$ are $0,0,0,0,24$.
 
 **Lesson.** $\Delta$ is "differentiation for sequences": it lowers the degree by one, and $n$ applications expand into an alternating binomial sum.
 @@@ alg2-the-polynomial-taking-the-values-one-over-binomial-coefficients.md
 ---
 title: A polynomial that equals 1 / C(n+1, k) at k = 0, …, n
-category: olympiad/oly-algebra
+category: algebra/polynomials
 level: olympiad
 difficulty: 4
 tags: polynomials, interpolation, finite differences, binomial coefficients
@@ -148,7 +148,7 @@ Let $P$ be a polynomial of degree at most $n$ such that $P(k)=\dfrac1{\binom{n+1
 
 ## Hint
 
-Use the vanishing alternating sum for polynomials of degree less than $N$ (see the problem on finite differences): with $N=n+1$, $\sum_{k=0}^{n+1}(-1)^k\binom{n+1}kP(k)=0$.
+Use the vanishing alternating sum for polynomials of degree less than $N$: with $N=n+1$, $\sum_{k=0}^{n+1}(-1)^k\binom{n+1}kP(k)=0$.
 
 ## Solution
 
@@ -162,13 +162,13 @@ $$0=\sum_{k=0}^{n}(-1)^k\binom{n+1}k\cdot\frac1{\binom{n+1}k}+(-1)^{n+1}\binom{n
 **Evaluate.** $\sum_{k=0}^n(-1)^k$ equals $1$ if $n$ is even and $0$ if $n$ is odd. Hence
 $$P(n+1)=(-1)^n\sum_{k=0}^n(-1)^k=\begin{cases}1&n\text{ even},\\0&n\text{ odd}.\end{cases}$$
 
-**Check.** $n=1$: $P(0)=1$, $P(1)=\frac12$ gives $P(x)=1-\frac x2$ and $P(2)=0$ ✓. $n=2$: $P(0)=1$, $P(1)=\frac13$, $P(2)=\frac13$ gives $P(3)=1$ ✓ (computed by interpolation).
+**Check.** $n=1$: $P(0)=1$, $P(1)=\frac12$ gives $P(x)=1-\frac x2$ and $P(2)=0$ ✓. $n=2$: $P(0)=1$, $P(1)=\frac13$, $P(2)=\frac13$ gives $P(3)=1$ ✓.
 
 **Lesson.** When a polynomial of degree $\le n$ is known at $n+1$ points, finite differences give its value at the next point with no interpolation formula.
 @@@ alg2-a-polynomial-cannot-take-only-prime-values.md
 ---
 title: No polynomial takes only prime values
-category: olympiad/oly-algebra
+category: algebra/polynomials
 level: m1
 difficulty: 3
 tags: integer polynomials, primes, divisibility, congruences
@@ -189,17 +189,17 @@ Take $n_0$ with $m=P(n_0)$ and $|m|\ge2$. For which $k$ is $P(n_0+km)$ divisible
 
 **Divisibility.** For integer polynomials, $a-b\mid P(a)-P(b)$. With $a=n_0+km$, $b=n_0$ we get $m\mid P(n_0+km)-m$, so $m\mid P(n_0+km)$ for every integer $k$.
 
-**Large values.** A non-constant polynomial takes each value at most $\deg P$ times, so for all but finitely many $k$, $P(n_0+km)\notin\{m,-m\}$. Taking also $|n_0+km|$ large enough that $|P(n_0+km)|>|m|$ (true as $|P(x)|\to\infty$), we get a multiple of $m$ whose absolute value is strictly larger than $|m|\ge2$.
+**Large values.** A non-constant polynomial takes each value at most $\deg P$ times, so for all but finitely many $k$, $P(n_0+km)\notin\{m,-m\}$. Taking also $|n_0+km|$ large enough that $|P(n_0+km)|>|m|$, we get a multiple of $m$ whose absolute value is strictly larger than $|m|\ge2$.
 
 **Conclusion.** Such a number $|P(n_0+km)|$ has the divisor $|m|$ with $1<|m|<|P(n_0+km)|$, so it is composite. This happens for infinitely many $k$, giving infinitely many integers $n=n_0+km$. $\blacksquare$
 
-**Remark.** Famous examples such as $n^2+n+41$ are prime for many consecutive $n$ (here $n=0,\dots,39$), but must fail eventually, as the proof shows (at $n=41$, $P(41)=41\cdot43$).
+**Remark.** Famous examples such as $n^2+n+41$ are prime for many consecutive $n$ (here $n=0,\dots,39$), but must fail eventually (at $n=41$, $P(41)=41\cdot43$).
 
 **Lesson.** The congruence $a-b\mid P(a)-P(b)$ lets you make a polynomial value divisible by a number you control.
 @@@ alg2-the-polynomial-with-p-of-x-squared-plus-one.md
 ---
 title: P(x² + 1) = P(x)² + 1
-category: olympiad/oly-algebra
+category: algebra/polynomials
 level: m1
 difficulty: 3
 tags: polynomial equation, recursive sequences, identity theorem
@@ -229,7 +229,7 @@ $$P(a_{k+1})=P(a_k^2+1)=P(a_k)^2+1=a_k^2+1=a_{k+1}.$$
 @@@ alg2-polynomials-with-p-of-x-squared-equal-to-p-of-x-squared-form.md
 ---
 title: P(x²) = P(x)²
-category: olympiad/oly-algebra
+category: algebra/polynomials
 level: olympiad
 difficulty: 3
 tags: polynomial equation, coefficients, degree, comparing terms
@@ -264,7 +264,7 @@ The two sides differ: contradiction. Hence $P$ has a single nonzero term, which 
 @@@ alg2-the-sum-of-the-reciprocals-of-x-minus-the-roots-of-unity.md
 ---
 title: Sums over roots of unity from a logarithmic derivative
-category: olympiad/oly-algebra
+category: algebra/complex-numbers
 level: olympiad
 difficulty: 3
 tags: roots of unity, logarithmic derivative, complex numbers, symmetry
@@ -302,7 +302,7 @@ So the terms $k=1,\dots,n-1$ can be grouped into pairs $\{k,n-k\}$ each summing 
 @@@ alg2-every-modulus-divides-a-fibonacci-number.md
 ---
 title: Every integer divides some Fibonacci number
-category: olympiad/oly-algebra
+category: algebra/equations
 level: olympiad
 difficulty: 3
 tags: Fibonacci numbers, periodicity, pigeonhole, modular arithmetic
@@ -323,17 +323,17 @@ Look at the pairs $(F_n,F_{n+1})\bmod m$. There are only $m^2$ possible pairs. S
 
 **The pair map.** Let $T(a,b)=(b,a+b)$ on $(\mathbb{Z}/m)^2$. Then $(F_n,F_{n+1})\bmod m=T^n(0,1)$. The map $T$ is injective: if $T(a,b)=T(a',b')$ then $b=b'$ and $a+b=a'+b'$, so $a=a'$.
 
-**Pigeonhole.** The $m^2+1$ pairs $T^0(0,1),\dots,T^{m^2}(0,1)$ cannot all be different, so $T^i(0,1)=T^j(0,1)$ for some $0\le i<j$. Since $T$ is injective, we can cancel one $T$ at a time: $T^{i-1}(0,1)=T^{j-1}(0,1)$, and so on down to $(0,1)=T^{j-i}(0,1)$.
+**Pigeonhole.** The $m^2+1$ pairs $T^0(0,1),\dots,T^{m^2}(0,1)$ cannot all be different, so $T^i(0,1)=T^j(0,1)$ for some $0\le i<j$. Since $T$ is injective, we can cancel one $T$ at a time: $(0,1)=T^{j-i}(0,1)$.
 
 **Conclusion.** With $p=j-i>0$ we have $(F_p,F_{p+1})\equiv(0,1)\pmod m$. In particular $m\mid F_p$. $\blacksquare$
 
-**Remark.** The least such $p$ is the "rank of apparition" of $m$: for example $5\mid F_5=5$ and $9\mid F_{12}=144$. The full period of the Fibonacci sequence modulo $m$ (the Pisano period) is $3,8,20,60$ for $m=2,3,5,10$.
+**Remark.** The least such $p$ is the "rank of apparition" of $m$: e.g. $5\mid F_5=5$ and $9\mid F_{12}=144$.
 
-**Lesson.** A recurrence determined by a bijective step, taken modulo $m$, is purely periodic: pigeonhole plus injectivity brings you back to the start.
+**Lesson.** A recurrence determined by a bijective step, taken modulo $m$, is purely periodic.
 @@@ alg2-the-gcd-of-two-fibonacci-numbers.md
 ---
 title: gcd(F_m, F_n) = F_gcd(m,n)
-category: olympiad/oly-algebra
+category: algebra/equations
 level: olympiad
 difficulty: 4
 tags: Fibonacci numbers, gcd, Euclidean algorithm, identities
@@ -352,17 +352,17 @@ First prove $F_{a+b}=F_{a+1}F_b+F_aF_{b-1}$ and $\gcd(F_n,F_{n+1})=1$. Then show
 
 ## Solution
 
-**Step 1: addition formula.** For $b\ge1$: $F_{a+b}=F_{a+1}F_b+F_aF_{b-1}$. For $b=1$ it reads $F_{a+1}=F_{a+1}\cdot1+F_a\cdot0$. For $b=2$ it reads $F_{a+2}=F_{a+1}+F_a$. If it holds for $b$ and $b+1$, adding the two relations gives it for $b+2$ (both sides satisfy the Fibonacci recurrence in $b$).
+**Step 1: addition formula.** For $b\ge1$: $F_{a+b}=F_{a+1}F_b+F_aF_{b-1}$. Proven by induction on $b$ (both sides satisfy the Fibonacci recurrence in $b$).
 
-**Step 2: consecutive terms are coprime.** $\gcd(F_{n+1},F_n)=\gcd(F_n+F_{n-1},F_n)=\gcd(F_{n-1},F_n)=\dots=\gcd(F_1,F_0)=\gcd(1,0)=1$.
+**Step 2: consecutive terms are coprime.** $\gcd(F_{n+1},F_n)=\gcd(F_n+F_{n-1},F_n)=\gcd(F_{n-1},F_n)=\dots=\gcd(F_1,F_0)=1$.
 
 **Step 3: the key reduction.** By Step 1, $F_{a+b}=F_{a+1}F_b+F_aF_{b-1}$, so
 $$\gcd(F_{a+b},F_b)=\gcd(F_aF_{b-1},F_b)=\gcd(F_a,F_b),$$
 where the last equality holds because $F_{b-1}$ and $F_b$ are coprime (Step 2).
 
-**Step 4: Euclid on the indices.** By Step 3 (applied repeatedly), $\gcd(F_m,F_n)=\gcd(F_{m-n},F_n)$ for $m>n$. This is the subtraction form of the Euclidean algorithm, applied to the indices, which ends at $\gcd(F_g,F_0)=F_g$ with $g=\gcd(m,n)$ (as $\gcd(x,0)=x$). Hence $\gcd(F_m,F_n)=F_{\gcd(m,n)}$. $\blacksquare$
+**Step 4: Euclid on the indices.** By Step 3, $\gcd(F_m,F_n)=\gcd(F_{m-n},F_n)$ for $m>n$. This is the subtraction form of the Euclidean algorithm, applied to the indices, which ends at $\gcd(F_g,F_0)=F_g$ with $g=\gcd(m,n)$. Hence $\gcd(F_m,F_n)=F_{\gcd(m,n)}$. $\blacksquare$
 
-**Consequence.** Let $n>4$ be composite, $n=ab$ with $2\le a\le b$. Since $n\ne4$, $b\ge3$, and $b<n$. By the formula, $\gcd(F_b,F_n)=F_{\gcd(b,n)}=F_b$, i.e. $F_b\mid F_n$. Here $F_b\ge F_3=2$ and $F_b<F_n$ (the sequence is strictly increasing from $F_2$ on), so $F_n$ has a proper divisor $F_b>1$ and is composite. Hence if $F_n$ is prime and $n>4$, then $n$ is prime.
+**Consequence.** Let $n>4$ be composite, $n=ab$ with $2\le a\le b$. Since $n\ne4$, $b\ge3$, and $b<n$. By the formula, $\gcd(F_b,F_n)=F_{\gcd(b,n)}=F_b$, i.e. $F_b\mid F_n$. Here $F_b\ge F_3=2$ and $F_b<F_n$, so $F_n$ has a proper divisor $F_b>1$ and is composite. Hence if $F_n$ is prime and $n>4$, then $n$ is prime.
 
 **Remark.** The converse fails: $F_{19}=4181=37\cdot113$.
 
@@ -370,7 +370,7 @@ where the last equality holds because $F_{b-1}$ and $F_b$ are coprime (Step 2).
 @@@ alg2-cassini-and-sums-of-squares-of-fibonacci-numbers.md
 ---
 title: Cassini's identity and sums of Fibonacci squares
-category: olympiad/oly-algebra
+category: algebra/equations
 level: m1
 difficulty: 2
 tags: Fibonacci numbers, matrices, determinant, induction
@@ -392,14 +392,12 @@ For part 1, consider the matrix $M=\begin{pmatrix}1&1\\1&0\end{pmatrix}$ and its
 
 ## Solution
 
-**1.** By induction, $M^n=\begin{pmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{pmatrix}$: true for $n=1$, and
-$$M^{n}M=\begin{pmatrix}F_{n+1}+F_n&F_{n+1}\\F_n+F_{n-1}&F_n\end{pmatrix}=\begin{pmatrix}F_{n+2}&F_{n+1}\\F_{n+1}&F_n\end{pmatrix}.$$
-Taking determinants, $\det M^n=(\det M)^n=(-1)^n$, i.e. $F_{n+1}F_{n-1}-F_n^2=(-1)^n$.
+**1.** By induction, $M^n=\begin{pmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{pmatrix}$. Taking determinants, $\det M^n=(\det M)^n=(-1)^n$, i.e. $F_{n+1}F_{n-1}-F_n^2=(-1)^n$.
 
 **2.** For $n=1$: $F_1^2=1=F_1F_2$. If the formula holds for $n$, then
 $$F_nF_{n+1}+F_{n+1}^2=F_{n+1}(F_n+F_{n+1})=F_{n+1}F_{n+2}.$$
 
-**3.** $M^{2n+1}=M^nM^{n+1}$, and the $(1,2)$ entry of $M^k$ is $F_k$. The $(1,2)$ entry of the product is (first row of $M^n$) times (second column of $M^{n+1}$) $=F_{n+1}\cdot F_{n+1}+F_n\cdot F_n$. Hence $F_{2n+1}=F_n^2+F_{n+1}^2$.
+**3.** $M^{2n+1}=M^nM^{n+1}$, and the $(1,2)$ entry of $M^k$ is $F_k$. The $(1,2)$ entry of the product is $F_{n+1}\cdot F_{n+1}+F_n\cdot F_n$. Hence $F_{2n+1}=F_n^2+F_{n+1}^2$.
 
 **Computation.** $F_{10}=55$, $F_{11}=89$, so $\sum_{k=1}^{10}F_k^2=55\cdot89=4895$.
 
@@ -407,7 +405,7 @@ $$F_nF_{n+1}+F_{n+1}^2=F_{n+1}(F_n+F_{n+1})=F_{n+1}F_{n+2}.$$
 @@@ alg2-the-continued-fraction-of-the-square-root-of-two.md
 ---
 title: Approximating √2 by 1 + 1/(1 + x)
-category: olympiad/oly-algebra
+category: algebra/equations
 level: olympiad
 difficulty: 3
 tags: continued fractions, sequences, Pell equation, approximation
@@ -432,7 +430,7 @@ For part 1, compute $x_{n+1}-\sqrt2$ in terms of $x_n-\sqrt2$. For part 2, compu
 
 **1.** Since $x_{n+1}=\frac{2+x_n}{1+x_n}$,
 $$x_{n+1}-\sqrt2=\frac{2+x_n-\sqrt2-\sqrt2x_n}{1+x_n}=\frac{(1-\sqrt2)(x_n-\sqrt2)}{1+x_n}.$$
-All $x_n\ge1$ (by induction: $x_{n+1}=1+\frac1{1+x_n}>1$), so
+All $x_n\ge1$, so
 $$|x_{n+1}-\sqrt2|\le\frac{\sqrt2-1}{2}|x_n-\sqrt2|<\frac{|x_n-\sqrt2|}{4}.$$
 Hence $|x_n-\sqrt2|\le4^{-n}|x_0-\sqrt2|\to0$: geometric convergence.
 
@@ -444,13 +442,11 @@ The sign alternates, and $p_0^2-2q_0^2=-1$, so $p_n^2-2q_n^2=(-1)^{n+1}$.
 
 **First terms.** $1,\ \frac32,\ \frac75,\ \frac{17}{12},\ \frac{41}{29},\dots$ and $3^2-2\cdot2^2=1$, $7^2-2\cdot5^2=-1$, $17^2-2\cdot12^2=1$.
 
-**Remark.** These are the convergents of $\sqrt2=[1;2,2,2,\dots]$, and part 2 produces infinitely many solutions of the Pell-type equation $p^2-2q^2=\pm1$.
-
 **Lesson.** An iteration $x\mapsto\frac{ax+b}{cx+d}$ with a fixed point $\alpha$ contracts: compute $x_{n+1}-\alpha$ as a multiple of $x_n-\alpha$.
 @@@ alg2-an-integer-polynomial-with-root-sqrt2-plus-sqrt3-plus-sqrt5.md
 ---
 title: A monic polynomial with root √2 + √3 + √5
-category: olympiad/oly-algebra
+category: algebra/polynomials
 level: olympiad
 difficulty: 3
 tags: algebraic numbers, minimal polynomial, rational root theorem, irrationality
@@ -472,7 +468,7 @@ Isolate one square root and square, repeatedly. For part 3 use the rational root
 **1.** Let $t=\sqrt2+\sqrt3$. Then $t^2=5+2\sqrt6$, so $(t^2-5)^2=24$, i.e.
 $$t^4-10t^2+1=0.$$
 
-**2.** Let $x=\sqrt2+\sqrt3+\sqrt5=t+\sqrt5$, so $t=x-\sqrt5$. Substituting into part 1:
+**2.** Let $x=\sqrt2+\sqrt3+\sqrt5=t+\sqrt5$, so $t=x-\sqrt5$. Substituting:
 $$(x-\sqrt5)^4-10(x-\sqrt5)^2+1=0.$$
 Expand: $(x-\sqrt5)^4=x^4-4\sqrt5x^3+30x^2-20\sqrt5x+25$ and $-10(x-\sqrt5)^2=-10x^2+20\sqrt5x-50$. The terms in $x$ cancel and
 $$x^4+20x^2-24=4\sqrt5\,x^3.$$
@@ -480,15 +476,15 @@ Squaring: $(x^4+20x^2-24)^2=80x^6$, that is
 $$x^8-40x^6+352x^4-960x^2+576=0.$$
 So $s$ is a root of this monic integer polynomial of degree $8$.
 
-**3.** By the rational root theorem, a rational root of this monic polynomial is an integer. But $1.41<\sqrt2<1.42$, $1.73<\sqrt3<1.74$ and $2.23<\sqrt5<2.24$, so $5.37<s<5.40$: $s$ lies strictly between $5$ and $6$ and is not an integer. Hence $s$ is irrational. $\blacksquare$
+**3.** By the rational root theorem, a rational root of this monic polynomial is an integer. But $5.37<s<5.40$: $s$ lies strictly between $5$ and $6$ and is not an integer. Hence $s$ is irrational. $\blacksquare$
 
-**Remark.** The degree $8$ is the best possible: the $8$ numbers $\pm\sqrt2\pm\sqrt3\pm\sqrt5$ are the roots of this polynomial, and $s$ has $2^3$ conjugates.
+**Remark.** The degree $8$ is the best possible: the $8$ numbers $\pm\sqrt2\pm\sqrt3\pm\sqrt5$ are the roots of this polynomial.
 
-**Lesson.** To find a polynomial killing a sum of square roots, eliminate the radicals one at a time by isolating and squaring (or use the product over all sign choices).
+**Lesson.** To find a polynomial killing a sum of square roots, eliminate the radicals one at a time.
 @@@ alg2-complex-numbers-of-modulus-one-and-symmetric-expressions.md
 ---
 title: Three complex numbers of modulus one
-category: olympiad/oly-algebra
+category: algebra/complex-numbers
 level: olympiad
 difficulty: 3
 tags: complex numbers, unit circle, conjugation, equilateral triangle
@@ -513,19 +509,17 @@ On the unit circle, $\bar a=\frac1a$. Express $\overline{a+b+c}$ in terms of $ab
 $$\overline{a+b+c}=\frac1a+\frac1b+\frac1c=\frac{ab+bc+ca}{abc}.$$
 Taking moduli and using $|abc|=1$: $|a+b+c|=|ab+bc+ca|$.
 
-**2.** If $a+b+c=0$, part 1 gives $ab+bc+ca=0$. Then $a,b,c$ are the roots of $t^3-(a+b+c)t^2+(ab+bc+ca)t-abc=t^3-abc$. The equation $t^3=abc$ has three distinct roots (since $abc\ne0$): the three cube roots of $abc$, which are the vertices of an equilateral triangle centred at $0$ (they are $r,r\omega,r\omega^2$). As $a,b,c$ are the three roots of this cubic, they are exactly these.
+**2.** If $a+b+c=0$, part 1 gives $ab+bc+ca=0$. Then $a,b,c$ are the roots of $t^3-abc=0$. The equation $t^3=abc$ has three distinct roots (since $abc\ne0$): the three cube roots of $abc$, which are $r,r\omega,r\omega^2$ — vertices of an equilateral triangle centred at $0$.
 
 **3.** Let $Z=\dfrac{(a+b)(b+c)(c+a)}{abc}$. For $a,b\ne0$: $\overline{a+b}=\frac1a+\frac1b=\frac{a+b}{ab}$. Therefore
-$$\overline{(a+b)(b+c)(c+a)}=\frac{(a+b)(b+c)(c+a)}{(ab)(bc)(ca)}=\frac{(a+b)(b+c)(c+a)}{(abc)^2},\qquad\overline{abc}=\frac1{abc}.$$
+$$\overline{(a+b)(b+c)(c+a)}=\frac{(a+b)(b+c)(c+a)}{(abc)^2},\qquad\overline{abc}=\frac1{abc}.$$
 Hence $\bar Z=\dfrac{(a+b)(b+c)(c+a)}{(abc)^2}\cdot abc=Z$, so $Z$ is real. $\blacksquare$
-
-**Remark.** Part 3 is the algebraic form of the fact that, for unit complex numbers, $\frac{a+b}{\sqrt{ab}}=2\cos\frac{\theta_a-\theta_b}2$ is real.
 
 **Lesson.** On the unit circle replace $\bar z$ by $1/z$: symmetric expressions become rational functions you can compare with their conjugates.
 @@@ alg2-tan-20-tan-40-tan-80-and-a-sum-of-squares.md
 ---
 title: tan 20° tan 40° tan 80° and tan²20° + tan²40° + tan²80°
-category: olympiad/oly-algebra
+category: algebra/equations
 level: olympiad
 difficulty: 3
 tags: trigonometry, tangent, triple angle, Vieta
@@ -552,17 +546,15 @@ so the product is $\dfrac{t(3-t^2)}{1-3t^2}=\tan3\theta$ (the triple-angle formu
 
 **3.** The equation $\tan3\theta=\sqrt3$ means $\frac{3t-t^3}{1-3t^2}=\sqrt3$, i.e.
 $$t^3-3\sqrt3\,t^2-3t+\sqrt3=0.$$
-Its solutions $t=\tan\theta$ include $\theta=20^\circ,\ 80^\circ,\ 140^\circ$ (since $3\theta=60^\circ,240^\circ,420^\circ$, all with tangent $\sqrt3$). These give three different values $\tan20^\circ$, $\tan80^\circ$, $\tan140^\circ=-\tan40^\circ$, which are the three roots of the cubic. By Vieta, with $e_1=3\sqrt3$ and $e_2=-3$:
+Its solutions $t=\tan\theta$ include $\theta=20^\circ,\ 80^\circ,\ 140^\circ$ (since $3\theta=60^\circ,240^\circ,420^\circ$, all with tangent $\sqrt3$). These give the three roots $\tan20^\circ$, $\tan80^\circ$, $\tan140^\circ=-\tan40^\circ$. By Vieta, with $e_1=3\sqrt3$ and $e_2=-3$:
 $$\tan^220^\circ+\tan^280^\circ+\tan^2(-40^\circ)=e_1^2-2e_2=27+6=33.$$
 Since $\tan^2(-40^\circ)=\tan^240^\circ$, this is the required sum. $\blacksquare$
-
-**Check.** $0.1325+0.7041+32.16\approx33.0$.
 
 **Lesson.** When several trigonometric values share an angle equation ($\tan3\theta=\text{const}$), they are the roots of one polynomial: use Vieta for their symmetric functions.
 @@@ alg2-the-product-of-cosines-of-multiples-of-pi-over-2n-plus-1.md
 ---
 title: The product cos(π/N)·cos(2π/N)···cos(nπ/N) with N = 2n + 1
-category: olympiad/oly-algebra
+category: algebra/equations
 level: olympiad
 difficulty: 3
 tags: trigonometry, product, double angle, permutation of angles
@@ -583,21 +575,21 @@ Multiply by $\prod\sin\frac{k\pi}N$ and use $\sin2x=2\sin x\cos x$. Then show th
 **Idea.** Doubling the angle turns the cosine product into a sine product that can be compared with the original sine product.
 
 **Step 1.** Let $S=\prod_{k=1}^n\sin\frac{k\pi}N>0$ and $C=\prod_{k=1}^n\cos\frac{k\pi}N$. Then
-$$\prod_{k=1}^n\sin\frac{2k\pi}N=\prod_{k=1}^n2\sin\frac{k\pi}N\cos\frac{k\pi}N=2^nSC.$$
+$$\prod_{k=1}^n\sin\frac{2k\pi}N=2^nSC.$$
 
-**Step 2: the left side equals $S$.** For each $k\in\{1,\dots,n\}$, either $2k\le n$, and then $\sin\frac{2k\pi}N$ is already one of the factors of $S$; or $2k>n$, and then
+**Step 2: the left side equals $S$.** For each $k\in\{1,\dots,n\}$, either $2k\le n$, then $\sin\frac{2k\pi}N$ is already a factor of $S$; or $2k>n$, then
 $$\sin\frac{2k\pi}N=\sin\left(\pi-\frac{2k\pi}N\right)=\sin\frac{(N-2k)\pi}N,\qquad N-2k=2(n-k)+1\in\{1,3,\dots\}.$$
-Here $j=N-2k$ satisfies $1\le j\le n$ (as $2k>n$ gives $j<n+1$). The indices $2k$ (for $2k\le n$) are the even numbers in $\{1,\dots,n\}$ and the indices $N-2k$ (for $2k>n$) are the odd numbers in $\{1,\dots,n\}$ (since $N$ is odd, $N-2k$ is odd). Each integer in $\{1,\dots,n\}$ appears exactly once, so $\prod_k\sin\frac{2k\pi}N=S$.
+Here $j=N-2k$ satisfies $1\le j\le n$. The indices $2k$ (for $2k\le n$) are the even numbers in $\{1,\dots,n\}$; the indices $N-2k$ (for $2k>n$) are the odd numbers in $\{1,\dots,n\}$. Each integer in $\{1,\dots,n\}$ appears exactly once, so the left side equals $S$.
 
 **Step 3.** Therefore $2^nSC=S$, and since $S\ne0$, $C=2^{-n}$. $\blacksquare$
 
-**Check.** $n=3$ ($N=7$): $\cos\frac\pi7\cos\frac{2\pi}7\cos\frac{3\pi}7=\frac18$ ✓. $n=5$: $\frac1{32}$ ✓.
+**Check.** $n=3$ ($N=7$): $\cos\frac\pi7\cos\frac{2\pi}7\cos\frac{3\pi}7=\frac18$ ✓.
 
-**Lesson.** To evaluate a product of trigonometric values at equally spaced angles, double the angles and show that the new product is a permutation of the old one (using $\sin x=\sin(\pi-x)$).
+**Lesson.** To evaluate a product of trigonometric values at equally spaced angles, double the angles and show that the new product is a permutation of the old one.
 @@@ alg2-telescoping-sums-with-factorials-and-products.md
 ---
 title: Three telescoping sums
-category: olympiad/oly-algebra
+category: algebra/equations
 level: m1
 difficulty: 2
 tags: telescoping, factorials, partial fractions
@@ -613,28 +605,26 @@ Compute, for $n\ge1$:
 
 ## Hint
 
-Write each term as a difference $u_{k+1}-u_k$ for a simple $u_k$: for (1), $k\cdot k!=(k+1)!-k!$; for (3), use partial fractions with denominators $k(k+1)$ and $(k+1)(k+2)$.
+Write each term as a difference $u_{k+1}-u_k$ for a simple $u_k$: for (1), $k\cdot k!=(k+1)!-k!$; for (3), use partial fractions.
 
 ## Solution
 
 **1.** $k\cdot k!=(k+1-1)k!=(k+1)!-k!$. The sum telescopes:
-$$\sum_{k=1}^nk\cdot k!=(n+1)!-1!=(n+1)!-1.$$
+$$\sum_{k=1}^nk\cdot k!=(n+1)!-1.$$
 
 **2.** $\dfrac k{(k+1)!}=\dfrac{(k+1)-1}{(k+1)!}=\dfrac1{k!}-\dfrac1{(k+1)!}$, so
-$$\sum_{k=1}^n\frac k{(k+1)!}=\frac1{1!}-\frac1{(n+1)!}=1-\frac1{(n+1)!}.$$
+$$\sum_{k=1}^n\frac k{(k+1)!}=1-\frac1{(n+1)!}.$$
 
 **3.** $\dfrac1{k(k+1)(k+2)}=\dfrac12\left(\dfrac1{k(k+1)}-\dfrac1{(k+1)(k+2)}\right)$, so
 $$\sum_{k=1}^n\frac1{k(k+1)(k+2)}=\frac12\left(\frac12-\frac1{(n+1)(n+2)}\right)=\frac{n(n+3)}{4(n+1)(n+2)}.$$
 
 **Check.** $n=1$: (1) $1=2!-1$; (2) $\frac12=1-\frac12$; (3) $\frac16=\frac{4}{4\cdot2\cdot3}$ ✓.
 
-**Application.** Part 1 shows that every positive integer has a unique representation $\sum_{k\ge1}c_kk!$ with $0\le c_k\le k$ (the factorial number system).
-
-**Lesson.** Make terms telescope by adding and subtracting a suitable quantity: $k\cdot k!=(k+1)!-k!$ and $\frac1{k(k+1)}$-type differences are the standard tools.
+**Lesson.** Make terms telescope by adding and subtracting a suitable quantity.
 @@@ alg2-growth-of-the-sequence-a-n-plus-one-equals-a-n-plus-one-over-a-n.md
 ---
 title: How fast does a_{n+1} = a_n + 1/a_n grow?
-category: olympiad/oly-algebra
+category: algebra/equations
 level: olympiad
 difficulty: 3
 tags: sequences, growth, squaring trick, estimates
@@ -661,21 +651,18 @@ Square the recurrence: $a_{n+1}^2=a_n^2+2+\frac1{a_n^2}$.
 
 **Upper bound.** Summing the squared recurrence from $1$ to $n-1$,
 $$a_n^2=1+2(n-1)+\sum_{k=1}^{n-1}\frac1{a_k^2}\le2n-1+\sum_{k=1}^{n-1}\frac1{2k-1},$$
-using $a_k^2\ge2k-1$. Since $\frac1{2k-1}\le\frac1k$ for $k\ge1$, the last sum is at most $H_{n-1}\le1+\ln(n-1)$ for $n\ge2$ (and $0$ for $n=1$). Thus
-$$a_n^2\le2n-1+1+\ln n=2n+\ln n,$$
-which gives part 1.
+using $a_k^2\ge2k-1$. Since $\frac1{2k-1}\le\frac1k$ for $k\ge1$, the last sum is at most $H_{n-1}\le1+\ln(n-1)$ for $n\ge2$. Thus
+$$a_n^2\le2n-1+1+\ln n=2n+\ln n.$$
 
-**2.** Dividing by $2n$: $1-\frac1{2n}\le\frac{a_n^2}{2n}\le1+\frac{\ln n}{2n}$, and both bounds tend to $1$. Hence $\frac{a_n^2}{2n}\to1$ and $\frac{a_n}{\sqrt{2n}}\to1$.
+**2.** Dividing by $2n$: $1-\frac1{2n}\le\frac{a_n^2}{2n}\le1+\frac{\ln n}{2n}$, and both bounds tend to $1$. Hence $\frac{a_n}{\sqrt{2n}}\to1$.
 
-**3.** $a_{100}^2\ge199>196=14^2$ and $a_{100}^2\le200+\ln100<205<225=15^2$. So $14<a_{100}<15$. (Numerically $a_{100}\approx14.21$.)
+**3.** $a_{100}^2\ge199>196=14^2$ and $a_{100}^2\le200+\ln100<205<225=15^2$. So $14<a_{100}<15$.
 
-**Remark.** The sequence is unbounded even though the increments $\frac1{a_n}$ tend to $0$: the harmonic-type series $\sum\frac1{a_n}$ diverges because $\frac1{a_n}\approx\frac1{\sqrt{2n}}$.
-
-**Lesson.** For a recurrence $a_{n+1}=a_n+\varepsilon_n$ with small increments, look at $a_n^2$ (or another transform) so that the main term becomes linear.
+**Lesson.** For a recurrence $a_{n+1}=a_n+\varepsilon_n$ with small increments, look at $a_n^2$ so that the main term becomes linear.
 @@@ alg2-the-derivative-inequality-for-polynomials-with-real-roots.md
 ---
 title: P′² ≥ P·P″ for polynomials with real roots
-category: olympiad/oly-algebra
+category: algebra/inequalities
 level: olympiad
 difficulty: 3
 tags: polynomials, real roots, logarithmic derivative, inequalities
@@ -704,6 +691,6 @@ Multiplying by $P(x)^2>0$: $P'(x)^2-P(x)P''(x)=P(x)^2\sum_i\frac1{(x-r_i)^2}>0$.
 
 **At a root.** If $P(x)=0$ then $P(x)P''(x)=0\le P'(x)^2$. $\blacksquare$
 
-**Example.** For $P(x)=x^2-1$: $P'^2-PP''=4x^2-2(x^2-1)=2x^2+2>0$ ✓. For $P=x^2+1$ (no real roots): $4x^2-2(x^2+1)=2x^2-2<0$ at $x=0$, so the hypothesis cannot be dropped.
+**Example.** For $P(x)=x^2-1$: $P'^2-PP''=2x^2+2>0$ ✓. For $P=x^2+1$ (no real roots): $4x^2-2(x^2+1)=2x^2-2<0$ at $x=0$, so the hypothesis cannot be dropped.
 
 **Lesson.** The logarithmic derivative turns a product into a sum, and its derivative $-\sum\frac1{(x-r_i)^2}$ has a definite sign when the roots are real.
