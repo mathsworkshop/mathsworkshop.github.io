@@ -3199,7 +3199,7 @@ $|\pi_1(x)-\pi_1(y)|=|x_1-y_1|\le\|x-y\|_1$.
 @@@ partial-derivatives-basic.md
 ---
 title: Partial derivatives and the gradient
-cetegory: calculus/multivariable/partial-derivatives
+category: calculus/multivariable/partial-derivatives
 level: l1
 difficulty: 2
 tags: partial derivatives, gradient, chain rule
@@ -3232,7 +3232,7 @@ $$\nabla f(1,0) = (0, 2).$$
 @@@ partial-derivatives-chain-rule.md
 ---
 title: The chain rule for a composition
-cetegory: calculus/multivariable/partial-derivatives
+category: calculus/multivariable/partial-derivatives
 level: l2
 difficulty: 3
 tags: chain rule, composition, directional derivative
@@ -3264,7 +3264,7 @@ $$\frac{d}{dt}f(\gamma(t)) = 2\cos t \sin t \cdot (-\sin t) + \cos^2 t \cdot \co
 @@@ partial-derivatives-c1-check.md
 ---
 title: Is a function $C^1$ on $\mathbb{R}^2$?
-cetegory: calculus/multivariable/partial-derivatives
+category: calculus/multivariable/partial-derivatives
 level: l2
 difficulty: 4
 tags: continuity, partial derivatives, class C1
@@ -3301,7 +3301,7 @@ So $\frac{\partial f}{\partial x}$ is continuous at $(0,0)$, and similarly for $
 @@@ partial-derivatives-jacobian.md
 ---
 title: Jacobian matrix of a map
-cetegory: calculus/multivariable/partial-derivatives
+category: calculus/multivariable/partial-derivatives
 level: l2
 difficulty: 3
 tags: Jacobian matrix, differential, vector-valued map
@@ -3331,7 +3331,7 @@ $$J_F(x,y) = \begin{pmatrix} \cos y & -x \sin y \\ \cos x & 0 \\ 2xy & x^2 \end{
 @@@ multiple-integrals-rectangle.md
 ---
 title: Double integral over a triangular domain
-cetegory: calculus/multivariable/multiple-integrals
+category: calculus/multivariable/multiple-integrals
 level: l1
 difficulty: 2
 tags: double integral, iterated integration, triangular domain
@@ -3365,7 +3365,7 @@ $$\iint_D (x^2+y^2) \, dx \, dy = \frac{1}{12} - \left(-\frac{1}{12}\right) = \f
 @@@ multiple-integrals-polar.md
 ---
 title: Double integral in polar coordinates
-cetegory: calculus/multivariable/multiple-integrals
+category: calculus/multivariable/multiple-integrals
 level: l2
 difficulty: 3
 tags: polar coordinates, double integral, Jacobian
@@ -3400,7 +3400,7 @@ $$\iint_D e^{-(x^2+y^2)} \, dx \, dy = 2\pi \cdot \frac12(1-e^{-1}) = \pi(1-e^{-
 @@@ multiple-integrals-triple.md
 ---
 title: Triple integral over a simplex
-cetegory: calculus/multivariable/multiple-integrals
+category: calculus/multivariable/multiple-integrals
 level: l2
 difficulty: 3
 tags: triple integral, iterated integration, simplex
@@ -3436,7 +3436,7 @@ $$I = \frac12 \int_0^1 x(1-x)^2 \, dx = \frac12 \int_0^1 (x - 2x^2 + x^3) \, dx 
 @@@ multiple-integrals-change-variables.md
 ---
 title: Affine change of variables
-cetegory: calculus/multivariable/multiple-integrals
+category: calculus/multivariable/multiple-integrals
 level: l2
 difficulty: 4
 tags: change of variables, Jacobian, parallelogram
@@ -3469,7 +3469,7 @@ $$\text{Area}(P) = \iint_P dx\,dy = \iint_T \frac12 \, du\,dv = \frac12 \cdot 4 
 @@@ vector-calculus-line-integral.md
 ---
 title: Line integral of a differential form
-cetegory: calculus/multivariable/vector-calculus
+category: calculus/multivariable/vector-calculus
 level: l2
 difficulty: 3
 tags: line integral, differential form, parametrization
@@ -3496,7 +3496,7 @@ $$\int_\gamma \omega = \int_0^1 \left[ (t+t)\cdot 1 + (t-t)\cdot 1 \right] dt = 
 @@@ vector-calculus-green.md
 ---
 title: Green-Riemann formula
-cetegory: calculus/multivariable/vector-calculus
+category: calculus/multivariable/vector-calculus
 level: l3
 difficulty: 4
 tags: Green-Riemann, line integral, double integral
@@ -3530,7 +3530,7 @@ $$\int_C Pdx + Qdy = \iint_D 2 \, dx\,dy = 2 \cdot \text{Area}(D) = 2\pi.$$
 @@@ vector-calculus-divergence.md
 ---
 title: Divergence theorem (Ostrogradsky)
-cetegory: calculus/multivariable/vector-calculus
+category: calculus/multivariable/vector-calculus
 level: l3
 difficulty: 4
 tags: divergence theorem, flux, surface
@@ -3558,7 +3558,7 @@ $$\iint_S F \cdot n \, dS = \iiint_V 3 \, dV = 3 \cdot \frac43 \pi R^3 = 4\pi R^
 @@@ vector-calculus-stokes.md
 ---
 title: Stokes' theorem
-cetegory: calculus/multivariable/vector-calculus
+category: calculus/multivariable/vector-calculus
 level: l3
 difficulty: 4
 tags: Stokes, curl, surface integral
@@ -3588,7 +3588,7 @@ $$\int_C F \cdot dr = \iint_S 2 \, dS = 2 \cdot \text{Area}(S) = 2\pi.$$
 @@@ constrained-optimisation-lagrange-basic.md
 ---
 title: Lagrange multipliers on a circle
-cetegory: calculus/multivariable/constrained-optimisation
+category: calculus/multivariable/constrained-optimisation
 level: l2
 difficulty: 3
 tags: Lagrange, multipliers, equality constraint
@@ -3621,7 +3621,7 @@ $$f\left(-\frac{3}{\sqrt2}, \frac{1}{\sqrt2}\right) = -\frac{9}{\sqrt2} - \frac{
 @@@ constrained-optimisation-lagrange-compact.md
 ---
 title: Constrained extrema and a compactness argument
-cetegory: calculus/multivariable/constrained-optimisation
+category: calculus/multivariable/constrained-optimisation
 level: l3
 difficulty: 4
 tags: Lagrange, compactness, global maximum
@@ -3656,7 +3656,7 @@ The only real root is $x=1$ (since $x^3+x-2 = (x-1)(x^2+x+2)$ and the discrimina
 @@@ constrained-optimisation-lagrange-rectangle.md
 ---
 title: Optimisation under a linear constraint
-cetegory: calculus/multivariable/constrained-optimisation
+category: calculus/multivariable/constrained-optimisation
 level: l2
 difficulty: 3
 tags: Lagrange, linear constraint, minimum
@@ -3684,7 +3684,7 @@ $$x + 4x = 5 \implies 5x = 5 \implies x = 1, \quad y = 2.$$
 @@@ constrained-optimisation-lagrange-produit.md
 ---
 title: Maximizing a product under a linear constraint
-cetegory: calculus/multivariable/constrained-optimisation
+category: calculus/multivariable/constrained-optimisation
 level: l3
 difficulty: 4
 tags: Lagrange, product, linear constraint
@@ -3714,7 +3714,7 @@ $$2x + 2x = 12 \implies 4x = 12 \implies x = 3, \quad y = 2.$$
 @@@ constrained-optimisation-least-squares.md
 ---
 title: Least squares as an optimisation problem
-cetegory: calculus/multivariable/constrained-optimisation
+category: calculus/multivariable/constrained-optimisation
 level: l3
 difficulty: 4
 tags: least squares, optimisation, regression
@@ -3750,7 +3750,7 @@ This is the slope of the least-squares line.
 @@@ constrained-optimisation-inequality-amgm.md
 ---
 title: The AM-GM inequality via optimisation
-cetegory: calculus/multivariable/constrained-optimisation
+category: calculus/multivariable/constrained-optimisation
 level: olympiad
 difficulty: 5
 tags: inequality, AM-GM, optimisation, proof
@@ -3781,7 +3781,7 @@ Taking the $n$-th root gives the AM-GM inequality.
 @@@ constrained-optimisation-eigenvalue.md
 ---
 title: Rayleigh quotient and eigenvalues
-cetegory: calculus/multivariable/constrained-optimisation
+category: calculus/multivariable/constrained-optimisation
 level: olympiad
 difficulty: 5
 tags: Rayleigh quotient, eigenvalues, optimisation on the sphere
@@ -3817,7 +3817,7 @@ So the maximum of $f$ on the sphere is the largest eigenvalue $\lambda_{\max}$.
 @@@ constrained-optimisation-cauchy-schwarz.md
 ---
 title: Cauchy-Schwarz inequality via optimisation
-cetegory: calculus/multivariable/constrained-optimisation
+category: calculus/multivariable/constrained-optimisation
 level: olympiad
 difficulty: 4
 tags: Cauchy-Schwarz, optimisation, proof
