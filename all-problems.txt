@@ -1,31 +1,3 @@
-@@@ an-improper-integral.md
----
-title: An improper integral
-category: calculus/single-variable/integration/improper-integrals
-level: l2
-difficulty: 2
-tags: improper integrals, integration by parts
-date: 2026-10-31
----
-
-## Statement
-
-Show that $\displaystyle\int_0^{+\infty}x\,e^{-x}\,dx$ converges and compute its value.
-
-## Hint
-
-Find an antiderivative by parts, then let the upper bound go to infinity.
-
-## Solution
-
-An antiderivative of $xe^{-x}$ is $F(x)=-(x+1)e^{-x}$, because
-$$F'(x)=-e^{-x}+(x+1)e^{-x}=xe^{-x}.$$
-
-For $A>0$,
-$$\int_0^Axe^{-x}\,dx=F(A)-F(0)=1-(A+1)e^{-A}.$$
-
-As $A\to+\infty$, $(A+1)e^{-A}\to0$ (exponential beats polynomial). So the integral converges and equals $1$.
-
 @@@ area-from-coordinates.md
 ---
 title: Area from coordinates
@@ -193,52 +165,6 @@ Hence the tangent length from $B$ is $a-r$ and from $A$ is $b-r$. The hypotenuse
 $$(a-r)+(b-r)=c\quad\Longrightarrow\quad r=\frac{a+b-c}{2}.$$
 
 For the $3$-$4$-$5$ triangle, $r=\dfrac{3+4-5}{2}=1$.
-
-@@@ integral-of-sine-squared.md
----
-title: Integral of sine squared
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 1
-tags: integrals, trigonometry
-date: 2026-10-31
----
-
-## Statement
-
-Compute $\displaystyle\int_0^\pi\sin^2x\,dx$.
-
-## Hint
-
-Linearise using $\cos2x=1-2\sin^2x$.
-
-## Solution
-
-Since $\sin^2x=\dfrac{1-\cos2x}{2}$,
-$$\int_0^\pi\sin^2x\,dx=\left[\frac x2-\frac{\sin2x}{4}\right]_0^\pi=\frac\pi2.$$
-
-@@@ integration-by-parts-x-exp-x.md
----
-title: Integration by parts
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 1
-tags: integrals, by parts
-date: 2026-10-31
----
-
-## Statement
-
-Compute $\displaystyle\int_0^1 x\,e^x\,dx$.
-
-## Hint
-
-Differentiate $x$ and integrate $e^x$.
-
-## Solution
-
-Take $u=x$ and $v'=e^x$, so $u'=1$ and $v=e^x$. Then
-$$\int_0^1xe^x\,dx=\Big[xe^x\Big]_0^1-\int_0^1e^x\,dx=e-(e-1)=1.$$
 
 @@@ radius-of-convergence.md
 ---
