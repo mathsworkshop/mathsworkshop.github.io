@@ -6190,7 +6190,7 @@ i.e. $\sqrt[3]{abc}\le\frac{a+b+c}{3}$.
 
 @@@ inequalities-cauchy-schwarz-basic.md
 ---
-title: Cauchyâ€“Schwarz inequality
+title: Cauchy-Schwarz inequality
 category: algebra/inequalities
 level: lycee
 difficulty: 3
@@ -6546,7 +6546,7 @@ date: 2026-11-03
 
 Prove Nesbitt's inequality
 $$\frac{a}{b+c}+\frac{b}{c+a}+\frac{c}{a+b}\ge\frac32$$
-using the Cauchyâ€“Schwarz inequality in Engel form.
+using the Cauchy-Schwarz inequality in Engel form.
 
 ## Hint
 
