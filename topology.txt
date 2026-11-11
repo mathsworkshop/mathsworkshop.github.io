@@ -133,7 +133,7 @@ For the eigenvalue count with $n=2$, find a family of matrices with no real eige
 
 **Rank.** $\frac1kI\to0$ and $\operatorname{rank}\frac1kI=n$ for all $k$, but $\operatorname{rank}0=0\neq n$. Not continuous (it is only lower semicontinuous: Problem 83).
 
-**$\dim\ker$.** By rankâ€“nullity $\dim\ker A=n-\operatorname{rank}A$, so the same sequence gives $\dim\ker(\frac1kI)=0\not\to n=\dim\ker0$.
+**$\dim\ker$.** By rank-nullity $\dim\ker A=n-\operatorname{rank}A$, so the same sequence gives $\dim\ker(\frac1kI)=0\not\to n=\dim\ker0$.
 
 **Number of distinct real eigenvalues.** Take $n=2$ and
 $$A_\varepsilon=\begin{pmatrix}0&-\varepsilon\\\varepsilon&0\end{pmatrix}.$$
@@ -248,7 +248,7 @@ Here both $A$ and $B$ must lie in the set $\{\|\,\cdot^{-1}\|\le M\}$.
 
 **Sharpness.** For $A=\operatorname{diag}(\frac1M,1,\dots,1)$ and $B=\operatorname{diag}(\frac2M,1,\dots,1)$ we have $\|A^{-1}\|=M$, $\|B^{-1}\|=\frac M2\le M$, $\|A-B\|=\frac1M$ and $\|A^{-1}-B^{-1}\|=\left|M-\frac M2\right|=\frac M2$. The ratio is $\frac{M/2}{1/M}=\frac{M^2}2$: the constant $M^2$ cannot be improved beyond a factor $2$.
 
-**Remark.** The set $\{\|A^{-1}\|\le M\}$ is exactly $\{\sigma_{\min}(A)\ge1/M\}$, the matrices at distance $\ge1/M$ from the singular matrices (Problem 63). So inversion is Lipschitz *away from the singular set*, with a constant blowing up like $\operatorname{dist}^{-2}$ â€” and Problem 73 shows that it fails to be uniformly continuous globally.
+**Remark.** The set $\{\|A^{-1}\|\le M\}$ is exactly $\{\sigma_{\min}(A)\ge1/M\}$, the matrices at distance $\ge1/M$ from the singular matrices (Problem 63). So inversion is Lipschitz *away from the singular set*, with a constant blowing up like $\operatorname{dist}^{-2}$ and Problem 73 shows that it fails to be uniformly continuous globally.
 @@@ mn-073-no-uniform-continuity.md
 ---
 title: Inversion is not uniformly continuous
@@ -288,7 +288,7 @@ with norm $\frac1{2\varepsilon}$.
 **Remark.**
 - The ratio $\frac{\|A^{-1}-B^{-1}\|}{\|A-B\|}=\frac1{2\varepsilon^2}$ matches the Lipschitz constant $M^2=\varepsilon^{-2}$ of Problem 72 (up to the factor $2$).
 - Inversion *is* uniformly continuous on each set $\{\sigma_{\min}\ge c\}$ with $c>0$, e.g. on the compact group $O(n)$ or on any bounded set at distance $\ge c$ from the singular matrices.
-- Compare with $x\mapsto1/x$ on $(0,1)$ â€” the case $n=1$.
+- Compare with $x\mapsto1/x$ on $(0,1)$ the case $n=1$.
 @@@ mn-074-squares.md
 ---
 title: Matrices of negative determinant are not squares
@@ -392,7 +392,7 @@ For the right inverse, use companion matrices.
 $$C(c)=\begin{pmatrix}0&0&\cdots&0&-c_0\\1&0&\cdots&0&-c_1\\0&1&\cdots&0&-c_2\\\vdots&&\ddots&&\vdots\\0&0&\cdots&1&-c_{n-1}\end{pmatrix}.$$
 The entries of $C(c)$ are $0$, $1$ or $-c_k$, so $c\mapsto C(c)$ is continuous (it is even affine).
 
-**Step 3: $\chi(C(c))=c$.** Expanding $\det(tI-C(c))$ along the last column gives $t^n+c_{n-1}t^{n-1}+\dots+c_0$. (Check $n=2$: $C=\begin{pmatrix}0&-c_0\\1&-c_1\end{pmatrix}$, $\det(tI-C)=t(t+c_1)+c_0=t^2+c_1t+c_0$ âœ“.)
+**Step 3: $\chi(C(c))=c$.** Expanding $\det(tI-C(c))$ along the last column gives $t^n+c_{n-1}t^{n-1}+\dots+c_0$. (Check $n=2$: $C=\begin{pmatrix}0&-c_0\\1&-c_1\end{pmatrix}$, $\det(tI-C)=t(t+c_1)+c_0=t^2+c_1t+c_0$.)
 
 **Step 4: conclusion.** $\chi\circ C=\mathrm{id}_{\mathbb{R}^n}$. So $\chi$ is surjective, and $C$ is a continuous right inverse (a continuous *section*).
 
@@ -413,7 +413,7 @@ With $\chi$ as in the previous problem, show that the fibre $\chi^{-1}(0)=\{A:\d
 
 ## Hint
 
-Use the Cayleyâ€“Hamilton theorem in one direction and the eigenvalues in the other.
+Use the Cayley-Hamilton theorem in one direction and the eigenvalues in the other.
 
 For unboundedness look at $n=2$ and a single nonzero entry above the diagonal.
 
@@ -421,7 +421,7 @@ For unboundedness look at $n=2$ and a single nonzero entry above the diagonal.
 
 **Idea.** Characteristic polynomial $t^n$ means that all complex eigenvalues are $0$, which is the same as nilpotency.
 
-**Step 1: $\chi_A=t^n\Rightarrow A$ nilpotent.** By the Cayleyâ€“Hamilton theorem, $\chi_A(A)=0$, i.e. $A^n=0$.
+**Step 1: $\chi_A=t^n\Rightarrow A$ nilpotent.** By the Cayley-Hamilton theorem, $\chi_A(A)=0$, i.e. $A^n=0$.
 
 **Step 2: $A$ nilpotent $\Rightarrow\chi_A=t^n$.** If $A^m=0$ and $Av=\lambda v$ with $v\ne0$ ($\lambda\in\mathbb{C}$), then $0=A^mv=\lambda^mv$ gives $\lambda=0$. So all complex roots of $\chi_A$ vanish and, $\chi_A$ being monic of degree $n$, $\chi_A=t^n$.
 
@@ -537,7 +537,7 @@ $$(A+tH)^{-1}=(I+tA^{-1}H)^{-1}A^{-1}=\big(I-tA^{-1}H+O(t^2)\big)A^{-1}=A^{-1}-t
 
 **Step 4: conclusion.** So $\frac{d}{dt}(A+tH)^{-1}|_{t=0}=-A^{-1}HA^{-1}$. Since $H\mapsto-A^{-1}HA^{-1}$ is linear and the remainder is $O(\|H\|^2)$ uniformly, this is the FrÃ©chet derivative.
 
-**Consistency check.** Differentiating $AA^{-1}=I$ gives $HA^{-1}+A\,D=0$, i.e. $D=-A^{-1}HA^{-1}$. For $n=1$: $\frac{d}{da}\frac1a=-\frac1{a^2}$ âœ“.
+**Consistency check.** Differentiating $AA^{-1}=I$ gives $HA^{-1}+A\,D=0$, i.e. $D=-A^{-1}HA^{-1}$. For $n=1$: $\frac{d}{da}\frac1a=-\frac1{a^2}$.
 
 **Remark.** Matrices do not commute, so one must keep the order $A^{-1}\,H\,A^{-1}$; for $n\ge2$ it is *not* $-HA^{-2}$ in general. The map $\iota$ is $C^\infty$ (even analytic) on $GL_n$: iterating, the $k$-th derivative involves products with $k+1$ copies of $A^{-1}$.
 @@@ mn-081-roots-depend-continuously.md
@@ -683,7 +683,7 @@ For the middle case, locate the columns and the rows of $\operatorname{adj}A$ in
 
 Hence $\operatorname{rank}\operatorname{adj}A=1$. (By symmetry, $\operatorname{adj}A\,A=0$ puts the rows into $\ker A^T$, also of dimension $1$: $\operatorname{adj}A=c\,uv^T$ with $u\in\ker A$, $v\in\ker A^T$.)
 
-**Example.** $n=2$, $A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$ (rank $1=n-1$): $\operatorname{adj}A=\begin{pmatrix}4&-2\\-2&1\end{pmatrix}$, rank $1$ âœ“. For $n=4$, random matrices of rank $4,3,2$ gave adjugate ranks $4,1,0$ numerically.
+**Example.** $n=2$, $A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$ (rank $1=n-1$): $\operatorname{adj}A=\begin{pmatrix}4&-2\\-2&1\end{pmatrix}$, rank $1$. For $n=4$, random matrices of rank $4,3,2$ gave adjugate ranks $4,1,0$ numerically.
 
 **Remark.** The case $n=1$ is excluded since $\operatorname{adj}A=(1)$ always. The result implies that $\operatorname{adj}$ is continuous but its rank pattern jumps. Also $\det(\operatorname{adj}A)=(\det A)^{n-1}$.
 @@@ mn-085-squaring.md
@@ -717,7 +717,7 @@ For non-surjectivity, find a $2\times2$ matrix of determinant $1$ which is not a
 **Step 3: not onto for $n=2$.** The matrix $N=\begin{pmatrix}-1&1\\0&-1\end{pmatrix}$ has $\det N=1$, so $N\in GL_2^+$. If $N=B^2$ with $B$ real, the eigenvalues of $B$ are two conjugate non-real numbers $\pm i$ or two real numbers; real $\mu$ would have $\mu^2=-1$, impossible, so they are $i,-i$, distinct. Then $B$ is diagonalisable over $\mathbb{C}$, so is $B^2$, with eigenvalues $-1,-1$: $B^2=-I\neq N$. Contradiction.
 
 **Remark.**
-- Combined with Problem 74: the image of squaring in $GL_n$ is a *proper* subset of $GL_n^+$ ($n\ge2$) â€” it contains the open set of matrices with no negative eigenvalue (which have a real square root by the principal logarithm/power series), but it is not open-and-closed in $GL_n^+$ in an obvious way.
+- Combined with Problem 74: the image of squaring in $GL_n$ is a *proper* subset of $GL_n^+$ ($n\ge2$) it contains the open set of matrices with no negative eigenvalue (which have a real square root by the principal logarithm/power series), but it is not open-and-closed in $GL_n^+$ in an obvious way.
 - Squaring on $GL_n^+$ is far from injective: $B$ and $-B$ have the same square, and for $n\ge2$ also $\operatorname{diag}(1,-1)$ squares to $I$.
 @@@ mn-086-open-mapping.md
 ---
@@ -773,15 +773,15 @@ $$|\sigma_k(A)-\sigma_k(B)|\le\|A-B\|.$$
 
 ## Hint
 
-Courantâ€“Fischer (minâ€“max) for singular values: $\sigma_k(A)=\max_{\dim V=k}\ \min_{x\in V,\ |x|=1}|Ax|$.
+Courant-Fischer (min-max) for singular values: $\sigma_k(A)=\max_{\dim V=k}\ \min_{x\in V,\ |x|=1}|Ax|$.
 
 Compare $|Ax|$ and $|Bx|$ for unit $x$.
 
 ## Solution
 
-**Idea.** Each $\sigma_k$ is given by a minâ€“max of the quantity $|Ax|$ over unit vectors, and $x\mapsto|Ax|$ moves by at most $\|A-B\|$ when $A$ is replaced by $B$.
+**Idea.** Each $\sigma_k$ is given by a min-max of the quantity $|Ax|$ over unit vectors, and $x\mapsto|Ax|$ moves by at most $\|A-B\|$ when $A$ is replaced by $B$.
 
-**Step 0: the minâ€“max formula.** $\sigma_k(A)^2=\lambda_k(A^TA)$, the $k$-th largest eigenvalue of the symmetric matrix $A^TA$. By the Courantâ€“Fischer theorem (quoted without proof),
+**Step 0: the min-max formula.** $\sigma_k(A)^2=\lambda_k(A^TA)$, the $k$-th largest eigenvalue of the symmetric matrix $A^TA$. By the Courant-Fischer theorem (quoted without proof),
 $$\lambda_k(A^TA)=\max_{\dim V=k}\ \min_{x\in V,|x|=1}x^TA^TAx=\max_{\dim V=k}\min_{x\in V,|x|=1}|Ax|^2.$$
 Taking square roots gives the displayed formula (square root is increasing).
 
@@ -817,20 +817,20 @@ For symmetric $A,B\in\mathrm{Sym}_n$ with ordered eigenvalues $\lambda_1\ge\dots
 
 ## Hint
 
-Courantâ€“Fischer for the Rayleigh quotient: $\lambda_k(A)=\max_{\dim V=k}\min_{x\in V,|x|=1}x^TAx$.
+Courant-Fischer for the Rayleigh quotient: $\lambda_k(A)=\max_{\dim V=k}\min_{x\in V,|x|=1}x^TAx$.
 
 Bound $|x^TAx-x^TBx|$ for unit $x$.
 
 ## Solution
 
-**Idea.** Same as for singular values: the quantities in the minâ€“max formula move by at most $\|A-B\|$.
+**Idea.** Same as for singular values: the quantities in the min-max formula move by at most $\|A-B\|$.
 
-**Step 0.** By Courantâ€“Fischer, for symmetric $A$,
+**Step 0.** By Courant-Fischer, for symmetric $A$,
 $$\lambda_k(A)=\max_{\dim V=k}\ \min_{x\in V,|x|=1}x^TAx.$$
 
 **Step 1: pointwise.** For every unit $x$,
 $$x^TAx=x^TBx+x^T(A-B)x\ge x^TBx-|x^T(A-B)x|\ge x^TBx-\|A-B\|,$$
-since $|x^TCx|\le|x|\,|Cx|\le\|C\|$ by Cauchyâ€“Schwarz.
+since $|x^TCx|\le|x|\,|Cx|\le\|C\|$ by Cauchy-Schwarz.
 
 **Step 2: min over $V$, then max over $V$.** For each $k$-dimensional $V$,
 $$\min_{V,|x|=1}x^TAx\ge\min_{V,|x|=1}x^TBx-\|A-B\|,$$
@@ -838,12 +838,12 @@ and taking $\max_V$ gives $\lambda_k(A)\ge\lambda_k(B)-\|A-B\|$.
 
 **Step 3: symmetry.** Exchange $A$ and $B$ to get the other inequality.
 
-**Numeric check.** For two random PSD matrices $S=AA^T$, $T=BB^T$ with $\|S-T\|=0.709$: $\max_k|\lambda_k(S)-\lambda_k(T)|=0.412\le0.709$ âœ“.
+**Numeric check.** For two random PSD matrices $S=AA^T$, $T=BB^T$ with $\|S-T\|=0.709$: $\max_k|\lambda_k(S)-\lambda_k(T)|=0.412\le0.709$.
 
 **Remark.**
 - In particular $\rho(A)=\max_k|\lambda_k(A)|$ is $1$-Lipschitz on $\mathrm{Sym}_n$, contrasting with the HÃ¶lder exponent $\frac1n$ of Problem 82 for general matrices.
 - The inequality fails for non-symmetric matrices with the ordered *real parts* replaced by anything: e.g. Jordan-type perturbations give $\varepsilon^{1/n}$ shifts.
-- Weyl's inequality is the core of the Hoffmanâ€“Wielandt theorem $\sum(\lambda_k(A)-\lambda_k(B))^2\le\|A-B\|_F^2$.
+- Weyl's inequality is the core of the Hoffman-Wielandt theorem $\sum(\lambda_k(A)-\lambda_k(B))^2\le\|A-B\|_F^2$.
 @@@ mn-089-continuity-of-the-matrix-square-root.md
 ---
 title: The PSD square root is continuous
@@ -872,7 +872,7 @@ Boundedness: $\|T_k\|^2=\|S_k\|$.
 
 **Step 1: boundedness.** $T_k=\sqrt{S_k}$ is symmetric, so $\|T_k\|^2=\|T_k^2\|=\|S_k\|$ (for a symmetric matrix, $\|T\|=\rho(T)$ and $\rho(T^2)=\rho(T)^2$). Since $S_k\to S$ is convergent, $\|S_k\|$ is bounded, hence so is $(T_k)$.
 
-**Step 2: limit points.** By Bolzanoâ€“Weierstrass, any subsequence of $(T_k)$ has a further subsequence $T_{k_j}\to T$. The cone of PSD matrices is closed, so $T$ is PSD. By continuity of multiplication (Problem 67), $T^2=\lim T_{k_j}^2=\lim S_{k_j}=S$. By uniqueness, $T=\sqrt S$.
+**Step 2: limit points.** By Bolzano-Weierstrass, any subsequence of $(T_k)$ has a further subsequence $T_{k_j}\to T$. The cone of PSD matrices is closed, so $T$ is PSD. By continuity of multiplication (Problem 67), $T^2=\lim T_{k_j}^2=\lim S_{k_j}=S$. By uniqueness, $T=\sqrt S$.
 
 **Step 3: convergence.** Every subsequence of $(T_k)$ has a sub-subsequence converging to the same limit $\sqrt S$; hence $T_k\to\sqrt S$ (if not, some subsequence would stay at distance $\ge\epsilon$ from $\sqrt S$, contradicting Step 2).
 
@@ -914,7 +914,7 @@ so $U\in O(n)$ and $A=UP$.
 
 **Step 3: continuity of $\Phi:A\mapsto(U,P)$.** $A\mapsto A^TA$ is polynomial, $S\mapsto\sqrt S$ is continuous (Problem 89), $P\mapsto P^{-1}$ is continuous (Problem 68), and the product is continuous (Problem 67). So $P=\sqrt{A^TA}$ and $U=AP^{-1}$ are continuous functions of $A$.
 
-**Step 4: continuity of the inverse.** $\Psi:(U,P)\mapsto UP$ is the restriction of the multiplication, continuous, and takes values in $GL_n$. By Steps 1â€“2, $\Psi\circ\Phi=\mathrm{id}$ and $\Phi\circ\Psi=\mathrm{id}$.
+**Step 4: continuity of the inverse.** $\Psi:(U,P)\mapsto UP$ is the restriction of the multiplication, continuous, and takes values in $GL_n$. By Steps 1-2, $\Psi\circ\Phi=\mathrm{id}$ and $\Phi\circ\Psi=\mathrm{id}$.
 
 **Consequences.**
 - $GL_n(\mathbb{R})\cong O(n)\times\mathrm{PD}$, and $\mathrm{PD}$ is a convex cone, hence contractible. So $GL_n$ deformation retracts onto $O(n)$ via $A\mapsto U$; likewise $GL_n^+\simeq SO(n)$.
@@ -937,21 +937,21 @@ Let $T_+$ be the set of upper triangular real matrices with positive diagonal en
 
 ## Hint
 
-Gramâ€“Schmidt on the columns of $A$ is built from sums, products, norms and divisions by nonzero numbers.
+Gram-Schmidt on the columns of $A$ is built from sums, products, norms and divisions by nonzero numbers.
 
 Uniqueness: an orthogonal upper triangular matrix is diagonal.
 
 ## Solution
 
-**Idea.** Existence is Gramâ€“Schmidt; the same recipe is a continuous formula; uniqueness makes the maps inverse to each other.
+**Idea.** Existence is Gram-Schmidt; the same recipe is a continuous formula; uniqueness makes the maps inverse to each other.
 
-**Step 1: existence by Gramâ€“Schmidt.** Let $a_1,\dots,a_n$ be the columns of $A$ (a basis). Define
+**Step 1: existence by Gram-Schmidt.** Let $a_1,\dots,a_n$ be the columns of $A$ (a basis). Define
 $$u_j=a_j-\sum_{i<j}\langle a_j,q_i\rangle q_i,\qquad q_j=\frac{u_j}{|u_j|},$$
 where $u_j\ne0$ because $a_j\notin\operatorname{span}(a_1,\dots,a_{j-1})$. Then $(q_j)$ is orthonormal and $a_j=\sum_{i\le j}R_{ij}q_i$ with $R_{ij}=\langle a_j,q_i\rangle$ for $i<j$ and $R_{jj}=|u_j|>0$. So $A=QR$ with $Q=(q_1|\dots|q_n)$ orthogonal and $R\in T_+$.
 
 **Step 2: uniqueness.** If $QR=Q'R'$ then $M:=R'R^{-1}=Q'^TQ$ is orthogonal and upper triangular with positive diagonal. An orthogonal matrix satisfies $M^{-1}=M^T$; but $M^{-1}$ is upper triangular, and $M^T$ is lower triangular, so $M$ is diagonal. A diagonal orthogonal matrix has entries $\pm1$, and positive ones force $M=I$. Hence $R'=R$, $Q'=Q$.
 
-**Step 3: continuity of $A\mapsto(Q,R)$.** Each step of Gramâ€“Schmidt uses sums, products, inner products, and $u\mapsto u/|u|$, which is continuous on $u\neq0$. By induction on $j$, the vectors $q_j$ and the numbers $R_{ij}$ are continuous functions of $A$ on $GL_n$, as $u_j\ne0$ throughout.
+**Step 3: continuity of $A\mapsto(Q,R)$.** Each step of Gram-Schmidt uses sums, products, inner products, and $u\mapsto u/|u|$, which is continuous on $u\neq0$. By induction on $j$, the vectors $q_j$ and the numbers $R_{ij}$ are continuous functions of $A$ on $GL_n$, as $u_j\ne0$ throughout.
 
 **Step 4: the inverse.** $(Q,R)\mapsto QR$ is continuous (Problem 67) with values in $GL_n$, and by uniqueness and existence it is the inverse of $A\mapsto(Q,R)$.
 
@@ -993,7 +993,7 @@ so $M$ is orthogonal and upper triangular with positive diagonal; as in Problem 
 $$A=S^2=S^TS=R^TQ^TQR=R^TR.$$
 The assignment $A\mapsto R$ is the composite of $A\mapsto\sqrt A$ (continuous, Problem 89) and $S\mapsto R$ from the QR decomposition (continuous, Problem 91). It is a right and left inverse of $R\mapsto R^TR$ by the injectivity just proved.
 
-**Dimension count.** $T_+\cong(0,\infty)^n\times\mathbb{R}^{n(n-1)/2}$, and $\dim\mathrm{Sym}_n=\frac{n(n+1)}2=n+\frac{n(n-1)}2$ âœ“.
+**Dimension count.** $T_+\cong(0,\infty)^n\times\mathbb{R}^{n(n-1)/2}$, and $\dim\mathrm{Sym}_n=\frac{n(n+1)}2=n+\frac{n(n-1)}2$.
 
 **Numeric check.** `numpy.linalg.cholesky` returns the lower factor $L=R^T$ with positive diagonal, and $LL^T=P$ held to $9\cdot10^{-16}$.
 
@@ -1042,7 +1042,7 @@ $$\min_Q\|A-Q\|_F^2=\sum\sigma_i^2-2\sum\sigma_i+n=\sum(\sigma_i-1)^2.$$
 
 **Step 6: uniqueness for invertible $A$.** All $\sigma_i>0$, so equality forces $W_{ii}=1$ for every $i$. A unit column with a $1$ in position $i$ is $e_i$, so $W=I$ and $Q=UV^T$ is the only minimiser.
 
-**Numeric check.** For a random $4\times4$ matrix, $\|A-UV^T\|_F^2=2.2953=\sum(\sigma_i-1)^2$, and the best of 2000 random orthogonal matrices gave $3.41>2.295$ âœ“.
+**Numeric check.** For a random $4\times4$ matrix, $\|A-UV^T\|_F^2=2.2953=\sum(\sigma_i-1)^2$, and the best of 2000 random orthogonal matrices gave $3.41>2.295$.
 
 **Remark.** This is the *orthogonal Procrustes problem*. For a singular $A$ the minimiser may be non-unique (e.g. $A=0$: every $Q$ is at distance $\sqrt n$). Consequently the nearest-orthogonal map is continuous on $GL_n$ but not on all of $M_n$.
 @@@ mn-094-the-cayley-transform.md
@@ -1086,7 +1086,7 @@ Moreover $\det C=\frac{\det(I-K)}{\det(I+K)}=1$, because $\det(I-K)=\det((I+K)^T
 
 **Step 5: continuity.** Both maps are composites of inversion (continuous, Problem 68), sums and products, hence continuous.
 
-**Example.** $n=2$, $K=t\begin{pmatrix}0&-1\\1&0\end{pmatrix}$: $C(K)$ is the rotation by angle $-2\arctan t$. Numerically $t=0.7$ gives $\arctan2(C_{10},C_{00})=-1.22145=-2\arctan0.7$ âœ“. The only rotation not reached is the one with $-1$ in its spectrum, namely $R_\pi=-I$ ($t\to\infty$).
+**Example.** $n=2$, $K=t\begin{pmatrix}0&-1\\1&0\end{pmatrix}$: $C(K)$ is the rotation by angle $-2\arctan t$. Numerically $t=0.7$ gives $\arctan2(C_{10},C_{00})=-1.22145=-2\arctan0.7$. The only rotation not reached is the one with $-1$ in its spectrum, namely $R_\pi=-I$ ($t\to\infty$).
 
 **Remark.**
 - For even $n$, orthogonal matrices with $\det=-1$ always have $-1$ as an eigenvalue, and for odd $n$ too; so the condition "$\in SO(n)$" is automatic.
@@ -1447,7 +1447,7 @@ Each set is the zero set of polynomial equations in the entries. For the empty i
 
 **Idea.** Sets defined by polynomial equations are closed (preimages of $\{0\}$ under polynomial maps). Emptiness of the interior needs an actual perturbation argument.
 
-**Step 1: nilpotents are closed.** $A$ is nilpotent iff $A^n=0$ (a nilpotent $n\times n$ matrix satisfies $A^n=0$ by Cayleyâ€“Hamilton, since its characteristic polynomial is $t^n$). The map $A\mapsto A^n$ is polynomial in the entries (hence continuous), so
+**Step 1: nilpotents are closed.** $A$ is nilpotent iff $A^n=0$ (a nilpotent $n\times n$ matrix satisfies $A^n=0$ by Cayley-Hamilton, since its characteristic polynomial is $t^n$). The map $A\mapsto A^n$ is polynomial in the entries (hence continuous), so
 $$\mathcal N=\{A:A^n=0\}=(A\mapsto A^n)^{-1}(\{0\})$$
 is closed.
 
@@ -1492,7 +1492,7 @@ $$\partial GL_n(\mathbb{R})=M_n(\mathbb{R})\setminus GL_n(\mathbb{R})=\{A:\det A
 
 **Remark.**
 - Equivalently, the singular matrices form a closed set with empty interior (they are the zero set of a non-zero polynomial). This is the key reason "generic matrices are invertible".
-- A typical use: to prove an identity between continuous functions of $A$ (such as $\det(AB)=\det(A)\det(B)$ or Cayleyâ€“Hamilton) it suffices to prove it on the dense set $GL_n$, or even on the dense set of matrices with distinct eigenvalues.
+- A typical use: to prove an identity between continuous functions of $A$ (such as $\det(AB)=\det(A)\det(B)$ or Cayley-Hamilton) it suffices to prove it on the dense set $GL_n$, or even on the dense set of matrices with distinct eigenvalues.
 
 @@@ mn-044-entries.md
 ---
@@ -1560,13 +1560,13 @@ $N=\bigcap_{i,j}\{a_{ij}\ge0\}$. For the interior, an entry equal to $0$ can be 
 
 **Remark.**
 - This is the same picture as for PSD matrices: closed cone, interior = "strict" version, closure of the interior = the cone (here every nonnegative $A$ is the limit of $A+\varepsilon J$, with $J$ the all-ones matrix).
-- Positive matrices are exactly the setting of the Perronâ€“Frobenius theorem.
+- Positive matrices are exactly the setting of the Perron-Frobenius theorem.
 
 @@@ mn-046-closure-of.md
 ---
-title: The closure of {det > 0} is {det â‰¥ 0}
+title: The closure of {det > 0}
 category: topology/topology-of-mnr/mn-open-closed
-level: l3
+level: l2
 difficulty: 3
 tags: determinant, singular value decomposition, closure, boundary
 date: 2026-11-07
@@ -1919,7 +1919,7 @@ Eigenvalues of a projection are $0$ and $1$, so $\|P\|\le1$. For the interior, s
 $$|Px|^2=x^TP^TPx=x^TP^2x=x^TPx=\langle Px,x\rangle\le|Px||x|,$$
 so $|Px|\le1$. Thus $\|P\|\le1$ and $\mathcal P$ lies in the closed ball of radius $1$.
 
-**Step 3: compact.** By the Heineâ€“Borel theorem in $M_n(\mathbb{R})\cong\mathbb{R}^{n^2}$, a closed and bounded set is compact.
+**Step 3: compact.** By the Heine-Borel theorem in $M_n(\mathbb{R})\cong\mathbb{R}^{n^2}$, a closed and bounded set is compact.
 
 **Step 4: empty interior in $\mathrm{Sym}_n$.** Let $P\in\mathcal P$ and $\varepsilon>0$ small.
 - If $P\neq0$: $(1+\varepsilon)P$ is symmetric, and $P$ has eigenvalue $1$, so $(1+\varepsilon)P$ has eigenvalue $1+\varepsilon\notin\{0,1\}$. A projection has all eigenvalues in $\{0,1\}$ (from $P^2=P$), so $(1+\varepsilon)P\notin\mathcal P$.
@@ -1968,7 +1968,7 @@ $$GL_n\setminus H=\bigcup_{g\notin H}gH$$
 
 @@@ mn-057-level-sets.md
 ---
-title: Interior and boundary of {det â‰¥ 1}
+title: Interior and boundary of {det > 1}
 category: topology/topology-of-mnr/mn-open-closed
 level: l3
 difficulty: 3
@@ -2180,7 +2180,7 @@ So $A\notin\operatorname{int}\mathcal D_{\mathbb{R}}$.
 
 **Step 3: conclusion.** If $A\in\operatorname{int}\mathcal D_{\mathbb{R}}$ then $A\in\mathcal D_{\mathbb{R}}$ has all eigenvalues real, and by Step 2 no repeated eigenvalue, so $A\in\mathcal S$. Together with Step 1, $\operatorname{int}\mathcal D_{\mathbb{R}}=\mathcal S$.
 
-**Numeric check.** $D=\operatorname{diag}(2,2,2,5)$, $M=D+0.1E_{12}$: $\operatorname{rank}(M-2I)=2=n-m+1$ with $n=4$, $m=3$ âœ“.
+**Numeric check.** $D=\operatorname{diag}(2,2,2,5)$, $M=D+0.1E_{12}$: $\operatorname{rank}(M-2I)=2=n-m+1$ with $n=4$, $m=3$.
 
 **Remark.**
 - Combined with the problem on closures (next), we see $\mathcal D_{\mathbb{R}}$ is "squeezed" between an open set $\mathcal S$ and a closed set $\overline{\mathcal D_{\mathbb{R}}}\supsetneq\mathcal S$.
@@ -2286,7 +2286,7 @@ $$\|S_\varepsilon-S\|=\varepsilon\,\|\operatorname{diag}(1,\dots,n)\|=n\varepsil
 
 **Remark.**
 - Both statements together say that *a generic symmetric matrix has simple spectrum*, which is why proofs for symmetric matrices can usually assume distinct eigenvalues and conclude by continuity.
-- The complement of $\mathcal G$ in $\mathrm{Sym}_n$ is closed with empty interior, but unlike in $M_n(\mathbb{R})$ it has codimension $2$, not $1$: two eigenvalues of a symmetric matrix collide in codimension $2$ (von Neumannâ€“Wigner "level repulsion"), e.g. in $\mathrm{Sym}_2\cong\mathbb{R}^3$ the repeated-eigenvalue matrices are the *line* of scalar matrices $\{aI\}$.
+- The complement of $\mathcal G$ in $\mathrm{Sym}_n$ is closed with empty interior, but unlike in $M_n(\mathbb{R})$ it has codimension $2$, not $1$: two eigenvalues of a symmetric matrix collide in codimension $2$ (von Neumann-Wigner "level repulsion"), e.g. in $\mathrm{Sym}_2\cong\mathbb{R}^3$ the repeated-eigenvalue matrices are the *line* of scalar matrices $\{aI\}$.
 
 @@@ mn-001-frobenius-norm.md
 ---
@@ -2294,7 +2294,7 @@ title: The Frobenius norm comes from an inner product
 category: topology/topology-of-mnr/mn-norms
 level: l2
 difficulty: 1
-tags: Frobenius norm, inner product, trace, identification with R^(nÂ²)
+tags: Frobenius norm, inner product, trace
 date: 2026-11-07
 ---
 
@@ -2324,7 +2324,7 @@ $$\operatorname{tr}(A^TB)=\sum_{i,k}a_{ki}b_{ki}=\sum_{i,j}a_{ij}b_{ij}.$$
 
 **Consequence.** The map $A\mapsto(a_{11},a_{12},\dots,a_{nn})$ is a linear bijection $M_n(\mathbb{R})\to\mathbb{R}^{n^2}$ which preserves inner products, hence distances. So $(M_n(\mathbb{R}),\|\cdot\|_F)$ **is** Euclidean space $\mathbb{R}^{n^2}$, and every notion of "open", "closed", "compact", "convergent" in $M_n(\mathbb{R})$ is the usual one of $\mathbb{R}^{n^2}$.
 
-**Remark.** Because the Frobenius norm comes from an inner product, the Cauchyâ€“Schwarz inequality $|\operatorname{tr}(A^TB)|\le\|A\|_F\|B\|_F$ and the parallelogram law hold in $M_n(\mathbb{R})$. We will use both repeatedly (for instance in the problems on submultiplicativity and strict convexity below).
+**Remark.** Because the Frobenius norm comes from an inner product, the Cauchy-Schwarz inequality $|\operatorname{tr}(A^TB)|\le\|A\|_F\|B\|_F$ and the parallelogram law hold in $M_n(\mathbb{R})$. We will use both repeatedly (for instance in the problems on submultiplicativity and strict convexity below).
 @@@ mn-002-frobenius-norm.md
 ---
 title: Two norms of the identity matrix
@@ -2455,7 +2455,7 @@ title: The Frobenius norm is submultiplicative
 category: topology/topology-of-mnr/mn-norms
 level: l2
 difficulty: 2
-tags: Frobenius norm, Cauchyâ€“Schwarz, submultiplicativity
+tags: Frobenius norm, Cauchy-Schwarz, submultiplicativity
 date: 2026-11-07
 ---
 
@@ -2465,15 +2465,15 @@ Show that $\|AB\|_F\le\|A\|_F\|B\|_F$ for all $A,B\in M_n(\mathbb{R})$.
 
 ## Hint
 
-Apply the Cauchyâ€“Schwarz inequality to each entry of $AB$.
+Apply the Cauchy-Schwarz inequality to each entry of $AB$.
 
 Think of $(AB)_{ij}$ as a dot product of the $i$-th row of $A$ with the $j$-th column of $B$.
 
 ## Solution
 
-**Idea.** Every entry of $AB$ is a dot product; Cauchyâ€“Schwarz controls it by the lengths of the row and the column involved. Summing over all entries reassembles the Frobenius norms.
+**Idea.** Every entry of $AB$ is a dot product; Cauchy-Schwarz controls it by the lengths of the row and the column involved. Summing over all entries reassembles the Frobenius norms.
 
-**Step 1: one entry.** Let $r_i$ be the $i$-th row of $A$ and $c_j$ the $j$-th column of $B$, both viewed in $\mathbb{R}^n$. Then $(AB)_{ij}=\sum_ka_{ik}b_{kj}=\langle r_i,c_j\rangle$, and by Cauchyâ€“Schwarz
+**Step 1: one entry.** Let $r_i$ be the $i$-th row of $A$ and $c_j$ the $j$-th column of $B$, both viewed in $\mathbb{R}^n$. Then $(AB)_{ij}=\sum_ka_{ik}b_{kj}=\langle r_i,c_j\rangle$, and by Cauchy-Schwarz
 $$(AB)_{ij}^2\le|r_i|^2|c_j|^2.$$
 
 **Step 2: sum over $i,j$.**
@@ -2506,13 +2506,13 @@ For the two comparisons, write $|Ax|^2$ using the rows of $A$, and $\|A\|_F^2$ u
 
 ## Solution
 
-**Idea.** Submultiplicativity follows from applying the definition twice. The comparison with $\|\cdot\|_F$ uses Cauchyâ€“Schwarz in one direction and a sum over the $n$ unit vectors $e_j$ in the other.
+**Idea.** Submultiplicativity follows from applying the definition twice. The comparison with $\|\cdot\|_F$ uses Cauchy-Schwarz in one direction and a sum over the $n$ unit vectors $e_j$ in the other.
 
 **Step 1: the basic inequality.** By definition of the supremum, for $x\ne0$ we have $|Ax|=|x|\,|A(x/|x|)|\le\|A\||x|$ (and it is trivial for $x=0$).
 
 **Step 2: submultiplicativity.** For every $x$, $|ABx|\le\|A\||Bx|\le\|A\|\|B\||x|$. Taking the supremum over unit $x$ gives $\|AB\|\le\|A\|\|B\|$.
 
-**Step 3: $\|A\|\le\|A\|_F$.** Let $r_i$ be the rows of $A$. Then $(Ax)_i=\langle r_i,x\rangle$ and by Cauchyâ€“Schwarz
+**Step 3: $\|A\|\le\|A\|_F$.** Let $r_i$ be the rows of $A$. Then $(Ax)_i=\langle r_i,x\rangle$ and by Cauchy-Schwarz
 $$|Ax|^2=\sum_i\langle r_i,x\rangle^2\le\sum_i|r_i|^2|x|^2=\|A\|_F^2|x|^2.$$
 Take $|x|=1$ and the supremum.
 
@@ -2752,7 +2752,7 @@ $$A^TA=\begin{pmatrix}1&0\\1&1\end{pmatrix}\begin{pmatrix}1&1\\0&1\end{pmatrix}=
 $$\left(\frac{1+\sqrt5}2\right)^2=\frac{1+2\sqrt5+5}4=\frac{3+\sqrt5}2,$$
 we get $\|A\|=\sqrt{\mu_1}=\dfrac{1+\sqrt5}2\approx1.618$, the golden ratio.
 
-**Check.** The singular values are $\varphi=\frac{1+\sqrt5}2$ and $\varphi^{-1}=\frac{\sqrt5-1}2$, with product $1=|\det A|$, and $\sigma_1^2+\sigma_2^2=3=\|A\|_F^2$ âœ“. A direct numerical computation of the largest value of $|Ax|$ on the unit circle also gives $1.618\ldots$
+**Check.** The singular values are $\varphi=\frac{1+\sqrt5}2$ and $\varphi^{-1}=\frac{\sqrt5-1}2$, with product $1=|\det A|$, and $\sigma_1^2+\sigma_2^2=3=\|A\|_F^2$. A direct numerical computation of the largest value of $|Ax|$ on the unit circle also gives $1.618\ldots$
 
 **Remark.** The shear has $\rho(A)=1$ (both eigenvalues $1$) but $\|A\|=\varphi>1$; and $\|A^k\|$ grows linearly in $k$ (the matrix $A^k=\begin{pmatrix}1&k\\0&1\end{pmatrix}$), although $\|A^k\|^{1/k}\to1=\rho(A)$.
 @@@ mn-015-transpose.md
@@ -2779,7 +2779,7 @@ Then transpose the scalar $y^TAx$.
 
 **Idea.** Express the norm as a supremum of a *bilinear* expression in which $x$ and $y$ play symmetric roles, then notice that transposing $A$ simply exchanges them.
 
-**Step 1: the bilinear formula.** For a vector $v\in\mathbb{R}^n$, $|v|=\sup_{|y|=1}y^Tv$: indeed $y^Tv\le|y||v|=|v|$ by Cauchyâ€“Schwarz, and equality holds for $y=v/|v|$ (any $y$ if $v=0$). Applying this to $v=Ax$,
+**Step 1: the bilinear formula.** For a vector $v\in\mathbb{R}^n$, $|v|=\sup_{|y|=1}y^Tv$: indeed $y^Tv\le|y||v|=|v|$ by Cauchy-Schwarz, and equality holds for $y=v/|v|$ (any $y$ if $v=0$). Applying this to $v=Ax$,
 $$\|A\|=\sup_{|x|=1}|Ax|=\sup_{|x|=1}\sup_{|y|=1}y^TAx=\sup_{|x|=|y|=1}y^TAx.$$
 
 **Step 2: transposing.** The number $y^TAx$ is a scalar, so it equals its own transpose: $y^TAx=(y^TAx)^T=x^TA^Ty$. Hence
@@ -2899,7 +2899,7 @@ title: The trace is bounded by the Frobenius norm
 category: topology/topology-of-mnr/mn-norms
 level: l3
 difficulty: 3
-tags: trace, Cauchyâ€“Schwarz, Frobenius norm
+tags: trace, Cauchy-Schwarz, Frobenius norm
 date: 2026-11-07
 ---
 
@@ -2909,27 +2909,27 @@ Show that $|\operatorname{tr}A|\le\sqrt n\,\|A\|_F$ for every $A\in M_n(\mathbb{
 
 ## Hint
 
-The trace is the sum of the $n$ diagonal entries: apply Cauchyâ€“Schwarz in $\mathbb{R}^n$.
+The trace is the sum of the $n$ diagonal entries: apply Cauchy-Schwarz in $\mathbb{R}^n$.
 
 Alternatively, write $\operatorname{tr}A=\langle I,A\rangle_F$.
 
 ## Solution
 
-**Idea.** The trace only sees the $n$ diagonal entries, while the Frobenius norm sees all $n^2$ entries; Cauchyâ€“Schwarz compares the sum of $n$ numbers with the length of the vector they form.
+**Idea.** The trace only sees the $n$ diagonal entries, while the Frobenius norm sees all $n^2$ entries; Cauchy-Schwarz compares the sum of $n$ numbers with the length of the vector they form.
 
-**Step 1: Cauchyâ€“Schwarz.** Using $1\cdot a_{ii}$ in $\mathbb{R}^n$,
+**Step 1: Cauchy-Schwarz.** Using $1\cdot a_{ii}$ in $\mathbb{R}^n$,
 $$|\operatorname{tr}A|=\Big|\sum_{i=1}^n1\cdot a_{ii}\Big|\le\Big(\sum_i1^2\Big)^{1/2}\Big(\sum_ia_{ii}^2\Big)^{1/2}=\sqrt n\Big(\sum_ia_{ii}^2\Big)^{1/2}.$$
 
 **Step 2: add the off-diagonal terms.** Since $\sum_ia_{ii}^2\le\sum_{i,j}a_{ij}^2=\|A\|_F^2$, we get $|\operatorname{tr}A|\le\sqrt n\|A\|_F$.
 
 **Equality.** Both steps must be equalities: the off-diagonal entries vanish and the diagonal vector $(a_{ii})$ is proportional to $(1,\dots,1)$. So equality holds iff $A=cI$ is a scalar matrix.
 
-**Second proof.** $\operatorname{tr}A=\langle I,A\rangle_F$, and by Cauchyâ€“Schwarz in $(M_n,\langle,\rangle_F)$, $|\langle I,A\rangle_F|\le\|I\|_F\|A\|_F=\sqrt n\|A\|_F$.
+**Second proof.** $\operatorname{tr}A=\langle I,A\rangle_F$, and by Cauchy-Schwarz in $(M_n,\langle,\rangle_F)$, $|\langle I,A\rangle_F|\le\|I\|_F\|A\|_F=\sqrt n\|A\|_F$.
 
 **Remark.** The trace is a linear functional, hence continuous, and this computation gives its norm: $\|\operatorname{tr}\|=\sqrt n$ with respect to $\|\cdot\|_F$ (attained at $A=I$). With respect to the operator norm, $|\operatorname{tr}A|\le n\|A\|$ (also attained at $I$).
 @@@ mn-020-schur-test.md
 ---
-title: The Schur test: â€–Aâ€–Â² â‰¤ â€–Aâ€–â‚â€–Aâ€–âˆž
+title: The Schur test
 category: topology/topology-of-mnr/mn-norms
 level: l3
 difficulty: 3
@@ -2961,7 +2961,7 @@ because the maximum column sum of $A^T$ is the maximum row sum of $A$.
 
 **Conclusion.** $\|A\|^2\le\|A\|_1\|A\|_\infty$.
 
-**Example.** For $A=\begin{pmatrix}1&-2\\3&4\end{pmatrix}$: $\|A\|^2\approx26.2$, while $\|A\|_1\|A\|_\infty=6\cdot7=42$ âœ“. For a symmetric matrix $\|A\|_1=\|A\|_\infty$ and the inequality becomes $\|A\|\le\|A\|_1$.
+**Example.** For $A=\begin{pmatrix}1&-2\\3&4\end{pmatrix}$: $\|A\|^2\approx26.2$, while $\|A\|_1\|A\|_\infty=6\cdot7=42$. For a symmetric matrix $\|A\|_1=\|A\|_\infty$ and the inequality becomes $\|A\|\le\|A\|_1$.
 
 **Remark.** This is the discrete form of the Schur test for boundedness of integral operators on $L^2$. It gives a cheap upper bound for $\|A\|$ with no eigenvalue computation. It can be quite far from sharp, e.g. for the all-ones matrix $J$ it gives $\|J\|^2\le n^2$ and in fact $\|J\|=n$ (sharp), but for a matrix with one large entry and many small ones it overestimates.
 @@@ mn-021-convexity.md
@@ -3062,7 +3062,7 @@ $$\varphi(A)=\sum_{i,j}a_{ij}\varphi(E_{ij})=\sum_{i,j}a_{ij}b_{ij}=\operatornam
 
 **Step 2: uniqueness.** If $\operatorname{tr}(B^TA)=\operatorname{tr}(B'^TA)$ for all $A$, then $\langle B-B',A\rangle=0$ for all $A$, in particular for $A=B-B'$, which gives $\|B-B'\|_F^2=0$.
 
-**Step 3: continuity.** By Cauchyâ€“Schwarz,
+**Step 3: continuity.** By Cauchy-Schwarz,
 $$|\varphi(A)|=|\langle B,A\rangle_F|\le\|B\|_F\|A\|_F,$$
 so $\varphi$ is Lipschitz with constant $\|B\|_F$, hence continuous (for $\|\cdot\|_F$, and therefore for every norm by equivalence of norms).
 
@@ -3133,7 +3133,7 @@ Then use compactness of the Frobenius unit sphere.
 
 **Idea.** The Frobenius unit sphere is compact (closed and bounded in $\mathbb{R}^{n^2}$) and any norm is continuous and positive on it, so it has a positive minimum and a finite maximum. Homogeneity extends the bounds to all matrices.
 
-**Step 1: upper bound.** Write $A=\sum a_{ij}E_{ij}$. By the triangle inequality and Cauchyâ€“Schwarz,
+**Step 1: upper bound.** Write $A=\sum a_{ij}E_{ij}$. By the triangle inequality and Cauchy-Schwarz,
 $$\|A\|'\le\sum_{i,j}|a_{ij}|\|E_{ij}\|'\le\Big(\sum_{i,j}\|E_{ij}\|'^2\Big)^{1/2}\|A\|_F=:C\|A\|_F.$$
 
 **Step 2: continuity.** By the reverse triangle inequality, $\big|\|A\|'-\|B\|'\big|\le\|A-B\|'\le C\|A-B\|_F$: the function $\|\cdot\|'$ is continuous for the Frobenius topology.
@@ -3149,7 +3149,7 @@ title: Distance from an invertible matrix to the singular matrices
 category: topology/topology-of-mnr/mn-norms
 level: l3
 difficulty: 3
-tags: distance to singular matrices, singular values, Eckartâ€“Young, SVD
+tags: distance to singular matrices, singular values, Eckarte-Young, SVD
 date: 2026-11-07
 ---
 
@@ -3181,7 +3181,7 @@ $$\|A-B\|=\|A-B\|_F=\sigma_n\,|u_n||v_n|=\sigma_n.$$
 
 **Example.** For $A=\begin{pmatrix}2&0\\0&\tfrac12\end{pmatrix}$, $1/\|A^{-1}\|=\frac12$ and $B=\operatorname{diag}(2,0)$ is the nearest singular matrix. In particular a matrix can have a large norm ($\|A\|=2$) and be extremely close to a singular matrix.
 
-**Remark.** This is a special case of the Eckartâ€“Young theorem: the best rank-$r$ approximation of $A$ (in operator or Frobenius norm) is obtained by truncating the SVD. The quantity $\kappa(A)=\|A\|\|A^{-1}\|$ measures, relative to $\|A\|$, how close $A$ is to being singular.
+**Remark.** This is a special case of the Eckart-Young theorem: the best rank-$r$ approximation of $A$ (in operator or Frobenius norm) is obtained by truncating the SVD. The quantity $\kappa(A)=\|A\|\|A^{-1}\|$ measures, relative to $\|A\|$, how close $A$ is to being singular.
 @@@ mn-027-blow-up.md
 ---
 title: The inverse blows up near singular matrices
@@ -3220,7 +3220,7 @@ title: Hadamard's inequality for determinants
 category: topology/topology-of-mnr/mn-norms
 level: m1
 difficulty: 4
-tags: Hadamard inequality, QR decomposition, Gramâ€“Schmidt, determinant
+tags: Hadamard inequality, QR decomposition, Gram-Schmidt, determinant
 date: 2026-11-07
 ---
 
@@ -3230,7 +3230,7 @@ Prove that $|\det A|\le\prod_{j=1}^n|a_j|$, where $a_1,\dots,a_n\in\mathbb{R}^n$
 
 ## Hint
 
-If the columns are dependent, $\det A=0$. Otherwise apply Gramâ€“Schmidt to the columns to write $A=QR$.
+If the columns are dependent, $\det A=0$. Otherwise apply Gram-Schmidt to the columns to write $A=QR$.
 
 The diagonal entries of $R$ are distances from $a_j$ to the span of $a_1,\dots,a_{j-1}$.
 
@@ -3240,7 +3240,7 @@ The diagonal entries of $R$ are distances from $a_j$ to the span of $a_1,\dots,a
 
 **Step 1: trivial case.** If $a_1,\dots,a_n$ are linearly dependent, then $\det A=0\le\prod|a_j|$.
 
-**Step 2: Gramâ€“Schmidt.** Otherwise define orthonormal vectors $q_1,\dots,q_n$ by Gramâ€“Schmidt: $q_j$ is the normalised component of $a_j$ orthogonal to $\operatorname{span}(a_1,\dots,a_{j-1})$. Then $a_j=\sum_{i\le j}R_{ij}q_i$, i.e. $A=QR$ with $Q=(q_1|\dots|q_n)\in O(n)$ and $R$ upper triangular with
+**Step 2: Gram-Schmidt.** Otherwise define orthonormal vectors $q_1,\dots,q_n$ by Gram-Schmidt: $q_j$ is the normalised component of $a_j$ orthogonal to $\operatorname{span}(a_1,\dots,a_{j-1})$. Then $a_j=\sum_{i\le j}R_{ij}q_i$, i.e. $A=QR$ with $Q=(q_1|\dots|q_n)\in O(n)$ and $R$ upper triangular with
 $$R_{jj}=\langle q_j,a_j\rangle,\qquad|R_{jj}|=\operatorname{dist}\big(a_j,\operatorname{span}(a_1,\dots,a_{j-1})\big)>0.$$
 
 **Step 3: bound the diagonal.** The distance from $a_j$ to a subspace is at most the distance to $0$ (which belongs to the subspace), so $|R_{jj}|\le|a_j|$.
@@ -3255,11 +3255,11 @@ $$|\det A|=\prod_{j=1}^n|R_{jj}|\le\prod_{j=1}^n|a_j|.$$
 **Remark.** Applying the inequality to $A^T$ gives the same bound with the rows. It is the key tool in the next two problems (an upper bound on $|\det A|$ in terms of the Frobenius norm, and the Lipschitz estimate for $\det$ on bounded sets).
 @@@ mn-029-determinant-bound.md
 ---
-title: The determinant is at most (â€–Aâ€–_F/âˆšn)â¿
+title: An upper bound of the determinant
 category: topology/topology-of-mnr/mn-norms
 level: m1
 difficulty: 4
-tags: Hadamard inequality, AMâ€“GM, equality case, determinant
+tags: Hadamard inequality, AM-GM, equality case, determinant
 date: 2026-11-07
 ---
 
@@ -3269,27 +3269,27 @@ Show that $|\det A|\le\left(\dfrac{\|A\|_F}{\sqrt n}\right)^n$ for every $A\in M
 
 ## Hint
 
-Combine Hadamard's inequality with the AMâ€“GM inequality applied to the numbers $|a_j|^2$.
+Combine Hadamard's inequality with the AM-GM inequality applied to the numbers $|a_j|^2$.
 
 Study the equality cases of both inequalities.
 
 ## Solution
 
-**Idea.** Hadamard bounds the determinant by the product of column lengths; AMâ€“GM then bounds this product by the arithmetic mean of the squared lengths, which is $\|A\|_F^2/n$.
+**Idea.** Hadamard bounds the determinant by the product of column lengths; AM-GM then bounds this product by the arithmetic mean of the squared lengths, which is $\|A\|_F^2/n$.
 
 **Step 1: Hadamard.** $|\det A|^2\le\prod_{j=1}^n|a_j|^2$.
 
-**Step 2: AMâ€“GM.** For the non-negative numbers $|a_j|^2$,
+**Step 2: AM-GM.** For the non-negative numbers $|a_j|^2$,
 $$\prod_{j=1}^n|a_j|^2\le\Big(\frac1n\sum_{j=1}^n|a_j|^2\Big)^n=\Big(\frac{\|A\|_F^2}n\Big)^n,$$
 since $\sum_j|a_j|^2=\sum_{i,j}a_{ij}^2=\|A\|_F^2$. Taking square roots of the combined inequality gives the claim.
 
-**Equality, if $\det A\ne0$.** We need equality in both steps. Equality in Hadamard means the columns are pairwise orthogonal; equality in AMâ€“GM means all $|a_j|^2$ are equal, say to $s^2>0$. Then $A^TA=s^2I$, so $A/s$ is orthogonal and $A=sU$ with $U\in O(n)$.
+**Equality, if $\det A\ne0$.** We need equality in both steps. Equality in Hadamard means the columns are pairwise orthogonal; equality in AM-GM means all $|a_j|^2$ are equal, say to $s^2>0$. Then $A^TA=s^2I$, so $A/s$ is orthogonal and $A=sU$ with $U\in O(n)$.
 
 **Equality, if $\det A=0$.** The left side is $0$, so the right side must vanish: $\|A\|_F=0$, i.e. $A=0$.
 
 **Converse.** If $A=sU$ then $|\det A|=|s|^n$ and $\|A\|_F=|s|\sqrt n$, so both sides equal $|s|^n$.
 
-**Remark.** Writing the inequality as $|\det A|^{2/n}\le\frac1n\|A\|_F^2=\frac1n\operatorname{tr}(A^TA)$ shows it is the AMâ€“GM inequality for the eigenvalues of the PSD matrix $A^TA$ (whose determinant is $\det(A)^2$ and whose trace is $\|A\|_F^2$): $\det(S)^{1/n}\le\operatorname{tr}(S)/n$.
+**Remark.** Writing the inequality as $|\det A|^{2/n}\le\frac1n\|A\|_F^2=\frac1n\operatorname{tr}(A^TA)$ shows it is the AM-GM inequality for the eigenvalues of the PSD matrix $A^TA$ (whose determinant is $\det(A)^2$ and whose trace is $\|A\|_F^2$): $\det(S)^{1/n}\le\operatorname{tr}(S)/n$.
 @@@ mn-030-lipschitz-determinant.md
 ---
 title: The determinant is Lipschitz on bounded sets
@@ -3325,7 +3325,7 @@ $$|\det H_{k-1}-\det H_k|\le R^{n-1}\|A-B\|.$$
 
 **Step 4: sum.** Adding the $n$ terms, $|\det A-\det B|\le nR^{n-1}\|A-B\|$.
 
-**Sanity check.** For $n=1$ the bound reads $|a-b|\le|a-b|$ âœ“. For $A=\operatorname{diag}(R,\dots,R)$, $B=(R-\delta)I$ the exact difference is $R^n-(R-\delta)^n\approx nR^{n-1}\delta$ and $\|A-B\|=\delta$: the constant is asymptotically sharp.
+**Sanity check.** For $n=1$ the bound reads $|a-b|\le|a-b|$. For $A=\operatorname{diag}(R,\dots,R)$, $B=(R-\delta)I$ the exact difference is $R^n-(R-\delta)^n\approx nR^{n-1}\delta$ and $\|A-B\|=\delta$: the constant is asymptotically sharp.
 
 **Remark.** This gives a quantitative proof of the continuity of $\det$ and shows that $\det$ is *locally Lipschitz*, with Lipschitz constant on the ball $\{\|A\|\le R\}$ at most $nR^{n-1}$. The derivative $\operatorname{tr}(\operatorname{adj}(A)H)$ computed later in the book has norm at most $nR^{n-1}$ on that ball, consistent with this bound.
 @@@ mn-031-extreme-points.md
@@ -3364,14 +3364,14 @@ and the left side is $|Ux|^2=1$, so $Ax=Bx$. This holds for all unit $x$, hence 
 
 Let $\Sigma_s$, $\Sigma_t$ be $\Sigma$ with $\sigma_i$ replaced by $s$, resp. $t$. Both diagonal matrices have entries of absolute value $\le1$, so $A_s=P\Sigma_sQ^T$ and $A_t=P\Sigma_tQ^T$ belong to $\mathcal B$. They are distinct, and $\frac{A_s+A_t}2=A$. So $A$ is not extreme.
 
-**Remark.** Compare with the Frobenius ball, which is strictly convex: *all* of its boundary points are extreme. The operator-norm ball has far fewer extreme points ($O(n)$, a manifold of dimension $n(n-1)/2$, inside a boundary of dimension $n^2-1$). The next problem shows these extreme points generate the whole ball by convex combinations (a Kreinâ€“Milman-type statement).
+**Remark.** Compare with the Frobenius ball, which is strictly convex: *all* of its boundary points are extreme. The operator-norm ball has far fewer extreme points ($O(n)$, a manifold of dimension $n(n-1)/2$, inside a boundary of dimension $n^2-1$). The next problem shows these extreme points generate the whole ball by convex combinations (a Krein-Milman-type statement).
 @@@ mn-032-convex-hull.md
 ---
 title: The operator-norm ball is the convex hull of O(n)
 category: topology/topology-of-mnr/mn-norms
 level: m1
 difficulty: 4
-tags: convex hull, orthogonal group, SVD, Kreinâ€“Milman
+tags: convex hull, orthogonal group, SVD, Krein-Milman
 date: 2026-11-07
 ---
 
@@ -3405,7 +3405,7 @@ a convex combination of the orthogonal matrices $P\operatorname{diag}(\varepsilo
 **Remark.** The hull of $O(n)$ is compact (the convex hull of a compact set in finite dimension is compact), so it is automatically *closed*, consistent with the statement. Note that the convex hull of $SO(n)$ is strictly smaller (every orthogonal matrix of determinant $-1$ is an extreme point of $\mathcal B$ by the previous problem, so it cannot be a convex combination of elements of $SO(n)$ other than itself), and the representation above uses $2^n$ orthogonal matrices; by CarathÃ©odory's theorem a representation with at most $n^2+1$ matrices exists.
 @@@ mn-033-gelfand-type-bound.md
 ---
-title: The spectral radius is at most â€–Aáµâ€–^(1/k)
+title: A majoration of the spectral radius
 category: topology/topology-of-mnr/mn-norms
 level: m1
 difficulty: 4
@@ -3514,7 +3514,7 @@ So any two points of $C$ are joined by a path inside $C$: $C$ is path connected 
 **Remark.** Path connectedness is strictly weaker than convexity. A circle (for instance $SO(2)$) is path connected but not convex. Most of this chapter is about sets that are path connected for *non*-obvious reasons.
 @@@ mn-conn-components-of-gl-n.md
 ---
-title: Components of GLâ‚™(â„)
+title: Components of the linear group
 category: topology/topology-of-mnr/mn-connectedness
 level: l2
 difficulty: 1
@@ -3575,7 +3575,7 @@ Both sets contain $0$. What happens to a singular (nilpotent) matrix when you mu
 **Remark.** The set of singular matrices is the hypersurface $\{\det=0\}$, which is *not* a manifold at $0$ (it is a cone with a singular vertex), but it is connected. By contrast, its complement $GL_n(\mathbb{R})$ is disconnected (Problem 2).
 @@@ mn-conn-sl-n-z-is-discrete.md
 ---
-title: SLâ‚™(â„¤) is totally disconnected
+title: The special linear group is totally disconnected
 category: topology/topology-of-mnr/mn-connectedness
 level: l2
 difficulty: 1
@@ -3695,7 +3695,7 @@ Compose with a fixed reflection to map $SO(n)$ homeomorphically onto the other h
 **Remark.** The hypothesis is proved later (Problems 16 and 17). In the language of Lie groups, $SO(n)$ is the *identity component* of $O(n)$, and $O(n)/SO(n)\cong\mathbb{Z}/2$.
 @@@ mn-conn-positive-determinant.md
 ---
-title: GLâ‚™âº(â„) is path connected
+title: The general linear group is path connected
 category: topology/topology-of-mnr/mn-connectedness
 level: l2
 difficulty: 2
@@ -4037,7 +4037,7 @@ $$s,t\longmapsto G(s)^{-1}\,(1\oplus U'_t)$$
 **Remark.** The proof is the same as the QR-decomposition by Givens rotations used in numerical linear algebra, and it shows that $SO(n)$ is generated by plane rotations.
 @@@ mn-conn-sl-n-via-polar-decomposition.md
 ---
-title: SLâ‚™(â„) is path connected (polar decomposition)
+title: The special linear group is path connected (polar decomposition)
 category: topology/topology-of-mnr/mn-connectedness
 level: l2
 difficulty: 3
@@ -4075,7 +4075,7 @@ $$P_t=Q\operatorname{diag}(p_1^{1-t},\dots,p_n^{1-t})Q^T,\qquad t\in[0,1].$$
 **Remark.** Note that we cannot use the *linear* path $(1-t)P+tI$ here: its determinant is not $1$ in general (for $P=\operatorname{diag}(4,\tfrac14)$ the midpoint $\operatorname{diag}(\tfrac52,\tfrac58)$ has determinant $\tfrac{25}{16}$). The multiplicative path $p_i^{1-t}$ is the natural "geodesic" in the group.
 @@@ mn-conn-sl-n-by-transvections.md
 ---
-title: SLâ‚™(â„) is path connected (transvections)
+title: The special linear group is path connected (transvections)
 category: topology/topology-of-mnr/mn-connectedness
 level: l2
 difficulty: 3
@@ -4111,7 +4111,7 @@ So $A$ is a product of transvections: $A=T_1T_2\cdots T_m$ with $T_k=T_{i_kj_k}(
 **Note.** The source solution only states the generation fact; the elimination argument above was written out in more detail. For a complete treatment of the first bullet, see any proof that $SL_n(F)=E_n(F)$ for a field $F$.
 @@@ mn-conn-rank-at-least-n-minus-1.md
 ---
-title: Matrices of rank at least n âˆ’ 1
+title: Matrices of rank at least k are path connected
 category: topology/topology-of-mnr/mn-connectedness
 level: l2
 difficulty: 3
@@ -4179,7 +4179,7 @@ is continuous, has rank exactly $r$ for all $t$ (the first $r$ diagonal entries 
 **Remark.** The argument fails for $r=n$ precisely because $D\Sigma D\ne\Sigma$ is not a symmetry any more: the sign of $\det P\det Q$ cannot be changed without changing $A$. Topologically, $\mathcal{M}_r$ is a connected manifold of dimension $r(2n-r)$.
 @@@ mn-conn-complement-of-sl-n.md
 ---
-title: The complement of SLâ‚™(â„)
+title: The complement of the special linear group
 category: topology/topology-of-mnr/mn-connectedness
 level: l2
 difficulty: 3
@@ -4291,7 +4291,7 @@ so each $\lambda_i$ is continuous (even $1$-Lipschitz) on $\mathrm{Sym}_n$.
 **Remark.** $\mathcal{C}_n$ is the cone of positive definite matrices and $\mathcal{C}_0$ its negative. $\mathcal{C}_k$ for $0<k<n$ are the sets of *quadratic forms of signature $(k,n-k)$*, in the classification of quadratic forms by Sylvester's law of inertia. For $n=2$ there are three components: the two cones $\{ac>b^2,a>0\}$, $\{ac>b^2,a<0\}$ and the "inside of the light cone" $\{ac<b^2\}$.
 @@@ mn-conn-deformation-retraction.md
 ---
-title: SO(n) is a deformation retract of GLâ‚™âº(â„)
+title: SO(n) is a deformation retract of the general linear group
 category: topology/topology-of-mnr/mn-connectedness
 level: l3
 difficulty: 4
@@ -4399,7 +4399,7 @@ The base $\{(b,c):b<0<c\}$ is convex (a quadrant). Over each point of the base t
 **Remark.** Geometrically, $A\in\mathcal{E}_\pm$ determines an *orientation*: $A$ acts like a rotation in the plane, counterclockwise for $c>0$ and clockwise for $c<0$ (the sign of $c$ is the sign of $\det\big(v,Av\big)$ for any vector $v\ne0$). This invariant has no analogue for matrices with real eigenvalues.
 @@@ mn-conn-complex-structures-on-the-plane.md
 ---
-title: Complex structures on â„Â²
+title: Complex structures on the set A² = -I
 category: topology/topology-of-mnr/mn-connectedness
 level: l3
 difficulty: 4
@@ -4419,7 +4419,7 @@ Write $A=\begin{pmatrix}a&b\\c&-a\end{pmatrix}$ and use the equation $a^2+bc=-1$
 
 **Idea.** Describe $\mathcal{J}$ by one equation in three variables and solve for $b$.
 
-**Step 1: $A\in\mathcal{J}$ has trace $0$ and determinant $1$.** If $A^2=-I$, the eigenvalues satisfy $\lambda^2=-1$, so they are $\pm i$ (complex, not real, so the two eigenvalues of the real $2\times2$ matrix are $i$ and $-i$ as it has no real eigenvalue). Hence $\operatorname{tr}A=i+(-i)=0$ and $\det A=i\cdot(-i)=1$. (Alternatively: by Cayleyâ€“Hamilton $A^2-(\operatorname{tr}A)A+(\det A)I=0$, so $(\operatorname{tr}A)A=(\det A+1)I$; if $\operatorname{tr}A\ne0$, $A$ would be a scalar matrix with $A^2=-I$, impossible over $\mathbb{R}$.)
+**Step 1: $A\in\mathcal{J}$ has trace $0$ and determinant $1$.** If $A^2=-I$, the eigenvalues satisfy $\lambda^2=-1$, so they are $\pm i$ (complex, not real, so the two eigenvalues of the real $2\times2$ matrix are $i$ and $-i$ as it has no real eigenvalue). Hence $\operatorname{tr}A=i+(-i)=0$ and $\det A=i\cdot(-i)=1$. (Alternatively: by Cayley-Hamilton $A^2-(\operatorname{tr}A)A+(\det A)I=0$, so $(\operatorname{tr}A)A=(\det A+1)I$; if $\operatorname{tr}A\ne0$, $A$ would be a scalar matrix with $A^2=-I$, impossible over $\mathbb{R}$.)
 
 **Step 2: equation.** Hence $A=\begin{pmatrix}a&b\\c&-a\end{pmatrix}$ and $A^2=(a^2+bc)I$. So
 $$\mathcal{J}=\{(a,b,c)\in\mathbb{R}^3:a^2+bc=-1\},$$
@@ -4528,11 +4528,11 @@ $$|\operatorname{tr}A|\le n\|A\|,\qquad |\det A|\le\|A\|^n.$$
 
 ## Hint
 
-For the determinant, write $|\det A|$ as a product of singular values. For the trace, write $\operatorname{tr}A=\sum_i e_i^TAe_i$ and use Cauchyâ€“Schwarz.
+For the determinant, write $|\det A|$ as a product of singular values. For the trace, write $\operatorname{tr}A=\sum_i e_i^TAe_i$ and use Cauchy-Schwarz.
 
 ## Solution
 
-**Trace.** In the standard basis, $\operatorname{tr}A=\sum_{i=1}^n e_i^TAe_i$. For each $i$, by Cauchyâ€“Schwarz,
+**Trace.** In the standard basis, $\operatorname{tr}A=\sum_{i=1}^n e_i^TAe_i$. For each $i$, by Cauchy-Schwarz,
 $$|e_i^TAe_i|\le|e_i|\,|Ae_i|\le\|A\|\,|e_i|^2=\|A\|.$$
 Summing the $n$ terms gives $|\operatorname{tr}A|\le n\|A\|$.
 
@@ -4544,7 +4544,7 @@ $$|\det A|=|\det U|\,\det\Sigma\,|\det V|=\sigma_1\sigma_2\cdots\sigma_n\le\sigm
 **Remark.** Both bounds are attained by $A=I$ (trace) and by any orthogonal matrix times a scalar (determinant). The inequality $|\det A|\le\|A\|^n$ says that $\det$ is a polynomial map of degree $n$ with a controlled growth, which is useful to prove its continuity and to estimate the distance of a matrix to the singular matrices.
 @@@ mnspec-all-norm-spheres-are-homeomorphic.md
 ---
-title: Every norm sphere of M_n(â„) is a sphere
+title: Every norm sphere of M_n(R) is a sphere
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: l2
 difficulty: 1
@@ -4626,7 +4626,7 @@ Continuity is Weyl's inequality $|\sigma_k(A)-\sigma_k(B)|\le\|A-B\|$. For surje
 
 ## Solution
 
-**Continuity.** By the Courantâ€“Fischer minâ€“max formula,
+**Continuity.** By the Courant-Fischer min-max formula,
 $$\sigma_k(A)=\max_{\dim V=k}\ \min_{x\in V,|x|=1}|Ax|.$$
 If $|Ax|\le|Bx|+\|A-B\|$ for all unit $x$, then taking the $\min$ over $x\in V$ and the $\max$ over $V$ gives $\sigma_k(A)\le\sigma_k(B)+\|A-B\|$. Exchanging $A$ and $B$,
 $$|\sigma_k(A)-\sigma_k(B)|\le\|A-B\|.$$
@@ -4639,7 +4639,7 @@ So each $\sigma_k$ is $1$-Lipschitz, hence $\Sigma$ is continuous.
 **Remark.** The fibres of $\Sigma$ are the orbits $\{U D V:U,V\in O(n)\}$ of the action of $O(n)\times O(n)$: two matrices have the same singular values iff they are orthogonally equivalent. So $K$ is the quotient $M_n(\mathbb{R})/(O(n)\times O(n))$.
 @@@ mnspec-the-pseudo-inverse-is-discontinuous.md
 ---
-title: The Mooreâ€“Penrose pseudo-inverse is discontinuous
+title: The Moore-Penrose pseudo-inverse is discontinuous
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: l2
 difficulty: 2
@@ -4649,7 +4649,7 @@ date: 2026-11-06
 
 ## Statement
 
-For $A=U\Sigma V^T$ (singular value decomposition) the Mooreâ€“Penrose pseudo-inverse is $A^+=V\Sigma^+U^T$, where $\Sigma^+$ inverts the nonzero diagonal entries and keeps the zeros. Show that $A\mapsto A^+$ is discontinuous at every matrix of rank $r<n$.
+For $A=U\Sigma V^T$ (singular value decomposition) the Moore-Penrose pseudo-inverse is $A^+=V\Sigma^+U^T$, where $\Sigma^+$ inverts the nonzero diagonal entries and keeps the zeros. Show that $A\mapsto A^+$ is discontinuous at every matrix of rank $r<n$.
 
 ## Hint
 
@@ -4697,7 +4697,7 @@ so such a $B$ is worse than $B=0\in K$.
 
 **Existence.** $B\mapsto N(A-B)$ is continuous, so it attains its minimum on the nonempty compact set $K$, at some $B_0$. By the previous paragraph $B_0$ is a minimiser on all of $\mathcal{R}_r$.
 
-**Remark.** Existence holds for every norm, but uniqueness may fail (for the operator norm there are many best rank-$r$ approximations when $\sigma_{r+1}=\sigma_{r+2}$ or even in general). For the Frobenius and operator norms the minimum is explicit: see the Eckartâ€“Young problem. The statement is false for the *set of rank exactly $r$* matrices, which is not closed.
+**Remark.** Existence holds for every norm, but uniqueness may fail (for the operator norm there are many best rank-$r$ approximations when $\sigma_{r+1}=\sigma_{r+2}$ or even in general). For the Frobenius and operator norms the minimum is explicit: see the Eckart-Young problem. The statement is false for the *set of rank exactly $r$* matrices, which is not closed.
 @@@ mnspec-the-numerical-range-of-a-real-matrix.md
 ---
 title: The numerical range of a real matrix is an interval
@@ -4729,7 +4729,7 @@ with equality at $x=v_1$ and $x=v_n$. So $\min$ and $\max$ of $x^TSx$ on the sph
 
 **Explicit path.** For a direct proof, $x(t)=\cos t\,v_1+\sin t\,v_n$ gives $x(t)^TSx(t)=\lambda_1\cos^2t+\lambda_n\sin^2t$, which sweeps $[\lambda_1,\lambda_n]$ as $t\in[0,\pi/2]$.
 
-**Remark.** For complex matrices the numerical range is a convex set in $\mathbb{C}$ (Toeplitzâ€“Hausdorff theorem), not an interval. The real quadratic form only sees $S$, which is why a skew-symmetric $A$ has numerical range $\{0\}$.
+**Remark.** For complex matrices the numerical range is a convex set in $\mathbb{C}$ (Toeplitz-Hausdorff theorem), not an interval. The real quadratic form only sees $S$, which is why a skew-symmetric $A$ has numerical range $\{0\}$.
 @@@ mnspec-singular-matrices-are-a-null-set.md
 ---
 title: Singular matrices have measure zero
@@ -4754,7 +4754,7 @@ Prove first that the zero set of any nonzero polynomial in $k$ variables is Lebe
 
 *Proof by induction on $k$.* For $k=1$, a nonzero polynomial has finitely many roots. Let $k\ge2$ and write
 $$p(x_1,\dots,x_k)=\sum_{j=0}^dq_j(x_1,\dots,x_{k-1})\,x_k^j,$$
-with $q_d\not\equiv0$. By induction, $N=\{q_d=0\}\subset\mathbb{R}^{k-1}$ is null. For $x'=(x_1,\dots,x_{k-1})\notin N$, the polynomial $x_k\mapsto p(x',x_k)$ is nonzero, so its zero set in $\mathbb{R}$ is finite, hence null. By Fubiniâ€“Tonelli,
+with $q_d\not\equiv0$. By induction, $N=\{q_d=0\}\subset\mathbb{R}^{k-1}$ is null. For $x'=(x_1,\dots,x_{k-1})\notin N$, the polynomial $x_k\mapsto p(x',x_k)$ is nonzero, so its zero set in $\mathbb{R}$ is finite, hence null. By Fubini-Tonelli,
 $$\lambda_k(Z(p))=\int_{\mathbb{R}^{k-1}}\lambda_1\big(\{x_k:p(x',x_k)=0\}\big)\,dx'=0,$$
 because the integrand vanishes for $x'\notin N$ and $N$ is null. $\square$
 
@@ -4792,7 +4792,7 @@ No inequality $|\mu-\mu'|\le C\|M-M'\|$ can hold near $J$.
 
 **Example.** $n=2$, $\varepsilon=10^{-8}$: $\begin{pmatrix}0&1\\10^{-8}&0\end{pmatrix}$ has eigenvalues $\pm10^{-4}$, four orders of magnitude larger than the perturbation.
 
-**Remark.** The exponent $1/n$ is optimal in general (Bauerâ€“Fike type bounds for non-diagonalisable matrices give HÃ¶lder $1/n$). For normal matrices the dependence is Lipschitz with constant $1$, as shown in the Bauerâ€“Fike problem below.
+**Remark.** The exponent $1/n$ is optimal in general (Bauer-Fike type bounds for non-diagonalisable matrices give HÃ¶lder $1/n$). For normal matrices the dependence is Lipschitz with constant $1$, as shown in the Bauer-Fike problem below.
 @@@ mnspec-power-sums-determine-the-characteristic-polynomial.md
 ---
 title: Power sums determine the characteristic polynomial
@@ -4860,7 +4860,7 @@ Work over $\mathbb{C}$ and triangularise $A$.
 **Remark.** The real spectrum is not enough: $A=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ has no real eigenvalue but $p(x)=x^2+1$ gives $p(A)=0$. The theorem must be applied over $\mathbb{C}$.
 @@@ mnspec-when-do-the-powers-of-a-matrix-converge-to-zero.md
 ---
-title: A^k â†’ 0 if and only if the spectral radius is less than 1
+title: A^k converges to 0 if and only if the spectral radius is less than 1
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: l3
 difficulty: 3
@@ -5002,7 +5002,7 @@ $\deg\mu_A\ge k$ iff $I,A,\dots,A^{k-1}$ are linearly independent. And $C(A)=\ke
 $$\{A:\deg\mu_A\ge k\}=\bigcup_{\text{minors}}\{m(A)\ne0\}$$
 is open. A function $f$ with $\{f\ge k\}$ open for each $k$ is lower semicontinuous: $\liminf_{B\to A}f(B)\ge f(A)$.
 
-**Centraliser.** The map $\operatorname{ad}_A:M_n\to M_n$, $X\mapsto AX-XA$, is linear in $X$ and its matrix (in the standard basis of $M_n$) depends linearly on $A$ (it is $I\otimes A-A^T\otimes I$ up to conventions). Rank is lower semicontinuous (same argument with minors: $\operatorname{rank}\ge r$ is open), so near $A$ we have $\operatorname{rank}\operatorname{ad}_B\ge\operatorname{rank}\operatorname{ad}_A$. By rankâ€“nullity,
+**Centraliser.** The map $\operatorname{ad}_A:M_n\to M_n$, $X\mapsto AX-XA$, is linear in $X$ and its matrix (in the standard basis of $M_n$) depends linearly on $A$ (it is $I\otimes A-A^T\otimes I$ up to conventions). Rank is lower semicontinuous (same argument with minors: $\operatorname{rank}\ge r$ is open), so near $A$ we have $\operatorname{rank}\operatorname{ad}_B\ge\operatorname{rank}\operatorname{ad}_A$. By rank-nullity,
 $$\dim C(B)=n^2-\operatorname{rank}\operatorname{ad}_B\le n^2-\operatorname{rank}\operatorname{ad}_A=\dim C(A).$$
 So $\dim C$ is upper semicontinuous.
 
@@ -5029,7 +5029,7 @@ Order the eigenvalues $\lambda_1(S)\le\dots\le\lambda_n(S)$ and use that each $\
 
 ## Solution
 
-**Eigenvalues are Lipschitz.** For symmetric $S,S'$ Weyl's inequality gives $|\lambda_k(S)-\lambda_k(S')|\le\|S-S'\|$ for each $k$ (minâ€“max formula for the Rayleigh quotient).
+**Eigenvalues are Lipschitz.** For symmetric $S,S'$ Weyl's inequality gives $|\lambda_k(S)-\lambda_k(S')|\le\|S-S'\|$ for each $k$ (min-max formula for the Rayleigh quotient).
 
 **$n_+$ is lower semicontinuous.** Let $m=n_+(S)$, so $\lambda_n(S),\dots,\lambda_{n-m+1}(S)>0$. Let $\delta=\lambda_{n-m+1}(S)>0$ be the smallest of them. If $\|S'-S\|<\delta$ then
 $$\lambda_{n-m+1}(S')>\lambda_{n-m+1}(S)-\delta=0,$$
@@ -5177,7 +5177,7 @@ $$\mathcal{E}=\{u^2+v^2<w^2\}\subset\mathbb{R}^4$$
 **Remark.** The sign of $w=b-c$ is the "angular velocity" of the linear flow $\dot x=Ax$ when the eigenvalues are complex: the two components are counter-clockwise and clockwise spiral behaviours. They cannot be connected without passing through matrices with real eigenvalues.
 @@@ mnspec-the-bauer-fike-theorem.md
 ---
-title: The Bauerâ€“Fike theorem
+title: The Bauer-Fike theorem
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: m1
 difficulty: 4
@@ -5232,10 +5232,10 @@ Normal matrices are unitarily diagonalisable, so the condition number of the eig
 
 ## Solution
 
-**First statement.** By the spectral theorem for normal matrices, $A=UDU^*$ with $U$ unitary and $D$ diagonal. Then $\|U\|=\|U^{-1}\|=1$, so $\kappa(U)=1$. Bauerâ€“Fike gives
+**First statement.** By the spectral theorem for normal matrices, $A=UDU^*$ with $U$ unitary and $D$ diagonal. Then $\|U\|=\|U^{-1}\|=1$, so $\kappa(U)=1$. Bauer-Fike gives
 $$\min_i|\mu-d_i|\le\kappa(U)\|E\|=\|E\|.$$
 
-**Symmetric case, sorted eigenvalues (Weyl).** For real symmetric $A$ with eigenvalues $\lambda_1\le\dots\le\lambda_n$, the Courantâ€“Fischer formula says
+**Symmetric case, sorted eigenvalues (Weyl).** For real symmetric $A$ with eigenvalues $\lambda_1\le\dots\le\lambda_n$, the Courant-Fischer formula says
 $$\lambda_k(A)=\min_{\dim V=k}\ \max_{x\in V,|x|=1}x^TAx.$$
 For a unit $x$, $x^T(A+E)x\le x^TAx+\|E\|$, hence $\lambda_k(A+E)\le\lambda_k(A)+\|E\|$. Applying this to the pair $(A+E,-E)$ gives $\lambda_k(A)\le\lambda_k(A+E)+\|E\|$. So
 $$|\lambda_k(A+E)-\lambda_k(A)|\le\|E\|.$$
@@ -5273,7 +5273,7 @@ Hence $\limsup\|A^k\|^{1/k}\le\rho(A)+\varepsilon$ for every $\varepsilon>0$.
 
 **Conclusion.** $\liminf\ge\rho(A)\ge\limsup-\varepsilon$ for all $\varepsilon$; the limit exists and equals $\rho(A)$.
 
-**Example.** $A=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ has $\rho=0$ and $A^2=0$: $\|A^k\|^{1/k}=0$ for $k\ge2$ âœ“. For $A=\begin{pmatrix}0.9&1\\0&0.9\end{pmatrix}$, $\|A^{50}\|^{1/50}\approx0.9\cdot1.0\!\ldots$ approaches $0.9$ slowly.
+**Example.** $A=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ has $\rho=0$ and $A^2=0$: $\|A^k\|^{1/k}=0$ for $k\ge2$. For $A=\begin{pmatrix}0.9&1\\0&0.9\end{pmatrix}$, $\|A^{50}\|^{1/50}\approx0.9\cdot1.0\!\ldots$ approaches $0.9$ slowly.
 
 **Remark.** As a corollary, $\rho(A)=\inf_{\|\cdot\|}\|A\|$ over all operator norms: for each $\varepsilon$ there is a norm with $\|A\|<\rho(A)+\varepsilon$. This is the topological meaning of the spectral radius.
 @@@ mnspec-monotonicity-of-the-spectral-radius-for-nonnegative-matrices.md
@@ -5308,7 +5308,7 @@ $$\rho(A)=\lim_k\|A^k\|_\infty^{1/k}\le\lim_k\|B^k\|_\infty^{1/k}=\rho(B).$$
 
 **Example.** $A=\begin{pmatrix}0&1\\0&0\end{pmatrix}\le B=\begin{pmatrix}1&1\\1&0\end{pmatrix}$: $\rho(A)=0\le\rho(B)=\frac{1+\sqrt5}2$.
 
-**Remark.** Nonnegativity is essential: for $A=\begin{pmatrix}0&-3\\0&0\end{pmatrix}\le B=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ (entrywise) there is no problem, but with $A=\begin{pmatrix}-2&0\\0&-2\end{pmatrix}\le B=I$ we get $\rho(A)=2>\rho(B)=1$. This monotonicity is a first step of the Perronâ€“Frobenius theory.
+**Remark.** Nonnegativity is essential: for $A=\begin{pmatrix}0&-3\\0&0\end{pmatrix}\le B=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ (entrywise) there is no problem, but with $A=\begin{pmatrix}-2&0\\0&-2\end{pmatrix}\le B=I$ we get $\rho(A)=2>\rho(B)=1$. This monotonicity is a first step of the Perron-Frobenius theory.
 @@@ mnspec-existence-of-a-stationary-distribution.md
 ---
 title: A stochastic matrix has a stationary distribution
@@ -5342,7 +5342,7 @@ $$\pi P-\pi=\lim_j(m_{N_j}P-m_{N_j})=0.$$
 
 **Example.** $P=\begin{pmatrix}0&1\\1&0\end{pmatrix}$: $P^k$ does not converge, but the averages $m_N\to(\frac12,\frac12)$, which is stationary.
 
-**Remark.** This is the Markovâ€“Kakutani / Brouwer-type argument. The vector $\pi$ is generally not unique (e.g. $P=I$) and $\pi_0P^k$ need not converge, which is why CesÃ ro averaging is needed; under the positivity assumption of the next problem, uniqueness and convergence hold.
+**Remark.** This is the Markov-Kakutani / Brouwer-type argument. The vector $\pi$ is generally not unique (e.g. $P=I$) and $\pi_0P^k$ need not converge, which is why CesÃ ro averaging is needed; under the positivity assumption of the next problem, uniqueness and convergence hold.
 @@@ mnspec-dobrushin-s-contraction-argument.md
 ---
 title: Dobrushin's contraction for positive stochastic matrices
@@ -5409,7 +5409,7 @@ By the induction hypothesis there is an orthonormal basis $(g_2,\dots,g_n)$ of $
 
 **Example.** $A=\operatorname{diag}(1,-1)$: $x=\frac1{\sqrt2}(1,1)$ gives $x^TAx=0$, and $\frac1{\sqrt2}(1,-1)$ also; in this basis $A=\begin{pmatrix}0&1\\1&0\end{pmatrix}$.
 
-**Remark.** Conversely a matrix with zero diagonal in an orthonormal basis has trace zero, so $\operatorname{tr}A=0$ iff $A$ is orthogonally similar to a zero-diagonal matrix. The same statement holds with "similar" in place of "orthogonally similar" (trivially, with a basis that is not orthonormal) and it is the matrix version of: a trace-zero matrix is a sum of commutators (Albertâ€“Muckenhoupt).
+**Remark.** Conversely a matrix with zero diagonal in an orthonormal basis has trace zero, so $\operatorname{tr}A=0$ iff $A$ is orthogonally similar to a zero-diagonal matrix. The same statement holds with "similar" in place of "orthogonally similar" (trivially, with a basis that is not orthonormal) and it is the matrix version of: a trace-zero matrix is a sum of commutators (Albert-Muckenhoupt).
 @@@ mnspec-sylvester-s-criterion.md
 ---
 title: Sylvester's criterion and the openness of the positive cone
@@ -5481,7 +5481,7 @@ which is negative definite.
 **Remark.** In topological terms, the set of Hurwitz matrices is open (eigenvalues are continuous), and it is the union over $P>0$ of the open convex cones $\{A:A^TP+PA<0\}$; each cone is convex but the union is not (the set of Hurwitz matrices is *not* convex).
 @@@ mnspec-the-eckart-young-theorem.md
 ---
-title: The Eckartâ€“Young theorem in the operator norm
+title: The Eckart-Young theorem in the operator norm
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: m1
 difficulty: 4
@@ -5517,7 +5517,7 @@ Thus $\|A-B\|\ge\sigma_{r+1}$ for every $B$ of rank $\le r$.
 
 **Example.** $A=\operatorname{diag}(3,2,1)$, $r=1$: the best rank-one approximation is $\operatorname{diag}(3,0,0)$ at distance $2=\sigma_2$.
 
-**Remark.** The same truncation $B_0$ is optimal for the Frobenius norm, with error $\sqrt{\sigma_{r+1}^2+\dots+\sigma_n^2}$ (Eckartâ€“Youngâ€“Mirsky); the proof is different.
+**Remark.** The same truncation $B_0$ is optimal for the Frobenius norm, with error $\sqrt{\sigma_{r+1}^2+\dots+\sigma_n^2}$ (Eckart-Young-Mirsky); the proof is different.
 @@@ mnspec-the-square-root-is-operator-monotone.md
 ---
 title: The square root is operator monotone
@@ -5550,7 +5550,7 @@ The square root is continuous on the cone of positive semidefinite matrices, and
 
 **Example.** The analogous statement for squares is false: $A=\begin{pmatrix}1&1\\1&1\end{pmatrix}\le B=\begin{pmatrix}2&1\\1&1\end{pmatrix}$ but $A^2=\begin{pmatrix}2&2\\2&2\end{pmatrix}\not\le B^2=\begin{pmatrix}5&3\\3&2\end{pmatrix}$, since $B^2-A^2=\begin{pmatrix}3&1\\1&0\end{pmatrix}$ has determinant $-1<0$.
 
-**Remark.** More generally $t\mapsto t^r$ is operator monotone for $0\le r\le1$ (LÃ¶wnerâ€“Heinz inequality) and not for $r>1$. This result is one of the first examples where order on matrices behaves differently from order on numbers.
+**Remark.** More generally $t\mapsto t^r$ is operator monotone for $0\le r\le1$ (L\"owner-Heinz inequality) and not for $r>1$. This result is one of the first examples where order on matrices behaves differently from order on numbers.
 @@@ mnspec-conjugacy-classes-in-the-plane-of-trace-and-determinant.md
 ---
 title: The fibres of (trace, determinant) on 2Ã—2 matrices
@@ -5696,7 +5696,7 @@ which equals neither $e^Ae^B$ nor $e^Be^A$.
 **Remark.** Since $e^Ae^B\ne e^Be^A$, the identity $e^{A+B}=e^Ae^B$ cannot hold when $A$ and $B$ do not commute: the left side is symmetric in $A,B$ but the right sides are not. The correct replacement is the Lie product formula (see below).
 @@@ mnexp-the-derivative-of-the-exponential-of-ta.md
 ---
-title: The derivative of t â†¦ e^(tA) and the one-parameter group property
+title: The derivative of the matrix exponential and the one-parameter group property
 category: topology/topology-of-mnr/mn-exp-log
 level: l2
 difficulty: 2
@@ -5792,7 +5792,7 @@ because the trace is invariant under conjugation.
 
 **Consequence.** For real $A$, $e^A$ is real and $\det e^A=e^{\operatorname{tr}A}>0$. Hence $\exp(M_n(\mathbb{R}))\subset GL_n^+(\mathbb{R})$ and in particular $\exp(\mathfrak{sl}_n)\subset SL_n$.
 
-**Check.** For $A=\theta J$ we have $\operatorname{tr}A=0$ and $\det R_\theta=1$ âœ“. For $A=\operatorname{diag}(a,b)$, $\det e^A=e^{a+b}$ âœ“.
+**Check.** For $A=\theta J$ we have $\operatorname{tr}A=0$ and $\det R_\theta=1$. For $A=\operatorname{diag}(a,b)$, $\det e^A=e^{a+b}$.
 
 **Remark.** An alternative proof: $f(t)=\det e^{tA}$ satisfies $f'(t)=\operatorname{tr}(A)f(t)$ (Jacobi's formula), so $f(t)=e^{t\operatorname{tr}A}$.
 @@@ mnexp-the-exponential-of-skew-symmetric-matrices-is-onto-so-n.md
@@ -5965,7 +5965,7 @@ $$e^{\log(I+N)}=I+N,\qquad\log(e^N)=N.$$
 
 **Conclusion.** Both $\exp|_{\mathcal{N}}$ and $\log|_{\mathcal{U}}$ are polynomial in the entries, inverse to each other. So $\exp$ is a homeomorphism (indeed a polynomial bijection with polynomial inverse).
 
-**Example.** For $N=\begin{pmatrix}0&a\\0&0\end{pmatrix}$: $e^N=\begin{pmatrix}1&a\\0&1\end{pmatrix}$ and $\log\begin{pmatrix}1&a\\0&1\end{pmatrix}=N$ âœ“.
+**Example.** For $N=\begin{pmatrix}0&a\\0&0\end{pmatrix}$: $e^N=\begin{pmatrix}1&a\\0&1\end{pmatrix}$ and $\log\begin{pmatrix}1&a\\0&1\end{pmatrix}=N$.
 
 **Remark.** This fails for non-unipotent matrices, where $\log$ is only defined locally (see the previous problem) and $\exp$ is not even injective.
 @@@ mnexp-unitriangular-and-triangular-groups.md
@@ -5999,7 +5999,7 @@ $$B_n\to\mathcal{D}\times U_n,\qquad T\mapsto\bigl(D,\ D^{-1}T\bigr)$$
 
 **Components.** $\mathbb{R}^\times=(-\infty,0)\cup(0,\infty)$ has two components, each homeomorphic to $\mathbb{R}$, hence contractible. So $(\mathbb{R}^\times)^n$ has $2^n$ components (choose a sign for each diagonal entry), each homeomorphic to $(0,\infty)^n\cong\mathbb{R}^n$. Multiplying by $U_n\cong\mathbb{R}^{n(n-1)/2}$ (connected and contractible) does not change the number of components, and each component of $B_n$ is homeomorphic to $\mathbb{R}^n\times\mathbb{R}^{n(n-1)/2}=\mathbb{R}^{n(n+1)/2}$, which is contractible.
 
-**Check.** $n=1$: $B_1=\mathbb{R}^\times$, $2$ components âœ“. $n=2$: $B_2=\{\begin{pmatrix}a&b\\0&d\end{pmatrix}:ad\ne0\}$, $4$ components according to the signs of $a$ and $d$ âœ“.
+**Check.** $n=1$: $B_1=\mathbb{R}^\times$, $2$ components. $n=2$: $B_2=\{\begin{pmatrix}a&b\\0&d\end{pmatrix}:ad\ne0\}$, $4$ components according to the signs of $a$ and $d$.
 
 **Remark.** The signs of the diagonal entries are the only topological invariants of $B_n$: there are $2^n$ components, while $GL_n$ has only $2$ (connected by rotations, which are not triangular).
 @@@ mnexp-polar-decomposition-via-the-exponential.md
@@ -6070,7 +6070,7 @@ and the space of traceless symmetric matrices is a vector space of dimension $\f
 **Remark.** Another consequence: $GL_n$ deformation retracts onto $O(n)$ and $SL_n$ onto $SO(n)$, so topologically $SL_n\simeq SO(n)$.
 @@@ mnexp-so-n-over-so-n-1-is-the-sphere.md
 ---
-title: SO(n)/SO(nâˆ’1) is the sphere
+title: SO(n)/SO(n-1) is the sphere
 category: topology/topology-of-mnr/mn-exp-log
 level: l3
 difficulty: 3
@@ -6105,7 +6105,7 @@ So $\varphi$ is constant on left cosets and its fibres are exactly the cosets: i
 **Remark.** $SO(3)/SO(2)\cong S^2$: choosing an axis (a point of the sphere) leaves a rotation about that axis undetermined.
 @@@ mnexp-the-projective-linear-group-pgl-n.md
 ---
-title: Connected components of the projective linear group PGL_n(â„)
+title: Connected components of the projective linear group
 category: topology/topology-of-mnr/mn-exp-log
 level: l3
 difficulty: 3
@@ -6131,7 +6131,7 @@ How does $\det$ change when $A$ is replaced by $\lambda A$?
 
 **$n$ even.** Now $\det(\lambda A)=\lambda^n\det A$ has the same sign as $\det A$ for every $\lambda\ne0$. So $\mathrm{sgn}\det$ is constant on each scalar class and induces a well-defined continuous map $\overline{\mathrm{sgn}\det}:PGL_n\to\{\pm1\}$. It is onto (e.g. $I$ and $\mathrm{diag}(-1,1,\dots,1)$), so $PGL_n$ is disconnected. Moreover $PGL_n=q(GL_n^+)\cup q(GL_n^-)$ is a union of two connected sets, which are the two (disjoint, since the sign differs) fibres of $\overline{\mathrm{sgn}\det}$. Hence there are exactly two components.
 
-**Check.** $n=1$: $PGL_1$ is a point. $n=2$: $PGL_2(\mathbb{R})\supset PSL_2(\mathbb{R})$ with index 2 and has two components âœ“.
+**Check.** $n=1$: $PGL_1$ is a point. $n=2$: $PGL_2(\mathbb{R})\supset PSL_2(\mathbb{R})$ with index 2 and has two components.
 
 **Remark.** For odd $n$, $PGL_n(\mathbb{R})\cong SL_n(\mathbb{R})$ (every class has a unique representative of determinant $1$, namely the real $n$-th root of $1/\det A$ times $A$).
 @@@ mnexp-centres-of-gl-n-and-sl-n.md
@@ -6264,7 +6264,7 @@ $$\|X_k^k-Y_k^k\|\le\sum_{j=0}^{k-1}\|X_k\|^j\|X_k-Y_k\|\|Y_k\|^{k-1-j}\le k\,M_
 
 **Conclusion.** $\|(e^{A/k}e^{B/k})^k-e^{A+B}\|\le\frac{Ce^{a+b}}k\to0$.
 
-**Remark.** The formula shows that although $e^Ae^B\ne e^{A+B}$ in general, the products of "infinitesimal steps" recover $e^{A+B}$. It is the mathematical core of Trotterâ€“Kato splitting methods in numerical analysis and of the fact that the Lie algebra of a closed subgroup is a vector space (next problem).
+**Remark.** The formula shows that although $e^Ae^B\ne e^{A+B}$ in general, the products of "infinitesimal steps" recover $e^{A+B}$. It is the mathematical core of Trotter-Kato splitting methods in numerical analysis and of the fact that the Lie algebra of a closed subgroup is a vector space (next problem).
 @@@ mnexp-the-lie-algebra-of-a-closed-subgroup-is-a-vector-space.md
 ---
 title: The Lie algebra of a closed subgroup is a linear subspace
@@ -6369,11 +6369,11 @@ A subgroup that contains a neighbourhood of $e$ is open. An open subgroup is als
 **Remark.** The statement is false without connectedness: in $GL_n(\mathbb{R})$ the exponentials generate only $GL_n^+$, never a matrix of negative determinant.
 @@@ mnexp-which-matrices-of-sl-2-are-exponentials.md
 ---
-title: Which matrices of SLâ‚‚(â„) are exponentials?
+title: Which matrices of the special linear group are exponentials?
 category: topology/topology-of-mnr/mn-exp-log
 level: m1
 difficulty: 4
-tags: SL_2, trace, Cayleyâ€“Hamilton, exponential image
+tags: SL_2, trace, Cayley-Hamilton, exponential image
 date: 2026-11-06
 ---
 
@@ -6385,13 +6385,13 @@ In particular $\exp:\mathfrak{sl}_2(\mathbb{R})\to SL_2(\mathbb{R})$ is not surj
 
 ## Hint
 
-For traceless $X$, Cayleyâ€“Hamilton gives $X^2=-\det X\cdot I$. Separate the cases $\det X>0$, $=0$, $<0$.
+For traceless $X$, Cayley-Hamilton gives $X^2=-\det X\cdot I$. Separate the cases $\det X>0$, $=0$, $<0$.
 
 ## Solution
 
 **Idea.** The trace of $e^X$ is $2\cos\omega$ or $2$ or $2\cosh\omega$, according to the sign of $\det X$.
 
-**Cayleyâ€“Hamilton.** For $X$ with $\operatorname{tr}X=0$: $X^2-(\operatorname{tr}X)X+(\det X)I=0$, so $X^2=-(\det X)I$.
+**Cayley-Hamilton.** For $X$ with $\operatorname{tr}X=0$: $X^2-(\operatorname{tr}X)X+(\det X)I=0$, so $X^2=-(\det X)I$.
 
 **Inclusion $\subset$.** Let $X\in\mathfrak{sl}_2$.
 - *$\det X=\omega^2>0$.* Then $X^2=-\omega^2I$, so $X^{2k}=(-1)^k\omega^{2k}I$ and $X^{2k+1}=(-1)^k\omega^{2k}X$. Summing the series,
@@ -6447,10 +6447,10 @@ so $PhP^{-1}\in O(n)$.
 
 **Step 4: determinant.** $\det(PhP^{-1})=\det h=1$ since $K\subset SL_n$. So $PKP^{-1}\subset SO(n)$.
 
-**Remark.** The same proof shows that any compact subgroup of $GL_n(\mathbb{R})$ is conjugate into $O(n)$. It gives a "maximal compact subgroup" theorem: $SO(n)$ is a maximal compact subgroup of $SL_n(\mathbb{R})$, unique up to conjugation (Cartanâ€“Iwasawaâ€“Malcev).
+**Remark.** The same proof shows that any compact subgroup of $GL_n(\mathbb{R})$ is conjugate into $O(n)$. It gives a "maximal compact subgroup" theorem: $SO(n)$ is a maximal compact subgroup of $SL_n(\mathbb{R})$, unique up to conjugation (Cartan-Iwasawa-Malcev).
 @@@ mnexp-so-3-is-the-real-projective-3-space.md
 ---
-title: SO(3) is homeomorphic to â„PÂ³
+title: SO(3) is homeomorphic to the 3-sphere
 category: topology/topology-of-mnr/mn-exp-log
 level: m1
 difficulty: 4
@@ -6486,7 +6486,7 @@ Every element of $SO(3)$ is a rotation about some axis: its eigenvalues are $e^{
 
 **Homeomorphism.** $\Phi$ induces a continuous bijection $\bar\Phi:S^3/\{\pm1\}\to SO(3)$. The source is compact, the target is Hausdorff, so $\bar\Phi$ is a homeomorphism. And $S^3/\{\pm1\}$ is $\mathbb{RP}^3$ (antipodal identification).
 
-**Check.** $\Phi(i)$ is the rotation by $\pi$ about the $i$-axis: $i\,i\,(-i)=i$, $i\,j\,(-i)=-j$, $i\,k\,(-i)=-k$ âœ“.
+**Check.** $\Phi(i)$ is the rotation by $\pi$ about the $i$-axis: $i\,i\,(-i)=i$, $i\,j\,(-i)=-j$, $i\,k\,(-i)=-k$.
 
 **Remark.** This is the origin of the use of quaternions for 3D rotations in computer graphics: two unit quaternions $q$ and $-q$ give the same rotation.
 @@@ mnexp-the-fundamental-group-of-so-3.md
@@ -6513,7 +6513,7 @@ The map $\Phi:S^3\to SO(3)$ of the previous problem is a $2$-fold covering, and 
 
 **$\Phi$ is a covering map.** $\Phi$ identifies $SO(3)$ with the quotient $S^3/\{\pm1\}$, where $\{\pm1\}$ acts by $q\mapsto-q$. This action is free (no fixed points: $-q\ne q$) and properly discontinuous, so the quotient map $S^3\to S^3/\{\pm1\}$ is a covering map of degree $2$. Via the homeomorphism $\bar\Phi$ of the previous problem, $\Phi:S^3\to SO(3)$ is a $2$-sheeted covering.
 
-**$S^3$ is simply connected.** The sphere $S^m$ is simply connected for $m\ge2$ (e.g. by the Seifertâ€“van Kampen theorem, covering $S^3$ by two open sets homeomorphic to $\mathbb{R}^3$ with connected intersection $\simeq S^2$). So $\Phi$ is the **universal cover** of $SO(3)$.
+**$S^3$ is simply connected.** The sphere $S^m$ is simply connected for $m\ge2$ (e.g. by the Seifert-van Kampen theorem, covering $S^3$ by two open sets homeomorphic to $\mathbb{R}^3$ with connected intersection $\simeq S^2$). So $\Phi$ is the **universal cover** of $SO(3)$.
 
 **Deck group.** The deck transformations of the covering $S^3\to S^3/\{\pm1\}$ are $\mathrm{id}$ and $q\mapsto-q$, a group of order $2$. For the universal cover of a path-connected, locally path-connected space $X$, the deck group is isomorphic to $\pi_1(X)$. Hence
 $$\pi_1(SO(3))\cong\{\pm1\}\cong\mathbb{Z}/2\mathbb{Z}.$$
@@ -6588,7 +6588,7 @@ Hence $Z$ has empty interior, and $\{p\ne0\}=\mathbb{R}^k\setminus Z$ is dense.
 **Remark.** This is the basic tool of the whole section. In $M_n(\mathbb{R})\cong\mathbb{R}^{n^2}$, "polynomial in the entries" covers $\det$, the coefficients of the characteristic polynomial, minors, discriminants and so on. **Lesson.** To prove a property holds on an open dense set, find a nonzero polynomial whose non-vanishing implies it.
 @@@ mnden-three-open-dense-subsets-of-the-matrices.md
 ---
-title: Three open dense subsets of M_n(â„)
+title: Three open dense subsets of the space of matrices
 category: topology/topology-of-mnr/mn-density
 level: l2
 difficulty: 2
@@ -6655,11 +6655,11 @@ All three are solvable, so $A=LU$ (and $\delta=\det A/\det A'\ne0$).
 **Remark.** The condition is not necessary: $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ has an LU factorisation with $L=I$. It fails for some invertible matrices, like $\begin{pmatrix}0&1\\1&0\end{pmatrix}$ (if it were $LU$, $L=\begin{pmatrix}1&0\\\ell&1\end{pmatrix}$ and $U=\begin{pmatrix}u_{11}&u_{12}\\0&u_{22}\end{pmatrix}$ would give $u_{11}=0$ and then $\ell u_{11}=1$, impossible). This is why pivoting is needed in practice. **Lesson.** Genericity statements often come from "no pivot vanishes".
 @@@ mnden-cayley-hamilton-by-density.md
 ---
-title: The Cayleyâ€“Hamilton theorem by density
+title: The Cayley-Hamilton theorem by density
 category: topology/topology-of-mnr/mn-density
 level: l3
 difficulty: 3
-tags: Cayleyâ€“Hamilton, density, diagonalisation
+tags: Cayley-Hamilton, density, diagonalisation
 date: 2026-11-06
 ---
 
@@ -6742,7 +6742,7 @@ $$\det\operatorname{adj}A=(\det A)^n\det(A^{-1})=(\det A)^n(\det A)^{-1}=(\det A
 
 **Extension.** Each side of each identity is a polynomial in the entries of $A$ (and $B$). A polynomial identity valid on the dense set $GL_n\times GL_n$ (dense in $M_n\times M_n$) holds everywhere, by continuity.
 
-**Check.** $n=2$: $\operatorname{adj}\begin{pmatrix}a&b\\c&d\end{pmatrix}=\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$ and $\det\operatorname{adj}A=ad-bc=(\det A)^1$ âœ“.
+**Check.** $n=2$: $\operatorname{adj}\begin{pmatrix}a&b\\c&d\end{pmatrix}=\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$ and $\det\operatorname{adj}A=ad-bc=(\det A)^1$.
 
 **Remark.** For $A$ of rank $n-1$, $\operatorname{adj}A$ has rank $1$, and for rank $\le n-2$ it is $0$; the identity $\det\operatorname{adj}A=(\det A)^{n-1}=0$ is consistent when $n\ge2$. **Lesson.** Identities with $A^{-1}$ become identities with $\operatorname{adj}A$ after multiplying by $\det A$, which makes them polynomial.
 @@@ mnden-nonderogatory-matrices-form-an-open-dense-set.md
@@ -6776,7 +6776,7 @@ is a union of open sets.
 **Remark.** Matrices in $\mathcal{C}$ are called nonderogatory (or cyclic): they have a cyclic vector. The complement, e.g. the scalar matrices, is a closed subset with empty interior. **Lesson.** "Some minor $\ne0$" is a typical way to see openness of a rank condition.
 @@@ mnden-the-hypersurface-det-of-a-minus-i-is-zero.md
 ---
-title: The closed set det(A âˆ’ I) = 0 has empty interior
+title: The closed set det(A - I) = 0 has empty interior
 category: topology/topology-of-mnr/mn-density
 level: l2
 difficulty: 1
@@ -6890,7 +6890,7 @@ As $t\to0$ this tends to $I$, and each $D_tJD_t^{-1}$ belongs to $\mathcal{O}(J)
 
 **$I\notin\mathcal{O}(J)$.** For every $P$, $PIP^{-1}=I$, so the orbit of $I$ is $\{I\}$. If $I=PJP^{-1}$ then $J=P^{-1}IP=I$, which is false.
 
-**Consequence.** The orbit $\mathcal{O}(J)$ is not closed. In terms of group actions: the quotient $M_n/\!\!\sim$ by conjugation is not Hausdorff. Any continuous function constant on conjugacy classes (such as the trace or the determinant) takes the same values on $J$ and $I$ â€” and indeed $\operatorname{tr}J=\operatorname{tr}I=2$, $\det J=\det I=1$ â€” so it cannot distinguish them.
+**Consequence.** The orbit $\mathcal{O}(J)$ is not closed. In terms of group actions: the quotient $M_n/\!\!\sim$ by conjugation is not Hausdorff. Any continuous function constant on conjugacy classes (such as the trace or the determinant) takes the same values on $J$ and $I$ and indeed $\operatorname{tr}J=\operatorname{tr}I=2$, $\det J=\det I=1$ so it cannot distinguish them.
 
 **Remark.** $J$ and $I$ have the same characteristic polynomial $(X-1)^2$ but different minimal polynomials. **Lesson.** Rescaling the basis shrinks off-diagonal parts: this is the mechanism behind all orbit closure arguments.
 @@@ mnden-orbits-of-diagonalisable-matrices-are-closed.md
@@ -7114,7 +7114,7 @@ Since $N$ was arbitrary, the set is dense.
 **Remark.** This is Kronecker's theorem in dimension one: the orbit $\{k\alpha\bmod2\pi\}$ of an irrational rotation is dense (and in fact equidistributed). **Lesson.** Pigeonhole produces arbitrarily small elements in an infinite subgroup of a compact group.
 @@@ mnden-a-discrete-cyclic-subgroup-of-gl2.md
 ---
-title: A discrete cyclic subgroup of GLâ‚‚(â„)
+title: A discrete cyclic subgroup of the general linear group
 category: topology/topology-of-mnr/mn-density
 level: l2
 difficulty: 2
@@ -7146,7 +7146,7 @@ So $d(A^j,A^k)\ge1$ for all $j\ne k$. In particular every point of $\Gamma$ is i
 **Remark.** Contrast with $\{R_{k\alpha}\}$ in the previous problem, which can be dense: powers of a matrix with eigenvalues of modulus $\ne1$ escape to infinity, while eigenvalues of modulus $1$ can make the powers accumulate. **Lesson.** Uniform discreteness gives closedness for free.
 @@@ mnden-invertible-rational-matrices-are-dense-in-gl-n.md
 ---
-title: Invertible rational matrices are dense in GL_n(â„)
+title: Invertible rational matrices are dense in the general linear group
 category: topology/topology-of-mnr/mn-density
 level: l2
 difficulty: 2
@@ -7173,7 +7173,7 @@ If $U$ is open and $D$ is dense in a space $X$, then $U\cap D$ is dense in $U$.
 **Remark.** The same argument shows $\{A\in M_n(\mathbb{Q})\}$ is dense in any open subset of $M_n(\mathbb{R})$. It fails for closed subsets such as $SL_n$ (see the next problems), where rationality interacts with the constraint $\det=1$. **Lesson.** Open $\cap$ dense is dense in the open set.
 @@@ mnden-rational-matrices-of-determinant-one-are-dense-in-sl-n.md
 ---
-title: SL_n(â„š) is dense in SL_n(â„)
+title: density in the special linear group
 category: topology/topology-of-mnr/mn-density
 level: l3
 difficulty: 3
@@ -7363,7 +7363,7 @@ Thus a neighbourhood of $\operatorname{diag}(1,2,3)$ misses $\mathcal{N}_3$, so 
 **Remark.** For $n=2$, scalar matrices $aI$ are on the boundary. In odd dimension the characteristic polynomial always has a real root, but that is not what we use. **Lesson.** Open conditions (distinct real eigenvalues) show a set is not dense.
 @@@ mnden-an-algebraic-subset-has-measure-zero.md
 ---
-title: Proper algebraic subsets of M_n(â„) have measure zero
+title: Proper algebraic subsets of M_n(R) have measure zero
 category: topology/topology-of-mnr/mn-density
 level: l3
 difficulty: 3
@@ -7399,11 +7399,11 @@ because $Z'$ is null.
 
 @@@ mnappb2-the-idempotents-of-rank-one-and-the-involutions-of-m2-are-cylinders.md
 ---
-title: Rank-one idempotents and involutions of Mâ‚‚(â„) are cylinders
+title: Rank-one idempotents and involutions of M_2(R) are cylinders
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
-tags: M2(R), complex coordinates, idempotents, involutions, trace and determinant
+tags: M_2(R), complex coordinates, idempotents, involutions, trace and determinant
 date: 2026-11-10
 ---
 
@@ -7417,7 +7417,7 @@ are both homeomorphic to the cylinder $\mathbb{R}\times S^1$.
 
 ## Hint
 
-Characterise both sets by the trace and the determinant (Cayleyâ€“Hamilton), then use $\operatorname{tr}A=2\operatorname{Re}z$ and $\det A=|z|^2-|w|^2$. After that, the coordinates are $\operatorname{Im}z$ and the argument of $w$.
+Characterise both sets by the trace and the determinant (Cayley-Hamilton), then use $\operatorname{tr}A=2\operatorname{Re}z$ and $\det A=|z|^2-|w|^2$. After that, the coordinates are $\operatorname{Im}z$ and the argument of $w$.
 
 ## Solution
 
@@ -7428,12 +7428,12 @@ $$\operatorname{tr}A=a+d=2\operatorname{Re}z,\qquad |z|^2-|w|^2=\tfrac14\bigl[(a
 Conversely, $a=\operatorname{Re}z+\operatorname{Re}w$, $d=\operatorname{Re}z-\operatorname{Re}w$, $c=\operatorname{Im}z+\operatorname{Im}w$, $b=\operatorname{Im}w-\operatorname{Im}z$, so $(z,w)\mapsto A$ is the inverse linear map.
 
 **Step 1: $\mathcal I$ in terms of trace and determinant.** We claim $A\in\mathcal I\iff\operatorname{tr}A=1$ and $\det A=0$.
-- ($\Rightarrow$) $A$ has rank $1$, so $\det A=0$ and $A\ne0$. Cayleyâ€“Hamilton gives $A^2-(\operatorname{tr}A)A+(\det A)I=0$, i.e. $A^2=(\operatorname{tr}A)A$. Since $A^2=A$ and $A\ne0$ we get $\operatorname{tr}A=1$.
-- ($\Leftarrow$) Cayleyâ€“Hamilton with $\operatorname{tr}A=1$, $\det A=0$ gives $A^2=A$. Also $A\neq0$ (its trace is $1$) and $\det A=0$, so the rank is exactly $1$.
+- ($\Rightarrow$) $A$ has rank $1$, so $\det A=0$ and $A\ne0$. Cayley-Hamilton gives $A^2-(\operatorname{tr}A)A+(\det A)I=0$, i.e. $A^2=(\operatorname{tr}A)A$. Since $A^2=A$ and $A\ne0$ we get $\operatorname{tr}A=1$.
+- ($\Leftarrow$) Cayley-Hamilton with $\operatorname{tr}A=1$, $\det A=0$ gives $A^2=A$. Also $A\neq0$ (its trace is $1$) and $\det A=0$, so the rank is exactly $1$.
 
 **Step 2: $\mathcal J$ in terms of trace and determinant.** We claim $A\in\mathcal J\iff\operatorname{tr}A=0$ and $\det A=-1$.
 - ($\Rightarrow$) The minimal polynomial of $A$ divides $t^2-1=(t-1)(t+1)$. It cannot be $t-1$ or $t+1$ because $A\ne\pm I$. So it equals $t^2-1$, which has degree $2$, hence it is the characteristic polynomial: $\operatorname{tr}A=0$, $\det A=-1$.
-- ($\Leftarrow$) Cayleyâ€“Hamilton gives $A^2-0\cdot A+(-1)I=0$, i.e. $A^2=I$, and $A\ne\pm I$ since $\operatorname{tr}(\pm I)=\pm2\ne0$.
+- ($\Leftarrow$) Cayley-Hamilton gives $A^2-0\cdot A+(-1)I=0$, i.e. $A^2=I$, and $A\ne\pm I$ since $\operatorname{tr}(\pm I)=\pm2\ne0$.
 
 **Step 3: coordinates on $\mathcal I$.** By Steps 0 and 1, $A\in\mathcal I$ iff $\operatorname{Re}z=\frac12$ and $|z|^2=|w|^2$. Write $z=\frac12+iq$ with $q\in\mathbb{R}$. Then $|w|=|z|=\sqrt{\frac14+q^2}>0$, so $w\ne0$ and $u=w/|w|\in S^1$ is defined. Define
 $$\Phi:\mathcal I\to\mathbb{R}\times S^1,\qquad A\mapsto\Bigl(\operatorname{Im}z,\ \frac w{|w|}\Bigr).$$
@@ -7441,18 +7441,18 @@ $\Phi$ is continuous (coordinates are linear in $A$ and $w\neq0$). Its inverse s
 
 **Step 4: coordinates on $\mathcal J$.** Now $\operatorname{Re}z=0$ and $|z|^2-|w|^2=-1$. With $z=iq$ this reads $|w|^2=q^2+1$, so $|w|\ge1$ and again $w\ne0$. The same argument with $|w|=\sqrt{1+q^2}$ gives a homeomorphism $\mathcal J\to\mathbb{R}\times S^1$, $A\mapsto(\operatorname{Im}z,w/|w|)$.
 
-**Check.** The matrix $\operatorname{diag}(1,0)$ has $a=1$, $b=c=d=0$, hence $z=w=\frac12$: it corresponds to $q=0$ and $u=1$ in $\mathcal I$. The matrix $\operatorname{diag}(1,-1)$ has $z=0$, $w=1$: it is in $\mathcal J$ with $q=0$, $u=1$ (here $|w|=\sqrt{1+0}=1$ âœ“).
+**Check.** The matrix $\operatorname{diag}(1,0)$ has $a=1$, $b=c=d=0$, hence $z=w=\frac12$: it corresponds to $q=0$ and $u=1$ in $\mathcal I$. The matrix $\operatorname{diag}(1,-1)$ has $z=0$, $w=1$: it is in $\mathcal J$ with $q=0$, $u=1$ (here $|w|=\sqrt{1+0}=1$).
 
 **Remark.** A rank-one idempotent is determined by its image $\ell_1$ and its kernel $\ell_2$, which are two distinct lines of $\mathbb{R}^2$. The set of pairs of distinct lines is $(\mathbb{RP}^1\times\mathbb{RP}^1)\setminus\text{diagonal}\cong S^1\times(S^1\setminus\{pt\})\cong S^1\times\mathbb{R}$, confirming the cylinder. An involution $\ne\pm I$ is determined by its $(+1)$-eigenline and $(-1)$-eigenline, again a pair of distinct lines.
 
 **Lesson.** In $M_2$, conjugacy classes with prescribed trace and determinant are surfaces, and the coordinates $(z,w)$ turn the two equations into explicit formulas.
 @@@ mnappb2-the-square-roots-of-minus-the-identity-in-m2-form-two-planes.md
 ---
-title: The square roots of âˆ’I in Mâ‚‚(â„) form two disjoint planes
+title: The square roots of A in M_2(R) form two disjoint planes
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
-tags: M2(R), complex coordinates, complex structures, connected components
+tags: M_2(R), complex coordinates, complex structures, connected components
 date: 2026-11-10
 ---
 
@@ -7470,7 +7470,7 @@ $A^2=-I$ forces $\operatorname{tr}A=0$ and $\det A=1$. In coordinates this gives
 
 **Idea.** Fixing the trace and the determinant, the only freedom left is $w\in\mathbb{C}$, together with a sign for $\operatorname{Im}z$.
 
-**Step 1: trace and determinant.** Let $A^2=-I$. The minimal polynomial of $A$ divides $t^2+1$, which is irreducible over $\mathbb{R}$, so it equals $t^2+1$. Since it has degree $2=n$, it is the characteristic polynomial: $\operatorname{tr}A=0$ and $\det A=1$. Conversely, if $\operatorname{tr}A=0$ and $\det A=1$, Cayleyâ€“Hamilton gives $A^2-0\cdot A+I=0$, i.e. $A^2=-I$. Hence
+**Step 1: trace and determinant.** Let $A^2=-I$. The minimal polynomial of $A$ divides $t^2+1$, which is irreducible over $\mathbb{R}$, so it equals $t^2+1$. Since it has degree $2=n$, it is the characteristic polynomial: $\operatorname{tr}A=0$ and $\det A=1$. Conversely, if $\operatorname{tr}A=0$ and $\det A=1$, Cayley-Hamilton gives $A^2-0\cdot A+I=0$, i.e. $A^2=-I$. Hence
 $$\{A^2=-I\}=\{\operatorname{tr}A=0,\ \det A=1\}.$$
 
 **Step 2: coordinates.** The conditions read $\operatorname{Re}z=0$ and $|z|^2-|w|^2=1$. Writing $z=iq$ with $q\in\mathbb{R}$ we get $q^2=1+|w|^2$, that is
@@ -7489,11 +7489,11 @@ $$S_\pm=\{(z,w):z=\pm i\sqrt{1+|w|^2}\}.$$
 **Lesson.** Slice the coordinate space by the equations given by trace and determinant, solve for one coordinate, and read the topology from the resulting graphs.
 @@@ mnappb2-the-nonzero-nilpotents-of-m2-form-two-components.md
 ---
-title: The nonzero nilpotents of Mâ‚‚(â„) form two components
+title: The nonzero nilpotents of M_2(R) form two components
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
-tags: M2(R), nilpotent matrices, connected components, complex coordinates
+tags: M_2(R), nilpotent matrices, connected components, complex coordinates
 date: 2026-11-10
 ---
 
@@ -7509,7 +7509,7 @@ A $2\times2$ matrix is nilpotent iff $\operatorname{tr}A=\det A=0$. Translate th
 
 **Idea.** The two equations $\operatorname{tr}=\det=0$ leave only a "cone" in $\mathbb{R}^4$; removing the vertex $0$ separates the cone into two nappes, distinguished by the sign of $\operatorname{Im}z$.
 
-**Step 1: nilpotent iff $\operatorname{tr}=\det=0$.** If $A$ is nilpotent, all its eigenvalues vanish, so $\chi_A(t)=t^2$, i.e. $\operatorname{tr}A=\det A=0$. Conversely, if $\operatorname{tr}A=\det A=0$, Cayleyâ€“Hamilton gives $A^2=0$.
+**Step 1: nilpotent iff $\operatorname{tr}=\det=0$.** If $A$ is nilpotent, all its eigenvalues vanish, so $\chi_A(t)=t^2$, i.e. $\operatorname{tr}A=\det A=0$. Conversely, if $\operatorname{tr}A=\det A=0$, Cayley-Hamilton gives $A^2=0$.
 
 **Step 2: coordinates.** The two equations become $\operatorname{Re}z=0$ and $|w|^2=|z|^2$. Write $z=iq$ with $q\in\mathbb{R}$; then $|w|=|q|$. The matrix is nonzero iff $(z,w)\ne(0,0)$ iff $q\ne0$ (if $q=0$ then $z=0$ and $|w|=0$).
 
@@ -7520,7 +7520,7 @@ $$\mathcal N^*\cong(\mathbb{R}\setminus\{0\})\times S^1=\bigl((-\infty,0)\times 
 
 **Step 4: components.** Each piece is a product of connected spaces, hence connected. The sign of $q=\operatorname{Im}z$ is a continuous function on $\mathcal N^*$ taking the two values $\pm$, so the two pieces are open and closed in $\mathcal N^*$. Hence they are exactly the connected components.
 
-**Check.** $E=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ has $a=d=c=0$, $b=1$, so $z=-\frac i2$, $w=\frac i2$: $q=-\frac12<0$ and $|w|=\frac12=|q|$ âœ“. The matrix $E^T=\begin{pmatrix}0&0\\1&0\end{pmatrix}$ has $z=\frac i2$, $w=\frac i2$: $q=+\frac12$, on the other component.
+**Check.** $E=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ has $a=d=c=0$, $b=1$, so $z=-\frac i2$, $w=\frac i2$: $q=-\frac12<0$ and $|w|=\frac12=|q|$. The matrix $E^T=\begin{pmatrix}0&0\\1&0\end{pmatrix}$ has $z=\frac i2$, $w=\frac i2$: $q=+\frac12$, on the other component.
 
 **Remark.** Including $0$, the set $\{A^2=0\}=\{|w|=|\operatorname{Im}z|,\ \operatorname{Re}z=0\}$ is a double cone over a circle in a 3-dimensional subspace; it is connected (through its vertex $0$), and removing the vertex disconnects it. For $n\ge3$ the situation is different: the nonzero nilpotent cone of $M_n(\mathbb{R})$ is connected (it is star-shaped about $0$ and $0$ can be approached through other orbits).
 
@@ -7608,7 +7608,7 @@ $$|e^{i\gamma}-1|=2\left|\sin\frac\gamma2\right|.$$
 **Lesson.** Use the complex-number model for $2\times2$ rotations; norms of "complex multiplications" are moduli.
 @@@ mnappb2-the-complex-structures-on-r-2m-form-two-components.md
 ---
-title: The complex structures AÂ² = âˆ’I on â„Â²áµ form exactly two components
+title: The complex structures A² =-I on form exactly two components
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -7674,7 +7674,7 @@ For $n$ odd, compare $P$ with $-P$. For $n$ even, associate to each $A\in\mathca
 
 **Step 1: $n$ odd.** For $P\in GL_n^-$, the matrix $-P$ has $\det(-P)=(-1)^n\det P>0$ and $(-P)N(-P)^{-1}=PNP^{-1}$. So $\mathcal O_N=\{PNP^{-1}:P\in GL_n^+\}$, the continuous image of the connected set $GL_n^+$. Hence $\mathcal O_N$ is connected.
 
-**Step 2: $n$ even â€” the invariant.** Call $v\in\mathbb{R}^n$ *cyclic for $A$* if $A^{n-1}v\ne0$; by Step 0, then $K_v(A)=[v,Av,\dots,A^{n-1}v]$ is invertible. Put $\varepsilon(A)=\operatorname{sign}\det K_v(A)$.
+**Step 2: $n$ even the invariant.** Call $v\in\mathbb{R}^n$ *cyclic for $A$* if $A^{n-1}v\ne0$; by Step 0, then $K_v(A)=[v,Av,\dots,A^{n-1}v]$ is invertible. Put $\varepsilon(A)=\operatorname{sign}\det K_v(A)$.
 
 *Independence of $v$.* Let $v,v'$ be cyclic for $A$. Since $K_v(A)$ is a basis, $v'=q(A)v$ for a polynomial $q(t)=c_0+c_1t+\dots+c_{n-1}t^{n-1}$. Then $A^kv'=q(A)A^kv$, so $K_{v'}(A)=q(A)K_v(A)$ and
 $$\det K_{v'}(A)=\det q(A)\cdot\det K_v(A).$$
@@ -7728,7 +7728,7 @@ since $(1-t)\operatorname{Re}\lambda_i\le0$ and $-t\le0$, and they cannot both v
 
 **Check.** $A=\begin{pmatrix}-1&5\\0&-2\end{pmatrix}$: $\tau=-3<0$, $\delta=2>0$, eigenvalues $-1,-2$. At $t=\frac12$: $M_{1/2}=\begin{pmatrix}-1&2.5\\0&-1.5\end{pmatrix}$ with eigenvalues $-1,-1.5$, still Hurwitz.
 
-**Remark.** In the coordinates, $\{|w|<|z|\}=GL_2^+$ and $\mathcal H$ is the part where $\operatorname{Re}z<0$. Writing $z=\rho e^{i\alpha}$ with $\alpha\in(\frac\pi2,\frac{3\pi}2)$, $\mathcal H\cong(\frac\pi2,\frac{3\pi}2)\times\{(\rho,w):\rho>|w|\}$, which is contractible. Note that the trace-determinant description is special to $n=2$; in higher dimensions Hurwitz stability needs the Routhâ€“Hurwitz conditions.
+**Remark.** In the coordinates, $\{|w|<|z|\}=GL_2^+$ and $\mathcal H$ is the part where $\operatorname{Re}z<0$. Writing $z=\rho e^{i\alpha}$ with $\alpha\in(\frac\pi2,\frac{3\pi}2)$, $\mathcal H\cong(\frac\pi2,\frac{3\pi}2)\times\{(\rho,w):\rho>|w|\}$, which is contractible. Note that the trace-determinant description is special to $n=2$; in higher dimensions Hurwitz stability needs the Routh-Hurwitz conditions.
 
 **Lesson.** To prove that a set defined by the eigenvalues is path connected, find a homotopy that moves the eigenvalues in a controlled way (here an affine map $\lambda\mapsto(1-t)\lambda-t$).
 @@@ mnappb2-the-cone-of-positive-definite-2x2-matrices.md
@@ -7773,7 +7773,7 @@ Hence $\mathrm{PD}=\{(x,y,b):x>\|(y,b)\|\}$, where $\|\cdot\|$ is the Euclidean 
 $$\partial\,\mathrm{PD}=\{(a,b,c):ac=b^2,\ a,c\ge0\},$$
 the set of positive semidefinite singular matrices, a circular cone with vertex $0$.
 
-**Check.** $S=I$ has $(x,y,b)=(1,0,0)$ with $x>0$ âœ“. $S=\begin{pmatrix}1&1\\1&1\end{pmatrix}$ has $(x,y,b)=(1,0,1)$, $x=\|(y,b)\|$: on the boundary âœ“ (it is PSD with $\det=0$).
+**Check.** $S=I$ has $(x,y,b)=(1,0,0)$ with $x>0$. $S=\begin{pmatrix}1&1\\1&1\end{pmatrix}$ has $(x,y,b)=(1,0,1)$, $x=\|(y,b)\|$: on the boundary (it is PSD with $\det=0$).
 
 **Remark.** In the Minkowski space $\mathbb{R}^{2,1}$ with the form $x^2-y^2-b^2=\det S$, $\mathrm{PD}$ is the open future light cone. This is the picture behind the hyperbolic plane $\mathrm{PD}\cap\{\det=1\}\cong\mathbb{H}^2$ and its link with $SL_2(\mathbb{R})$.
 
@@ -7814,18 +7814,18 @@ Note first that $|\tau|<1+\delta$ is equivalent to $p(1)=1-\tau+\delta>0$ and $p
 
 **Connectedness.** The spectral radius is positively homogeneous: $\rho(tA)=t\rho(A)$ for $t\ge0$ (the eigenvalues of $tA$ are $t\lambda_i$). So if $\rho(A)<1$ then $\rho(tA)<1$ for all $t\in[0,1]$, and $t\mapsto tA$ is a path in the set from $A$ to $0$. The set is star-shaped about $0$ and hence path connected.
 
-**Check.** $A=\begin{pmatrix}0&1\\-0.5&0.9\end{pmatrix}$: $\tau=0.9$, $\delta=0.5$; $|\tau|=0.9<1.5$ and $\delta<1$. The eigenvalues are $0.45\pm0.545i$ with modulus $\sqrt{0.5}\approx0.707<1$ âœ“. And $A=\begin{pmatrix}2&0\\0&0.1\end{pmatrix}$: $\tau=2.1$, $\delta=0.2$, $|\tau|>1.2$: not Schur stable âœ“.
+**Check.** $A=\begin{pmatrix}0&1\\-0.5&0.9\end{pmatrix}$: $\tau=0.9$, $\delta=0.5$; $|\tau|=0.9<1.5$ and $\delta<1$. The eigenvalues are $0.45\pm0.545i$ with modulus $\sqrt{0.5}\approx0.707<1$. And $A=\begin{pmatrix}2&0\\0&0.1\end{pmatrix}$: $\tau=2.1$, $\delta=0.2$, $|\tau|>1.2$: not Schur stable.
 
 **Remark.** In the $(\tau,\delta)$-plane the stable region is the open triangle with vertices $(-2,1)$, $(2,1)$ and $(0,-1)$, bounded by $\delta=1$ and the lines $\delta=\pm\tau-1$. These three lines correspond to a pair of complex eigenvalues on the unit circle, and to the eigenvalues $1$ and $-1$.
 
 **Lesson.** "Roots of a real quadratic inside an interval" reduces to sign conditions on $p$ at the endpoints plus the position of the vertex.
 @@@ mnappb2-the-operator-norm-unit-sphere-of-m2-is-a-3-sphere.md
 ---
-title: The operator-norm unit sphere of Mâ‚‚(â„) is a 3-sphere
+title: The operator-norm unit sphere of M_2(R) is a 3-sphere
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
-tags: operator norm, unit sphere, M2(R), radial projection, complex coordinates
+tags: operator norm, unit sphere, M_2(R), radial projection, complex coordinates
 date: 2026-11-10
 ---
 
@@ -7855,7 +7855,7 @@ Both maps are well defined and continuous (norms are continuous and do not vanis
 
 **Conclusion.** $S_{op}\cong S_F\cong S^3$. Explicitly, the map $A\mapsto\dfrac{(z,w)}{\sqrt{|z|^2+|w|^2}}$ sends $S_{op}$ homeomorphically onto the unit sphere of $\mathbb{C}^2$, with inverse $(z,w)\mapsto\dfrac{(z,w)}{|z|+|w|}$.
 
-**Check.** $I$ has $(z,w)=(1,0)$: $\|I\|=1$ âœ“ and it goes to $(1,0)\in S^3$. $\operatorname{diag}(1,-1)$ has $(z,w)=(0,1)$, also in $S_{op}$ (an orthogonal reflection).
+**Check.** $I$ has $(z,w)=(1,0)$: $\|I\|=1$ and it goes to $(1,0)\in S^3$. $\operatorname{diag}(1,-1)$ has $(z,w)=(0,1)$, also in $S_{op}$ (an orthogonal reflection).
 
 **Correction of the source.** The book writes the Frobenius sphere as $\{2(|z|^2+|w|^2)=2\}$, which is the sphere of Frobenius radius $\sqrt2$, not $1$; the sphere $\|A\|_F=1$ is $\{2(|z|^2+|w|^2)=1\}$ as above. The topology is unaffected.
 
@@ -7894,7 +7894,7 @@ $$\min_\alpha\|A-R_\alpha\|_F^2=2\Bigl((|z|-1)^2+|w|^2\Bigr).$$
 
 **Nearest rotation.** If $z\ne0$ the minimiser is unique: $R=R_\alpha$ with $e^{i\alpha}=z/|z|$, i.e. the rotation by $\arg z$ (in matrices: $R=\frac1{|z|}\begin{pmatrix}\operatorname{Re}z&-\operatorname{Im}z\\\operatorname{Im}z&\operatorname{Re}z\end{pmatrix}$, the normalised "rotation-scaling part" $\frac{(a+d)}{2}I+\frac{(c-b)}2\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ of $A$). If $z=0$ every rotation is equally near (this happens iff $A$ is "anti-conformal", of the form $x\mapsto w\bar x$).
 
-**Check.** $A=2I$: $z=2$, $w=0$; the formula gives $2(2-1)^2=2$, and indeed $\|2I-I\|_F^2=2$. $A=\operatorname{diag}(1,-1)$: $z=0$, $w=1$; the formula gives $2(1+1)=4$, and $\|\operatorname{diag}(1,-1)-R_\alpha\|_F^2=(1-\cos\alpha)^2+\sin^2\alpha+\sin^2\alpha+(-1-\cos\alpha)^2=4$ for every $\alpha$ âœ“. A numerical minimisation over a fine grid of $\alpha$ on random matrices reproduces the formula.
+**Check.** $A=2I$: $z=2$, $w=0$; the formula gives $2(2-1)^2=2$, and indeed $\|2I-I\|_F^2=2$. $A=\operatorname{diag}(1,-1)$: $z=0$, $w=1$; the formula gives $2(1+1)=4$, and $\|\operatorname{diag}(1,-1)-R_\alpha\|_F^2=(1-\cos\alpha)^2+\sin^2\alpha+\sin^2\alpha+(-1-\cos\alpha)^2=4$ for every $\alpha$. A numerical minimisation over a fine grid of $\alpha$ on random matrices reproduces the formula.
 
 **Remark.** For the other component of $O(2)$, $\{z=0,|w|=1\}$, the same argument gives $\min\|A-F\|_F^2=2\bigl(|z|^2+(|w|-1)^2\bigr)$. Comparing the two minima, $\bigl[(|z|-1)^2+|w|^2\bigr]-\bigl[|z|^2+(|w|-1)^2\bigr]=2(|w|-|z|)$, so a matrix is closer to $SO(2)$ than to $O(2)\setminus SO(2)$ iff $|z|>|w|$, i.e. iff $\det A>0$. This is the $2\times2$ case of the orthogonal Procrustes problem: the nearest orthogonal matrix is obtained from the SVD $A=U\Sigma V^T$ as $UV^T$.
 
@@ -8146,11 +8146,11 @@ So the midpoint of $A$ and $B$ is not in $\mathcal N_2$ and $\mathcal N_2$ is no
 **Lesson.** A cone, i.e. a set stable under $A\mapsto tA$ for $t\in[0,1]$, is automatically contractible to its vertex, hence path connected.
 @@@ mnappb-complex-coordinates-on-m2-r.md
 ---
-title: Complex coordinates (z, w) on Mâ‚‚(â„): determinant and singular values
+title: Complex coordinates (z, w) on M_2(R): determinant and singular values
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
-tags: M_2, complex coordinates, singular values, determinant, Frobenius norm
+tags: M_2(R), complex coordinates, singular values, determinant, Frobenius norm
 date: 2026-11-10
 ---
 
@@ -8195,7 +8195,7 @@ Now $|Ax|^2=x^TA^TAx$ on the unit circle ranges exactly between the smallest and
 **Lesson.** In $M_2(\mathbb{R})$, choose coordinates adapted to the action of $SO(2)\times SO(2)$ (rotations on both sides): $z$ and $w$ are the natural ones.
 @@@ mnappb-the-topology-of-gl2-sl2-and-negative-determinant.md
 ---
-title: The shapes of GLâ‚‚âº(â„), SLâ‚‚(â„) and {det < 0}
+title: The shapes of GL(2,R), SL(2,R) and {det < 0}
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -8237,7 +8237,7 @@ a homeomorphism onto the set, and the factor is again $\cong\mathbb{R}^3$.
 **Lesson.** Choosing coordinates in which a defining condition becomes $|z|\gtrless|w|$ or $|z|^2=1+|w|^2$ makes the topology of matrix groups visible.
 @@@ mnappb-the-singular-matrices-of-m2-r-form-a-cone-over-a-torus.md
 ---
-title: The singular matrices of Mâ‚‚(â„) form a cone over a torus
+title: The singular matrices of M_2(R) form a cone over a torus
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -8315,12 +8315,12 @@ All inequalities are equalities, so $w_1=w_2=0$, $|z_1|=|z_2|=1$, and equality i
 
 So the extreme points are exactly $\{|z|=1,w=0\}\cup\{z=0,|w|=1\}=O(2)$.
 
-**Remark.** The ball is the convex hull of its extreme points (Kreinâ€“Milman), i.e. of two circles lying in two orthogonal planes of $\mathbb{R}^4$; this is the $n=2$ case of "the unit ball of the operator norm is the convex hull of $O(n)$". The ball is not strictly convex: it contains the segment joining $(1,0)$ and $(0,1)$.
+**Remark.** The ball is the convex hull of its extreme points (Krein-Milman), i.e. of two circles lying in two orthogonal planes of $\mathbb{R}^4$; this is the $n=2$ case of "the unit ball of the operator norm is the convex hull of $O(n)$". The ball is not strictly convex: it contains the segment joining $(1,0)$ and $(0,1)$.
 
 **Lesson.** In explicit coordinates, extreme points can be found by splitting non-extreme points as convex combinations and testing the equality cases of the triangle inequality for the rest.
 @@@ mnappb-the-distance-to-the-singular-matrices-in-m2-r.md
 ---
-title: The distance to the singular matrices in Mâ‚‚(â„)
+title: The distance to the singular matrices in M_2(R)
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -8354,7 +8354,7 @@ $$|z-z'|=|z|-r=\frac{|z|-|w|}2,\qquad|w-w'|=\bigl|\,|w|-r\bigr|=\frac{|z|-|w|}2.
 
 **Check (numerical).** For random $A$, the matrix $B=A-\sigma_2u_2v_2^T$ (SVD) is singular and $\|A-B\|=\sigma_2$; moreover $300$ random rank-one matrices $uv^T$ never came closer than $\sigma_2$.
 
-**Remark.** This is the $2\times2$ case of the Eckartâ€“Young theorem: the distance from $A$ to the matrices of rank $<n$ is $\sigma_n(A)=1/\|A^{-1}\|$ for invertible $A$. In the $(z,w)$ picture, the nearest singular matrix is obtained by moving $z$ and $w$ along the radial lines to the common radius $r=\frac{|z|+|w|}2$.
+**Remark.** This is the $2\times2$ case of the Eckart-Young theorem: the distance from $A$ to the matrices of rank $<n$ is $\sigma_n(A)=1/\|A^{-1}\|$ for invertible $A$. In the $(z,w)$ picture, the nearest singular matrix is obtained by moving $z$ and $w$ along the radial lines to the common radius $r=\frac{|z|+|w|}2$.
 
 **Lesson.** In the right coordinates, an "abstract" distance formula becomes a one-line triangle-inequality argument.
 @@@ mnappb-conjugation-by-rotations-in-complex-coordinates.md
@@ -8397,7 +8397,7 @@ By uniqueness of the decomposition $Ax=zx+w\bar x$ (the map $A\mapsto(z,w)$ is b
 **Lesson.** To understand a group action on a space of matrices, find coordinates in which it becomes diagonal (here: multiplication by phases).
 @@@ mnappb-real-eigenvalues-of-a-2-by-2-matrix-in-complex-coordinates.md
 ---
-title: Real eigenvalues of a 2Ã—2 matrix: |w| â‰¥ |Im z|
+title: Real eigenvalues of a matrix
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -8431,7 +8431,7 @@ If $|w|<|\operatorname{Im}z|$ the eigenvalues are the non-real pair $\operatorna
 $$|w|^2-(\operatorname{Im}z)^2=\frac{(a-d)^2+(b+c)^2-(c-b)^2}4=\frac{(a-d)^2+4bc}4,$$
 which is the familiar discriminant $(a-d)^2+4bc\ge0$.
 
-**Check.** Rotation $R(\theta)$: $z=e^{i\theta}$, $w=0$, so $|w|=0<|\sin\theta|=|\operatorname{Im}z|$ unless $\theta\in\pi\mathbb{Z}$; real eigenvalues only for $R(0)=I$ and $R(\pi)=-I$ âœ“. Reflection $\mathrm{diag}(1,-1)$: $z=0$, $w=1$, eigenvalues $0\pm\sqrt1=\pm1$ âœ“. Numerically, the formula $\operatorname{Re}z\pm\sqrt{|w|^2-(\operatorname{Im}z)^2}$ matches `numpy` eigenvalues for $200$ random matrices.
+**Check.** Rotation $R(\theta)$: $z=e^{i\theta}$, $w=0$, so $|w|=0<|\sin\theta|=|\operatorname{Im}z|$ unless $\theta\in\pi\mathbb{Z}$; real eigenvalues only for $R(0)=I$ and $R(\pi)=-I$. Reflection $\mathrm{diag}(1,-1)$: $z=0$, $w=1$, eigenvalues $0\pm\sqrt1=\pm1$. Numerically, the formula $\operatorname{Re}z\pm\sqrt{|w|^2-(\operatorname{Im}z)^2}$ matches `numpy` eigenvalues for $200$ random matrices.
 
 **Remark.** The set of matrices with a real eigenvalue is $\{|w|\ge|\operatorname{Im}z|\}$: it is closed, with interior $\{|w|>|\operatorname{Im}z|\}$ and boundary $\{|w|=|\operatorname{Im}z|\}$ (matrices with a repeated real eigenvalue). This recovers the description of the interior in terms of $\operatorname{tr}^2>4\det$.
 
@@ -8511,7 +8511,7 @@ for all small $\varepsilon\ne0$. Both sides are polynomials in $\varepsilon$, so
 **Lesson.** Block elimination plus density: prove under an invertibility hypothesis, then perturb by $\varepsilon I$ while preserving the algebraic hypothesis (here commutation).
 @@@ mnappa-the-determinant-of-a-sum-of-two-squares-of-commuting-matrices.md
 ---
-title: det(AÂ² + BÂ²) â‰¥ 0 for commuting real matrices
+title: det(A² + B²)  is positive for commuting real matrices
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -8546,7 +8546,7 @@ $$\det(A^2+B^2)=\det(A+iB)\overline{\det(A+iB)}=|\det(A+iB)|^2\ge0.$$
 **Lesson.** Complexify to factor sums of squares; real matrices produce conjugate factors, hence a non-negative product.
 @@@ mnappa-a-matrix-with-a-nontrivial-kernel-from-cubes.md
 ---
-title: AÂ²+BÂ² is singular when AÂ³ = BÂ³ and AÂ²B = BÂ²A
+title: A²+B² is singular when A³ = B³ and A²B = B²A
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -8614,7 +8614,7 @@ where the middle equality is the identity $\det(I+MN)=\det(I+NM)$ with $M=-X/t$ 
 **Lesson.** $XY$ and $YX$ are "almost conjugate": same characteristic polynomial even when neither $X$ nor $Y$ is invertible.
 @@@ mnappa-the-adjugate-of-the-adjugate.md
 ---
-title: adj(adj A) = (det A)^(nâˆ’2) A
+title: adj(adj A) = (det A)^(n-2) A
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -8645,7 +8645,7 @@ $$\operatorname{adj}(\operatorname{adj}A)=(\det A)^{n-1}\bigl((\det A)A^{-1}\big
 
 **Step 3: density.** The map $A\mapsto\operatorname{adj}(\operatorname{adj}A)-(\det A)^{n-2}A$ is polynomial in the entries (entries of $\operatorname{adj}$ are polynomials; the power $n-2\ge0$ is fine), hence continuous, and vanishes on $GL_n(\mathbb{R})$. As $GL_n(\mathbb{R})$ is dense in $M_n(\mathbb{R})$, it vanishes everywhere.
 
-**Check.** For $n=2$, $\operatorname{adj}\begin{pmatrix}a&b\\c&d\end{pmatrix}=\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$ and applying adj again returns the original matrix: this is $(\det A)^0A$ âœ“.
+**Check.** For $n=2$, $\operatorname{adj}\begin{pmatrix}a&b\\c&d\end{pmatrix}=\begin{pmatrix}d&-b\\-c&a\end{pmatrix}$ and applying adj again returns the original matrix: this is $(\det A)^0A$.
 
 **Remark.** For a singular matrix of rank $\le n-2$ both sides vanish when $n\ge3$: $\operatorname{adj}A=0$, so $\operatorname{adj}\operatorname{adj}A=0$ and $\det A=0$, so $(\det A)^{n-2}A=0$ (for $n\ge3$).
 
@@ -8771,7 +8771,7 @@ title: A 2Ã—2 matrix with positive entries has a positive eigenvector
 category: topology/topology-of-mnr/mn-applications
 level: l2
 difficulty: 2
-tags: intermediate value theorem, Perronâ€“Frobenius, eigenvector
+tags: intermediate value theorem, Perron-Frobenius, eigenvector
 date: 2026-11-06
 ---
 
@@ -8795,7 +8795,7 @@ Parametrise candidate vectors by $x_t=(t,1-t)^T$, $t\in[0,1]$, and apply the int
 $$Ax_{t_0}=s\,x_{t_0},$$
 where $x_{t_0}=(t_0,1-t_0)^T$ has both coordinates in $(0,1)$ and $s>0$.
 
-**Remark.** This is the 2-dimensional case of the Perronâ€“Frobenius theorem. The same idea (a continuous self-map of the simplex $\{x\ge0,\sum x_i=1\}$ has a fixed point) proves it in dimension $n$ via Brouwer's theorem: the map $x\mapsto Ax/\sum(Ax)_i$ is such a self-map.
+**Remark.** This is the 2-dimensional case of the Perron-Frobenius theorem. The same idea (a continuous self-map of the simplex $\{x\ge0,\sum x_i=1\}$ has a fixed point) proves it in dimension $n$ via Brouwer's theorem: the map $x\mapsto Ax/\sum(Ax)_i$ is such a self-map.
 
 **Lesson.** Eigenvector problems can be turned into fixed point problems on a compact convex set.
 @@@ mnappa-rotations-of-odd-dimension-have-an-axis.md
@@ -8957,7 +8957,7 @@ and similarly with $w$. Since $\sin r>0$ on $(0,\pi)$, $\hat v=\hat w$, i.e. $v=
 **Lesson.** Exponential coordinates are a chart; the injectivity radius is $\pi$, exactly the distance to the cut locus.
 @@@ mnappa-no-continuous-square-root-on-gl2-plus.md
 ---
-title: No continuous square root on GLâ‚‚âº(â„)
+title: No continuous square root on GL(2,R)
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 5
@@ -9058,7 +9058,7 @@ Every nondegenerate skew matrix has the form $K=PJP^T$ with $P\in GL_n(\mathbb{R
 **Lesson.** The Pfaffian is the "square root of the determinant" that remembers an orientation; it detects the extra component.
 @@@ mnappa-continuous-multiplicative-functions-on-gl-n.md
 ---
-title: Continuous homomorphisms GLâ‚™(â„) â†’ â„*
+title: Continuous homomorphisms from GL(n,R) to R
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 5
@@ -9095,7 +9095,7 @@ Since $\Delta(d)\Delta(d')=\Delta(dd')$, $g:\mathbb{R}^\times\to\mathbb{R}^\time
 **Lesson.** Homomorphisms into abelian groups factor through the abelianisation; $GL_n(\mathbb{R})^{ab}\cong\mathbb{R}^\times$ via $\det$.
 @@@ mnappa-the-quotient-of-matrices-by-orthogonal-left-multiplication.md
 ---
-title: M_n(â„)/O(n) is the cone of positive semidefinite matrices
+title: M_n(R)/O(n) is the cone of positive semidefinite matrices
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -9144,7 +9144,7 @@ Let $O(n)$ act on $\mathrm{Sym}_n$ by conjugation, $U\cdot S=USU^T$. Show that t
 
 ## Hint
 
-Show that $\lambda:S\mapsto(\lambda_1(S)\ge\dots\ge\lambda_n(S))$ is continuous, closed and has the conjugation orbits as fibres. Continuity comes from the Courantâ€“Fischer min-max formula.
+Show that $\lambda:S\mapsto(\lambda_1(S)\ge\dots\ge\lambda_n(S))$ is continuous, closed and has the conjugation orbits as fibres. Continuity comes from the Courant-Fischer min-max formula.
 
 ## Solution
 
@@ -9154,7 +9154,7 @@ Show that $\lambda:S\mapsto(\lambda_1(S)\ge\dots\ge\lambda_n(S))$ is continuous,
 
 **Step 2: surjectivity.** For $\mu\in\mathcal C$, $\lambda(\operatorname{diag}\mu)=\mu$.
 
-**Step 3: continuity.** By the Courantâ€“Fischer formula
+**Step 3: continuity.** By the Courant-Fischer formula
 $$\lambda_k(S)=\max_{\dim V=k}\ \min_{x\in V,\ |x|=1}x^TSx.$$
 If $\|S-T\|\le\delta$ (operator norm), then $|x^TSx-x^TTx|\le\delta$ for unit $x$, so each min changes by at most $\delta$, and so does the max: $|\lambda_k(S)-\lambda_k(T)|\le\|S-T\|$ (Weyl's inequality). So $\lambda$ is $1$-Lipschitz in each coordinate.
 
@@ -9167,7 +9167,7 @@ If $\|S-T\|\le\delta$ (operator norm), then $|x^TSx-x^TTx|\le\delta$ for unit $x
 **Lesson.** "Eigenvalues are a complete conjugacy invariant" is a topological statement once properness is checked.
 @@@ mnappa-the-orbit-space-of-matrices-under-orthogonal-bi-multiplication.md
 ---
-title: M_n(â„)/(O(n)Ã—O(n)) is the space of singular values
+title: M_n(R)/(O(n) . O(n)) is the space of singular values
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -9202,7 +9202,7 @@ Use the singular value decomposition. Continuity follows from $\sigma_i(A)=\sqrt
 **Lesson.** Orbit spaces of compact group actions on Euclidean spaces are often Weyl chambers; SVD is the case $O(n)\times O(n)$.
 @@@ mnappa-rank-one-projections-and-projective-space.md
 ---
-title: Rank-one orthogonal projections form â„Pâ¿â»Â¹
+title: Rank-one orthogonal projections form the projective space
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -9253,7 +9253,7 @@ Show that it is the orbit of $E_k=\operatorname{diag}(I_k,0)$ under conjugation 
 
 **Idea.** Closed and bounded gives compactness. Being the orbit of a point under the connected group $SO(n)$ gives connectedness.
 
-**Step 1: compact.** A symmetric idempotent has eigenvalues $0$ or $1$, so $\operatorname{rank}P=\operatorname{tr}P$. Hence $\mathrm{Gr}(k,n)=\{P:\ P^T=P,\ P^2=P,\ \operatorname{tr}P=k\}$ is defined by polynomial equations, so it is closed. It is bounded: $\|P\|_F^2=\operatorname{tr}(P^TP)=\operatorname{tr}P=k$. By Heineâ€“Borel it is compact.
+**Step 1: compact.** A symmetric idempotent has eigenvalues $0$ or $1$, so $\operatorname{rank}P=\operatorname{tr}P$. Hence $\mathrm{Gr}(k,n)=\{P:\ P^T=P,\ P^2=P,\ \operatorname{tr}P=k\}$ is defined by polynomial equations, so it is closed. It is bounded: $\|P\|_F^2=\operatorname{tr}(P^TP)=\operatorname{tr}P=k$. By Heine-Borel it is compact.
 
 **Step 2: it is one orbit.** Let $P\in\mathrm{Gr}(k,n)$. By the spectral theorem, $P=UE_kU^T$ for some $U\in O(n)$ (an orthonormal basis of eigenvectors, the first $k$ spanning the image). If $\det U=-1$ and $k<n$, replace $U$ by $U'=UD$ with $D=\operatorname{diag}(1,\dots,1,-1)$: $D$ commutes with $E_k$ (the last diagonal entry of $E_k$ is $0$), so $U'E_kU'^T=UDE_kDU^T=UE_kU^T=P$, and $\det U'=1$. So every $P$ is of the form $UE_kU^T$ with $U\in SO(n)$. (If $k=n$, $P=I$ and the set is a single point.)
 
@@ -9264,7 +9264,7 @@ Show that it is the orbit of $E_k=\operatorname{diag}(I_k,0)$ under conjugation 
 **Lesson.** An orbit of a connected group is connected; always check whether you need $SO(n)$ or $O(n)$.
 @@@ mnappa-the-adjoint-quotient-is-not-hausdorff.md
 ---
-title: The quotient of M_n(â„) by conjugation is not Hausdorff
+title: The quotient of M_n(R) by conjugation is not Hausdorff
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
