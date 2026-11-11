@@ -428,25 +428,31 @@ Compute the determinant of the coefficient matrix and discuss according to its v
 
 ## Solution
 
-**Determinant.**
-$$\det A = \begin{vmatrix} 1 & 1 & 1 \\ 1 & 2 & 3 \\ 1 & 3 & m \end{vmatrix}.$$
-$L_2 \leftarrow L_2 - L_1$, $L_3 \leftarrow L_3 - L_1$:
-$$\det A = \begin{vmatrix} 1 & 1 & 1 \\ 0 & 1 & 2 \\ 0 & 2 & m-1 \end{vmatrix} = (m-1) - 4 = m - 5.$$
+**Determinant.** Let $A$ be the coefficient matrix:
+$$A=\begin{pmatrix}1&1&1\\1&2&3\\1&3&m\end{pmatrix}.$$
+Subtract row $1$ from rows $2$ and $3$:
+$$\det A=\begin{vmatrix}1&1&1\\0&1&2\\0&2&m-1\end{vmatrix}=1\cdot\bigl(1\cdot(m-1)-2\cdot2\bigr)=m-5.$$
 
-**Case $m \neq 5$.** The system has a unique solution. Solving:
-$$x = \frac{3}{2}, \quad y = 0, \quad z = \frac{3}{2} - \frac{m}{2} + \frac{m}{2} = \frac{3}{2} - \frac{m-5}{2} \cdot 0 = \frac{3}{2}.$$
-Wait, let us solve carefully. From the first equation, $x = 3 - y - z$. Substituting into the second and third, and solving the resulting $2 \times 2$ system, we find $y = 0$ and $z = \frac{3}{2}$ only if $m$ is such that the system is consistent. Actually, we solve directly: subtracting the first equation from the second gives $y + 2z = 3$, and subtracting the first from the third gives $2y + (m-1)z = 6$. From the first of these, $y = 3 - 2z$. Substituting into the second: $2(3-2z) + (m-1)z = 6$, i.e. $6 - 4z + (m-1)z = 6$, i.e. $(m-5)z = 0$. So if $m \neq 5$, $z = 0$, then $y = 3$, then $x = 0$. Thus $(x,y,z) = (0,3,0)$.
+**Case $m\neq5$: unique solution.** Subtract the first equation from the second and from the third:
+$$y+2z=3,\qquad 2y+(m-1)z=6.$$
+From the first, $y=3-2z$. Substituting into the second:
+$$2(3-2z)+(m-1)z=6\ \Longrightarrow\ (m-5)z=0.$$
+Since $m\neq5$, this gives $z=0$, then $y=3$, and from the first equation $x=3-y-z=0$. The unique solution is
+$$(x,y,z)=(0,3,0).$$
 
-**Case $m = 5$.** The last equation becomes $x + 3y + 5z = 9$. The system is
-$$\begin{cases} x + y + z = 3 \\ x + 2y + 3z = 6 \\ x + 3y + 5z = 9 \end{cases}$$
-Subtracting consecutive equations gives $y + 2z = 3$ in both cases, so the third equation is a consequence of the first two. The system reduces to
-$$\begin{cases} x + y + z = 3 \\ y + 2z = 3 \end{cases}$$
-The solutions are $(x,y,z) = (3 - y - z, y, z)$ with $y = 3 - 2z$, i.e. $(x,y,z) = (0, 3-2z, z)$, $z \in \mathbb{R}$.
+**Case $m=5$: infinitely many solutions.** The third equation becomes $x+3y+5z=9$. Subtracting consecutive equations:
+$$L_2-L_1:\ y+2z=3,\qquad L_3-L_2:\ y+2z=3.$$
+So the third equation is a consequence of the first two, and the system reduces to
+$$\begin{cases}x+y+z=3\\ y+2z=3.\end{cases}$$
+Choose $z=t\in\mathbb{R}$. Then $y=3-2t$ and
+$$x=3-y-z=3-(3-2t)-t=t.$$
+The solutions are $(x,y,z)=(t,\,3-2t,\,t)$, $t\in\mathbb{R}$.
+
+**Verification.** At $t=0$: $(0,3,0)$ satisfies $0+3+0=3$, $0+6+0=6$, $0+9+0=9$. At $t=1$: $(1,1,1)$ satisfies $1+1+1=3$, $1+2+3=6$, $1+3+5=9$. The $m\neq5$ solution is the member $t=0$ of the $m=5$ family.
 
 **Conclusion.**
-- If $m \neq 5$: unique solution $(0,3,0)$.
-- If $m = 5$: infinitely many solutions $(0, 3-2t, t)$, $t \in \mathbb{R}$.
-
+- If $m\neq5$: unique solution $(x,y,z)=(0,3,0)$.
+- If $m=5$: infinitely many solutions $(x,y,z)=(t,\,3-2t,\,t)$, $t\in\mathbb{R}$.
 @@@ matrix-powers-diagonal.md
 ---
 title: Powers of a diagonal matrix
