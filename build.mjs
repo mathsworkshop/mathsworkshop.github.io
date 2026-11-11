@@ -149,13 +149,29 @@ function parseProblemText(rawText, name) {
 const problemsDir = path.join(ROOT, 'problems');
 const files = fs.existsSync(problemsDir) ? fs.readdirSync(problemsDir).filter(f => f.toLowerCase().endsWith('.md')).sort() : [];
 let all = files.map(f => parseProblem(path.join(problemsDir, f)));
-const bundles = fs.readdirSync(ROOT).filter(f => /^all-problems\.txt$|-problems\.txt$/i.test(f)).sort();
+// Bundles: every .txt file in the root folder that contains lines starting with "@@@ " is read as a bundle of problems,
+// whatever its name (so "series-problems (1).txt" or "my problems.txt" still work).
+const NOT_BUNDLES = /^(robots|ads|requirements|readme|license|notes)\.txt$/i;
+const bundles = fs.readdirSync(ROOT).filter(f => /\.txt$/i.test(f) && !NOT_BUNDLES.test(f)
+  && /^@@@[ \t]+\S+/m.test(fs.readFileSync(path.join(ROOT, f), 'utf8'))).sort();
+const bundleCounts = {};
+all.forEach(p => { p.src = 'problems/' + p.slug + '.md'; });
 for (const bf of bundles) {
-  const parts = fs.readFileSync(path.join(ROOT, bf), 'utf8').replace(/\r\n/g, '\n').replace(/^\uFEFF/, '').split(/^@@@[ \t]+(\S+)[ \t]*\n/m);
-  for (let i = 1; i < parts.length; i += 2) { const nm = parts[i].toLowerCase().endsWith('.md') ? parts[i] : parts[i] + '.md'; all.push(parseProblemText(parts[i + 1], nm)); }
+  const parts = fs.readFileSync(path.join(ROOT, bf), 'utf8').replace(/\r\n/g, '\n').replace(/^﻿/, '').split(/^@@@[ \t]+(\S+)[ \t]*\n/m);
+  bundleCounts[bf] = 0;
+  for (let i = 1; i < parts.length; i += 2) {
+    const nm = parts[i].toLowerCase().endsWith('.md') ? parts[i] : parts[i] + '.md';
+    const p = parseProblemText(parts[i + 1], nm); p.src = bf; p.raw = parts[i + 1].trim(); all.push(p); bundleCounts[bf]++;
+  }
 }
-const seen = new Set();
-for (const p of all) { if (seen.has(p.slug)) throw new Error(`two problems have the same file name "${p.slug}" (check problems/ and the *-problems.txt files)`); seen.add(p.slug); }
+// The same problem present in two files (for example a file uploaded twice) is kept once; two different problems with the same name are an error.
+const seen = new Map(), dupSkipped = [];
+all = all.filter(p => {
+  const prev = seen.get(p.slug);
+  if (!prev) { seen.set(p.slug, p); return true; }
+  if (prev.raw && p.raw && prev.raw === p.raw) { dupSkipped.push(`${p.slug} (in ${prev.src} and ${p.src})`); return false; }
+  throw new Error(`two different problems have the same file name "${p.slug}" (in ${prev.src} and ${p.src}). Rename one of them, or delete the file you do not need.`);
+});
 let problems = all.filter(p => !p.draft);
 if (!problems.length) console.warn('Warning: no problems were found. Add .md files to problems/ or an all-problems.txt file.');
 // Order of the lists. Default: newest first. Set "sort" in site.config.json to "newest", "oldest", "difficulty" or "title".
@@ -701,5 +717,15 @@ write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml
 if (config.adsenseClient) write('ads.txt', `google.com, ${config.adsenseClient.replace(/^ca-/, '')}, DIRECT, f08c47fec0942fa0\n`);
 write('assets/favicon.svg', '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect x="1" y="1" width="30" height="30" rx="5" fill="#111c36"/><path d="M22 9H10l7 7-7 7h12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg>');
 
+console.log('\nBundles read:'); for (const [f, n] of Object.entries(bundleCounts)) console.log(`  ${String(n).padStart(4)}  ${f}`);
+if (files.length) console.log(`  ${String(files.length).padStart(4)}  problems/*.md`);
+if (dupSkipped.length) console.log(`Duplicates skipped (identical problem in two files): ${dupSkipped.length}`);
+{
+  const cnt = {}; problems.forEach(p => { const sg = p.path.split('/'); for (let i = 1; i <= sg.length; i++) { const k = sg.slice(0, i).join('/'); cnt[k] = (cnt[k] || 0) + 1; } });
+  console.log('\nProblems per category (categories with 0 are not shown on the site):');
+  const show = (path, ind) => { console.log(`${' '.repeat(ind)}${String(cnt[path] || 0).padStart(5)}  ${NODES[path].name}${cnt[path] ? '' : '   <- empty'}`); NODES[path].children.forEach(c => show(c, ind + 2)); };
+  ROOTS.forEach(r => show(r, 0));
+  console.log('');
+}
 console.log(`Built ${problems.length} problems, ${urls.length + 3} pages to dist/`);
 if (SITE_URL.includes('example.com')) console.log('Note: "url" in site.config.json is still the placeholder. Set your real domain before going live.');
