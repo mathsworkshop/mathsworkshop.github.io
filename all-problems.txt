@@ -7432,92 +7432,6 @@ MISSISSIPPI has $11$ letters: $1$ M, $4$ I, $4$ S and $2$ P.
 If all letters were different there would be $11!$ arrangements. Swapping identical letters does not change the word, so divide by the number of orderings of each repeated letter:
 $$\frac{11!}{1!\,4!\,4!\,2!}=\frac{39\,916\,800}{1152}=34\,650.$$
 
-@@@ bernoulli-inequality.md
----
-title: Bernoulli's inequality
-category: logic/proof-techniques/induction
-level: l1
-difficulty: 2
-tags: induction, inequalities
-date: 2026-10-31
----
-
-## Statement
-
-Prove that for every real $x\ge-1$ and every integer $n\ge0$,
-$$(1+x)^n\ge1+nx.$$
-
-## Hint
-
-Use induction on $n$, and remember that $1+x\ge0$.
-
-## Solution
-
-**Base case.** For $n=0$ both sides equal $1$.
-
-**Induction step.** Assume $(1+x)^n\ge1+nx$. Since $1+x\ge0$, multiplying by $1+x$ keeps the inequality:
-$$(1+x)^{n+1}\ge(1+nx)(1+x)=1+(n+1)x+nx^2\ge1+(n+1)x.$$
-
-So the statement holds for $n+1$, and by induction for all $n\ge0$.
-
-@@@ cantors-theorem.md
----
-title: Cantor's theorem
-category: logic/cardinality
-level: l3
-difficulty: 4
-tags: diagonal argument, sets
-date: 2026-10-31
----
-
-## Statement
-
-Let $E$ be a set and $\mathcal{P}(E)$ the set of its subsets. Prove that there is no surjective map from $E$ onto $\mathcal{P}(E)$.
-
-## Hint
-
-Given $f:E\to\mathcal{P}(E)$, consider $A=\{x\in E : x\notin f(x)\}$.
-
-## Solution
-
-Let $f:E\to\mathcal{P}(E)$ be any map and define
-$$A=\{x\in E:\ x\notin f(x)\}\in\mathcal{P}(E).$$
-
-Suppose $f$ is surjective. Then $A=f(a)$ for some $a\in E$.
-
-- If $a\in A$, then by the definition of $A$ we have $a\notin f(a)=A$, a contradiction.
-- If $a\notin A$, then $a\notin f(a)$ fails, so $a\in f(a)=A$, a contradiction.
-
-Both cases are impossible, so $f$ is not surjective. Since $f$ was arbitrary, no surjection $E\to\mathcal{P}(E)$ exists.
-
-@@@ congruence-is-an-equivalence-relation.md
----
-title: Congruence is an equivalence relation
-category: logic/relations
-level: l1
-difficulty: 1
-tags: relations, modular arithmetic
-date: 2026-10-31
----
-
-## Statement
-
-Let $n\ge2$ be an integer. For $a,b\in\mathbb{Z}$, write $a\equiv b\pmod n$ when $n$ divides $a-b$. Prove that $\equiv$ is an equivalence relation on $\mathbb{Z}$, and say how many equivalence classes it has.
-
-## Hint
-
-Check reflexivity, symmetry and transitivity, then use division with remainder.
-
-## Solution
-
-**Reflexive.** $a-a=0$ is divisible by $n$.
-
-**Symmetric.** If $n\mid a-b$ then $n\mid b-a=-(a-b)$.
-
-**Transitive.** If $n\mid a-b$ and $n\mid b-c$, then $n$ divides the sum $(a-b)+(b-c)=a-c$.
-
-**Classes.** Every integer $a$ can be written $a=qn+r$ with $0\le r<n$, so $a\equiv r$. Two different remainders $r\ne r'$ in $\{0,\dots,n-1\}$ differ by less than $n$ and are not $0$, so they are not congruent. There are exactly $n$ classes.
-
 @@@ convergence-of-the-series-of-1-over-n-squared.md
 ---
 title: Convergence of the series of 1/n²
@@ -7545,32 +7459,6 @@ Let $S_N=\sum_{n=1}^N\frac1{n^2}$. For $N\ge2$, the sum telescopes:
 $$S_N\le1+\sum_{n=2}^N\left(\frac1{n-1}-\frac1n\right)=1+1-\frac1N<2.$$
 
 The sequence $(S_N)$ is increasing (the terms are positive) and bounded above by $2$, so it converges. Hence the series converges.
-
-@@@ de-morgan-for-sets.md
----
-title: De Morgan's law for sets
-category: logic/sets-and-maps
-level: l1
-difficulty: 1
-tags: sets, proofs
-date: 2026-10-31
----
-
-## Statement
-
-Let $A$ and $B$ be subsets of a set $E$. Prove that
-$$E\setminus(A\cup B)=(E\setminus A)\cap(E\setminus B).$$
-
-## Hint
-
-Take an element $x$ of $E$ and translate "$x\notin A\cup B$" using logic.
-
-## Solution
-
-Let $x\in E$. Then
-$$x\in E\setminus(A\cup B)\iff x\notin A\cup B\iff \text{not}\,(x\in A\text{ or }x\in B)\iff x\notin A\text{ and }x\notin B.$$
-
-The last statement means $x\in E\setminus A$ and $x\in E\setminus B$, that is $x\in(E\setminus A)\cap(E\setminus B)$. The two sets have the same elements, so they are equal.
 
 @@@ distance-from-a-point-to-a-line.md
 ---
@@ -7654,32 +7542,6 @@ Let $f(x)=e^x-1-x$. Then $f'(x)=e^x-1$.
 - For $x>0$ we have $e^x>1$, so $f'(x)>0$ and $f$ is strictly increasing on $[0,+\infty)$.
 
 So $f$ has a strict minimum at $0$, where $f(0)=0$. Therefore $f(x)>0$ for $x\ne0$, which gives $e^x\ge1+x$ with equality only at $x=0$.
-
-@@@ injective-or-surjective.md
----
-title: Injective or surjective?
-category: logic/sets-and-maps
-level: l1
-difficulty: 1
-tags: maps, bijection
-date: 2026-10-31
----
-
-## Statement
-
-Let $f:\mathbb{R}\to\mathbb{R}$ be defined by $f(x)=x^2$. Is $f$ injective? Surjective? Restrict $f$ to get a bijection.
-
-## Hint
-
-Compare $f(1)$ and $f(-1)$, and ask whether $-1$ is a value of $f$.
-
-## Solution
-
-**Not injective.** $f(-1)=f(1)=1$ although $-1\ne1$.
-
-**Not surjective.** $f(x)=x^2\ge0$ for every $x$, so $-1$ has no preimage.
-
-**A bijection.** Let $g:[0,+\infty)\to[0,+\infty)$ be the restriction $g(x)=x^2$. For $y\ge0$, the equation $x^2=y$ has exactly one solution in $[0,+\infty)$, namely $x=\sqrt y$. So $g$ is bijective, with inverse $y\mapsto\sqrt y$.
 
 @@@ inradius-of-a-right-triangle.md
 ---
@@ -7780,36 +7642,6 @@ The kernel is the set of $(x,y,z)\in\mathbb{R}^3$ with $x+2y+3z=0$ (the second e
 $$(x,y,z)=y\,(-2,1,0)+z\,(-3,0,1).$$
 
 So $\{(-2,1,0),(-3,0,1)\}$ is a basis of $\ker A$, which has dimension $2=3-\operatorname{rank}A$, as the rank–nullity theorem predicts.
-
-@@@ negating-convergence.md
----
-title: Negating convergence
-category: logic/quantifiers
-level: l1
-difficulty: 2
-tags: quantifiers, sequences
-date: 2026-10-31
----
-
-## Statement
-
-Write with quantifiers the statement "the real sequence $(u_n)$ converges to $\ell$". Then write its negation, and the negation of "$(u_n)$ converges".
-
-## Hint
-
-Swap each $\forall$ with $\exists$ (and the other way round) and negate the final inequality.
-
-## Solution
-
-**Convergence to $\ell$.**
-$$\forall\varepsilon>0,\ \exists N\in\mathbb{N},\ \forall n\ge N,\ |u_n-\ell|<\varepsilon.$$
-
-**Negation.**
-$$\exists\varepsilon>0,\ \forall N\in\mathbb{N},\ \exists n\ge N,\ |u_n-\ell|\ge\varepsilon.$$
-In words: from some fixed distance $\varepsilon$, infinitely many terms stay at least $\varepsilon$ away from $\ell$.
-
-**Negation of "$(u_n)$ converges".** The sequence converges if there exists some $\ell$ with the property above. Its negation is
-$$\forall\ell\in\mathbb{R},\ \exists\varepsilon>0,\ \forall N\in\mathbb{N},\ \exists n\ge N,\ |u_n-\ell|\ge\varepsilon.$$
 
 @@@ powers-of-a-companion-matrix.md
 ---
@@ -7921,35 +7753,6 @@ $$\sin b-\sin a=\cos c\,(b-a).$$
 
 Since $|\cos c|\le1$, we get $|\sin b-\sin a|=|\cos c|\,|b-a|\le|b-a|$.
 
-@@@ sum-of-squares-by-induction.md
----
-title: Sum of squares by induction
-category: logic/proof-techniques/induction
-level: lycee
-difficulty: 2
-tags: induction, sums
-date: 2026-10-31
----
-
-## Statement
-
-Prove that for every integer $n\ge1$,
-$$1^2+2^2+\cdots+n^2=\frac{n(n+1)(2n+1)}{6}.$$
-
-## Hint
-
-Prove it for $n=1$, then show that if it holds for $n$ it holds for $n+1$.
-
-## Solution
-
-**Base case.** For $n=1$, the left side is $1$ and the right side is $\frac{1\cdot2\cdot3}{6}=1$.
-
-**Induction step.** Assume the formula holds for some $n\ge1$. Then
-$$\sum_{k=1}^{n+1}k^2=\frac{n(n+1)(2n+1)}{6}+(n+1)^2=\frac{(n+1)\left[n(2n+1)+6(n+1)\right]}{6}.$$
-Since $n(2n+1)+6(n+1)=2n^2+7n+6=(n+2)(2n+3)$, this equals $\dfrac{(n+1)(n+2)(2n+3)}{6}$, which is the formula for $n+1$.
-
-By induction, the formula holds for all $n\ge1$.
-
 
 @@@ thales-theorem.md
 ---
@@ -8004,34 +7807,6 @@ $$A+\frac23(M-A)=\frac A3+\frac{2M}3=\frac A3+\frac{B+C}3=G.$$
 So $G$ lies on the median $AM$, at two thirds of the way from $A$ to $M$.
 
 The expression $\frac{A+B+C}3$ is symmetric in $A,B,C$, so the same computation shows $G$ lies on the other two medians, also at two thirds from the vertex. Hence the three medians are concurrent at $G$.
-@@@ the-integers-are-countable.md
----
-title: The integers are countable
-category: logic/cardinality
-level: l1
-difficulty: 2
-tags: bijection, countability
-date: 2026-10-31
----
-
-## Statement
-
-Show that there is a bijection from $\mathbb{N}$ to $\mathbb{Z}$.
-
-## Hint
-
-Send even numbers to non-negative integers and odd numbers to negative integers.
-
-## Solution
-
-Define $f:\mathbb{N}\to\mathbb{Z}$ by
-$$f(n)=\begin{cases}\dfrac n2&\text{if }n\text{ is even},\\[2mm]-\dfrac{n+1}{2}&\text{if }n\text{ is odd}.\end{cases}$$
-The values start $0,-1,1,-2,2,-3,\dots$
-
-On even numbers $n=2k$ we have $f(n)=k$, which takes every non-negative integer exactly once. On odd numbers $n=2k+1$ we have $f(n)=-(k+1)$, which takes every negative integer exactly once.
-
-The two sets of values are disjoint and together cover $\mathbb{Z}$, so $f$ is a bijection.
-
 
 @@@ the-logarithm-lies-below-the-line.md
 ---
