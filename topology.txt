@@ -510,7 +510,7 @@ title: The derivative of matrix inversion
 category: topology/topology-of-mnr/mn-continuity
 level: l3
 difficulty: 3
-tags: derivative, inversion, Neumann series, FrÃ©chet derivative
+tags: derivative, inversion, Neumann series, Fréchet derivative
 date: 2026-11-07
 ---
 
@@ -535,7 +535,7 @@ $$\|(I+X)^{-1}-I+X\|\le\frac{\|X\|^2}{1-\|X\|}.$$
 **Step 3: expansion.**
 $$(A+tH)^{-1}=(I+tA^{-1}H)^{-1}A^{-1}=\big(I-tA^{-1}H+O(t^2)\big)A^{-1}=A^{-1}-tA^{-1}HA^{-1}+O(t^2).$$
 
-**Step 4: conclusion.** So $\frac{d}{dt}(A+tH)^{-1}|_{t=0}=-A^{-1}HA^{-1}$. Since $H\mapsto-A^{-1}HA^{-1}$ is linear and the remainder is $O(\|H\|^2)$ uniformly, this is the FrÃ©chet derivative.
+**Step 4: conclusion.** So $\frac{d}{dt}(A+tH)^{-1}|_{t=0}=-A^{-1}HA^{-1}$. Since $H\mapsto-A^{-1}HA^{-1}$ is linear and the remainder is $O(\|H\|^2)$ uniformly, this is the Fréchet derivative.
 
 **Consistency check.** Differentiating $AA^{-1}=I$ gives $HA^{-1}+A\,D=0$, i.e. $D=-A^{-1}HA^{-1}$. For $n=1$: $\frac{d}{da}\frac1a=-\frac1{a^2}$.
 
@@ -546,7 +546,7 @@ title: Roots of a polynomial depend continuously on its coefficients
 category: topology/topology-of-mnr/mn-continuity
 level: l3
 difficulty: 3
-tags: roots of polynomials, Cauchy bound, HÃ¶lder continuity, characteristic polynomial
+tags: roots of polynomials, Cauchy bound, Hölder continuity, characteristic polynomial
 date: 2026-11-07
 ---
 
@@ -583,7 +583,7 @@ title: The spectral radius is continuous
 category: topology/topology-of-mnr/mn-continuity
 level: l3
 difficulty: 3
-tags: spectral radius, continuity of eigenvalues, HÃ¶lder, characteristic polynomial
+tags: spectral radius, continuity of eigenvalues, Hölder, characteristic polynomial
 date: 2026-11-07
 ---
 
@@ -841,7 +841,7 @@ and taking $\max_V$ gives $\lambda_k(A)\ge\lambda_k(B)-\|A-B\|$.
 **Numeric check.** For two random PSD matrices $S=AA^T$, $T=BB^T$ with $\|S-T\|=0.709$: $\max_k|\lambda_k(S)-\lambda_k(T)|=0.412\le0.709$.
 
 **Remark.**
-- In particular $\rho(A)=\max_k|\lambda_k(A)|$ is $1$-Lipschitz on $\mathrm{Sym}_n$, contrasting with the HÃ¶lder exponent $\frac1n$ of Problem 82 for general matrices.
+- In particular $\rho(A)=\max_k|\lambda_k(A)|$ is $1$-Lipschitz on $\mathrm{Sym}_n$, contrasting with the Hölder exponent $\frac1n$ of Problem 82 for general matrices.
 - The inequality fails for non-symmetric matrices with the ordered *real parts* replaced by anything: e.g. Jordan-type perturbations give $\varepsilon^{1/n}$ shifts.
 - Weyl's inequality is the core of the Hoffman-Wielandt theorem $\sum(\lambda_k(A)-\lambda_k(B))^2\le\|A-B\|_F^2$.
 @@@ mn-089-continuity-of-the-matrix-square-root.md
@@ -877,7 +877,7 @@ Boundedness: $\|T_k\|^2=\|S_k\|$.
 **Step 3: convergence.** Every subsequence of $(T_k)$ has a sub-subsequence converging to the same limit $\sqrt S$; hence $T_k\to\sqrt S$ (if not, some subsequence would stay at distance $\ge\epsilon$ from $\sqrt S$, contradicting Step 2).
 
 **Remark.**
-- *Quantitative version.* The map is HÃ¶lder: $\|\sqrt A-\sqrt B\|\le\sqrt{\|A-B\|}$ for PSD $A,B$ (known; compare $n=1$, $\sqrt x$ at $0$). It is not Lipschitz at singular matrices: $\sqrt{\varepsilon}$ vs $\varepsilon$.
+- *Quantitative version.* The map is Hölder: $\|\sqrt A-\sqrt B\|\le\sqrt{\|A-B\|}$ for PSD $A,B$ (known; compare $n=1$, $\sqrt x$ at $0$). It is not Lipschitz at singular matrices: $\sqrt{\varepsilon}$ vs $\varepsilon$.
 - On $\{A\ge cI\}$ with $c>0$ one has, in the Frobenius norm, $\|\sqrt A-\sqrt B\|_F\le\frac{\|A-B\|_F}{2\sqrt c}$. (With $X=\sqrt A-\sqrt B$ one has $\sqrt A\,X+X\sqrt B=A-B$, and in the eigenbases the coefficient of $x_{ij}$ is $\alpha_i+\beta_j\ge2\sqrt c$.) A numeric test confirmed the bound ($0.388\le1.551$).
 - Used in Problem 90 to show the polar decomposition is continuous.
 @@@ mn-090-polar-decomposition.md
@@ -923,7 +923,7 @@ so $U\in O(n)$ and $A=UP$.
 **Remark.** The analogue for $n=1$ is $\mathbb{R}^\times=\{\pm1\}\times(0,\infty)$, the polar form $x=\operatorname{sgn}(x)|x|$ of a real number; for complex numbers it is $z=e^{i\theta}r$.
 @@@ mn-091-qr-decomposition-and-the-iwasawa-homeomorphism.md
 ---
-title: GL_n is homeomorphic to O(n) Ã— upper triangular
+title: GL_n is homeomorphic to O(n) × upper triangular
 category: topology/topology-of-mnr/mn-continuity
 level: m1
 difficulty: 4
@@ -1097,7 +1097,7 @@ title: No continuous choice of a unit eigenvector
 category: topology/topology-of-mnr/mn-continuity
 level: m1
 difficulty: 4
-tags: eigenvectors, MÃ¶bius band, connectedness, no continuous section
+tags: eigenvectors, Möbius band, connectedness, no continuous section
 date: 2026-11-07
 ---
 
@@ -1113,7 +1113,7 @@ Show that any continuous choice must coincide, up to a global sign, with $(\cos\
 
 ## Solution
 
-**Idea.** The eigenvector of the largest eigenvalue is determined up to sign, and following it continuously around the loop returns it with the opposite sign: a "holonomy" of $-1$, like a MÃ¶bius band.
+**Idea.** The eigenvector of the largest eigenvalue is determined up to sign, and following it continuously around the loop returns it with the opposite sign: a "holonomy" of $-1$, like a Möbius band.
 
 **Step 1: eigenvalues.** $A(\theta)$ is symmetric with $\operatorname{tr}A=0$ and $\det A=-\cos^2\theta-\sin^2\theta=-1$, so the eigenvalues are $\pm1$ and the top eigenvalue is $1$, always simple.
 
@@ -2420,7 +2420,7 @@ You will need the fact (proved in the problem "Equivalence of norms" below) that
 **Remark.** This is specific to finite dimension. In infinite dimension, different norms on the same vector space can give a complete and a non-complete space (e.g. continuous functions with the sup norm versus the $L^1$ norm).
 @@@ mn-005-computation.md
 ---
-title: Column-sum and row-sum norms of a 2Ã—2 matrix
+title: Column-sum and row-sum norms of a 2×2 matrix
 category: topology/topology-of-mnr/mn-norms
 level: l2
 difficulty: 1
@@ -3402,7 +3402,7 @@ a convex combination of the orthogonal matrices $P\operatorname{diag}(\varepsilo
 
 **Probabilistic reading.** If $\varepsilon_i$ are independent random signs with $\mathbb{P}(\varepsilon_i=1)=\lambda_i$, then $\mathbb{E}[\operatorname{diag}(\varepsilon)]=\operatorname{diag}(\sigma)$.
 
-**Remark.** The hull of $O(n)$ is compact (the convex hull of a compact set in finite dimension is compact), so it is automatically *closed*, consistent with the statement. Note that the convex hull of $SO(n)$ is strictly smaller (every orthogonal matrix of determinant $-1$ is an extreme point of $\mathcal B$ by the previous problem, so it cannot be a convex combination of elements of $SO(n)$ other than itself), and the representation above uses $2^n$ orthogonal matrices; by CarathÃ©odory's theorem a representation with at most $n^2+1$ matrices exists.
+**Remark.** The hull of $O(n)$ is compact (the convex hull of a compact set in finite dimension is compact), so it is automatically *closed*, consistent with the statement. Note that the convex hull of $SO(n)$ is strictly smaller (every orthogonal matrix of determinant $-1$ is an extreme point of $\mathcal B$ by the previous problem, so it cannot be a convex combination of elements of $SO(n)$ other than itself), and the representation above uses $2^n$ orthogonal matrices; by Carathéodory's theorem a representation with at most $n^2+1$ matrices exists.
 @@@ mn-033-gelfand-type-bound.md
 ---
 title: A majoration of the spectral radius
@@ -4361,7 +4361,7 @@ $$A=P\operatorname{diag}(\lambda_1,\dots,\lambda_n)P^{-1}.$$
 **Remark.** The Weyl chamber $\mathcal{C}$ (ordering the eigenvalues) is what removes the ambiguity of permuting the eigenvectors. The proof shows more: $\mathcal{D}$ is an open dense subset of the set of matrices with real spectrum. By contrast the set of matrices with $n$ distinct (possibly complex) eigenvalues is also connected when $n\ge2$ but requires a different argument.
 @@@ mn-conn-two-by-two-matrices-without-real-eigenvalues.md
 ---
-title: 2Ã—2 matrices without real eigenvalues
+title: 2×2 matrices without real eigenvalues
 category: topology/topology-of-mnr/mn-connectedness
 level: l3
 difficulty: 4
@@ -4763,11 +4763,11 @@ because the integrand vanishes for $x'\notin N$ and $N$ is null. $\square$
 **Remark.** The same proof shows that $\{\det=0\}$ is also nowhere dense: it is closed with empty interior (a null set cannot contain a ball). So a "random" matrix is almost surely invertible, and generic statements about invertible matrices extend to all matrices by continuity, a technique used throughout this topic.
 @@@ mnspec-eigenvalues-are-only-holder-continuous.md
 ---
-title: Eigenvalues are only HÃ¶lder continuous
+title: Eigenvalues are only Hölder continuous
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: l3
 difficulty: 3
-tags: eigenvalues, HÃ¶lder continuity, Jordan block, perturbation
+tags: eigenvalues, Hölder continuity, Jordan block, perturbation
 date: 2026-11-06
 ---
 
@@ -4792,7 +4792,7 @@ No inequality $|\mu-\mu'|\le C\|M-M'\|$ can hold near $J$.
 
 **Example.** $n=2$, $\varepsilon=10^{-8}$: $\begin{pmatrix}0&1\\10^{-8}&0\end{pmatrix}$ has eigenvalues $\pm10^{-4}$, four orders of magnitude larger than the perturbation.
 
-**Remark.** The exponent $1/n$ is optimal in general (Bauer-Fike type bounds for non-diagonalisable matrices give HÃ¶lder $1/n$). For normal matrices the dependence is Lipschitz with constant $1$, as shown in the Bauer-Fike problem below.
+**Remark.** The exponent $1/n$ is optimal in general (Bauer-Fike type bounds for non-diagonalisable matrices give Hölder $1/n$). For normal matrices the dependence is Lipschitz with constant $1$, as shown in the Bauer-Fike problem below.
 @@@ mnspec-power-sums-determine-the-characteristic-polynomial.md
 ---
 title: Power sums determine the characteristic polynomial
@@ -5139,7 +5139,7 @@ which for $L=T^2$ and $k=2$ is $H_1(T^2)=\mathbb{Z}^2\ne0$. Contradiction. (Equi
 **Remark.** The singular locus of $\Sigma$ is exactly $\{\operatorname{rank}\le n-2\}$, of codimension $4$ in $M_n(\mathbb{R})$. The hypersurface is smooth elsewhere, so singularities of $\{\det=0\}$ are "rare" and invisible to a transversal curve.
 @@@ mnspec-the-discriminant-of-a-2-by-2-matrix.md
 ---
-title: The discriminant of a 2Ã—2 matrix and a cone
+title: The discriminant of a 2×2 matrix and a cone
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: l3
 difficulty: 3
@@ -5211,7 +5211,7 @@ $$\min_i|d_i-\mu|\le\kappa(V)\|E\|.$$
 
 **Example.** $A=\begin{pmatrix}1&1\\0&1+\delta\end{pmatrix}$ has eigenvectors with $\kappa(V)\approx2/\delta$ (nearly parallel eigenvectors), so a perturbation of size $\eta$ can move the eigenvalues by about $\sqrt{\eta}$ when $\delta\approx\sqrt\eta$: the bound is quantitatively sharp as $A$ approaches a Jordan block.
 
-**Remark.** The theorem quantifies how ill-conditioned the eigenvalues of a nearly non-diagonalisable matrix are, and recovers the HÃ¶lder phenomenon of the Jordan block ($\kappa\to\infty$).
+**Remark.** The theorem quantifies how ill-conditioned the eigenvalues of a nearly non-diagonalisable matrix are, and recovers the Hölder phenomenon of the Jordan block ($\kappa\to\infty$).
 @@@ mnspec-eigenvalues-of-normal-matrices-are-well-conditioned.md
 ---
 title: Eigenvalues of normal matrices move by at most the size of the perturbation
@@ -5315,7 +5315,7 @@ title: A stochastic matrix has a stationary distribution
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: m1
 difficulty: 4
-tags: stochastic matrices, compactness, CesÃ ro averages, Markov chains
+tags: stochastic matrices, compactness, Cesàro averages, Markov chains
 date: 2026-11-06
 ---
 
@@ -5331,7 +5331,7 @@ Apply $P$ repeatedly to a probability vector, average, and use compactness of th
 
 **The simplex is invariant.** Let $\Delta=\{\pi\in\mathbb{R}^n:\pi_i\ge0,\sum\pi_i=1\}$, a compact convex set. If $\pi\in\Delta$ then $\pi P\ge0$ and $\sum_j(\pi P)_j=\sum_i\pi_i\sum_jP_{ij}=1$, so $\pi P\in\Delta$.
 
-**CesÃ ro averages.** Let $\pi_0=(\frac1n,\dots,\frac1n)$ and
+**Cesàro averages.** Let $\pi_0=(\frac1n,\dots,\frac1n)$ and
 $$m_N=\frac1N\sum_{k=0}^{N-1}\pi_0P^k\in\Delta$$
 (an average of points of the convex set $\Delta$). Then
 $$m_NP-m_N=\frac1N\Big(\sum_{k=1}^{N}\pi_0P^k-\sum_{k=0}^{N-1}\pi_0P^k\Big)=\frac{\pi_0P^N-\pi_0}N.$$
@@ -5342,7 +5342,7 @@ $$\pi P-\pi=\lim_j(m_{N_j}P-m_{N_j})=0.$$
 
 **Example.** $P=\begin{pmatrix}0&1\\1&0\end{pmatrix}$: $P^k$ does not converge, but the averages $m_N\to(\frac12,\frac12)$, which is stationary.
 
-**Remark.** This is the Markov-Kakutani / Brouwer-type argument. The vector $\pi$ is generally not unique (e.g. $P=I$) and $\pi_0P^k$ need not converge, which is why CesÃ ro averaging is needed; under the positivity assumption of the next problem, uniqueness and convergence hold.
+**Remark.** This is the Markov-Kakutani / Brouwer-type argument. The vector $\pi$ is generally not unique (e.g. $P=I$) and $\pi_0P^k$ need not converge, which is why Cesàro averaging is needed; under the positivity assumption of the next problem, uniqueness and convergence hold.
 @@@ mnspec-dobrushin-s-contraction-argument.md
 ---
 title: Dobrushin's contraction for positive stochastic matrices
@@ -5553,7 +5553,7 @@ The square root is continuous on the cone of positive semidefinite matrices, and
 **Remark.** More generally $t\mapsto t^r$ is operator monotone for $0\le r\le1$ (L\"owner-Heinz inequality) and not for $r>1$. This result is one of the first examples where order on matrices behaves differently from order on numbers.
 @@@ mnspec-conjugacy-classes-in-the-plane-of-trace-and-determinant.md
 ---
-title: The fibres of (trace, determinant) on 2Ã—2 matrices
+title: The fibres of (trace, determinant) on 2×2 matrices
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: m1
 difficulty: 4
@@ -7693,7 +7693,7 @@ Both are nonempty, each is the continuous image of the connected set $GL_n^\pm$,
 **Lesson.** Whether a conjugacy orbit is connected is decided by whether the centraliser meets the non-identity component of $GL_n(\mathbb{R})$.
 @@@ mnappb2-the-hurwitz-matrices-of-m2-are-path-connected.md
 ---
-title: The 2Ã—2 Hurwitz matrices form a path-connected set
+title: The 2×2 Hurwitz matrices form a path-connected set
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -7733,7 +7733,7 @@ since $(1-t)\operatorname{Re}\lambda_i\le0$ and $-t\le0$, and they cannot both v
 **Lesson.** To prove that a set defined by the eigenvalues is path connected, find a homotopy that moves the eigenvalues in a controlled way (here an affine map $\lambda\mapsto(1-t)\lambda-t$).
 @@@ mnappb2-the-cone-of-positive-definite-2x2-matrices.md
 ---
-title: The cone of positive definite 2Ã—2 matrices is a light cone
+title: The cone of positive definite 2×2 matrices is a light cone
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -7780,7 +7780,7 @@ the set of positive semidefinite singular matrices, a circular cone with vertex 
 **Lesson.** Choose coordinates in which the defining quadratic form is diagonal; cones become norm inequalities.
 @@@ mnappb2-schur-stability-of-2x2-matrices-and-the-jury-conditions.md
 ---
-title: Schur-stable 2Ã—2 matrices: the Jury conditions and connectedness
+title: Schur-stable 2×2 matrices: the Jury conditions and connectedness
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -7864,7 +7864,7 @@ Both maps are well defined and continuous (norms are continuous and do not vanis
 **Lesson.** Radial projection identifies the unit spheres of any two norms; to identify a sphere with $S^3$, compare it with a Euclidean sphere.
 @@@ mnappb2-the-nearest-rotation-to-a-2x2-matrix.md
 ---
-title: The distance from a 2Ã—2 matrix to the rotation group
+title: The distance from a 2×2 matrix to the rotation group
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -7906,7 +7906,7 @@ title: Ordered real eigenvalues are continuous on the real-rooted matrices
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
-tags: continuity of roots, ordered eigenvalues, RouchÃ©, real-rooted matrices
+tags: continuity of roots, ordered eigenvalues, Rouché, real-rooted matrices
 date: 2026-11-10
 ---
 
@@ -7916,7 +7916,7 @@ Let $\mathcal S\subset M_n(\mathbb{R})$ be the set of matrices all of whose comp
 
 ## Hint
 
-Fix $A\in\mathcal S$ and surround each distinct eigenvalue of $A$ by a small disc in $\mathbb{C}$. Count how many roots of $\chi_B$ lie in each disc when $B$ is close to $A$ (RouchÃ©'s theorem), and use that the roots of $\chi_B$ are real.
+Fix $A\in\mathcal S$ and surround each distinct eigenvalue of $A$ by a small disc in $\mathbb{C}$. Count how many roots of $\chi_B$ lie in each disc when $B$ is close to $A$ (Rouché's theorem), and use that the roots of $\chi_B$ are real.
 
 ## Solution
 
@@ -7925,11 +7925,11 @@ Fix $A\in\mathcal S$ and surround each distinct eigenvalue of $A$ by a small dis
 **Step 1: setting up discs.** Fix $A\in\mathcal S$ and let $\mu_1>\mu_2>\dots>\mu_r$ be its distinct eigenvalues, with multiplicities $m_1,\dots,m_r$ ($\sum m_j=n$). Let $\varepsilon>0$ be smaller than half of the smallest gap $\mu_j-\mu_{j+1}$. Then the closed discs $\overline D_j=\{|z-\mu_j|\le\varepsilon\}$ are pairwise disjoint, and
 $$\lambda_k(A)=\mu_j\quad\text{for }m_1+\dots+m_{j-1}<k\le m_1+\dots+m_j.$$
 
-**Step 2: RouchÃ©.** The characteristic polynomial $\chi_A(z)=\det(zI-A)$ has no zero on the circles $C_j=\{|z-\mu_j|=\varepsilon\}$ (the only zeros are the $\mu_i$). So
+**Step 2: Rouché.** The characteristic polynomial $\chi_A(z)=\det(zI-A)$ has no zero on the circles $C_j=\{|z-\mu_j|=\varepsilon\}$ (the only zeros are the $\mu_i$). So
 $$m:=\min_j\min_{z\in C_j}|\chi_A(z)|>0.$$
 The coefficients of $\chi_B$ are polynomials in the entries of $B$, hence depend continuously on $B$. The circles are compact and the degree is bounded by $n$, so $\sup_{z\in\bigcup C_j}|\chi_B(z)-\chi_A(z)|\to0$ as $B\to A$. Thus there is $\delta>0$ with
 $$\|B-A\|<\delta\ \Longrightarrow\ |\chi_B(z)-\chi_A(z)|<m\le|\chi_A(z)|\quad\text{on every }C_j.$$
-By RouchÃ©'s theorem, for such $B$ the polynomials $\chi_B$ and $\chi_A$ have the same number of zeros, counted with multiplicity, inside each open disc $D_j$: exactly $m_j$.
+By Rouché's theorem, for such $B$ the polynomials $\chi_B$ and $\chi_A$ have the same number of zeros, counted with multiplicity, inside each open disc $D_j$: exactly $m_j$.
 
 **Step 3: using real-rootedness.** Let moreover $B\in\mathcal S$. The $m_j$ zeros of $\chi_B$ in $D_j$ are real, so they lie in the interval $(\mu_j-\varepsilon,\mu_j+\varepsilon)$. Since $\sum_jm_j=n=\deg\chi_B$, there are no other zeros: all $n$ eigenvalues of $B$ lie in the union of the disjoint intervals $I_j=(\mu_j-\varepsilon,\mu_j+\varepsilon)$, and exactly $m_j$ of them in $I_j$.
 
@@ -7942,7 +7942,7 @@ Since $\varepsilon$ can be taken arbitrarily small (with a corresponding $\delta
 **Remark.** 1. The hypothesis $B\in\mathcal S$ is necessary: $\begin{pmatrix}0&-\varepsilon\\\varepsilon&0\end{pmatrix}$ has no real eigenvalue for $\varepsilon\ne0$ but converges to $0$, so "the largest real eigenvalue" is not a continuous function on $M_n(\mathbb{R})$.
 2. The example above shows that $\lambda_k$ is continuous but in general not Lipschitz on $\mathcal S$: $|\lambda_1(B_\varepsilon)-\lambda_1(A)|=\sqrt\varepsilon=\sqrt{\|B_\varepsilon-A\|}$. On symmetric matrices, by contrast, Weyl's inequality gives $|\lambda_k(S)-\lambda_k(T)|\le\|S-T\|$.
 
-**Lesson.** To prove continuity of an ordered quantity, first prove stability of the *count* in disjoint regions (RouchÃ©), then let the ordering of the regions do the rest.
+**Lesson.** To prove continuity of an ordered quantity, first prove stability of the *count* in disjoint regions (Rouché), then let the ordering of the regions do the rest.
 @@@ mnappb-rotations-of-finite-order-are-dense-in-so-3.md
 ---
 title: Rotations of finite order are dense in SO(3)
@@ -8767,7 +8767,7 @@ The characteristic polynomial is a real monic polynomial of odd degree. Look at 
 **Lesson.** Odd degree plus continuity yields a real root.
 @@@ mnappa-a-positive-matrix-has-a-positive-eigenvector.md
 ---
-title: A 2Ã—2 matrix with positive entries has a positive eigenvector
+title: A 2×2 matrix with positive entries has a positive eigenvector
 category: topology/topology-of-mnr/mn-applications
 level: l2
 difficulty: 2
