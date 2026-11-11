@@ -10,7 +10,7 @@
           "name": "Single-variable calculus",
           "description": "Functions of one real variable.",
           "subcategories": [
-              {
+            {
               "id": "sequences",
               "name": "Sequences",
               "description": "Convergence of real sequences and recursive sequences.",
@@ -27,7 +27,7 @@
               "name": "Continuity",
               "description": "Continuous functions and their main theorems.",
               "subcategories": [
-                 {
+                {
                   "id": "uniform-continuity",
                   "name": "Continuous and discontinuous functions",
                   "description": "Examples of continuous and discontinuous functions.",
@@ -39,12 +39,12 @@
                   "description": "Existence of solutions and of zeros.",
                   "subcategories": []
                 },
-                  {
-          "id": "functional-equations",
-          "name": "Functional equations",
-          "description": "Cauchy-type functional equations.",
-          "subcategories": []
-        }
+                {
+                  "id": "functional-equations",
+                  "name": "Functional equations",
+                  "description": "Cauchy-type functional equations.",
+                  "subcategories": []
+                }
               ]
             },
             {
@@ -52,13 +52,13 @@
               "name": "Differentiation",
               "description": "Derivatives, variations, convexity and inequalities from derivatives.",
               "subcategories": [
-                    {
+                {
                   "id": "diff-fcts",
                   "name": "Differentiable functions",
                   "description": "Differentiable and continuously differentiable functions.",
                   "subcategories": []
                 },
-                    {
+                {
                   "id": "mean-value-theorem",
                   "name": "Mean Value Theorem",
                   "description": "Rolle's theorem, the mean value theorem and its consequences.",
@@ -83,7 +83,7 @@
               "name": "Integration",
               "description": "Integrals of functions of one variable.",
               "subcategories": [
-                   {
+                {
                   "id": "riemann",
                   "name": "Riemann integral",
                   "description": "The Riemann integral, calculation of integrals and the fundamental theorem of Calculus.",
@@ -135,7 +135,7 @@
           "name": "Multivariable calculus",
           "description": "Functions of several real variables.",
           "subcategories": [
-              {
+            {
               "id": "continuity",
               "name": "Continuity",
               "description": "Continuity of functions of several variables.",
@@ -194,93 +194,92 @@
         }
       ]
     },
-
-{
-  "id": "topology",
-  "name": "Topology",
-  "description": "Topology, metric and normed spaces.",
-  "subcategories": [
     {
-      "id": "topology-of-r",
-      "name": "Topology of ℝ",
-      "description": "Open and closed sets, compact sets and connectedness.",
-      "subcategories": []
-    },
-    {
-      "id": "topology-of-rn",
-      "name": "Topology of ℝⁿ",
-      "description": "Open and closed sets, compact sets and connectedness.",
-      "subcategories": []
-    },
-    {
-      "id": "topology-of-mnr",
-      "name": "Topology of Mn(ℝ)",
-      "description": "Norms, open and closed sets, compactness, connectedness, density and the exponential in the space of real square matrices.",
+      "id": "topology",
+      "name": "Topology",
+      "description": "Topology, metric and normed spaces.",
       "subcategories": [
         {
-          "id": "mn-norms",
-          "name": "Norms and metric structure",
-          "description": "Frobenius and operator norms, equivalence of norms, balls and distances in Mₙ(ℝ).",
+          "id": "topology-of-r",
+          "name": "Topology of ℝ",
+          "description": "Open and closed sets, compact sets and connectedness.",
           "subcategories": []
         },
         {
-          "id": "mn-open-closed",
-          "name": "Open, closed, interior, boundary",
-          "description": "Which sets of matrices are open or closed, and their interiors and boundaries.",
+          "id": "topology-of-rn",
+          "name": "Topology of ℝⁿ",
+          "description": "Open and closed sets, compact sets and connectedness.",
           "subcategories": []
         },
         {
-          "id": "mn-continuity",
-          "name": "Continuity of matrix maps",
-          "description": "Continuity of determinant, trace, powers, inverse, adjugate and other matrix maps.",
-          "subcategories": []
+          "id": "topology-of-mnr",
+          "name": "Topology of Mn(ℝ)",
+          "description": "Norms, open and closed sets, compactness, connectedness, density and the exponential in the space of real square matrices.",
+          "subcategories": [
+            {
+              "id": "mn-norms",
+              "name": "Norms and metric structure",
+              "description": "Frobenius and operator norms, equivalence of norms, balls and distances in Mₙ(ℝ).",
+              "subcategories": []
+            },
+            {
+              "id": "mn-open-closed",
+              "name": "Open, closed, interior, boundary",
+              "description": "Which sets of matrices are open or closed, and their interiors and boundaries.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-continuity",
+              "name": "Continuity of matrix maps",
+              "description": "Continuity of determinant, trace, powers, inverse, adjugate and other matrix maps.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-compactness",
+              "name": "Compactness",
+              "description": "Compact sets of matrices, orthogonal group, extreme values and fixed points.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-connectedness",
+              "name": "Connectedness",
+              "description": "Path-connected sets of matrices, components of GLₙ and related groups.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-density",
+              "name": "Density and closures",
+              "description": "Dense subsets of Mₙ(ℝ), diagonalisable matrices, closures and applications of density.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-rank-spectrum",
+              "name": "Rank, spectrum and norms",
+              "description": "Semicontinuity of rank, continuity of eigenvalues, singular values and spectral radius.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-exp-log",
+              "name": "Exponential, logarithm and group topology",
+              "description": "The matrix exponential, logarithm and the topology of matrix groups.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-applications",
+              "name": "Applications and the case n = 2",
+              "description": "Density arguments, closed-form results and detailed study of 2×2 matrices.",
+              "subcategories": []
+            }
+          ]
         },
         {
-          "id": "mn-compactness",
-          "name": "Compactness",
-          "description": "Compact sets of matrices, orthogonal group, extreme values and fixed points.",
-          "subcategories": []
-        },
-        {
-          "id": "mn-connectedness",
-          "name": "Connectedness",
-          "description": "Path-connected sets of matrices, components of GLₙ and related groups.",
-          "subcategories": []
-        },
-        {
-          "id": "mn-density",
-          "name": "Density and closures",
-          "description": "Dense subsets of Mₙ(ℝ), diagonalisable matrices, closures and applications of density.",
-          "subcategories": []
-        },
-        {
-          "id": "mn-rank-spectrum",
-          "name": "Rank, spectrum and norms",
-          "description": "Semicontinuity of rank, continuity of eigenvalues, singular values and spectral radius.",
-          "subcategories": []
-        },
-        {
-          "id": "mn-exp-log",
-          "name": "Exponential, logarithm and group topology",
-          "description": "The matrix exponential, logarithm and the topology of matrix groups.",
-          "subcategories": []
-        },
-        {
-          "id": "mn-applications",
-          "name": "Applications and the case n = 2",
-          "description": "Density arguments, closed-form results and detailed study of 2×2 matrices.",
+          "id": "metric",
+          "name": "Metric and normed spaces",
+          "description": "Topological Properties, Convergence, Compactness and Completeness.",
           "subcategories": []
         }
       ]
     },
-    {
-      "id": "metric",
-      "name": "Metric and normed spaces",
-      "description": "Topological Properties, Convergence, Compactness and Completeness.",
-      "subcategories": []
-    }
-  ]
-}
     {
       "id": "linear",
       "name": "Linear algebra",
@@ -373,7 +372,6 @@
         }
       ]
     },
-  
     {
       "id": "number",
       "name": "Number theory",
@@ -517,7 +515,7 @@
         }
       ]
     },
-     {
+    {
       "id": "olympiad",
       "name": "Olympiad training",
       "description": "Problems in the style of national and international mathematical olympiads, with the standard techniques to prepare for them.",
