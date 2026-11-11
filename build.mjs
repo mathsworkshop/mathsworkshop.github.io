@@ -178,7 +178,7 @@ const adsHead = config.adsenseClient
   ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${esc(config.adsenseClient)}" crossorigin="anonymous"></script>\n`
   : '';
 
-function shell({ title, desc, urlPath, body, math = false, jsonld = null, noindex = false, type = 'website', bodyClass = '' }) {
+function shell({ title, desc, urlPath, body, math = false, jsonld = null, noindex = false, type = 'website', bodyClass = '', extraCss = '' }) {
   const full = `${title} | ${config.name}`;
   const canon = SITE_URL + urlPath;
   return `<!doctype html>
@@ -197,7 +197,8 @@ ${noindex ? '<meta name="robots" content="noindex">\n' : ''}<meta property="og:t
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
-${math ? '<link rel="stylesheet" href="/assets/katex/katex.min.css">\n' : ''}${adsHead}${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>\n` : ''}</head>
+${extraCss ? `<link rel="stylesheet" href="${extraCss}">
+` : ''}${math ? '<link rel="stylesheet" href="/assets/katex/katex.min.css">\n' : ''}${adsHead}${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>\n` : ''}</head>
 <body${bodyClass ? ` class="${bodyClass}"` : ''}>
 <header class="top"><div class="wrap">
   <a class="brand" href="/" aria-label="${esc(config.name)} home">
@@ -478,65 +479,6 @@ h1{font:600 clamp(28px,4vw,38px)/1.1 var(--serif);letter-spacing:-.015em;margin:
 .subchips .chip:hover{border-color:var(--accent);color:var(--accent)}
 @media (max-width:860px){.subcats{display:contents}.subcat{font-size:15px}}
 @media (prefers-reduced-motion:no-preference){.row,.cat{transition:background-color .12s,color .12s}}
-/* ---------- landing page ---------- */
-body.home{--bg:#f6f1e7;--surface:#faf6ee;--ink:#23211f;--muted:#6b645a;--line:#ddd4c3;--accent:#7a2e2a;--on-accent:#faf6ee;--pencil:#9a3b2f;--soft:#eee7d8}
-@media (prefers-color-scheme:dark){body.home{--bg:#171513;--surface:#1c1a17;--ink:#ece6da;--muted:#a59d8e;--line:#34302a;--accent:#d9a38f;--on-accent:#171513;--pencil:#e08f7d;--soft:#24211d}}
-body.home .top{background:transparent;border-bottom:1px solid transparent}
-body.home .foot{background:transparent}
-body.home .brand svg rect{fill:var(--ink)}
-.landing{flex:1 0 auto}
-.hero{position:relative;overflow:hidden;padding:clamp(40px,8vw,104px) 0 clamp(48px,8vw,96px)}
-.jungle{position:absolute;right:-12%;top:50%;width:min(980px,120vw);height:auto;aspect-ratio:1;transform:translateY(-50%);pointer-events:none;z-index:0}
-.jungle .stroke{fill:none;stroke:var(--accent);stroke-width:.7;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:.2}
-.jungle .s2{opacity:.14}.jungle .s3{opacity:.1}
-.hero-in{position:relative;z-index:1;max-width:1160px}
-.eyebrow{font:500 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 clamp(22px,4vw,40px)}
-.eyebrow::before{content:"";display:inline-block;width:38px;height:1px;background:var(--pencil);vertical-align:middle;margin-right:14px}
-.quote{margin:0;max-width:44rem}
-.quote blockquote{margin:0;position:relative;padding-top:clamp(34px,5vw,64px)}
-.quote blockquote::before{content:"“";position:absolute;left:-.04em;top:-.06em;font:400 clamp(90px,14vw,170px)/1 var(--serif);color:var(--pencil);opacity:.35;pointer-events:none}
-.q1{font:400 clamp(20px,1.1vw + 15px,28px)/1.55 var(--serif);margin:0 0 clamp(26px,4vw,44px);color:var(--ink);text-wrap:pretty;hyphens:manual}
-.q2{font:italic 400 clamp(34px,5.4vw,66px)/1.08 var(--serif);letter-spacing:-.015em;margin:0;color:var(--accent);text-wrap:balance}
-.q2 span{background:linear-gradient(var(--pencil),var(--pencil)) 0 100%/100% 1px no-repeat;padding-bottom:.1em}
-.quote figcaption{display:flex;align-items:center;gap:14px;margin-top:clamp(22px,3vw,34px);font:500 13px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.quote .rule{width:38px;height:1px;background:var(--muted)}
-.cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:clamp(30px,5vw,52px)}
-.btn{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--surface);text-decoration:none;font:500 15px/1 var(--sans);letter-spacing:.02em;padding:16px 26px;border-radius:2px;transition:background-color .25s,transform .25s}
-.btn span{transition:transform .25s}
-.btn:hover{background:var(--accent);color:var(--on-accent)}
-.btn:hover span{transform:translateX(4px)}
-.alt{color:var(--muted);font:italic 400 17px/1 var(--serif);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-color:var(--line)}
-.alt:hover{color:var(--accent);text-decoration-color:var(--accent)}
-.intro{padding-block:clamp(36px,6vw,72px);border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:24px 56px;align-items:end}
-.lede{font:400 clamp(18px,1vw + 13px,22px)/1.6 var(--serif);margin:0;max-width:40rem}
-.facts{font:500 12px/1.8 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
-.facts b{font:600 clamp(40px,5vw,60px)/1 var(--serif);letter-spacing:-.02em;color:var(--ink);display:block;text-transform:none;margin-bottom:4px}
-.facts i{font-style:normal;opacity:.5;margin:0 4px}
-.doors{padding-bottom:clamp(48px,8vw,104px)}
-.doors h2{font:500 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
-.doors ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.doors li{border-bottom:1px solid var(--line)}
-.doors a{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) 3.2rem;align-items:baseline;gap:6px 28px;padding:18px 4px;text-decoration:none;color:var(--ink);transition:padding-left .25s,background-color .25s}
-.doors a:hover{padding-left:14px;background:var(--soft)}
-.d-name{font:600 clamp(20px,2vw,26px)/1.2 var(--serif)}
-.d-desc{color:var(--muted);font-size:14.5px}
-.d-n{font:400 13px var(--mono);color:var(--pencil);text-align:right}
-@media (max-width:760px){
-  .intro{grid-template-columns:1fr}
-  .doors a{grid-template-columns:1fr 3.2rem}
-  .d-desc{grid-column:1/-1;order:3}
-  .jungle{right:-40%;opacity:.8}
-  .hero{padding-top:28px}
-}
-@media (prefers-reduced-motion:no-preference){
-  .rise{opacity:0;transform:translateY(12px);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
-  @keyframes rise{to{opacity:1;transform:none}}
-  .jungle .stroke{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 14s cubic-bezier(.4,0,.2,1) forwards}
-  .jungle .s2{animation-delay:1.5s}.jungle .s3{animation-delay:3s}
-  @keyframes draw{to{stroke-dashoffset:0}}
-  .q2 span{background-size:0 1px;animation:underline 1.6s 2s ease forwards}
-  @keyframes underline{to{background-size:100% 1px}}
-}
 
 `;
 function copyFonts(pkg, files, to) {
@@ -545,6 +487,81 @@ function copyFonts(pkg, files, to) {
 }
 fs.mkdirSync(path.join(DIST, 'assets', 'fonts'), { recursive: true });
 fs.mkdirSync(path.join(DIST, 'assets', 'katex', 'fonts'), { recursive: true });
+const HOME_CSS = String.raw`/* Landing page only. Generated by build.mjs into assets/home.css, so it works whatever assets/style.css contains. */
+body.home{--bg:#f6f1e6;--surface:#fbf8f1;--ink:#14213d;--muted:#5b6477;--line:#d9d2c1;--accent:#34578a;--on-accent:#fbf8f1;--soft:#ece5d6;--mark:rgba(52,87,138,.16);background:var(--bg);color:var(--ink)}
+@media (prefers-color-scheme:dark){body.home{--bg:#0e1523;--surface:#121a2b;--ink:#ebe6da;--muted:#a1a9ba;--line:#2a3550;--accent:#9db8e2;--on-accent:#0e1523;--soft:#18223a;--mark:rgba(157,184,226,.2)}}
+body.home .top{background:transparent;border-bottom:1px solid var(--line)}
+body.home .brand svg rect{fill:var(--ink)}
+body.home .brand svg path{stroke:var(--bg)}
+body.home .foot{background:transparent;border-top:1px solid var(--line)}
+.landing{flex:1 0 auto;width:100%}
+.landing *{box-sizing:border-box}
+.hero{padding:clamp(28px,5vw,72px) 0 clamp(44px,7vw,88px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"label" "plate" "quote" "cta";gap:0}
+.label{grid-area:label;font:500 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 20px;display:flex;align-items:center;gap:14px}
+.label::before{content:"";width:34px;height:1px;background:currentColor}
+.plate{grid-area:plate;margin:0 0 28px;color:var(--ink)}
+.plate .map{display:block;width:100%;height:auto;aspect-ratio:21/9;background:var(--surface);border:1px solid var(--line)}
+.map .contours{stroke:var(--accent)}
+.map .route,.map .summit,.map .ticks{stroke:var(--ink)}
+.map circle[fill]{fill:var(--ink)}
+.map text{fill:var(--ink)}
+.plate figcaption{font:400 12px/1.5 var(--sans);color:var(--muted);margin-top:10px}
+.plate figcaption b{font-weight:600;color:var(--ink);margin-right:6px}
+.quote{grid-area:quote;margin:0;max-width:46rem}
+.q1{font:400 clamp(19px,1.8vw + 12px,26px)/1.62 var(--serif);margin:0 0 clamp(22px,3.5vw,38px);color:var(--ink);text-wrap:pretty}
+.q1 mark{background:linear-gradient(transparent 58%,var(--mark) 58%);color:inherit;padding:0 .08em;margin:0 -.08em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.q2{font:italic 400 clamp(32px,6.2vw,58px)/1.08 var(--serif);letter-spacing:-.012em;margin:0;color:var(--accent);text-wrap:balance;position:relative;padding-top:22px}
+.q2::before{content:"";position:absolute;left:0;top:0;width:56px;height:2px;background:var(--accent)}
+.q2 span{background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;padding-bottom:.08em}
+.quote footer{display:flex;align-items:center;gap:14px;margin-top:22px;font:500 12.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.quote .rule{width:34px;height:1px;background:var(--muted)}
+.cta{grid-area:cta;margin-top:clamp(28px,4vw,44px);max-width:46rem}
+.tag{font:italic 400 clamp(17px,1vw + 12px,20px)/1.5 var(--serif);color:var(--muted);margin:0 0 20px}
+.buttons{display:flex;flex-wrap:wrap;align-items:center;gap:16px 26px;margin:0}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--bg);text-decoration:none;font:500 15px/1 var(--sans);letter-spacing:.02em;padding:17px 28px;border-radius:2px;transition:background-color .25s,transform .25s}
+.btn:hover{background:var(--accent);color:var(--on-accent)}
+.btn span{display:inline-block;transition:transform .25s}
+.btn:hover span{transform:translateX(5px)}
+.alt{color:var(--muted);font:italic 400 17px/1 var(--serif);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-color:var(--line)}
+.alt:hover{color:var(--accent);text-decoration-color:var(--accent)}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1.3fr) minmax(0,.85fr);grid-template-areas:"label plate" "quote plate" "cta plate";column-gap:clamp(40px,6vw,88px);grid-template-rows:auto auto 1fr;align-items:start}
+  .plate{margin:0;position:sticky;top:24px}
+  .plate .map{aspect-ratio:4/5}
+  .label{margin-bottom:34px}
+}
+.intro{padding-block:clamp(36px,6vw,72px);border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:24px 56px;align-items:end}
+.lede{font:400 clamp(18px,1vw + 13px,22px)/1.6 var(--serif);margin:0;max-width:40rem}
+.facts{font:500 12px/1.8 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+.facts b{font:600 clamp(40px,5vw,60px)/1 var(--serif);letter-spacing:-.02em;color:var(--ink);display:block;text-transform:none;margin-bottom:4px}
+.facts i{font-style:normal;opacity:.5;margin:0 4px}
+.doors{padding-bottom:clamp(48px,8vw,104px)}
+.doors h2{font:500 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+.doors ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.doors li{border-bottom:1px solid var(--line);margin:0;padding:0}
+.doors a{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) 3.2rem;align-items:baseline;gap:6px 28px;padding:18px 4px;text-decoration:none;color:var(--ink);transition:padding-left .25s,background-color .25s}
+.doors a:hover{padding-left:14px;background:var(--soft)}
+.d-name{font:600 clamp(20px,2vw,26px)/1.2 var(--serif)}
+.d-desc{color:var(--muted);font-size:14.5px}
+.d-n{font:400 13px var(--mono);color:var(--accent);text-align:right}
+@media (max-width:760px){
+  .intro{grid-template-columns:1fr}
+  .doors a{grid-template-columns:1fr 3.2rem}
+  .d-desc{grid-column:1/-1;order:3}
+}
+@media (prefers-reduced-motion:no-preference){
+  .rise{opacity:0;transform:translateY(12px);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .map .c{opacity:0;animation:fade 1.4s ease forwards;animation-delay:calc(.3s + var(--i) * .12s)}
+  @keyframes fade{to{opacity:1}}
+  .map .route{stroke-dashoffset:0}
+  .map .summit{opacity:0;animation:fade 1s 2.4s ease forwards}
+  .q2 span{background-size:0 1px;animation:underline 1.6s 1.8s ease forwards}
+  @keyframes underline{to{background-size:100% 1px}}
+}
+`;
+fs.writeFileSync(path.join(DIST, 'assets', 'home.css'), HOME_CSS);
 const userCss = path.join(ROOT, 'assets', 'style.css');
 fs.writeFileSync(path.join(DIST, 'assets', 'style.css'), fs.existsSync(userCss) ? fs.readFileSync(userCss, 'utf8') : STYLE);
 copyFonts('@fontsource/newsreader', ['newsreader-latin-400-normal.woff2', 'newsreader-latin-600-normal.woff2', 'newsreader-latin-400-italic.woff2'], path.join(DIST, 'assets', 'fonts'));
@@ -559,41 +576,83 @@ fs.writeFileSync(path.join(DIST, 'assets', 'katex', 'katex.min.css'), fs.readFil
 const urls = [{ loc: '/', lastmod: newestFirst[0]?.date }, { loc: '/problems/', lastmod: newestFirst[0]?.date }];
 
 /* ---------- landing page ---------- */
-// Thin line drawing behind the quotation: two hypotrochoids (the curves traced by a spirograph).
-function spiro(R, r, d, scale, turns) {
-  const k = (R - r) / r, pts = [];
-  for (let i = 0; i <= 720; i++) {
-    const t = (i / 720) * turns * 2 * Math.PI;
-    pts.push(((R - r) * Math.cos(t) + d * Math.cos(k * t)) * scale, ((R - r) * Math.sin(t) - d * Math.sin(k * t)) * scale);
+// The illustration is generated here: level curves of a function of two variables (marching squares), like a map of the jungle.
+function landscape() {
+  const W = 400, H = 500, N = 80, gx = 4, gy = 5;
+  const bumps = [[1.15, 3.7, 1.0, .85], [2.9, 2.25, 1.35, 1.05], [.95, 1.15, .75, .7], [3.25, 4.1, .55, .6], [2.2, .55, .35, .5]];
+  const f = (x, y) => bumps.reduce((acc, [cx, cy, h, w]) => acc + h * Math.exp(-((x - cx) ** 2 + (y - cy) ** 2) / (w * w)), 0) + .05 * Math.sin(3.1 * x + .7) * Math.cos(2.3 * y);
+  const nx = N, ny = Math.round(N * gy / gx), v = [];
+  for (let j = 0; j <= ny; j++) { v[j] = []; for (let i = 0; i <= nx; i++) v[j][i] = f(i / nx * gx, j / ny * gy); }
+  const out = [];
+  for (let L = 0.12; L < 1.5; L += 0.12) {
+    const segs = [];
+    const pt = (i0, j0, i1, j1) => { const a = v[j0][i0], b = v[j1][i1], t = (L - a) / (b - a); return [(i0 + (i1 - i0) * t) / nx * W, (j0 + (j1 - j0) * t) / ny * H, `${i0},${j0}-${i1},${j1}`]; };
+    const TABLE = { 1: 'lb', 2: 'br', 3: 'lr', 4: 'tr', 5: 'tlbr', 6: 'tb', 7: 'tl', 8: 'tl', 9: 'tb', 10: 'trlb', 11: 'tr', 12: 'lr', 13: 'br', 14: 'lb' };
+    for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+      const c = [v[j][i], v[j][i + 1], v[j + 1][i + 1], v[j + 1][i]].map(z => (z >= L ? 1 : 0));
+      const code = c[0] * 8 + c[1] * 4 + c[2] * 2 + c[3];
+      if (code === 0 || code === 15) continue;
+      const e = { t: () => pt(i, j, i + 1, j), r: () => pt(i + 1, j, i + 1, j + 1), b: () => pt(i, j + 1, i + 1, j + 1), l: () => pt(i, j, i, j + 1) };
+      const T = TABLE[code];
+      for (let k = 0; k < T.length; k += 2) segs.push([e[T[k]](), e[T[k + 1]]()]);
+    }
+    const adj = new Map(), add = (a, sg) => { if (!adj.has(a[2])) adj.set(a[2], []); adj.get(a[2]).push(sg); };
+    segs.forEach(sg => { add(sg[0], sg); add(sg[1], sg); });
+    const used = new Set(), paths = [];
+    for (const sg of segs) {
+      if (used.has(sg)) continue; used.add(sg);
+      const chain = [sg[0], sg[1]];
+      for (const dir of [1, 0]) for (;;) {
+        const end = dir ? chain[chain.length - 1] : chain[0];
+        const nxt = (adj.get(end[2]) || []).find(q => !used.has(q));
+        if (!nxt) break; used.add(nxt);
+        const other = nxt[0][2] === end[2] ? nxt[1] : nxt[0];
+        if (dir) chain.push(other); else chain.unshift(other);
+      }
+      if (chain.length > 3) paths.push('M' + chain.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L'));
+    }
+    out.push(paths.join(''));
   }
-  return 'M' + pts.map(v => v.toFixed(1)).reduce((a, v, i) => a + (i === 0 ? '' : (i % 2 ? ' ' : ' L')) + v, '');
+  return out;
 }
 const HOME_QUOTE_1 = 'Mathematical reality is an infinite jungle full of enchanting mysteries, but the jungle does not give up its secrets easily. Be prepared to struggle, both intellectually and creatively. The truth is, I don’t know of any human activity as demanding of one’s imagination, intuition, and ingenuity. But I do it anyway. I do it because I love it and because I can’t help it. Once you’ve been to the jungle, you can never really leave. It haunts your waking dreams.';
 const HOME_QUOTE_2 = 'So I invite you to go on an amazing adventure!';
+// Subtle emphasis on a few phrases (the text itself is unchanged).
+const HOME_MARKS = ['infinite jungle', 'Be prepared to struggle', 'I do it because I love it', 'you can never really leave'];
+const homeQuote1Html = () => HOME_MARKS.reduce((h, m) => h.replace(esc(m), `<mark>${esc(m)}</mark>`), esc(HOME_QUOTE_1));
+function figureSvg() {
+  const lv = landscape();
+  const ticks = []; for (let i = 20; i < 400; i += 20) ticks.push(`M${i} 500v${i % 100 ? 5 : 9}`); for (let j = 20; j < 500; j += 20) ticks.push(`M0 ${j}h${j % 100 ? 5 : 9}`);
+  return `<svg class="map" viewBox="0 0 400 500" role="img" aria-label="Level curves of a function of two variables, with a dashed route climbing towards the highest peak" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" style="max-width:100%;height:auto">
+    <g class="contours" stroke="#34578a" stroke-linejoin="round" stroke-linecap="round">${lv.map((d, i) => `<path class="c${i % 4 === 3 ? ' major' : ''}" style="--i:${i}" stroke-width="${i % 4 === 3 ? 1.3 : .7}" d="${d}"/>`).join('')}</g>
+    <path class="route" pathLength="1" d="M34 468C78 436 116 424 134 372S196 300 232 272S270 244 290 226" stroke="#14213d" stroke-width="1.2" stroke-dasharray="3 4"/>
+    <circle cx="34" cy="468" r="3.2" fill="#14213d" stroke="none"/>
+    <g class="summit" stroke="#14213d" stroke-width="1.1"><circle cx="290" cy="226" r="7"/><path d="M290 214v24M278 226h24"/></g>
+    <text x="304" y="212" fill="#14213d" stroke="none" font-size="11" font-style="italic" font-family="Newsreader,Georgia,serif">?</text>
+    <path class="ticks" d="${ticks.join('')}" stroke="#14213d" stroke-width=".8" opacity=".45"/>
+  </svg>`;
+}
 function homeBody() {
   const counts = {};
   problems.forEach(p => { const sg = p.path.split('/'); counts[sg[0]] = (counts[sg[0]] || 0) + 1; });
   const doors = ROOTS.filter(r => counts[r]).map(r => `<li><a href="/category/${r}/"><span class="d-name">${esc(NODES[r].name)}</span><span class="d-desc">${esc(NODES[r].description)}</span><span class="d-n">${counts[r]}</span></a></li>`).join('');
   return `<main class="landing">
-<section class="hero" aria-labelledby="quote-heading">
-  <svg class="jungle" viewBox="-300 -300 600 600" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice">
-    <path class="stroke s1" pathLength="1" d="${spiro(7, 3, 5, 26, 3)}"/>
-    <path class="stroke s2" pathLength="1" d="${spiro(5, 3, 4.4, 36, 3)}"/>
-    <path class="stroke s3" pathLength="1" d="${spiro(11, 4, 6, 18, 4)}"/>
-  </svg>
-  <div class="wrap hero-in">
-    <p class="eyebrow rise" style="--d:.1s">An invitation</p>
-    <h1 id="quote-heading" class="sr">${esc(config.name)}: an invitation to mathematics</h1>
-    <figure class="quote">
-      <blockquote>
-        <p class="q1 rise" style="--d:.35s">${esc(HOME_QUOTE_1)}</p>
-        <p class="q2 rise" style="--d:1.1s"><span>${esc(HOME_QUOTE_2)}</span></p>
-      </blockquote>
-      <figcaption class="rise" style="--d:1.6s"><span class="rule"></span>Paul Lockhart</figcaption>
+<section class="hero" aria-labelledby="home-title">
+  <div class="wrap hero-grid">
+    <p class="label rise" style="--d:.05s">Mathematics is an adventure</p>
+    <h1 id="home-title" class="sr">${esc(config.name)}: an invitation to mathematics</h1>
+    <figure class="plate rise" style="--d:.25s">
+      ${figureSvg()}
+      <figcaption><b>Fig. 1</b> Level curves of a function of two variables: the jungle, seen from above.</figcaption>
     </figure>
-    <div class="cta rise" style="--d:1.9s">
-      <a class="btn" href="/problems/">Enter the workshop <span aria-hidden="true">→</span></a>
-      <a class="alt" href="/random/">or try a random problem</a>
+    <blockquote class="quote">
+      <p class="q1 rise" style="--d:.4s">${homeQuote1Html()}</p>
+      <p class="q2 rise" style="--d:1s"><span>${esc(HOME_QUOTE_2)}</span></p>
+      <footer class="rise" style="--d:1.4s"><span class="rule"></span>Paul Lockhart</footer>
+    </blockquote>
+    <div class="cta rise" style="--d:1.7s">
+      <p class="tag">A space for mathematical exploration, challenging problems, and complete solutions.</p>
+      <p class="buttons"><a class="btn" href="/problems/">Explore the problems <span aria-hidden="true">→</span></a><a class="alt" href="/random/">or try a random problem</a></p>
     </div>
   </div>
 </section>
@@ -607,7 +666,7 @@ function homeBody() {
 </section>
 </main>`;
 }
-write('index.html', shell({ title: config.name, desc: config.description, urlPath: '/', bodyClass: 'home', body: homeBody() }));
+write('index.html', shell({ title: config.name, desc: config.description, urlPath: '/', bodyClass: 'home', extraCss: '/assets/home.css', body: homeBody() }));
 write('problems/index.html', listPage({
   heading: 'Maths problems with solutions', intro: config.description, list: newestFirst, urlPath: '/problems/',
   title: 'All problems', desc: config.description
