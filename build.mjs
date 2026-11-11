@@ -60,8 +60,9 @@ function resolveCategory(cat, sub) {
   if (!want) return { error: 'the category line is missing' };
   if (clean(sub)) want += '/' + clean(sub);
   if (NODES[want]) return { path: want };
-  if (!want.includes('/')) {
-    const hits = Object.keys(NODES).filter(k => NODES[k].id === want);
+  // A shortened path is accepted when it matches the end of exactly one full path ("differential-equations/first-order").
+  {
+    const hits = Object.keys(NODES).filter(k => k.endsWith('/' + want));
     if (hits.length === 1) return { path: hits[0] };
     if (hits.length > 1) return { error: `the category "${want}" exists in several places (${hits.join(', ')}). Write the full path` };
   }
