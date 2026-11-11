@@ -1,3 +1,627 @@
+@@@ alg-power-sums-from-vieta.md
+---
+title: Power sums from the first three
+category: algebra/polynomials
+level: m1
+difficulty: 2
+tags: Vieta, Newton sums, symmetric polynomials
+date: 2026-11-04
+---
+
+## Statement
+
+Real numbers $a,b,c$ satisfy $a+b+c=2$, $a^2+b^2+c^2=6$ and $a^3+b^3+c^3=8$. Find $a^4+b^4+c^4$.
+
+## Hint
+
+Write $e_1=a+b+c$, $e_2=ab+bc+ca$, $e_3=abc$. The numbers $a,b,c$ are the roots of $t^3-e_1t^2+e_2t-e_3$, so each satisfies $x^3=e_1x^2-e_2x+e_3$. Multiply by $x$ and sum.
+
+## Solution
+
+**Idea.** Compute $e_1,e_2,e_3$, then use the polynomial satisfied by each root to push the power sums up one degree at a time.
+
+**Step 1: $e_2$.** From $(a+b+c)^2=a^2+b^2+c^2+2e_2$ we get $4=6+2e_2$, so $e_2=-1$.
+
+**Step 2: $e_3$.** Each root satisfies $x^3=2x^2+x+e_3$ (since $e_1=2$, $e_2=-1$). Summing over $x=a,b,c$:
+$$8=p_3=2p_2+p_1+3e_3=12+2+3e_3,\qquad\text{so } e_3=-2.$$
+
+**Step 3: $p_4$.** Multiply $x^3=2x^2+x-2$ by $x$: $x^4=2x^3+x^2-2x$. Summing,
+$$p_4=2p_3+p_2-2p_1=16+6-4=18.$$
+
+**Check.** The polynomial is $t^3-2t^2-t+2=(t-2)(t-1)(t+1)$, with roots $2,1,-1$: indeed $p_1=2$, $p_2=6$, $p_3=8$, $p_4=16+1+1=18$.
+
+**Lesson.** Newton's identities: $p_{k+3}=e_1p_{k+2}-e_2p_{k+1}+e_3p_k$. You never need the roots themselves, only the elementary symmetric polynomials.
+@@@ alg-remainder-of-a-huge-power.md
+---
+title: The remainder of a huge power
+category: algebra/polynomials
+level: m1
+difficulty: 2
+tags: polynomial division, remainder, roots of unity
+date: 2026-11-04
+---
+
+## Statement
+
+1. A polynomial $P$ satisfies $P(1)=2$ and $P(2)=3$. Find the remainder of $P$ divided by $(x-1)(x-2)$.
+2. Find the remainder of $x^{2026}+x+1$ divided by $x^2+x+1$.
+
+## Hint
+
+The remainder of a division by a polynomial of degree $n$ has degree $<n$. For part 2, notice that $x^3-1=(x-1)(x^2+x+1)$.
+
+## Solution
+
+**1.** The remainder has degree at most $1$: $P(x)=(x-1)(x-2)Q(x)+ax+b$. Evaluating at $1$ and $2$ gives $a+b=2$ and $2a+b=3$, so $a=1$, $b=1$. The remainder is $x+1$.
+
+**2.** Since $x^3-1$ is divisible by $x^2+x+1$, we have $x^3\equiv1$ modulo $x^2+x+1$. Now $2026=3\cdot675+1$, so
+$$x^{2026}=\left(x^3\right)^{675}x\equiv x.$$
+Therefore $x^{2026}+x+1\equiv2x+1$. As $2x+1$ has degree $<2$, it is the remainder.
+
+**Remark.** Equivalently, with $\omega=e^{2\pi i/3}$: $\omega^{2026}+\omega+1=2\omega+1$, and the remainder is the unique polynomial of degree $\le1$ taking the same values at $\omega$ and $\bar\omega$.
+
+**Lesson.** Work "modulo" the divisor: replace $x^2+x+1$ by $0$ (or $x^3$ by $1$) and reduce the exponents.
+@@@ alg-integer-values-and-divisibility.md
+---
+title: Divisibility of values of an integer polynomial
+category: algebra/polynomials
+level: olympiad
+difficulty: 3
+tags: integer polynomials, a−b divides P(a)−P(b), integer roots
+date: 2026-11-04
+---
+
+## Statement
+
+Let $P$ be a polynomial with integer coefficients.
+
+1. Show that for all integers $a\ne b$, $a-b$ divides $P(a)-P(b)$. Deduce that no such $P$ satisfies $P(7)=11$ and $P(11)=13$.
+2. Suppose that $P(a)=P(b)=P(c)=-1$ for three distinct integers $a,b,c$. Show that $P$ has no integer root.
+
+## Hint
+
+For part 1, use $x^k-y^k=(x-y)(x^{k-1}+\dots+y^{k-1})$. For part 2, write $P(x)+1=(x-a)(x-b)(x-c)Q(x)$ and look at an integer root $n$.
+
+## Solution
+
+**1.** If $P(x)=\sum c_kx^k$, then $P(a)-P(b)=\sum c_k(a^k-b^k)$ and each $a^k-b^k$ is a multiple of $a-b$. So $(a-b)\mid P(a)-P(b)$.
+
+If $P(7)=11$ and $P(11)=13$, then $7-11=-4$ must divide $11-13=-2$: false. So no such polynomial exists.
+
+**2.** The polynomial $P(x)+1$ has the integer roots $a,b,c$, so $P(x)+1=(x-a)(x-b)(x-c)Q(x)$ where $Q$ has integer coefficients. If $n$ were an integer root of $P$, then
+$$(n-a)(n-b)(n-c)Q(n)=P(n)+1=1.$$
+So $n-a,n-b,n-c$ are three integers whose product divides $1$: each of them is $\pm1$. But they are pairwise distinct, and there are only two values $\pm1$. Contradiction.
+
+**Lesson.** For integer polynomials, always think of the divisibility $a-b\mid P(a)-P(b)$ and of factoring $P(x)-k$ over the integers.
+@@@ alg-irrational-by-rational-root-theorem.md
+---
+title: √2 + √3 is irrational
+category: algebra/polynomials
+level: m1
+difficulty: 2
+tags: rational root theorem, irrationality, minimal polynomial
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that $\sqrt2+\sqrt3$ is irrational, by finding a monic polynomial with integer coefficients that vanishes at this number.
+
+## Hint
+
+Isolate the radicals step by step: square $x=\sqrt2+\sqrt3$, move the rational part to the left, and square again.
+
+## Solution
+
+**Polynomial.** If $x=\sqrt2+\sqrt3$, then $x^2=5+2\sqrt6$, so $x^2-5=2\sqrt6$ and $(x^2-5)^2=24$, i.e.
+$$x^4-10x^2+1=0.$$
+
+**Rational root theorem.** Here the polynomial is monic with constant term $1$, so the only rational candidates are $\pm1$. But
+$$1-10+1=-8\neq0\quad\text{(for both }x=1\text{ and }x=-1\text{)}.$$
+So the polynomial has no rational root. Since $\sqrt2+\sqrt3$ is a root, it is irrational.
+
+**Remark.** The same method works for many sums of radicals, e.g. $\sqrt2+\sqrt[3]3$.
+
+**Lesson.** To prove irrationality of an algebraic number, build an integer polynomial it satisfies, then apply the rational root theorem.
+@@@ alg-eisenstein-and-cyclotomic-polynomials.md
+---
+title: Irreducibility with Eisenstein's criterion
+category: algebra/polynomials
+level: olympiad
+difficulty: 4
+tags: Eisenstein, irreducibility, cyclotomic polynomial, shift trick
+date: 2026-11-04
+---
+
+## Statement
+
+**Eisenstein's criterion.** Let $f(x)=a_nx^n+\dots+a_0$ have integer coefficients and let $p$ be a prime with $p\nmid a_n$, $p\mid a_i$ for $i<n$, and $p^2\nmid a_0$. Then $f$ cannot be written as a product of two non-constant polynomials with integer coefficients.
+
+Use it to prove:
+1. $x^4+1$ is irreducible over $\mathbb{Q}$.
+2. For a prime $p$, $\Phi_p(x)=x^{p-1}+x^{p-2}+\dots+x+1$ is irreducible over $\mathbb{Q}$.
+
+## Hint
+
+Eisenstein does not apply directly. Replace $x$ by $x+1$: if $f(x+1)$ is irreducible, so is $f(x)$.
+
+## Solution
+
+**Shift trick.** A factorisation $f(x)=g(x)h(x)$ gives $f(x+1)=g(x+1)h(x+1)$ with the same degrees, and conversely.
+
+**1.** $(x+1)^4+1=x^4+4x^3+6x^2+4x+2$. With $p=2$: the leading coefficient $1$ is odd; $4,6,4,2$ are all even; and the constant term $2$ is not divisible by $4$. Eisenstein applies: irreducible.
+
+**2.** Since $\Phi_p(x)=\dfrac{x^p-1}{x-1}$,
+$$\Phi_p(x+1)=\frac{(x+1)^p-1}{x}=\sum_{k=1}^{p}\binom pkx^{k-1}=x^{p-1}+\binom p{p-1}x^{p-2}+\dots+\binom p2x+p.$$
+The leading coefficient is $1$. For $1\le k\le p-1$, $p\mid\binom pk$. The constant term is $\binom p1=p$, not divisible by $p^2$. By Eisenstein, $\Phi_p(x+1)$ is irreducible, hence so is $\Phi_p(x)$.
+
+**Remark.** Thus $\Phi_p$ is the minimal polynomial of $e^{2\pi i/p}$ over $\mathbb{Q}$.
+
+**Lesson.** If a polynomial looks irreducible but Eisenstein fails, try the shifts $x\mapsto x+1$ or $x\mapsto x-1$.
+@@@ alg-binomial-sums-with-roots-of-unity.md
+---
+title: Binomial coefficients in steps of three
+category: algebra/complex-numbers
+level: olympiad
+difficulty: 4
+tags: roots of unity filter, binomial coefficients, complex numbers
+date: 2026-11-04
+---
+
+## Statement
+
+Let $S_n=\binom n0+\binom n3+\binom n6+\cdots=\sum_{k\equiv0\ (3)}\binom nk$.
+
+1. Show that $S_n=\dfrac{2^n+2\cos\frac{n\pi}3}3$.
+2. Compute $S_{2024}$.
+
+## Hint
+
+Let $\omega=e^{2\pi i/3}$. For an integer $k$, $1+\omega^k+\omega^{2k}$ equals $3$ if $3\mid k$ and $0$ otherwise. Expand $(1+1)^n+(1+\omega)^n+(1+\omega^2)^n$.
+
+## Solution
+
+**Filter.** Using the hint,
+$$\sum_{j=0}^2(1+\omega^j)^n=\sum_{k=0}^n\binom nk\sum_{j=0}^2\omega^{jk}=3\sum_{3\mid k}\binom nk=3S_n.$$
+
+**Evaluating.** $1+\omega=-\omega^2=e^{i\pi/3}$ and $1+\omega^2=e^{-i\pi/3}$. Hence
+$$3S_n=2^n+e^{in\pi/3}+e^{-in\pi/3}=2^n+2\cos\frac{n\pi}3.$$
+
+**2.** $2024=6\cdot337+2$, so $\cos\frac{2024\pi}3=\cos\frac{2\pi}3=-\frac12$ and
+$$S_{2024}=\frac{2^{2024}-1}3.$$
+
+**Check.** $n=6$: $\binom60+\binom63+\binom66=1+20+1=22$, and the formula gives $\frac{64+2}3=22$ ✓.
+
+**Lesson.** The roots of unity filter $\frac1m\sum_{j=0}^{m-1}\omega^{jk}=[m\mid k]$ extracts the terms whose index lies in a given residue class.
+@@@ alg-the-product-of-sines.md
+---
+title: The product of sin(kπ/n)
+category: algebra/complex-numbers
+level: olympiad
+difficulty: 4
+tags: roots of unity, trigonometric product, cyclotomic
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that for every integer $n\ge2$,
+$$\prod_{k=1}^{n-1}\sin\frac{k\pi}n=\frac n{2^{n-1}}.$$
+
+## Hint
+
+The numbers $\omega^k=e^{2\pi ik/n}$, $1\le k\le n-1$, are the roots of $x^{n-1}+x^{n-2}+\dots+1$. Evaluate this polynomial at $x=1$, and compute $|1-e^{i\theta}|$.
+
+## Solution
+
+**Factorisation.** The $n$-th roots of unity other than $1$ are the roots of $x^{n-1}+\dots+x+1=\prod_{k=1}^{n-1}(x-\omega^k)$. At $x=1$: $n=\prod_{k=1}^{n-1}(1-\omega^k)$.
+
+**Moduli.** For $\theta\in(0,2\pi)$,
+$$|1-e^{i\theta}|=2\sin\frac\theta2.$$
+With $\theta=\frac{2\pi k}n$ this is $2\sin\frac{k\pi}n>0$. Taking moduli in the product,
+$$n=\prod_{k=1}^{n-1}2\sin\frac{k\pi}n=2^{n-1}\prod_{k=1}^{n-1}\sin\frac{k\pi}n,$$
+which is the claim.
+
+**Check.** $n=3$: $\sin\frac\pi3\sin\frac{2\pi}3=\frac34=\frac3{2^2}$ ✓. $n=4$: $\frac{\sqrt2}2\cdot1\cdot\frac{\sqrt2}2=\frac12=\frac4{2^3}$ ✓.
+
+**Lesson.** A trigonometric product over equally spaced angles often comes from evaluating $\prod(x-\omega^k)$ at a well-chosen point.
+@@@ alg-lagrange-interpolation-trick.md
+---
+title: A polynomial that equals k/(k+1) at 0, 1, …, n
+category: algebra/polynomials
+level: olympiad
+difficulty: 4
+tags: polynomial interpolation, degree argument, Lagrange
+date: 2026-11-04
+---
+
+## Statement
+
+Let $P$ be a polynomial of degree at most $n$ such that $P(k)=\dfrac k{k+1}$ for $k=0,1,\dots,n$. Compute $P(n+1)$.
+
+## Hint
+
+Consider $Q(x)=(x+1)P(x)-x$. What is its degree, and what are its roots? Then evaluate $Q$ at $x=-1$.
+
+## Solution
+
+**Auxiliary polynomial.** $Q(x)=(x+1)P(x)-x$ has degree at most $n+1$, and $Q(k)=(k+1)\frac k{k+1}-k=0$ for $k=0,\dots,n$. These are $n+1$ distinct roots, so
+$$Q(x)=c\,x(x-1)\cdots(x-n)$$
+for some constant $c$.
+
+**The constant.** At $x=-1$: $Q(-1)=0\cdot P(-1)+1=1$, while the right side is
+$$c(-1)(-2)\cdots(-1-n)=c\,(-1)^{n+1}(n+1)!.$$
+Therefore $c=\dfrac{(-1)^{n+1}}{(n+1)!}$.
+
+**At $x=n+1$.**
+$$(n+2)P(n+1)-(n+1)=c\,(n+1)!=(-1)^{n+1},$$
+so
+$$P(n+1)=\frac{n+1+(-1)^{n+1}}{n+2}.$$
+In particular $P(n+1)=1$ for $n$ odd and $\dfrac{n}{n+2}$ for $n$ even.
+
+**Check.** $n=2$: the polynomial through $(0,0),(1,\frac12),(2,\frac23)$ takes the value $\frac12$ at $3$, and the formula gives $\frac{3-1}4=\frac12$ ✓.
+
+**Lesson.** When values of $P$ are given on $n+1$ points, build an auxiliary polynomial vanishing there; its degree forces its shape up to a constant.
+@@@ alg-an-invariant-in-a-recurrence.md
+---
+title: A recurrence with a hidden invariant
+category: algebra/equations
+level: olympiad
+difficulty: 3
+tags: linear recurrence, invariant, characteristic equation
+date: 2026-11-04
+---
+
+## Statement
+
+Define $a_0=0$, $a_1=1$ and $a_{n+2}=4a_{n+1}-a_n$. The first terms are $0,1,4,15,56,209,\dots$
+
+1. Show that $a_na_{n+2}-a_{n+1}^2=-1$ for all $n\ge0$.
+2. Find a closed formula for $a_n$.
+
+## Hint
+
+For part 1, show that the quantity $D_n=a_na_{n+2}-a_{n+1}^2$ does not depend on $n$. For part 2, solve $r^2=4r-1$.
+
+## Solution
+
+**1. An invariant.** Using $a_{n+3}=4a_{n+2}-a_{n+1}$ and then $4a_{n+1}-a_{n+2}=a_n$,
+$$D_{n+1}=a_{n+1}a_{n+3}-a_{n+2}^2=a_{n+1}\bigl(4a_{n+2}-a_{n+1}\bigr)-a_{n+2}^2=a_{n+2}\bigl(4a_{n+1}-a_{n+2}\bigr)-a_{n+1}^2=a_{n+2}a_n-a_{n+1}^2=D_n.$$
+So $D_n=D_0=a_0a_2-a_1^2=0\cdot4-1=-1$.
+
+**2. Closed form.** The roots of $r^2-4r+1=0$ are $r_\pm=2\pm\sqrt3$. A general solution is $a_n=Ar_+^n+Br_-^n$. From $a_0=0$ we get $B=-A$, and $a_1=1$ gives $A(r_+-r_-)=2\sqrt3A=1$. So
+$$a_n=\frac{(2+\sqrt3)^n-(2-\sqrt3)^n}{2\sqrt3}.$$
+
+**Checks.** $n=2$: $a_2=4$ ✓. Also $r_+r_-=1$ makes part 1 transparent: $a_na_{n+2}-a_{n+1}^2=-\frac{(r_+r_-)^n(r_+-r_-)^2}{12}=-1$.
+
+**Remark.** The numbers $a_n$ are the $y$-values of solutions of the Pell-type equation $x^2-3y^2=1$.
+
+**Lesson.** For a linear recurrence, look for a conserved quantity (a determinant-like expression) by checking that it does not change when $n\to n+1$.
+@@@ alg-telescoping-with-arctangents.md
+---
+title: Telescoping with arctangents and products
+category: algebra/equations
+level: olympiad
+difficulty: 3
+tags: telescoping, arctangent, products
+date: 2026-11-04
+---
+
+## Statement
+
+1. Compute $\displaystyle\prod_{k=2}^n\left(1-\frac1{k^2}\right)$.
+2. Prove that $\displaystyle\sum_{k=1}^n\arctan\frac1{2k^2}=\frac\pi4-\arctan\frac1{2n+1}$, and deduce the limit as $n\to\infty$.
+
+## Hint
+
+For part 1, factor $1-\frac1{k^2}=\frac{(k-1)(k+1)}{k^2}$. For part 2, show that $\arctan\frac1{2k^2}=\arctan\frac1{2k-1}-\arctan\frac1{2k+1}$ using the tangent subtraction formula.
+
+## Solution
+
+**1.** $1-\frac1{k^2}=\frac{k-1}k\cdot\frac{k+1}k$, so
+$$\prod_{k=2}^n\frac{k-1}k\cdot\prod_{k=2}^n\frac{k+1}k=\frac1n\cdot\frac{n+1}2=\frac{n+1}{2n}.$$
+
+**2. Key identity.** Let $\alpha=\arctan\frac1{2k-1}$ and $\beta=\arctan\frac1{2k+1}$, both in $\left(0,\frac\pi2\right)$ with $\alpha>\beta$. Then
+$$\tan(\alpha-\beta)=\frac{\frac1{2k-1}-\frac1{2k+1}}{1+\frac1{(2k-1)(2k+1)}}=\frac1{2k^2}.$$
+Since $\alpha-\beta\in\left(0,\frac\pi2\right)$, we get $\alpha-\beta=\arctan\frac1{2k^2}$.
+
+**Summing.**
+$$\sum_{k=1}^n\arctan\frac1{2k^2}=\arctan1-\arctan\frac1{2n+1}=\frac\pi4-\arctan\frac1{2n+1}.$$
+As $n\to\infty$, the sum tends to $\dfrac\pi4$.
+
+**Check.** $n=1$: $\arctan\frac12=\frac\pi4-\arctan\frac13$ ✓.
+
+**Lesson.** Telescoping: try to write each term as $f(k)-f(k+1)$, using factorisations (products) or addition formulas (arctangents).
+@@@ alg-hermite-s-identity-for-floors.md
+---
+title: Hermite's identity for floor functions
+category: algebra/equations
+level: olympiad
+difficulty: 3
+tags: floor function, fractional part, Hermite identity
+date: 2026-11-04
+---
+
+## Statement
+
+1. Prove Hermite's identity: for every real $x$ and integer $n\ge1$,
+$$\lfloor x\rfloor+\left\lfloor x+\tfrac1n\right\rfloor+\left\lfloor x+\tfrac2n\right\rfloor+\dots+\left\lfloor x+\tfrac{n-1}n\right\rfloor=\lfloor nx\rfloor.$$
+2. Deduce that for integers $m\ge0$ and $n\ge1$: $\displaystyle\sum_{k=0}^{n-1}\left\lfloor\frac{m+k}n\right\rfloor=m$.
+
+## Hint
+
+Write $x=\lfloor x\rfloor+f$ with $0\le f<1$. In the sum, the terms are $\lfloor x\rfloor$ or $\lfloor x\rfloor+1$: find from which index $k$ the term jumps.
+
+## Solution
+
+**1.** Put $x=N+f$ with $N=\lfloor x\rfloor$ and $0\le f<1$. Then $\lfloor x+\frac kn\rfloor=N+\lfloor f+\frac kn\rfloor$, and $\lfloor f+\frac kn\rfloor\in\{0,1\}$. It equals $1$ iff $f+\frac kn\ge1$, i.e. $k\ge n-nf$, equivalently $k\ge n-\lfloor nf\rfloor$.
+
+So among $k=0,\dots,n-1$, the number of terms equal to $N+1$ is $\lfloor nf\rfloor$. Hence the left side is
+$$nN+\lfloor nf\rfloor=\lfloor nN+nf\rfloor=\lfloor nx\rfloor.$$
+
+**2.** Take $x=\frac mn$: then $\lfloor nx\rfloor=m$, and the identity becomes $\sum_{k=0}^{n-1}\left\lfloor\frac{m+k}n\right\rfloor=m$.
+
+**Example.** $m=100$, $n=7$: the terms are $14,14,14,14,14,15,15$, whose sum is $100$ ✓.
+
+**Lesson.** To handle floor functions, split into integer and fractional parts and find where the fractional part crosses an integer threshold.
+@@@ alg-a-sum-of-cosines-equal-to-one-half.md
+---
+title: cos(π/7) − cos(2π/7) + cos(3π/7) = 1/2
+category: algebra/equations
+level: olympiad
+difficulty: 3
+tags: trigonometry, telescoping, product-to-sum
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that $\cos\dfrac\pi7-\cos\dfrac{2\pi}7+\cos\dfrac{3\pi}7=\dfrac12$.
+
+## Hint
+
+Since $-\cos\frac{2\pi}7=\cos\frac{5\pi}7$, the sum is $\cos\frac\pi7+\cos\frac{3\pi}7+\cos\frac{5\pi}7$. Multiply by $2\sin\frac\pi7$ and use $2\sin a\cos\bigl((2k-1)a\bigr)=\sin(2ka)-\sin\bigl((2k-2)a\bigr)$.
+
+## Solution
+
+**Rewriting.** $-\cos\frac{2\pi}7=\cos\frac{5\pi}7$. So the sum is
+$$S=\cos a+\cos3a+\cos5a,\qquad a=\frac\pi7.$$
+
+**Multiplying by $2\sin a$.** For each $k$, $2\sin a\cos\bigl((2k-1)a\bigr)=\sin(2ka)-\sin\bigl((2k-2)a\bigr)$. Summing for $k=1,2,3$ the right side telescopes:
+$$2\sin a\cdot S=\sin6a-\sin0=\sin\frac{6\pi}7=\sin\frac\pi7.$$
+
+**Conclusion.** Since $\sin\frac\pi7\ne0$, we get $S=\frac12$.
+
+**Check.** Numerically $0.90097-0.62349+0.22252=0.5000$ ✓.
+
+**Lesson.** A sum of cosines of an arithmetic progression of angles is tamed by multiplying by $2\sin$ of half the common difference.
+@@@ alg-chebyshev-polynomials-and-rational-cosines.md
+---
+title: Chebyshev polynomials and rational values of cosine
+category: algebra/polynomials
+level: olympiad
+difficulty: 5
+tags: Chebyshev polynomials, algebraic integers, rational root theorem, Niven
+date: 2026-11-04
+---
+
+## Statement
+
+1. Define $P_0(x)=2$, $P_1(x)=x$, $P_{n+1}(x)=xP_n(x)-P_{n-1}(x)$. Show that $P_n$ is monic of degree $n$ (for $n\ge1$) with integer coefficients, and $P_n(2\cos\theta)=2\cos n\theta$.
+2. Let $r\pi$ be a rational multiple of $\pi$ with $\cos(r\pi)$ rational. Prove that $\cos(r\pi)\in\left\{0,\pm\frac12,\pm1\right\}$.
+
+## Hint
+
+Part 1: induction and $2\cos((n+1)\theta)+2\cos((n-1)\theta)=2\cos\theta\cdot2\cos n\theta$. Part 2: write $r=\frac pq$ and apply part 1 with $n=2q$.
+
+## Solution
+
+**1. Induction.** $P_0=2$ and $P_1=x$ have integer coefficients, and so does $P_{n+1}=xP_n-P_{n-1}$. If $P_{n-1}$ has degree $n-1$ and $P_n$ is monic of degree $n$, then $xP_n$ is monic of degree $n+1$ and $P_{n+1}$ is monic of degree $n+1$.
+
+For the trigonometric identity: $P_0(2\cos\theta)=2=2\cos0$ and $P_1(2\cos\theta)=2\cos\theta$. Assume it holds for $n-1,n$. The sum-to-product formula gives
+$$2\cos((n+1)\theta)=2\cos\theta\cdot2\cos n\theta-2\cos((n-1)\theta)=P_{n+1}(2\cos\theta).$$
+
+**2.** Let $r=\frac pq$ with $q\ge1$ and put $\theta=r\pi$, $x=2\cos\theta$. Then
+$$P_{2q}(x)=2\cos(2q\theta)=2\cos(2p\pi)=2,$$
+so $x$ is a root of the **monic** integer polynomial $P_{2q}(t)-2$. If $x$ is rational, the rational root theorem forces $x$ to be an integer. Since $|x|\le2$, $x\in\{-2,-1,0,1,2\}$, i.e. $\cos(r\pi)\in\left\{-1,-\frac12,0,\frac12,1\right\}$.
+
+**Remark.** This is Niven's theorem. In particular $\cos1^\circ$ is irrational.
+
+**Lesson.** Express $2\cos n\theta$ as a monic integer polynomial in $2\cos\theta$: it turns trigonometric rationality questions into rational root theorem questions.
+@@@ alg-complex-numbers-of-modulus-one.md
+---
+title: Three unit complex numbers with zero sum
+category: algebra/complex-numbers
+level: olympiad
+difficulty: 3
+tags: complex numbers, unit circle, equilateral triangle, conjugate trick
+date: 2026-11-04
+---
+
+## Statement
+
+1. Let $z,w$ be complex numbers of modulus $1$ with $zw\ne-1$. Show that $\dfrac{z+w}{1+zw}$ is real.
+2. Let $z_1,z_2,z_3$ be complex numbers of modulus $1$ with $z_1+z_2+z_3=0$. Show that they form an equilateral triangle.
+
+## Hint
+
+For unit complex numbers, $\bar z=\frac1z$. For part 2, take $|z_1+z_2|=|z_3|$ and expand the square of the modulus.
+
+## Solution
+
+**1.** Let $u=\dfrac{z+w}{1+zw}$. Using $\bar z=\frac1z$ and $\bar w=\frac1w$:
+$$\bar u=\frac{\frac1z+\frac1w}{1+\frac1{zw}}=\frac{z+w}{1+zw}=u.$$
+So $u=\bar u$, i.e. $u$ is real.
+
+**2.** From $z_1+z_2=-z_3$ we get $|z_1+z_2|^2=1$. Expanding,
+$$|z_1+z_2|^2=2+2\,\mathrm{Re}(z_1\bar z_2)=1,$$
+so $\mathrm{Re}(z_1\bar z_2)=-\frac12$. Then
+$$|z_1-z_2|^2=2-2\,\mathrm{Re}(z_1\bar z_2)=3.$$
+By symmetry, $|z_2-z_3|^2=|z_3-z_1|^2=3$. The three sides all have length $\sqrt3$: equilateral.
+
+**Lesson.** For points on the unit circle use $\bar z=1/z$: it turns geometric conditions into algebraic identities.
+@@@ alg-symmetric-systems-by-vieta.md
+---
+title: Two symmetric systems
+category: algebra/equations
+level: m1
+difficulty: 3
+tags: symmetric system, Vieta, sums of squares
+date: 2026-11-04
+---
+
+## Statement
+
+Solve in real numbers:
+
+1. $x+y+z=3,\quad x^2+y^2+z^2=5,\quad x^3+y^3+z^3=9$,
+2. $x+y+z=3,\quad x^2+y^2+z^2=3$.
+
+## Hint
+
+For the first system, find $e_2$ and $e_3$ and solve the cubic whose roots are $x,y,z$. For the second, think of $(x-1)^2+(y-1)^2+(z-1)^2$.
+
+## Solution
+
+**1. Elementary symmetric polynomials.** $e_1=3$. From $e_1^2=p_2+2e_2$: $9=5+2e_2$, so $e_2=2$. Newton's identity gives
+$$9=3\cdot5-2\cdot3+3e_3=9+3e_3,\quad\text{so } e_3=0.$$
+Therefore $x,y,z$ are the roots of $t^3-3t^2+2t=t(t-1)(t-2)$. The solutions are all permutations of $(0,1,2)$.
+
+**Check.** $0+1+2=3$, $0+1+4=5$, $0+1+8=9$ ✓.
+
+**2.** Expanding,
+$$(x-1)^2+(y-1)^2+(z-1)^2=3-6+3=0.$$
+A sum of three real squares is zero only if each is zero: the only solution is $(1,1,1)$.
+
+**Lesson.** A symmetric system is solved through $e_1,e_2,e_3$ and the cubic whose roots are the unknowns.
+@@@ alg-polynomials-with-p-of-x-squared-equal-p-squared.md
+---
+title: Polynomials with P(x²) = P(x)²
+category: algebra/polynomials
+level: olympiad
+difficulty: 4
+tags: polynomial equation, degree argument, coefficients comparison
+date: 2026-11-04
+---
+
+## Statement
+
+Find all real polynomials $P$ such that $P(x^2)=P(x)^2$ for all real $x$.
+
+## Hint
+
+Compare the leading coefficients, then the **second** non-zero term of $P$ on both sides.
+
+## Solution
+
+**Constants.** If $P$ is constant, $c=c^2$ gives $P=0$ or $P=1$.
+
+**Non-constant case.** Let $P(x)=ax^n+cx^k+(\text{terms of degree}<k)$ with $a\ne0$, $n\ge1$, and $k<n$ the degree of the second non-zero term, if any.
+
+*Leading coefficient.* Comparing coefficients of $x^{2n}$: $a=a^2$, so $a=1$.
+
+*Second term.* Suppose $P$ has a second non-zero term, $cx^k$ with $c\ne0$, $0\le k<n$. In $P(x)^2=x^{2n}+2cx^{n+k}+\dots$, the second-highest term is $2cx^{n+k}$. In $P(x^2)=x^{2n}+cx^{2k}+\dots$, the second-highest degree is $2k<n+k$. So the coefficient of $x^{n+k}$ is $2c\ne0$ on the left and $0$ on the right: contradiction.
+
+Hence $P(x)=x^n$, and indeed $P(x^2)=x^{2n}=(x^n)^2$ ✓.
+
+**Answer.** $P=0$, $P=1$, or $P(x)=x^n$ for some integer $n\ge1$.
+
+**Lesson.** In polynomial identities, compare leading terms first, then the next term; degrees often give an immediate contradiction.
+@@@ alg-a-sum-over-roots-of-unity.md
+---
+title: The sum of 1/(1 − ω^k)
+category: algebra/complex-numbers
+level: olympiad
+difficulty: 3
+tags: roots of unity, symmetry, complex numbers, pairing
+date: 2026-11-04
+---
+
+## Statement
+
+Let $n\ge2$ and $\omega=e^{2\pi i/n}$. Compute $\displaystyle\sum_{k=1}^{n-1}\frac1{1-\omega^k}$.
+
+## Hint
+
+Pair the term $k$ with the term $n-k$: $\omega^{n-k}=\overline{\omega^k}$.
+
+## Solution
+
+**A pair.** Put $\theta=\frac{2\pi k}n\in(0,2\pi)$ and $u=e^{i\theta}$. Then $\overline u=\omega^{n-k}$ and
+$$\frac1{1-u}+\frac1{1-\bar u}=\frac{2-u-\bar u}{(1-u)(1-\bar u)}=\frac{2-2\cos\theta}{2-2\cos\theta}=1.$$
+
+**Summing.** Let $S=\sum_{k=1}^{n-1}\frac1{1-\omega^k}$. Since $k\mapsto n-k$ permutes $\{1,\dots,n-1\}$, also $S=\sum_{k=1}^{n-1}\frac1{1-\omega^{n-k}}$. Adding the two expressions of $S$,
+$$2S=\sum_{k=1}^{n-1}1=n-1.$$
+
+**Answer.** $S=\dfrac{n-1}2$.
+
+**Checks.** $n=2$: $\frac1{1-(-1)}=\frac12$ ✓. $n=3$: the two terms are conjugate and add up to $1$ ✓.
+
+**Lesson.** Symmetry $k\leftrightarrow n-k$ (complex conjugation) pairs terms; the sum of the pair is often constant.
+@@@ alg-a-floor-of-a-telescoping-sum.md
+---
+title: The integer part of a telescoping sum
+category: algebra/equations
+level: olympiad
+difficulty: 3
+tags: recurrence, telescoping, floor, monotone sequence
+date: 2026-11-04
+---
+
+## Statement
+
+Define $x_1=\dfrac12$ and $x_{n+1}=x_n^2+x_n$. Compute
+$$\left\lfloor\sum_{k=1}^{2025}\frac1{1+x_k}\right\rfloor.$$
+
+## Hint
+
+From $x_{k+1}=x_k(x_k+1)$, express $\frac1{1+x_k}$ as a difference of two consecutive terms $\frac1{x_k}-\frac1{x_{k+1}}$.
+
+## Solution
+
+**Telescoping.** Since $x_{k+1}=x_k(1+x_k)$,
+$$\frac1{x_k}-\frac1{x_{k+1}}=\frac{x_{k+1}-x_k}{x_kx_{k+1}}=\frac1{1+x_k}.$$
+Hence
+$$\sum_{k=1}^{2025}\frac1{1+x_k}=\frac1{x_1}-\frac1{x_{2026}}=2-\frac1{x_{2026}}.$$
+
+**Size of $x_{2026}$.** The sequence is positive and increasing ($x_{n+1}-x_n=x_n^2>0$). Moreover $x_2=\frac34$ and $x_3=\frac34\cdot\frac74=\frac{21}{16}>1$. So $x_{2026}>x_3>1$, hence $0<\frac1{x_{2026}}<1$.
+
+**Conclusion.** The sum lies in $(1,2)$, so its integer part is $\boxed1$.
+
+**Check.** With only $6$ terms the sum is $2-\frac1{x_7}\approx1.99996$.
+
+**Lesson.** When a recurrence has the form $x_{n+1}=x_n(x_n+c)$, the quantity $\frac1{x_n+c}$ telescopes.
+@@@ alg-polynomial-roots-and-coefficients-sign-argument.md
+---
+title: A polynomial with all roots real and Vieta
+category: algebra/inequalities
+level: olympiad
+difficulty: 4
+tags: Vieta, discriminant, real roots, Newton inequality
+date: 2026-11-04
+---
+
+## Statement
+
+Let $x^3+px^2+qx+r$ have three real roots $a,b,c$. Prove that $p^2\ge3q$, with equality iff $a=b=c$.
+
+## Hint
+
+Express $p$ and $q$ with Vieta's formulas, then relate $p^2-3q$ to a sum of squares of differences.
+
+## Solution
+
+**Vieta.** $p=-(a+b+c)$ and $q=ab+bc+ca$. Hence
+$$p^2-3q=(a+b+c)^2-3(ab+bc+ca)=a^2+b^2+c^2-ab-bc-ca.$$
+
+**Sum of squares.**
+$$a^2+b^2+c^2-ab-bc-ca=\frac12\left[(a-b)^2+(b-c)^2+(c-a)^2\right]\ge0.$$
+
+**Equality.** It requires $a=b$, $b=c$, $c=a$, i.e. $a=b=c$.
+
+**Remark.** Geometrically, $p^2\ge3q$ says that the derivative $3x^2+2px+q$ has a real root: this is Rolle's theorem applied between the real roots of the cubic. The condition $p^2-3q\ge0$ is exactly the non-negativity of the discriminant of the derivative.
+
+**Lesson.** A relation between coefficients of a polynomial with real roots usually comes from a sum of squares of differences of the roots, via Vieta's formulas.
 @@@ geo2-stewart-s-theorem-and-its-consequences.md
 ---
 title: Stewart's theorem and its consequences
