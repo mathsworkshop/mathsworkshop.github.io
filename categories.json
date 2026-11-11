@@ -166,10 +166,8 @@
               "subcategories": []
             }
           ]
-        }
-      ]
-    },
-     {
+        },
+        {
           "id": "differential-equations",
           "name": "Differential equations",
           "description": "Ordinary differential equations.",
@@ -194,6 +192,8 @@
             }
           ]
         }
+      ]
+    },
     {
       "id": "topology",
       "name": "Topology",
