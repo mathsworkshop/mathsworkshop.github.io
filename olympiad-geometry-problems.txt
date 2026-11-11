@@ -1,7 +1,4173 @@
+@@@ space-3d-coordinates-basics.md
+---
+title: 3D coordinate system
+category: geometry/space
+level: lycee
+difficulty: 1
+tags: 3D coordinates, distance, midpoint
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A(1,2,3)$ and $B(4,6,8)$. Compute the distance $AB$ and the midpoint $M$ of $AB$.
+
+## Hint
+
+$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}$.
+
+## Solution
+
+**Distance.**
+$$AB=\sqrt{(4-1)^2+(6-2)^2+(8-3)^2}=\sqrt{9+16+25}=\sqrt{50}=5\sqrt2.$$
+
+**Midpoint.**
+$$M=\left(\frac{1+4}{2},\frac{2+6}{2},\frac{3+8}{2}\right)=\left(\frac52,4,\frac{11}{2}\right).$$
+
+**Conclusion.** $AB=5\sqrt2$, $M=(5/2,4,11/2)$.
+
+@@@ space-vector-operations.md
+---
+title: Vector operations in $\mathbb{R}^3$
+category: geometry/space
+level: lycee
+difficulty: 1
+tags: vector addition, scalar multiplication, norm
+date: 2026-11-03
+---
+
+## Statement
+
+Let $\vec u=(1,-2,3)$ and $\vec v=(4,0,-1)$. Compute $\vec u+\vec v$, $3\vec u-2\vec v$, $\|\vec u\|$, and $\vec u\cdot\vec v$.
+
+## Hint
+
+Operations are componentwise; $\|\vec u\|=\sqrt{u_1^2+u_2^2+u_3^2}$.
+
+## Solution
+
+**Sum.** $\vec u+\vec v=(5,-2,2)$.
+
+**Combination.** $3\vec u-2\vec v=(3,-6,9)-(8,0,-2)=(-5,-6,11)$.
+
+**Norm.** $\|\vec u\|=\sqrt{1+4+9}=\sqrt{14}$.
+
+**Dot product.** $\vec u\cdot\vec v=4+0-3=1$.
+
+**Conclusion.** $\vec u+\vec v=(5,-2,2)$, $3\vec u-2\vec v=(-5,-6,11)$, $\|\vec u\|=\sqrt{14}$, $\vec u\cdot\vec v=1$.
+
+@@@ space-cross-product.md
+---
+title: Cross product
+category: geometry/space
+level: lycee
+difficulty: 2
+tags: cross product, normal, area
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\vec u\times\vec v$ for $\vec u=(1,2,3)$ and $\vec v=(4,5,6)$. Interpret geometrically.
+
+## Hint
+
+$\vec u\times\vec v=(u_2v_3-u_3v_2,\, u_3v_1-u_1v_3,\, u_1v_2-u_2v_1)$.
+
+## Solution
+
+**Compute.**
+$$\vec u\times\vec v=(2\cdot6-3\cdot5,\ 3\cdot4-1\cdot6,\ 1\cdot5-2\cdot4)=(-3,6,-3).$$
+
+**Orthogonality.** $(-3,6,-3)\cdot(1,2,3)=-3+12-9=0$ and $(-3,6,-3)\cdot(4,5,6)=-12+30-18=0$. ✓
+
+**Area.** $\|\vec u\times\vec v\|=\sqrt{9+36+9}=\sqrt{54}=3\sqrt6$: area of the parallelogram spanned by $\vec u,\vec v$.
+
+**Conclusion.** $\vec u\times\vec v=(-3,6,-3)$, area $3\sqrt6$.
+
+@@@ space-triple-product.md
+---
+title: Scalar triple product
+category: geometry/space
+level: l1
+difficulty: 3
+tags: triple product, volume, coplanarity
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the volume of the parallelepiped spanned by $\vec u=(1,2,3)$, $\vec v=(4,5,6)$, $\vec w=(7,8,10)$.
+
+## Hint
+
+$V=|\vec u\cdot(\vec v\times\vec w)|$.
+
+## Solution
+
+**Cross product.** $\vec v\times\vec w=(5\cdot10-6\cdot8,\ 6\cdot7-4\cdot10,\ 4\cdot8-5\cdot7)=(2,2,-3)$.
+
+**Triple product.** $\vec u\cdot(\vec v\times\vec w)=2+4-9=-3$.
+
+**Volume.** $V=|-3|=3$.
+
+**Conclusion.** $V=3$.
+
+@@@ space-line-parametric.md
+---
+title: A line in 3D
+category: geometry/space
+level: lycee
+difficulty: 2
+tags: line, parametric, direction
+date: 2026-11-03
+---
+
+## Statement
+
+Give a parametric equation of the line through $A(1,2,3)$ in direction $\vec d=(2,-1,4)$.
+
+## Hint
+
+$M(t)=A+t\vec d$.
+
+## Solution
+
+**Parametric form.** $(x,y,z)=(1+2t,\ 2-t,\ 3+4t)$, $t\in\mathbb{R}$.
+
+**Symmetric form.** $\frac{x-1}{2}=\frac{y-2}{-1}=\frac{z-3}{4}$.
+
+**Conclusion.** The line is parametrized by $M(t)=(1+2t,2-t,3+4t)$.
+
+@@@ space-line-through-two-points.md
+---
+title: Line through two points in 3D
+category: geometry/space
+level: lycee
+difficulty: 2
+tags: line, two points, direction
+date: 2026-11-03
+---
+
+## Statement
+
+Find a parametric equation of the line through $A(1,0,2)$ and $B(3,4,-1)$.
+
+## Hint
+
+Direction $\vec d=\overrightarrow{AB}=B-A$.
+
+## Solution
+
+**Direction.** $\vec d=(2,4,-3)$.
+
+**Parametric.** $(x,y,z)=(1+2t,\ 4t,\ 2-3t)$, $t\in\mathbb{R}$.
+
+**Check.** $t=1$: $(3,4,-1)=B$. ✓
+
+**Conclusion.** $M(t)=(1+2t,4t,2-3t)$.
+
+@@@ space-plane-equation.md
+---
+title: Equation of a plane
+category: geometry/space
+level: lycee
+difficulty: 2
+tags: plane, normal vector, equation
+date: 2026-11-03
+---
+
+## Statement
+
+Find the equation of the plane through $A(1,2,3)$ with normal vector $\vec n=(2,-1,4)$.
+
+## Hint
+
+$\vec n\cdot(M-A)=0$.
+
+## Solution
+
+**Equation.** $2(x-1)-(y-2)+4(z-3)=0$, i.e. $2x-y+4z-12=0$.
+
+**Verification.** $2\cdot1-2+4\cdot3=2-2+12=12$. ✓
+
+**Conclusion.** The plane is $2x-y+4z-12=0$.
+
+@@@ space-plane-three-points.md
+---
+title: Plane through three points
+category: geometry/space
+level: l1
+difficulty: 3
+tags: plane, three points, normal
+date: 2026-11-03
+---
+
+## Statement
+
+Find the equation of the plane through $A(1,0,0)$, $B(0,1,0)$, $C(0,0,1)$.
+
+## Hint
+
+Compute the normal as $\overrightarrow{AB}\times\overrightarrow{AC}$.
+
+## Solution
+
+**Vectors.** $\overrightarrow{AB}=(-1,1,0)$, $\overrightarrow{AC}=(-1,0,1)$.
+
+**Normal.** $\vec n=\overrightarrow{AB}\times\overrightarrow{AC}=(1\cdot1-0\cdot0,\ 0\cdot(-1)-(-1)\cdot1,\ (-1)\cdot0-1\cdot(-1))=(1,1,1)$.
+
+**Equation.** $(x-1)+y+z=0$, i.e. $x+y+z=1$.
+
+**Conclusion.** The plane is $x+y+z=1$.
+
+@@@ space-distance-point-plane.md
+---
+title: Distance from a point to a plane
+category: geometry/space
+level: l1
+difficulty: 2
+tags: distance, plane, formula
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance from $P(1,2,3)$ to the plane $2x-y+2z=5$.
+
+## Hint
+
+$d=\dfrac{|ax_0+by_0+cz_0-d|}{\sqrt{a^2+b^2+c^2}}$.
+
+## Solution
+
+**Compute.**
+$$d=\frac{|2\cdot1-2+2\cdot3-5|}{\sqrt{4+1+4}}=\frac{|2-2+6-5|}{3}=\frac{1}{3}.$$
+
+**Conclusion.** Distance $=1/3$.
+
+@@@ space-distance-point-line.md
+---
+title: Distance from a point to a line in 3D
+category: geometry/space
+level: l1
+difficulty: 3
+tags: distance, line, cross product
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance from $P(1,1,1)$ to the line $D$ through $A(0,0,0)$ with direction $\vec d=(1,0,0)$.
+
+## Hint
+
+$d=\dfrac{\|\overrightarrow{AP}\times\vec d\|}{\|\vec d\|}$.
+
+## Solution
+
+**Vectors.** $\overrightarrow{AP}=(1,1,1)$, $\vec d=(1,0,0)$.
+
+**Cross product.** $(1,1,1)\times(1,0,0)=(0,1,-1)$.
+
+**Distance.** $d=\sqrt{1+1}/1=\sqrt2$.
+
+**Direct check.** Projection of $P$ onto the $x$-axis is $(1,0,0)$; distance to $P$ is $\sqrt{0^2+1^2+1^2}=\sqrt2$. ✓
+
+**Conclusion.** $d=\sqrt2$.
+
+@@@ space-line-plane-intersection.md
+---
+title: Line-plane intersection
+category: geometry/space
+level: l1
+difficulty: 3
+tags: intersection, line-plane, parametric
+date: 2026-11-03
+---
+
+## Statement
+
+Find the intersection of the line $M(t)=(1+t,2-t,3+2t)$ and the plane $x+2y-z=3$.
+
+## Hint
+
+Substitute the parametrization into the plane equation.
+
+## Solution
+
+**Substitute.** $(1+t)+2(2-t)-(3+2t)=3$, so $1+t+4-2t-3-2t=3$, i.e. $2-3t=3$, $t=-1/3$.
+
+**Point.** $M(-1/3)=(2/3,7/3,7/3)$.
+
+**Conclusion.** Intersection at $(2/3,7/3,7/3)$.
+
+@@@ space-two-planes-intersection.md
+---
+title: Intersection of two planes
+category: geometry/space
+level: l1
+difficulty: 3
+tags: plane intersection, line, system
+date: 2026-11-03
+---
+
+## Statement
+
+Find the line of intersection of the planes $x+y+z=1$ and $2x-y+z=0$.
+
+## Hint
+
+Solve the system with one free parameter.
+
+## Solution
+
+**Solve.** Subtract: $(x+y+z)-(2x-y+z)=1-0$, so $-x+2y=1$, i.e. $x=2y-1$. From $x+y+z=1$: $(2y-1)+y+z=1$, so $z=2-3y$.
+
+**Parametric.** $(x,y,z)=(2t-1,\ t,\ 2-3t)$, $t\in\mathbb{R}$.
+
+**Conclusion.** $M(t)=(2t-1,t,2-3t)$.
+
+@@@ space-sphere-equation.md
+---
+title: Sphere
+category: geometry/space
+level: l1
+difficulty: 2
+tags: sphere, equation, center
+date: 2026-11-03
+---
+
+## Statement
+
+Find the center and radius of the sphere $x^2+y^2+z^2-4x+6y-2z-22=0$.
+
+## Hint
+
+Complete the square in each variable.
+
+## Solution
+
+**Complete.** $(x-2)^2+(y+3)^2+(z-1)^2=22+4+9+1=36$.
+
+**Center and radius.** Center $(2,-3,1)$, radius $6$.
+
+**Conclusion.** Center $(2,-3,1)$, radius $6$.
+
+@@@ space-cylinder.md
+---
+title: A cylinder in 3D
+category: geometry/space
+level: lycee
+difficulty: 1
+tags: cylinder, surface, 3D
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the surface $x^2+y^2=4$ in $\mathbb{R}^3$.
+
+## Hint
+
+The equation is independent of $z$.
+
+## Solution
+
+**Structure.** For each fixed $z$, the equation $x^2+y^2=4$ is a circle of radius $2$ in the plane $z=\text{const}$.
+
+**Surface.** Union of all such circles for $z\in\mathbb{R}$: a circular cylinder of radius $2$ along the $z$-axis.
+
+**Conclusion.** The surface is an infinite cylinder of radius $2$ along the $z$-axis.
+
+@@@ space-cone.md
+---
+title: A cone in 3D
+category: geometry/space
+level: lycee
+difficulty: 2
+tags: cone, surface, 3D
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the surface $z^2=x^2+y^2$.
+
+## Hint
+
+At height $z$, the cross-section is a circle of radius $|z|$.
+
+## Solution
+
+**Cross-sections.** For fixed $z=h$, the equation is $x^2+y^2=h^2$: a circle of radius $|h|$.
+
+**Surface.** As $h$ varies, these circles form a double cone with apex at the origin, axis along the $z$-axis, opening upward and downward.
+
+**Conclusion.** The surface is a double cone.
+
+@@@ space-paraboloid.md
+---
+title: A paraboloid
+category: geometry/space
+level: lycee
+difficulty: 2
+tags: paraboloid, surface, 3D
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the surface $z=x^2+y^2$.
+
+## Hint
+
+Cross-sections at $z=c\ge0$ are circles.
+
+## Solution
+
+**Cross-sections.** For $z=c>0$: $x^2+y^2=c$, circle of radius $\sqrt c$. For $z=c<0$: empty.
+
+**Surface.** An upward-opening paraboloid with vertex at the origin, axis the $z$-axis.
+
+**Conclusion.** The surface is a paraboloid of revolution.
+
+@@@ space-hyperboloid.md
+---
+title: A hyperboloid
+category: geometry/space
+level: l1
+difficulty: 3
+tags: hyperboloid, surface, quadric
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the surface $x^2+y^2-z^2=1$.
+
+## Hint
+
+Cross-sections at $z=c$ are circles.
+
+## Solution
+
+**Cross-sections.** For $z=c$: $x^2+y^2=1+c^2$, circle of radius $\sqrt{1+c^2}$.
+
+**Surface.** A one-sheeted hyperboloid of revolution: it widens as $|z|$ increases, with a "waist" of radius $1$ at $z=0$.
+
+**Conclusion.** The surface is a one-sheeted hyperboloid.
+
+@@@ space-vector-plane-distance.md
+---
+title: Distance from a point to a plane using projection
+category: geometry/space
+level: l1
+difficulty: 3
+tags: distance, projection, plane
+date: 2026-11-03
+---
+
+## Statement
+
+Find the orthogonal projection of $P(1,2,3)$ onto the plane $x+y+z=6$.
+
+## Hint
+
+The projection along the normal $\vec n=(1,1,1)$.
+
+## Solution
+
+**Normal.** $\vec n=(1,1,1)$.
+
+**Parametrize perpendicular line.** $P+t\vec n=(1+t,2+t,3+t)$.
+
+**Intersection.** $(1+t)+(2+t)+(3+t)=6$, so $6+3t=6$, $t=0$.
+
+**Projection.** $H=P=(1,2,3)$.
+
+**Conclusion.** $P$ already lies on the plane; the projection is $P$.
+
+@@@ space-plane-normal-vector.md
+---
+title: Normal vector to a plane
+category: geometry/space
+level: lycee
+difficulty: 1
+tags: normal, plane, coefficients
+date: 2026-11-03
+---
+
+## Statement
+
+Give the normal vector of the plane $3x-2y+z=7$.
+
+## Hint
+
+Coefficients of $x,y,z$ form the normal.
+
+## Solution
+
+**Normal.** $\vec n=(3,-2,1)$.
+
+**Conclusion.** The normal vector is $\vec n=(3,-2,1)$.
+
+@@@ space-planes-parallel.md
+---
+title: Parallel planes
+category: geometry/space
+level: lycee
+difficulty: 1
+tags: parallel, planes, normal
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $P_1:2x-y+3z=1$ and $P_2:4x-2y+6z=5$ are parallel.
+
+## Hint
+
+Compare normals; parallel planes have proportional normals.
+
+## Solution
+
+**Normals.** $\vec n_1=(2,-1,3)$, $\vec n_2=(4,-2,6)=2\vec n_1$.
+
+**Conclusion.** The normals are proportional, so the planes are parallel.
+
+@@@ space-planes-perpendicular.md
+---
+title: Perpendicular planes
+category: geometry/space
+level: lycee
+difficulty: 2
+tags: perpendicular, planes, normal
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the planes $P_1:x+y+z=1$ and $P_2:x-y=0$ are perpendicular.
+
+## Hint
+
+Their normals must have zero dot product.
+
+## Solution
+
+**Normals.** $\vec n_1=(1,1,1)$, $\vec n_2=(1,-1,0)$.
+
+**Dot product.** $1-1+0=0$.
+
+**Conclusion.** Normals are orthogonal, so the planes are perpendicular.
+
+@@@ space-plane-line-angle.md
+---
+title: Angle between a line and a plane
+category: geometry/space
+level: l1
+difficulty: 3
+tags: angle, line-plane, trigonometry
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the angle between the line with direction $\vec d=(1,1,1)$ and the plane with normal $\vec n=(1,0,0)$.
+
+## Hint
+
+$\sin\theta=\dfrac{|\vec d\cdot\vec n|}{\|\vec d\|\|\vec n\|}$.
+
+## Solution
+
+**Compute.** $\vec d\cdot\vec n=1$, $\|\vec d\|=\sqrt3$, $\|\vec n\|=1$.
+
+**Sine.** $\sin\theta=\frac{1}{\sqrt3}$.
+
+**Conclusion.** $\theta=\arcsin(1/\sqrt3)\approx35.26^\circ$.
+
+@@@ space-angle-two-lines.md
+---
+title: Angle between two lines in 3D
+category: geometry/space
+level: l1
+difficulty: 2
+tags: angle, lines, dot product
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the angle between the lines with directions $\vec d_1=(1,2,-1)$ and $\vec d_2=(2,0,1)$.
+
+## Hint
+
+$\cos\theta=\dfrac{|\vec d_1\cdot\vec d_2|}{\|\vec d_1\|\|\vec d_2\|}$.
+
+## Solution
+
+**Dot product.** $\vec d_1\cdot\vec d_2=2+0-1=1$.
+
+**Norms.** $\|\vec d_1\|=\sqrt{1+4+1}=\sqrt6$, $\|\vec d_2\|=\sqrt{4+0+1}=\sqrt5$.
+
+**Cosine.** $\cos\theta=\frac{1}{\sqrt{30}}$.
+
+**Conclusion.** $\theta=\arccos(1/\sqrt{30})\approx79.5^\circ$.
+
+@@@ space-angle-two-planes.md
+---
+title: Angle between two planes
+category: geometry/space
+level: l1
+difficulty: 2
+tags: angle, planes, normal
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the angle between the planes $x+y+z=1$ and $x-y+z=0$.
+
+## Hint
+
+$\cos\theta=\dfrac{|\vec n_1\cdot\vec n_2|}{\|\vec n_1\|\|\vec n_2\|}$.
+
+## Solution
+
+**Normals.** $\vec n_1=(1,1,1)$, $\vec n_2=(1,-1,1)$.
+
+**Dot.** $\vec n_1\cdot\vec n_2=1$.
+
+**Norms.** $\|\vec n_1\|=\|\vec n_2\|=\sqrt3$.
+
+**Cosine.** $\cos\theta=1/3$.
+
+**Conclusion.** $\theta=\arccos(1/3)\approx70.5^\circ$.
+
+@@@ space-symmetric-point-plane.md
+---
+title: Reflection of a point across a plane
+category: geometry/space
+level: l1
+difficulty: 3
+tags: reflection, plane, symmetry
+date: 2026-11-03
+---
+
+## Statement
+
+Find the reflection of $P(1,2,3)$ across the plane $x+y+z=0$.
+
+## Hint
+
+Project onto the plane, then double the projection vector from $P$.
+
+## Solution
+
+**Projection.** Line through $P$ in direction $\vec n=(1,1,1)$: $(1+t, 2+t, 3+t)$. Intersect with plane: $(1+t)+(2+t)+(3+t)=0$, so $t=-2$. $H=(-1,0,1)$.
+
+**Reflection.** $P'=2H-P=2(-1,0,1)-(1,2,3)=(-3,-2,-1)$.
+
+**Check.** Midpoint of $PP'$ is $(-1,0,1)=H$. ✓
+
+**Conclusion.** $P'=(-3,-2,-1)$.
+
+@@@ space-vector-coplanarity.md
+---
+title: Coplanarity of vectors
+category: geometry/space
+level: l1
+difficulty: 3
+tags: coplanarity, triple product, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the vectors $\vec u=(1,2,3)$, $\vec v=(2,4,6)$, $\vec w=(1,0,1)$ are coplanar.
+
+## Hint
+
+Coplanar iff the scalar triple product is zero.
+
+## Solution
+
+**Observation.** $\vec v=2\vec u$, so $\vec u$ and $\vec v$ are collinear, hence coplanar with any third vector.
+
+**Triple product.** $\vec u\cdot(\vec v\times\vec w)=0$ since $\vec u,\vec v$ are collinear.
+
+**Conclusion.** The three vectors are coplanar.
+
+@@@ space-distance-skew-lines.md
+---
+title: Distance between two skew lines
+category: geometry/space
+level: l1
+difficulty: 4
+tags: skew lines, distance, triple product
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance between lines $D_1$: through $A_1(0,0,0)$ direction $(1,0,0)$ and $D_2$: through $A_2(0,1,1)$ direction $(0,1,0)$.
+
+## Hint
+
+$d=\dfrac{|\overrightarrow{A_1A_2}\cdot(\vec d_1\times\vec d_2)|}{\|\vec d_1\times\vec d_2\|}$.
+
+## Solution
+
+**Vectors.** $\overrightarrow{A_1A_2}=(0,1,1)$, $\vec d_1=(1,0,0)$, $\vec d_2=(0,1,0)$.
+
+**Cross product.** $\vec d_1\times\vec d_2=(0,0,1)$.
+
+**Triple product.** $(0,1,1)\cdot(0,0,1)=1$.
+
+**Distance.** $d=1/\|(0,0,1)\|=1$.
+
+**Conclusion.** $d=1$.
+
+@@@ space-volume-tetrahedron.md
+---
+title: Volume of a tetrahedron
+category: geometry/space
+level: l1
+difficulty: 3
+tags: tetrahedron, volume, triple product
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the volume of the tetrahedron with vertices $A(0,0,0)$, $B(1,0,0)$, $C(0,1,0)$, $D(0,0,1)$.
+
+## Hint
+
+$V=\frac16|\det(\overrightarrow{AB},\overrightarrow{AC},\overrightarrow{AD})|$.
+
+## Solution
+
+**Vectors.** $\overrightarrow{AB}=(1,0,0)$, $\overrightarrow{AC}=(0,1,0)$, $\overrightarrow{AD}=(0,0,1)$.
+
+**Determinant.** Identity matrix, determinant $1$.
+
+**Volume.** $V=1/6$.
+
+**Conclusion.** The tetrahedron has volume $1/6$.
+
+@@@ space-plane-triangle-area.md
+---
+title: Area of a triangle in 3D
+category: geometry/space
+level: l1
+difficulty: 3
+tags: area, triangle, cross product
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the area of the triangle with vertices $A(1,0,0)$, $B(0,1,0)$, $C(0,0,1)$.
+
+## Hint
+
+$\text{Area}=\frac12\|\overrightarrow{AB}\times\overrightarrow{AC}\|$.
+
+## Solution
+
+**Vectors.** $\overrightarrow{AB}=(-1,1,0)$, $\overrightarrow{AC}=(-1,0,1)$.
+
+**Cross.** $(-1,1,0)\times(-1,0,1)=(1,1,1)$.
+
+**Area.** $\frac12\|(1,1,1)\|=\frac{\sqrt3}{2}$.
+
+**Conclusion.** Area $=\sqrt3/2$.
+
+@@@ space-parametric-surface.md
+---
+title: Parametric surfaces
+category: geometry/space
+level: l1
+difficulty: 4
+tags: parametric surface, sphere, torus
+date: 2026-11-03
+---
+
+## Statement
+
+Parametrize the sphere of radius $R$ centered at the origin.
+
+## Hint
+
+Use spherical coordinates with two parameters.
+
+## Solution
+
+**Parametrization.**
+$$M(u,v)=(R\sin u\cos v,\ R\sin u\sin v,\ R\cos u),$$
+$u\in[0,\pi]$, $v\in[0,2\pi)$.
+
+**Check.** $\|M\|^2=R^2(\sin^2 u\cos^2 v+\sin^2 u\sin^2 v+\cos^2 u)=R^2$.
+
+**Conclusion.** The sphere is parametrized as above.
+
+@@@ space-torus-parametric.md
+---
+title: Parametrization of a torus
+category: geometry/space
+level: m1
+difficulty: 5
+tags: torus, parametric, surface
+date: 2026-11-03
+---
+
+## Statement
+
+Parametrize the torus obtained by revolving a circle of radius $r$ centered at distance $R$ from the axis.
+
+## Hint
+
+Use $(\theta,\phi)$ for the position on the torus and the tube.
+
+## Solution
+
+**Parametrization.**
+$$M(\theta,\phi)=((R+r\cos\phi)\cos\theta,\ (R+r\cos\phi)\sin\theta,\ r\sin\phi),$$
+$\theta\in[0,2\pi)$, $\phi\in[0,2\pi)$.
+
+**Check.** For each $\phi$, we get a circle of radius $r$ centered at distance $R$ from the $z$-axis, revolved around.
+
+**Conclusion.** The torus has the standard parametrization above.
+
+@@@ space-euler-characteristic.md
+---
+title: Euler characteristic of polyhedra
+category: geometry/space
+level: l1
+difficulty: 4
+tags: Euler characteristic, polyhedra, vertices
+date: 2026-11-03
+---
+
+## Statement
+
+Verify Euler's formula $V-E+F=2$ for a cube.
+
+## Hint
+
+Count vertices, edges, and faces.
+
+## Solution
+
+**Cube.** $V=8$, $E=12$, $F=6$.
+
+**Formula.** $8-12+6=2$. ✓
+
+**Conclusion.** Euler's formula holds for the cube.
+
+@@@ space-regular-polyhedra.md
+---
+title: The five Platonic solids
+category: geometry/space
+level: l1
+difficulty: 3
+tags: Platonic solids, polyhedra, faces
+date: 2026-11-03
+---
+
+## Statement
+
+List the five Platonic solids and give $V,E,F$ for each.
+
+## Hint
+
+Regular polyhedra with congruent regular polygon faces and identical vertex configurations.
+
+## Solution
+
+**Tetrahedron.** $V=4$, $E=6$, $F=4$; faces triangles.
+
+**Cube.** $V=8$, $E=12$, $F=6$; faces squares.
+
+**Octahedron.** $V=6$, $E=12$, $F=8$; faces triangles.
+
+**Dodecahedron.** $V=20$, $E=30$, $F=12$; faces pentagons.
+
+**Icosahedron.** $V=12$, $E=30$, $F=20$; faces triangles.
+
+**Check.** Each satisfies $V-E+F=2$.
+
+**Conclusion.** The five Platonic solids are tetrahedron, cube, octahedron, dodecahedron, icosahedron.
+
+@@@ space-conic-sections.md
+---
+title: Conic sections of a cone
+category: geometry/space
+level: l1
+difficulty: 4
+tags: conic, cone, intersection
+date: 2026-11-03
+---
+
+## Statement
+
+Describe how the intersection of a cone with a plane gives each conic type.
+
+## Hint
+
+Depends on the angle of the plane relative to the cone's axis.
+
+## Solution
+
+**Cone.** Double cone $z^2=x^2+y^2$ or $x^2+y^2=r^2z^2$.
+
+**Intersections.**
+- Plane perpendicular to axis, not through apex: circle.
+- Plane tilted but not parallel to a generatrix: ellipse.
+- Plane parallel to exactly one generatrix: parabola.
+- Plane parallel to two generatrices (steeper): hyperbola.
+
+**Conclusion.** All three conic types (and the circle) arise from planes cutting a cone.
+
+@@@ space-dihedral-angle.md
+---
+title: Dihedral angle
+category: geometry/space
+level: l1
+difficulty: 4
+tags: dihedral, angle, polyhedra
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the dihedral angle between two adjacent faces of a regular tetrahedron.
+
+## Hint
+
+Use the normals of the two faces, or the geometry of the tetrahedron.
+
+## Solution
+
+**Normals.** Two faces of a regular tetrahedron have an angle between them of $\arccos(1/3)$ (this is a standard result).
+
+**Compute.** $\arccos(1/3)\approx70.53^\circ$.
+
+**Conclusion.** The dihedral angle is $\arccos(1/3)\approx70.53^\circ$.
+
+@@@ space-sphere-tangent-plane.md
+---
+title: Tangent plane to a sphere
+category: geometry/space
+level: l1
+difficulty: 3
+tags: tangent plane, sphere, normal
+date: 2026-11-03
+---
+
+## Statement
+
+Find the tangent plane to the sphere $x^2+y^2+z^2=25$ at the point $(3,4,0)$.
+
+## Hint
+
+The normal to the tangent plane is the radial vector.
+
+## Solution
+
+**Normal.** From center $(0,0,0)$ to $(3,4,0)$: $\vec n=(3,4,0)$.
+
+**Tangent plane.** $3(x-3)+4(y-4)=0$, i.e. $3x+4y=25$.
+
+**Conclusion.** Tangent plane: $3x+4y=25$.
+
+@@@ space-vector-rotation.md
+---
+title: Rotation around an axis
+category: geometry/space
+level: l1
+difficulty: 4
+tags: rotation, axis, Rodrigues
+date: 2026-11-03
+---
+
+## Statement
+
+Give the matrix of rotation by angle $\theta$ about the $z$-axis.
+
+## Hint
+
+In the $xy$-plane, rotation by $\theta$; the $z$-coordinate is unchanged.
+
+## Solution
+
+**Matrix.**
+$$R_z(\theta)=\begin{pmatrix}\cos\theta&-\sin\theta&0\\\sin\theta&\cos\theta&0\\0&0&1\end{pmatrix}.$$
+
+**Check.** $R_z(\theta)\cdot(1,0,0)^T=(\cos\theta,\sin\theta,0)^T$ (rotation in the $xy$-plane). ✓
+
+**Conclusion.** The rotation matrix about the $z$-axis is $R_z(\theta)$ above.
+
+@@@ space-summary.md
+---
+title: Summary of 3D geometry
+category: geometry/space
+level: lycee
+difficulty: 2
+tags: summary, 3D geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Summarize key facts from 3D geometry.
+
+## Hint
+
+Review the main formulas.
+
+## Solution
+
+**Vectors.**
+- Addition, scalar product, dot product, cross product, triple product.
+- Norms and angles.
+
+**Lines.**
+- Parametric and symmetric equations.
+- Distance from point to line: $\|\overrightarrow{AP}\times\vec d\|/\|\vec d\|$.
+
+**Planes.**
+- Equation $ax+by+cz=d$; normal $(a,b,c)$.
+- Distance from point to plane: $|ax_0+by_0+cz_0-d|/\sqrt{a^2+b^2+c^2}$.
+- Angle between planes: via normals.
+
+**Surfaces.**
+- Sphere, cylinder, cone, paraboloid, hyperboloid, torus.
+- Parametrizations.
+
+**Polyhedra.**
+- Euler characteristic $V-E+F=2$.
+- Five Platonic solids.
+
+**Conclusion.** 3D geometry combines vector algebra, analytic methods, and geometric intuition.
+
+@@@ analytic-distance-midpoint.md
+---
+title: Distance and midpoint in the plane
+category: geometry/analytic
+level: lycee
+difficulty: 1
+tags: distance, midpoint, coordinates
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A(-1,3)$ and $B(5,-1)$. Compute the distance $AB$ and the coordinates of the midpoint $M$.
+
+## Hint
+
+$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$ and $M=\left(\frac{x_A+x_B}{2},\frac{y_A+y_B}{2}\right)$.
+
+## Solution
+
+**Distance.**
+$$AB=\sqrt{(5-(-1))^2+(-1-3)^2}=\sqrt{36+16}=\sqrt{52}=2\sqrt{13}.$$
+
+**Midpoint.**
+$$M=\left(\frac{-1+5}{2},\frac{3-1}{2}\right)=(2,1).$$
+
+**Conclusion.** $AB=2\sqrt{13}$, $M=(2,1)$.
+
+@@@ analytic-line-two-points.md
+---
+title: Line through two points
+category: geometry/analytic
+level: lycee
+difficulty: 1
+tags: line, slope, equation
+date: 2026-11-03
+---
+
+## Statement
+
+Find the equation of the line through $A(-2,5)$ and $B(4,-3)$.
+
+## Hint
+
+Compute the slope $m=(y_B-y_A)/(x_B-x_A)$, then use $y-y_A=m(x-x_A)$.
+
+## Solution
+
+**Slope.** $m=\dfrac{-3-5}{4-(-2)}=\dfrac{-8}{6}=-\dfrac43$.
+
+**Point-slope.** $y-5=-\dfrac43(x+2)$, i.e. $4x+3y-7=0$.
+
+**Conclusion.** The line is $4x+3y-7=0$.
+
+@@@ analytic-line-parallel-perpendicular.md
+---
+title: Parallel and perpendicular lines
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: parallel, perpendicular, slope
+date: 2026-11-03
+---
+
+## Statement
+
+Let $D:2x-3y+5=0$. Find the line through $A(1,-2)$ parallel to $D$, and the line through $A$ perpendicular to $D$.
+
+## Hint
+
+A line $ax+by+c=0$ has direction vector $(b,-a)$ and normal vector $(a,b)$.
+
+## Solution
+
+**Parallel.** Same normal $(2,-3)$: $2(x-1)-3(y+2)=0$, i.e. $2x-3y-8=0$.
+
+**Perpendicular.** Normal is direction of $D$, i.e. $(2,-3)$; perpendicular line has normal $(2,-3)$ rotated, i.e. $(3,2)$. So $3(x-1)+2(y+2)=0$, i.e. $3x+2y+1=0$.
+
+**Conclusion.** Parallel: $2x-3y-8=0$; perpendicular: $3x+2y+1=0$.
+
+@@@ analytic-line-intersection.md
+---
+title: Intersection of two lines
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: intersection, linear system, lines
+date: 2026-11-03
+---
+
+## Statement
+
+Find the intersection point of $D_1:3x-2y=5$ and $D_2:x+y=5$.
+
+## Hint
+
+Solve the $2\times2$ linear system.
+
+## Solution
+
+**System.** From $D_2$: $y=5-x$. Substituting in $D_1$: $3x-2(5-x)=5$, so $3x-10+2x=5$, i.e. $5x=15$, $x=3$, $y=2$.
+
+**Conclusion.** Intersection at $(3,2)$.
+
+@@@ analytic-distance-point-line.md
+---
+title: Distance from a point to a line
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: distance, point-line, formula
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance from $P(2,3)$ to the line $D:3x-4y+1=0$.
+
+## Hint
+
+$d=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$.
+
+## Solution
+
+**Compute.** $d=\dfrac{|3\cdot2-4\cdot3+1|}{\sqrt{9+16}}=\dfrac{|6-12+1|}{5}=\dfrac{5}{5}=1$.
+
+**Conclusion.** The distance is $1$.
+
+@@@ analytic-orthogonal-projection.md
+---
+title: Orthogonal projection of a point onto a line
+category: geometry/analytic
+level: lycee
+difficulty: 3
+tags: projection, point-line, perpendicular
+date: 2026-11-03
+---
+
+## Statement
+
+Find the orthogonal projection of $P(1,2)$ onto the line $D:2x+y-3=0$.
+
+## Hint
+
+The projection $H$ satisfies $H\in D$ and $PH\perp D$; write $H=(a,b)$ and solve.
+
+## Solution
+
+**Setup.** The line through $P$ perpendicular to $D$ has direction $(1,2)$ (since $D$ has normal $(2,1)$). Its parametric form: $(x,y)=(1+t, 2+2t)$.
+
+**Intersection with $D$.** $2(1+t)+(2+2t)-3=0$, so $2+2t+2+2t-3=0$, i.e. $4t+1=0$, $t=-1/4$.
+
+**Projection.** $H=(1-1/4,2-1/2)=(3/4,3/2)$.
+
+**Conclusion.** $H=(3/4,3/2)$.
+
+@@@ analytic-circle-standard.md
+---
+title: Standard equation of a circle
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: circle, equation, center
+date: 2026-11-03
+---
+
+## Statement
+
+Give the equation of the circle with center $(2,-1)$ and radius $3$.
+
+## Hint
+
+$(x-a)^2+(y-b)^2=r^2$.
+
+## Solution
+
+**Equation.** $(x-2)^2+(y+1)^2=9$.
+
+**Expanded form.** $x^2-4x+4+y^2+2y+1=9$, i.e. $x^2+y^2-4x+2y-4=0$.
+
+**Conclusion.** $(x-2)^2+(y+1)^2=9$.
+
+@@@ analytic-circle-general.md
+---
+title: From general to standard form
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: circle, completing the square, center
+date: 2026-11-03
+---
+
+## Statement
+
+Determine the center and radius of the circle $x^2+y^2+4x-6y-23=0$.
+
+## Hint
+
+Complete the square in $x$ and $y$.
+
+## Solution
+
+**Complete.** $(x+2)^2-4+(y-3)^2-9=23$, so $(x+2)^2+(y-3)^2=36$.
+
+**Center and radius.** Center $(-2,3)$, radius $6$.
+
+**Conclusion.** Center $(-2,3)$, radius $6$.
+
+@@@ analytic-tangent-circle.md
+---
+title: Tangent to a circle from a point
+category: geometry/analytic
+level: lycee
+difficulty: 3
+tags: tangent, circle, distance
+date: 2026-11-03
+---
+
+## Statement
+
+Find the tangent line(s) to the circle $x^2+y^2=5$ passing through $P(3,1)$.
+
+## Hint
+
+A line through $P$ has equation $y-1=m(x-3)$; impose tangency (distance from center = radius).
+
+## Solution
+
+**General line.** $mx-y+(1-3m)=0$.
+
+**Tangency condition.** Distance from origin: $\dfrac{|1-3m|}{\sqrt{m^2+1}}=\sqrt5$.
+
+**Square.** $(1-3m)^2=5(m^2+1)$, so $9m^2-6m+1=5m^2+5$, i.e. $4m^2-6m-4=0$, $2m^2-3m-2=0$, $(2m+1)(m-2)=0$.
+
+**Tangents.** $m=2$: $2x-y-5=0$. $m=-1/2$: $-x-2y+... $ i.e. $x+2y-5=0$.
+
+**Conclusion.** The two tangents are $2x-y-5=0$ and $x+2y-5=0$.
+
+@@@ analytic-ellipse-foci.md
+---
+title: The ellipse
+category: geometry/analytic
+level: l1
+difficulty: 3
+tags: ellipse, foci, eccentricity
+date: 2026-11-03
+---
+
+## Statement
+
+For the ellipse $\dfrac{x^2}{25}+\dfrac{y^2}{9}=1$, find the foci, eccentricity, and major/minor axes.
+
+## Hint
+
+$c^2=a^2-b^2$ with $a>b$.
+
+## Solution
+
+**Parameters.** $a=5$, $b=3$, so $c^2=25-9=16$, $c=4$.
+
+**Foci.** $(\pm4,0)$.
+
+**Eccentricity.** $e=c/a=4/5$.
+
+**Axes.** Major axis $2a=10$ (horizontal), minor axis $2b=6$.
+
+**Conclusion.** Foci $(\pm4,0)$, $e=4/5$.
+
+@@@ analytic-hyperbola-foci.md
+---
+title: The hyperbola
+category: geometry/analytic
+level: l1
+difficulty: 3
+tags: hyperbola, asymptote, eccentricity
+date: 2026-11-03
+---
+
+## Statement
+
+For the hyperbola $\dfrac{x^2}{16}-\dfrac{y^2}{9}=1$, find the foci, asymptotes, and eccentricity.
+
+## Hint
+
+$c^2=a^2+b^2$. Asymptotes: $y=\pm(b/a)x$.
+
+## Solution
+
+**Parameters.** $a=4$, $b=3$, $c^2=16+9=25$, $c=5$.
+
+**Foci.** $(\pm5,0)$.
+
+**Asymptotes.** $y=\pm\dfrac34 x$.
+
+**Eccentricity.** $e=c/a=5/4$.
+
+**Conclusion.** Foci $(\pm5,0)$, asymptotes $y=\pm\frac34 x$, $e=5/4$.
+
+@@@ analytic-parabola.md
+---
+title: The parabola
+category: geometry/analytic
+level: l1
+difficulty: 2
+tags: parabola, focus, directrix
+date: 2026-11-03
+---
+
+## Statement
+
+Find the focus and directrix of the parabola $y^2=8x$.
+
+## Hint
+
+For $y^2=4px$: focus $(p,0)$, directrix $x=-p$.
+
+## Solution
+
+**Parameters.** $4p=8$, so $p=2$.
+
+**Focus.** $(2,0)$.
+
+**Directrix.** $x=-2$.
+
+**Conclusion.** Focus $(2,0)$, directrix $x=-2$.
+
+@@@ analytic-conic-classification.md
+---
+title: Classifying a conic
+category: geometry/analytic
+level: l1
+difficulty: 3
+tags: conic classification, discriminant, ellipse
+date: 2026-11-03
+---
+
+## Statement
+
+Classify the conic $x^2-4y^2+6x+8y-11=0$.
+
+## Hint
+
+Compute the discriminant of the quadratic form: $B^2-4AC$.
+
+## Solution
+
+**Quadratic form.** $A=1$, $B=0$, $C=-4$; discriminant $B^2-4AC=0+16=16>0$.
+
+**Type.** Positive discriminant: hyperbola.
+
+**Standard form.** Complete the square: $(x+3)^2-9-4((y-1)^2-1)=11$, so $(x+3)^2-4(y-1)^2=16$, i.e. $\frac{(x+3)^2}{16}-\frac{(y-1)^2}{4}=1$.
+
+**Conclusion.** Hyperbola with center $(-3,1)$, transverse axis along $x$, semi-axes $4$ and $2$.
+
+@@@ analytic-conic-rotation.md
+---
+title: Rotation of axes
+category: geometry/analytic
+level: l1
+difficulty: 4
+tags: rotation, axes, conic
+date: 2026-11-03
+---
+
+## Statement
+
+Find the angle $\theta$ that eliminates the $xy$-term from $5x^2-6xy+5y^2=8$.
+
+## Hint
+
+$\cot 2\theta=(A-C)/B$ with $A=5$, $B=-6$, $C=5$.
+
+## Solution
+
+**Formula.** $\cot 2\theta=(5-5)/(-6)=0$, so $2\theta=\pi/2$, $\theta=\pi/4$.
+
+**Rotate.** With $x=(X-Y)/\sqrt2$, $y=(X+Y)/\sqrt2$:
+$$5x^2-6xy+5y^2 = 5\cdot\frac{(X-Y)^2}{2}-6\cdot\frac{(X-Y)(X+Y)}{2}+5\cdot\frac{(X+Y)^2}{2}$$
+$=\frac{5}{2}(X^2-2XY+Y^2)-3(X^2-Y^2)+\frac{5}{2}(X^2+2XY+Y^2)$
+$=5X^2-6XY+5Y^2-... $ hmm let me recompute. Actually after rotation: $\frac{5}{2}\cdot2(X^2+Y^2)-3(X^2-Y^2)=5(X^2+Y^2)-3X^2+3Y^2=2X^2+8Y^2$.
+
+**Verify.** $\cot 2\theta=0$ correct, eliminating $XY$ term.
+
+**Conclusion.** Rotation by $\theta=\pi/4$ gives $2X^2+8Y^2=8$, i.e. $\frac{X^2}{4}+\frac{Y^2}{1}=1$: an ellipse with semi-axes $2$ and $1$.
+
+@@@ analytic-conic-translation.md
+---
+title: Translation of a conic
+category: geometry/analytic
+level: l1
+difficulty: 3
+tags: translation, conic, center
+date: 2026-11-03
+---
+
+## Statement
+
+Find the center of the conic $x^2+4y^2-2x+8y+1=0$.
+
+## Hint
+
+Complete the square in $x$ and $y$.
+
+## Solution
+
+**Complete.** $(x-1)^2-1+4((y+1)^2-1)+1=0$, so $(x-1)^2+4(y+1)^2=4$, i.e. $\frac{(x-1)^2}{4}+\frac{(y+1)^2}{1}=1$.
+
+**Center.** $(1,-1)$.
+
+**Conclusion.** Center $(1,-1)$; ellipse with semi-axes $2$ and $1$.
+
+@@@ analytic-parametric-line.md
+---
+title: Parametric line
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: parametric, line, direction
+date: 2026-11-03
+---
+
+## Statement
+
+Give a parametric equation of the line through $A(1,2)$ with direction vector $\vec{d}=(3,-1)$.
+
+## Hint
+
+$M(t)=A+t\vec d$.
+
+## Solution
+
+**Parametric.** $(x,y)=(1,2)+t(3,-1)=(1+3t, 2-t)$, $t\in\mathbb{R}$.
+
+**Cartesian.** Eliminating $t$: $x-1=3t$, $y-2=-t$, so $x-1=-3(y-2)$, i.e. $x+3y-7=0$.
+
+**Conclusion.** Parametric: $x=1+3t$, $y=2-t$; Cartesian: $x+3y-7=0$.
+
+@@@ analytic-parametric-circle.md
+---
+title: Parametric circle
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: parametric, circle, trigonometry
+date: 2026-11-03
+---
+
+## Statement
+
+Give a parametric equation of the circle $x^2+y^2-2x+4y-4=0$.
+
+## Hint
+
+Complete the square, then use $\cos t$, $\sin t$.
+
+## Solution
+
+**Complete.** $(x-1)^2+(y+2)^2=9$.
+
+**Parametric.** $(x,y)=(1+3\cos t, -2+3\sin t)$, $t\in[0,2\pi)$.
+
+**Conclusion.** Circle with center $(1,-2)$, radius $3$, parametrized as above.
+
+@@@ analytic-parametric-ellipse.md
+---
+title: Parametric ellipse
+category: geometry/analytic
+level: l1
+difficulty: 3
+tags: parametric, ellipse, trigonometry
+date: 2026-11-03
+---
+
+## Statement
+
+Parametrize the ellipse $\frac{x^2}{9}+\frac{y^2}{4}=1$.
+
+## Hint
+
+$x=3\cos t$, $y=2\sin t$.
+
+## Solution
+
+**Parametrization.** $x=3\cos t$, $y=2\sin t$, $t\in[0,2\pi)$.
+
+**Check.** $\frac{9\cos^2 t}{9}+\frac{4\sin^2 t}{4}=\cos^2 t+\sin^2 t=1$.
+
+**Conclusion.** The parametric equation is $(3\cos t,2\sin t)$.
+
+@@@ analytic-polar-conic.md
+---
+title: Polar equation of a conic
+category: geometry/analytic
+level: l1
+difficulty: 4
+tags: polar coordinates, conic, eccentricity
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the conic with focus at the origin and directrix $x=d$ has polar equation $r=\frac{ed}{1+e\cos\theta}$ where $e$ is the eccentricity.
+
+## Hint
+
+Use $PF=e\cdot PH$ where $H$ is the foot of the perpendicular to the directrix.
+
+## Solution
+
+**Setup.** $F=(0,0)$, directrix $x=d$, $P=(r\cos\theta, r\sin\theta)$.
+
+**Distance to focus.** $PF=r$.
+
+**Distance to directrix.** $PH=d-r\cos\theta$.
+
+**Conic condition.** $r=e(d-r\cos\theta)$, so $r(1+e\cos\theta)=ed$, i.e. $r=\dfrac{ed}{1+e\cos\theta}$.
+
+**Conclusion.** The polar equation of a conic with focus at origin.
+
+@@@ analytic-change-of-coordinates.md
+---
+title: Change of coordinates
+category: geometry/analytic
+level: l1
+difficulty: 3
+tags: coordinate change, rotation, translation
+date: 2026-11-03
+---
+
+## Statement
+
+The point $M$ has Cartesian coordinates $(1,1)$. Compute its polar coordinates $(r,\theta)$.
+
+## Hint
+
+$r=\sqrt{x^2+y^2}$, $\theta=\arctan(y/x)$ with quadrant adjustment.
+
+## Solution
+
+**Radius.** $r=\sqrt{1+1}=\sqrt2$.
+
+**Angle.** $\theta=\arctan(1)=\pi/4$ (first quadrant).
+
+**Conclusion.** Polar coordinates: $(r,\theta)=(\sqrt2,\pi/4)$.
+
+@@@ analytic-barycenter.md
+---
+title: Barycenter and convex combinations
+category: geometry/analytic
+level: l1
+difficulty: 2
+tags: barycenter, weighted average, coordinates
+date: 2026-11-03
+---
+
+## Statement
+
+The points $A(-1,2)$, $B(3,0)$, $C(4,5)$ have respective masses $2,3,5$. Compute their barycenter $G$.
+
+## Hint
+
+$G=\dfrac{m_AA+m_BB+m_CC}{m_A+m_B+m_C}$.
+
+## Solution
+
+**Compute.**
+$$x_G=\frac{2(-1)+3\cdot3+5\cdot4}{2+3+5}=\frac{-2+9+20}{10}=\frac{27}{10}=2.7,$$
+$$y_G=\frac{2\cdot2+3\cdot0+5\cdot5}{10}=\frac{4+0+25}{10}=2.9.$$
+
+**Conclusion.** $G=(2.7,2.9)$.
+
+@@@ analytic-tangent-ellipse.md
+---
+title: Tangent to an ellipse
+category: geometry/analytic
+level: l1
+difficulty: 4
+tags: tangent, ellipse, parametric
+date: 2026-11-03
+---
+
+## Statement
+
+Find the tangent to $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ at the point $(x_0,y_0)$ on the ellipse.
+
+## Hint
+
+Use implicit differentiation or the tangent formula.
+
+## Solution
+
+**Implicit differentiation.** $\frac{2x}{a^2}+\frac{2yy'}{b^2}=0$, so $y'=-\frac{b^2 x_0}{a^2 y_0}$.
+
+**Tangent.** $y-y_0=-\frac{b^2 x_0}{a^2 y_0}(x-x_0)$, i.e. $\frac{xx_0}{a^2}+\frac{yy_0}{b^2}=1$.
+
+**Conclusion.** The tangent at $(x_0,y_0)$ is $\frac{xx_0}{a^2}+\frac{yy_0}{b^2}=1$.
+
+@@@ analytic-normal-circle.md
+---
+title: Normal to a circle
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: normal, circle, radius
+date: 2026-11-03
+---
+
+## Statement
+
+Find the normal to the circle $x^2+y^2=25$ at the point $(3,4)$.
+
+## Hint
+
+The normal passes through the center.
+
+## Solution
+
+**Direction.** Normal from $(3,4)$ to center $(0,0)$: direction $(-3,-4)$.
+
+**Equation.** Line through $(3,4)$ with direction $(-3,-4)$: $4x-3y=0$? Check: passes through $(3,4)$: $12-12=0$. ✓
+
+**Conclusion.** The normal is $4x-3y=0$.
+
+@@@ analytic-area-polygon.md
+---
+title: Area of a polygon
+category: geometry/analytic
+level: lycee
+difficulty: 3
+tags: shoelace formula, area, polygon
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the area of the triangle with vertices $A(0,0)$, $B(4,0)$, $C(1,3)$.
+
+## Hint
+
+$\text{Area}=\frac12|x_A(y_B-y_C)+x_B(y_C-y_A)+x_C(y_A-y_B)|$.
+
+## Solution
+
+**Shoelace.** $\frac12|0(0-3)+4(3-0)+1(0-0)|=\frac12|0+12+0|=6$.
+
+**Conclusion.** Area $=6$.
+
+@@@ analytic-shoelace-general.md
+---
+title: The shoelace formula
+category: geometry/analytic
+level: l1
+difficulty: 3
+tags: shoelace, polygon, area
+date: 2026-11-03
+---
+
+## Statement
+
+State the shoelace formula for the area of a polygon with vertices $(x_1,y_1),\ldots,(x_n,y_n)$ in order.
+
+## Hint
+
+Sum cross products of consecutive vertices.
+
+## Solution
+
+**Formula.**
+$$\text{Area}=\frac12\left|\sum_{i=1}^{n}(x_iy_{i+1}-x_{i+1}y_i)\right|,$$
+with $(x_{n+1},y_{n+1})=(x_1,y_1)$.
+
+**Example.** Triangle $(0,0),(4,0),(1,3)$: $\frac12|(0\cdot0-4\cdot0)+(4\cdot3-1\cdot0)+(1\cdot0-0\cdot3)|=\frac12|0+12+0|=6$. ✓
+
+**Conclusion.** The shoelace formula computes polygon area from coordinates.
+
+@@@ analytic-midpoint-distance-3d.md
+---
+title: 3D analytic geometry
+category: geometry/analytic
+level: l1
+difficulty: 2
+tags: 3D, distance, midpoint
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance from $A(1,2,3)$ to $B(4,6,8)$, and the midpoint of $AB$.
+
+## Hint
+
+$\sqrt{\Delta x^2+\Delta y^2+\Delta z^2}$.
+
+## Solution
+
+**Distance.** $\sqrt{3^2+4^2+5^2}=\sqrt{50}=5\sqrt2$.
+
+**Midpoint.** $\left(\frac52,4,\frac{11}{2}\right)$.
+
+**Conclusion.** $AB=5\sqrt2$, midpoint $(5/2,4,11/2)$.
+
+@@@ analytic-vector-equation-plane.md
+---
+title: Vector equation of a plane
+category: geometry/analytic
+level: l1
+difficulty: 3
+tags: vector equation, plane, normal
+date: 2026-11-03
+---
+
+## Statement
+
+Find a vector equation of the plane through $A(1,2,3)$ with normal $(2,-1,4)$.
+
+## Hint
+
+$\vec{n}\cdot(M-A)=0$.
+
+## Solution
+
+**Equation.** $2(x-1)-(y-2)+4(z-3)=0$, i.e. $2x-y+4z-12=0$.
+
+**Vector form.** $\vec{n}\cdot\vec{AM}=0$ for all $M$ in the plane.
+
+**Conclusion.** The plane is $2x-y+4z-12=0$.
+
+@@@ analytic-conic-polar.md
+---
+title: Polar equation of a conic
+category: geometry/analytic
+level: l1
+difficulty: 4
+tags: polar, conic, focus
+date: 2026-11-03
+---
+
+## Statement
+
+Convert the conic $r=\frac{2}{1-\cos\theta}$ to Cartesian coordinates and identify it.
+
+## Hint
+
+$r-r\cos\theta=2$, i.e. $r=x+2$.
+
+## Solution
+
+**Rearrange.** $r=2+r\cos\theta=2+x$.
+
+**Square.** $r^2=(x+2)^2$, so $x^2+y^2=x^2+4x+4$, i.e. $y^2=4x+4=4(x+1)$.
+
+**Type.** Parabola with vertex $(-1,0)$, focus at $(-1+1,0)=(0,0)$ and directrix $x=-2$.
+
+**Conclusion.** A parabola with focus at the origin and directrix $x=-2$.
+
+@@@ analytic-curvature.md
+---
+title: Curvature of a curve
+category: geometry/analytic
+level: m1
+difficulty: 5
+tags: curvature, parametric, osculating
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the curvature of the parabola $y=x^2$ at the origin.
+
+## Hint
+
+$\kappa=\frac{|y''|}{(1+y'^2)^{3/2}}$.
+
+## Solution
+
+**Derivatives.** $y'=2x$, $y''=2$.
+
+**At origin.** $y'=0$, $y''=2$, so $\kappa=\frac{2}{(1+0)^{3/2}}=2$.
+
+**Radius of curvature.** $R=1/\kappa=1/2$.
+
+**Conclusion.** Curvature at the origin is $2$; the osculating circle has radius $1/2$.
+
+@@@ analytic-envelope.md
+---
+title: Envelope of a family of lines
+category: geometry/analytic
+level: m1
+difficulty: 5
+tags: envelope, family of lines, curve
+date: 2026-11-03
+---
+
+## Statement
+
+Find the envelope of the family of lines $y=tx-t^2/4$ parametrized by $t\in\mathbb{R}$.
+
+## Hint
+
+Differentiate w.r.t. $t$ and solve for $t$ in terms of $x$, then substitute.
+
+## Solution
+
+**Line equation.** $F(x,y,t)=tx-\frac{t^2}{4}-y=0$.
+
+**Envelope condition.** $\partial F/\partial t=x-\frac t2=0$, so $t=2x$.
+
+**Substitute.** $y=2x\cdot x-\frac{(2x)^2}{4}=2x^2-x^2=x^2$.
+
+**Conclusion.** The envelope is the parabola $y=x^2$.
+
+@@@ analytic-bezier-quadratic.md
+---
+title: Quadratic Bézier curve
+category: geometry/analytic
+level: m1
+difficulty: 4
+tags: Bézier, parametric, control points
+date: 2026-11-03
+---
+
+## Statement
+
+Give the parametric equation of the quadratic Bézier curve with control points $P_0=(0,0)$, $P_1=(1,2)$, $P_2=(2,0)$.
+
+## Hint
+
+$B(t)=(1-t)^2P_0+2(1-t)tP_1+t^2P_2$.
+
+## Solution
+
+**Formula.** $B(t)=(1-t)^2(0,0)+2(1-t)t(1,2)+t^2(2,0)$.
+
+**Expand.**
+$$x(t)=2t(1-t)+2t^2=2t,$$
+$$y(t)=4t(1-t).$$
+
+**Eliminate.** $t=x/2$, $y=4(x/2)(1-x/2)=2x-x^2$.
+
+**Conclusion.** The Bézier curve is the parabola $y=2x-x^2$ for $x\in[0,2]$.
+
+@@@ analytic-pedal-curve.md
+---
+title: The pedal curve
+category: geometry/analytic
+level: m1
+difficulty: 5
+tags: pedal curve, projections, curve
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the pedal curve of a circle $x^2+y^2=r^2$ with respect to its center.
+
+## Hint
+
+The foot of the perpendicular from the center to a tangent line of the circle lies on a concentric circle of radius $r$.
+
+## Solution
+
+**Tangents.** Tangent to the circle at point $P=r(\cos t,\sin t)$: $x\cos t+y\sin t=r$.
+
+**Foot of perpendicular.** The perpendicular from the origin has direction $(\cos t,\sin t)$, so the foot is $r(\cos t,\sin t)$ — which is $P$ itself.
+
+**Pedal curve.** Locus of these feet is the circle $x^2+y^2=r^2$.
+
+**Conclusion.** The pedal curve of a circle with respect to its center is the same circle.
+
+@@@ analytic-inversion-curve.md
+---
+title: Inversion of a curve
+category: geometry/analytic
+level: m1
+difficulty: 5
+tags: inversion, curve, polar
+date: 2026-11-03
+---
+
+## Statement
+
+Invert the circle $x^2+y^2=2x$ with respect to the unit circle $x^2+y^2=1$.
+
+## Hint
+
+The circle $x^2+y^2=2x$ passes through the origin; its inverse is a line.
+
+## Solution
+
+**Circle in polar.** $r=2\cos\theta$.
+
+**Inversion.** $r'=1/r=1/(2\cos\theta)$, i.e. $r'\cos\theta=1/2$, giving $x=1/2$.
+
+**Conclusion.** The inverse of the circle is the line $x=1/2$.
+
+**General.** Inversion maps circles through the center to lines not through the center.
+
+@@@ analytic-conic-optics.md
+---
+title: Optical property of the parabola
+category: geometry/analytic
+level: m1
+difficulty: 5
+tags: optical property, parabola, reflection
+date: 2026-11-03
+---
+
+## Statement
+
+Show that rays parallel to the axis of a parabola $y^2=4px$ reflect to the focus.
+
+## Hint
+
+Use the reflection law and the equality of angles between the incoming ray, tangent, and focal radius.
+
+## Solution
+
+**Tangent.** At point $(x_0,y_0)$ on $y^2=4px$: $y_0y=2p(x+x_0)$, i.e. slope $p/y_0$.
+
+**Angle analysis.** The tangent makes equal angles with the vertical direction (parallel to axis) and the focal radius $(x_0-p, y_0)$.
+
+**Reflection.** By the law of reflection (angle of incidence equals angle of reflection), a ray parallel to the axis reflects along the focal radius, heading to the focus $(p,0)$.
+
+**Conclusion.** The parabola has the optical property: parallel rays focus at the focus.
+
+@@@ analytic-cissoid.md
+---
+title: The cissoid of Diocles
+category: geometry/analytic
+level: m1
+difficulty: 4
+tags: cissoid, curve, equation
+date: 2026-11-03
+---
+
+## Statement
+
+Give the Cartesian equation of the cissoid of Diocles, based on the circle $x^2+y^2=2x$ and the tangent line $x=2$.
+
+## Hint
+
+For a secant from the origin meeting the circle at $M$ and the line at $N$, the cissoid has $OP=MN$ where $P$ is on the secant.
+
+## Solution
+
+**Equation.** $y^2=\dfrac{x^3}{2-x}$.
+
+**Properties.** Symmetric about $x$-axis, cusp at origin, asymptote $x=2$.
+
+**Conclusion.** The cissoid of Diocles has equation $y^2=\frac{x^3}{2-x}$.
+
+@@@ analytic-witch-agnesi.md
+---
+title: The witch of Agnesi
+category: geometry/analytic
+level: m1
+difficulty: 4
+tags: witch, curve, equation
+date: 2026-11-03
+---
+
+## Statement
+
+Give the equation of the witch of Agnesi.
+
+## Hint
+
+Constructed from a circle of diameter $a$ and a tangent line.
+
+## Solution
+
+**Equation.** $y=\dfrac{8a^3}{x^2+4a^2}$ (with parameter $a$).
+
+**Properties.** Bell-shaped curve, symmetric about $y$-axis, asymptote $y=0$.
+
+**Conclusion.** The witch of Agnesi has equation $y=\frac{8a^3}{x^2+4a^2}$.
+
+@@@ analytic-lemniscate.md
+---
+title: The lemniscate of Bernoulli
+category: geometry/analytic
+level: m1
+difficulty: 4
+tags: lemniscate, polar, curve
+date: 2026-11-03
+---
+
+## Statement
+
+Give the polar and Cartesian equation of the lemniscate of Bernoulli.
+
+## Hint
+
+Locus of points $P$ with $PF_1\cdot PF_2=a^2$.
+
+## Solution
+
+**Polar.** $r^2=a^2\cos 2\theta$.
+
+**Cartesian.** $(x^2+y^2)^2=a^2(x^2-y^2)$.
+
+**Properties.** Figure-eight curve with node at origin, symmetric about both axes.
+
+**Conclusion.** The lemniscate has polar equation $r^2=a^2\cos 2\theta$.
+
+@@@ analytic-cycloid.md
+---
+title: The cycloid
+category: geometry/analytic
+level: m1
+difficulty: 4
+tags: cycloid, parametric, rolling
+date: 2026-11-03
+---
+
+## Statement
+
+Parametrize the cycloid generated by a point on a circle of radius $R$ rolling along the $x$-axis.
+
+## Hint
+
+At angle $\theta$, the point's position combines the circle's translation and rotation.
+
+## Solution
+
+**Parametric.**
+$$x=R(\theta-\sin\theta), \qquad y=R(1-\cos\theta),$$
+$\theta\in\mathbb{R}$.
+
+**Arclength.** $ds=R\sqrt{(1-\cos\theta)^2+\sin^2\theta}\,d\theta=R\sqrt{2-2\cos\theta}\,d\theta=2R\sin(\theta/2)\,d\theta$.
+
+**One arch.** $\theta\in[0,2\pi]$: length $8R$, area under one arch $3\pi R^2$.
+
+**Conclusion.** The cycloid is parametrized by $(R(\theta-\sin\theta), R(1-\cos\theta))$.
+
+@@@ analytic-astroid.md
+---
+title: The astroid
+category: geometry/analytic
+level: m1
+difficulty: 4
+tags: astroid, parametric, curve
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the astroid $x^{2/3}+y^{2/3}=1$ has the parametrization $x=\cos^3 t$, $y=\sin^3 t$.
+
+## Hint
+
+Substitute into the equation.
+
+## Solution
+
+**Check.** $x^{2/3}=\cos^2 t$, $y^{2/3}=\sin^2 t$, sum $=1$.
+
+**Length of one arc.** $\int_0^{\pi/2}\sqrt{(3\cos^2 t\sin t)^2+(3\sin^2 t\cos t)^2}\,dt=\int_0^{\pi/2}3\sin t\cos t\,dt=3/2$.
+
+**Total length.** $4\cdot3/2=6$.
+
+**Enclosed area.** $\frac38\pi$.
+
+**Conclusion.** The astroid has $4$ cusps and total length $6$.
+
+@@@ analytic-spiral.md
+---
+title: The logarithmic spiral
+category: geometry/analytic
+level: m1
+difficulty: 4
+tags: spiral, polar, curve
+date: 2026-11-03
+---
+
+## Statement
+
+Study the logarithmic spiral $r=ae^{b\theta}$.
+
+## Hint
+
+Compute $r'$ and analyze self-similarity.
+
+## Solution
+
+**Equation.** $r=ae^{b\theta}$, $a>0$, $b$ constant.
+
+**Self-similarity.** Scaling by $e^{2\pi b}$ maps the spiral to itself (rotation by $2\pi$).
+
+**Tangent angle.** The angle between the tangent and the radius vector is constant ($\arctan(1/b)$).
+
+**Arclength.** $s(\theta)=\frac{a\sqrt{1+b^2}}{b}(e^{b\theta}-1)$.
+
+**Conclusion.** The logarithmic spiral is self-similar with constant tangent angle.
+
+@@@ analytic-catenary.md
+---
+title: The catenary
+category: geometry/analytic
+level: m1
+difficulty: 4
+tags: catenary, cosh, curve
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the catenary $y=\cosh x$ has length and area relations with hyperbolic functions.
+
+## Hint
+
+Use $y'=\sinh x$ and $\sqrt{1+y'^2}=\cosh x$.
+
+## Solution
+
+**Arclength.** $ds=\sqrt{1+\sinh^2 x}\,dx=\cosh x\,dx$, so $s=\sinh x$.
+
+**Curvature.** $\kappa=1/\cosh^2 x=\operatorname{sech}^2 x$.
+
+**Application.** The catenary is the shape of a hanging chain (minimizing potential energy).
+
+**Conclusion.** Catenary length from $0$ to $x$ is $\sinh x$.
+
+@@@ analytic-bezier-cubic.md
+---
+title: Cubic Bézier curve
+category: geometry/analytic
+level: m1
+difficulty: 4
+tags: Bézier, cubic, control points
+date: 2026-11-03
+---
+
+## Statement
+
+Give the cubic Bézier curve with control points $P_0=(0,0)$, $P_1=(0,1)$, $P_2=(1,1)$, $P_3=(1,0)$.
+
+## Hint
+
+$B(t)=(1-t)^3P_0+3(1-t)^2tP_1+3(1-t)t^2P_2+t^3P_3$.
+
+## Solution
+
+**Formula.**
+$$x(t)=3(1-t)t^2+t^3=3t^2-2t^3,$$
+$$y(t)=3(1-t)^2t+3(1-t)t^2=3t(1-t)(1-t+t)=3t(1-t).$$
+
+**Simplify.** $y=3t-3t^2$.
+
+**Conclusion.** The cubic Bézier is $(3t^2-2t^3, 3t-3t^2)$ for $t\in[0,1]$.
+
+@@@ analytic-spline.md
+---
+title: Spline interpolation (statement)
+category: geometry/analytic
+level: m1
+difficulty: 5
+tags: spline, interpolation, smoothness
+date: 2026-11-03
+---
+
+## Statement
+
+Describe cubic spline interpolation and its smoothness.
+
+## Hint
+
+Piecewise cubic polynomials with continuity conditions at knots.
+
+## Solution
+
+**Setup.** Given points $(x_0,y_0),\ldots,(x_n,y_n)$, a cubic spline is a piecewise cubic polynomial $S(x)$ on each $[x_i,x_{i+1}]$ such that $S$, $S'$, $S''$ are continuous at internal knots.
+
+**Degrees of freedom.** $4n$ coefficients, $2n$ interpolation + $2(n-1)$ continuity conditions; two more conditions needed (natural spline: $S''(x_0)=S''(x_n)=0$).
+
+**Smoothness.** $C^2$ continuity: the spline is twice continuously differentiable.
+
+**Conclusion.** Cubic splines give smooth, $C^2$ interpolation with minimal curvature.
+
+@@@ analytic-conic-eccentricity.md
+---
+title: Eccentricity and conic type
+category: geometry/analytic
+level: l1
+difficulty: 3
+tags: eccentricity, conic, classification
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the type of conic is determined by its eccentricity $e$.
+
+## Hint
+
+Use focus-directrix definition.
+
+## Solution
+
+**Definition.** $e=c/a$ where $c$ is the focal distance and $a$ the semi-major axis.
+
+**Classification.**
+- $e=0$: circle.
+- $0<e<1$: ellipse.
+- $e=1$: parabola.
+- $e>1$: hyperbola.
+
+**Conclusion.** Eccentricity classifies conics.
+
+@@@ analytic-summary.md
+---
+title: Summary of analytic geometry
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: summary, analytic geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Summarize the key formulas and results of analytic geometry.
+
+## Hint
+
+Review the main definitions.
+
+## Solution
+
+**Points and lines.**
+- Distance, midpoint.
+- Line equations: point-slope, general form $ax+by+c=0$.
+- Distance from point to line.
+
+**Circles.**
+- Standard and general forms; center, radius.
+
+**Conics.**
+- Ellipse: $c^2=a^2-b^2$, foci, eccentricity.
+- Hyperbola: $c^2=a^2+b^2$, asymptotes.
+- Parabola: focus, directrix.
+
+**Parametric curves.**
+- Circle, ellipse, Bézier, cycloid, astroid.
+
+**Change of coordinates.**
+- Rotation, translation to simplify conics.
+
+**Conclusion.** Analytic geometry connects algebra and geometry through coordinates.
+
+@@@ plane-triangle-sum-angles.md
+---
+title: The sum of angles in a triangle
+category: geometry/plane
+level: lycee
+difficulty: 1
+tags: triangle, angle sum, Euclidean geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Prove that the sum of the interior angles of a triangle equals $\pi$ radians ($180^\circ$).
+
+## Hint
+
+Draw a line through one vertex parallel to the opposite side and use alternate interior angles.
+
+## Solution
+
+**Construction.** Let $ABC$ be a triangle. Through $A$, draw the line $L$ parallel to $BC$.
+
+**Alternate angles.** Let $D$ and $E$ be points on $L$ on opposite sides of $A$. Then $\angle DAB=\angle ABC$ (alternate interior, using parallel $L\parallel BC$) and $\angle EAC=\angle ACB$.
+
+**Angle sum.** The angles $\angle DAB$, $\angle BAC$, $\angle EAC$ form a straight angle at $A$ (since $D,A,E$ are collinear). So
+$$\angle ABC+\angle BAC+\angle ACB=\angle DAB+\angle BAC+\angle EAC=\pi.$$
+
+**Conclusion.** The sum of the angles of a triangle is $\pi$.
+
+@@@ plane-pythagorean-theorem.md
+---
+title: The Pythagorean theorem
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: Pythagoras, right triangle, proof
+date: 2026-11-03
+---
+
+## Statement
+
+In a right triangle with legs $a,b$ and hypotenuse $c$, prove that $a^2+b^2=c^2$.
+
+## Hint
+
+Use the similar-triangle proof: drop the altitude to the hypotenuse and use similarity.
+
+## Solution
+
+**Construction.** Drop the altitude from the right-angle vertex to the hypotenuse, dividing it into segments of length $p$ (adjacent to leg $a$) and $q$ (adjacent to leg $b$), with $p+q=c$.
+
+**Similarity 1.** The triangle formed by $a$, the altitude, and segment $p$ is similar to the original. So $a/c=p/a$, i.e. $a^2=pc$.
+
+**Similarity 2.** Similarly $b^2=qc$.
+
+**Sum.** $a^2+b^2=pc+qc=c(p+q)=c^2$.
+
+**Conclusion.** $a^2+b^2=c^2$.
+
+@@@ plane-thales-theorem.md
+---
+title: Thales' theorem
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: Thales, right angle, circle
+date: 2026-11-03
+---
+
+## Statement
+
+Show that if $AB$ is a diameter of a circle and $C$ is any point on the circle distinct from $A,B$, then $\angle ACB=90^\circ$.
+
+## Hint
+
+Let $O$ be the center. The triangles $AOC$ and $BOC$ are isosceles.
+
+## Solution
+
+**Isosceles triangles.** $OA=OC=OB=r$ (radii). So $\triangle AOC$ is isosceles with $\angle OAC=\angle OCA=\alpha$. Similarly $\angle OBC=\angle OCB=\beta$.
+
+**Angle sum.** In $\triangle ABC$: $\alpha+(\alpha+\beta)+\beta=\pi$, so $2\alpha+2\beta=\pi$, i.e. $\alpha+\beta=\pi/2$.
+
+**Conclusion.** $\angle ACB=\alpha+\beta=\pi/2$, so the angle is right.
+
+@@@ plane-law-of-cosines.md
+---
+title: The law of cosines
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: law of cosines, triangle, proof
+date: 2026-11-03
+---
+
+## Statement
+
+Prove the law of cosines: in a triangle with sides $a,b,c$ and angle $C$ opposite side $c$,
+$$c^2=a^2+b^2-2ab\cos C.$$
+
+## Hint
+
+Drop the altitude from $A$ to $BC$ and apply the Pythagorean theorem.
+
+## Solution
+
+**Coordinate setup.** Place $C$ at the origin, $B$ at $(a,0)$, and $A$ at coordinates $(b\cos C, b\sin C)$.
+
+**Distance.** $c^2=|AB|^2=(b\cos C-a)^2+(b\sin C)^2=b^2\cos^2 C-2ab\cos C+a^2+b^2\sin^2 C$.
+
+**Simplify.** $b^2(\cos^2 C+\sin^2 C)=b^2$, so $c^2=a^2+b^2-2ab\cos C$.
+
+**Conclusion.** The law of cosines holds.
+
+@@@ plane-law-of-sines.md
+---
+title: The law of sines
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: law of sines, triangle, circumradius
+date: 2026-11-03
+---
+
+## Statement
+
+Prove the law of sines: in a triangle with sides $a,b,c$ and opposite angles $A,B,C$,
+$$\frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}=2R,$$
+where $R$ is the circumradius.
+
+## Hint
+
+Use the area formula $\text{Area}=\frac12bc\sin A$ and the circumradius relation.
+
+## Solution
+
+**Area.** $S=\frac12bc\sin A=\frac12ca\sin B=\frac12ab\sin C$.
+
+**Divide.** From $\frac12bc\sin A=\frac12ca\sin B$, divide by $\frac12abc$: $\frac{\sin A}{a}=\frac{\sin B}{b}$. Similarly $\frac{\sin B}{b}=\frac{\sin C}{c}$.
+
+**Circumradius.** The relation $a=2R\sin A$ follows from the inscribed angle theorem applied to the diameter through $B$ or via the extended law of sines.
+
+**Conclusion.** $\frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}=2R$.
+
+@@@ plane-area-triangle-heron.md
+---
+title: Heron's formula
+category: geometry/plane
+level: l1
+difficulty: 4
+tags: Heron, area, triangle
+date: 2026-11-03
+---
+
+## Statement
+
+Prove Heron's formula: for a triangle with sides $a,b,c$ and semiperimeter $s=(a+b+c)/2$,
+$$\text{Area}=\sqrt{s(s-a)(s-b)(s-c)}.$$
+
+## Hint
+
+Use the law of cosines to compute $\cos C$, then $\sin C$, and apply $\text{Area}=\frac12ab\sin C$.
+
+## Solution
+
+**Law of cosines.** $\cos C=\frac{a^2+b^2-c^2}{2ab}$.
+
+**Sine.** $\sin^2 C=1-\cos^2 C=\frac{4a^2b^2-(a^2+b^2-c^2)^2}{4a^2b^2}$.
+
+**Factor.** Numerator $=(2ab-(a^2+b^2-c^2))(2ab+(a^2+b^2-c^2))=(c^2-(a-b)^2)((a+b)^2-c^2)$
+$=(c-a+b)(c+a-b)(a+b-c)(a+b+c)$.
+
+**Area.** $\text{Area}=\frac12ab\sin C=\frac14\sqrt{(c-a+b)(c+a-b)(a+b-c)(a+b+c)}$.
+
+**Rewrite.** $c-a+b=2(s-a)$, etc., so Area $=\sqrt{s(s-a)(s-b)(s-c)}$.
+
+**Conclusion.** Heron's formula holds.
+
+@@@ plane-similar-triangles.md
+---
+title: Similar triangles
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: similarity, triangles, ratios
+date: 2026-11-03
+---
+
+## Statement
+
+Two triangles $ABC$ and $A'B'C'$ satisfy $\angle A=\angle A'$, $\angle B=\angle B'$, and $\angle C=\angle C'$. Show that the triangles are similar, i.e. $\frac{AB}{A'B'}=\frac{BC}{B'C'}=\frac{AC}{A'C'}$.
+
+## Hint
+
+Place the triangles with corresponding angles aligned; use the parallel-line theorem.
+
+## Solution
+
+**Setup.** Superpose $\triangle ABC$ on $\triangle A'B'C'$ by aligning $A$ with $A'$ and $AB$ along $A'B'$. Since $\angle A=\angle A'$, $AC$ lies along $A'C'$.
+
+**Parallel line.** Since $\angle B=\angle B'$, the line $BC$ is parallel to $B'C'$ (alternate interior angles).
+
+**Thales.** By the parallel-line (Thales) theorem, $\frac{AB}{A'B'}=\frac{AC}{A'C'}=\frac{BC}{B'C'}$.
+
+**Conclusion.** The triangles are similar.
+
+@@@ plane-circles-tangent.md
+---
+title: Tangent lines to a circle
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: tangent, circle, perpendicular
+date: 2026-11-03
+---
+
+## Statement
+
+Show that a line is tangent to a circle iff it is perpendicular to the radius at the point of contact.
+
+## Hint
+
+The shortest distance from the center to any line is measured along the perpendicular.
+
+## Solution
+
+**Forward.** Let $T$ be the point of contact, $O$ the center. If the line is tangent (touches only at $T$), then the distance $OT$ equals $r$. If the line were not perpendicular to $OT$, the perpendicular distance would be $<OT=r$, meaning the line would intersect the circle at two points, contradiction.
+
+**Converse.** Suppose the line at $T$ is perpendicular to $OT$. Any other point $P$ on the line satisfies $OP^2=OT^2+TP^2>r^2$, so $P$ is outside the circle. Thus only $T$ is on the circle.
+
+**Conclusion.** Tangent $\iff$ perpendicular to radius at point of contact.
+
+@@@ plane-inscribed-angle.md
+---
+title: The inscribed angle theorem
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: inscribed angle, central angle, circle
+date: 2026-11-03
+---
+
+## Statement
+
+Show that an inscribed angle equals half the central angle subtending the same arc.
+
+## Hint
+
+Join the center to the vertex of the inscribed angle, splitting it into two isosceles triangles.
+
+## Solution
+
+**Setup.** Let $A,B$ be points on a circle with center $O$, and $C$ a point on the circle. Let $\angle ACB$ be the inscribed angle and $\angle AOB$ the central angle (same arc $AB$).
+
+**Case 1 (center inside).** Draw $OC$; the angle $ACB$ splits into $\angle ACO+\angle OCB$. Both $\triangle ACO$ and $\triangle BCO$ are isosceles ($OA=OC=OB$), so $\angle ACO=\angle OAC$ and $\angle OCB=\angle OBC$.
+
+**Sum.** $\angle ACB=\angle ACO+\angle OCB$. And $\angle AOB=2\angle ACB$ (computing via the triangles).
+
+**Conclusion.** The inscribed angle is half the central angle.
+
+**Corollary.** Angles inscribed in the same arc are equal, and an inscribed angle subtending a diameter is $90^\circ$ (Thales).
+
+@@@ plane-power-of-point.md
+---
+title: Power of a point
+category: geometry/plane
+level: l1
+difficulty: 4
+tags: power of a point, circle, chord
+date: 2026-11-03
+---
+
+## Statement
+
+Let $P$ be a point and $\Gamma$ a circle. A line through $P$ meets $\Gamma$ at $A$ and $B$. Show that $PA\cdot PB$ is constant (independent of the line), equal to $|OP^2-r^2|$ where $O$ is the center and $r$ the radius.
+
+## Hint
+
+Use similar triangles: $\triangle PAC\sim\triangle PDB$ where $C,D$ are the other intersection points of a second line.
+
+## Solution
+
+**Two chords.** Let line $\ell_1$ through $P$ meet $\Gamma$ at $A,B$ and line $\ell_2$ meet at $C,D$.
+
+**Similarity.** The angles $\angle PAC$ and $\angle PDB$ are equal (inscribed angles subtending arc $AC$... careful with the direction). Standard: $\triangle PAC\sim\triangle PDB$.
+
+**Ratio.** $PA/PD=PC/PB$, so $PA\cdot PB=PC\cdot PD$.
+
+**Power.** This constant equals $PA\cdot PB$; when the line passes through $O$, one computes $|OP-r|\cdot|OP+r|=|OP^2-r^2|$.
+
+**Conclusion.** The power of $P$ with respect to $\Gamma$ is $PA\cdot PB=|OP^2-r^2|$ (signed), independent of the line.
+
+@@@ plane-euler-line.md
+---
+title: The Euler line
+category: geometry/plane
+level: l1
+difficulty: 4
+tags: Euler line, centroid, orthocenter, circumcenter
+date: 2026-11-03
+---
+
+## Statement
+
+In any triangle $ABC$, the centroid $G$, orthocenter $H$, and circumcenter $O$ are collinear, with $GH=2\,OG$.
+
+## Hint
+
+Use vectors with $O$ as origin and exploit $a^2+b^2-c^2$ identities; or use homothety centered at $G$ with ratio $-1/2$.
+
+## Solution
+
+**Homothety.** Consider the homothety $h$ centered at $G$ with ratio $-1/2$. It maps the median from $A$ to the midpoint $M_a$ of $BC$ (since $G$ divides $AM_a$ in ratio $2:1$). Similarly for the other medians.
+
+**Image of $O$.** The image $h(O)=O'$ lies on the line $GO$. One shows $O'$ is the orthocenter $H$: the image of the perpendicular bisector of $BC$ (through $O$) is the altitude from $A$ (passing through $H$), and similarly for other sides.
+
+**Conclusion.** $O$, $G$, $H$ are collinear (Euler line), with $GH=2\,OG$.
+
+@@@ plane-nine-point-circle.md
+---
+title: The nine-point circle
+category: geometry/plane
+level: olympiad
+difficulty: 5
+tags: nine-point circle, Euler, midpoints
+date: 2026-11-03
+---
+
+## Statement
+
+State and outline a proof of the nine-point circle theorem: the midpoints of the sides, the feet of the altitudes, and the midpoints of the segments from the orthocenter to the vertices all lie on a single circle.
+
+## Hint
+
+Use the homothety centered at the orthocenter with ratio $1/2$; it sends the circumcircle to a smaller circle.
+
+## Solution
+
+**Homothety.** Let $h$ be the homothety centered at $H$ (orthocenter) with ratio $1/2$.
+
+**Images.** $h$ sends $A$ to the midpoint of $AH$, $B$ to midpoint of $BH$, $C$ to midpoint of $CH$ — three of the nine points.
+
+**Circumcircle image.** $h$ sends the circumcircle (passing through $A,B,C$) to a circle through these three midpoints. Its radius is $R/2$.
+
+**Other six points.** One shows (via angle chasing) that the midpoints of sides and feet of altitudes also lie on this circle.
+
+**Conclusion.** The nine points are concyclic; the circle has radius $R/2$ and center at the midpoint of $OH$.
+
+@@@ plane-ptolemy.md
+---
+title: Ptolemy's theorem
+category: geometry/plane
+level: olympiad
+difficulty: 4
+tags: Ptolemy, cyclic quadrilateral, diagonal
+date: 2026-11-03
+---
+
+## Statement
+
+Prove Ptolemy's theorem: if $ABCD$ is a cyclic quadrilateral, then
+$$AC\cdot BD=AB\cdot CD+BC\cdot AD.$$
+
+## Hint
+
+Construct a point $K$ on $AC$ with $\angle ABK=\angle DBC$, then use similar triangles.
+
+## Solution
+
+**Construction.** On diagonal $AC$, choose $K$ such that $\angle ABK=\angle DBC$.
+
+**Similarity 1.** $\triangle ABK\sim\triangle DBC$ (since $\angle ABK=\angle DBC$ and $\angle BAK=\angle BDC$ by cyclicity). So $AB/BD=AK/DC$, i.e. $AB\cdot DC=BD\cdot AK$.
+
+**Similarity 2.** $\triangle KBC\sim\triangle ABD$: similar angle argument. So $BC/BD=KC/AD$, i.e. $BC\cdot AD=BD\cdot KC$.
+
+**Sum.** $AB\cdot CD+BC\cdot AD=BD(AK+KC)=BD\cdot AC$.
+
+**Conclusion.** $AC\cdot BD=AB\cdot CD+BC\cdot AD$.
+
+@@@ plane-concyclic.md
+---
+title: Cyclic quadrilaterals
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: cyclic quadrilateral, opposite angles, circle
+date: 2026-11-03
+---
+
+## Statement
+
+Show that a quadrilateral is cyclic (inscribed in a circle) iff its opposite angles sum to $\pi$.
+
+## Hint
+
+$(\Rightarrow)$: inscribed angles subtend complementary arcs. $(\Leftarrow)$: consider the circumcircle of three vertices and use the inscribed angle theorem.
+
+## Solution
+
+**$(\Rightarrow)$.** If $ABCD$ is cyclic, the inscribed angles $\angle DAB$ and $\angle DCB$ subtend complementary arcs $BCD$ and $DAB$. Their measures are half these arcs, summing to half the full circle: $\angle DAB+\angle DCB=\pi$.
+
+**$(\Leftarrow)$.** Suppose $\angle DAB+\angle DCB=\pi$. Let $\Gamma$ be the circumcircle of $A,B,C$, and $D'$ be the second intersection of $CD$ with $\Gamma$. Then $ABCD'$ is cyclic, so $\angle D'AB+\angle D'CB=\pi$. Combined with the hypothesis, $\angle D'CB=\angle DCB$. This forces $D'=D$ (both on ray $CB$ from $C$).
+
+**Conclusion.** Cyclic $\iff$ opposite angles sum to $\pi$.
+
+@@@ plane-bisector-theorem.md
+---
+title: The angle bisector theorem
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: angle bisector, triangle, ratio
+date: 2026-11-03
+---
+
+## Statement
+
+In a triangle $ABC$, let $D$ be the foot of the angle bisector from $A$ on side $BC$. Show that $\frac{BD}{DC}=\frac{AB}{AC}$.
+
+## Hint
+
+Apply the law of sines to triangles $ABD$ and $ACD$.
+
+## Solution
+
+**Law of sines in $\triangle ABD$.** $\frac{BD}{\sin\angle BAD}=\frac{AB}{\sin\angle ADB}$.
+
+**Law of sines in $\triangle ACD$.** $\frac{DC}{\sin\angle DAC}=\frac{AC}{\sin\angle ADC}$.
+
+**Ratio.** Since $\angle BAD=\angle DAC$ (bisector) and $\angle ADB+\angle ADC=\pi$ (so $\sin\angle ADB=\sin\angle ADC$), divide:
+$$\frac{BD}{DC}=\frac{\sin\angle BAD\cdot AB/\sin\angle ADB}{\sin\angle DAC\cdot AC/\sin\angle ADC}=\frac{AB}{AC}.$$
+
+**Conclusion.** $\frac{BD}{DC}=\frac{AB}{AC}$.
+
+@@@ plane-median-length.md
+---
+title: Length of a median
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: median, Apollonius, triangle
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the median from $A$ to the midpoint $M$ of $BC$ satisfies
+$$AM^2=\frac{2AB^2+2AC^2-BC^2}{4}.$$
+
+## Hint
+
+Use the law of cosines on $\triangle ABM$ and $\triangle ACM$, with $\angle AMB+\angle AMC=\pi$.
+
+## Solution
+
+**Law of cosines on $ABM$.** $AB^2=AM^2+BM^2-2\cdot AM\cdot BM\cos\angle AMB$.
+
+**Law of cosines on $ACM$.** $AC^2=AM^2+CM^2-2\cdot AM\cdot CM\cos\angle AMC$.
+
+**Combine.** Since $BM=CM=BC/2$ and $\cos\angle AMC=-\cos\angle AMB$, add the two equations:
+$$AB^2+AC^2=2AM^2+\frac{BC^2}{4}+\frac{BC^2}{4}.$$
+So $2AM^2=AB^2+AC^2-\frac{BC^2}{2}$, i.e. $AM^2=\frac{2AB^2+2AC^2-BC^2}{4}$.
+
+**Conclusion.** The median formula holds.
+
+@@@ plane-apollonius-circle.md
+---
+title: The circle of Apollonius
+category: geometry/plane
+level: olympiad
+difficulty: 4
+tags: Apollonius, circle, locus
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A,B$ be distinct points and $k>0$, $k\neq1$. Show that the locus of points $M$ with $MA/MB=k$ is a circle.
+
+## Hint
+
+Use coordinates with $A=(0,0)$, $B=(d,0)$. Square the condition $MA^2=k^2 MB^2$ and simplify.
+
+## Solution
+
+**Coordinates.** $A=(0,0)$, $B=(d,0)$, $M=(x,y)$. Condition: $x^2+y^2=k^2((x-d)^2+y^2)$.
+
+**Simplify.** $x^2+y^2=k^2(x^2-2dx+d^2+y^2)$, so $(k^2-1)(x^2+y^2)-2k^2dx+k^2d^2=0$.
+
+**Complete the square.** Divide by $(k^2-1)$:
+$$x^2+y^2-\frac{2k^2d}{k^2-1}x=-\frac{k^2d^2}{k^2-1},$$
+i.e.
+$$\left(x-\frac{k^2d}{k^2-1}\right)^2+y^2=\frac{k^2d^2}{(k^2-1)^2}.$$
+
+**Conclusion.** The locus is a circle with center $\left(\frac{k^2d}{k^2-1},0\right)$ and radius $\frac{kd}{|k^2-1|}$.
+
+@@@ plane-symmedian.md
+---
+title: The symmedian (statement)
+category: geometry/plane
+level: olympiad
+difficulty: 4
+tags: symmedian, reflection, isogonal
+date: 2026-11-03
+---
+
+## Statement
+
+Define the symmedian from $A$ in a triangle and state its key property.
+
+## Hint
+
+Reflection of the median about the angle bisector; the symmedian point $K$ satisfies $KA^2\cdot[\text{small triangle}]=\cdots$.
+
+## Solution
+
+**Definition.** The symmedian from $A$ is the reflection of the median $AM$ across the internal angle bisector at $A$. The three symmedians are concurrent at the Lemoine point $K$.
+
+**Ratio property.** The symmedian meets $BC$ at a point $D$ with $BD/DC=(AB/AC)^2$.
+
+**Conclusion.** Symmedians are isogonal conjugates of medians and arise in optimization problems (minimizing $\sum MA^2$).
+
+@@@ plane-orthocenter.md
+---
+title: The orthocenter
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: orthocenter, altitudes, triangle
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the three altitudes of a triangle are concurrent (at the orthocenter).
+
+## Hint
+
+Use Thales' theorem: the quadrilateral formed by two altitude feet and the opposite vertices is cyclic.
+
+## Solution
+
+**Setup.** Let $ABC$ be a triangle, with altitudes $BB'$ (foot on $AC$) and $CC'$ (foot on $AB$). Let $H=BB'\cap CC'$.
+
+**Concyclic.** $\angle BB'C=90^\circ$ and $\angle BC'C=90^\circ$, so $B,C,B',C'$ are concyclic (on the circle with diameter $BC$).
+
+**Angle chase.** $\angle B'HC'=\angle B'BC'$ (subtending arc $B'C'$ in this circle). And $\angle B'HC'=\angle BHC$ (vertical angles). Also $\angle B'BC'=\angle ABC$ (same as $\angle B$).
+
+**Conclusion.** The altitude from $A$ meets $H$: $\angle AHC'=\angle AHC=\angle ABC$, forcing $AH\perp BC$. So $H$ is the orthocenter.
+
+@@@ plane-incenter.md
+---
+title: The incenter
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: incenter, angle bisectors, incircle
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the three angle bisectors of a triangle are concurrent at a point equidistant from the three sides (the incenter).
+
+## Hint
+
+The locus of points equidistant from two intersecting lines is the union of the angle bisectors. Apply to two pairs of sides.
+
+## Solution
+
+**Bisector locus.** The angle bisectors of $\angle A$ are the locus of points equidistant from $AB$ and $AC$. Similarly, the angle bisectors of $\angle B$ are the locus equidistant from $BA$ and $BC$.
+
+**Intersection.** Let $I$ be the intersection of the internal bisectors at $A$ and $B$. Then $I$ is equidistant from $AB$, $AC$, and $BC$. So $I$ is equidistant from all three sides, hence lies on the bisector at $C$.
+
+**Conclusion.** The three internal bisectors concur at the incenter $I$, equidistant from all three sides.
+
+@@@ plane-centroid.md
+---
+title: The centroid
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: centroid, medians, concurrency
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the three medians of a triangle are concurrent, and the intersection point divides each median in the ratio $2:1$ from the vertex.
+
+## Hint
+
+Use vectors with centroid at the average; or use the midpoint theorem.
+
+## Solution
+
+**Vector argument.** Let $G=\frac{A+B+C}{3}$ (centroid). The midpoint of $BC$ is $M_a=\frac{B+C}{2}$. Then $G=\frac{A+2M_a}{3}$, so $G$ is on $AM_a$ and $AG:GM_a=2:1$.
+
+**Symmetry.** Same for $M_b$ and $M_c$. So all three medians pass through $G$.
+
+**Conclusion.** The medians concur at the centroid, dividing each in ratio $2:1$.
+
+@@@ plane-regular-polygon.md
+---
+title: The regular $n$-gon
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: regular polygon, angles, diagonals
+date: 2026-11-03
+---
+
+## Statement
+
+For a regular $n$-gon: compute the interior angle, the number of diagonals, and the circumradius given side $a$.
+
+## Hint
+
+Interior angle $=\pi-2\pi/n$; diagonals $\binom{n}{2}-n$; circumradius $R=a/(2\sin(\pi/n))$.
+
+## Solution
+
+**Interior angle.** Sum of interior angles $=(n-2)\pi$, so each is $\pi-2\pi/n$.
+
+**Diagonals.** Total pairs minus edges: $\binom{n}{2}-n=\frac{n(n-3)}{2}$.
+
+**Circumradius.** Triangle with two radii and one side: $a=2R\sin(\pi/n)$, so $R=\frac{a}{2\sin(\pi/n)}$.
+
+**Conclusion.** Interior angle $\pi-2\pi/n$; diagonals $\frac{n(n-3)}{2}$; $R=\frac{a}{2\sin(\pi/n)}$.
+
+@@@ plane-tangent-chord.md
+---
+title: Tangent–chord angle
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: tangent, chord, inscribed angle
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the angle between a tangent and a chord through the point of contact equals the inscribed angle subtending the same chord.
+
+## Hint
+
+Use the limit case of the inscribed angle theorem.
+
+## Solution
+
+**Inscribed angle.** For a chord $AB$ and a point $C$ on the circle, the inscribed angle $\angle ACB$ equals half the central angle $\angle AOB$.
+
+**Tangent limit.** As $C\to A$ along the circle, the secant $AC$ becomes the tangent at $A$. The inscribed angle $\angle ACB$ tends to the angle between the tangent at $A$ and the chord $AB$.
+
+**Conclusion.** The tangent–chord angle equals the inscribed angle subtending the chord.
+
+@@@ plane-radical-axis.md
+---
+title: The radical axis
+category: geometry/plane
+level: l1
+difficulty: 4
+tags: radical axis, power of point, circles
+date: 2026-11-03
+---
+
+## Statement
+
+Given two circles with equations (in some coordinate system) $(x-a_1)^2+(y-b_1)^2=r_1^2$ and $(x-a_2)^2+(y-b_2)^2=r_2^2$, find the locus of points with equal power to both circles.
+
+## Hint
+
+The power of point $(x,y)$ to circle $i$ is $(x-a_i)^2+(y-b_i)^2-r_i^2$. Set them equal.
+
+## Solution
+
+**Set equal.** 
+$$(x-a_1)^2+(y-b_1)^2-r_1^2=(x-a_2)^2+(y-b_2)^2-r_2^2.$$
+
+**Expand.** $x^2-2a_1x+a_1^2+y^2-2b_1y+b_1^2-r_1^2=x^2-2a_2x+a_2^2+y^2-2b_2y+b_2^2-r_2^2$.
+
+**Linear.** $2(a_2-a_1)x+2(b_2-b_1)y=a_2^2-a_1^2+b_2^2-b_1^2-r_2^2+r_1^2$.
+
+**Conclusion.** The radical axis is a line; it is perpendicular to the line joining the centers.
+
+@@@ plane-menelaus.md
+---
+title: Menelaus' theorem
+category: geometry/plane
+level: olympiad
+difficulty: 4
+tags: Menelaus, collinearity, ratio
+date: 2026-11-03
+---
+
+## Statement
+
+State Menelaus' theorem and use it to determine when three points on the sides of a triangle are collinear.
+
+## Hint
+
+Menelaus: points $D\in BC$, $E\in CA$, $F\in AB$ are collinear iff $\frac{BD}{DC}\cdot\frac{CE}{EA}\cdot\frac{AF}{FB}=-1$ (signed ratios).
+
+## Solution
+
+**Theorem.** Points $D$ on line $BC$, $E$ on line $CA$, $F$ on line $AB$ are collinear iff (with signed ratios)
+$$\frac{BD}{DC}\cdot\frac{CE}{EA}\cdot\frac{AF}{FB}=-1.$$
+
+**Example.** If $D,E,F$ are midpoints, ratios are $1,1,1$ (unsigned), product $1\neq-1$; signed ratios would be $-1$ each and product $-1$, consistent with midpoint line being parallel to a side.
+
+**Conclusion.** Menelaus characterizes collinearity of three points on the sides (or extensions) of a triangle.
+
+@@@ plane-ceva.md
+---
+title: Ceva's theorem
+category: geometry/plane
+level: olympiad
+difficulty: 4
+tags: Ceva, concurrency, ratios
+date: 2026-11-03
+---
+
+## Statement
+
+State Ceva's theorem on the concurrency of three cevians.
+
+## Hint
+
+Ceva: $AD,BE,CF$ concurrent iff $\frac{BD}{DC}\cdot\frac{CE}{EA}\cdot\frac{AF}{FB}=1$ (with $D,E,F$ on the corresponding sides).
+
+## Solution
+
+**Theorem.** In triangle $ABC$, with $D\in BC$, $E\in CA$, $F\in AB$, the cevians $AD$, $BE$, $CF$ are concurrent iff
+$$\frac{BD}{DC}\cdot\frac{CE}{EA}\cdot\frac{AF}{FB}=1.$$
+
+**Applications.**
+- Medians: ratios $1,1,1$, product $1$; centroid.
+- Altitudes: product gives $1$ by trigonometric Ceva; orthocenter.
+- Angle bisectors: by angle bisector theorem, product $1$; incenter.
+
+**Conclusion.** Ceva's theorem characterizes concurrency of cevians.
+
+@@@ plane-stewart.md
+---
+title: Stewart's theorem
+category: geometry/plane
+level: olympiad
+difficulty: 4
+tags: Stewart, cevian, triangle
+date: 2026-11-03
+---
+
+## Statement
+
+State Stewart's theorem: for a cevian $AD$ with $D\in BC$, $BD=m$, $DC=n$, $AD=d$, $AB=c$, $AC=b$,
+$$b^2m+c^2n=a(d^2+mn)$$
+where $a=m+n$.
+
+## Hint
+
+Apply the law of cosines in triangles $ABD$ and $ACD$ and combine.
+
+## Solution
+
+**Law of cosines.** In $\triangle ABD$: $c^2=d^2+m^2-2dm\cos\angle ADB$. In $\triangle ACD$: $b^2=d^2+n^2-2dn\cos\angle ADC$.
+
+**Combine.** $\cos\angle ADC=-\cos\angle ADB$. Multiply first by $n$, second by $m$, add:
+$$nc^2+mb^2=(m+n)d^2+mn(m+n).$$
+
+**Conclusion.** $nc^2+mb^2=a(d^2+mn)$, with $a=m+n$.
+
+@@@ plane-brahmagupta.md
+---
+title: Brahmagupta's formula
+category: geometry/plane
+level: l1
+difficulty: 4
+tags: Brahmagupta, cyclic quadrilateral, area
+date: 2026-11-03
+---
+
+## Statement
+
+State Brahmagupta's formula for the area of a cyclic quadrilateral with sides $a,b,c,d$ and semiperimeter $s=(a+b+c+d)/2$:
+$$\text{Area}=\sqrt{(s-a)(s-b)(s-c)(s-d)}.$$
+
+## Hint
+
+Split into two triangles by a diagonal and use Heron; the cyclic condition simplifies.
+
+## Solution
+
+**Split.** Diagonal $e$ splits into triangles with sides $(a,b,e)$ and $(c,d,e)$.
+
+**Heron on each.** Areas $A_1,A_2$; total $A=A_1+A_2$.
+
+**Cyclic condition.** $\angle B+\angle D=\pi$ allows simplifying $A_1+A_2$ to the product form.
+
+**Conclusion.** Brahmagupta's formula: $A=\sqrt{(s-a)(s-b)(s-c)(s-d)}$.
+
+**Note.** For $d=0$, this reduces to Heron.
+
+@@@ plane-ptolemy-inequality.md
+---
+title: Ptolemy's inequality
+category: geometry/plane
+level: olympiad
+difficulty: 4
+tags: Ptolemy inequality, quadrilateral, metric
+date: 2026-11-03
+---
+
+## Statement
+
+Show that for any four points $A,B,C,D$ in the plane,
+$$AC\cdot BD\le AB\cdot CD+BC\cdot AD.$$
+
+## Hint
+
+Reduce to the cyclic case by an inversion centered at $A$.
+
+## Solution
+
+**Inversion.** Invert about $A$ with radius $1$. Points $B,C,D$ map to $B',C',D'$ with $AB'=1/AB$ etc., and $B'C'=BC/(AB\cdot AC)$ etc.
+
+**Triangle inequality.** In the inverted plane: $B'D'\le B'C'+C'D'$.
+
+**Translate.** $\frac{BD}{AB\cdot AD}\le\frac{BC}{AB\cdot AC}+\frac{CD}{AC\cdot AD}$.
+
+**Multiply.** By $AB\cdot AC\cdot AD$: $AC\cdot BD\le BC\cdot AD+AB\cdot CD$.
+
+**Conclusion.** Ptolemy's inequality holds, with equality iff $A,B,C,D$ are concyclic in the appropriate order.
+
+@@@ plane-reflections.md
+---
+title: Reflections in the plane
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: reflections, isometry, axis
+date: 2026-11-03
+---
+
+## Statement
+
+Show that reflection in a line is an isometry that reverses orientation.
+
+## Hint
+
+Use coordinates with the line as $x$-axis.
+
+## Solution
+
+**Coordinates.** Let the line be the $x$-axis. Reflection: $(x,y)\mapsto(x,-y)$.
+
+**Distance preserved.** $d((x_1,-y_1),(x_2,-y_2))=\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}=d((x_1,y_1),(x_2,y_2))$.
+
+**Orientation.** A triangle with positive orientation maps to one with negative orientation (the sign of the determinant flips). So reflection reverses orientation.
+
+**Conclusion.** Reflection is an orientation-reversing isometry.
+
+@@@ plane-rotations.md
+---
+title: Rotations in the plane
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: rotations, isometry, angle
+date: 2026-11-03
+---
+
+## Statement
+
+Show that rotation about a point by angle $\theta$ is an isometry that preserves orientation.
+
+## Hint
+
+Use complex numbers: rotation by $\theta$ is $z\mapsto e^{i\theta}z$.
+
+## Solution
+
+**Distance preserved.** $|e^{i\theta}z_1-e^{i\theta}z_2|=|e^{i\theta}||z_1-z_2|=|z_1-z_2|$.
+
+**Orientation.** The determinant of a rotation matrix $\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$ is $\cos^2\theta+\sin^2\theta=1>0$, so orientation is preserved.
+
+**Conclusion.** Rotations are orientation-preserving isometries.
+
+@@@ plane-translations.md
+---
+title: Translations
+category: geometry/plane
+level: lycee
+difficulty: 1
+tags: translations, isometry, vector
+date: 2026-11-03
+---
+
+## Statement
+
+Show that translation by vector $\vec{v}$ is an isometry preserving orientation.
+
+## Hint
+
+Translation: $z\mapsto z+v$.
+
+## Solution
+
+**Distance preserved.** $|(z_1+v)-(z_2+v)|=|z_1-z_2|$.
+
+**Orientation.** Translation is the identity in the linear part; determinant $1>0$.
+
+**Conclusion.** Translations are orientation-preserving isometries.
+
+@@@ plane-homothety.md
+---
+title: Homotheties
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: homothety, dilation, similarity
+date: 2026-11-03
+---
+
+## Statement
+
+Define a homothety centered at $O$ with ratio $k$, and show that it multiplies distances by $|k|$.
+
+## Hint
+
+$M\mapsto M'$ with $\vec{OM'}=k\vec{OM}$.
+
+## Solution
+
+**Definition.** Homothety $h(O,k)$ sends $M$ to $M'$ with $\overrightarrow{OM'}=k\overrightarrow{OM}$.
+
+**Distance.** For $M,N$: $\overrightarrow{M'N'}=k\overrightarrow{MN}$, so $M'N'=|k|\cdot MN$.
+
+**Conclusion.** Homothety scales all distances by $|k|$; it is a similarity (not an isometry unless $|k|=1$).
+
+@@@ plane-isometry-classification.md
+---
+title: Classification of plane isometries
+category: geometry/plane
+level: l1
+difficulty: 4
+tags: isometry, classification, transformation
+date: 2026-11-03
+---
+
+## Statement
+
+Classify all isometries of the Euclidean plane.
+
+## Hint
+
+Every isometry is either orientation-preserving (rotation or translation) or orientation-reversing (reflection or glide reflection).
+
+## Solution
+
+**Orientation-preserving.** These are either:
+- *Translations*: no fixed point (except the identity).
+- *Rotations*: one fixed point.
+
+**Orientation-reversing.** These are either:
+- *Reflections*: a line of fixed points.
+- *Glide reflections*: reflection followed by a nonzero translation along the axis; no fixed points.
+
+**Conclusion.** Every plane isometry is exactly one of: identity, translation, rotation, reflection, or glide reflection.
+
+@@@ plane-angle-chasing.md
+---
+title: Angle chasing in a cyclic quadrilateral
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: angle chasing, cyclic, quadrilateral
+date: 2026-11-03
+---
+
+## Statement
+
+$ABCD$ is a cyclic quadrilateral. Prove that $\angle ABD=\angle ACD$.
+
+## Hint
+
+Both angles subtend the same arc $AD$.
+
+## Solution
+
+**Inscribed angles.** $\angle ABD$ subtends arc $AD$ (not containing $B$); $\angle ACD$ subtends the same arc $AD$ (not containing $C$).
+
+**Equal.** Both equal half the measure of arc $AD$.
+
+**Conclusion.** $\angle ABD=\angle ACD$.
+
+**Application.** Used in angle chasing to prove concyclicity.
+
+@@@ plane-triangle-inequality.md
+---
+title: The triangle inequality
+category: geometry/plane
+level: lycee
+difficulty: 1
+tags: triangle inequality, distances
+date: 2026-11-03
+---
+
+## Statement
+
+For any three points $A,B,C$ in the plane, show that $AB\le AC+CB$, with equality iff $C$ lies on segment $AB$.
+
+## Hint
+
+Use coordinates or the fact that a straight line is the shortest path.
+
+## Solution
+
+**Coordinates.** Let $A=(0,0)$, $B=(d,0)$, $C=(x,y)$. Then $AC+CB\ge AB$ is the standard Euclidean inequality, proven by the triangle inequality for the norm.
+
+**Equality.** Equality holds iff the three points are collinear with $C$ between $A$ and $B$.
+
+**Conclusion.** $AB\le AC+CB$, with equality iff $C\in[A,B]$.
+
+@@@ plane-miquel.md
+---
+title: Miquel's theorem (statement)
+category: geometry/plane
+level: olympiad
+difficulty: 5
+tags: Miquel, circles, concurrency
+date: 2026-11-03
+---
+
+## Statement
+
+State Miquel's theorem for a triangle and three points on its sides.
+
+## Hint
+
+Given $D\in BC$, $E\in CA$, $F\in AB$, the circumcircles of $\triangle AEF$, $\triangle BFD$, $\triangle CDE$ meet at a point (the Miquel point).
+
+## Solution
+
+**Theorem.** Let $ABC$ be a triangle and $D,E,F$ points on lines $BC,CA,AB$ respectively. The circumcircles of triangles $AEF$, $BFD$, $CDE$ are concurrent at a point $M$ (Miquel point).
+
+**Application.** Miquel's theorem is used to prove many circle concurrency results and to construct points on the "Miquel circle".
+
+**Conclusion.** Miquel's theorem gives a beautiful concurrency result for three circumcircles.
+
+@@@ plane-simson-line.md
+---
+title: The Simson line
+category: geometry/plane
+level: olympiad
+difficulty: 5
+tags: Simson line, pedal, circumcircle
+date: 2026-11-03
+---
+
+## Statement
+
+State the Simson line theorem: for a point $P$ on the circumcircle of $\triangle ABC$, the feet of the perpendiculars from $P$ to the sides of the triangle are collinear.
+
+## Hint
+
+Use angle chasing on the quadrilaterals formed by the feet.
+
+## Solution
+
+**Setup.** Let $X,Y,Z$ be the feet of the perpendiculars from $P$ to $BC,CA,AB$.
+
+**Angle chasing.** Show $\angle PXY+\angle PXZ=\pi$ by using $P$ on the circumcircle and the right angles at $X,Y,Z$.
+
+**Conclusion.** $X,Y,Z$ are collinear (the Simson line of $P$).
+
+**Application.** Simson lines are used to construct pedal triangles and to characterize points on the circumcircle.
+
+@@@ plane-pole-polar.md
+---
+title: Pole and polar (statement)
+category: geometry/plane
+level: olympiad
+difficulty: 5
+tags: pole, polar, circle
+date: 2026-11-03
+---
+
+## Statement
+
+Define the polar of a point with respect to a circle.
+
+## Hint
+
+For a point $P$ outside a circle, the polar is the chord of contact of the two tangents from $P$.
+
+## Solution
+
+**Definition.** For a point $P$ and a circle $\Gamma$ centered at $O$ with radius $r$, the polar of $P$ is the line perpendicular to $OP$ at the point $P'$ on $OP$ with $OP\cdot OP'=r^2$.
+
+**Properties.**
+- If $P$ is outside, the polar passes through the two contact points of the tangents from $P$.
+- Reciprocity: $Q$ lies on the polar of $P$ iff $P$ lies on the polar of $Q$.
+
+**Conclusion.** The pole–polar relation gives an involution between points and lines with respect to a circle.
+
+@@@ plane-inversion.md
+---
+title: Circle inversion
+category: geometry/plane
+level: olympiad
+difficulty: 4
+tags: inversion, circle, transformation
+date: 2026-11-03
+---
+
+## Statement
+
+Define inversion in a circle and state its key properties.
+
+## Hint
+
+$P\mapsto P'$ with $OP\cdot OP'=r^2$, $O,P,P'$ collinear on the same side.
+
+## Solution
+
+**Definition.** Inversion in circle $\Gamma(O,r)$ sends $P$ to $P'$ on ray $OP$ with $OP\cdot OP'=r^2$.
+
+**Properties.**
+- Involution: applying twice gives the identity.
+- Circles through $O$ map to lines not through $O$, and vice versa.
+- Circles not through $O$ map to circles not through $O$.
+- Angles are preserved (conformal).
+
+**Conclusion.** Inversion is a powerful conformal transformation preserving angles, widely used in olympiad geometry.
+
+@@@ plane-stewart-app.md
+---
+title: Applying Stewart's theorem
+category: geometry/plane
+level: l1
+difficulty: 4
+tags: Stewart application, median, triangle
+date: 2026-11-03
+---
+
+## Statement
+
+Apply Stewart's theorem to compute the length of the median from $A$ in a triangle with $AB=5$, $AC=7$, $BC=8$.
+
+## Hint
+
+Median means $m=n=4$; use $b^2m+c^2n=a(d^2+mn)$.
+
+## Solution
+
+**Apply Stewart.** $b=AC=7$, $c=AB=5$, $a=BC=8$, $m=n=4$, $d=$ median length.
+
+$$49\cdot4+25\cdot4=8(d^2+16).$$
+
+**Compute.** $196+100=8d^2+128$, so $8d^2=168$, $d^2=21$, $d=\sqrt{21}$.
+
+**Conclusion.** The median has length $\sqrt{21}$.
+
+@@@ plane-coordinate-basics.md
+---
+title: Distance and midpoint
+category: geometry/plane
+level: lycee
+difficulty: 1
+tags: coordinates, distance, midpoint
+date: 2026-11-03
+---
+
+## Statement
+
+Given $A(1,2)$ and $B(4,6)$, compute $AB$ and the midpoint $M$ of $AB$.
+
+## Hint
+
+$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}$; $M=((x_A+x_B)/2,(y_A+y_B)/2)$.
+
+## Solution
+
+**Distance.** $AB=\sqrt{(4-1)^2+(6-2)^2}=\sqrt{9+16}=5$.
+
+**Midpoint.** $M=((1+4)/2,(2+6)/2)=(2.5,4)$.
+
+**Conclusion.** $AB=5$, $M=(2.5,4)$.
+
+@@@ plane-line-equation.md
+---
+title: Equation of a line
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: line equation, slope, point-slope
+date: 2026-11-03
+---
+
+## Statement
+
+Find the equation of the line through $A(2,3)$ and $B(5,9)$.
+
+## Hint
+
+Slope $m=(y_B-y_A)/(x_B-x_A)$; use point-slope.
+
+## Solution
+
+**Slope.** $m=(9-3)/(5-2)=6/3=2$.
+
+**Point-slope.** $y-3=2(x-2)$, i.e. $y=2x-1$.
+
+**Conclusion.** The line is $y=2x-1$.
+
+@@@ plane-circle-equation.md
+---
+title: Equation of a circle
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: circle equation, center, radius
+date: 2026-11-03
+---
+
+## Statement
+
+Find the center and radius of the circle $x^2+y^2-6x+8y-11=0$.
+
+## Hint
+
+Complete the square in $x$ and $y$.
+
+## Solution
+
+**Complete the square.** $(x^2-6x+9)+(y^2+8y+16)=11+9+16=36$.
+
+**Center and radius.** $(x-3)^2+(y+4)^2=36$, so center $(3,-4)$, radius $6$.
+
+**Conclusion.** Center $(3,-4)$, radius $6$.
+
+@@@ plane-conic-classification.md
+---
+title: Classification of conics
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: conic, ellipse, parabola, hyperbola
+date: 2026-11-03
+---
+
+## Statement
+
+Classify the conic $4x^2+9y^2-16x+18y-11=0$.
+
+## Hint
+
+Complete the square; the signs of the quadratic coefficients determine the type.
+
+## Solution
+
+**Complete the square.**
+$$4(x^2-4x+4)+9(y^2+2y+1)=11+16+9=36.$$
+So $4(x-2)^2+9(y+1)^2=36$, i.e. $\frac{(x-2)^2}{9}+\frac{(y+1)^2}{4}=1$.
+
+**Type.** Both coefficients positive: ellipse.
+
+**Conclusion.** The conic is an ellipse centered at $(2,-1)$ with semi-axes $3$ and $2$.
+
+@@@ plane-ellipse-foci.md
+---
+title: The ellipse as a locus
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: ellipse, focus, locus
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the locus of points $P$ with $PF_1+PF_2=2a$ (where $F_1=(-c,0)$, $F_2=(c,0)$, $a>c$) is an ellipse with equation $\frac{x^2}{a^2}+\frac{y^2}{a^2-c^2}=1$.
+
+## Hint
+
+Write $PF_1+PF_2=2a$ and simplify.
+
+## Solution
+
+**Setup.** $\sqrt{(x+c)^2+y^2}+\sqrt{(x-c)^2+y^2}=2a$.
+
+**Standard reduction.** Move one term to the RHS, square, simplify. Eventually: $(a^2-c^2)x^2+a^2y^2=a^2(a^2-c^2)$.
+
+**Rewrite.** With $b^2=a^2-c^2$: $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$.
+
+**Conclusion.** The locus is an ellipse with foci $\pm c$ and semi-axes $a,b$.
+
+@@@ plane-hyperbola.md
+---
+title: The hyperbola
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: hyperbola, asymptote, focus
+date: 2026-11-03
+---
+
+## Statement
+
+Analyze the hyperbola $\frac{x^2}{9}-\frac{y^2}{16}=1$: find foci, asymptotes, and vertices.
+
+## Hint
+
+$c^2=a^2+b^2$ for hyperbolas. Asymptotes: $y=\pm(b/a)x$.
+
+## Solution
+
+**Parameters.** $a=3$, $b=4$, so $c^2=9+16=25$, $c=5$.
+
+**Foci.** $(\pm5,0)$.
+
+**Vertices.** $(\pm3,0)$.
+
+**Asymptotes.** $y=\pm\frac43 x$.
+
+**Conclusion.** Foci $(\pm5,0)$, vertices $(\pm3,0)$, asymptotes $y=\pm\frac43 x$.
+
+@@@ plane-parabola-focus.md
+---
+title: The parabola
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: parabola, focus, directrix
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the locus of points equidistant from a point $F$ and a line $D$ is a parabola.
+
+## Hint
+
+Use coordinates with $F=(p,0)$ and $D:x=-p$.
+
+## Solution
+
+**Setup.** $P=(x,y)$ with $PF=\sqrt{(x-p)^2+y^2}$ and distance to $D$ is $|x+p|$.
+
+**Equate.** $\sqrt{(x-p)^2+y^2}=|x+p|$, so $(x-p)^2+y^2=(x+p)^2$.
+
+**Simplify.** $-2px+y^2=2px$, so $y^2=4px$.
+
+**Conclusion.** A parabola with focus $F=(p,0)$ and directrix $x=-p$.
+
+@@@ plane-polar-coordinates.md
+---
+title: Polar coordinates
+category: geometry/plane
+level: l1
+difficulty: 2
+tags: polar coordinates, conversion, circles
+date: 2026-11-03
+---
+
+## Statement
+
+Convert the polar equation $r=2\cos\theta$ to Cartesian coordinates and identify the curve.
+
+## Hint
+
+Multiply by $r$: $r^2=2r\cos\theta$.
+
+## Solution
+
+**Multiply by $r$.** $r^2=2r\cos\theta$, i.e. $x^2+y^2=2x$.
+
+**Complete the square.** $(x-1)^2+y^2=1$.
+
+**Conclusion.** A circle centered at $(1,0)$ with radius $1$.
+
+@@@ plane-parametric-curve.md
+---
+title: Parametric curves
+category: geometry/plane
+level: l1
+difficulty: 3
+tags: parametric, curve, circle
+date: 2026-11-03
+---
+
+## Statement
+
+Eliminate the parameter $t$ from $x=\cos t$, $y=\sin t$.
+
+## Hint
+
+Use $\cos^2 t+\sin^2 t=1$.
+
+## Solution
+
+**Eliminate.** $x^2+y^2=\cos^2 t+\sin^2 t=1$.
+
+**Conclusion.** The unit circle $x^2+y^2=1$.
+
+@@@ plane-astroid.md
+---
+title: The astroid
+category: geometry/plane
+level: l1
+difficulty: 4
+tags: astroid, parametric, curve
+date: 2026-11-03
+---
+
+## Statement
+
+Analyze the astroid $x^{2/3}+y^{2/3}=1$.
+
+## Hint
+
+Use the parametrization $x=\cos^3 t$, $y=\sin^3 t$.
+
+## Solution
+
+**Parametrization.** $x=\cos^3 t$, $y=\sin^3 t$ satisfies $x^{2/3}+y^{2/3}=\cos^2 t+\sin^2 t=1$.
+
+**Properties.** Four cusps at $(\pm1,0),(0,\pm1)$. Symmetric about both axes.
+
+**Conclusion.** The astroid has $4$ cusps; it is the envelope of a family of segments.
+
+@@@ plane-cissoid.md
+---
+title: The cissoid of Diocles
+category: geometry/plane
+level: l1
+difficulty: 4
+tags: cissoid, curve, construction
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the cissoid of Diocles and give its Cartesian equation.
+
+## Hint
+
+Given a circle and a tangent line, the cissoid is constructed from a point on the circle and a segment along a secant.
+
+## Solution
+
+**Definition.** For circle $x^2+y^2=2x$ (center $(1,0)$, radius $1$) and tangent line $x=2$, the cissoid has equation
+$$y^2=\frac{x^3}{2-x}.$$
+
+**Properties.** Symmetric about $x$-axis; asymptote $x=2$; cusp at origin.
+
+**Conclusion.** The cissoid of Diocles is a classical curve used to solve the Delian problem (doubling the cube).
+
+@@@ plane-3d-coordinates.md
+---
+title: 3D Cartesian coordinates
+category: geometry/space
+level: lycee
+difficulty: 1
+tags: 3D coordinates, distance, midpoint
+date: 2026-11-03
+---
+
+## Statement
+
+Given $A(1,2,3)$ and $B(4,6,8)$, compute $AB$ and the midpoint $M$ of $AB$.
+
+## Hint
+
+$AB=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}$.
+
+## Solution
+
+**Distance.** $AB=\sqrt{3^2+4^2+5^2}=\sqrt{50}=5\sqrt2$.
+
+**Midpoint.** $M=((1+4)/2,(2+6)/2,(3+8)/2)=(2.5,4,5.5)$.
+
+**Conclusion.** $AB=5\sqrt2$, $M=(2.5,4,5.5)$.
+
+@@@ plane-line-3d.md
+---
+title: Lines in 3D
+category: geometry/space
+level: l1
+difficulty: 2
+tags: line in space, parametric, direction
+date: 2026-11-03
+---
+
+## Statement
+
+Give a parametric equation for the line through $A(1,2,3)$ in direction $\vec{v}=(2,-1,4)$.
+
+## Hint
+
+$M(t)=A+t\vec{v}$.
+
+## Solution
+
+**Parametric.** $(x,y,z)=(1,2,3)+t(2,-1,4)=(1+2t, 2-t, 3+4t)$, $t\in\mathbb{R}$.
+
+**Conclusion.** The parametric equations are $x=1+2t$, $y=2-t$, $z=3+4t$.
+
+@@@ plane-plane-3d.md
+---
+title: Planes in 3D
+category: geometry/space
+level: l1
+difficulty: 2
+tags: plane, normal vector, equation
+date: 2026-11-03
+---
+
+## Statement
+
+Find the equation of the plane passing through $A(1,0,0)$, $B(0,1,0)$, $C(0,0,1)$.
+
+## Hint
+
+Two vectors in the plane determine a normal vector via cross product.
+
+## Solution
+
+**Vectors.** $\vec{AB}=(-1,1,0)$, $\vec{AC}=(-1,0,1)$.
+
+**Normal.** $\vec{n}=\vec{AB}\times\vec{AC}=(1,1,1)$ (compute: $1\cdot1-0\cdot0=1$, $0\cdot(-1)-(-1)\cdot1=1$, $(-1)\cdot0-1\cdot(-1)=1$).
+
+**Equation.** $\vec{n}\cdot(M-A)=0$: $(x-1)+y+z=0$, i.e. $x+y+z=1$.
+
+**Conclusion.** The plane is $x+y+z=1$.
+
+@@@ plane-line-plane-intersection.md
+---
+title: Intersection of a line and a plane
+category: geometry/space
+level: l1
+difficulty: 3
+tags: line-plane, intersection, 3D
+date: 2026-11-03
+---
+
+## Statement
+
+Find the intersection of line $M(t)=(1+t, 2-t, 3+2t)$ and plane $x+2y-z=3$.
+
+## Hint
+
+Substitute the parametric equations into the plane equation.
+
+## Solution
+
+**Substitute.** $(1+t)+2(2-t)-(3+2t)=3$, i.e. $1+t+4-2t-3-2t=3$, so $2-3t=3$, $t=-1/3$.
+
+**Point.** $M(-1/3)=(1-1/3, 2+1/3, 3-2/3)=(2/3,7/3,7/3)$.
+
+**Conclusion.** Intersection at $(2/3,7/3,7/3)$.
+
+@@@ plane-sphere.md
+---
+title: Spheres
+category: geometry/space
+level: l1
+difficulty: 2
+tags: sphere, equation, center
+date: 2026-11-03
+---
+
+## Statement
+
+Find the center and radius of the sphere $x^2+y^2+z^2-4x+6y-2z-22=0$.
+
+## Hint
+
+Complete the square in each variable.
+
+## Solution
+
+**Complete.** $(x-2)^2+(y+3)^2+(z-1)^2=22+4+9+1=36$.
+
+**Center and radius.** Center $(2,-3,1)$, radius $6$.
+
+**Conclusion.** Center $(2,-3,1)$, radius $6$.
+
+@@@ plane-vector-product.md
+---
+title: Cross product
+category: geometry/space
+level: l1
+difficulty: 2
+tags: cross product, vector, area
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\vec{u}\times\vec{v}$ for $\vec{u}=(1,2,3)$, $\vec{v}=(4,5,6)$. What is its geometric meaning?
+
+## Hint
+
+$\vec{u}\times\vec{v}=(u_2v_3-u_3v_2, u_3v_1-u_1v_3, u_1v_2-u_2v_1)$.
+
+## Solution
+
+**Compute.** $\vec{u}\times\vec{v}=(2\cdot6-3\cdot5, 3\cdot4-1\cdot6, 1\cdot5-2\cdot4)=(-3,6,-3)$.
+
+**Meaning.** The vector $\vec{u}\times\vec{v}$ is orthogonal to both $\vec{u}$ and $\vec{v}$; its norm equals the area of the parallelogram spanned by $\vec{u},\vec{v}$.
+
+**Conclusion.** $\vec{u}\times\vec{v}=(-3,6,-3)$.
+
+@@@ plane-plane-plane-intersection.md
+---
+title: Intersection of two planes
+category: geometry/space
+level: l1
+difficulty: 3
+tags: plane intersection, 3D, parametric
+date: 2026-11-03
+---
+
+## Statement
+
+Find the line of intersection of the planes $x+y+z=1$ and $2x-y+z=0$.
+
+## Hint
+
+Solve the system for two variables in terms of the third; get a parametric line.
+
+## Solution
+
+**Solve.** Subtract: $x-2y=-1$, i.e. $x=2y-1$. Substituting into the first: $(2y-1)+y+z=1$, so $z=2-3y$.
+
+**Parametric.** $(x,y,z)=(2t-1, t, 2-3t)$, $t\in\mathbb{R}$.
+
+**Conclusion.** The intersection line has parametric equations $x=2t-1$, $y=t$, $z=2-3t$.
+
+@@@ plane-distance-point-plane.md
+---
+title: Distance from a point to a plane
+category: geometry/space
+level: l1
+difficulty: 2
+tags: distance, plane, 3D
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance from $P(1,2,3)$ to the plane $2x-y+2z=6$.
+
+## Hint
+
+$d=\frac{|ax_0+by_0+cz_0-d|}{\sqrt{a^2+b^2+c^2}}$.
+
+## Solution
+
+**Apply formula.** $d=\frac{|2\cdot1-2+2\cdot3-6|}{\sqrt{4+1+4}}=\frac{|2-2+6-6|}{3}=\frac{0}{3}=0$.
+
+**Conclusion.** $P$ lies on the plane. Distance $0$.
+
+@@@ plane-distance-point-line.md
+---
+title: Distance from a point to a line in 3D
+category: geometry/space
+level: l1
+difficulty: 3
+tags: distance, line, cross product
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance from $P(1,1,1)$ to the line through $A(0,0,0)$ and direction $\vec{v}=(1,0,0)$ (the $x$-axis).
+
+## Hint
+
+$d=\frac{\|\vec{AP}\times\vec{v}\|}{\|\vec{v}\|}$.
+
+## Solution
+
+**Vectors.** $\vec{AP}=(1,1,1)$, $\vec{v}=(1,0,0)$.
+
+**Cross.** $\vec{AP}\times\vec{v}=(0\cdot0-1\cdot0, 1\cdot1-1\cdot0, 1\cdot0-1\cdot1)=(0,1,-1)$.
+
+**Distance.** $d=\frac{\sqrt{0+1+1}}{1}=\sqrt2$.
+
+**Conclusion.** Distance is $\sqrt2$ (equal to $\sqrt{1^2+1^2}$ from the projection point $(1,0,0)$).
+
+@@@ plane-vector-volume.md
+---
+title: Volume of a parallelepiped
+category: geometry/space
+level: l1
+difficulty: 3
+tags: volume, parallelepiped, triple product
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the volume of the parallelepiped spanned by $\vec{u}=(1,2,3)$, $\vec{v}=(4,5,6)$, $\vec{w}=(7,8,9)$.
+
+## Hint
+
+$V=|\vec{u}\cdot(\vec{v}\times\vec{w})|$.
+
+## Solution
+
+**Triple product.** $\vec{v}\times\vec{w}=(5\cdot9-6\cdot8, 6\cdot7-4\cdot9, 4\cdot8-5\cdot7)=(-3, 6, -3)$.
+
+$\vec{u}\cdot(\vec{v}\times\vec{w})=1\cdot(-3)+2\cdot6+3\cdot(-3)=-3+12-9=0$.
+
+**Conclusion.** Volume is $0$: the three vectors are coplanar.
+
+@@@ plane-spherical-coordinates.md
+---
+title: Spherical coordinates
+category: geometry/space
+level: l1
+difficulty: 3
+tags: spherical coordinates, conversion, 3D
+date: 2026-11-03
+---
+
+## Statement
+
+Convert $(x,y,z)=(1,1,\sqrt2)$ to spherical coordinates $(\rho,\theta,\varphi)$ with $\varphi$ measured from the $z$-axis.
+
+## Hint
+
+$\rho=\sqrt{x^2+y^2+z^2}$, $\tan\theta=y/x$, $\cos\varphi=z/\rho$.
+
+## Solution
+
+**Radius.** $\rho=\sqrt{1+1+2}=2$.
+
+**Azimuth.** $\theta=\arctan(1/1)=\pi/4$.
+
+**Polar.** $\cos\varphi=\sqrt2/2$, so $\varphi=\pi/4$.
+
+**Conclusion.** $(\rho,\theta,\varphi)=(2,\pi/4,\pi/4)$.
+
+@@@ plane-cylindrical-coordinates.md
+---
+title: Cylindrical coordinates
+category: geometry/space
+level: l1
+difficulty: 3
+tags: cylindrical coordinates, 3D, conversion
+date: 2026-11-03
+---
+
+## Statement
+
+Describe a cylinder in cylindrical coordinates $(r,\theta,z)$.
+
+## Hint
+
+A cylinder of radius $R$ about the $z$-axis: $r=R$.
+
+## Solution
+
+**Equation.** $r=R$ (constant). The parameter $\theta$ ranges over $[0,2\pi)$, $z$ over $\mathbb{R}$.
+
+**Cartesian.** $x^2+y^2=R^2$.
+
+**Conclusion.** Cylindrical coordinates give simple equations for surfaces of revolution around the $z$-axis.
+
+@@@ plane-solid-of-revolution.md
+---
+title: Surfaces of revolution
+category: geometry/space
+level: l1
+difficulty: 3
+tags: revolution, surface, 3D
+date: 2026-11-03
+---
+
+## Statement
+
+Find the equation of the surface obtained by revolving $y=x^2$ about the $y$-axis.
+
+## Hint
+
+Replace $x$ with $\sqrt{x^2+z^2}$.
+
+## Solution
+
+**Substitute.** $y=(\sqrt{x^2+z^2})^2=x^2+z^2$.
+
+**Conclusion.** The surface is a paraboloid of revolution: $y=x^2+z^2$.
+
+@@@ plane-3d-isometry.md
+---
+title: Isometries in 3D (statement)
+category: geometry/space
+level: l1
+difficulty: 4
+tags: 3D isometries, rotation, reflection
+date: 2026-11-03
+---
+
+## Statement
+
+Classify the isometries of $\mathbb{R}^3$.
+
+## Hint
+
+An isometry is determined by a linear orthogonal part and a translation.
+
+## Solution
+
+**Structure.** Every isometry of $\mathbb{R}^3$ is $x\mapsto Ax+b$ where $A$ is orthogonal.
+
+**Classification by $\det A$.**
+- $\det A=1$: orientation-preserving, either identity, rotation, translation, screw motion (rotation + translation along axis).
+- $\det A=-1$: orientation-reversing, either reflection in a plane, glide reflection, or rotary reflection (rotation composed with reflection in perpendicular plane).
+
+**Conclusion.** Isometries of $\mathbb{R}^3$ fall into the two orientation classes with the subtypes listed.
+
+@@@ plane-summary.md
+---
+title: Summary of geometry
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: summary, geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Summarize the key facts from plane and space geometry.
+
+## Hint
+
+Review the main theorems.
+
+## Solution
+
+**Plane geometry.**
+- Triangle angle sum $=\pi$; Pythagorean theorem; Thales.
+- Law of sines ($\frac{a}{\sin A}=2R$), law of cosines.
+- Similar triangles; area formulas (Heron, $S=\frac12bc\sin A$).
+- Circle theorems: inscribed angle, tangent-chord, power of a point.
+- Ceva, Menelaus, Ptolemy; orthocenter, incenter, centroid, Euler line.
+- Conics (ellipse, hyperbola, parabola) with foci and directrices.
+
+**Space geometry.**
+- 3D coordinates, distance, midpoint.
+- Lines, planes; intersection; distance formulas.
+- Cross product, scalar triple product (volume).
+- Spherical/cylindrical coordinates; surfaces of revolution.
+- Classification of 3D isometries.
+
+**Conclusion.** Geometry provides a rich framework for understanding shapes, distances, and transformations in 2D and 3D.
 @@@ geo-the-reflection-of-the-orthocentre.md
 ---
 title: The reflection of the orthocentre lies on the circumcircle
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 2
 tags: angle chasing, cyclic quadrilateral, orthocentre
@@ -32,7 +4198,7 @@ The angles $\angle BHC$ and $\angle FHE$ are vertical angles (the lines $BE$ and
 @@@ geo-ptolemy-and-the-equilateral-triangle.md
 ---
 title: Ptolemy and a point on the circumcircle of an equilateral triangle
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 2
 tags: Ptolemy's theorem, cyclic quadrilateral, equilateral triangle
@@ -65,7 +4231,7 @@ Since $AB=BC=CA=s$, we get $s\cdot PA=s\cdot PC+s\cdot PB$, so $PA=PB+PC$. $\bla
 @@@ geo-the-simson-line.md
 ---
 title: The Simson line
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 4
 tags: Simson line, complex numbers, collinearity, unit circle
@@ -108,7 +4274,7 @@ Thus $Q\in\mathbb R$, which means that $f_a,f_b,f_c$ are collinear. (If $P$ coin
 @@@ geo-the-radical-axis-and-the-common-tangent.md
 ---
 title: The radical axis bisects the common tangent
-category: olympiad/oly-geometry
+category: geometry
 level: m1
 difficulty: 2
 tags: power of a point, radical axis, tangent
@@ -140,7 +4306,7 @@ $$MT_1^2=MA\cdot MB.$$
 @@@ geo-the-orthocentre-and-three-equal-products.md
 ---
 title: Three equal products at the orthocentre
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 3
 tags: radical axis, radical centre, orthocentre, circles on diameters
@@ -173,7 +4339,7 @@ $$HA\cdot HD=HB\cdot HE=HC\cdot HF.\ \blacksquare$$
 @@@ geo-concurrency-of-the-lines-to-the-incircle-touch-points.md
 ---
 title: The Gergonne point and Ceva's theorem
-category: olympiad/oly-geometry
+category: geometry
 level: m1
 difficulty: 2
 tags: Ceva's theorem, incircle, tangent lengths
@@ -206,7 +4372,7 @@ $$BD:DC=y:z=6:8=3:4.$$
 @@@ geo-the-external-bisectors-and-menelaus.md
 ---
 title: The three external bisectors meet the sides on a line
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 3
 tags: Menelaus's theorem, angle bisector theorem, collinearity
@@ -241,7 +4407,7 @@ where $a=BC,b=CA,c=AB$. The product of the lengths is $\frac cb\cdot\frac ac\cdo
 @@@ geo-the-euler-line.md
 ---
 title: The Euler line, by vectors
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 3
 tags: Euler line, orthocentre, centroid, circumcentre, vectors
@@ -274,7 +4440,7 @@ So the point $H'$ with vector $\mathbf h$ lies on the line through $A$ perpendic
 @@@ geo-the-nine-point-circle.md
 ---
 title: The nine-point circle
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 4
 tags: nine-point circle, complex numbers, orthocentre, feet of altitudes
@@ -312,7 +4478,7 @@ Same for the feet from $B$ and $C$.
 @@@ geo-a-regular-heptagon-identity.md
 ---
 title: The regular heptagon identity
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 4
 tags: Ptolemy's theorem, regular heptagon, chords
@@ -346,7 +4512,7 @@ $$\frac1a=\frac1c+\frac1b.\ \blacksquare$$
 @@@ geo-the-area-of-a-right-triangle-and-its-incircle.md
 ---
 title: The area of a right triangle from the incircle touch point
-category: olympiad/oly-geometry
+category: geometry
 level: m1
 difficulty: 3
 tags: incircle, tangent lengths, Pythagoras, right triangle
@@ -379,7 +4545,7 @@ $$[ABC]=rs=r(x+y+r)=r^2+r(x+y)=xy.\ \blacksquare$$
 @@@ geo-napoleon-s-theorem.md
 ---
 title: Napoleon's theorem
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 4
 tags: complex numbers, rotations, equilateral triangle
@@ -422,7 +4588,7 @@ So $G_a+\omega G_b+\omega^2G_c=0$.
 @@@ geo-squares-on-two-sides-and-the-median.md
 ---
 title: Squares on two sides and the median
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 3
 tags: complex numbers, squares, median, perpendicularity
@@ -455,7 +4621,7 @@ Multiplication by $i$ is a rotation by $90^\circ$ and $|i|=1$, so $\overrightarr
 @@@ geo-two-intersecting-circles-and-parallel-lines.md
 ---
 title: Two circles, two secants and a pair of parallel lines
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 3
 tags: directed angles, cyclic quadrilateral, parallel lines
@@ -489,7 +4655,7 @@ which means $PP'\parallel QQ'$. $\blacksquare$
 @@@ geo-the-point-minimising-the-sum-of-distances-to-four-vertices.md
 ---
 title: The point minimising the sum of distances to the vertices of a convex quadrilateral
-category: olympiad/oly-geometry
+category: geometry
 level: m1
 difficulty: 2
 tags: triangle inequality, extremal, convex quadrilateral
@@ -520,7 +4686,7 @@ Therefore $PA+PB+PC+PD\ge AC+BD$.
 @@@ geo-three-cevians-and-one-seventh-of-the-area.md
 ---
 title: The one-seventh triangle
-category: olympiad/oly-geometry
+category: geometry
 level: olympiad
 difficulty: 4
 tags: area ratios, cevians, affine invariance, coordinates
