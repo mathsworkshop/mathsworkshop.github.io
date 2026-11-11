@@ -267,7 +267,7 @@ But because columns $j$ and $k$ are equal, $\prod_i a_{\sigma\circ\tau(i),i} = \
 
 **2. Swapping columns.** Let $B$ be obtained from $A$ by swapping columns $j$ and $k$. Consider the determinant of $A+B$: column $j$ of $A+B$ is $C_j + C_k$, and column $k$ is $C_k+C_j$, so these columns are equal. By (1), $\det(A+B)=0$. By multilinearity:
 $$0 = \det(A+B) = \det A + \det A^{j\leftarrow k} + \det A^{k\leftarrow j} + \det B,$$
-where $A^{j\leftarrow k}$ has column $j$ replaced by $C_k$ (and column $k$ unchanged) â€” this matrix has two equal columns $C_k$, so its determinant is zero. Similarly $\det A^{k\leftarrow j}=0$. Hence $\det B = -\det A$.
+where $A^{j\leftarrow k}$ has column $j$ replaced by $C_k$ (and column $k$ unchanged). This matrix has two equal columns $C_k$, so its determinant is zero. Similarly $\det A^{k\leftarrow j}=0$. Hence $\det B = -\det A$.
 
 **Conclusion.** The determinant is alternating: zero on equal columns, and swapping two columns flips the sign.
 
@@ -727,7 +727,7 @@ date: 2026-11-03
 
 Let $u,v\in\mathbb{R}^n$. Show that the Gram determinant
 $$G(u,v) = \begin{vmatrix} \langle u,u\rangle & \langle u,v\rangle \\ \langle v,u\rangle & \langle v,v\rangle \end{vmatrix}$$
-satisfies $G(u,v)\ge0$, with equality iff $u,v$ are linearly dependent. Deduce the Cauchyâ€“Schwarz inequality.
+satisfies $G(u,v)\ge0$, with equality iff $u,v$ are linearly dependent. Deduce the Cauchy-Schwarz inequality.
 
 ## Hint
 
@@ -744,9 +744,9 @@ If $v=0$, then $G(u,v)=0$ and $u,v$ are dependent. Otherwise, choosing $t=\langl
 $$\|u\|^2 - \frac{\langle u,v\rangle^2}{\|v\|^2}\ge0,$$
 which rearranges to $G(u,v)\ge0$. Equality holds iff $u=tv$ for some $t$, i.e. iff $u,v$ are dependent.
 
-**Cauchyâ€“Schwarz.** From $G(u,v)\ge0$: $\langle u,v\rangle^2\le\|u\|^2\|v\|^2$, so $|\langle u,v\rangle|\le\|u\|\|v\|$.
+**Cauchy-Schwarz.** From $G(u,v)\ge0$: $\langle u,v\rangle^2\le\|u\|^2\|v\|^2$, so $|\langle u,v\rangle|\le\|u\|\|v\|$.
 
-**Conclusion.** The Gram determinant is nonnegative, vanishes iff the vectors are dependent, and yields the Cauchyâ€“Schwarz inequality.
+**Conclusion.** The Gram determinant is nonnegative, vanishes iff the vectors are dependent, and yields the Cauchy-Schwarz inequality.
 
 @@@ determinant-gram-schmidt-volume.md
 ---
@@ -842,38 +842,6 @@ $$\Delta = (1+a+b)(a^2-ab+b^2-a-b+1).$$
 
 **Remark.** When $a=b=1$, the determinant is $3\cdot(1-1+1-1-1+1)=0$, consistent with a matrix with all entries $1$.
 
-@@@ determinant-companion.md
----
-title: Determinant of a companion matrix
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: companion matrix, determinant, characteristic polynomial
-date: 2026-11-03
----
-
-## Statement
-
-Compute the determinant of
-$$C = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ -c_0 & -c_1 & -c_2 \end{pmatrix}.$$
-
-## Hint
-
-Expand along the first column, or recognise the characteristic polynomial of the companion matrix.
-
-## Solution
-
-**Expansion along the first column.** Only the entry $-c_0$ is nonzero in column $1$ (at position $(3,1)$), with sign $(-1)^{3+1}=+1$. So
-$$\det C = -c_0\cdot\begin{vmatrix} 1 & 0 \\ 0 & 1 \end{vmatrix} = -c_0.$$
-
-Wait, that is wrong: the cofactor expansion gives $\det C = (-c_0)\cdot(-1)^{3+1}\cdot\begin{vmatrix}1&0\\0&1\end{vmatrix} = -c_0$.
-
-**Check by Sarrus.**
-$$0\cdot0\cdot(-c_2)+1\cdot1\cdot(-c_0)+0\cdot0\cdot(-c_1)-0\cdot0\cdot(-c_0)-0\cdot1\cdot(-c_1)-1\cdot0\cdot(-c_2)=-c_0.$$
-
-**Conclusion.** $\det C = -c_0$.
-
-**Remark.** This matrix is the companion matrix of the polynomial $X^3+c_2X^2+c_1X+c_0$. Its characteristic polynomial is $(-1)^3(\lambda^3+c_2\lambda^2+c_1\lambda+c_0)=-\lambda^3-\cdots$, and the constant term (up to sign) is $-c_0$, consistent with $\det C = (-1)^n c_0$ for the companion matrix of size $n$.
 
 @@@ determinant-sylvester.md
 ---
@@ -2066,7 +2034,6 @@ Use Gaussian elimination without pivoting, tracking the multipliers.
 
 **First step.** $L_2\leftarrow L_2-(1/2)L_1$: multiplier $\ell_{21}=1/2$. New matrix:
 $$\begin{pmatrix}4&2\\0&4\end{pmatrix}.$$
-Wait, let me compute: $5-(1/2)\cdot2=4$, and $2-(1/2)\cdot4=0$. So yes, $\begin{pmatrix}4&2\\0&4\end{pmatrix}$.
 
 **Decomposition.**
 $$L=\begin{pmatrix}1&0\\1/2&1\end{pmatrix},\qquad D=\begin{pmatrix}4&0\\0&4\end{pmatrix}.$$
@@ -2103,7 +2070,7 @@ $$Q=x^2+xy+y^2-\frac34(x^2+2xy+y^2)=\frac14x^2-\frac12xy+\frac14y^2=\frac14(x-y)
 
 **Conclusion.** $Q=\frac14(x-y)^2\ge0$, with equality iff $x=y$. Hence the inequality holds.
 
-**Remark.** This is a special case of the Cauchyâ€“Schwarz-type inequalities involving quadratic forms.
+**Remark.** This is a special case of the Cauchy-Schwarz-type inequalities involving quadratic forms.
 
 @@@ inner-product-definition.md
 ---
@@ -2137,7 +2104,7 @@ Symmetry in the second variable follows similarly.
 
 @@@ inner-product-cauchy-schwarz.md
 ---
-title: Cauchyâ€“Schwarz inequality
+title: Cauchy-Schwarz inequality
 category: linear/inner-products
 level: lycee
 difficulty: 2
@@ -2185,14 +2152,14 @@ $$\|u+v\|\le\|u\|+\|v\|.$$
 
 ## Hint
 
-Expand $\|u+v\|^2$ and bound $\langle u,v\rangle$ using Cauchyâ€“Schwarz.
+Expand $\|u+v\|^2$ and bound $\langle u,v\rangle$ using Cauchy-Schwarz.
 
 ## Solution
 
 **Expansion.**
 $$\|u+v\|^2=\|u\|^2+2\langle u,v\rangle+\|v\|^2.$$
 
-**Bound.** By Cauchyâ€“Schwarz, $\langle u,v\rangle\le|\langle u,v\rangle|\le\|u\|\|v\|$, so
+**Bound.** By Cauchy-Schwarz, $\langle u,v\rangle\le|\langle u,v\rangle|\le\|u\|\|v\|$, so
 $$\|u+v\|^2\le\|u\|^2+2\|u\|\|v\|+\|v\|^2=(\|u\|+\|v\|)^2.$$
 
 **Conclusion.** Taking square roots: $\|u+v\|\le\|u\|+\|v\|$, with equality iff $u,v$ are nonnegatively proportional.
@@ -2227,7 +2194,7 @@ Since $v_j\neq0$, $\|v_j\|^2>0$, so $\alpha_j=0$.
 
 @@@ inner-product-gram-schmidt.md
 ---
-title: Gramâ€“Schmidt orthonormalization
+title: Gram-Schmidt orthonormalization
 category: linear/inner-products
 level: l1
 difficulty: 3
@@ -2237,7 +2204,7 @@ date: 2026-11-03
 
 ## Statement
 
-Apply Gramâ€“Schmidt to the vectors $v_1=(1,1,0)$, $v_2=(1,0,1)$, $v_3=(0,1,1)$ in $\mathbb{R}^3$ with the standard inner product.
+Apply Gram-Schmidt to the vectors $v_1=(1,1,0)$, $v_2=(1,0,1)$, $v_3=(0,1,1)$ in $\mathbb{R}^3$ with the standard inner product.
 
 ## Hint
 
@@ -2257,7 +2224,7 @@ Orthogonal part:
 $$w_3=v_3-\frac{1}{\sqrt2}u_1-\frac{2}{\sqrt6}u_2.$$
 Compute: $\frac{1}{\sqrt2}u_1=(1/2,1/2,0)$ and $\frac{2}{\sqrt6}u_2=(1/3,-1/3,2/3)$. So
 $$w_3=(0,1,1)-(1/2,1/2,0)-(1/3,-1/3,2/3)=(-5/6,5/6,1/3).$$
-Wait, check: $0-1/2-1/3=-5/6$; $1-1/2+1/3=5/6$; $1-0-2/3=1/3$. Norm: $\sqrt{25/36+25/36+4/36}=\sqrt{54}/6$. Simplify: $\sqrt{54}=3\sqrt6$, so $\|w_3\|=\sqrt6/2$. Hence $u_3=w_3/\|w_3\|=(-5,5,2)/\sqrt{54}$.
+ Norm: $\sqrt{25/36+25/36+4/36}=\sqrt{54}/6$. Simplify: $\sqrt{54}=3\sqrt6$, so $\|w_3\|=\sqrt6/2$. Hence $u_3=w_3/\|w_3\|=(-5,5,2)/\sqrt{54}$.
 
 **Conclusion.** The orthonormal basis is
 $$u_1=\frac{1}{\sqrt2}(1,1,0),\quad u_2=\frac{1}{\sqrt6}(1,-1,2),\quad u_3=\frac{1}{\sqrt{54}}(-5,5,2).$$
@@ -2278,7 +2245,7 @@ In $\mathbb{R}_2[X]$ with inner product $\langle P,Q\rangle=\int_0^1 P(t)Q(t)\,d
 
 ## Hint
 
-Apply Gramâ€“Schmidt with respect to the integral inner product.
+Apply Gram-Schmidt with respect to the integral inner product.
 
 ## Solution
 
@@ -2293,7 +2260,36 @@ $$w_3=X^2-\frac13-\frac{\sqrt3}{6}\cdot\sqrt3(2X-1)=X^2-\frac13-\frac12(2X-1)=X^
 Norm: $\|w_3\|^2=\int_0^1(X^2-X+1/6)^2\,dt=1/180$. So $u_3=6\sqrt5(X^2-X+1/6)$.
 
 **Conclusion.** The orthonormal basis is $(1,\sqrt3(2X-1),6\sqrt5(X^2-X+1/6))$.
+@@@ determinant-companion.md
+---
+title: Determinant of a companion matrix
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: companion matrix, determinant, characteristic polynomial
+date: 2026-11-03
+---
 
+## Statement
+
+Compute the determinant of
+$$C = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ -c_0 & -c_1 & -c_2 \end{pmatrix}.$$
+
+## Hint
+
+Expand along the first column, or recognise the companion matrix of $X^3+c_2X^2+c_1X+c_0$.
+
+## Solution
+
+**Expansion along the first column.** The only nonzero entry in column $1$ is $C_{31}=-c_0$. Its cofactor is
+$$(-1)^{3+1}\begin{vmatrix}1&0\\0&1\end{vmatrix}=+1.$$
+Hence
+$$\det C=(-c_0)\cdot(+1)=-c_0.$$
+
+
+**Remark.** This is the companion matrix of $P(X)=X^3+c_2X^2+c_1X+c_0$. Its characteristic polynomial is
+$$\det(\lambda I-C)=\lambda^3+c_2\lambda^2+c_1\lambda+c_0=P(\lambda),$$
+which is monic. The constant term of the characteristic polynomial is $c_0$, and for an $n\times n$ companion matrix the determinant equals $(-1)^n$ times that constant term, so here $\det C=(-1)^3c_0=-c_0$, consistent with the direct computation.
 @@@ inner-product-orthogonal-projection.md
 ---
 title: Orthogonal projection onto a subspace
@@ -2314,44 +2310,23 @@ Find an orthonormal basis of $F$, then $p_F(v)=\sum_i\langle v,u_i\rangle u_i$.
 
 ## Solution
 
-**Orthonormal basis of $F$.** From Gramâ€“Schmidt: $u_1=(1,1,0)/\sqrt2$ and $u_2=(1,-1,2)/\sqrt6$.
+**Orthonormal basis of $F$ by Gram–Schmidt.** Take $a_1=(1,1,0)$ and $a_2=(0,1,1)$.
+- $u_1=\dfrac{a_1}{\|a_1\|}=\dfrac{(1,1,0)}{\sqrt2}$.
+- $\langle a_2,u_1\rangle=\dfrac{1}{\sqrt2}$, so
+$$a_2-\langle a_2,u_1\rangle u_1=(0,1,1)-\frac12(1,1,0)=\left(-\frac12,\frac12,1\right),$$
+whose norm is $\sqrt{\tfrac14+\tfrac14+1}=\sqrt{\tfrac32}$. Hence
+$$u_2=\frac{\left(-1/2,\,1/2,\,1\right)}{\sqrt{3/2}}=\frac{(-1,1,2)}{\sqrt6}.$$
 
 **Projections.**
-$$\langle v,u_1\rangle=\frac{3}{\sqrt2},\qquad \langle v,u_2\rangle=\frac{1-2+6}{\sqrt6}=\frac{5}{\sqrt6}.$$
+$$\langle v,u_1\rangle=\frac{1+2+0}{\sqrt2}=\frac{3}{\sqrt2},\qquad
+\langle v,u_2\rangle=\frac{-1+2+6}{\sqrt6}=\frac{7}{\sqrt6}.$$
 
 **Projection.**
-$$p_F(v)=\frac{3}{\sqrt2}u_1+\frac{5}{\sqrt6}u_2=\frac{3}{2}(1,1,0)+\frac{5}{6}(1,-1,2).$$
-Compute:
-$$p_F(v)=\left(\frac32+\frac56, \frac32-\frac56, \frac{10}{6}\right)=\left(\frac73,\frac23,\frac53\right).$$
-
-**Check.** $v-p_F(v)=(-4/3,4/3,4/3)$ should be orthogonal to $F$. Check with $(1,1,0)$: $-4/3+4/3=0$. With $(0,1,1)$: $4/3+4/3\neq0$... wait, let me recompute. $(0,1,1)$ dot $v-p_F(v) = 0\cdot(-4/3)+1\cdot4/3+1\cdot4/3=8/3\neq0$. Something is wrong.
-
-Let me recheck the projection. $\langle v,u_1\rangle = (1+2+0)/\sqrt2=3/\sqrt2$. $\langle v,u_2\rangle = (1-2+6)/\sqrt6=5/\sqrt6$. Then $p_F(v)=(3/2)(1,1,0)+(5/6)(1,-1,2)=(3/2+5/6, 3/2-5/6, 10/6)=(14/6, 4/6, 10/6)=(7/3, 2/3, 5/3)$. Then $v-p_F(v)=(1-7/3, 2-2/3, 3-5/3)=(-4/3,4/3,4/3)$. Dot with $(0,1,1)$: $4/3+4/3=8/3$. This should be zero since $v-p_F(v)\perp F$.
-
-Recheck $u_2$: $u_2=(1,-1,2)/\sqrt6$. Dot with $(0,1,1)$: $0-1+2=1/\sqrt6\cdot1$... yes, $(0,1,1)\cdot u_2=1/\sqrt6$. So $(0,1,1)$ is not orthogonal to $p_F(v)$? That's fine, $p_F(v)\in F$ and $(0,1,1)\in F$, so $(v-p_F(v))\cdot(0,1,1)=0$.
-
-Recheck: $(v-p_F(v))\cdot(0,1,1) = 0\cdot(-4/3)+1\cdot4/3+1\cdot4/3=8/3$. But it should be 0. So the projection is wrong.
-
-Let me redo. $\langle v,u_1\rangle u_1+\langle v,u_2\rangle u_2 = (3/\sqrt2)\cdot(1,1,0)/\sqrt2+(5/\sqrt6)\cdot(1,-1,2)/\sqrt6 = (3/2)(1,1,0)+(5/6)(1,-1,2) = (3/2+5/6, 3/2-5/6, 10/6) = (9/6+5/6, 9/6-5/6, 10/6) = (14/6, 4/6, 10/6) = (7/3, 2/3, 5/3)$.
-
-$v-p_F(v)=(1-7/3, 2-2/3, 3-5/3)=(-4/3,4/3,4/3)$.
-
-$(v-p_F(v))\cdot(0,1,1) = 0+4/3+4/3=8/3$. Hmm.
-
-But wait, is $(0,1,1)$ in $F$? $F=\operatorname{span}((1,1,0),(0,1,1))$. Yes, $(0,1,1)$ is one of the generators. So $(v-p_F(v))\cdot(0,1,1)$ must be 0 for a correct orthogonal projection.
-
-Let me recompute $u_2$. Gramâ€“Schmidt: $v_2=(0,1,1)$, $u_1=(1,1,0)/\sqrt2$. $\langle v_2,u_1\rangle=1/\sqrt2$. $w_2=(0,1,1)-(1/\sqrt2)(1,1,0)/\sqrt2=(0,1,1)-(1/2,1/2,0)=(-1/2,1/2,1)$. Norm $\sqrt{1/4+1/4+1}=\sqrt{3/2}$. So $u_2=(-1/2,1/2,1)/\sqrt{3/2}=(-1,1,2)/\sqrt6$.
-
-Ah, my $u_2$ had the wrong sign! $u_2=(-1,1,2)/\sqrt6$, not $(1,-1,2)/\sqrt6$.
-
-Redo. $\langle v,u_2\rangle=(1\cdot(-1)+2\cdot1+3\cdot2)/\sqrt6=(-1+2+6)/\sqrt6=7/\sqrt6$.
-
-Then $p_F(v)=(3/2)(1,1,0)+(7/6)(-1,1,2)=(3/2-7/6, 3/2+7/6, 14/6)=(1/3, 8/3, 7/3)$.
-
-Check: $v-p_F(v)=(1-1/3, 2-8/3, 3-7/3)=(2/3, -2/3, 2/3)$. Dot with $(1,1,0)$: $2/3-2/3=0$. Dot with $(0,1,1)$: $-2/3+2/3=0$. Correct.
-
-**Conclusion.** $p_F(v)=(1/3, 8/3, 7/3)$.
-
+$$p_F(v)=\frac{3}{\sqrt2}\,u_1+\frac{7}{\sqrt6}\,u_2
+=\frac32(1,1,0)+\frac76(-1,1,2).$$
+Componentwise:
+$$p_F(v)=\left(\frac32-\frac76,\ \frac32+\frac76,\ \frac{14}{6}\right)
+=\left(\frac13,\ \frac83,\ \frac73\right).$$
 @@@ inner-product-orthogonal-complement.md
 ---
 title: Orthogonal complement
@@ -2396,21 +2371,20 @@ Compute the distance from $v=(1,1,1)$ to the plane $F=\{x+y+z=0\}$ in $\mathbb{R
 
 ## Hint
 
-The distance is $\|v-p_F(v)\|$, and $v-p_F(v)$ is the projection onto $F^\perp=\operatorname{span}((1,1,1))$.
+The distance is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$, we may compute $p_{F^\perp}(v)$ instead: the vector $v-p_F(v)$ equals the orthogonal projection of $v$ onto $F^\perp$.
 
 ## Solution
 
-**Orthogonal complement.** $F^\perp=\operatorname{span}((1,1,1))$, normalized to $u=(1,1,1)/\sqrt3$.
+**Orthogonal complement.** $F^\perp = \operatorname{span}\bigl((1,1,1)\bigr)$, normalized to $u=(1,1,1)/\sqrt3$.
 
-**Projection onto $F^\perp$.** $\langle v,u\rangle=(1+1+1)/\sqrt3=3/\sqrt3=\sqrt3$. So $p_{F^\perp}(v)=\sqrt3 u=(1,1,1)$.
+**Projection onto $F^\perp$.** $\langle v,u\rangle = (1+1+1)/\sqrt3 = 3/\sqrt3 = \sqrt3$. Hence
+$$p_{F^\perp}(v) = \langle v,u\rangle\, u = \sqrt3\cdot\frac{(1,1,1)}{\sqrt3} = (1,1,1) = v.$$
+This is consistent: $v\in F^\perp$ because $(1,1,1)$ is exactly the normal of $F$ (and $v\notin F$ since $1+1+1=3\neq 0$).
 
-**Distance.** $v-p_{F^\perp}(v)=v-v=0$? That can't be rightâ€”$v\notin F$.
-
-Wait, $v=(1,1,1)$ has $1+1+1=3\neq0$, so $v\notin F$. Let me recompute. $p_{F^\perp}(v)=\langle v,u\rangle u=\sqrt3\cdot(1,1,1)/\sqrt3=(1,1,1)=v$. But $v\notin F^\perp$ eitherâ€”$F^\perp$ is the line through $(1,1,1)$, so $v=(1,1,1)\in F^\perp$. So $p_F(v)=0$, and distance = $\|v\|=\sqrt3$.
+**Distance.** The distance to $F$ is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$ and $\mathbb{R}^3 = F\oplus F^\perp$, we have $v-p_F(v)=p_{F^\perp}(v)=v$. Therefore
+$$\operatorname{dist}(v,F) = \|v\| = \sqrt{1^2+1^2+1^2}=\sqrt3.$$
 
 **Conclusion.** The distance from $(1,1,1)$ to the plane $x+y+z=0$ is $\sqrt3$.
-
-**Verification.** Distance from a point $(x_0,y_0,z_0)$ to the plane $ax+by+cz+d=0$ is $|ax_0+by_0+cz_0+d|/\sqrt{a^2+b^2+c^2}$. Here $|1+1+1|/\sqrt3=3/\sqrt3=\sqrt3$. Correct.
 
 @@@ inner-product-bessel.md
 ---
@@ -2469,7 +2443,7 @@ Use Bessel's inequality and the fact that $v=\sum_i\langle v,e_i\rangle e_i$ (si
 
 **Norm.** $\|v\|^2=\langle\sum_i c_i e_i,\sum_j c_j e_j\rangle=\sum_i|c_i|^2$ by orthonormality.
 
-**Conclusion.** $\|v\|^2=\sum_i|\langle v,e_i\rangle|^2$ â€” Parseval's identity.
+**Conclusion.** $\|v\|^2=\sum_i|\langle v,e_i\rangle|^2$ = Parseval's identity.
 
 **Remark.** This is the equality case of Bessel's inequality when the orthonormal family is complete (a basis).
 
@@ -2641,16 +2615,15 @@ Let $(e_1,\ldots,e_k)$ be an orthonormal family in a finite-dimensional inner pr
 
 ## Hint
 
-Extend to a basis, then apply Gramâ€“Schmidt while keeping the first $k$ vectors.
+Extend to a basis, then apply Gram-Schmidt while keeping the first $k$ vectors.
 
 ## Solution
 
 **Extension.** By the incomplete basis theorem, extend $(e_1,\ldots,e_k)$ to a basis $(e_1,\ldots,e_k,v_{k+1},\ldots,v_n)$ of $E$.
 
-**Gramâ€“Schmidt, keeping the first $k$.** The vectors $e_1,\ldots,e_k$ are already orthonormal. Apply Gramâ€“Schmidt to the whole basis: the first $k$ vectors don't change (they are already orthonormal), and the process produces orthonormal vectors $e_1,\ldots,e_k,e_{k+1},\ldots,e_n$.
+**Gram-Schmidt, keeping the first $k$.** The vectors $e_1,\ldots,e_k$ are already orthonormal. Apply Gram-Schmidt to the whole basis: the first $k$ vectors don't change (they are already orthonormal), and the process produces orthonormal vectors $e_1,\ldots,e_k,e_{k+1},\ldots,e_n$.
 
 **Conclusion.** $(e_1,\ldots,e_n)$ is an orthonormal basis of $E$ completing the original family.
-
 @@@ inner-product-orthogonal-polynomials-legendre.md
 ---
 title: Legendre polynomials
@@ -2667,22 +2640,35 @@ In $\mathbb{R}_n[X]$ with inner product $\langle P,Q\rangle=\int_{-1}^1 P(t)Q(t)
 
 ## Hint
 
-Apply Gramâ€“Schmidt.
+Apply Gram–Schmidt.
 
 ## Solution
 
-**Step 1.** $\langle 1,1\rangle=2$, so $u_1=1/\sqrt2$.
+**Step 1: normalize $1$.** $\langle 1,1\rangle=\int_{-1}^1 dt=2$, so
+$$u_1=\frac{1}{\sqrt2}.$$
 
-**Step 2.** $\langle X,1\rangle=\int_{-1}^1 t\,dt=0$. So $X\perp1$. Norm: $\langle X,X\rangle=\int_{-1}^1 t^2\,dt=2/3$, so $u_2=X/\sqrt{2/3}=\sqrt{3/2}\,X$.
+**Step 2: orthogonalize $X$ against $u_1$.** $\langle X,1\rangle=\int_{-1}^1 t\,dt=0$, so $X$ is already orthogonal to $1$. Norm:
+$$\langle X,X\rangle=\int_{-1}^1 t^2\,dt=\frac23,\qquad u_2=\frac{X}{\sqrt{2/3}}=\sqrt{\frac32}\,X.$$
 
-**Step 3.** $\langle X^2,1\rangle=\int_{-1}^1 t^2\,dt=2/3$, $\langle X^2,X\rangle=\int_{-1}^1 t^3\,dt=0$. So the orthogonal part is
-$$X^2-\frac{2/3}{2}\cdot1=X^2-\frac13.$$
-Norm: $\int_{-1}^1(t^2-1/3)^2\,dt=2/5-4/9+2/9=...$. Compute: $\int t^4=2/5$, $\int(2/3)t^2=2/9$, $\int1/9=2/9$. So $2/5-2/9+2/9=...$ wait: $\int(t^2-1/3)^2=\int t^4-(2/3)\int t^2+(1/9)\int 1=2/5-(2/3)(2/3)+(1/9)(2)=2/5-4/9+2/9=2/5-2/9=(18-10)/45=8/45$. Norm: $\sqrt{8/45}$. So $u_3=\sqrt{45/8}(X^2-1/3)=\frac{3\sqrt5}{2\sqrt2}(X^2-1/3)$.
+**Step 3: orthogonalize $X^2$ against $u_1,u_2$.**
+$$\langle X^2,1\rangle=\int_{-1}^1 t^2\,dt=\frac23,\qquad \langle X^2,X\rangle=\int_{-1}^1 t^3\,dt=0.$$
+So the orthogonal part is
+$$X^2-\frac{\langle X^2,1\rangle}{\langle 1,1\rangle}\cdot 1=X^2-\frac{2/3}{2}=X^2-\frac13.$$
+Its squared norm:
+$$\int_{-1}^1\left(t^2-\frac13\right)^2 dt=\int_{-1}^1 t^4\,dt-\frac23\int_{-1}^1 t^2\,dt+\frac19\int_{-1}^1 dt=\frac25-\frac49+\frac29=\frac{18-20+10}{45}=\frac{8}{45}.$$
+Hence
+$$u_3=\frac{X^2-1/3}{\sqrt{8/45}}=\sqrt{\frac{45}{8}}\left(X^2-\frac13\right)=\frac{3\sqrt5}{2\sqrt2}\left(X^2-\frac13\right).$$
 
-**Standard Legendre polynomials.** Usually, one defines $P_0=1$, $P_1=X$, $P_2=\frac32X^2-\frac12$ (not normalized). These are proportional to $u_1,u_2,u_3$.
+**The orthonormal triple.**
+$$u_1=\frac{1}{\sqrt2},\qquad u_2=\sqrt{\frac32}\,X,\qquad u_3=\frac{3\sqrt5}{2\sqrt2}\left(X^2-\frac13\right).$$
+They satisfy $\langle u_i,u_j\rangle=\delta_{ij}$.
 
-**Conclusion.** The Legendre polynomials (unnormalized) are $P_0=1$, $P_1=X$, $P_2=\frac{3X^2-1}{2}$, and they are orthogonal for the integral inner product on $[-1,1]$.
+**Standard Legendre polynomials.** Rescaling to monic (or to the classical normalization), one gets
+$$P_0=1,\qquad P_1=X,\qquad P_2=\frac{3X^2-1}{2}.$$
+These are proportional to $u_1,u_2,u_3$ and orthogonal for the integral inner product on $[-1,1]$.
 
+
+**Conclusion.** The first three Legendre polynomials (unnormalized) are $P_0=1$, $P_1=X$, $P_2=\dfrac{3X^2-1}{2}$; the corresponding orthonormal vectors are $u_1,u_2,u_3$ above.
 @@@ inner-product-fourier-coefficients.md
 ---
 title: Fourier coefficients and orthogonal projection
@@ -4693,16 +4679,19 @@ Row-reduce $A$ and solve $Ax=0$.
 
 ## Solution
 
-**Row reduction.** $L_2\leftarrow L_2-2L_1$ gives zero row; $L_3\leftarrow L_3-L_1$:
+**Row reduction.** Perform $L_2 \leftarrow L_2 - 2L_1$ and $L_3 \leftarrow L_3 - L_1$:
 $$\begin{pmatrix} 1 & 1 & 2 \\ 0 & 0 & 0 \\ 0 & -1 & -1 \end{pmatrix}.$$
-Swapping rows:
+Swap $L_2$ and $L_3$:
 $$\begin{pmatrix} 1 & 1 & 2 \\ 0 & -1 & -1 \\ 0 & 0 & 0 \end{pmatrix}.$$
-Rank is $2$, $\dim\ker f=1$.
+The rank is $2$, so by the rank–nullity theorem $\dim\ker f = 3 - 2 = 1$.
 
-**Solve.** From $-y-z=0$, $y=-z$. From $x+y+2z=0$, $x+z-2z=0$?? Wait: $x+y+2z=0$ with $y=-z$ gives $x-z+2z=0$, i.e. $x=-z$. So $(x,y,z)=(-z,-z,z)=z(-1,-1,1)$.
+**Solve $Ax=0$.** Write $x=(x,y,z)$.
+- From the second row: $-y-z=0$, i.e. $y=-z$.
+- From the first row: $x+y+2z=0$. Substituting $y=-z$ gives $x-z+2z=0$, i.e. $x=-z$.
 
-**Conclusion.** $\ker f=\operatorname{span}((-1,-1,1))$.
+Hence $(x,y,z)=(-z,-z,z)=z\,(-1,-1,1)$ for $z\in\mathbb{R}$.
 
+**Conclusion.** $\ker f=\operatorname{span}\bigl((-1,-1,1)\bigr)$, and $\{(-1,-1,1)\}$ is a basis of $\ker f$.
 @@@ linear-map-rank-inequality.md
 ---
 title: Rank inequality for a composition
@@ -4830,32 +4819,34 @@ Apply $f$ repeatedly.
 title: Kernel and image of an endomorphism
 category: linear/linear-maps
 level: l1
-difficulty: 4
+difficulty: 3
 tags: kernel, image, direct sum, endomorphism
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $f:E\to E$ be a linear endomorphism of a finite-dimensional space. Show that $f$ is invertible if and only if $E=\ker f\oplus\operatorname{Im} f$.
+Let $f:E\to E$ be a linear endomorphism of a finite-dimensional space.
+
+1. Show that if $f$ is invertible, then $E=\ker f\oplus\operatorname{Im} f$.
+2. Show that the converse is false: give an example of a non-invertible $f$ with $E=\ker f\oplus\operatorname{Im} f$.
 
 ## Hint
 
-If $f$ is invertible, $\ker f=\{0\}$ and $\operatorname{Im} f=E$. Conversely, if $\ker f\cap\operatorname{Im} f=\{0\}$ and the dimensions sum to $\dim E$, then $\ker f=\{0\}$.
+For 1, use $\ker f=\{0\}$ and $\operatorname{Im} f=E$ when $f$ is invertible, and rank–nullity. For 2, try a projection in $\mathbb{R}^2$.
 
 ## Solution
 
-**If $f$ is invertible.** Then $\ker f=\{0\}$ and $\operatorname{Im} f=E$, so the sum is trivially direct and equal to $E$.
+**1. $f$ invertible $\Rightarrow$ $E=\ker f\oplus\operatorname{Im} f$.** If $f$ is invertible, then $\ker f=\{0\}$ (injectivity) and $\operatorname{Im} f=E$ (surjectivity). Hence $\ker f+\operatorname{Im} f=\{0\}+E=E$, and the sum is direct because $\ker f\cap\operatorname{Im} f=\{0\}\cap E=\{0\}$. So $E=\ker f\oplus\operatorname{Im} f$.
 
-**Conversely, assume $E=\ker f\oplus\operatorname{Im} f$.** Then $\dim\ker f+\dim\operatorname{Im} f=\dim E$ (this holds for any linear map by rank-nullity, so the direct-sum hypothesis adds only $\ker f\cap\operatorname{Im} f=\{0\}$). Suppose $x\in\ker f$. Then $x=f(y)$ for some $y$ (since $x\in E=\operatorname{Im} f+\ker f$ and $x\in\ker f$ means we can write $x=x_k+x_i$; but $x\in\ker f$ and $x\in\operatorname{Im} f+\ker f$: write $x=x'$ with $x'\in\operatorname{Im} f$ by taking $x_i=x$, $x_k=0$; wait, we need a cleaner argument).
+**2. The converse fails.** On $E=\mathbb{R}^2$, let $f(x,y)=(x,0)$ (the projection onto the first axis). Then:
+- $\ker f=\{(0,y):y\in\mathbb{R}\}$, the second axis;
+- $\operatorname{Im} f=\{(x,0):x\in\mathbb{R}\}$, the first axis;
+- $\ker f\cap\operatorname{Im} f=\{(0,0)\}$ and $\dim\ker f+\dim\operatorname{Im} f=1+1=2=\dim E$, so $E=\ker f\oplus\operatorname{Im} f$.
 
-Cleaner: if $x\in\ker f\cap\operatorname{Im} f$, then $x=f(y)$ for some $y$ and $f(x)=0$. Then $f^2(y)=0$. If $\ker f\cap\operatorname{Im} f=\{0\}$, then $f(y)\in\ker f\cap\operatorname{Im} f$, so $f(y)=0$, i.e. $y\in\ker f$, i.e. $x=f(y)=0$. Hence $\ker f\cap\operatorname{Im} f=\{0\}$ forces: $x=f(y)$ and $f(x)=0$ implies $f^2(y)=0$, but that alone doesn't imply $f(y)=0$ unless $f^2=f\circ f$ has kernel containing $\operatorname{Im} f$... 
+But $f$ is not invertible: $f(0,1)=(0,0)$ with $(0,1)\neq(0,0)$, so $f$ is not injective.
 
-Actually the correct statement is: if $\ker f\cap\operatorname{Im} f=\{0\}$, then $f$ restricted to $\operatorname{Im} f$ is injective (since its kernel is $\ker f\cap\operatorname{Im} f$). But that does not directly give $f$ invertible.
-
-Let me restate: the equivalence "$f$ invertible $\iff$ $E=\ker f\oplus\operatorname{Im} f$" is **false** in general. For example, the nilpotent $f(x,y,z)=(y,z,0)$ has $\ker f\cap\operatorname{Im} f=\{(x,0,0)\}\neq\{0\}$, and indeed $f$ is not invertible; but for a suitable map, $\ker f\oplus\operatorname{Im} f$ could be $E$ without $f$ being invertible (e.g. on $\mathbb{R}^2$, $f(x,y)=(x,0)$: $\ker f=\{(0,y)\}$, $\operatorname{Im} f=\{(x,0)\}$, and $\ker f\oplus\operatorname{Im} f=\mathbb{R}^2$, but $f$ is not invertible).
-
-**Conclusion.** The proposed equivalence is **false**. The correct equivalence is: $f$ is invertible iff $\ker f=\{0\}$ (equivalently $\operatorname{Im} f=E$). The direct-sum condition $E=\ker f\oplus\operatorname{Im} f$ holds for many non-invertible $f$ (e.g. any projection).
+**Why the converse can fail.** Rank–nullity gives $\dim\ker f+\dim\operatorname{Im} f=\dim E$ for *every* linear map, so the dimension count in "$E=\ker f\oplus\operatorname{Im} f$" is automatic; the only extra content of the direct-sum condition is $\ker f\cap\operatorname{Im} f=\{0\}$. This condition is weaker than $\ker f=\{0\}$: it allows a nonzero kernel as long as the kernel does not meet the image.
 
 @@@ linear-map-nonzero-eigenvalue.md
 ---
