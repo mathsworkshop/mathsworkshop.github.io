@@ -1,3 +1,140 @@
+
+@@@ thales-theorem.md
+---
+title: Thales' theorem
+category: geometry/plane
+level: lycee
+difficulty: 2
+tags: circles, angles
+date: 2026-10-31
+---
+
+## Statement
+
+Let $[AB]$ be a diameter of a circle with centre $O$, and let $M$ be a point of the circle different from $A$ and $B$. Prove that the angle $\widehat{AMB}$ is a right angle.
+
+## Hint
+
+Triangles $OAM$ and $OBM$ are isosceles.
+
+## Solution
+
+Since $OA=OM=OB$, the triangles $OAM$ and $OBM$ are isosceles at $O$. Let $\alpha=\widehat{OAM}=\widehat{OMA}$ and $\beta=\widehat{OBM}=\widehat{OMB}$.
+
+The angle $\widehat{AMB}$ equals $\widehat{OMA}+\widehat{OMB}=\alpha+\beta$.
+
+The angles of triangle $ABM$ are $\alpha$ (at $A$), $\beta$ (at $B$) and $\alpha+\beta$ (at $M$). Their sum is $180^\circ$, so $2(\alpha+\beta)=180^\circ$, hence $\widehat{AMB}=\alpha+\beta=90^\circ$.
+
+@@@ the-centroid-of-a-triangle.md
+---
+title: The centroid of a triangle
+category: geometry/plane
+level: lycee
+difficulty: 3
+tags: vectors, medians
+date: 2026-10-31
+---
+
+## Statement
+
+In a triangle $ABC$, show that the three medians meet at one point $G$, and that $G$ lies at two thirds of each median from its vertex.
+
+## Hint
+
+Work with position vectors and look at the point $G=\frac13(A+B+C)$.
+
+## Solution
+
+Identify points with their position vectors. Let $M=\frac12(B+C)$ be the midpoint of $BC$, so $AM$ is the median from $A$.
+
+Define $G=\dfrac{A+B+C}3$. Then
+$$A+\frac23(M-A)=\frac A3+\frac{2M}3=\frac A3+\frac{B+C}3=G.$$
+So $G$ lies on the median $AM$, at two thirds of the way from $A$ to $M$.
+
+The expression $\frac{A+B+C}3$ is symmetric in $A,B,C$, so the same computation shows $G$ lies on the other two medians, also at two thirds from the vertex. Hence the three medians are concurrent at $G$.
+
+@@@ inradius-of-a-right-triangle.md
+---
+title: Inradius of a right triangle
+category: geometry/plane
+level: lycee
+difficulty: 3
+tags: incircle, right triangle
+date: 2026-10-31
+---
+
+## Statement
+
+A right triangle has legs $a$ and $b$ and hypotenuse $c$. Show that the radius of its inscribed circle is $r=\dfrac{a+b-c}{2}$. What is $r$ for the $3$-$4$-$5$ triangle?
+
+## Hint
+
+Use the fact that the two tangent segments from a vertex to a circle have equal length.
+
+## Solution
+
+Let the right angle be at $C$, with $CB=a$ and $CA=b$. The incircle touches the legs at two points. Together with $C$ and the centre $I$, these points form a square of side $r$ (all four angles are right angles and two adjacent sides equal $r$). So the tangent length from $C$ is $r$.
+
+Hence the tangent length from $B$ is $a-r$ and from $A$ is $b-r$. The hypotenuse $AB$ is split by its point of tangency into these two lengths, so
+$$(a-r)+(b-r)=c\quad\Longrightarrow\quad r=\frac{a+b-c}{2}.$$
+
+For the $3$-$4$-$5$ triangle, $r=\dfrac{3+4-5}{2}=1$.
+@@@ distance-from-a-point-to-a-line.md
+---
+title: Distance from a point to a line
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: lines, projection
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the distance from the point $M(1,2)$ to the line $\mathcal D:\ 3x+4y-5=0$.
+
+## Hint
+
+The vector $\vec n=(3,4)$ is normal to $\mathcal D$. Project $M$ onto $\mathcal D$ along $\vec n$.
+
+## Solution
+
+The foot $H$ of the perpendicular from $M$ has the form $H=M-t\,\vec n$. Requiring $H\in\mathcal D$:
+$$3(1-3t)+4(2-4t)-5=0\quad\Longrightarrow\quad6-25t=0\quad\Longrightarrow\quad t=\frac6{25}.$$
+
+Then $MH=|t|\,\|\vec n\|=\dfrac6{25}\cdot5=\dfrac65$.
+
+This agrees with the general formula $d=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}=\dfrac{|3+8-5|}{5}=\dfrac65$.
+@@@ area-from-coordinates.md
+---
+title: Area from coordinates
+category: geometry/analytic
+level: lycee
+difficulty: 1
+tags: vectors, area
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the area of the triangle with vertices $A(1,2)$, $B(5,3)$ and $C(2,7)$.
+
+## Hint
+
+The area is half the absolute value of the determinant of $\overrightarrow{AB}$ and $\overrightarrow{AC}$.
+
+## Solution
+
+We have $\overrightarrow{AB}=(4,1)$ and $\overrightarrow{AC}=(1,5)$. Then
+$$\text{Area}=\frac12\left|\begin{vmatrix}4&1\\1&5\end{vmatrix}\right|=\frac12|20-1|=\frac{19}2.$$
+
+## Solution
+
+MISSISSIPPI has $11$ letters: $1$ M, $4$ I, $4$ S and $2$ P.
+
+If all letters were different there would be $11!$ arrangements. Swapping identical letters does not change the word, so divide by the number of orderings of each repeated letter:
+$$\frac{11!}{1!\,4!\,4!\,2!}=\frac{39\,916\,800}{1152}=34\,650.$$
+
 @@@ geo-the-reflection-of-the-orthocentre.md
 ---
 title: The reflection of the orthocentre lies on the circumcircle
