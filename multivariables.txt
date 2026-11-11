@@ -3242,35 +3242,6 @@ So $\frac{\partial f}{\partial x}$ is continuous at $(0,0)$, and similarly for $
 
 **Conclusion.** The partial derivatives exist and are continuous on $\mathbb{R}^2$, so $f$ is $C^1$.
 
-@@@ partial-derivatives-jacobian.md
----
-title: Jacobian matrix of a map
-category: calculus/multivariable/partial-derivatives
-level: l2
-difficulty: 3
-tags: Jacobian matrix, differential, vector-valued map
-date: 2026-11-02
----
-
-## Statement
-
-Let $F: \mathbb{R}^2 \to \mathbb{R}^3$ be defined by
-$$F(x,y) = (x \cos y, \sin x, x^2 y).$$
-Compute the Jacobian matrix $J_F(x,y)$.
-
-## Hint
-
-The Jacobian matrix has as columns the partial derivatives of $F$ with respect to $x$ and $y$.
-
-## Solution
-
-**Partial derivatives.**
-$$\frac{\partial F}{\partial x} = (\cos y, \cos x, 2xy), \qquad \frac{\partial F}{\partial y} = (-x \sin y, 0, x^2).$$
-
-**Jacobian matrix.**
-$$J_F(x,y) = \begin{pmatrix} \cos y & -x \sin y \\ \cos x & 0 \\ 2xy & x^2 \end{pmatrix}.$$
-
-**Remark.** This matrix represents the differential of $F$ at $(x,y)$ in the canonical bases.
 
 @@@ multiple-integrals-rectangle.md
 ---
