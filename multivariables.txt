@@ -2274,32 +2274,6 @@ $D_{\vec u}f=\nabla f\cdot\vec u$.
 
 **Conclusion.** $D_{\vec u}f(1,2)=5/\sqrt2$.
 
-@@@ partial-derivatives-chain-rule.md
----
-title: Chain rule for a composition
-category: calculus/multivariable/partial-derivatives
-level: l1
-difficulty: 3
-tags: chain rule, composition, parametrized curve
-date: 2026-11-03
----
-
-## Statement
-
-Let $f(x,y)=x^2+y^2$ and $\gamma(t)=(\cos t,\sin t)$. Compute $\frac{d}{dt}f(\gamma(t))$ two ways.
-
-## Hint
-
-Direct composition gives $f(\gamma(t))=1$; the chain rule gives $\nabla f(\gamma(t))\cdot\gamma'(t)$.
-
-## Solution
-
-**Direct.** $f(\gamma(t))=\cos^2t+\sin^2t=1$, derivative $0$.
-
-**Chain rule.** $\nabla f=(2x,2y)$, $\gamma'(t)=(-\sin t,\cos t)$. So $\nabla f(\gamma(t))\cdot\gamma'(t)=2\cos t(-\sin t)+2\sin t\cos t=0$.
-
-**Conclusion.** Both methods give $0$: $f$ is constant on the circle.
-
 @@@ partial-derivatives-chain-general.md
 ---
 title: General chain rule
