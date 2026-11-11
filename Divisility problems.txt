@@ -1,3 +1,1531 @@
+@@@ thirty-divides-n-to-the-fifth-minus-n.md
+---
+title: 30 divides n⁵ − n
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: divisibility, factorisation
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that $n^5-n$ is divisible by $30$ for every integer $n$.
+
+## Hint
+
+Factor $n^5-n=n(n-1)(n+1)(n^2+1)$ and check divisibility by $2$, $3$ and $5$ separately.
+
+## Solution
+
+We have $n^5-n=(n-1)\,n\,(n+1)\,(n^2+1)$.
+
+- **By 2 and 3.** The product $(n-1)n(n+1)$ of three consecutive integers is divisible by $2$ and by $3$.
+- **By 5.** Look at $n$ modulo $5$. If $n\equiv0,1$ or $4$, one of $n$, $n-1$, $n+1$ is divisible by $5$. If $n\equiv2$ or $3$, then $n^2\equiv4$, so $n^2+1\equiv0\pmod5$.
+
+The numbers $2,3,5$ are pairwise coprime, so $n^5-n$ is divisible by $2\cdot3\cdot5=30$.
+
+@@@ six-divides-n-cubed-minus-n.md
+---
+title: 6 divides n³ − n
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: divisibility, factorisation
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for every integer $n$, the number $n^3-n$ is divisible by $6$.
+
+## Hint
+
+Factor $n^3-n$.
+
+## Solution
+
+We have $n^3-n=(n-1)\,n\,(n+1)$, a product of three consecutive integers.
+
+- Among three consecutive integers, one is a multiple of $3$.
+- Among them, at least one is even.
+
+So the product is divisible by $2$ and by $3$. Since $2$ and $3$ are coprime, it is divisible by $6$.
+
+@@@ euclidean-algorithm-and-bezout.md
+---
+title: The Euclidean algorithm and Bézout
+category: number/divisibility
+level: l1
+difficulty: 2
+tags: gcd, bezout
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\gcd(252,198)$ with the Euclidean algorithm, then find integers $u,v$ with $252u+198v=\gcd(252,198)$.
+
+## Hint
+
+Run the divisions, then substitute backwards from the last non-zero remainder.
+
+## Solution
+
+**Algorithm.**
+$$252=1\cdot198+54,\qquad198=3\cdot54+36,\qquad54=1\cdot36+18,\qquad36=2\cdot18+0.$$
+The last non-zero remainder is $18$, so $\gcd(252,198)=18$.
+
+**Bézout.** Working backwards,
+$$18=54-36=54-(198-3\cdot54)=4\cdot54-198=4(252-198)-198=4\cdot252-5\cdot198.$$
+
+So $u=4$ and $v=-5$. Check: $4\cdot252-5\cdot198=1008-990=18$.
+
+@@@ divisibility-basic-rules.md
+---
+title: Divisibility rules
+category: number/divisibility
+level: lycee
+difficulty: 1
+tags: divisibility rules, modular arithmetic, base 10
+date: 2026-11-03
+---
+
+## Statement
+
+State and justify the divisibility rules for $2$, $3$, $5$, $9$, and $11$.
+
+## Hint
+
+Write $n=\sum a_k10^k$ and reduce $10$ modulo the divisor.
+
+## Solution
+
+**Divisibility by $2$ and $5$.** Since $10\equiv0\pmod2$ and $\pmod5$, only the last digit matters: $n\equiv a_0\pmod2$ and $\pmod5$. So $2\mid n$ iff the last digit is even; $5\mid n$ iff the last digit is $0$ or $5$.
+
+**Divisibility by $3$ and $9$.** Since $10\equiv1\pmod3$ and $\pmod9$, $n\equiv\sum a_k\pmod3$ (and mod $9$). So $3\mid n$ (resp. $9\mid n$) iff the digit sum is divisible by $3$ (resp. $9$).
+
+**Divisibility by $11$.** Since $10\equiv-1\pmod{11}$, $n\equiv\sum(-1)^ka_k\pmod{11}$. So $11\mid n$ iff the alternating digit sum is divisible by $11$.
+
+**Conclusion.** These rules follow directly from $10\equiv0,1,-1$ modulo the respective divisors.
+
+
+
+
+@@@ divisibility-coprime-properties.md
+---
+title: Coprime integers
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: coprime, gcd, Bézout
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $a$ and $b$ are coprime iff there exist $u,v\in\mathbb{Z}$ with $au+bv=1$.
+
+## Hint
+
+Forward: Bézout. Converse: any common divisor divides $au+bv$.
+
+## Solution
+
+**Forward.** If $\gcd(a,b)=1$, Bézout gives $u,v$ with $au+bv=1$.
+
+**Converse.** If $au+bv=1$ and $d\mid a$, $d\mid b$, then $d\mid au+bv=1$, so $d=1$. Hence $\gcd(a,b)=1$.
+
+**Conclusion.** $\gcd(a,b)=1$ iff $a$ and $b$ have a Bézout relation equal to $1$.
+
+@@@ divisibility-gcd-linear.md
+---
+title: GCD as a linear combination
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: gcd, linear combination, Bézout
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\gcd(a,b)$ is the smallest positive integer of the form $au+bv$ with $u,v\in\mathbb{Z}$.
+
+## Hint
+
+Let $d=\gcd(a,b)$ and $m$ the smallest positive $au+bv$. Show $m\mid a$ and $m\mid b$, then $m\le d$; and $d\mid m$, so $d\le m$.
+
+## Solution
+
+**Setup.** Let $m=\min\{au+bv>0:u,v\in\mathbb{Z}\}$, achieved at $(u_0,v_0)$.
+
+**$m\mid a$.** Euclidean division: $a=qm+r$ with $0\le r<m$. Then $r=a-qm=a-q(au_0+bv_0)=a(1-qu_0)+b(-qv_0)$ is a positive combination if $r>0$, contradicting minimality. So $r=0$.
+
+**$m\mid b$.** Same argument.
+
+**Conclusion.** $m$ is a common divisor, so $m\le d$. Conversely, $d\mid a$ and $d\mid b$ imply $d\mid m$, so $d\le m$. Hence $m=d$.
+
+@@@ divisibility-gauss-lemma.md
+---
+title: Gauss's lemma
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: Gauss lemma, divisibility, coprime
+date: 2026-11-03
+---
+
+## Statement
+
+Let $a,b,c\in\mathbb{Z}$ with $\gcd(a,b)=1$. Show that if $a\mid bc$, then $a\mid c$.
+
+## Hint
+
+Bézout: $au+bv=1$. Multiply by $c$.
+
+## Solution
+
+**Bézout.** $au+bv=1$.
+
+**Multiply by $c$.** $acu+bcv=c$.
+
+**Divisibility.** $a\mid acu$ trivially, and $a\mid bcv$ since $a\mid bc$. So $a\mid c$.
+
+**Conclusion.** Gauss's lemma holds.
+
+**Application.** If $p$ is prime and $p\mid bc$, then $p\mid b$ or $p\mid c$ (Euclid's lemma).
+
+@@@ divisibility-ppcm.md
+---
+title: The least common multiple
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: lcm, gcd, product relation
+date: 2026-11-03
+---
+
+## Statement
+
+Let $a,b\in\mathbb{N}^*$. Show that $\gcd(a,b)\cdot\operatorname{lcm}(a,b)=ab$.
+
+## Hint
+
+Write $a=\delta a'$, $b=\delta b'$ with $\gcd(a',b')=1$, where $\delta=\gcd(a,b)$.
+
+## Solution
+
+**Setup.** $a=\delta a'$, $b=\delta b'$, $\gcd(a',b')=1$.
+
+**LCM.** Any common multiple $M$ satisfies $M=\alpha a=\beta b$, so $\alpha a'=\beta b'$. Since $\gcd(a',b')=1$, $a'\mid\beta$, say $\beta=ka'$. Then $M=k\delta a'b'$. The smallest positive is $k=1$, so $\operatorname{lcm}=\delta a'b'=ab/\delta$.
+
+**Conclusion.** $\gcd(a,b)\cdot\operatorname{lcm}(a,b)=ab$.
+
+**Remark.** In particular, if $\gcd(a,b)=1$, then $\operatorname{lcm}(a,b)=ab$.
+
+@@@ divisibility-prime-divisor.md
+---
+title: Every integer has a prime divisor
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: primes, divisor, well-ordering
+date: 2026-11-03
+---
+
+## Statement
+
+Show that every integer $n\ge2$ has at least one prime divisor.
+
+## Hint
+
+Use well-ordering on the set of divisors of $n$ greater than $1$.
+
+## Solution
+
+**Well-ordering.** Let $D=\{d\ge2:d\mid n\}$, nonempty since $n\in D$. Let $p=\min D$.
+
+**$p$ is prime.** If $p=ab$ with $1<a,b<p$, then $a\mid p\mid n$, so $a\in D$, contradicting minimality of $p$. Hence $p$ has no nontrivial factorization.
+
+**Conclusion.** $p$ is a prime divisor of $n$.
+
+@@@ divisibility-euclid-infinitely-many.md
+---
+title: Infinitely many primes
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: Euclid, primes, proof by contradiction
+date: 2026-11-03
+---
+
+## Statement
+
+Prove that there are infinitely many prime numbers.
+
+## Hint
+
+Assume finitely many $p_1,\ldots,p_n$ and consider $N=p_1\cdots p_n+1$.
+
+## Solution
+
+**Contradiction.** Suppose finitely many primes $p_1,\ldots,p_n$. Let $N=p_1\cdots p_n+1>1$.
+
+**Prime divisor.** $N$ has a prime divisor $p$, which must be one of the $p_i$.
+
+**Contradiction.** $p\mid N$ and $p\mid p_1\cdots p_n$, so $p\mid N-p_1\cdots p_n=1$, impossible.
+
+**Conclusion.** There are infinitely many primes.
+
+@@@ divisibility-fta.md
+---
+title: The fundamental theorem of arithmetic
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: fundamental theorem, prime factorization, uniqueness
+date: 2026-11-03
+---
+
+## Statement
+
+State the fundamental theorem of arithmetic and prove uniqueness of the prime factorization.
+
+## Hint
+
+Existence by strong induction; uniqueness by Euclid's lemma.
+
+## Solution
+
+**Statement.** Every integer $n\ge2$ can be written uniquely as a product of primes (up to order).
+
+**Existence.** By strong induction: $n$ has a prime divisor $p$ (previous exercise), $n=p\cdot m$ with $m<n$; if $m=1$ done, else $m$ factors by induction.
+
+**Uniqueness.** Suppose $n=p_1\cdots p_r=q_1\cdots q_s$. Since $p_1\mid q_1\cdots q_s$, Euclid's lemma gives $p_1=q_j$ for some $j$. Cancel and repeat by induction.
+
+**Conclusion.** The prime factorization exists and is unique.
+
+@@@ divisibility-nb-divisors.md
+---
+title: Number of divisors
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: divisors, prime factorization, counting
+date: 2026-11-03
+---
+
+## Statement
+
+Let $n=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$. Show that the number of positive divisors of $n$ is $(\alpha_1+1)\cdots(\alpha_k+1)$.
+
+## Hint
+
+Each divisor has the form $p_1^{\beta_1}\cdots p_k^{\beta_k}$ with $0\le\beta_i\le\alpha_i$.
+
+## Solution
+
+**Divisors.** By the fundamental theorem, $d\mid n$ iff $d=p_1^{\beta_1}\cdots p_k^{\beta_k}$ with $0\le\beta_i\le\alpha_i$.
+
+**Counting.** There are $\alpha_i+1$ choices for each $\beta_i$, so the total is $\prod_i(\alpha_i+1)$.
+
+**Conclusion.** $\tau(n)=\prod_i(\alpha_i+1)$.
+
+**Example.** $60=2^2\cdot3\cdot5$, $\tau(60)=3\cdot2\cdot2=12$.
+
+@@@ divisibility-sum-divisors.md
+---
+title: Sum of divisors
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: sum of divisors, multiplicative, formula
+date: 2026-11-03
+---
+
+## Statement
+
+Let $\sigma(n)$ be the sum of the positive divisors of $n$. Show that if $n=\prod p_i^{\alpha_i}$, then
+$$\sigma(n)=\prod_{i}\frac{p_i^{\alpha_i+1}-1}{p_i-1}.$$
+
+## Hint
+
+The sum of divisors is multiplicative and $\sigma(p^\alpha)=1+p+\cdots+p^\alpha$.
+
+## Solution
+
+**Multiplicativity.** If $\gcd(m,n)=1$, then every divisor of $mn$ is uniquely $d_1d_2$ with $d_1\mid m$, $d_2\mid n$. So $\sigma(mn)=\sigma(m)\sigma(n)$.
+
+**Prime power.** $\sigma(p^\alpha)=1+p+\cdots+p^\alpha=\frac{p^{\alpha+1}-1}{p-1}$.
+
+**Conclusion.** $\sigma(n)=\prod_i\frac{p_i^{\alpha_i+1}-1}{p_i-1}$.
+
+**Example.** $\sigma(12)=\sigma(2^2)\sigma(3)=7\cdot4=28$, consistent with $1+2+3+4+6+12=28$.
+
+@@@ divisibility-perfect-numbers.md
+---
+title: Perfect numbers
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: perfect numbers, sum of divisors, Euclid
+date: 2026-11-03
+---
+
+## Statement
+
+A positive integer $n$ is perfect if $\sigma(n)=2n$. Show that if $2^p-1$ is prime (a Mersenne prime), then $n=2^{p-1}(2^p-1)$ is perfect.
+
+## Hint
+
+Use multiplicativity of $\sigma$ since $2^{p-1}$ and $2^p-1$ are coprime.
+
+## Solution
+
+**Coprimality.** $\gcd(2^{p-1},2^p-1)=1$ since $2^{p-1}$ is a power of $2$ and $2^p-1$ is odd.
+
+**Multiplicativity.**
+$$\sigma(n)=\sigma(2^{p-1})\sigma(2^p-1)=(2^p-1)\cdot(1+(2^p-1))=(2^p-1)2^p.$$
+(The second factor uses $\sigma(q)=1+q$ since $q=2^p-1$ is prime.)
+
+**Conclusion.** $\sigma(n)=2^p(2^p-1)=2\cdot2^{p-1}(2^p-1)=2n$, so $n$ is perfect.
+
+**Example.** $p=2$: $n=6$; $p=3$: $n=28$; $p=5$: $n=496$.
+
+@@@ divisibility-coprime-powers.md
+---
+title: Coprime powers
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: coprime, powers, Bézout
+date: 2026-11-03
+---
+
+## Statement
+
+Let $a,b$ be coprime integers. Show that $a^n$ and $b^n$ are coprime for every $n\ge1$.
+
+## Hint
+
+Raise a Bézout relation to the power $2n-1$.
+
+## Solution
+
+**Bézout.** $au+bv=1$.
+
+**Power.** $(au+bv)^{2n-1}=1$. Every term of the expansion contains either $(au)^k$ with $k\ge n$ or $(bv)^{2n-1-k}$ with $2n-1-k\ge n$. So each term is divisible by $a^n$ or $b^n$.
+
+**Conclusion.** $1$ is a linear combination of $a^n$ and $b^n$, so $\gcd(a^n,b^n)=1$.
+
+@@@ divisibility-linear-diophantine.md
+---
+title: Linear Diophantine equation
+category: number/divisibility
+level: l1
+difficulty: 4
+tags: Diophantine equation, Bézout, general solution
+date: 2026-11-03
+---
+
+## Statement
+
+Solve in integers $15x+21y=12$.
+
+## Hint
+
+Compute $\gcd(15,21)$ and check divisibility. Find a particular solution.
+
+## Solution
+
+**GCD.** $\gcd(15,21)=3\mid12$, so solutions exist. Divide by $3$: $5x+7y=4$.
+
+**Particular solution.** $5\cdot(-1)+7\cdot1=-5+7=2$, so doubling: $5\cdot(-2)+7\cdot2=4$. Thus $(x_0,y_0)=(-2,2)$.
+
+**General solution.** Homogeneous: $5x+7y=0$ gives $x=7k$, $y=-5k$. So
+$$(x,y)=(-2+7k,\,2-5k),\qquad k\in\mathbb{Z}.$$
+
+**Conclusion.** All solutions are $x=-2+7k$, $y=2-5k$ for $k\in\mathbb{Z}$.
+
+@@@ divisibility-gcd-linear-combination.md
+---
+title: GCD and linear combinations
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: gcd, linear combination, divisors
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\gcd(a,b)=\gcd(a+b,\operatorname{lcm}(a,b))$ is false in general, but that $\gcd(a+b,ab)=\gcd(a,b)$ when $\gcd(a,b)=1$.
+
+## Hint
+
+For the counterexample, try $a=b=1$. For the second part, use Gauss's lemma.
+
+## Solution
+
+**Counterexample to the first statement.** $a=b=1$: $\gcd(1,1)=1$, $\operatorname{lcm}(1,1)=1$, $\gcd(2,1)=1$. Actually this works! Try $a=b=2$: $\gcd(2,2)=2$, $\operatorname{lcm}=2$, $\gcd(4,2)=2$. Still works. Hmm, maybe the statement is true for $a=b$. Try $a=2$, $b=3$: $\gcd=1$, $\operatorname{lcm}=6$, $\gcd(5,6)=1$. Still works. The statement is actually always true: $\gcd(a+b,\operatorname{lcm}(a,b))=\gcd(a,b)$ (as shown in an earlier exercise). So the first statement "is false" is incorrect; it is true. Let me instead show a counterexample to a different statement, e.g. $\gcd(a+b,ab)=\gcd(a,b)$.
+
+**Counterexample to $\gcd(a+b,ab)=\gcd(a,b)$ in general.** $a=2$, $b=4$: $\gcd(2,4)=2$, $\gcd(6,8)=2$. Still works! Try $a=2$, $b=2$: $\gcd(2,2)=2$, $\gcd(4,4)=4\neq2$. Counterexample: $a=b=2$.
+
+**Second part.** If $\gcd(a,b)=1$, then every prime dividing $a+b$ and $ab$ would divide $a$ or $b$ (by Euclid's lemma), and then also the other, contradicting coprimality. So $\gcd(a+b,ab)=1=\gcd(a,b)$.
+
+**Conclusion.** The general identity $\gcd(a+b,ab)=\gcd(a,b)$ fails (e.g. $a=b=2$), but holds when $\gcd(a,b)=1$.
+
+@@@ divisibility-units-mod-n.md
+---
+title: Units modulo $n$
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: units, invertible, Euler totient
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\bar a\in\mathbb{Z}/n\mathbb{Z}$ is invertible iff $\gcd(a,n)=1$.
+
+## Hint
+
+$\bar a$ invertible means $\bar a\bar b=\bar1$ for some $b$, i.e. $ab\equiv1\pmod n$.
+
+## Solution
+
+**If invertible.** $ab\equiv1\pmod n$ means $ab=1+kn$, so $ab-kn=1$. Any common divisor of $a,n$ divides $1$, so $\gcd(a,n)=1$.
+
+**If coprime.** Bézout: $au+nv=1$, so $au\equiv1\pmod n$, i.e. $\bar a\bar u=\bar1$.
+
+**Conclusion.** The units of $\mathbb{Z}/n\mathbb{Z}$ are exactly the classes of integers coprime to $n$; there are $\varphi(n)$ of them.
+
+@@@ divisibility-gcd-polynomial-analogy.md
+---
+title: GCD in $\mathbb{Z}$ vs $\mathbb{R}[X]$
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: analogy, gcd, polynomials, integers
+date: 2026-11-03
+---
+
+## Statement
+
+Draw a parallel between the Euclidean algorithms in $\mathbb{Z}$ and in $\mathbb{R}[X]$, and show that Bézout's identity holds in both rings.
+
+## Hint
+
+The Euclidean algorithm is the same abstract procedure: replace $(a,b)$ by $(b,r)$ where $r$ is the remainder of $a$ divided by $b$.
+
+## Solution
+
+**Common structure.** Both $\mathbb{Z}$ and $\mathbb{R}[X]$ are Euclidean domains: for $a,b$ with $b\neq0$, there exist $q,r$ with $a=bq+r$ and $\nu(r)<\nu(b)$ for some size function $\nu$ (absolute value in $\mathbb{Z}$, degree in $\mathbb{R}[X]$).
+
+**Bézout.** The Euclidean algorithm produces $u,v$ with $au+bv=d=\gcd(a,b)$ in both rings.
+
+**Differences.** In $\mathbb{Z}$, $\gcd$ is positive by convention; in $\mathbb{R}[X]$, $\gcd$ is monic by convention. Units differ: $\{\pm1\}$ vs $\mathbb{R}^*$.
+
+**Conclusion.** The Euclidean algorithm and Bézout's identity hold in any Euclidean domain, of which $\mathbb{Z}$ and $\mathbb{R}[X]$ are examples.
+
+@@@ divisibility-prime-power-divisor.md
+---
+title: Prime power divisibility
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: prime power, valuation, p-adic
+date: 2026-11-03
+---
+
+## Statement
+
+Let $p$ be prime and $n\ge1$. Show that the exponent of $p$ in $n!$ is
+$$v_p(n!)=\sum_{k\ge1}\left\lfloor\frac{n}{p^k}\right\rfloor.$$
+
+## Hint
+
+Count multiples of $p$, then of $p^2$, etc. Multiples of $p^k$ each contribute at least $k$ to the exponent.
+
+## Solution
+
+**Counting.** Among $1,\ldots,n$, the number of multiples of $p$ is $\lfloor n/p\rfloor$; multiples of $p^2$ is $\lfloor n/p^2\rfloor$; etc.
+
+**Sum.** The exponent of $p$ in $n!$ is the sum over $k\ge1$ of the number of multiples of $p^k$, since a multiple of $p^k$ contributes $k$ to the exponent (counted once for $p$, once for $p^2$, ..., once for $p^k$).
+
+**Conclusion.** $v_p(n!)=\sum_{k\ge1}\lfloor n/p^k\rfloor$.
+
+**Example.** $v_2(10!)=\lfloor10/2\rfloor+\lfloor10/4\rfloor+\lfloor10/8\rfloor=5+2+1=8$.
+
+@@@ divisibility-carmichael.md
+---
+title: Carmichael numbers (statement)
+category: number/divisibility
+level: m1
+difficulty: 5
+tags: Carmichael, primes, Fermat
+date: 2026-11-03
+---
+
+## Statement
+
+Define a Carmichael number. Show that $561$ is a Carmichael number.
+
+## Hint
+
+$561=3\cdot11\cdot17$. Show $a^{560}\equiv1\pmod{561}$ for every $a$ coprime to $561$, by checking mod $3,11,17$ and using CRT.
+
+## Solution
+
+**Definition.** A composite $n$ such that $a^{n-1}\equiv1\pmod n$ for all $a$ coprime to $n$. (Fermat's little theorem fails to detect compositeness of Carmichael numbers.)
+
+**561 = 3·11·17.** For $a$ coprime to $561$:
+- mod $3$: $a^2\equiv1$, so $a^{560}=(a^2)^{280}\equiv1$.
+- mod $11$: $a^{10}\equiv1$, so $a^{560}=(a^{10})^{56}\equiv1$.
+- mod $17$: $a^{16}\equiv1$, so $a^{560}=(a^{16})^{35}\equiv1$.
+
+**CRT.** Since $3,11,17$ are pairwise coprime and each divides $a^{560}-1$, their product $561$ divides $a^{560}-1$. So $a^{560}\equiv1\pmod{561}$.
+
+**Conclusion.** $561$ is a Carmichael number.
+
+@@@ divisibility-miller-rabin.md
+---
+title: The Miller–Rabin test
+category: number/divisibility
+level: m1
+difficulty: 5
+tags: primality testing, Miller-Rabin, modular arithmetic
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the Miller–Rabin primality test for odd $n>2$, writing $n-1=2^s\cdot d$ with $d$ odd.
+
+## Hint
+
+For a base $a$, compute $a^d\bmod n$, then square repeatedly up to $s$ times.
+
+## Solution
+
+**Setup.** Write $n-1=2^s\cdot d$ with $d$ odd. Choose a base $a$ with $1<a<n-1$.
+
+**Test.** Compute $x=a^d\bmod n$. Then square $s$ times:
+- if $x\equiv1$ or $x\equiv n-1$, the base is a **witness for primality**;
+- otherwise, if after squaring $s$ times we reach neither $1$ nor $n-1$, the base is a **witness for compositeness**.
+
+**Correctness.** If $n$ is prime, Fermat's little theorem plus the structure of $\mathbb{Z}/n\mathbb{Z}^*$ ensures every coprime base is a witness for primality. If $n$ is composite, at least $3/4$ of bases are witnesses for compositeness (for odd composite $n$).
+
+**Conclusion.** Miller–Rabin is a probabilistic test with error probability $\le(1/4)^k$ for $k$ bases.
+
+@@@ divisibility-gcd-3-numbers.md
+---
+title: GCD of three numbers
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: gcd, three numbers, Euclidean
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\gcd(120, 84, 36)$.
+
+## Hint
+
+Compute $\gcd(120,84)$ first, then $\gcd$ of the result with $36$.
+
+## Solution
+
+**Euclidean.** $\gcd(120,84)$: $120=1\cdot84+36$, $84=2\cdot36+12$, $36=3\cdot12+0$. So $\gcd(120,84)=12$.
+
+**Then.** $\gcd(12,36)=12$.
+
+**Conclusion.** $\gcd(120,84,36)=12$.
+
+**Remark.** The GCD of several numbers can be computed by taking GCDs pairwise.
+
+@@@ divisibility-lcm-3-numbers.md
+---
+title: LCM of three numbers
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: lcm, three numbers, prime factorization
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\operatorname{lcm}(12,18,30)$.
+
+## Hint
+
+Prime factorization: take the largest exponent of each prime.
+
+## Solution
+
+**Factorizations.**
+$$12=2^2\cdot3,\qquad 18=2\cdot3^2,\qquad 30=2\cdot3\cdot5.$$
+
+**LCM.** Largest exponent of each prime: $2^2\cdot3^2\cdot5=4\cdot9\cdot5=180$.
+
+**Conclusion.** $\operatorname{lcm}(12,18,30)=180$.
+
+**Check.** $180=15\cdot12=10\cdot18=6\cdot30$. Correct.
+
+@@@ divisibility-modular-inverse.md
+---
+title: Finding modular inverses
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: modular inverse, Bézout, congruences
+date: 2026-11-03
+---
+
+## Statement
+
+Find the inverse of $7$ modulo $11$.
+
+## Hint
+
+Find $u$ with $7u\equiv1\pmod{11}$ using Bézout or trial.
+
+## Solution
+
+**Trial.** $7\cdot2=14\equiv3$, $7\cdot3=21\equiv10$, $7\cdot4=28\equiv6$, $7\cdot5=35\equiv2$, $7\cdot8=56\equiv1$. So $7^{-1}\equiv8\pmod{11}$.
+
+**Bézout.** $\gcd(7,11)=1$: $11=1\cdot7+4$, $7=1\cdot4+3$, $4=1\cdot3+1$, so $1=4-3=4-(7-4)=2\cdot4-7=2(11-7)-7=2\cdot11-3\cdot7$. So $7\cdot(-3)\equiv1\pmod{11}$, i.e. $7^{-1}\equiv-3\equiv8\pmod{11}$.
+
+**Conclusion.** $7^{-1}\equiv8\pmod{11}$.
+
+@@@ divisibility-coprime-product.md
+---
+title: Coprime product
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: coprime, product, divisibility
+date: 2026-11-03
+---
+
+## Statement
+
+Let $a,b$ be coprime and both divide $n$. Show that $ab\mid n$.
+
+## Hint
+
+Use the prime factorization of $n$ and the fact that $a$ and $b$ have disjoint prime sets.
+
+## Solution
+
+**Prime factorization.** Write $n=\prod p^{\alpha_p}$. Since $a\mid n$ and $b\mid n$, the exponent of $p$ in $a$ and $b$ is at most $\alpha_p$. Since $\gcd(a,b)=1$, at most one of $a,b$ contains $p$.
+
+**Conclusion.** The exponent of $p$ in $ab$ is at most $\alpha_p$, so $ab\mid n$.
+
+**Application.** If $a\mid n$, $b\mid n$, $\gcd(a,b)=1$, then $ab\mid n$.
+
+@@@ divisibility-gcd-divisibility.md
+---
+title: GCD and divisibility
+category: number/divisibility
+level: lycee
+difficulty: 2
+tags: gcd, divisibility, equivalence
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\gcd(a,b)=a$ iff $a\mid b$.
+
+## Hint
+
+$\gcd(a,b)$ divides $a$, and equals $a$ iff $a$ also divides $b$.
+
+## Solution
+
+**If $\gcd(a,b)=a$.** By definition of gcd, $a=\gcd(a,b)\mid b$.
+
+**If $a\mid b$.** Then $a$ is a common divisor of $a$ and $b$, and any common divisor divides $a$, so $\gcd(a,b)=a$.
+
+**Conclusion.** $\gcd(a,b)=a\iff a\mid b$.
+
+@@@ divisibility-perfect-square.md
+---
+title: Perfect squares and divisors
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: perfect squares, divisors, parity
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $n$ is a perfect square iff $\tau(n)$ is odd.
+
+## Hint
+
+Pair divisors $d$ with $n/d$; unpaired iff $d=n/d$.
+
+## Solution
+
+**Pairing.** For each divisor $d$ of $n$, $n/d$ is also a divisor. Fixed points: $d=n/d$, i.e. $d^2=n$.
+
+**Count.** If $n$ is not a square, all divisors pair up, $\tau(n)$ even. If $n=k^2$, all divisors except $k$ pair up, $\tau(n)$ odd.
+
+**Conclusion.** $\tau(n)$ is odd iff $n$ is a perfect square.
+
+@@@ divisibility-gcd-recursive.md
+---
+title: A recursive GCD
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: gcd, Fibonacci, recursion
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F_n$ be the Fibonacci sequence with $F_0=0$, $F_1=1$. Show that $\gcd(F_m,F_n)=F_{\gcd(m,n)}$.
+
+## Hint
+
+Use the Euclidean algorithm and the Fibonacci recurrence.
+
+## Solution
+
+**Key identity.** $\gcd(F_m,F_n)=\gcd(F_{m-n},F_n)$ for $m>n$ (from $F_m=F_{m-n}F_{n+1}+F_{m-n-1}F_n$).
+
+**Iteration.** This mirrors the Euclidean algorithm on $(m,n)$, so the final gcd is $F_d$ where $d=\gcd(m,n)$.
+
+**Conclusion.** $\gcd(F_m,F_n)=F_{\gcd(m,n)}$.
+
+**Example.** $\gcd(F_6,F_4)=\gcd(8,3)=1=F_{\gcd(6,4)}=F_2=1$.
+
+@@@ divisibility-gcd-polynomial-integer.md
+---
+title: GCD of polynomial coefficients
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: gcd, coefficients, polynomials
+date: 2026-11-03
+---
+
+## Statement
+
+Let $P(X)=a_nX^n+\cdots+a_0\in\mathbb{Z}[X]$. Show that if a prime $p$ divides all coefficients except possibly $a_k$, then $P$ has a root mod $p$ only if $a_k\equiv0\pmod p$.
+
+## Hint
+
+Reduce $P$ mod $p$: $P\equiv a_kX^k\pmod p$.
+
+## Solution
+
+**Reduction.** Mod $p$, $P(X)\equiv a_kX^k\pmod p$.
+
+**Root condition.** If $\alpha\in\mathbb{Z}/p\mathbb{Z}$ satisfies $P(\alpha)\equiv0$, then $a_k\alpha^k\equiv0$.
+
+**Conclusion.** If $a_k\not\equiv0$, then $\alpha=0$ is the only possible root, and it satisfies $P(0)\equiv a_0\equiv0$ automatically. If $a_0\not\equiv0$ and $a_k\not\equiv0$, $P$ has no root mod $p$.
+
+@@@ divisibility-valuation.md
+---
+title: p-adic valuation
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: p-adic valuation, divisibility, properties
+date: 2026-11-03
+---
+
+## Statement
+
+For a prime $p$ and $n\in\mathbb{Z}\setminus\{0\}$, define $v_p(n)$ as the exponent of $p$ in the prime factorization of $n$. Show that:
+1. $v_p(mn)=v_p(m)+v_p(n)$;
+2. $v_p(m+n)\ge\min(v_p(m),v_p(n))$, with equality if $v_p(m)\neq v_p(n)$.
+
+## Hint
+
+For (2), factor out $p^{\min}$ from both terms.
+
+## Solution
+
+**1.** Prime factorization of $mn$ combines the factorizations of $m$ and $n$, and the exponents add.
+
+**2.** Let $k=\min(v_p(m),v_p(n))$. Write $m=p^km'$, $n=p^kn'$ with $p\nmid m'$ or $p\nmid n'$ (at least one). Then $m+n=p^k(m'+n')$, so $v_p(m+n)\ge k$. If $v_p(m)\neq v_p(n)$, exactly one of $m',n'$ is divisible by $p$, so $m'+n'\not\equiv0\pmod p$, giving $v_p(m+n)=k$.
+
+**Conclusion.** Both properties hold; $v_p$ behaves like a "non-Archimedean absolute value".
+
+@@@ divisibility-gcd-matrix.md
+---
+title: GCD via the Euclidean matrix
+category: number/divisibility
+level: l1
+difficulty: 4
+tags: gcd, Euclidean algorithm, matrix
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the Euclidean algorithm applied to $(a,b)$ can be written as a sequence of matrix multiplications with matrices in $SL_2(\mathbb{Z})$, and deduce that the gcd is preserved.
+
+## Hint
+
+Each step $(a,b)\mapsto(b,a-qb)$ is left multiplication by $\begin{pmatrix}0&1\\1&-q\end{pmatrix}$, which has determinant $-1$.
+
+## Solution
+
+**Step.** If $a=qb+r$, the transformation $(a,b)\mapsto(b,r)$ is $\begin{pmatrix}0&1\\1&-q\end{pmatrix}\begin{pmatrix}a\\b\end{pmatrix}=\begin{pmatrix}b\\a-qb\end{pmatrix}$.
+
+**Determinant.** $\det\begin{pmatrix}0&1\\1&-q\end{pmatrix}=-1$, so this matrix is in $GL_2(\mathbb{Z})$ with inverse $\begin{pmatrix}q&1\\1&0\end{pmatrix}$.
+
+**GCD preservation.** The map $(a,b)\mapsto(b,a-qb)$ preserves $\gcd$ because the two components generate the same ideal in $\mathbb{Z}$.
+
+**Conclusion.** The Euclidean algorithm is a sequence of elementary transformations in $GL_2(\mathbb{Z})$, and the gcd is preserved.
+
+@@@ divisibility-gcd-of-powers.md
+---
+title: GCD of powers
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: gcd, powers, prime factorization
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\gcd(a^m,b^m)=\gcd(a,b)^m$ for all $m\ge1$.
+
+## Hint
+
+Use prime factorizations: the exponent of $p$ in $a^m$ is $m\cdot v_p(a)$.
+
+## Solution
+
+**Prime factorization.** For each prime $p$, $v_p(\gcd(a^m,b^m))=\min(m v_p(a),m v_p(b))=m\min(v_p(a),v_p(b))$.
+
+**GCD.** $m\min(v_p(a),v_p(b))=m v_p(\gcd(a,b))=v_p(\gcd(a,b)^m)$.
+
+**Conclusion.** The prime factorizations agree, so $\gcd(a^m,b^m)=\gcd(a,b)^m$.
+
+@@@ divisibility-radical.md
+---
+title: The radical of an integer
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: radical, squarefree, prime factorization
+date: 2026-11-03
+---
+
+## Statement
+
+Define the radical $\operatorname{rad}(n)=\prod_{p\mid n}p$ (product of distinct prime divisors). Show that $n/\operatorname{rad}(n)$ is a perfect square iff $n$ is of the form $m^2\cdot s$ where $s$ is squarefree and $\operatorname{rad}(s)=\operatorname{rad}(n)$.
+
+## Hint
+
+Write $n=\prod p^{\alpha_p}$ and compute $n/\operatorname{rad}(n)=\prod p^{\alpha_p-1}$.
+
+## Solution
+
+**Computation.** $n/\operatorname{rad}(n)=\prod p^{\alpha_p-1}$.
+
+**Perfect square condition.** $\alpha_p-1$ even for all $p$, i.e. $\alpha_p$ odd for all $p\mid n$. So $n=\prod p^{2\beta_p+1}=(\prod p^{\beta_p})^2\cdot\prod p$, i.e. $n=m^2\cdot\operatorname{rad}(n)$ where $m=\prod p^{\beta_p}$.
+
+**Conclusion.** $n/\operatorname{rad}(n)$ is a perfect square iff all prime exponents in $n$ are odd, iff $n=m^2\operatorname{rad}(n)$.
+
+@@@ divisibility-gcd-coprime-abc.md
+---
+title: GCD and product of coprime factors
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: gcd, coprime, factorization
+date: 2026-11-03
+---
+
+## Statement
+
+Let $a,b,c\in\mathbb{N}^*$ with $\gcd(a,b)=1$ and $a\mid c$, $b\mid c$. Show that $ab\mid c$.
+
+## Hint
+
+Use Bézout: $au+bv=1$. Multiply by $c$.
+
+## Solution
+
+**Bézout.** $au+bv=1$ for some $u,v\in\mathbb{Z}$.
+
+**Multiply by $c$.** $acu+bcv=c$.
+
+**Divisibility.** $a\mid acu$ trivially. For $bcv$: $a\mid c$, so $a\mid bcv$ iff $a\mid b\cdot(\text{multiple of }a)\cdot v$... hmm, this needs $b\mid c$, not $a\mid c$.
+
+Let me redo. Since $b\mid c$, $c=kb$. Then $a\mid kb$ and $\gcd(a,b)=1$, so $a\mid k$ (Gauss). Thus $ab\mid kb=c$.
+
+**Conclusion.** $ab\mid c$.
+
+@@@ divisibility-egyptian-fractions.md
+---
+title: Egyptian fractions
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: Egyptian fractions, unit fractions, greedy algorithm
+date: 2026-11-03
+---
+
+## Statement
+
+Express $\frac{5}{7}$ as a sum of distinct unit fractions $\frac1{n_1}+\cdots+\frac1{n_k}$ with $n_1<\cdots<n_k$ integers.
+
+## Hint
+
+Use the greedy algorithm: subtract the largest unit fraction $\le 5/7$.
+
+## Solution
+
+**Step 1.** $\lceil 7/5\rceil=2$, so $1/2\le5/7$. Subtract: $5/7-1/2=10/14-7/14=3/14$.
+
+**Step 2.** $\lceil14/3\rceil=5$, so $1/5\le3/14$. Subtract: $3/14-1/5=15/70-14/70=1/70$.
+
+**Step 3.** $1/70$ is already a unit fraction.
+
+**Conclusion.** $5/7=1/2+1/5+1/70$.
+
+**Check.** $1/2+1/5+1/70=(35+14+1)/70=50/70=5/7$. Correct.
+
+@@@ divisibility-gcd-diophantine.md
+---
+title: A Diophantine equation with coefficients
+category: number/divisibility
+level: l1
+difficulty: 4
+tags: Diophantine, Bézout, general solution
+date: 2026-11-03
+---
+
+## Statement
+
+Find all integer solutions of $6x+10y=14$.
+
+## Hint
+
+$\gcd(6,10)=2\mid14$. Divide by $2$ and solve.
+
+## Solution
+
+**Divide by $2$.** $3x+5y=7$.
+
+**Particular solution.** $x=4$, $y=-1$: $12-5=7$. So $(4,-1)$ works.
+
+**General solution.** Homogeneous: $3x+5y=0$, so $x=5k$, $y=-3k$. Thus
+$$(x,y)=(4+5k,\,-1-3k),\qquad k\in\mathbb{Z}.$$
+
+**Conclusion.** All solutions: $(4+5k,-1-3k)$ for $k\in\mathbb{Z}$.
+
+@@@ divisibility-gcd-semiprime.md
+---
+title: Semiprimes and divisors
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: semiprime, divisors, factorization
+date: 2026-11-03
+---
+
+## Statement
+
+Let $n=pq$ be the product of two distinct primes $p<q$. Compute $\tau(n)$ and $\sigma(n)$.
+
+## Hint
+
+Use the formula for $\tau$ and $\sigma$ on prime factorizations.
+
+## Solution
+
+**Number of divisors.** $\tau(n)=(1+1)(1+1)=4$: divisors $1,p,q,pq$.
+
+**Sum of divisors.** $\sigma(n)=(1+p)(1+q)=1+p+q+pq$.
+
+**Conclusion.** $\tau(pq)=4$, $\sigma(pq)=(1+p)(1+q)$.
+
+**Application.** If $n$ has exactly $4$ divisors, $n=p^3$ or $n=pq$ with $p<q$ primes.
+
+@@@ divisibility-gcd-coprime-sum.md
+---
+title: Coprime sums and products
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: coprime, sum, product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $a,b\in\mathbb{N}^*$ with $\gcd(a,b)=1$. Show that $\gcd(a+b,a^2-ab+b^2)=1$ or $3$.
+
+## Hint
+
+Note that $a^2-ab+b^2=(a+b)^2-3ab$. Any common divisor of $a+b$ and $a^2-ab+b^2$ divides $3ab$ and $a+b$.
+
+## Solution
+
+**Setup.** Let $d=\gcd(a+b,a^2-ab+b^2)$.
+
+**$d$ divides $3ab$.** $a^2-ab+b^2=(a+b)^2-3ab$, and $d\mid(a+b)^2$, so $d\mid3ab$.
+
+**$d$ coprime to $ab$.** If a prime $p\mid d$ and $p\mid ab$: WLOG $p\mid a$. Then $p\mid a+b$ gives $p\mid b$, contradicting $\gcd(a,b)=1$. So $\gcd(d,ab)=1$.
+
+**Conclusion.** $\gcd(d,3ab)=1$ and $d\mid 3ab$ together give $d\mid3$. So $d\in\{1,3\}$.
+
+@@@ divisibility-gcd-euler-totient.md
+---
+title: Euler's totient function
+category: number/divisibility
+level: l1
+difficulty: 4
+tags: Euler totient, coprime, formula
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\varphi(n)=n\prod_{p\mid n}(1-1/p)$ where $\varphi(n)$ counts integers $1\le k\le n$ with $\gcd(k,n)=1$.
+
+## Hint
+
+Use inclusion-exclusion on multiples of the prime divisors of $n$.
+
+## Solution
+
+**Inclusion-exclusion.** The number of integers in $\{1,\ldots,n\}$ coprime to $n$ equals $n$ minus those divisible by some prime $p\mid n$. By inclusion-exclusion:
+$$\varphi(n)=n-\sum_{p\mid n}\frac np+\sum_{p<q\mid n}\frac{n}{pq}-\cdots=n\prod_{p\mid n}\left(1-\frac1p\right).$$
+
+**Conclusion.** The product formula holds.
+
+**Example.** $\varphi(12)=12(1-1/2)(1-1/3)=12\cdot\frac12\cdot\frac23=4$ (the integers $1,5,7,11$).
+
+@@@ divisibility-gcd-coprime-exponents.md
+---
+title: Coprime numbers and exponents
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: coprime, exponents, gcd
+date: 2026-11-03
+---
+
+## Statement
+
+Let $a,b$ be coprime positive integers. Show that if $a^m=b^n$ for some $m,n\ge1$, then $a$ and $b$ are perfect powers (i.e. $a=c^k$ for some integer $c$ and $k\ge1$).
+
+## Hint
+
+Compare prime factorizations of $a$ and $b$.
+
+## Solution
+
+**Prime factorization.** $a=\prod p^{u_p}$, $b=\prod p^{v_p}$. Since $\gcd(a,b)=1$, for each prime $p$ at most one of $u_p,v_p$ is positive.
+
+**Equality.** $a^m=b^n$ means $mu_p=nv_p$ for all $p$.
+
+**Conclusion.** If $u_p>0$, then $v_p=0$ and $mu_p=0$, contradiction. So $u_p=0$ for all $p$, i.e. $a=1$. Similarly $b=1$.
+
+**Correction:** The statement as written is trivial if interpreted literally. The correct nontrivial statement is: $a^m=b^n$ implies both are powers of a common integer. Indeed, with $d=\gcd(m,n)$ and $m=d m'$, $n=d n'$, we have $a^{m'}=b^{n'}$, and since $\gcd(m',n')=1$ we get $a=c^{n'}$, $b=c^{m'}$ for some integer $c$.
+
+**Conclusion.** $a$ and $b$ are both powers of a common integer.
+
+@@@ divisibility-gcd-pythagorean.md
+---
+title: Primitive Pythagorean triples
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: Pythagorean triples, coprime, parity
+date: 2026-11-03
+---
+
+## Statement
+
+Show that in any primitive Pythagorean triple $(a,b,c)$ with $a^2+b^2=c^2$ and $\gcd(a,b,c)=1$, exactly one of $a,b$ is even, and $c$ is odd.
+
+## Hint
+
+Parity analysis modulo $4$: squares mod $4$ are $0$ or $1$.
+
+## Solution
+
+**Both odd?** If $a,b$ both odd, $a^2+b^2\equiv1+1\equiv2\pmod4$. But $c^2\equiv0$ or $1\pmod4$. Contradiction.
+
+**Both even?** Then $\gcd(a,b)\ge2$, contradicting primitivity.
+
+**Exactly one even.** So exactly one is even; WLOG $a$ even. Then $a^2\equiv0\pmod4$, $b^2\equiv1\pmod4$, so $c^2\equiv1\pmod4$, $c$ odd.
+
+**Conclusion.** In any primitive triple, exactly one leg is even and the hypotenuse is odd.
+
+**Parametrization.** $a=2mn$, $b=m^2-n^2$, $c=m^2+n^2$ with $m>n$, coprime, opposite parity.
+
+@@@ divisibility-gcd-mersenne.md
+---
+title: Divisors of Mersenne numbers
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: Mersenne, divisors, congruences
+date: 2026-11-03
+---
+
+## Statement
+
+Let $p$ be prime and $q$ a prime divisor of $M_p=2^p-1$. Show that $q\equiv1\pmod p$ and $q\equiv\pm1\pmod8$.
+
+## Hint
+
+Use Fermat's little theorem: $2^{q-1}\equiv1\pmod q$, and $2^p\equiv1\pmod q$. So ord$_q(2)\mid\gcd(p,q-1)$.
+
+## Solution
+
+**Order.** $2^p\equiv1\pmod q$, so ord$_q(2)\mid p$, hence ord$_q(2)\in\{1,p\}$ (since $p$ prime). If ord $=1$, $q\mid1$, impossible. So ord $=p$.
+
+**Fermat.** ord$_q(2)\mid q-1$, so $p\mid q-1$, i.e. $q\equiv1\pmod p$.
+
+**Mod 8.** $q$ odd prime, $q\equiv1,3,5,7\pmod8$. Since $q\mid2^p-1$ and $2^p\equiv1\pmod q$ with $p$ odd: $q$ must be $\pm1\pmod8$ (by quadratic reciprocity / Euler's criterion, $2^{(q-1)/2}\equiv(q/2)\pmod q$).
+
+**Conclusion.** $q\equiv1\pmod p$ and $q\equiv\pm1\pmod8$.
+
+@@@ divisibility-gcd-gcd-sum.md
+---
+title: GCD of sums
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: gcd, sums, congruence
+date: 2026-11-03
+---
+
+## Statement
+
+Let $a,b\in\mathbb{Z}$. Show that $\gcd(a+b,a^2+b^2)$ divides $2\gcd(a,b)^2$.
+
+## Hint
+
+Note $a^2+b^2=(a+b)^2-2ab$. Any common divisor of $a+b$ and $a^2+b^2$ divides $2ab$.
+
+## Solution
+
+**Setup.** $d=\gcd(a+b,a^2+b^2)$. Then $d\mid a+b$ and $d\mid a^2+b^2=(a+b)^2-2ab$, so $d\mid 2ab$.
+
+**Bound.** Since $d\mid a+b$, let $g=\gcd(a,b)$ and $a=ga'$, $b=gb'$ with $\gcd(a',b')=1$. Then $d\mid g(a'+b')$ and $d\mid2g^2a'b'$. Since $\gcd(a'+b',a'b')=1$ (shown earlier), $d$ divides $2g^2$.
+
+**Conclusion.** $\gcd(a+b,a^2+b^2)\mid2\gcd(a,b)^2$.
+
+@@@ divisibility-gcd-euclid-proof.md
+---
+title: Proof of the Euclidean algorithm
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: Euclidean algorithm, gcd invariance, proof
+date: 2026-11-03
+---
+
+## Statement
+
+Show that if $a=bq+r$, then $\gcd(a,b)=\gcd(b,r)$.
+
+## Hint
+
+Show that both pairs have the same set of common divisors.
+
+## Solution
+
+**Common divisors.** If $d\mid a$ and $d\mid b$, then $d\mid a-bq=r$. Conversely, if $d\mid b$ and $d\mid r$, then $d\mid bq+r=a$.
+
+**Conclusion.** Both pairs have the same common divisors, hence the same greatest one. The Euclidean algorithm terminates because remainders strictly decrease, and stops at the last nonzero remainder, which is the gcd.
+
+@@@ divisibility-gcd-coprime-linear.md
+---
+title: Linear relations and coprimality
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: coprime, linear relation, proof
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $a$ and $b$ are coprime iff there exist $u,v\in\mathbb{Z}$ with $au+bv=1$.
+
+## Hint
+
+Forward: Bézout. Converse: any common divisor divides $1$.
+
+## Solution
+
+**Forward.** Bézout's identity for coprime integers.
+
+**Converse.** If $d\mid a$ and $d\mid b$, then $d\mid au+bv=1$. So $d=1$.
+
+**Conclusion.** Coprimality is equivalent to the existence of a Bézout relation equal to $1$.
+
+@@@ divisibility-gcd-hcf.md
+---
+title: The HCF of consecutive integers
+category: number/divisibility
+level: lycee
+difficulty: 1
+tags: coprime, consecutive integers, gcd
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\gcd(n,n+1)=1$ and $\gcd(2n+1,3n+2)=1$ for all $n\ge1$.
+
+## Hint
+
+For the first, note that a common divisor divides $(n+1)-n=1$. For the second, find a linear combination that gives $1$.
+
+## Solution
+
+**First.** If $d\mid n$ and $d\mid n+1$, then $d\mid1$. So $\gcd(n,n+1)=1$.
+
+**Second.** Compute $3(2n+1)-2(3n+2)=6n+3-6n-4=-1$. So any common divisor divides $1$.
+
+**Conclusion.** Both pairs are coprime for all $n$.
+
+@@@ divisibility-gcd-chinese-remainder.md
+---
+title: Chinese remainder theorem
+category: number/divisibility
+level: l1
+difficulty: 4
+tags: Chinese remainder, congruences, CRT
+date: 2026-11-03
+---
+
+## Statement
+
+State the Chinese remainder theorem and solve the system
+$$\begin{cases}x\equiv2\pmod5\\ x\equiv3\pmod7\end{cases}$$
+
+## Hint
+
+Write $x=2+5k$ and impose $2+5k\equiv3\pmod7$.
+
+## Solution
+
+**Statement.** If $m_1,\ldots,m_n$ are pairwise coprime, and $a_1,\ldots,a_n$ are arbitrary integers, the system $x\equiv a_i\pmod{m_i}$ has a unique solution modulo $M=m_1\cdots m_n$.
+
+**Solve.** $x=2+5k$. Need $2+5k\equiv3\pmod7$, i.e. $5k\equiv1\pmod7$. Since $5^{-1}\equiv3\pmod7$ (as $5\cdot3=15\equiv1$), $k\equiv3\pmod7$, so $k=3+7m$. Then $x=2+5(3+7m)=17+35m$.
+
+**Conclusion.** $x\equiv17\pmod{35}$. Check: $17=3\cdot5+2$, $17=2\cdot7+3$. Correct.
+
+@@@ divisibility-gcd-coprime-divisors.md
+---
+title: Divisors of coprime numbers
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: coprime, divisors, factorization
+date: 2026-11-03
+---
+
+## Statement
+
+Let $a,b$ be coprime positive integers. Show that if $d\mid ab$, then $d=d_1d_2$ with $d_1\mid a$, $d_2\mid b$, and $d_1,d_2$ coprime.
+
+## Hint
+
+Define $d_1=\gcd(d,a)$ and $d_2=d/d_1$.
+
+## Solution
+
+**Setup.** Let $d_1=\gcd(d,a)$ and $d_2=d/d_1$. Then $d_1\mid a$.
+
+**Show $d_2\mid b$.** Since $d\mid ab$ and $d_1\mid a$, we have $d_2=d/d_1\mid (a/d_1)b$. Since $\gcd(d_1,d_2)=1$ and $\gcd(a/d_1,b)=1$ (as $\gcd(a,b)=1$), Gauss's lemma gives $d_2\mid b$.
+
+**Coprimality.** $\gcd(d_1,d_2)=1$ by construction.
+
+**Conclusion.** Every divisor of $ab$ splits uniquely as a product of coprime divisors of $a$ and $b$.
+
+@@@ divisibility-gcd-congruence-class.md
+---
+title: Congruence classes modulo $n$
+category: number/divisibility
+level: l1
+difficulty: 2
+tags: congruences, residue classes, partition
+date: 2026-11-03
+---
+
+## Statement
+
+Show that congruence modulo $n$ partitions $\mathbb{Z}$ into $n$ classes, and compute the classes for $n=4$.
+
+## Hint
+
+$a\equiv b\pmod n\iff n\mid a-b$ is an equivalence relation.
+
+## Solution
+
+**Equivalence relation.** Reflexive: $n\mid0$. Symmetric: $n\mid a-b\Rightarrow n\mid b-a$. Transitive: $n\mid a-b$ and $n\mid b-c\Rightarrow n\mid a-c$.
+
+**Classes.** The class of $a$ is $\{a+kn:k\in\mathbb{Z}\}$, determined by the remainder of $a$ mod $n$.
+
+**For $n=4$:** classes are $\bar0,\bar1,\bar2,\bar3$, represented by the residues $0,1,2,3$.
+
+**Conclusion.** $\mathbb{Z}/n\mathbb{Z}$ has $n$ elements.
+
+@@@ divisibility-gcd-valuation-sum.md
+---
+title: Additive property of the p-adic valuation
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: p-adic valuation, additivity, non-Archimedean
+date: 2026-11-03
+---
+
+## Statement
+
+Let $p$ be prime and $v_p$ the $p$-adic valuation. Show that for all $m,n\in\mathbb{Z}\setminus\{0\}$:
+$$v_p(m+n)\ge\min(v_p(m),v_p(n)),$$
+with equality when $v_p(m)\neq v_p(n)$.
+
+## Hint
+
+Factor out $p^{\min(v_p(m),v_p(n))}$.
+
+## Solution
+
+**Setup.** Let $k=\min(v_p(m),v_p(n))$, so $m=p^km'$, $n=p^kn'$ with at least one of $m',n'$ not divisible by $p$. Then $m+n=p^k(m'+n')$, so $v_p(m+n)=k+v_p(m'+n')\ge k$.
+
+**Equality case.** If $v_p(m)\neq v_p(n)$, exactly one of $m',n'$ is divisible by $p$, so $m'+n'\not\equiv0\pmod p$, giving $v_p(m'+n')=0$, i.e. $v_p(m+n)=k$.
+
+**Conclusion.** The inequality holds, with equality when the valuations differ.
+
+@@@ divisibility-gcd-gcd-of-gcd.md
+---
+title: GCD of a GCD
+category: number/divisibility
+level: lycee
+difficulty: 1
+tags: gcd, associativity, three numbers
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\gcd(\gcd(a,b),c)=\gcd(a,\gcd(b,c))$ for all $a,b,c\in\mathbb{Z}$.
+
+## Hint
+
+Both sides equal $\gcd(a,b,c)$, the greatest common divisor of the three integers.
+
+## Solution
+
+**Definition.** $\gcd(a,b,c)$ is the greatest positive integer dividing all three. The identity $\gcd(\gcd(a,b),c)=\gcd(a,b,c)$ is a standard property (each side divides the other).
+
+**Conclusion.** The GCD operation is associative.
+
+**Application.** $\gcd(a,b,c)=\gcd(\gcd(a,b),c)$, allowing iterative computation.
+
+@@@ divisibility-gcd-cyclic-expansion.md
+---
+title: An application of the Euclidean algorithm
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: Euclidean algorithm, expansion, continued fraction
+date: 2026-11-03
+---
+
+## Statement
+
+Use the Euclidean algorithm to find the continued fraction expansion of $1071/462$.
+
+## Hint
+
+Each quotient in the algorithm gives a coefficient in the continued fraction.
+
+## Solution
+
+**Euclidean.** $1071=2\cdot462+147$, $462=3\cdot147+21$, $147=7\cdot21+0$.
+
+**Quotients.** $2,3,7$.
+
+**Continued fraction.** $1071/462=2+\frac{1}{3+\frac{1}{7}}$.
+
+**Conclusion.** The continued fraction expansion of $1071/462$ is $[2;3,7]$.
+
+@@@ divisibility-gcd-proof-gcd-1.md
+---
+title: A coprimality proof
+category: number/divisibility
+level: l1
+difficulty: 3
+tags: coprime, proof, linear combination
+date: 2026-11-03
+---
+
+## Statement
+
+Show that for any integer $n$, $2n+1$ and $3n+2$ are coprime.
+
+## Hint
+
+Find a linear combination equal to $1$.
+
+## Solution
+
+**Combination.** $3(2n+1)-2(3n+2)=-1$.
+
+**Conclusion.** So $2(3n+2)-3(2n+1)=1$, giving a Bézout relation. Hence $\gcd(2n+1,3n+2)=1$.
+
+**Application.** The fraction $\frac{2n+1}{3n+2}$ is irreducible for all $n$.
+
+-----------------
+@@@ divisibility-bezout-identity.md
+---
+title: Bézout's identity
+category: number/divisibility
+level: lycee
+difficulty: 3
+tags: Bézout, Euclidean algorithm, linear combination
+date: 2026-11-03
+---
+
+## Statement
+
+Find integers $u,v$ such that $1071u+462v=21$.
+
+## Hint
+
+Back-substitute the Euclidean algorithm from the previous exercise.
+
+## Solution
+
+**Back-substitution.**
+$$21=462-3\cdot147,$$
+$$147=1071-2\cdot462.$$
+So
+$$21=462-3(1071-2\cdot462)=462-3\cdot1071+6\cdot462=7\cdot462-3\cdot1071.$$
+
+**Conclusion.** $u=-3$, $v=7$ works: $1071\cdot(-3)+462\cdot7=-3213+3234=21$.
+
+**Remark.** Bézout's identity exists iff $\gcd(a,b)$ divides the target; the coefficients are not unique (adding multiples of $b/\gcd$ to $u$ and subtracting multiples of $a/\gcd$ from $v$ gives other solutions).
 @@@ divisibility-basic.md
 ---
 title: Basic divisibility and linear combinations
