@@ -215,7 +215,6 @@
           "id": "topology-of-mnr",
           "name": "Topology of Mn(ℝ)",
           "description": "Open and closed sets, compact sets and connectedness.",
-          "subcategories": ["Norms, open and closed sets, compactness, connectedness, density and the exponential in the space of real square matrices.",
           "subcategories": [
             {
               "id": "mn-norms",
