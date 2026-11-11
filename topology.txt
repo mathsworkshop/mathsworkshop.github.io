@@ -4478,7 +4478,7 @@ So the lower-left entry of $PJP^{-1}$ is $\dfrac{r^2+s^2}{\det P}$, which has th
 **Note.** The source solution calls the orbit "$\{A:A^2=-I\}$ with two components (previous problem)"; the explicit formula for $PJP^{-1}$ above proves both the identification of the components with the orientation $\operatorname{sign}\det P$ and that conjugating by an orientation-reversing $P$ really changes the component.
 @@@ mn-conn-the-fundamental-group-of-gl-2.md
 ---
-title: GLâ‚‚âº(â„) is not simply connected
+title: GL(2,ℝ) is not simply connected
 category: topology/topology-of-mnr/mn-connectedness
 level: m1
 difficulty: 4
