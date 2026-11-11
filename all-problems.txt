@@ -19554,33 +19554,6 @@ Let $f(x)=e^x-1-x$. Then $f'(x)=e^x-1$.
 
 So $f$ has a strict minimum at $0$, where $f(0)=0$. Therefore $f(x)>0$ for $x\ne0$, which gives $e^x\ge1+x$ with equality only at $x=0$.
 
-@@@ four-digit-numbers-with-distinct-digits.md
----
-title: Four-digit numbers with distinct digits
-/counting
-level: lycee
-difficulty: 1
-tags: counting, arrangements
-date: 2026-10-31
----
-
-## Statement
-
-How many four-digit numbers (from $1000$ to $9999$) have four different digits?
-
-## Hint
-
-Choose the digits one at a time, starting with the first.
-
-## Solution
-
-- The first digit can be any of $1,\dots,9$: $9$ choices (it cannot be $0$).
-- The second digit can be any digit except the first, including $0$: $9$ choices.
-- The third digit: $8$ choices.
-- The fourth digit: $7$ choices.
-
-By the multiplication principle, there are $9\cdot9\cdot8\cdot7=4536$ such numbers.
-
 @@@ infinitely-many-primes.md
 ---
 title: There are infinitely many primes
