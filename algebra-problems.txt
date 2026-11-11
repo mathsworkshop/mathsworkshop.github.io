@@ -3545,63 +3545,6 @@ The set of circles and lines in $\mathbb{C}$ is exactly the set of solutions of 
 
 **Conclusion.** MÃ¶bius transformations map generalized circles to generalized circles.
 
-@@@ complex-harmonic-conjugate.md
----
-title: Harmonic functions and holomorphic functions
-category: algebra/complex-numbers
-level: m1
-difficulty: 5
-tags: harmonic, holomorphic, Cauchy-Riemann
-date: 2026-11-03
----
-
-## Statement
-
-Let $f=u+iv$ be holomorphic on an open set. Show that $u$ and $v$ are harmonic ($\Delta u=\Delta v=0$).
-
-## Hint
-
-Use the Cauchy-Riemann equations $u_x=v_y$, $u_y=-v_x$.
-
-## Solution
-
-**Cauchyâ€“Riemann.** $u_x=v_y$, $u_y=-v_x$.
-
-**Laplacian of $u$.** $\Delta u=u_{xx}+u_{yy}=(v_y)_x+(-v_x)_y=v_{yx}-v_{xy}=0$ (since $v$ is $C^2$).
-
-**Similarly for $v$.** $\Delta v=v_{xx}+v_{yy}=(-u_y)_x+(u_x)_y=-u_{yx}+u_{xy}=0$.
-
-**Conclusion.** The real and imaginary parts of a holomorphic function are harmonic; they are harmonic conjugates.
-
-@@@ complex-argument-principle.md
----
-title: The argument principle (statement and example)
-category: algebra/complex-numbers
-level: m1
-difficulty: 5
-tags: argument principle, zeros and poles, contour
-date: 2026-11-03
----
-
-## Statement
-
-State the argument principle and verify it on $f(z)=z^2$ over the unit circle.
-
-## Hint
-
-The argument principle states that $\frac{1}{2\pi i}\oint_C\frac{f'(z)}{f(z)}\,dz=Z-P$ (number of zeros minus poles inside $C$).
-
-## Solution
-
-**Statement.** If $f$ is meromorphic inside and on a simple closed contour $C$ with no zeros or poles on $C$, then
-$$\frac{1}{2\pi i}\oint_C\frac{f'(z)}{f(z)}\,dz=Z-P,$$
-where $Z$ and $P$ are the numbers of zeros and poles inside $C$, counted with multiplicity.
-
-**Example.** $f(z)=z^2$, $f'(z)=2z$, $C$ is the unit circle.
-
-**Integral.** $\frac{1}{2\pi i}\oint_{|z|=1}\frac{2z}{z^2}\,dz=\frac{1}{2\pi i}\oint\frac{2}{z}\,dz=\frac{1}{2\pi i}\cdot2\cdot2\pi i=2$.
-
-**Conclusion.** $Z-P=2-0=2$, consistent with the double zero at the origin.
 
 @@@ complex-representation-roots.md
 ---
@@ -3851,87 +3794,6 @@ Factor $X^n-1$ and evaluate at $X=1$.
 
 **Conclusion.** $\prod_{k=1}^{n-1}2\sin(k\pi/n)=n$, i.e. $\prod_{k=1}^{n-1}\sin(k\pi/n)=\frac{n}{2^{n-1}}$.
 
-@@@ complex-cauchy-riemann.md
----
-title: Cauchy-Riemann equations
-category: algebra/complex-numbers
-level: m1
-difficulty: 4
-tags: Cauchy-Riemann, holomorphic, complex analysis
-date: 2026-11-03
----
-
-## Statement
-
-Let $f(x+iy)=u(x,y)+iv(x,y)$. Show that $f$ is holomorphic at $z_0$ iff the Cauchyâ€“Riemann equations $u_x=v_y$, $u_y=-v_x$ hold at $z_0$ and the partial derivatives are continuous.
-
-## Hint
-
-Compute the limit $\lim_{h\to0}(f(z_0+h)-f(z_0))/h$ along $h$ real and $h$ purely imaginary.
-
-## Solution
-
-**Real direction.** With $h\in\mathbb{R}$, the limit is $f_x=u_x+iv_x$.
-
-**Imaginary direction.** With $h=it$ (tâ†’0 real), the limit is $\frac1i f_y=-if_y=v_y-iu_y$.
-
-**Equality.** For $f$ to be holomorphic, both must be equal: $u_x+iv_x=v_y-iu_y$, i.e. $u_x=v_y$ and $v_x=-u_y$.
-
-**Conclusion.** Cauchy-Riemann equations are necessary (and, with continuity of partial derivatives, sufficient) for holomorphy.
-
-@@@ complex-modulus-maximum.md
----
-title: Maximum modulus principle (statement)
-category: algebra/complex-numbers
-level: m1
-difficulty: 5
-tags: maximum modulus, holomorphic, open set
-date: 2026-11-03
----
-
-## Statement
-
-State the maximum modulus principle and illustrate it with $f(z)=z$ on the unit disk.
-
-## Hint
-
-A non-constant holomorphic function on a connected open set has no local maximum of its modulus.
-
-## Solution
-
-**Statement.** If $f$ is holomorphic and non-constant on a connected open set $U$, then $|f|$ has no local maximum in $U$. In particular, on a bounded domain with boundary, the maximum of $|f|$ is attained on the boundary.
-
-**Example.** $f(z)=z$ on the unit disk $\mathbb{D}$. $|f(z)|=|z|<1$ for $z\in\mathbb{D}$, and the supremum $1$ is attained on the boundary $|z|=1$ only. No interior maximum.
-
-**Conclusion.** The maximum modulus principle holds, and the example illustrates the boundary behavior.
-
-@@@ complex-argument-principle-rouche.md
----
-title: Rouché's theorem (application)
-category: algebra/complex-numbers
-level: m1
-difficulty: 5
-tags: Rouché, zeros, holomorphic
-date: 2026-11-03
----
-
-## Statement
-
-Using Rouché's theorem, show that $z^5+3z+1$ has exactly one root in the unit disk $|z|<1$.
-
-## Hint
-
-Compare with $f(z)=3z+1$ on the boundary $|z|=1$.
-
-## Solution
-
-**Rouché's theorem.** If $|g(z)|<|f(z)|$ on $|z|=1$, then $f$ and $f+g$ have the same number of zeros inside the disk.
-
-**Choose $f(z)=3z+1$, $g(z)=z^5$.** On $|z|=1$: $|g(z)|=1<3-1=2\le|3z+1|$ (since $|3z+1|\ge3|z|-1=2$).
-
-**Zeros of $f$.** $3z+1=0$ gives $z=-1/3$, which is in the disk. So $f$ has exactly one zero inside.
-
-**Conclusion.** By Rouché's theorem, $z^5+3z+1$ has exactly one root in $|z|<1$.
 
 @@@ polynomials-degree-operations.md
 ---
@@ -4428,7 +4290,7 @@ $$|\alpha|^n\le M(|\alpha|^{n-1}+\cdots+1)=M\frac{|\alpha|^n-1}{|\alpha|-1}\le M
 
 @@@ polynomials-symmetric-newton.md
 ---
-title: Newton's identities
+title: Newton's identities for three variables
 category: algebra/polynomials
 level: l1
 difficulty: 5
@@ -4438,26 +4300,47 @@ date: 2026-11-03
 
 ## Statement
 
-Let $x_1,x_2,x_3$ be the roots of $X^3+pX^2+qX+r=0$. Let $p_k=x_1^k+x_2^k+x_3^k$. Show that
-$$p_3+e_1p_2+e_2p_1+3e_3=0,$$
-where $e_1=-p$, $e_2=q$, $e_3=-r$.
+Let $x_1,x_2,x_3$ be the roots of $X^3+\alpha X^2+\beta X+\gamma=0$. Let
+$$p_k=x_1^k+x_2^k+x_3^k\quad(k\ge1),$$
+and let $e_1,e_2,e_3$ be the elementary symmetric polynomials:
+$$e_1=x_1+x_2+x_3,\quad e_2=x_1x_2+x_2x_3+x_3x_1,\quad e_3=x_1x_2x_3.$$
+By Vieta, $e_1=-\alpha$, $e_2=\beta$, $e_3=-\gamma$.
+
+Show Newton's identity for $k=3$:
+$$p_3=e_1p_2-e_2p_1+3e_3,$$
+equivalently
+$$p_3-e_1p_2+e_2p_1-3e_3=0.$$
 
 ## Hint
 
-Each root satisfies $x_i^3=-p x_i^2-qx_i-r$. Sum over $i$.
+Each root satisfies $x_i^3+\alpha x_i^2+\beta x_i+\gamma=0$. Sum over $i=1,2,3$ and rewrite $\alpha,\beta,\gamma$ in terms of $e_1,e_2,e_3$.
 
 ## Solution
 
-**Root equation.** $x_i^3+p x_i^2+q x_i+r=0$ for $i=1,2,3$.
+**Root equation.** For $i=1,2,3$,
+$$x_i^3+\alpha x_i^2+\beta x_i+\gamma=0.$$
 
-**Sum.** $\sum_i x_i^3+p\sum_i x_i^2+q\sum_i x_i+3r=0$, i.e.
-$$p_3+p\cdot p_2+q\cdot p_1+3r=0.$$
+**Sum over $i$.** Adding the three equations,
+$$\sum_i x_i^3+\alpha\sum_i x_i^2+\beta\sum_i x_i+3\gamma=0,$$
+i.e.
+$$p_3+\alpha p_2+\beta p_1+3\gamma=0.$$
 
-**In terms of $e_j$.** Recall $e_1=-p$, $e_2=q$, $e_3=-r$. The equation is
-$$p_3-e_1p_2+e_2p_1-3e_3=0,$$
-i.e. $p_3-e_1p_2+e_2p_1-3e_3=0$. Wait: $+3r=-3e_3$, so the equation is $p_3+p\cdot p_2+q\cdot p_1+3r=0$, i.e. $p_3-e_1p_2+e_2p_1-3e_3=0$.
+**Convert to $e$-notation.** Use $\alpha=-e_1$, $\beta=e_2$, $\gamma=-e_3$:
+$$p_3-e_1p_2+e_2p_1-3e_3=0.$$
 
-**Conclusion.** $p_3=e_1p_2-e_2p_1+3e_3$. With $p_1=e_1$ and $p_2=e_1^2-2e_2$, this gives Newton's identity.
+**Solve for $p_3$.**
+$$p_3=e_1p_2-e_2p_1+3e_3.$$
+
+**Check.** With $p_1=e_1$ and $p_2=e_1^2-2e_2$ (the $k=1$ and $k=2$ cases of the same recurrence), the identity reads
+$$p_3=e_1(e_1^2-2e_2)-e_2e_1+3e_3=e_1^3-3e_1e_2+3e_3,$$
+which is the classical expression of $p_3$ in terms of $e_1,e_2,e_3$.
+
+**General form of Newton's identities.** For $k\ge1$ and $k\le n$,
+$$p_k=e_1p_{k-1}-e_2p_{k-2}+\cdots+(-1)^{k-1}e_{k-1}p_1+(-1)^k\,k\,e_k,$$
+and for $k>n$ the last term disappears. For $n=3$:
+$$p_1=e_1,\qquad p_2=e_1p_1-2e_2,\qquad p_3=e_1p_2-e_2p_1+3e_3.$$
+
+**Conclusion.** $p_3=e_1p_2-e_2p_1+3e_3$; equivalently $p_3-e_1p_2+e_2p_1-3e_3=0$.
 
 @@@ polynomials-complex-factorization.md
 ---
@@ -5578,31 +5461,36 @@ $$\sqrt{x+\sqrt{2x-1}}+\sqrt{x-\sqrt{2x-1}}=2.$$
 
 ## Hint
 
-Let $A$ be the LHS. Compute $A^2$ by expanding and use the identity $(a+b)(a-b)=a^2-b^2$.
+Let $A$ be the left-hand side. Compute $A^2$ by expanding and use $(a+b)(a-b)=a^2-b^2$ to evaluate the cross term.
 
 ## Solution
 
-**Condition.** $2x-1\ge0$, i.e. $x\ge1/2$. Also $x\pm\sqrt{2x-1}\ge0$. The latter is $x\ge\sqrt{2x-1}$, i.e. $x^2\ge2x-1$, i.e. $(x-1)^2\ge0$, always true.
+**Domain.** We need $2x-1\ge0$, i.e. $x\ge\tfrac12$, and both radicals real, i.e. $x\pm\sqrt{2x-1}\ge0$. The condition $x\ge\sqrt{2x-1}$ is equivalent to $x^2\ge 2x-1$ (both sides nonnegative), i.e. $(x-1)^2\ge0$, which always holds. So the domain is $x\ge\tfrac12$.
 
-**Square.** Let $a=\sqrt{x+\sqrt{2x-1}}$, $b=\sqrt{x-\sqrt{2x-1}}$. Then $a+b=2$ and
+**Square.** Set
+$$a=\sqrt{x+\sqrt{2x-1}},\qquad b=\sqrt{x-\sqrt{2x-1}}.$$
+Then
 $$a^2+b^2=2x,\qquad ab=\sqrt{x^2-(2x-1)}=\sqrt{(x-1)^2}=|x-1|.$$
-So $(a+b)^2=a^2+b^2+2ab=2x+2|x-1|=4$.
+Since $a+b=2$, we get
+$$4=(a+b)^2=a^2+b^2+2ab=2x+2|x-1|.$$
+So $|x-1|=2-x$, which requires $x\le2$, and then splits into two cases.
 
-**Case $x\ge1$:** $2x+2(x-1)=4$, i.e. $4x=6$, $x=3/2$. Check: $\sqrt{3/2+1}+\sqrt{3/2-1}=\sqrt{5/2}+\sqrt{1/2}=\frac{\sqrt5+1}{\sqrt2}=\sqrt2\cdot\frac{\sqrt5+1}{2}\neq2$... let me recompute. $\sqrt{5/2}+\sqrt{1/2}=(\sqrt5+1)/\sqrt2\approx(2.236+1)/1.414\approx2.288\neq2$. So $x=3/2$ doesn't actually satisfy the equation directly. Let me recheck the squaring.
+**Case $1\le x\le 2$:** $|x-1|=x-1$, so
+$$2x+2(x-1)=4\ \Longrightarrow\ 4x=6\ \Longrightarrow\ x=\tfrac32.$$
+This lies in $[1,2]$.
 
-Actually $a^2+b^2=2x$, and $ab=\sqrt{x^2-(2x-1)}$. The discriminant condition: $x^2-2x+1=(x-1)^2$. So $ab=|x-1|$.
+**Case $\tfrac12\le x<1$:** $|x-1|=1-x$, so
+$$2x+2(1-x)=4\ \Longrightarrow\ 2=4,$$
+which is impossible.
 
-If $x\ge1$: $ab=x-1$. Then $(a+b)^2=2x+2(x-1)=4x-2$. Setting equal to $4$: $4x=6$, $x=3/2$. But then $ab=1/2$, $a+b=2$, so $a,b$ are roots of $t^2-2t+1/2=0$: $t=1\pm\sqrt{1/2}=1\pm\frac{\sqrt2}{2}$. So $a,b=\frac{2\pm\sqrt2}{2}$. Check: $a^2=\frac{(2+\sqrt2)^2}{4}=\frac{6+4\sqrt2}{4}$. And $x+\sqrt{2x-1}=3/2+\sqrt2=\frac{3+2\sqrt2}{2}=\frac{6+4\sqrt2}{4}$. Consistent. So $x=3/2$ is a solution.
+**Verification at $x=3/2$.** $\sqrt{2x-1}=\sqrt2$, and
+$$x+\sqrt{2x-1}=\frac32+\sqrt2=\frac{3+2\sqrt2}{2}=\frac{(1+\sqrt2)^2}{2},\qquad
+x-\sqrt{2x-1}=\frac32-\sqrt2=\frac{3-2\sqrt2}{2}=\frac{(1-\sqrt2)^2}{2}.$$
+Hence
+$$a=\frac{1+\sqrt2}{\sqrt2},\qquad b=\frac{\sqrt2-1}{\sqrt2},$$
+and $a+b=\dfrac{1+\sqrt2+\sqrt2-1}{\sqrt2}=\dfrac{2\sqrt2}{\sqrt2}=2$. ✓
 
-But my direct numerical check gave $\approx2.288$, not $2$. Let me recompute: $\sqrt{5/2}=\sqrt{2.5}\approx1.581$, $\sqrt{1/2}\approx0.707$, sum $\approx2.288$. That contradicts. But the algebra says it should work. Hmm.
-
-Wait, $\sqrt{2x-1}$ at $x=3/2$ is $\sqrt{3-1}=\sqrt2\approx1.414$. Then $x+\sqrt{2x-1}=1.5+1.414=2.914$, $\sqrt{2.914}\approx1.707$. And $x-\sqrt{2x-1}=1.5-1.414=0.086$, $\sqrt{0.086}\approx0.293$. Sum: $1.707+0.293=2$. Correct! My earlier computation used the wrong value of $\sqrt{2x-1}$.
-
-OK so $x=3/2$ works. 
-
-**Case $x<1$:** $ab=1-x$. Then $(a+b)^2=2x+2(1-x)=2$. Setting equal to $4$: impossible ($2\neq4$).
-
-**Conclusion.** $x=3/2$.
+**Conclusion.** The equation has exactly one solution, $x=\dfrac32$.
 
 @@@ equations-cyclotomic.md
 ---
@@ -5650,34 +5538,36 @@ $$\begin{cases}x^2=yz+1\\ y^2=zx+1\\ z^2=xy+1\end{cases}$$
 
 ## Hint
 
-Subtract the equations pairwise to get relations, then use the sum.
+Subtract the equations pairwise to get $(x-y)(x+y+z)=0$ and its cyclic analogues. Then split into the cases $x+y+z=0$ and $x+y+z\ne0$.
 
 ## Solution
 
-**Subtract.** $(x^2-y^2)=(yz-zx)$, i.e. $(x-y)(x+y)=-z(x-y)$. If $x\neq y$, then $x+y=-z$. Similarly for the others.
+**Pairwise subtraction.** Subtracting the second equation from the first:
+$$x^2-y^2=z(y-x)\ \Longleftrightarrow\ (x-y)(x+y+z)=0.$$
+Similarly,
+$$(y-z)(x+y+z)=0,\qquad (z-x)(x+y+z)=0.$$
 
-**Case 1: $x=y=z$.** Then $x^2=x^2+1$?? No: $x^2=x^2+1$ implies $0=1$, impossible. Wait, the equation is $x^2=yz+1=x^2+1$, impossible. So no solution with all equal.
+**Case 1: $x+y+z\ne0$.** Then all three factors in the first position must vanish, so $x=y=z$. The first equation gives $x^2=x^2+1$, impossible. No solutions.
 
-**Case 2: some equal, some not.** Suppose $x=y\neq z$. From $x^2-y^2=(yz-zx)$ we get $0=z(x-x)=0$, no constraint. But from the first two equations: $x^2=xz+1$ (since $y=x$), so $x^2-xz=1$. And $z^2=x^2+1$. From $x^2=xz+1$: $z=(x^2-1)/x=x-1/x$. Then $z^2=x^2+1$: $(x-1/x)^2=x^2+1$, i.e. $x^2-2+1/x^2=x^2+1$, so $1/x^2=3$, $x=\pm1/\sqrt3$. Then $z=\pm(1/\sqrt3-\sqrt3)=\mp2/\sqrt3$.
+**Case 2: $x+y+z=0$.** Then the three subtractions give no further constraint. Substitute $z=-(x+y)$ in the first equation:
+$$x^2=-y(x+y)+1\quad\Longleftrightarrow\quad x^2+xy+y^2=1.$$
+Cyclically, $y^2+yz+z^2=1$ and $z^2+zx+x^2=1$; with $x+y+z=0$ these are all the same equation. Adding the three original equations,
+$$x^2+y^2+z^2=xy+yz+zx+3.$$
+Using $(x+y+z)^2=x^2+y^2+z^2+2(xy+yz+zx)=0$, we get $xy+yz+zx=-\tfrac12(x^2+y^2+z^2)$, so
+$$x^2+y^2+z^2=-\tfrac12(x^2+y^2+z^2)+3\ \Longrightarrow\ x^2+y^2+z^2=2.$$
+So the solution set is contained in $\{x+y+z=0,\ x^2+y^2+z^2=2\}$, a circle of radius $\sqrt2$ in the plane $x+y+z=0$.
 
-Check: $z=\mp2/\sqrt3$, and the third equation $z^2=xy+1=x^2+1$ gives $4/3=1/3+1=4/3$. Correct.
+**Additional constraint from $x^2=yz+1$.** With $y+z=-x$ and $yz=x^2-1$, the numbers $y,z$ are the roots of
+$$t^2+xt+(x^2-1)=0.$$
+Its discriminant is $x^2-4(x^2-1)=4-3x^2$, so real $y,z$ require $|x|\le 2/\sqrt3$. By symmetry, $|y|\le 2/\sqrt3$ and $|z|\le 2/\sqrt3$.
 
-So $(x,y,z)$ with two equal entries: e.g. $(1/\sqrt3, 1/\sqrt3, -2/\sqrt3)$ and $(-1/\sqrt3,-1/\sqrt3,2/\sqrt3)$ and permutations.
+**Conclusion.** The solution set is
+$$\Bigl\{(x,y,z)\in\mathbb{R}^3\ :\ x+y+z=0,\ \ x^2+y^2+z^2=2,\ \ |x|\le 2/\sqrt3,\ |y|\le 2/\sqrt3,\ |z|\le 2/\sqrt3\Bigr\}.$$
+On the circle $\{x+y+z=0,\ x^2+y^2+z^2=2\}$ the maximum of $|x|$ is $\sqrt2>2/\sqrt3$, so the inequality constraints cut the circle into three arcs: on each arc, one of $|x|,|y|,|z|$ reaches its largest value and the other two are equal. The boundary points of these arcs are the six permutations of
+$$\Bigl(\tfrac1{\sqrt3},\,\tfrac1{\sqrt3},\,-\tfrac2{\sqrt3}\Bigr)\quad\text{and}\quad\Bigl(-\tfrac1{\sqrt3},\,-\tfrac1{\sqrt3},\,\tfrac2{\sqrt3}\Bigr).$$
+In particular, the solution set is a **continuum** (three closed arcs), not a discrete set; the six permutations are its boundary points, not additional solutions.
 
-**Case 3: $x,y,z$ pairwise distinct.** Then $x+y=-z$, $y+z=-x$, $z+x=-y$. Adding all three: $2(x+y+z)=-(x+y+z)$, so $x+y+z=0$. Then $z=-(x+y)$, consistent. But $x+y=-z$ and $x+y+z=0$ are the same. So all three relations are equivalent to $x+y+z=0$. Then $x^2=yz+1$. With $y+z=-x$ and $yz$: $x^2=yz+1$. And $y,z$ satisfy $y+z=-x$, $yz=x^2-1$. So $y,z$ are roots of $t^2+xt+(x^2-1)=0$, discriminant $x^2-4(x^2-1)=4-3x^2\ge0$, so $|x|\le2/\sqrt3$. Similarly for $y,z$. This gives a one-parameter family, not discrete. Hmm.
-
-Actually the system is symmetric, and we've found solutions where two variables are equal. There may be a continuum where all three are distinct satisfying $x+y+z=0$ and $x^2=yz+1$. Let's parametrize: $x+y+z=0$, $yz=x^2-1$, $y+z=-x$. Then $y,z$ roots of $t^2+xt+(x^2-1)=0$. For this to have real roots, $x^2-4(x^2-1)\ge0$, i.e. $x^2\le4/3$. Similarly $y^2\le4/3$, $z^2\le4/3$.
-
-So the solutions include a continuum: all $(x,y,z)$ with $x+y+z=0$, $x^2+y^2+z^2=2$ (from $x^2=yz+1$ and cyclic), and $|x|,|y|,|z|\le2/\sqrt3$. Actually if all three equations hold, $x^2+y^2+z^2=xy+yz+zx+3$, i.e. $x^2+y^2+z^2-(xy+yz+zx)=3$. Combined with $x+y+z=0$: $x^2+y^2+z^2=3$. So the solutions are points on the circle $x+y+z=0$, $x^2+y^2+z^2=3$, intersected with $|x_i|\le2/\sqrt3$.
-
-Actually the condition $|x|\le2/\sqrt3$ is automatically satisfied on that circle? The max of $|x|$ on the circle $x+y+z=0$, $x^2+y^2+z^2=3$ is $\sqrt2\approx1.414>2/\sqrt3\approx1.155$. So not automatic.
-
-**Conclusion.** The solutions are:
-- Two equal: $(a,a,-2a)$ with $a=\pm1/\sqrt3$, and permutations.
-- Three distinct: the curve on the sphere $x^2+y^2+z^2=3$ with $x+y+z=0$ and $|x|,|y|,|z|\le2/\sqrt3$.
-
-This is a rich problem; the discrete solutions are the six permutations of $(1/\sqrt3,1/\sqrt3,-2/\sqrt3)$ and $(-1/\sqrt3,-1/\sqrt3,2/\sqrt3)$.
-
+**Check of a boundary point.** For $(x,y,z)=\bigl(\tfrac1{\sqrt3},\tfrac1{\sqrt3},-\tfrac2{\sqrt3}\bigr)$: $x^2=\tfrac13$ and $yz+1=-\tfrac23+1=\tfrac13$ ✓; $y^2=\tfrac13$ and $zx+1=-\tfrac23+1=\tfrac13$ ✓; $z^2=\tfrac43$ and $xy+1=\tfrac13+1=\tfrac43$ ✓.
 @@@ equations-radical-inequality.md
 ---
 title: A radical inequality
@@ -7197,37 +7087,35 @@ $$\sum\frac{a^2}{b+c}\ge\frac{(a+b+c)^2}{(b+c)+(c+a)+(a+b)}=\frac{(a+b+c)^2}{2(a
 
 @@@ inequalities-holder-sum.md
 ---
-title: A direct application of HÃ¶lder
+title: A direct application of Hölder
 category: algebra/inequalities
 level: l1
 difficulty: 5
-tags: HÃ¶lder, powers, inequalities
+tags: Hölder, powers, inequalities
 date: 2026-11-03
 ---
 
 ## Statement
 
 Let $a,b,c\ge0$. Prove that
-$$(a^3+b^3+c^3)(a+b+c)(a+b+c)\ge(a^2+b^2+c^2)^3?$$
-This is a variant of the power mean inequality. State and prove the standard version:
-$$(a^3+b^3+c^3)(a+b+c)^2\ge(a^2+b^2+c^2)^3\cdot\frac{1}{?}$$
-Actually, the correct standard inequality is
-$$(a^3+b^3+c^3)(a+b+c)^2\ge\frac{(a^2+b^2+c^2)^3}{?}$$
-Hmm, let me state a clean and correct version:
 $$(a^3+b^3+c^3)(a+b+c)\ge(a^2+b^2+c^2)^2.$$
 
 ## Hint
 
-Use Cauchy-Schwarz twice, or the power mean inequality.
+Apply the Cauchy–Schwarz inequality to the vectors $\bigl(a^{3/2},b^{3/2},c^{3/2}\bigr)$ and $\bigl(a^{1/2},b^{1/2},c^{1/2}\bigr)$.
 
 ## Solution
 
-**Cauchy-Schwarz 1.** $\sum a^3\cdot\sum a\ge(\sum a^2)^2$, i.e.
-$$(a^3+b^3+c^3)(a+b+c)\ge(a^2+b^2+c^2)^2.$$
+**Cauchy–Schwarz.** For the two vectors $u=\bigl(a^{3/2},b^{3/2},c^{3/2}\bigr)$ and $w=\bigl(a^{1/2},b^{1/2},c^{1/2}\bigr)$,
+$$\langle u,w\rangle^2\le\|u\|^2\,\|w\|^2.$$
+Now $\langle u,w\rangle=\sum a^{3/2}\cdot a^{1/2}=\sum a^2=a^2+b^2+c^2$, while $\|u\|^2=\sum a^3$ and $\|w\|^2=\sum a=a+b+c$. Hence
+$$(a^2+b^2+c^2)^2\le(a^3+b^3+c^3)(a+b+c).$$
 
-Wait, that's not what Cauchy-Schwarz gives directly. Let me check: Cauchy-Schwarz says $(\sum a^{3/2}\cdot a^{1/2})^2\le(\sum a^3)(\sum a)$. LHS $=(\sum a^2)^2$. So indeed $(\sum a^2)^2\le(\sum a^3)(\sum a)$.
+**Equality.** Equality in Cauchy–Schwarz holds iff $u$ and $w$ are proportional. For $a,b,c>0$, this means $a^{3/2}/a^{1/2}=a$ is constant, i.e. $a=b=c$. (If some variables vanish, equality holds iff the nonzero ones are equal.)
 
-**Conclusion.** $(a^3+b^3+c^3)(a+b+c)\ge(a^2+b^2+c^2)^2$, with equality iff $a=b=c$.
+**Remark.** The inequality is a special case of Hölder's inequality: for $p=3/2$ and $q=3$, applied to the products $a^{3/2}\cdot a^{1/2}$. It is also the $p=3$, $r=1$ case of the power-mean inequality $\bigl(\frac{a^r+b^r+c^r}{3}\bigr)^{1/r}\le\bigl(\frac{a^s+b^s+c^s}{3}\bigr)^{1/s}$ for $r\le s$.
+
+**Conclusion.** $(a^3+b^3+c^3)(a+b+c)\ge(a^2+b^2+c^2)^2$, with equality iff $a=b=c$ (for positive $a,b,c$).
 
 @@@ inequalities-cyclic-sos.md
 ---
@@ -7392,7 +7280,6 @@ The expression is only cyclic, so you cannot assume $a\ge b\ge c$, but you can a
 
 **Key identity.** Expanding,
 $$b(a+c)^2-\left(a^2b+b^2c+c^2a+abc\right)=abc+bc^2-b^2c-c^2a=c(a-b)(b-c)\ \ge0.$$
-(Check: $(a-b)(b-c)=ab-ac-b^2+bc$, and multiplying by $c$ gives $abc-ac^2-b^2c+bc^2$. Wait — this gives $-ac^2$ not $-c^2a$, which is the same term. ✓)
 
 **AM-GM.** Hence the expression is at most $b(a+c)^2=4\cdot b\cdot\frac{a+c}2\cdot\frac{a+c}2\le4\left(\frac{b+(a+c)}3\right)^3=4$, since $b+(a+c)=3$.
 
