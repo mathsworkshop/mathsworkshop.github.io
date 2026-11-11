@@ -27,7 +27,7 @@ $$(x,y,z)=x\,(1,0,-1)+y\,(0,1,-1).$$
 The vectors $(1,0,-1)$ and $(0,1,-1)$ span $F$ and are linearly independent (neither is a multiple of the other). They form a basis, and $\dim F=2$.
 @@@ determinant-2x2-basic.md
 ---
-title: Determinant of a 2Ã—2 matrix
+title: Determinant of a 2×2 matrix
 category: linear/determinants
 level: lycee
 difficulty: 1
@@ -57,7 +57,7 @@ For a $2\times2$ matrix $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$, the dete
 
 @@@ determinant-3x3-sarrus.md
 ---
-title: Determinant of a 3Ã—3 matrix by Sarrus' rule
+title: Determinant of a 3×3 matrix by Sarrus' rule
 category: linear/determinants
 level: lycee
 difficulty: 2
@@ -358,7 +358,7 @@ Since $A$ is invertible, $\det A\neq0$, so $\det(A^{-1})=1/\det A$.
 
 @@@ determinant-cramers-rule-2x2.md
 ---
-title: Cramer's rule for a 2Ã—2 system
+title: Cramer's rule for a 2×2 system
 category: linear/determinants
 level: lycee
 difficulty: 3
@@ -393,7 +393,7 @@ $$x = \frac{-9}{-5} = \frac95, \qquad y = \frac{-4}{-5}=\frac45.$$
 
 @@@ determinant-cramers-rule-3x3.md
 ---
-title: Cramer's rule for a 3Ã—3 system
+title: Cramer's rule for a 3×3 system
 category: linear/determinants
 level: l1
 difficulty: 4
@@ -806,7 +806,7 @@ Use Gram-Schmidt or the geometric interpretation of the determinant as a volume.
 
 @@@ determinant-cyclic-3x3.md
 ---
-title: A cyclic 3Ã—3 determinant
+title: A cyclic 3×3 determinant
 category: linear/determinants
 level: l1
 difficulty: 4
@@ -946,7 +946,7 @@ $$\Delta = -2(a+b+c)(a-b)(a-c).$$
 
 @@@ determinant-numerical-4x4.md
 ---
-title: A numerical 4Ã—4 determinant
+title: A numerical 4×4 determinant
 category: linear/determinants
 level: l1
 difficulty: 4
@@ -974,7 +974,7 @@ $$\Delta = 10\begin{vmatrix} 1 & 2 & 3 & 4 \\ 0 & 1 & 1 & -3 \\ 0 & 2 & -2 & -2 
 **Expand along column 1.**
 $$\Delta = 10\begin{vmatrix} 1 & 1 & -3 \\ 2 & -2 & -2 \\ -1 & -1 & -1 \end{vmatrix}.$$
 
-**Compute the 3Ã—3.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3+L_1$:
+**Compute the 3×3.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3+L_1$:
 $$= 10\begin{vmatrix} 1 & 1 & -3 \\ 0 & -4 & 4 \\ 0 & 0 & -4 \end{vmatrix} = 10\cdot1\cdot(-4)\cdot(-4)=160.$$
 
 **Conclusion.** $\Delta = 160$.
@@ -1785,7 +1785,7 @@ The quadratic form $Q(x,y)=x^2-y^2$ has signature $(1,1,0)$; the set $Q=1$ is a 
 
 @@@ quadratic-form-positivity-parameter-2.md
 ---
-title: Positive definiteness of a 2Ã—2 parameter family
+title: Positive definiteness of a 2×2 parameter family
 category: linear/quadratic-forms
 level: l1
 difficulty: 4
@@ -3181,7 +3181,7 @@ Rank is $2$.
 
 @@@ vector-matrix-rank-nullity.md
 ---
-title: Rank-nullity on a 3Ã—4 matrix
+title: Rank-nullity on a 3×4 matrix
 category: linear/vector-spaces
 level: l1
 difficulty: 4
@@ -3710,7 +3710,7 @@ Take a basis $(u_1,\ldots,u_k)$ of $F\cap G$, extend it to a basis of $F$ and to
 
 @@@ vector-matrix-kernel-basis.md
 ---
-title: Kernel of a 3Ã—3 matrix and basis
+title: Kernel of a 3×3 matrix and basis
 category: linear/vector-spaces
 level: l1
 difficulty: 3
