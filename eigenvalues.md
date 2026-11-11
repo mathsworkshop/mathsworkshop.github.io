@@ -23,7 +23,7 @@ $\textrm{tr}A=3$ and $\det A=2$, so $\chi_A(X)=X^2-3X+2=(X-1)(X-2)$. The eigenva
 - For $\lambda=1$: $(A-I)v=0$ gives $-x+y=0$, so $v_1=(1,1)$.
 - For $\lambda=2$: $(A-2I)v=0$ gives $-2x+y=0$, so $v_2=(1,2)$.
 
-Let $P=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, $D=\operatorname{diag}(1,2)$. Then $\det P=1$ and $P^{-1}=\begin{pmatrix}2&-1\\-1&1\end{pmatrix}$, and $A=PDP^{-1}$. Hence
+Let $P=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, $D=\textrm{diag}(1,2)$. Then $\det P=1$ and $P^{-1}=\begin{pmatrix}2&-1\\-1&1\end{pmatrix}$, and $A=PDP^{-1}$. Hence
 $$A^n=PD^nP^{-1}=\begin{pmatrix}1&2^n\\1&2^{n+1}\end{pmatrix}\begin{pmatrix}2&-1\\-1&1\end{pmatrix}=\begin{pmatrix}2-2^n&2^n-1\\2-2^{n+1}&2^{n+1}-1\end{pmatrix}.$$
 
 Check: $n=0$ gives the identity and $n=1$ gives $A$.
@@ -50,7 +50,7 @@ Find the eigenvalues of $A$ and a basis of eigenvectors.
 
 The characteristic polynomial is $(X-2)^2-1=(X-1)(X-3)$. The vector $(1,-1)$ is an eigenvector for $1$ and $(1,1)$ is one for $3$.
 
-With $P=\begin{pmatrix}1&1\\-1&1\end{pmatrix}$, $D=\operatorname{diag}(1,3)$ and $P^{-1}=\dfrac12\begin{pmatrix}1&-1\\1&1\end{pmatrix}$ we have $A=PDP^{-1}$, so
+With $P=\begin{pmatrix}1&1\\-1&1\end{pmatrix}$, $D=\textrm{diag}(1,3)$ and $P^{-1}=\dfrac12\begin{pmatrix}1&-1\\1&1\end{pmatrix}$ we have $A=PDP^{-1}$, so
 $$A^n=PD^nP^{-1}=\frac12\begin{pmatrix}3^n+1&3^n-1\\3^n-1&3^n+1\end{pmatrix}.$$
 
 
@@ -150,7 +150,7 @@ So the only eigenvalue is $\lambda=2$, with algebraic multiplicity $2$.
 
 **Eigenspace.**
 $$A-2I = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}.$$
-The kernel is given by $y=0$, so $E_2=\operatorname{span}((1,0))$, dimension $1$.
+The kernel is given by $y=0$, so $E_2=\textrm{span}((1,0))$, dimension $1$.
 
 **Conclusion.** The geometric multiplicity of $\lambda=2$ is $1<2$ (the algebraic multiplicity), so $A$ is **not diagonalizable**.
 
@@ -412,7 +412,7 @@ $$Q = \frac{1}{\sqrt2}\begin{pmatrix} 1 & 1 \\ -1 & 1 \end{pmatrix}.$$
 Then $Q^TQ=I$ and
 $$Q^TAQ = \begin{pmatrix} 2 & 0 \\ 0 & 4 \end{pmatrix}.$$
 
-**Conclusion.** $A=Q\operatorname{diag}(2,4)Q^T$ with $Q$ orthogonal.
+**Conclusion.** $A=Q\textrm{diag}(2,4)Q^T$ with $Q$ orthogonal.
 
 @@@ eigenvalues-eigenspace-basis.md
 ---
@@ -440,7 +440,7 @@ $E_2=\ker(A-2I)$. Solve the system.
 $$A-2I = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}.$$
 The system is $y=0$ and $z=0$, so the kernel is $\{(x,0,0)\}$.
 
-**Conclusion.** $E_2=\operatorname{span}((1,0,0))$, dimension $1$.
+**Conclusion.** $E_2=\textrm{span}((1,0,0))$, dimension $1$.
 
 **Remark.** The algebraic multiplicity of $\lambda=2$ is $2$ (it appears twice on the diagonal), but the geometric multiplicity is $1$, so $A$ is not diagonalizable.
 
@@ -503,7 +503,7 @@ If $p^2=p$, then $p(p-\mathrm{id})=0$, so the minimal polynomial of $p$ divides 
 
 **Diagonalizability.** The minimal polynomial has simple roots (no repeated factor), so $p$ is diagonalizable. Its eigenvalues are $0$ and $1$.
 
-**Eigenspaces.** $E_1=\operatorname{Im} p$ (fixed points), $E_0=\ker p$. Moreover $\mathbb{R}^n=E_0\oplus E_1$.
+**Eigenspaces.** $E_1=\textrm{Im} p$ (fixed points), $E_0=\ker p$. Moreover $\mathbb{R}^n=E_0\oplus E_1$.
 
 **Conclusion.** Any projection is diagonalizable with eigenvalues $0$ and $1$.
 
@@ -628,7 +628,7 @@ Eigenvalues solve $\lambda^2=\lambda+1$, i.e. $\lambda=\varphi$ or $\lambda=\psi
 - For $\varphi$: $v_1=(1,\varphi)$.
 - For $\psi$: $v_2=(1,\psi)$.
 
-**Diagonalization.** $A=PDP^{-1}$ with $P=\begin{pmatrix}1&1\\\varphi&\psi\end{pmatrix}$ and $D=\operatorname{diag}(\varphi,\psi)$.
+**Diagonalization.** $A=PDP^{-1}$ with $P=\begin{pmatrix}1&1\\\varphi&\psi\end{pmatrix}$ and $D=\textrm{diag}(\varphi,\psi)$.
 
 **Fibonacci relation.** $\begin{pmatrix}F_{n+1}\\F_n\end{pmatrix}=A^n\begin{pmatrix}F_1\\F_0\end{pmatrix}=A^n\begin{pmatrix}1\\0\end{pmatrix}$.
 
@@ -661,7 +661,7 @@ Use induction on $n$: find a real eigenvalue, which gives a stable line, then ap
 
 **Forward direction.** If $A$ is similar to an upper triangular matrix $T$, then $\chi_A=\chi_T$, which is a product of linear factors, so all roots are real.
 
-**Converse.** Suppose $\chi_A$ has all roots in $\mathbb{R}$. Then $A$ has at least one real eigenvalue $\lambda_1$, hence a stable line $L_1=\operatorname{span}(v_1)$ with $Av_1=\lambda_1 v_1$. Complete $(v_1)$ to a basis of $\mathbb{R}^n$. In this basis, the matrix of $A$ is block upper triangular:
+**Converse.** Suppose $\chi_A$ has all roots in $\mathbb{R}$. Then $A$ has at least one real eigenvalue $\lambda_1$, hence a stable line $L_1=\textrm{span}(v_1)$ with $Av_1=\lambda_1 v_1$. Complete $(v_1)$ to a basis of $\mathbb{R}^n$. In this basis, the matrix of $A$ is block upper triangular:
 $$M = \begin{pmatrix} \lambda_1 & * \\ 0 & B \end{pmatrix}.$$
 The characteristic polynomial of $B$ divides $\chi_A$, so it also has all roots in $\mathbb{R}$. By induction, $B$ is trigonalizable, and consequently so is $M$.
 
@@ -812,7 +812,7 @@ If $A$ is diagonalizable, the minimal polynomial is $\prod(X-\lambda_i)$ over di
 
 ## Solution
 
-**Forward direction.** If $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$, then $A$ is killed by $\prod_i(X-\lambda_i)$ where the product is over distinct eigenvalues. The minimal polynomial is the smallest such polynomial, so it is a product of distinct linear factors.
+**Forward direction.** If $A=PDP^{-1}$ with $D=\textrm{diag}(\lambda_1,\ldots,\lambda_n)$, then $A$ is killed by $\prod_i(X-\lambda_i)$ where the product is over distinct eigenvalues. The minimal polynomial is the smallest such polynomial, so it is a product of distinct linear factors.
 
 **Converse.** Let $\mu_A(X)=\prod_{i=1}^r(X-\lambda_i)$ with distinct $\lambda_i$. For each $i$, let $E_i=\ker(A-\lambda_i I)$. We claim that the sum $E_1+\cdots+E_r$ is $\mathbb{R}^n$.
 
@@ -898,8 +898,8 @@ date: 2026-11-03
 
 ## Statement
 
-Let $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$. Show that for all $k\ge1$,
-$$A^k=PD^kP^{-1}=\operatorname{diag}(\lambda_1^k,\ldots,\lambda_n^k)$$
+Let $A=PDP^{-1}$ with $D=\textrm{diag}(\lambda_1,\ldots,\lambda_n)$. Show that for all $k\ge1$,
+$$A^k=PD^kP^{-1}=\textrm{diag}(\lambda_1^k,\ldots,\lambda_n^k)$$
 in the appropriate basis.
 
 ## Hint
@@ -911,11 +911,11 @@ Prove by induction using $A=PDP^{-1}$.
 **Induction.** For $k=1$, $A^1=PDP^{-1}$. Suppose $A^k=PD^kP^{-1}$. Then
 $$A^{k+1}=A^k\cdot A=PD^kP^{-1}\cdot PDP^{-1}=PD^kDP^{-1}=PD^{k+1}P^{-1}.$$
 
-**Diagonal power.** $D^k=\operatorname{diag}(\lambda_1^k,\ldots,\lambda_n^k)$.
+**Diagonal power.** $D^k=\textrm{diag}(\lambda_1^k,\ldots,\lambda_n^k)$.
 
 **Conclusion.** $A^k=PD^kP^{-1}$. This formula is used to compute powers efficiently once $A$ is diagonalized.
 
-**Application.** If $D=\operatorname{diag}(2,3)$ and $P=I$, then $A^k=\operatorname{diag}(2^k,3^k)$.
+**Application.** If $D=\textrm{diag}(2,3)$ and $P=I$, then $A^k=\textrm{diag}(2^k,3^k)$.
 
 @@@ eigenvalues-spectral-decomposition.md
 ---
@@ -962,7 +962,7 @@ date: 2026-11-03
 
 ## Statement
 
-Let $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$. Define $f(A)=P f(D) P^{-1}$ where $f(D)=\operatorname{diag}(f(\lambda_1),\ldots,f(\lambda_n))$ for a function $f$ defined on the eigenvalues. Justify this definition for polynomials $f$.
+Let $A=PDP^{-1}$ with $D=\textrm{diag}(\lambda_1,\ldots,\lambda_n)$. Define $f(A)=P f(D) P^{-1}$ where $f(D)=\textrm{diag}(f(\lambda_1),\ldots,f(\lambda_n))$ for a function $f$ defined on the eigenvalues. Justify this definition for polynomials $f$.
 
 ## Hint
 
@@ -976,7 +976,7 @@ So the definition is consistent with the polynomial case.
 
 **Extension.** For other functions (e.g. $\exp$, $\sin$, $\log$), the same formula defines $f(A)$ provided $f$ is defined on the spectrum of $A$. This requires $A$ to be diagonalizable.
 
-**Example.** $e^{tA}=P\operatorname{diag}(e^{t\lambda_1},\ldots,e^{t\lambda_n})P^{-1}$.
+**Example.** $e^{tA}=P\textrm{diag}(e^{t\lambda_1},\ldots,e^{t\lambda_n})P^{-1}$.
 
 **Conclusion.** Functions of a diagonalizable matrix are defined via the diagonal form. For non-diagonalizable matrices, one uses Taylor or Jordan form instead.
 
@@ -1037,11 +1037,11 @@ The eigenvalues are the roots of $\det(A-\lambda I)$; for a triangular matrix th
 
 **Eigenspace for $\lambda=3$.**
 $$A-3I = \begin{pmatrix} 0 & 1 \\ 0 & -1 \end{pmatrix}.$$
-The kernel is given by $y=0$, so $E_3=\operatorname{span}(v_1)$ with $v_1=(1,0)^T$.
+The kernel is given by $y=0$, so $E_3=\textrm{span}(v_1)$ with $v_1=(1,0)^T$.
 
 **Eigenspace for $\lambda=2$.**
 $$A-2I = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}.$$
-The kernel is given by $x+y=0$, so $E_2=\operatorname{span}(v_2)$ with $v_2=(1,-1)^T$.
+The kernel is given by $x+y=0$, so $E_2=\textrm{span}(v_2)$ with $v_2=(1,-1)^T$.
 
 **Check.** $Av_1=(3,0)^T=3v_1$ and $Av_2=(3-1,\,-2)^T=(2,-2)^T=2v_2$.
 
@@ -1075,11 +1075,11 @@ The roots are $\lambda_1=2$ and $\lambda_2=5$.
 
 **Eigenspace for $\lambda=2$.**
 $$A-2I = \begin{pmatrix} 2 & 1 \\ 2 & 1 \end{pmatrix}.$$
-The kernel is given by $2x+y=0$, so $E_2=\operatorname{span}\big((1,-2)^T\big)$.
+The kernel is given by $2x+y=0$, so $E_2=\textrm{span}\big((1,-2)^T\big)$.
 
 **Eigenspace for $\lambda=5$.**
 $$A-5I = \begin{pmatrix} -1 & 1 \\ 2 & -2 \end{pmatrix}.$$
-The kernel is given by $-x+y=0$, so $E_5=\operatorname{span}\big((1,1)^T\big)$.
+The kernel is given by $-x+y=0$, so $E_5=\textrm{span}\big((1,1)^T\big)$.
 
 **Check.** $A(1,-2)^T=(2,-4)^T=2(1,-2)^T$ and $A(1,1)^T=(5,5)^T=5(1,1)^T$.
 
@@ -1112,7 +1112,7 @@ The characteristic polynomial has a double root at $2$. Compute the eigenspace $
 
 **Eigenspace.**
 $$A-2I = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}.$$
-The kernel is given by $y=0$, so $E_2=\operatorname{span}\big((1,0)^T\big)$, of dimension $1$.
+The kernel is given by $y=0$, so $E_2=\textrm{span}\big((1,0)^T\big)$, of dimension $1$.
 
 **Diagonalizability.** There is no basis of $\mathbb{R}^2$ made of eigenvectors, since all eigenvectors are multiples of $(1,0)^T$. Equivalently, if $A=PDP^{-1}$ with $D$ diagonal, then $D$ would have the only eigenvalue $2$ on its diagonal, so $D=2I$ and $A=2I$, which is false.
 
@@ -1154,7 +1154,7 @@ Both matrices are triangular, so $\det(M-\lambda I)$ is the product of the diago
 
 Check: $Bv_3=(1+2,\ 4+2,\ 6)^T=(3,6,6)^T=3v_3$.
 
-Let $P=(v_1\ v_2\ v_3)=\begin{pmatrix}1&1&1\\0&1&2\\0&0&2\end{pmatrix}$; $\det P=2\neq0$, so the eigenvectors form a basis, and $BP=P\operatorname{diag}(1,2,3)$, i.e. $B=P\,A\,P^{-1}$.
+Let $P=(v_1\ v_2\ v_3)=\begin{pmatrix}1&1&1\\0&1&2\\0&0&2\end{pmatrix}$; $\det P=2\neq0$, so the eigenvectors form a basis, and $BP=P\textrm{diag}(1,2,3)$, i.e. $B=P\,A\,P^{-1}$.
 
 **Conclusion.** Both $A$ and $B$ are diagonalizable, and they are similar. In general, an $n\times n$ matrix with $n$ distinct eigenvalues is diagonalizable, and two such matrices with the same eigenvalues are similar.
 
@@ -1220,7 +1220,7 @@ Compare the coefficient of $X^{n-1}$ and the constant term of $\det(XI-A)$ with 
 **Constant term of $\chi_A$.** $\chi_A(0)=\det(-A)=(-1)^n\det A$. Comparing with $(-1)^n\prod_i\lambda_i$ gives $\prod_i\lambda_i=\det A$.
 
 **Coefficient of $X^{n-1}$.** By the Leibniz formula,
-$$\det(XI-A)=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)\prod_{i=1}^n\big(X\delta_{i\sigma(i)}-a_{i\sigma(i)}\big).$$
+$$\det(XI-A)=\sum_{\sigma\in S_n}\textrm{sgn}(\sigma)\prod_{i=1}^n\big(X\delta_{i\sigma(i)}-a_{i\sigma(i)}\big).$$
 The identity permutation contributes $\prod_i(X-a_{ii})$, whose coefficient of $X^{n-1}$ is $-\sum_ia_{ii}=-\textrm{tr}A$. A permutation $\sigma\neq\mathrm{id}$ has at most $n-2$ fixed points, and each non-fixed index contributes a constant factor $-a_{i\sigma(i)}$, so its term has degree at most $n-2$. Hence the coefficient of $X^{n-1}$ in $\chi_A$ is $-\textrm{tr}A$. Comparing with $-\sum_i\lambda_i$ gives $\sum_i\lambda_i=\textrm{tr}A$.
 
 **Conclusion.** The trace is the sum and the determinant is the product of the eigenvalues (counted with algebraic multiplicity, over $\mathbb{C}$).
@@ -1417,7 +1417,7 @@ First prove that eigenspaces for distinct eigenvalues are in direct sum. For the
 
 *Proof, by induction on $r$.* The case $r=1$ is trivial. For $r\ge2$, apply $A-\lambda_rI$: it sends $w_i$ to $(\lambda_i-\lambda_r)w_i\in E_{\lambda_i}$ and kills $w_r$. So $\sum_{i<r}(\lambda_i-\lambda_r)w_i=0$, and by induction $(\lambda_i-\lambda_r)w_i=0$, hence $w_i=0$ for $i<r$. Then $w_r=0$. $\square$
 
-**($\Rightarrow$)** Let $A=PDP^{-1}$ with $D=\operatorname{diag}(d_1,\ldots,d_n)$. Since similar matrices have the same characteristic polynomial, $\chi_A=\chi_D=\prod_j(X-d_j)$, which splits: this is (1). For a real eigenvalue $\lambda$, its algebraic multiplicity is $m_\lambda=\#\{j:d_j=\lambda\}$. Moreover $E_\lambda(D)=\operatorname{span}\{e_j:d_j=\lambda\}$ has dimension $\#\{j:d_j=\lambda\}$, and $E_\lambda(A)=P\,E_\lambda(D)$ has the same dimension. So $\dim E_\lambda=m_\lambda$: this is (2).
+**($\Rightarrow$)** Let $A=PDP^{-1}$ with $D=\textrm{diag}(d_1,\ldots,d_n)$. Since similar matrices have the same characteristic polynomial, $\chi_A=\chi_D=\prod_j(X-d_j)$, which splits: this is (1). For a real eigenvalue $\lambda$, its algebraic multiplicity is $m_\lambda=\#\{j:d_j=\lambda\}$. Moreover $E_\lambda(D)=\textrm{span}\{e_j:d_j=\lambda\}$ has dimension $\#\{j:d_j=\lambda\}$, and $E_\lambda(A)=P\,E_\lambda(D)$ has the same dimension. So $\dim E_\lambda=m_\lambda$: this is (2).
 
 **($\Leftarrow$)** Let $\lambda_1,\ldots,\lambda_r$ be the distinct eigenvalues. By (1), $\sum_im_{\lambda_i}=\deg\chi_A=n$, and by (2) $\sum_i\dim E_{\lambda_i}=n$. By the Lemma the sum of the eigenspaces is direct, so it has dimension $n$ and equals $\mathbb{R}^n$. The union of bases of the $E_{\lambda_i}$ is therefore a basis of $\mathbb{R}^n$ made of eigenvectors, and $A$ is diagonalizable.
 
@@ -1509,8 +1509,8 @@ date: 2026-11-03
 
 ## Statement
 
-Let $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$. Show that for all $k\ge1$,
-$$A^k=PD^kP^{-1}, \qquad D^k=\operatorname{diag}(\lambda_1^k,\ldots,\lambda_n^k).$$
+Let $A=PDP^{-1}$ with $D=\textrm{diag}(\lambda_1,\ldots,\lambda_n)$. Show that for all $k\ge1$,
+$$A^k=PD^kP^{-1}, \qquad D^k=\textrm{diag}(\lambda_1^k,\ldots,\lambda_n^k).$$
 Apply this to $A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$.
 
 ## Hint
@@ -1522,12 +1522,12 @@ Induction on $k$, using $P^{-1}P=I$.
 **Induction.** For $k=1$ the formula is $A=PDP^{-1}$. If $A^k=PD^kP^{-1}$, then
 $$A^{k+1}=A^kA=PD^kP^{-1}\,PDP^{-1}=PD^{k}D\,P^{-1}=PD^{k+1}P^{-1}.$$
 
-**Diagonal power.** The product of diagonal matrices is diagonal with entries multiplied: $(DD')_{ij}=\sum_ld_i\delta_{il}d'_l\delta_{lj}=d_id'_i\delta_{ij}$. By induction, $D^k=\operatorname{diag}(\lambda_i^k)$.
+**Diagonal power.** The product of diagonal matrices is diagonal with entries multiplied: $(DD')_{ij}=\sum_ld_i\delta_{il}d'_l\delta_{lj}=d_id'_i\delta_{ij}$. By induction, $D^k=\textrm{diag}(\lambda_i^k)$.
 
 **Remark.** In the eigenbasis (the columns of $P$), the matrix of the endomorphism $x\mapsto A^kx$ is $D^k$; in the original basis it is $PD^kP^{-1}$, which is not diagonal in general.
 
 **Application.** For $A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$: $A(1,-1)^T=(1,-1)^T$ and $A(1,1)^T=3(1,1)^T$, so
-$$P=\begin{pmatrix}1&1\\-1&1\end{pmatrix}, \quad D=\operatorname{diag}(1,3), \quad P^{-1}=\frac12\begin{pmatrix}1&-1\\1&1\end{pmatrix},$$
+$$P=\begin{pmatrix}1&1\\-1&1\end{pmatrix}, \quad D=\textrm{diag}(1,3), \quad P^{-1}=\frac12\begin{pmatrix}1&-1\\1&1\end{pmatrix},$$
 and
 $$A^k=P\begin{pmatrix}1&0\\0&3^k\end{pmatrix}P^{-1}=\frac12\begin{pmatrix}3^k+1&3^k-1\\3^k-1&3^k+1\end{pmatrix}.$$
 (Check: $k=1$ gives $A$.)
@@ -1559,7 +1559,7 @@ $E_2=\ker(A-2I)$. Solve the system, and compare $\dim E_2$ with the multiplicity
 $$A-2I = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}.$$
 The system is $y=0$ and $z=0$, so the kernel is $\{(x,0,0)\}$.
 
-**Basis.** $E_2=\operatorname{span}\big((1,0,0)^T\big)$, of dimension $1$.
+**Basis.** $E_2=\textrm{span}\big((1,0,0)^T\big)$, of dimension $1$.
 
 **Diagonalizability.** $\chi_A(X)=(X-2)^2(X-3)$, so the algebraic multiplicity of $2$ is $2$ while $\dim E_2=1<2$. By the diagonalizability criterion, $A$ is **not** diagonalizable.
 
@@ -1697,7 +1697,7 @@ The eigenvalues solve $\lambda^2=\lambda+1$. Note that $A(x,y)^T=(y,\,x+y)^T$, s
 **Eigenvectors.** $A(x,y)^T=\lambda(x,y)^T$ means $y=\lambda x$ and $x+y=\lambda y$; with $y=\lambda x$ the second equation is $1+\lambda=\lambda^2$, which holds. So $v_\varphi=(1,\varphi)^T$ and $v_\psi=(1,\psi)^T$.
 
 **Diagonalization.** $A=PDP^{-1}$ with
-$$P=\begin{pmatrix}1&1\\\varphi&\psi\end{pmatrix}, \quad D=\operatorname{diag}(\varphi,\psi), \quad \det P=\psi-\varphi=-\sqrt5, \quad P^{-1}=\frac1{\sqrt5}\begin{pmatrix}-\psi&1\\\varphi&-1\end{pmatrix}.$$
+$$P=\begin{pmatrix}1&1\\\varphi&\psi\end{pmatrix}, \quad D=\textrm{diag}(\varphi,\psi), \quad \det P=\psi-\varphi=-\sqrt5, \quad P^{-1}=\frac1{\sqrt5}\begin{pmatrix}-\psi&1\\\varphi&-1\end{pmatrix}.$$
 
 **Matrix form of the recurrence.** Let $X_n=(F_n,F_{n+1})^T$. Then $X_{n+1}=(F_{n+1},F_n+F_{n+1})^T=AX_n$, so $X_n=A^nX_0=A^n(0,1)^T$.
 
@@ -1760,7 +1760,7 @@ date: 2026-11-03
 
 ## Statement
 
-Let $p:\mathbb{R}^n\to\mathbb{R}^n$ be a linear map with $p^2=p$ (a projection). Show that $\mathbb{R}^n=\ker p\oplus\operatorname{Im}p$, that $p$ is diagonalizable, and determine its eigenvalues and eigenspaces.
+Let $p:\mathbb{R}^n\to\mathbb{R}^n$ be a linear map with $p^2=p$ (a projection). Show that $\mathbb{R}^n=\ker p\oplus\textrm{Im}p$, that $p$ is diagonalizable, and determine its eigenvalues and eigenspaces.
 
 ## Hint
 
@@ -1768,13 +1768,13 @@ Write $x=(x-p(x))+p(x)$. The polynomial $X(X-1)$ annihilates $p$; the minimal po
 
 ## Solution
 
-**Decomposition.** For $x\in\mathbb{R}^n$, $x=(x-p(x))+p(x)$, with $p(x)\in\operatorname{Im}p$ and $p(x-p(x))=p(x)-p^2(x)=0$, so $x-p(x)\in\ker p$. Hence $\mathbb{R}^n=\ker p+\operatorname{Im}p$. If $x\in\ker p\cap\operatorname{Im}p$, write $x=p(y)$; then $0=p(x)=p^2(y)=p(y)=x$. So the sum is direct.
+**Decomposition.** For $x\in\mathbb{R}^n$, $x=(x-p(x))+p(x)$, with $p(x)\in\textrm{Im}p$ and $p(x-p(x))=p(x)-p^2(x)=0$, so $x-p(x)\in\ker p$. Hence $\mathbb{R}^n=\ker p+\textrm{Im}p$. If $x\in\ker p\cap\textrm{Im}p$, write $x=p(y)$; then $0=p(x)=p^2(y)=p(y)=x$. So the sum is direct.
 
-**Eigenspaces.** $E_0=\ker p$. And $E_1=\ker(p-\mathrm{id})=\operatorname{Im}p$: if $p(x)=x$ then $x\in\operatorname{Im}p$; if $x=p(y)$ then $p(x)=p^2(y)=p(y)=x$.
+**Eigenspaces.** $E_0=\ker p$. And $E_1=\ker(p-\mathrm{id})=\textrm{Im}p$: if $p(x)=x$ then $x\in\textrm{Im}p$; if $x=p(y)$ then $p(x)=p^2(y)=p(y)=x$.
 
-**Eigenvalues.** If $p(v)=\lambda v$ with $v\neq0$, then $p^2(v)=\lambda^2v=\lambda v$, so $\lambda\in\{0,1\}$. Precisely: $1$ is an eigenvalue iff $\operatorname{Im}p\neq\{0\}$, i.e. $p\neq0$; and $0$ is an eigenvalue iff $\ker p\neq\{0\}$, i.e. $p\neq\mathrm{id}$.
+**Eigenvalues.** If $p(v)=\lambda v$ with $v\neq0$, then $p^2(v)=\lambda^2v=\lambda v$, so $\lambda\in\{0,1\}$. Precisely: $1$ is an eigenvalue iff $\textrm{Im}p\neq\{0\}$, i.e. $p\neq0$; and $0$ is an eigenvalue iff $\ker p\neq\{0\}$, i.e. $p\neq\mathrm{id}$.
 
-**Diagonalizability.** The union of a basis of $\ker p$ and a basis of $\operatorname{Im}p$ is a basis of $\mathbb{R}^n$ made of eigenvectors. In this basis the matrix of $p$ is $\operatorname{diag}(1,\ldots,1,0,\ldots,0)$ with $\operatorname{rank}p$ ones.
+**Diagonalizability.** The union of a basis of $\ker p$ and a basis of $\textrm{Im}p$ is a basis of $\mathbb{R}^n$ made of eigenvectors. In this basis the matrix of $p$ is $\textrm{diag}(1,\ldots,1,0,\ldots,0)$ with $\textrm{rank}p$ ones.
 
 **Conclusion.** Every projection is diagonalizable, with eigenvalues in $\{0,1\}$ and $\mathbb{R}^n=E_0\oplus E_1$. (Alternatively: the minimal polynomial divides $X(X-1)$, which is split with simple roots.)
 
@@ -1915,7 +1915,7 @@ $$Q=\frac1{\sqrt2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}, \qquad Q^TQ=\frac12\beg
 Then $AQ=\frac1{\sqrt2}\begin{pmatrix}2&4\\-2&4\end{pmatrix}$ and
 $$Q^TAQ=\frac12\begin{pmatrix}1&-1\\1&1\end{pmatrix}\begin{pmatrix}2&4\\-2&4\end{pmatrix}=\frac12\begin{pmatrix}4&0\\0&8\end{pmatrix}=\begin{pmatrix}2&0\\0&4\end{pmatrix}.$$
 
-**Conclusion.** $A=Q\operatorname{diag}(2,4)Q^T$ with $Q$ orthogonal.
+**Conclusion.** $A=Q\textrm{diag}(2,4)Q^T$ with $Q$ orthogonal.
 
 @@@ eigenvalues-spectral-decomposition.md
 ---
@@ -1944,7 +1944,7 @@ Use the spectral theorem: there is an orthonormal basis of eigenvectors. Show fi
 
 **Orthonormal eigenbasis.** By the spectral theorem, there is an orthonormal basis $(u_1,\ldots,u_n)$ of $\mathbb{R}^n$ with $Au_j=\mu_ju_j$, each $\mu_j$ being one of the $\lambda_i$. Let $J_i=\{j:\mu_j=\lambda_i\}$.
 
-**The $u_j$, $j\in J_i$, form an orthonormal basis of $E_{\lambda_i}$.** They lie in $E_{\lambda_i}$ and are orthonormal. Conversely, let $v\in E_{\lambda_i}$; then $v=\sum_j\langle v,u_j\rangle u_j$, and for $j\notin J_i$, $u_j$ lies in some $E_{\lambda_k}$ with $k\neq i$, so $\langle v,u_j\rangle=0$ by orthogonality of eigenspaces. Hence $v\in\operatorname{span}(u_j:j\in J_i)$.
+**The $u_j$, $j\in J_i$, form an orthonormal basis of $E_{\lambda_i}$.** They lie in $E_{\lambda_i}$ and are orthonormal. Conversely, let $v\in E_{\lambda_i}$; then $v=\sum_j\langle v,u_j\rangle u_j$, and for $j\notin J_i$, $u_j$ lies in some $E_{\lambda_k}$ with $k\neq i$, so $\langle v,u_j\rangle=0$ by orthogonality of eigenspaces. Hence $v\in\textrm{span}(u_j:j\in J_i)$.
 
 **Projections.** Therefore $P_iv=\sum_{j\in J_i}\langle v,u_j\rangle u_j$ for all $v$.
 
@@ -1970,7 +1970,7 @@ date: 2026-11-03
 
 ## Statement
 
-Let $A$ be a diagonalizable matrix with distinct eigenvalues $\mu_1,\ldots,\mu_r$, and let $f$ be a function defined at the $\mu_i$. For a diagonalization $A=PDP^{-1}$, $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$, define $f(A)=P\,f(D)\,P^{-1}$ where $f(D)=\operatorname{diag}(f(\lambda_1),\ldots,f(\lambda_n))$.
+Let $A$ be a diagonalizable matrix with distinct eigenvalues $\mu_1,\ldots,\mu_r$, and let $f$ be a function defined at the $\mu_i$. For a diagonalization $A=PDP^{-1}$, $D=\textrm{diag}(\lambda_1,\ldots,\lambda_n)$, define $f(A)=P\,f(D)\,P^{-1}$ where $f(D)=\textrm{diag}(f(\lambda_1),\ldots,f(\lambda_n))$.
 
 1. Show that if $f$ is a polynomial, this agrees with the usual $f(A)=\sum_ka_kA^k$.
 2. Show that the definition does not depend on the choice of $P$ and $D$ (it is well defined).
@@ -1984,14 +1984,14 @@ For (2), choose a polynomial $q$ with $q(\mu_i)=f(\mu_i)$ for all $i$ (Lagrange 
 
 **(1) Polynomial case.** For $f(X)=\sum_ka_kX^k$, using $A^k=PD^kP^{-1}$:
 $$f(A)=\sum_ka_kPD^kP^{-1}=P\Big(\sum_ka_kD^k\Big)P^{-1}=P\,f(D)\,P^{-1},$$
-since $\sum_ka_kD^k=\operatorname{diag}\big(f(\lambda_j)\big)$.
+since $\sum_ka_kD^k=\textrm{diag}\big(f(\lambda_j)\big)$.
 
 **(2) Well-definedness.** Every diagonal entry $\lambda_j$ of $D$ is one of the $\mu_i$. Let $q$ be a polynomial with $q(\mu_i)=f(\mu_i)$ for $i=1,\ldots,r$ (e.g. $q=\sum_if(\mu_i)\prod_{j\neq i}\frac{X-\mu_j}{\mu_i-\mu_j}$). Then $f(D)=q(D)$, and by (1)
 $$P\,f(D)\,P^{-1}=P\,q(D)\,P^{-1}=q(PDP^{-1})=q(A).$$
 The right-hand side depends only on $A$ (and $f$ on the spectrum), not on the chosen $P$ and $D$.
 
-**(3) Example.** $A(1,-1)^T=(1,-1)^T$ and $A(1,1)^T=3(1,1)^T$, so $A=PDP^{-1}$ with $P=\begin{pmatrix}1&1\\-1&1\end{pmatrix}$, $D=\operatorname{diag}(1,3)$, $P^{-1}=\frac12\begin{pmatrix}1&-1\\1&1\end{pmatrix}$. Then
-$$\sqrt A=P\operatorname{diag}(1,\sqrt3)P^{-1}=\frac12\begin{pmatrix}1+\sqrt3&\sqrt3-1\\\sqrt3-1&1+\sqrt3\end{pmatrix}.$$
+**(3) Example.** $A(1,-1)^T=(1,-1)^T$ and $A(1,1)^T=3(1,1)^T$, so $A=PDP^{-1}$ with $P=\begin{pmatrix}1&1\\-1&1\end{pmatrix}$, $D=\textrm{diag}(1,3)$, $P^{-1}=\frac12\begin{pmatrix}1&-1\\1&1\end{pmatrix}$. Then
+$$\sqrt A=P\textrm{diag}(1,\sqrt3)P^{-1}=\frac12\begin{pmatrix}1+\sqrt3&\sqrt3-1\\\sqrt3-1&1+\sqrt3\end{pmatrix}.$$
 Check: the $(1,1)$ entry of $(\sqrt A)^2$ is $\frac14\big((1+\sqrt3)^2+(\sqrt3-1)^2\big)=\frac{8}{4}=2$ and the $(1,2)$ entry is $\frac14\cdot2(1+\sqrt3)(\sqrt3-1)=1$, as required.
 
-**Conclusion.** Functions of a diagonalizable matrix are well defined through its eigen-decomposition and coincide with polynomial functions of $A$ on the spectrum. For a power series such as $e^{tA}=\sum_kt^kA^k/k!$ one gets $e^{tA}=P\operatorname{diag}(e^{t\lambda_j})P^{-1}$. For non-diagonalizable matrices one uses the Jordan form instead.
+**Conclusion.** Functions of a diagonalizable matrix are well defined through its eigen-decomposition and coincide with polynomial functions of $A$ on the spectrum. For a power series such as $e^{tA}=\sum_kt^kA^k/k!$ one gets $e^{tA}=P\textrm{diag}(e^{t\lambda_j})P^{-1}$. For non-diagonalizable matrices one uses the Jordan form instead.
