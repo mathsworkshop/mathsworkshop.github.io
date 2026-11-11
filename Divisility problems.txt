@@ -94,7 +94,7 @@ $$2n+1\in\{-9,-3,-1,1,3,9\}.$$
 Solving for $n$:
 $$n\in\{-5,-2,-1,0,1,4\}.$$
 
-**Remark.** This is a standard exercise from a Terminale Spécialité devoir.
+**Remark.** This is a standard exercise from a Terminale SpÃ©cialitÃ© devoir.
 
 @@@ divisibility-n-squared-minus-one.md
 ---
@@ -126,11 +126,11 @@ More formally, there exists $k$ such that $\{n-1,n+1\}=\{2k,2k+2\}=2\{k,k+1\}$. 
 
 @@@ divisibility-euclidean-algorithm.md
 ---
-title: The Euclidean algorithm and Bézout identity
+title: The Euclidean algorithm and BÃ©zout identity
 category: number/divisibility
 level: lycee
 difficulty: 3
-tags: Euclidean algorithm, Bézout identity, divisibility computation
+tags: Euclidean algorithm, BÃ©zout identity, divisibility computation
 date: 2026-11-02
 ---
 
@@ -163,21 +163,21 @@ The last nonzero remainder is $19$, so $\divisibility(8303,2717)=19$.
 \end{align*}
 So $u=18$, $v=-55$.
 
-**Remark.** This is the corrected exercise from Université Lyon 1.
+**Remark.** This is the corrected exercise from UniversitÃ© Lyon 1.
 
 @@@ divisibility-bezout-1001-315.md
 ---
-title: Bézout identity for 1001 and 315
+title: BÃ©zout identity for 1001 and 315
 category: number/divisibility
 level: lycee
 difficulty: 3
-tags: Euclidean algorithm, Bézout identity
+tags: Euclidean algorithm, BÃ©zout identity
 date: 2026-11-02
 ---
 
 ## Statement
 
-Compute $\divisibility(1001,315)$ and find a Bézout identity.
+Compute $\divisibility(1001,315)$ and find a BÃ©zout identity.
 
 ## Hint
 
@@ -370,11 +370,11 @@ Let $a,b,c$ be integers with $\divisibility(a,b)=1$. Show that if $a\mid bc$, th
 
 ## Hint
 
-Use Bézout: there exist $u,v$ with $au+bv=1$. Multiply by $c$.
+Use BÃ©zout: there exist $u,v$ with $au+bv=1$. Multiply by $c$.
 
 ## Solution
 
-**Bézout.** Since $\divisibility(a,b)=1$, there exist integers $u,v$ such that
+**BÃ©zout.** Since $\divisibility(a,b)=1$, there exist integers $u,v$ such that
 $$au+bv=1.$$
 Multiplying by $c$:
 $$acu+bcv=c.$$
@@ -389,7 +389,7 @@ title: Coprime powers remain coprime
 category: number/divisibility
 level: l1
 difficulty: 3
-tags: coprime, powers, Bézout
+tags: coprime, powers, BÃ©zout
 date: 2026-11-02
 ---
 
@@ -399,23 +399,23 @@ Let $a,b$ be coprime positive integers. Show that $a^n$ and $b^n$ are coprime fo
 
 ## Hint
 
-Use Bézout and raise to a suitable power, or use prime factorizations.
+Use BÃ©zout and raise to a suitable power, or use prime factorizations.
 
 ## Solution
 
 **Prime factorization approach.** Since $\divisibility(a,b)=1$, no prime divides both $a$ and $b$. The prime factors of $a^n$ are exactly those of $a$, and similarly for $b^n$. Hence no prime divides both $a^n$ and $b^n$, so $\divisibility(a^n,b^n)=1$.
 
-**Bézout approach.** From $au+bv=1$, raise to the power $2n-1$:
+**BÃ©zout approach.** From $au+bv=1$, raise to the power $2n-1$:
 $$1=(au+bv)^{2n-1}=\sum_{k=0}^{2n-1}\binom{2n-1}{k}(au)^k(bv)^{2n-1-k}.$$
 Every term contains either $a^n$ or $b^n$ as a factor (since $k\ge n$ or $2n-1-k\ge n$). So $1$ is a linear combination of $a^n$ and $b^n$, hence they are coprime.
 
 @@@ divisibility-linear-diophantine.md
 ---
 title: Solving a linear Diophantine equation
-category: number/diophantine
+category: number/eqts
 level: l1
 difficulty: 4
-tags: Diophantine equation, Bézout, particular solution
+tags: Diophantine equation, BÃ©zout, particular solution
 date: 2026-11-02
 ---
 
@@ -426,7 +426,7 @@ $$1263x+420y=21.$$
 
 ## Hint
 
-Compute $\divisibility(1263,420)$ and find a particular solution using Bézout, then add the general solution of the homogeneous equation.
+Compute $\divisibility(1263,420)$ and find a particular solution using BÃ©zout, then add the general solution of the homogeneous equation.
 
 ## Solution
 
@@ -437,7 +437,7 @@ Compute $\divisibility(1263,420)$ and find a particular solution using Bézout, t
 \end{align*}
 So $\divisibility(1263,420)=3$, which divides $21$, so solutions exist.
 
-**Bézout.** From the first line, $3=1263-3\cdot420$. Multiplying by $7$:
+**BÃ©zout.** From the first line, $3=1263-3\cdot420$. Multiplying by $7$:
 $$21=7\cdot1263-21\cdot420.$$
 So $(x_0,y_0)=(7,-21)$ is a particular solution.
 
@@ -452,7 +452,7 @@ title: A Chinese remainder system
 category: number/congruences
 level: l1
 difficulty: 4
-tags: Chinese remainder theorem, congruences, Bézout
+tags: Chinese remainder theorem, congruences, BÃ©zout
 date: 2026-11-02
 ---
 
@@ -469,7 +469,7 @@ Write $x=2+17h=3+33k$ and solve $17h-33k=1$.
 
 **Reformulation.** We need $17h-33k=1$ for some integers $h,k$.
 
-**Bézout.** $\divisibility(17,33)=1$, and $2\cdot17-33=1$. So $h=2$, $k=1$ works.
+**BÃ©zout.** $\divisibility(17,33)=1$, and $2\cdot17-33=1$. So $h=2$, $k=1$ works.
 
 **Particular solution.**
 $$x_0=2+17\cdot2=36.$$
@@ -534,11 +534,11 @@ Show that the set of common divisors of $(a,b)$ equals the set of common divisor
 
 @@@ divisibility-bezout-existence.md
 ---
-title: Existence of a Bézout identity
+title: Existence of a BÃ©zout identity
 category: number/divisibility
 level: l1
 difficulty: 4
-tags: Bézout, existence, well-ordering
+tags: BÃ©zout, existence, well-ordering
 date: 2026-11-02
 ---
 
@@ -558,7 +558,7 @@ Consider the set $S=\{ax+by:x,y\in\mathbb{Z},\,ax+by>0\}$ and let $d'$ be its mi
 $$r=a-d'q=a-(au+bv)q=a(1-uq)+b(-vq).$$
 So $r$ is a linear combination of $a$ and $b$. If $r>0$, then $r\in S$ and $r<d'$, contradicting the minimality of $d'$. Hence $r=0$, so $d'\mid a$. Similarly $d'\mid b$.
 
-**Conclusion.** $d'$ is a common divisor of $a$ and $b$, so $d'\le d$. On the other hand, $d$ divides every linear combination of $a$ and $b$, so $d\mid d'$, hence $d\le d'$. Therefore $d'=d$, and $d$ has a Bézout representation.
+**Conclusion.** $d'$ is a common divisor of $a$ and $b$, so $d'\le d$. On the other hand, $d$ divides every linear combination of $a$ and $b$, so $d\mid d'$, hence $d\le d'$. Therefore $d'=d$, and $d$ has a BÃ©zout representation.
 
 @@@ divisibility-lcm-relation-exercise.md
 ---
@@ -582,7 +582,7 @@ Use $\divisibility(a,b)\cdot\operatorname{lcm}(a,b)=ab$.
 
 $$\operatorname{lcm}(8303,2717)=\frac{8303\cdot2717}{19}=\frac{22556251}{19}=1187329.$$
 
-**Remark.** This matches the Université Lyon 1 correction.
+**Remark.** This matches the UniversitÃ© Lyon 1 correction.
 
 @@@ divisibility-simplify-fraction.md
 ---
@@ -633,11 +633,11 @@ Show that every common divisor of $a$ and $b$ divides $\divisibility(a,b)$, and 
 
 ## Hint
 
-Use the prime factorizations, or the Bézout identity for the first part.
+Use the prime factorizations, or the BÃ©zout identity for the first part.
 
 ## Solution
 
-**Common divisors.** Let $d=\divisibility(a,b)$ and let $c$ be any common divisor of $a,b$. Write $d=au+bv$ (Bézout). Since $c\mid a$ and $c\mid b$, we get $c\mid au+bv=d$.
+**Common divisors.** Let $d=\divisibility(a,b)$ and let $c$ be any common divisor of $a,b$. Write $d=au+bv$ (BÃ©zout). Since $c\mid a$ and $c\mid b$, we get $c\mid au+bv=d$.
 
 **Common multiples.** Let $M=\operatorname{lcm}(a,b)$ and let $N$ be any common multiple. Write the Euclidean division $N=Mq+r$ with $0\le r<M$. Since $N$ and $M$ are both multiples of $a$ and $b$, so is $r=N-Mq$. But $M$ is the *smallest* positive common multiple, so $r=0$. Hence $M\mid N$.
 
@@ -782,10 +782,10 @@ $$\divisibility=2^2\cdot3^2=4\cdot9=36.$$
 @@@ divisibility-linear-equation-two-variables.md
 ---
 title: Solving $ax+by=c$
-category: number/diophantine
+category: number/eqts
 level: l1
 difficulty: 4
-tags: Diophantine equation, Bézout, solvability criterion
+tags: Diophantine equation, BÃ©zout, solvability criterion
 date: 2026-11-02
 ---
 
@@ -795,13 +795,13 @@ Let $a,b,c$ be integers with $a,b$ not both zero. Show that $ax+by=c$ has intege
 
 ## Hint
 
-For the forward direction, note that $\divisibility(a,b)$ divides every linear combination. For the converse, use Bézout.
+For the forward direction, note that $\divisibility(a,b)$ divides every linear combination. For the converse, use BÃ©zout.
 
 ## Solution
 
 **Necessity.** If $ax+by=c$ and $d=\divisibility(a,b)$, then $d\mid a$ and $d\mid b$, so $d\mid ax+by=c$.
 
-**Sufficiency.** Suppose $d\mid c$, say $c=dq$. By Bézout, there exist $u,v$ with $au+bv=d$. Multiplying by $q$:
+**Sufficiency.** Suppose $d\mid c$, say $c=dq$. By BÃ©zout, there exist $u,v$ with $au+bv=d$. Multiplying by $q$:
 $$a(uq)+b(vq)=dq=c.$$
 So $(x,y)=(uq,vq)$ is a solution.
 
