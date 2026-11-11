@@ -14,11 +14,11 @@ Let $A=\begin{pmatrix}0&1\\-2&3\end{pmatrix}$. Find its eigenvalues and eigenvec
 
 ## Hint
 
-The characteristic polynomial is $X^2-\operatorname{tr}(A)X+\det A$.
+The characteristic polynomial is $X^2-\textrm{tr}(A)X+\det A$.
 
 ## Solution
 
-$\operatorname{tr}A=3$ and $\det A=2$, so $\chi_A(X)=X^2-3X+2=(X-1)(X-2)$. The eigenvalues are $1$ and $2$.
+$\textrm{tr}A=3$ and $\det A=2$, so $\chi_A(X)=X^2-3X+2=(X-1)(X-2)$. The eigenvalues are $1$ and $2$.
 
 - For $\lambda=1$: $(A-I)v=0$ gives $-x+y=0$, so $v_1=(1,1)$.
 - For $\lambda=2$: $(A-2I)v=0$ gives $-2x+y=0$, so $v_2=(1,2)$.
@@ -206,7 +206,7 @@ Observe that the vector $(1,1,1)$ is an eigenvector, then use the trace and the 
 
 **First eigenvalue.** $A(1,1,1)^T=(4,4,4)^T$, so $\lambda_1=4$ with eigenvector $(1,1,1)$.
 
-**Trace and determinant.** $\operatorname{tr}(A)=6$ and $\det A=4$ (direct computation).
+**Trace and determinant.** $\textrm{tr}(A)=6$ and $\det A=4$ (direct computation).
 
 **Remaining eigenvalues.** Let $\lambda_2,\lambda_3$ be the other eigenvalues. Then:
 $$\lambda_2+\lambda_3=6-4=2, \qquad \lambda_2\lambda_3=\frac{\det A}{\lambda_1}=\frac44=1.$$
@@ -243,7 +243,7 @@ $$(1-\lambda)(3-\lambda)=3-4\lambda+\lambda^2,$$
 $$(3-4\lambda+\lambda^2)(4-\lambda)=12-3\lambda-16\lambda+4\lambda^2+4\lambda^2-\lambda^3=12-19\lambda+8\lambda^2-\lambda^3.$$
 So $\chi_A(\lambda)=-\lambda^3+8\lambda^2-19\lambda+12$.
 
-**Check.** Trace: coefficient of $\lambda^2$ is $8=\operatorname{tr}(A)$. Constant term: $-(-1)^3\cdot 12 = 12=\det A$. Correct.
+**Check.** Trace: coefficient of $\lambda^2$ is $8=\textrm{tr}(A)$. Constant term: $-(-1)^3\cdot 12 = 12=\det A$. Correct.
 
 **Conclusion.** $\chi_A(\lambda)=-(\lambda-1)(\lambda-3)(\lambda-4)$.
 
@@ -456,7 +456,7 @@ date: 2026-11-03
 
 ## Statement
 
-Let $A$ be a $3\times3$ matrix with eigenvalues $2,-1,4$. Compute $\operatorname{tr}(A)$, $\det(A)$, and the characteristic polynomial of $A$.
+Let $A$ be a $3\times3$ matrix with eigenvalues $2,-1,4$. Compute $\textrm{tr}(A)$, $\det(A)$, and the characteristic polynomial of $A$.
 
 ## Hint
 
@@ -464,7 +464,7 @@ Trace = sum of eigenvalues, determinant = product of eigenvalues.
 
 ## Solution
 
-**Trace.** $\operatorname{tr}(A)=2+(-1)+4=5$.
+**Trace.** $\textrm{tr}(A)=2+(-1)+4=5$.
 
 **Determinant.** $\det(A)=2\cdot(-1)\cdot4=-8$.
 
@@ -475,7 +475,7 @@ $$(\lambda-2)(\lambda+1)=\lambda^2-\lambda-2,$$
 $$(\lambda^2-\lambda-2)(\lambda-4)=\lambda^3-5\lambda^2+2\lambda+8.$$
 So $\chi_A(\lambda)=\lambda^3-5\lambda^2+2\lambda+8$.
 
-**Check.** Coefficient of $\lambda^2$ is $-\operatorname{tr}(A)=-5$, constant term is $\det(A)=8$. Correct.
+**Check.** Coefficient of $\lambda^2$ is $-\textrm{tr}(A)=-5$, constant term is $\det(A)=8$. Correct.
 
 @@@ eigenvalues-diagonalizable-projection.md
 ---
@@ -710,20 +710,20 @@ date: 2026-11-03
 ## Statement
 
 Let $A$ be an $n\times n$ matrix with eigenvalues $\lambda_1,\ldots,\lambda_n$ (counted with multiplicity). Show that
-$$\sum_i\lambda_i = \operatorname{tr}(A), \qquad \prod_i\lambda_i = \det(A).$$
+$$\sum_i\lambda_i = \textrm{tr}(A), \qquad \prod_i\lambda_i = \det(A).$$
 
 ## Hint
 
-Expand $\chi_A(\lambda)=\prod(\lambda-\lambda_i)$ and compare coefficients with $\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A$.
+Expand $\chi_A(\lambda)=\prod(\lambda-\lambda_i)$ and compare coefficients with $\chi_A(\lambda)=\lambda^n-\textrm{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A$.
 
 ## Solution
 
 **Expansion of $\prod(\lambda-\lambda_i)$.** The coefficient of $\lambda^{n-1}$ is $-\sum_i\lambda_i$. The constant term is $(-1)^n\prod_i\lambda_i$.
 
 **Identification.** Comparing with
-$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A,$$
+$$\chi_A(\lambda)=\lambda^n-\textrm{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A,$$
 we get
-$$\sum_i\lambda_i=\operatorname{tr}(A), \qquad \prod_i\lambda_i=\det A.$$
+$$\sum_i\lambda_i=\textrm{tr}(A), \qquad \prod_i\lambda_i=\det A.$$
 
 **Conclusion.** Trace and determinant are the elementary symmetric functions of degree $1$ and $n$ of the eigenvalues.
 
@@ -1187,7 +1187,7 @@ Expanding:
 $$(X-1)(X-3)=X^2-4X+3, \qquad (X^2-4X+3)(X-4)=X^3-8X^2+19X-12.$$
 So $\chi_A(X)=X^3-8X^2+19X-12$.
 
-**Check.** The coefficient of $X^2$ is $-8=-\operatorname{tr}(A)$ (indeed $1+3+4=8$). The constant term is $\chi_A(0)=\det(-A)=(-1)^3\det A=-12$, and $\det A=1\cdot3\cdot4=12$.
+**Check.** The coefficient of $X^2$ is $-8=-\textrm{tr}(A)$ (indeed $1+3+4=8$). The constant term is $\chi_A(0)=\det(-A)=(-1)^3\det A=-12$, and $\det A=1\cdot3\cdot4=12$.
 
 **Conclusion.** $\chi_A(X)=(X-1)(X-3)(X-4)=X^3-8X^2+19X-12$; the eigenvalues are $1,3,4$.
 
@@ -1207,7 +1207,7 @@ date: 2026-11-03
 ## Statement
 
 Let $A$ be an $n\times n$ real or complex matrix, and let $\lambda_1,\ldots,\lambda_n\in\mathbb{C}$ be its eigenvalues counted with multiplicity, i.e. $\chi_A(X)=\det(XI-A)=\prod_{i=1}^n(X-\lambda_i)$ (such a factorization exists over $\mathbb{C}$). Show that
-$$\sum_i\lambda_i = \operatorname{tr}(A), \qquad \prod_i\lambda_i = \det(A).$$
+$$\sum_i\lambda_i = \textrm{tr}(A), \qquad \prod_i\lambda_i = \det(A).$$
 
 ## Hint
 
@@ -1221,7 +1221,7 @@ Compare the coefficient of $X^{n-1}$ and the constant term of $\det(XI-A)$ with 
 
 **Coefficient of $X^{n-1}$.** By the Leibniz formula,
 $$\det(XI-A)=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)\prod_{i=1}^n\big(X\delta_{i\sigma(i)}-a_{i\sigma(i)}\big).$$
-The identity permutation contributes $\prod_i(X-a_{ii})$, whose coefficient of $X^{n-1}$ is $-\sum_ia_{ii}=-\operatorname{tr}A$. A permutation $\sigma\neq\mathrm{id}$ has at most $n-2$ fixed points, and each non-fixed index contributes a constant factor $-a_{i\sigma(i)}$, so its term has degree at most $n-2$. Hence the coefficient of $X^{n-1}$ in $\chi_A$ is $-\operatorname{tr}A$. Comparing with $-\sum_i\lambda_i$ gives $\sum_i\lambda_i=\operatorname{tr}A$.
+The identity permutation contributes $\prod_i(X-a_{ii})$, whose coefficient of $X^{n-1}$ is $-\sum_ia_{ii}=-\textrm{tr}A$. A permutation $\sigma\neq\mathrm{id}$ has at most $n-2$ fixed points, and each non-fixed index contributes a constant factor $-a_{i\sigma(i)}$, so its term has degree at most $n-2$. Hence the coefficient of $X^{n-1}$ in $\chi_A$ is $-\textrm{tr}A$. Comparing with $-\sum_i\lambda_i$ gives $\sum_i\lambda_i=\textrm{tr}A$.
 
 **Conclusion.** The trace is the sum and the determinant is the product of the eigenvalues (counted with algebraic multiplicity, over $\mathbb{C}$).
 
@@ -1238,7 +1238,7 @@ date: 2026-11-03
 
 ## Statement
 
-Let $A$ be a $3\times3$ matrix with eigenvalues $2,-1,4$ (three distinct values, hence each simple). Compute $\operatorname{tr}(A)$, $\det(A)$, and the characteristic polynomial $\chi_A(X)=\det(XI-A)$.
+Let $A$ be a $3\times3$ matrix with eigenvalues $2,-1,4$ (three distinct values, hence each simple). Compute $\textrm{tr}(A)$, $\det(A)$, and the characteristic polynomial $\chi_A(X)=\det(XI-A)$.
 
 ## Hint
 
@@ -1246,7 +1246,7 @@ Trace = sum of eigenvalues, determinant = product of eigenvalues, and $\chi_A(X)
 
 ## Solution
 
-**Trace.** $\operatorname{tr}(A)=2+(-1)+4=5$.
+**Trace.** $\textrm{tr}(A)=2+(-1)+4=5$.
 
 **Determinant.** $\det(A)=2\cdot(-1)\cdot4=-8$.
 
@@ -1254,7 +1254,7 @@ Trace = sum of eigenvalues, determinant = product of eigenvalues, and $\chi_A(X)
 $$(X-2)(X+1)=X^2-X-2, \qquad (X^2-X-2)(X-4)=X^3-5X^2+2X+8.$$
 So $\chi_A(X)=X^3-5X^2+2X+8$.
 
-**Check.** The coefficient of $X^2$ is $-\operatorname{tr}(A)=-5$. The constant term is $(-1)^3\det(A)=-(-8)=8$.
+**Check.** The coefficient of $X^2$ is $-\textrm{tr}(A)=-5$. The constant term is $(-1)^3\det(A)=-(-8)=8$.
 
 @@@ eigenvalues-3x3-symmetric.md
 ---
@@ -1281,7 +1281,7 @@ Observe that $(1,1,1)^T$ is an eigenvector, then use the trace and the determina
 
 **First eigenvalue.** $A(1,1,1)^T=(4,4,4)^T$, so $\lambda_1=4$ with eigenvector $(1,1,1)^T$.
 
-**Trace and determinant.** $\operatorname{tr}(A)=6$. By Sarrus' rule, $\det A=(8+1+1)-(2+2+2)=4$.
+**Trace and determinant.** $\textrm{tr}(A)=6$. By Sarrus' rule, $\det A=(8+1+1)-(2+2+2)=4$.
 
 **Remaining eigenvalues.** Let $\lambda_2,\lambda_3$ be the two other roots of $\chi_A$ (so that $\lambda_1,\lambda_2,\lambda_3$ are the eigenvalues counted with multiplicity). Then
 $$\lambda_2+\lambda_3=6-4=2, \qquad \lambda_2\lambda_3=\frac{\det A}{\lambda_1}=1.$$
