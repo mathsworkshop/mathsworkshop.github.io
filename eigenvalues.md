@@ -1,3 +1,986 @@
+
+@@@ powers-of-a-companion-matrix.md
+---
+title: Powers of a 2×2 matrix with eigenvalues 1 and 2
+category: linear/eigenvalues
+level: l2
+difficulty: 3
+tags: diagonalisation, matrices
+date: 2026-10-31
+---
+
+## Statement
+
+Let $A=\begin{pmatrix}0&1\\-2&3\end{pmatrix}$. Find its eigenvalues and eigenvectors, then compute $A^n$ for every $n\in\mathbb{N}$.
+
+## Hint
+
+The characteristic polynomial is $X^2-\operatorname{tr}(A)X+\det A$.
+
+## Solution
+
+$\operatorname{tr}A=3$ and $\det A=2$, so $\chi_A(X)=X^2-3X+2=(X-1)(X-2)$. The eigenvalues are $1$ and $2$.
+
+- For $\lambda=1$: $(A-I)v=0$ gives $-x+y=0$, so $v_1=(1,1)$.
+- For $\lambda=2$: $(A-2I)v=0$ gives $-2x+y=0$, so $v_2=(1,2)$.
+
+Let $P=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, $D=\operatorname{diag}(1,2)$. Then $\det P=1$ and $P^{-1}=\begin{pmatrix}2&-1\\-1&1\end{pmatrix}$, and $A=PDP^{-1}$. Hence
+$$A^n=PD^nP^{-1}=\begin{pmatrix}1&2^n\\1&2^{n+1}\end{pmatrix}\begin{pmatrix}2&-1\\-1&1\end{pmatrix}=\begin{pmatrix}2-2^n&2^n-1\\2-2^{n+1}&2^{n+1}-1\end{pmatrix}.$$
+
+Check: $n=0$ gives the identity and $n=1$ gives $A$.
+
+@@@ powers-of-a-matrix.md
+---
+title: Powers of a matrix
+category: linear/eigenvalues
+level: l2
+difficulty: 3
+tags: diagonalisation, matrices
+date: 2026-10-28
+---
+
+## Statement
+
+Let $A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$. Compute $A^n$ for every $n\in\mathbb{N}$.
+
+## Hint
+
+Find the eigenvalues of $A$ and a basis of eigenvectors.
+
+## Solution
+
+The characteristic polynomial is $(X-2)^2-1=(X-1)(X-3)$. The vector $(1,-1)$ is an eigenvector for $1$ and $(1,1)$ is one for $3$.
+
+With $P=\begin{pmatrix}1&1\\-1&1\end{pmatrix}$, $D=\operatorname{diag}(1,3)$ and $P^{-1}=\dfrac12\begin{pmatrix}1&-1\\1&1\end{pmatrix}$ we have $A=PDP^{-1}$, so
+$$A^n=PD^nP^{-1}=\frac12\begin{pmatrix}3^n+1&3^n-1\\3^n-1&3^n+1\end{pmatrix}.$$
+
+
+@@@ eigenvalues-2x2-basic.md
+---
+title: Eigenvalues and eigenvectors of a 2Ã—2 matrix
+category: linear/eigenvalues
+level: lycee
+difficulty: 2
+tags: eigenvalues, eigenvectors, characteristic polynomial
+date: 2026-11-03
+---
+
+## Statement
+
+Find the eigenvalues and eigenvectors of
+$$A = \begin{pmatrix} 3 & 1 \\ 0 & 2 \end{pmatrix}.$$
+
+## Hint
+
+The matrix is upper triangular, so the eigenvalues are the diagonal entries. For each eigenvalue, solve $(A-\lambda I)v=0$.
+
+## Solution
+
+**Eigenvalues.** $A$ is upper triangular with diagonal entries $3$ and $2$, so the eigenvalues are $\lambda_1=3$ and $\lambda_2=2$.
+
+**Eigenvector for $\lambda=3$.**
+$$A-3I = \begin{pmatrix} 0 & 1 \\ 0 & -1 \end{pmatrix}.$$
+The kernel is given by $y=0$, so an eigenvector is $v_1=(1,0)$.
+
+**Eigenvector for $\lambda=2$.**
+$$A-2I = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}.$$
+The kernel is given by $x+y=0$, so an eigenvector is $v_2=(1,-1)$.
+
+**Conclusion.** Eigenvalues $3$ and $2$, with eigenvectors $(1,0)$ and $(1,-1)$.
+
+@@@ eigenvalues-2x2-distinct.md
+---
+title: A 2Ã—2 matrix with distinct eigenvalues
+category: linear/eigenvalues
+level: lycee
+difficulty: 2
+tags: eigenvalues, eigenvectors, distinct roots
+date: 2026-11-03
+---
+
+## Statement
+
+Find the eigenvalues and eigenvectors of
+$$A = \begin{pmatrix} 4 & 1 \\ 2 & 3 \end{pmatrix}.$$
+
+## Hint
+
+Compute the characteristic polynomial $\det(A-\lambda I)$ and find its roots.
+
+## Solution
+
+**Characteristic polynomial.**
+$$\det(A-\lambda I) = \begin{vmatrix} 4-\lambda & 1 \\ 2 & 3-\lambda \end{vmatrix} = (4-\lambda)(3-\lambda)-2 = \lambda^2-7\lambda+10.$$
+The roots are $\lambda_1=2$ and $\lambda_2=5$.
+
+**Eigenvector for $\lambda=2$.**
+$$A-2I = \begin{pmatrix} 2 & 1 \\ 2 & 1 \end{pmatrix}.$$
+The kernel is given by $2x+y=0$, so $v_1=(1,-2)$.
+
+**Eigenvector for $\lambda=5$.**
+$$A-5I = \begin{pmatrix} -1 & 1 \\ 2 & -2 \end{pmatrix}.$$
+The kernel is given by $-x+y=0$, so $v_2=(1,1)$.
+
+**Conclusion.** Eigenvalues $2$ and $5$, with eigenvectors $(1,-2)$ and $(1,1)$.
+
+@@@ eigenvalues-2x2-double.md
+---
+title: A 2Ã—2 matrix with a double eigenvalue
+category: linear/eigenvalues
+level: lycee
+difficulty: 3
+tags: eigenvalues, double root, diagonalizability
+date: 2026-11-03
+---
+
+## Statement
+
+Find the eigenvalues and eigenvectors of
+$$A = \begin{pmatrix} 2 & 1 \\ 0 & 2 \end{pmatrix}.$$
+Is $A$ diagonalizable?
+
+## Hint
+
+The characteristic polynomial has a double root at $2$. Compute the eigenspace $\ker(A-2I)$.
+
+## Solution
+
+**Characteristic polynomial.**
+$$\det(A-\lambda I) = (2-\lambda)^2.$$
+So the only eigenvalue is $\lambda=2$, with algebraic multiplicity $2$.
+
+**Eigenspace.**
+$$A-2I = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}.$$
+The kernel is given by $y=0$, so $E_2=\operatorname{span}((1,0))$, dimension $1$.
+
+**Conclusion.** The geometric multiplicity of $\lambda=2$ is $1<2$ (the algebraic multiplicity), so $A$ is **not diagonalizable**.
+
+**Remark.** The matrix is a single Jordan block of size $2$ for the eigenvalue $2$.
+
+@@@ eigenvalues-3x3-distinct.md
+---
+title: A 3Ã—3 matrix with distinct eigenvalues
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: eigenvalues, eigenvectors, 3x3 matrices
+date: 2026-11-03
+---
+
+## Statement
+
+Find the eigenvalues of
+$$A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{pmatrix}, \qquad B = \begin{pmatrix} 1 & 1 & 0 \\ 0 & 2 & 1 \\ 0 & 0 & 3 \end{pmatrix}.$$
+
+## Hint
+
+Both matrices are triangular.
+
+## Solution
+
+**Matrix $A$.** $A$ is diagonal, so its eigenvalues are its diagonal entries: $1,2,3$.
+
+**Matrix $B$.** $B$ is upper triangular with diagonal entries $1,2,3$, so its eigenvalues are also $1,2,3$.
+
+**Remark.** The eigenvalues of a triangular matrix are its diagonal entries. The two matrices $A$ and $B$ have the same eigenvalues but are not similar (the first is diagonalizable, the second is not, as we will see).
+
+@@@ eigenvalues-3x3-symmetric.md
+---
+title: Eigenvalues of a symmetric matrix
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: symmetric matrix, eigenvalues, trace and determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Find the eigenvalues of
+$$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}.$$
+
+## Hint
+
+Observe that the vector $(1,1,1)$ is an eigenvector, then use the trace and the determinant.
+
+## Solution
+
+**First eigenvalue.** $A(1,1,1)^T=(4,4,4)^T$, so $\lambda_1=4$ with eigenvector $(1,1,1)$.
+
+**Trace and determinant.** $\operatorname{tr}(A)=6$ and $\det A=4$ (direct computation).
+
+**Remaining eigenvalues.** Let $\lambda_2,\lambda_3$ be the other eigenvalues. Then:
+$$\lambda_2+\lambda_3=6-4=2, \qquad \lambda_2\lambda_3=\frac{\det A}{\lambda_1}=\frac44=1.$$
+The solutions are $\lambda_2=\lambda_3=1$.
+
+**Conclusion.** Eigenvalues $4,1,1$. The eigenspace $E_1$ is the plane $x+y+z=0$, of dimension $2$.
+
+@@@ eigenvalues-characteristic-polynomial.md
+---
+title: The characteristic polynomial
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: characteristic polynomial, eigenvalues, trace, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the characteristic polynomial of
+$$A = \begin{pmatrix} 1 & 2 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 4 \end{pmatrix}$$
+and verify the trace and determinant formulas.
+
+## Hint
+
+For a triangular matrix, $\chi_A(\lambda)=(\lambda_1-\lambda)(\lambda_2-\lambda)(\lambda_3-\lambda)$.
+
+## Solution
+
+**Characteristic polynomial.** $A$ is upper triangular with diagonal entries $1,3,4$, so
+$$\chi_A(\lambda) = (1-\lambda)(3-\lambda)(4-\lambda).$$
+Expanding:
+$$(1-\lambda)(3-\lambda)=3-4\lambda+\lambda^2,$$
+$$(3-4\lambda+\lambda^2)(4-\lambda)=12-3\lambda-16\lambda+4\lambda^2+4\lambda^2-\lambda^3=12-19\lambda+8\lambda^2-\lambda^3.$$
+So $\chi_A(\lambda)=-\lambda^3+8\lambda^2-19\lambda+12$.
+
+**Check.** Trace: coefficient of $\lambda^2$ is $8=\operatorname{tr}(A)$. Constant term: $-(-1)^3\cdot 12 = 12=\det A$. Correct.
+
+**Conclusion.** $\chi_A(\lambda)=-(\lambda-1)(\lambda-3)(\lambda-4)$.
+
+@@@ eigenvalues-diagonalization-2x2.md
+---
+title: Diagonalizing a 2Ã—2 matrix
+category: linear/eigenvalues
+level: l1
+difficulty: 4
+tags: diagonalization, change of basis, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Diagonalize
+$$A = \begin{pmatrix} 4 & 1 \\ 2 & 3 \end{pmatrix},$$
+i.e. find an invertible $P$ and a diagonal $D$ with $A=PDP^{-1}$.
+
+## Hint
+
+Use the eigenvalues $2$ and $5$ and the corresponding eigenvectors found earlier.
+
+## Solution
+
+**Eigenvalues and eigenvectors.** From the earlier exercise: $\lambda_1=2$ with $v_1=(1,-2)$, and $\lambda_2=5$ with $v_2=(1,1)$.
+
+**Matrix $P$.** The columns of $P$ are the eigenvectors:
+$$P = \begin{pmatrix} 1 & 1 \\ -2 & 1 \end{pmatrix}.$$
+
+**Inverse of $P$.** $\det P=1\cdot1-1\cdot(-2)=3$, so
+$$P^{-1}=\frac13\begin{pmatrix} 1 & -1 \\ 2 & 1 \end{pmatrix}.$$
+
+**Diagonal matrix.**
+$$D = \begin{pmatrix} 2 & 0 \\ 0 & 5 \end{pmatrix}.$$
+
+**Verification.** $PDP^{-1}=A$ (direct computation).
+
+**Conclusion.** $A=PDP^{-1}$ with the matrices above. Consequently $A^k=PD^kP^{-1}$.
+
+@@@ eigenvalues-diagonalization-3x3.md
+---
+title: Diagonalizing a 3Ã—3 matrix
+category: linear/eigenvalues
+level: l1
+difficulty: 4
+tags: diagonalization, eigenspaces, change of basis
+date: 2026-11-03
+---
+
+## Statement
+
+Diagonalize
+$$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}.$$
+
+## Hint
+
+Use the eigenvalues $4,1,1$ found earlier. Find a basis of each eigenspace and form the matrix $P$.
+
+## Solution
+
+**Eigenspaces.**
+- $E_4 = \ker(A-4I)$ has dimension $1$, spanned by $v_1=(1,1,1)$.
+- $E_1 = \ker(A-I)$ has dimension $2$, spanned by $v_2=(1,-1,0)$ and $v_3=(1,0,-1)$.
+
+**Diagonalization.**
+$$P = \begin{pmatrix} 1 & 1 & 1 \\ 1 & -1 & 0 \\ 1 & 0 & -1 \end{pmatrix}, \qquad D = \begin{pmatrix} 4 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}.$$
+The columns of $P$ are linearly independent, so $P$ is invertible and $A=PDP^{-1}$.
+
+**Conclusion.** $A$ is diagonalizable with eigenvalues $4,1,1$.
+
+@@@ eigenvalues-diagonalizability-criterion.md
+---
+title: The diagonalizability criterion
+category: linear/eigenvalues
+level: l1
+difficulty: 4
+tags: diagonalizability, multiplicity, eigenspaces
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix. Show that $A$ is diagonalizable if and only if:
+1. the characteristic polynomial splits into linear factors over $\mathbb{R}$;
+2. for each eigenvalue $\lambda$, its geometric multiplicity $\dim E_\lambda$ equals its algebraic multiplicity (the multiplicity of $\lambda$ as a root of $\chi_A$).
+
+## Hint
+
+If $A$ is diagonalizable, it is similar to a diagonal matrix $D$, and the eigenspaces of $A$ correspond to those of $D$ via the change of basis.
+
+## Solution
+
+**Forward direction.** If $A=PDP^{-1}$ with $D$ diagonal, the diagonal entries of $D$ are the eigenvalues of $A$, and each eigenvalue $\lambda$ appears on the diagonal exactly as many times as its algebraic multiplicity. The corresponding eigenspace has the same dimension as the eigenspace of $D$ for $\lambda$, which is the number of times $\lambda$ appears on the diagonal. So geometric multiplicity equals algebraic multiplicity.
+
+**Converse.** Suppose the characteristic polynomial splits and each geometric multiplicity equals algebraic multiplicity. Then the sum of the geometric multiplicities equals the sum of the algebraic multiplicities, which equals $n$. Since the eigenspaces for distinct eigenvalues are in direct sum, the union of bases of the eigenspaces is a basis of $\mathbb{R}^n$, so $A$ is diagonalizable.
+
+**Conclusion.** The two conditions are necessary and sufficient.
+
+@@@ eigenvalues-diagonalizability-parameter.md
+---
+title: Diagonalizability depending on a parameter
+category: linear/eigenvalues
+level: l1
+difficulty: 5
+tags: diagonalizability, parameter, eigenspaces
+date: 2026-11-03
+---
+
+## Statement
+
+For which real values of $a$ is the matrix
+$$A_a = \begin{pmatrix} 1 & a \\ 0 & 1 \end{pmatrix}$$
+diagonalizable?
+
+## Hint
+
+The only eigenvalue is $1$ (double). Compute $\dim\ker(A_a-I)$.
+
+## Solution
+
+**Eigenvalue.** The matrix is upper triangular with both diagonal entries $1$, so $\lambda=1$ is the only eigenvalue, with algebraic multiplicity $2$.
+
+**Eigenspace.**
+$$A_a-I = \begin{pmatrix} 0 & a \\ 0 & 0 \end{pmatrix}.$$
+- If $a\neq0$: the kernel is $\{(x,0)\}$, dimension $1$.
+- If $a=0$: $A_0=I$, and the kernel is $\mathbb{R}^2$, dimension $2$.
+
+**Conclusion.**
+- If $a\neq0$: geometric multiplicity $1<2$, so $A_a$ is **not diagonalizable**.
+- If $a=0$: $A_0=I$ is already diagonal, hence diagonalizable.
+
+@@@ eigenvalues-symmetric-orthogonal.md
+---
+title: Orthogonal diagonalization of a symmetric matrix
+category: linear/eigenvalues
+level: l1
+difficulty: 5
+tags: symmetric matrix, orthogonal diagonalization, spectral theorem
+date: 2026-11-03
+---
+
+## Statement
+
+Orthogonally diagonalize
+$$A = \begin{pmatrix} 3 & 1 \\ 1 & 3 \end{pmatrix}.$$
+
+## Hint
+
+Find the eigenvalues, then orthonormalize the eigenvectors.
+
+## Solution
+
+**Eigenvalues.** $\det(A-\lambda I)=(3-\lambda)^2-1=\lambda^2-6\lambda+8=(\lambda-2)(\lambda-4)$. So $\lambda_1=2$ and $\lambda_2=4$.
+
+**Eigenvectors.**
+- For $\lambda=2$: $v_1=(1,-1)$.
+- For $\lambda=4$: $v_2=(1,1)$.
+
+These are already orthogonal.
+
+**Normalization.** $u_1=(1,-1)/\sqrt2$ and $u_2=(1,1)/\sqrt2$.
+
+**Orthogonal matrix $Q$.**
+$$Q = \frac{1}{\sqrt2}\begin{pmatrix} 1 & 1 \\ -1 & 1 \end{pmatrix}.$$
+Then $Q^TQ=I$ and
+$$Q^TAQ = \begin{pmatrix} 2 & 0 \\ 0 & 4 \end{pmatrix}.$$
+
+**Conclusion.** $A=Q\operatorname{diag}(2,4)Q^T$ with $Q$ orthogonal.
+
+@@@ eigenvalues-eigenspace-basis.md
+---
+title: A basis of an eigenspace
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: eigenspace, basis, dimension
+date: 2026-11-03
+---
+
+## Statement
+
+Let
+$$A = \begin{pmatrix} 2 & 1 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{pmatrix}.$$
+Find a basis of the eigenspace $E_2$.
+
+## Hint
+
+$E_2=\ker(A-2I)$. Solve the system.
+
+## Solution
+
+**Kernel.**
+$$A-2I = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}.$$
+The system is $y=0$ and $z=0$, so the kernel is $\{(x,0,0)\}$.
+
+**Conclusion.** $E_2=\operatorname{span}((1,0,0))$, dimension $1$.
+
+**Remark.** The algebraic multiplicity of $\lambda=2$ is $2$ (it appears twice on the diagonal), but the geometric multiplicity is $1$, so $A$ is not diagonalizable.
+
+@@@ eigenvalues-trace-determinant.md
+---
+title: Trace and determinant of a 3Ã—3 matrix via eigenvalues
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: trace, determinant, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be a $3\times3$ matrix with eigenvalues $2,-1,4$. Compute $\operatorname{tr}(A)$, $\det(A)$, and the characteristic polynomial of $A$.
+
+## Hint
+
+Trace = sum of eigenvalues, determinant = product of eigenvalues.
+
+## Solution
+
+**Trace.** $\operatorname{tr}(A)=2+(-1)+4=5$.
+
+**Determinant.** $\det(A)=2\cdot(-1)\cdot4=-8$.
+
+**Characteristic polynomial.**
+$$\chi_A(\lambda)=(\lambda-2)(\lambda+1)(\lambda-4).$$
+Expanding:
+$$(\lambda-2)(\lambda+1)=\lambda^2-\lambda-2,$$
+$$(\lambda^2-\lambda-2)(\lambda-4)=\lambda^3-5\lambda^2+2\lambda+8.$$
+So $\chi_A(\lambda)=\lambda^3-5\lambda^2+2\lambda+8$.
+
+**Check.** Coefficient of $\lambda^2$ is $-\operatorname{tr}(A)=-5$, constant term is $\det(A)=8$. Correct.
+
+@@@ eigenvalues-diagonalizable-projection.md
+---
+title: A projection is diagonalizable
+category: linear/eigenvalues
+level: l1
+difficulty: 4
+tags: projection, diagonalization, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Let $p:\mathbb{R}^n\to\mathbb{R}^n$ be a projection, i.e. $p^2=p$. Show that $p$ is diagonalizable and determine its eigenvalues.
+
+## Hint
+
+If $p^2=p$, then $p(p-\mathrm{id})=0$, so the minimal polynomial of $p$ divides $X(X-1)$.
+
+## Solution
+
+**Minimal polynomial.** From $p^2=p$: $p^2-p=0$, so $p(p-\mathrm{id})=0$. The minimal polynomial $\mu_p$ divides $X(X-1)$.
+
+**Eigenvalues.** The possible eigenvalues are roots of $\mu_p$: $0$ and $1$.
+
+**Diagonalizability.** The minimal polynomial has simple roots (no repeated factor), so $p$ is diagonalizable. Its eigenvalues are $0$ and $1$.
+
+**Eigenspaces.** $E_1=\operatorname{Im} p$ (fixed points), $E_0=\ker p$. Moreover $\mathbb{R}^n=E_0\oplus E_1$.
+
+**Conclusion.** Any projection is diagonalizable with eigenvalues $0$ and $1$.
+
+@@@ eigenvalues-diagonalizable-involution.md
+---
+title: An involution is diagonalizable
+category: linear/eigenvalues
+level: l1
+difficulty: 4
+tags: involution, diagonalization, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^n\to\mathbb{R}^n$ be a linear map with $f^2=\mathrm{id}$. Show that $f$ is diagonalizable and determine its eigenvalues.
+
+## Hint
+
+$f^2-\mathrm{id}=0$, so $(f-\mathrm{id})(f+\mathrm{id})=0$. The minimal polynomial divides $X^2-1=(X-1)(X+1)$.
+
+## Solution
+
+**Minimal polynomial.** $f^2=\mathrm{id}$ implies $f^2-\mathrm{id}=0$, so the minimal polynomial $\mu_f$ divides $X^2-1$.
+
+**Eigenvalues.** The roots of $\mu_f$ are among $1$ and $-1$. If $f=\mathrm{id}$, the only eigenvalue is $1$; if $f=-\mathrm{id}$, the only eigenvalue is $-1$; otherwise both are eigenvalues.
+
+**Diagonalizability.** $X^2-1$ has simple roots (in characteristic $\neq2$), so $\mu_f$ also has simple roots and $f$ is diagonalizable.
+
+**Eigenspaces.** $E_1=\ker(f-\mathrm{id})$, $E_{-1}=\ker(f+\mathrm{id})$, and $\mathbb{R}^n=E_1\oplus E_{-1}$.
+
+**Conclusion.** Any involution is diagonalizable with eigenvalues in $\{1,-1\}$.
+
+@@@ eigenvalues-multiplicity.md
+---
+title: Geometric versus algebraic multiplicity
+category: linear/eigenvalues
+level: l1
+difficulty: 4
+tags: multiplicities, eigenspace, diagonalization
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix. Show that for every eigenvalue $\lambda$,
+$$1\le\dim E_\lambda\le m_\lambda,$$
+where $m_\lambda$ is the algebraic multiplicity of $\lambda$ (as root of $\chi_A$).
+
+## Hint
+
+The first inequality is because an eigenvalue has a nonzero eigenvector. For the second, use the rank-nullity theorem and properties of the characteristic polynomial.
+
+## Solution
+
+**Lower bound.** By definition, an eigenvalue has at least one nonzero eigenvector, so $\dim E_\lambda\ge1$.
+
+**Upper bound.** Let $k=\dim E_\lambda$ and choose a basis $(v_1,\ldots,v_k)$ of $E_\lambda$. Extend this basis to a basis of $\mathbb{R}^n$. In this basis, the matrix of $A$ is block upper triangular:
+$$\begin{pmatrix} \lambda I_k & * \\ 0 & * \end{pmatrix}.$$
+Therefore $\chi_A$ has the factor $(\lambda-X)^k$, i.e. the algebraic multiplicity of $\lambda$ is at least $k$. Hence $k\le m_\lambda$.
+
+**Conclusion.** $1\le\dim E_\lambda\le m_\lambda$. Equality for all $\lambda$ iff $A$ is diagonalizable.
+
+@@@ eigenvalues-cayley-hamilton.md
+---
+title: The Cayleyâ€“Hamilton theorem
+category: linear/eigenvalues
+level: l1
+difficulty: 5
+tags: Cayley-Hamilton, characteristic polynomial, matrix identity
+date: 2026-11-03
+---
+
+## Statement
+
+State and verify the Cayleyâ€“Hamilton theorem on the example
+$$A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}.$$
+
+## Hint
+
+The theorem states that $\chi_A(A)=0$. Compute $\chi_A$, then evaluate at $A$.
+
+## Solution
+
+**Theorem.** Every square matrix satisfies its own characteristic polynomial: $\chi_A(A)=0$.
+
+**Characteristic polynomial.**
+$$\chi_A(\lambda)=\det(A-\lambda I)=(2-\lambda)^2-1=\lambda^2-4\lambda+3.$$
+
+**Verification.**
+$$A^2 = \begin{pmatrix} 5 & 4 \\ 4 & 5 \end{pmatrix}.$$
+Then
+$$\chi_A(A)=A^2-4A+3I = \begin{pmatrix} 5 & 4 \\ 4 & 5 \end{pmatrix}-\begin{pmatrix} 8 & 4 \\ 4 & 8 \end{pmatrix}+\begin{pmatrix} 3 & 0 \\ 0 & 3 \end{pmatrix}=\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}.$$
+
+**Conclusion.** $\chi_A(A)=0$, confirming Cayleyâ€“Hamilton. This gives $A^2=4A-3I$, allowing recursive computation of $A^k$.
+
+@@@ eigenvalues-companion-fibonacci.md
+---
+title: Powers of a companion matrix and Fibonacci numbers
+category: linear/eigenvalues
+level: l1
+difficulty: 5
+tags: companion matrix, Fibonacci, diagonalization
+date: 2026-11-03
+---
+
+## Statement
+
+Let
+$$A = \begin{pmatrix} 0 & 1 \\ 1 & 1 \end{pmatrix}.$$
+Diagonalize $A$ and deduce a closed-form formula for the Fibonacci numbers $F_n$ defined by $F_0=0$, $F_1=1$, $F_{n+2}=F_{n+1}+F_n$.
+
+## Hint
+
+Eigenvalues solve $\lambda^2=\lambda+1$, i.e. $\lambda=\varphi$ or $\lambda=\psi$ with $\varphi=(1+\sqrt5)/2$, $\psi=(1-\sqrt5)/2$.
+
+## Solution
+
+**Eigenvalues.** $\det(A-\lambda I)=\lambda^2-\lambda-1$, with roots $\varphi=\frac{1+\sqrt5}{2}$ and $\psi=\frac{1-\sqrt5}{2}$.
+
+**Eigenvectors.**
+- For $\varphi$: $v_1=(1,\varphi)$.
+- For $\psi$: $v_2=(1,\psi)$.
+
+**Diagonalization.** $A=PDP^{-1}$ with $P=\begin{pmatrix}1&1\\\varphi&\psi\end{pmatrix}$ and $D=\operatorname{diag}(\varphi,\psi)$.
+
+**Fibonacci relation.** $\begin{pmatrix}F_{n+1}\\F_n\end{pmatrix}=A^n\begin{pmatrix}F_1\\F_0\end{pmatrix}=A^n\begin{pmatrix}1\\0\end{pmatrix}$.
+
+**Closed formula.** From $A^n=P D^n P^{-1}$, we get
+$$F_n=\frac{\varphi^n-\psi^n}{\sqrt5}.$$
+
+**Check.** $F_0=0$, $F_1=1$, $F_2=1$, $F_3=2$, consistent with the Binet formula.
+
+**Conclusion.** $F_n=\frac{1}{\sqrt5}\left[\left(\frac{1+\sqrt5}{2}\right)^n-\left(\frac{1-\sqrt5}{2}\right)^n\right]$.
+
+@@@ eigenvalues-diagonalizable-trigonalizable.md
+---
+title: Trigonalization and eigenvalues
+category: linear/eigenvalues
+level: l1
+difficulty: 5
+tags: trigonalization, characteristic polynomial, real eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ real matrix. Show that $A$ is trigonalizable over $\mathbb{R}$ if and only if its characteristic polynomial has all roots in $\mathbb{R}$.
+
+## Hint
+
+Use induction on $n$: find a real eigenvalue, which gives a stable line, then apply the induction hypothesis to the quotient.
+
+## Solution
+
+**Forward direction.** If $A$ is similar to an upper triangular matrix $T$, then $\chi_A=\chi_T$, which is a product of linear factors, so all roots are real.
+
+**Converse.** Suppose $\chi_A$ has all roots in $\mathbb{R}$. Then $A$ has at least one real eigenvalue $\lambda_1$, hence a stable line $L_1=\operatorname{span}(v_1)$ with $Av_1=\lambda_1 v_1$. Complete $(v_1)$ to a basis of $\mathbb{R}^n$. In this basis, the matrix of $A$ is block upper triangular:
+$$M = \begin{pmatrix} \lambda_1 & * \\ 0 & B \end{pmatrix}.$$
+The characteristic polynomial of $B$ divides $\chi_A$, so it also has all roots in $\mathbb{R}$. By induction, $B$ is trigonalizable, and consequently so is $M$.
+
+**Conclusion.** Trigonalizability over $\mathbb{R}$ is equivalent to all eigenvalues being real.
+
+@@@ eigenvalues-eigenvector-subspace.md
+---
+title: Eigenvectors for a given eigenvalue form a subspace
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: eigenspace, subspace, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix and $\lambda$ a real number. Show that
+$$E_\lambda = \{v\in\mathbb{R}^n : Av=\lambda v\}$$
+is a subspace of $\mathbb{R}^n$.
+
+## Hint
+
+$E_\lambda=\ker(A-\lambda I)$.
+
+## Solution
+
+**Identification.** $Av=\lambda v\iff(A-\lambda I)v=0\iff v\in\ker(A-\lambda I)$.
+
+**Subspace.** The kernel of a linear map is a subspace. Indeed, $0\in\ker(A-\lambda I)$; if $v,w\in E_\lambda$, then $(A-\lambda I)(v+w)=0+0=0$; if $\alpha\in\mathbb{R}$ and $v\in E_\lambda$, then $(A-\lambda I)(\alpha v)=\alpha\cdot0=0$.
+
+**Conclusion.** $E_\lambda$ is a subspace, called the **eigenspace** of $A$ for $\lambda$.
+
+**Note.** If $\lambda$ is not an eigenvalue, $E_\lambda=\{0\}$.
+
+@@@ eigenvalues-sum-eigenvalues.md
+---
+title: Sum of eigenvalues equals trace
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: eigenvalues, trace, characteristic polynomial
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix with eigenvalues $\lambda_1,\ldots,\lambda_n$ (counted with multiplicity). Show that
+$$\sum_i\lambda_i = \operatorname{tr}(A), \qquad \prod_i\lambda_i = \det(A).$$
+
+## Hint
+
+Expand $\chi_A(\lambda)=\prod(\lambda-\lambda_i)$ and compare coefficients with $\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A$.
+
+## Solution
+
+**Expansion of $\prod(\lambda-\lambda_i)$.** The coefficient of $\lambda^{n-1}$ is $-\sum_i\lambda_i$. The constant term is $(-1)^n\prod_i\lambda_i$.
+
+**Identification.** Comparing with
+$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A,$$
+we get
+$$\sum_i\lambda_i=\operatorname{tr}(A), \qquad \prod_i\lambda_i=\det A.$$
+
+**Conclusion.** Trace and determinant are the elementary symmetric functions of degree $1$ and $n$ of the eigenvalues.
+
+@@@ eigenvalues-cos-sin-rotation.md
+---
+title: Eigenvalues of a rotation
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: rotation, complex eigenvalues, 2x2 matrices
+date: 2026-11-03
+---
+
+## Statement
+
+Let $R_\theta=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$ be a rotation. Compute its eigenvalues (real or complex) as a function of $\theta$.
+
+## Hint
+
+$\det(R_\theta-\lambda I)=\lambda^2-2\cos\theta\cdot\lambda+1$.
+
+## Solution
+
+**Characteristic polynomial.**
+$$\det(R_\theta-\lambda I)=\lambda^2-2\cos\theta\cdot\lambda+1.$$
+Discriminant: $\Delta=4\cos^2\theta-4=-4\sin^2\theta$.
+
+**Case $\sin\theta=0$ (Î¸=0 or Ï€).**
+- $\theta=0$: $R=I$, $\lambda=1$ (double).
+- $\theta=\pi$: $R=-I$, $\lambda=-1$ (double).
+
+**Case $\sin\theta\neq0$.** Complex eigenvalues:
+$$\lambda_{\pm}=e^{\pm i\theta}=\cos\theta\pm i\sin\theta.$$
+
+**Conclusion.** A rotation of angle $\theta\notin\{0,\pi\}$ has no real eigenvalues but complex eigenvalues $e^{\pm i\theta}$. This reflects the fact that a non-trivial rotation has no invariant line.
+
+@@@ eigenvalues-triangularizable-strict.md
+---
+title: A matrix with a single eigenvalue
+category: linear/eigenvalues
+level: l1
+difficulty: 4
+tags: eigenvalues, eigenspace, diagonalization
+date: 2026-11-03
+---
+
+## Statement
+
+Let
+$$A = \begin{pmatrix} 3 & 1 & 0 \\ 0 & 3 & 1 \\ 0 & 0 & 3 \end{pmatrix}.$$
+Find the eigenvalues of $A$ and $\dim E_3$. Is $A$ diagonalizable?
+
+## Hint
+
+The matrix is upper triangular with diagonal $3,3,3$. Compute $\ker(A-3I)$.
+
+## Solution
+
+**Eigenvalue.** $A$ is upper triangular with all diagonal entries equal to $3$, so the only eigenvalue is $\lambda=3$, algebraic multiplicity $3$.
+
+**Eigenspace.**
+$$A-3I = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{pmatrix}.$$
+The kernel is $\{(x,0,0)\}$, dimension $1$.
+
+**Conclusion.** Geometric multiplicity $1<3$ (algebraic multiplicity), so $A$ is **not diagonalizable**.
+
+**Remark.** $A$ is a single Jordan block of size $3$ for $\lambda=3$.
+
+@@@ eigenvalues-diagonalization-criterion-minimal.md
+---
+title: Diagonalizability and the minimal polynomial
+category: linear/eigenvalues
+level: l1
+difficulty: 5
+tags: minimal polynomial, diagonalization, criterion
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix. Show that $A$ is diagonalizable if and only if its minimal polynomial has only simple roots.
+
+## Hint
+
+If $A$ is diagonalizable, the minimal polynomial is $\prod(X-\lambda_i)$ over distinct eigenvalues. Conversely, if the minimal polynomial has simple roots, use the kernel decomposition.
+
+## Solution
+
+**Forward direction.** If $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$, then $A$ is killed by $\prod_i(X-\lambda_i)$ where the product is over distinct eigenvalues. The minimal polynomial is the smallest such polynomial, so it is a product of distinct linear factors.
+
+**Converse.** Let $\mu_A(X)=\prod_{i=1}^r(X-\lambda_i)$ with distinct $\lambda_i$. For each $i$, let $E_i=\ker(A-\lambda_i I)$. We claim that the sum $E_1+\cdots+E_r$ is $\mathbb{R}^n$.
+
+Indeed, the polynomials $P_i(X)=\prod_{j\neq i}\frac{X-\lambda_j}{\lambda_i-\lambda_j}$ form a Lagrange interpolation basis: $\sum_i P_i=1$ and $P_i$ is zero at all $\lambda_j$ for $j\neq i$, and $P_i(\lambda_i)=1$.
+
+For any $v\in\mathbb{R}^n$: $v=\sum_i P_i(A)v$ (since $\sum_i P_i=1$). But $(A-\lambda_i I)P_i(A)v = \mu_A(A)\cdot(\text{something})=0$, so $P_i(A)v\in E_i$. Hence $v$ decomposes as a sum of eigenvectors, and $\mathbb{R}^n$ is spanned by the eigenspaces. Thus $A$ is diagonalizable.
+
+**Conclusion.** $A$ is diagonalizable iff its minimal polynomial has only simple roots.
+
+@@@ eigenvalues-circulant.md
+---
+title: Eigenvalues of a circulant matrix
+category: linear/eigenvalues
+level: l1
+difficulty: 5
+tags: circulant matrix, eigenvalues, roots of unity
+date: 2026-11-03
+---
+
+## Statement
+
+Let
+$$C = \begin{pmatrix} a & b & c \\ c & a & b \\ b & c & a \end{pmatrix}.$$
+Show that the eigenvalues of $C$ are
+$$\lambda_k = a + b\omega^k + c\omega^{2k}, \qquad k=0,1,2,$$
+where $\omega=e^{2i\pi/3}$, with eigenvectors $(1,\omega^k,\omega^{2k})$.
+
+## Hint
+
+Compute $C v$ for $v=(1,\omega,\omega^2)$ and use $\omega^3=1$, $1+\omega+\omega^2=0$.
+
+## Solution
+
+**Computation.** Let $v_k=(1,\omega^k,\omega^{2k})^T$. Then
+$$(Cv_k)_1 = a\cdot1+b\cdot\omega^k+c\cdot\omega^{2k} = \lambda_k.$$
+$$(Cv_k)_2 = c\cdot1+a\cdot\omega^k+b\cdot\omega^{2k} = \omega^k(a+b\omega^k+c\omega^{2k}) = \omega^k\lambda_k.$$
+$$(Cv_k)_3 = b\cdot1+c\cdot\omega^k+a\cdot\omega^{2k} = \omega^{2k}(a+b\omega^k+c\omega^{2k}) = \omega^{2k}\lambda_k.$$
+So $Cv_k=\lambda_k v_k$, and $\lambda_k=a+b\omega^k+c\omega^{2k}$.
+
+**Diagonalizability.** For $k=0,1,2$, the vectors $v_k$ are linearly independent (Vandermonde-type argument with distinct $\omega^k$). So $C$ is diagonalizable over $\mathbb{C}$, with eigenvalues $\lambda_0,\lambda_1,\lambda_2$.
+
+**Conclusion.** The eigenvalues of the circulant matrix $C$ are given by the discrete Fourier transform of $(a,b,c)$.
+
+@@@ eigenvalues-diagonal-conjugation.md
+---
+title: Similar matrices have the same eigenvalues
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: similarity, eigenvalues, characteristic polynomial
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ and $B=P^{-1}AP$ be similar matrices. Show that $A$ and $B$ have the same characteristic polynomial, hence the same eigenvalues with the same algebraic multiplicities.
+
+## Hint
+
+Compute $\det(B-\lambda I)$ by factoring $P^{-1}$ and $P$.
+
+## Solution
+
+**Characteristic polynomial.**
+$$\det(B-\lambda I)=\det(P^{-1}AP-\lambda I)=\det(P^{-1}(A-\lambda I)P)=\det(P^{-1})\det(A-\lambda I)\det(P).$$
+Since $\det(P^{-1})\det(P)=1$, we get $\det(B-\lambda I)=\det(A-\lambda I)$.
+
+**Consequence.** $\chi_A=\chi_B$, so $A$ and $B$ have the same eigenvalues with the same multiplicities.
+
+**Eigenvectors.** If $Av=\lambda v$, then $B(P^{-1}v)=P^{-1}Av=\lambda P^{-1}v$. So $P^{-1}$ maps eigenspaces of $A$ to eigenspaces of $B$. In particular, $\dim E_\lambda(A)=\dim E_\lambda(B)$.
+
+**Conclusion.** Similar matrices have identical spectral data.
+
+@@@ eigenvalues-diagonal-powers.md
+---
+title: Powers via diagonalization
+category: linear/eigenvalues
+level: l1
+difficulty: 3
+tags: diagonalization, powers, matrix
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$. Show that for all $k\ge1$,
+$$A^k=PD^kP^{-1}=\operatorname{diag}(\lambda_1^k,\ldots,\lambda_n^k)$$
+in the appropriate basis.
+
+## Hint
+
+Prove by induction using $A=PDP^{-1}$.
+
+## Solution
+
+**Induction.** For $k=1$, $A^1=PDP^{-1}$. Suppose $A^k=PD^kP^{-1}$. Then
+$$A^{k+1}=A^k\cdot A=PD^kP^{-1}\cdot PDP^{-1}=PD^kDP^{-1}=PD^{k+1}P^{-1}.$$
+
+**Diagonal power.** $D^k=\operatorname{diag}(\lambda_1^k,\ldots,\lambda_n^k)$.
+
+**Conclusion.** $A^k=PD^kP^{-1}$. This formula is used to compute powers efficiently once $A$ is diagonalized.
+
+**Application.** If $D=\operatorname{diag}(2,3)$ and $P=I$, then $A^k=\operatorname{diag}(2^k,3^k)$.
+
+@@@ eigenvalues-spectral-decomposition.md
+---
+title: Spectral decomposition of a symmetric matrix
+category: linear/eigenvalues
+level: l1
+difficulty: 5
+tags: spectral decomposition, symmetric matrix, projection
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be a real symmetric matrix with distinct eigenvalues $\lambda_1,\ldots,\lambda_r$. Let $P_i$ be the orthogonal projection onto the eigenspace $E_{\lambda_i}$. Show that
+$$A=\sum_{i=1}^r\lambda_i P_i, \qquad \sum_{i=1}^r P_i = I.$$
+
+## Hint
+
+In an orthonormal basis of eigenvectors, $A$ is diagonal with eigenvalues on the diagonal; interpret the diagonal entries via the projections.
+
+## Solution
+
+**Orthonormal eigenbasis.** Since $A$ is symmetric, there is an orthonormal basis $(u_1,\ldots,u_n)$ of eigenvectors, with $Au_j=\mu_j u_j$ (where $\mu_j$ ranges over the $\lambda_i$).
+
+**Projections.** $P_i$ is the orthogonal projection onto $E_{\lambda_i}$: for any $v$, $P_i v$ is the sum of the components of $v$ along eigenvectors with eigenvalue $\lambda_i$.
+
+**Spectral decomposition.** For any $v$:
+$$Av=\sum_j \mu_j\langle v,u_j\rangle u_j=\sum_i \lambda_i\sum_{j:\mu_j=\lambda_i}\langle v,u_j\rangle u_j=\sum_i\lambda_i P_i v.$$
+So $A=\sum_i\lambda_i P_i$.
+
+**Completeness.** $\sum_i P_i$ projects onto the sum of the eigenspaces, which is $\mathbb{R}^n$, so $\sum_i P_i=I$.
+
+**Conclusion.** Symmetric matrices admit a spectral decomposition as a sum of orthogonal projections scaled by eigenvalues.
+
+@@@ eigenvalues-diagonal-functions.md
+---
+title: Functions of a diagonalizable matrix
+category: linear/eigenvalues
+level: l1
+difficulty: 4
+tags: functions of matrices, diagonalization, polynomial
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$. Define $f(A)=P f(D) P^{-1}$ where $f(D)=\operatorname{diag}(f(\lambda_1),\ldots,f(\lambda_n))$ for a function $f$ defined on the eigenvalues. Justify this definition for polynomials $f$.
+
+## Hint
+
+For a polynomial $f(X)=\sum_k a_k X^k$, $f(A)=\sum_k a_k A^k$.
+
+## Solution
+
+**Polynomial case.** For $f(X)=\sum_k a_k X^k$:
+$$f(A)=\sum_k a_k A^k=\sum_k a_k PD^kP^{-1}=P\left(\sum_k a_k D^k\right)P^{-1}=Pf(D)P^{-1}.$$
+So the definition is consistent with the polynomial case.
+
+**Extension.** For other functions (e.g. $\exp$, $\sin$, $\log$), the same formula defines $f(A)$ provided $f$ is defined on the spectrum of $A$. This requires $A$ to be diagonalizable.
+
+**Example.** $e^{tA}=P\operatorname{diag}(e^{t\lambda_1},\ldots,e^{t\lambda_n})P^{-1}$.
+
+**Conclusion.** Functions of a diagonalizable matrix are defined via the diagonal form. For non-diagonalizable matrices, one uses Taylor or Jordan form instead.
+
 @@@ eigenvalues-eigenvector-subspace.md
 ---
 title: Eigenspaces are subspaces
