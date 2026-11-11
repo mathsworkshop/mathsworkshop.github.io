@@ -1,4 +1,3 @@
-
 @@@ powers-of-a-companion-matrix.md
 ---
 title: Powers of a 2×2 matrix with eigenvalues 1 and 2
@@ -570,7 +569,7 @@ Therefore $\chi_A$ has the factor $(\lambda-X)^k$, i.e. the algebraic multiplici
 
 @@@ eigenvalues-cayley-hamilton.md
 ---
-title: The Cayleyâ€“Hamilton theorem
+title: The Cayley-Hamilton theorem
 category: linear/eigenvalues
 level: l1
 difficulty: 5
@@ -580,7 +579,7 @@ date: 2026-11-03
 
 ## Statement
 
-State and verify the Cayleyâ€“Hamilton theorem on the example
+State and verify the Cayley-Hamilton theorem on the example
 $$A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}.$$
 
 ## Hint
@@ -599,7 +598,7 @@ $$A^2 = \begin{pmatrix} 5 & 4 \\ 4 & 5 \end{pmatrix}.$$
 Then
 $$\chi_A(A)=A^2-4A+3I = \begin{pmatrix} 5 & 4 \\ 4 & 5 \end{pmatrix}-\begin{pmatrix} 8 & 4 \\ 4 & 8 \end{pmatrix}+\begin{pmatrix} 3 & 0 \\ 0 & 3 \end{pmatrix}=\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}.$$
 
-**Conclusion.** $\chi_A(A)=0$, confirming Cayleyâ€“Hamilton. This gives $A^2=4A-3I$, allowing recursive computation of $A^k$.
+**Conclusion.** $\chi_A(A)=0$, confirming Cayley-Hamilton. This gives $A^2=4A-3I$, allowing recursive computation of $A^k$.
 
 @@@ eigenvalues-companion-fibonacci.md
 ---
