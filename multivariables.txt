@@ -2533,36 +2533,6 @@ Jacobian columns: derivatives with respect to $x$ and $y$.
 
 **Conclusion.** $\det J=1\neq0$, so the inverse function theorem applies: $F$ is a local diffeomorphism near $(0,0)$.
 
-@@@ partial-derivatives-jacobian.md
----
-title: The Jacobian matrix
-category: calculus/multivariable/partial-derivatives
-level: l1
-difficulty: 3
-tags: Jacobian, matrix, vector-valued functions
-date: 2026-11-03
----
-
-## Statement
-
-Let $F(x,y,z)=(x\cos y,\, y\sin z,\, xyz)$. Compute the Jacobian matrix $J_F$.
-
-## Hint
-
-Each column is the derivative with respect to one variable.
-
-## Solution
-
-**Partial derivatives.**
-- $\partial_x F=(\cos y,\,0,\,yz)$
-- $\partial_y F=(-x\sin y,\,\sin z,\,xz)$
-- $\partial_z F=(0,\,y\cos z,\,xy)$
-
-**Jacobian matrix.**
-$$J_F=\begin{pmatrix}\cos y&-x\sin y&0\\0&\sin z&y\cos z\\yz&xz&xy\end{pmatrix}.$$
-
-**Conclusion.** $J_F$ is $3\times3$.
-
 @@@ partial-derivatives-jacobian-composition.md
 ---
 title: Jacobian of a composition
