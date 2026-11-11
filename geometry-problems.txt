@@ -1177,10 +1177,11 @@ $$a^2+b^2+c^2-ab-bc-ca=\frac12\left[(a-b)^2+(b-c)^2+(c-a)^2\right]\ge0.$$
 **Remark.** Geometrically, $p^2\ge3q$ says that the derivative $3x^2+2px+q$ has a real root: this is Rolle's theorem applied between the real roots of the cubic. The condition $p^2-3q\ge0$ is exactly the non-negativity of the discriminant of the derivative.
 
 **Lesson.** A relation between coefficients of a polynomial with real roots usually comes from a sum of squares of differences of the roots, via Vieta's formulas.
+
 @@@ geo2-stewart-s-theorem-and-its-consequences.md
 ---
 title: Stewart's theorem and its consequences
-category: olympiad/oly-geometry
+category: geometry/plane
 level: m1
 difficulty: 2
 tags: Stewart's theorem, medians, angle bisector, law of cosines
@@ -1213,7 +1214,7 @@ $$c^2n+b^2m=d^2(m+n)+mn(m+n)=a\,(d^2+mn).$$
 $$b^2m+c^2n=\frac{abc\,(b+c)}{b+c}=abc,$$
 and Stewart gives $d^2=bc-mn=bc-\frac{a^2bc}{(b+c)^2}=bc\left(1-\frac{a^2}{(b+c)^2}\right)$.
 
-**4.** Median: $\frac{2\cdot225+2\cdot169-196}4=148$, so the median is $\sqrt{148}=2\sqrt{37}\approx12.17$. Bisector: $\ell^2=195\left(1-\frac{196}{784}\right)=195\cdot\frac34=146.25$, so $\ell\approx12.09$ (the bisector is slightly shorter than the median, as expected).
+**4.** Median: $\frac{2\cdot225+2\cdot169-196}4=148$, so the median is $\sqrt{148}=2\sqrt{37}\approx12.17$. Bisector: $\ell^2=195\left(1-\frac{196}{784}\right)=195\cdot\frac34=146.25$, so $\ell\approx12.09$.
 
 **Remark.** Stewart's theorem also gives the length of an altitude or any cevian once $m$ and $n$ are known.
 
@@ -1221,7 +1222,7 @@ and Stewart gives $d^2=bc-mn=bc-\frac{a^2bc}{(b+c)^2}=bc\left(1-\frac{a^2}{(b+c)
 @@@ geo2-the-apollonius-circle.md
 ---
 title: The Apollonius circle
-category: olympiad/oly-geometry
+category: geometry/analytic
 level: olympiad
 difficulty: 3
 tags: locus, Apollonius circle, coordinates, angle bisector
@@ -1243,20 +1244,20 @@ Put $A=(0,0)$ and $B=(d,0)$ and square the condition $PA=kPB$.
 ## Solution
 
 **1.** For $P=(x,y)$: $x^2+y^2=k^2\left((x-d)^2+y^2\right)$, i.e.
-$$(k^2-1)(x^2+y^2)-2k^2d\,x+k^2d^2=0\ \Longleftrightarrow\ \left(x-\frac{k^2d}{k^2-1}\right)^2+y^2=\frac{k^4d^2}{(k^2-1)^2}-\frac{k^2d^2}{k^2-1}.$$
-The right side equals $\dfrac{k^4d^2-k^2d^2(k^2-1)}{(k^2-1)^2}=\dfrac{k^2d^2}{(k^2-1)^2}>0$. So the locus is the circle with centre $\left(\dfrac{k^2d}{k^2-1},0\right)$ and radius $\dfrac{kd}{|k^2-1|}$.
+$$(k^2-1)(x^2+y^2)-2k^2d\,x+k^2d^2=0\ \Longleftrightarrow\ \left(x-\frac{k^2d}{k^2-1}\right)^2+y^2=\frac{k^2d^2}{(k^2-1)^2}>0.$$
+So the locus is the circle with centre $\left(\dfrac{k^2d}{k^2-1},0\right)$ and radius $\dfrac{kd}{|k^2-1|}$.
 
-**2.** On line $AB$ (the $x$-axis) the circle meets the axis at $x=\frac{k^2d\pm kd}{k^2-1}$, that is at $x=\frac{kd}{k-1}$ and $x=\frac{kd}{k+1}$. These are the points $F$ and $E$ with $\frac{EA}{EB}=\frac{FA}{FB}=k$ (internal point $E=\frac{kd}{k+1}$, external point $F=\frac{kd}{k-1}$). Their midpoint is $\frac12\cdot kd\cdot\frac{(k+1)+(k-1)}{k^2-1}=\frac{k^2d}{k^2-1}$, the centre. Hence $EF$ is a diameter.
+**2.** On line $AB$ (the $x$-axis) the circle meets the axis at $x=\frac{k^2d\pm kd}{k^2-1}$, that is at $x=\frac{kd}{k-1}$ and $x=\frac{kd}{k+1}$. These are the points $F$ and $E$ with $\frac{EA}{EB}=\frac{FA}{FB}=k$. Their midpoint is $\frac{k^2d}{k^2-1}$, the centre. Hence $EF$ is a diameter.
 
-**3.** Since $PA/PB=k=EA/EB$, the point $E$ lies on segment $AB$ and divides it in the ratio of $PA$ to $PB$, so by the converse of the angle bisector theorem $PE$ bisects $\angle APB$ internally. Similarly $F$ lies outside the segment on line $AB$ with $FA/FB=PA/PB$, so $PF$ is the external bisector. (Consistently, $\angle EPF=90^\circ$ because $EF$ is a diameter.)
+**3.** Since $PA/PB=k=EA/EB$, the point $E$ lies on segment $AB$ and divides it in the ratio of $PA$ to $PB$, so by the converse of the angle bisector theorem $PE$ bisects $\angle APB$ internally. Similarly $F$ lies outside the segment on line $AB$ with $FA/FB=PA/PB$, so $PF$ is the external bisector.
 
-**Remark.** This gives a second proof of the angle bisector theorem's converse and explains why "the points whose distances to two fixed points are in a fixed ratio" form a circle: it is the Apollonius circle of $A,B$ for the ratio $k$. For $k=1$ the locus degenerates to the perpendicular bisector.
+**Remark.** For $k=1$ the locus degenerates to the perpendicular bisector.
 
 **Lesson.** A locus defined by a distance relation is found by coordinates and completing the square; then identify the special points on the axis.
 @@@ geo2-excircles-and-tangent-lengths.md
 ---
 title: Excircles and tangent lengths
-category: olympiad/oly-geometry
+category: geometry/plane
 level: olympiad
 difficulty: 3
 tags: excircle, incircle, tangent lengths, semiperimeter, area
@@ -1265,7 +1266,7 @@ date: 2026-11-05
 
 ## Statement
 
-Let $ABC$ have sides $a=BC$, $b=CA$, $c=AB$, semiperimeter $s=\frac{a+b+c}2$, area $S$, inradius $r$. The incircle touches $BC$ at $D'$. The excircle opposite $A$ (tangent to segment $BC$ and to the extensions of $AB$ and $AC$ beyond $B$ and $C$) has radius $r_a$ and touches $BC$ at $D$, line $AB$ at $E$ and line $AC$ at $F$.
+Let $ABC$ have sides $a=BC$, $b=CA$, $c=AB$, semiperimeter $s=\frac{a+b+c}2$, area $S$, inradius $r$. The incircle touches $BC$ at $D'$. The excircle opposite $A$ has radius $r_a$ and touches $BC$ at $D$, line $AB$ at $E$ and line $AC$ at $F$.
 
 1. Prove $AE=AF=s$.
 2. Prove $BD=s-c$ and $CD=s-b$, and $BD'=s-b$, $CD'=s-c$. Conclude that $D$ and $D'$ are symmetric with respect to the midpoint of $BC$.
@@ -1281,20 +1282,20 @@ Two tangent segments from the same point to a circle are equal. For part 3 split
 $$AE+AF=(AB+BE)+(AC+CF)=c+b+(BD+DC)=a+b+c=2s.$$
 Hence $AE=AF=s$.
 
-**2.** $BD=BE=AE-AB=s-c$ and $CD=CF=AF-AC=s-b$. For the incircle, with tangent points $D'$, $E'$ on $CA$, $F'$ on $AB$, let $x=AE'=AF'$, $y=BD'=BF'$, $z=CD'=CE'$. Then $x+y=c$, $x+z=b$, $y+z=a$, so $y=\frac{a+c-b}2=s-b$ and $z=s-c$. Therefore $BD=s-c=CD'$ and $CD=s-b=BD'$: the points $D$ and $D'$ are exchanged by the reflection in the midpoint of $BC$.
+**2.** $BD=BE=AE-AB=s-c$ and $CD=CF=AF-AC=s-b$. For the incircle, let $x=AE'=AF'$, $y=BD'=BF'$, $z=CD'=CE'$. Then $x+y=c$, $x+z=b$, $y+z=a$, so $y=s-b$ and $z=s-c$. Therefore $BD=s-c=CD'$ and $CD=s-b=BD'$.
 
-**3.** Let $I_a$ be the excentre; it is at distance $r_a$ from the three sides. Then
-$$[ABC]=[ABI_a]+[ACI_a]-[BCI_a]=\tfrac12cr_a+\tfrac12br_a-\tfrac12ar_a=r_a\cdot\frac{b+c-a}2=r_a(s-a).$$
-(The triangle $ABC$ is the union of $ABI_a$ and $ACI_a$ minus the overlap $BCI_a$, because $I_a$ lies on the other side of $BC$ from $A$.) Also $S=rs$, and Heron's formula gives $S^2=s(s-a)(s-b)(s-c)$. Multiplying $S=rs$ and $S=r_a(s-a)$:
+**3.** Let $I_a$ be the excentre. Then
+$$[ABC]=[ABI_a]+[ACI_a]-[BCI_a]=\tfrac12cr_a+\tfrac12br_a-\tfrac12ar_a=r_a(s-a).$$
+Also $S=rs$, and Heron's formula gives $S^2=s(s-a)(s-b)(s-c)$. Multiplying $S=rs$ and $S=r_a(s-a)$:
 $$S^2=r\,r_a\,s(s-a)\ \Longrightarrow\ r\,r_a=(s-b)(s-c).$$
 
-**Remark.** From part 2, the distance between the two touch points on $BC$ is $|b-c|$. The formula $S=r_a(s-a)$ is the analogue for the excircle of $S=rs$.
+**Remark.** The distance between the two touch points on $BC$ is $|b-c|$.
 
 **Lesson.** Tangent-length bookkeeping turns circle configurations into linear equations in the semiperimeter.
 @@@ geo2-euler-s-formula-for-the-distance-oi.md
 ---
 title: Euler's formula OI² = R² − 2Rr
-category: olympiad/oly-geometry
+category: geometry/plane
 level: olympiad
 difficulty: 4
 tags: Euler's formula, incentre, circumcircle, power of a point, incentre-excentre lemma
@@ -1313,23 +1314,23 @@ Let the bisector from $A$ meet the circumcircle again at $M$. Compute the power 
 
 ## Solution
 
-**Step 1: $MB=MI$.** Let $A,B,C$ also denote the angles of the triangle. In triangle $ABI$ the exterior angle at $I$ gives $\angle BIM=\angle IAB+\angle IBA=\frac A2+\frac B2$. On the other hand $\angle IBM=\angle IBC+\angle CBM=\frac B2+\angle CAM=\frac B2+\frac A2$ (inscribed angles on the same arc $CM$). So triangle $MBI$ is isosceles with $MB=MI$.
+**Step 1: $MB=MI$.** In triangle $ABI$ the exterior angle at $I$ gives $\angle BIM=\angle IAB+\angle IBA=\frac A2+\frac B2$. On the other hand $\angle IBM=\angle IBC+\angle CBM=\frac B2+\angle CAM=\frac B2+\frac A2$. So triangle $MBI$ is isosceles with $MB=MI$.
 
-**Step 2: lengths.** In the circumcircle the chord $MB$ subtends the inscribed angle $\angle MAB=\frac A2$, so $MB=2R\sin\frac A2$. In the right triangle formed by $I$, the foot of the perpendicular from $I$ to $AB$, and $A$, we have $AI=\dfrac r{\sin\frac A2}$.
+**Step 2: lengths.** In the circumcircle the chord $MB$ subtends the inscribed angle $\frac A2$, so $MB=2R\sin\frac A2$. In the right triangle formed by $I$, the foot of the perpendicular from $I$ to $AB$, and $A$, we have $AI=\dfrac r{\sin\frac A2}$.
 
 **Step 3: power of the point.** The point $I$ is inside the circumcircle and the chord through $I$ is $AM$, so
 $$R^2-OI^2=IA\cdot IM=\frac r{\sin\frac A2}\cdot2R\sin\frac A2=2Rr.$$
 Hence $OI^2=R^2-2Rr$.
 
-**Consequence.** $OI^2\ge0$ gives $R\ge2r$, with equality iff $O=I$. When the circumcentre and incentre coincide, the perpendicular bisectors and angle bisectors coincide, so each angle bisector is also a perpendicular bisector, which forces $AB=AC=BC$: the triangle is equilateral.
+**Consequence.** $OI^2\ge0$ gives $R\ge2r$, with equality iff $O=I$, i.e. iff the triangle is equilateral.
 
-**Check.** For the $3$-$4$-$5$ triangle, $R=2.5$ and $r=1$, so $OI^2=6.25-5=1.25$; coordinates (right angle at the origin, legs on the axes: $I=(1,1)$, $O=(1.5,2)$) give $OI^2=0.25+1=1.25$ ✓.
+**Check.** For the $3$-$4$-$5$ triangle, $R=2.5$ and $r=1$, so $OI^2=1.25$; coordinates give the same ✓.
 
 **Lesson.** Compute a power of a point in two ways, and use the incentre–excentre lemma ($MB=MI$) to link the incentre to the circumcircle.
 @@@ geo2-trigonometric-ceva-and-an-isosceles-triangle.md
 ---
 title: Trigonometric Ceva and a hidden isosceles triangle
-category: olympiad/oly-geometry
+category: geometry/plane
 level: olympiad
 difficulty: 4
 tags: trigonometric Ceva, angle chasing, monotonicity
@@ -1348,30 +1349,26 @@ Let $x=\angle PBC$ and $y=\angle PCB$. The angle sum gives $x+y$. Then use the t
 
 ## Solution
 
-**Angle sum.** $\angle A=50^\circ$, $\angle B=20^\circ+x$, $\angle C=30^\circ+y$. The sum is $180^\circ$, so $x+y=80^\circ$, i.e. $y=80^\circ-x$ with $0<x<80^\circ$.
+**Angle sum.** $\angle A=50^\circ$, $\angle B=20^\circ+x$, $\angle C=30^\circ+y$. The sum is $180^\circ$, so $x+y=80^\circ$, i.e. $y=80^\circ-x$.
 
-**Trigonometric Ceva.** For a point $P$ inside triangle $ABC$,
+**Trigonometric Ceva.**
 $$\sin\angle BAP\cdot\sin\angle CBP\cdot\sin\angle ACP=\sin\angle PAC\cdot\sin\angle PBA\cdot\sin\angle PCB.$$
-(Proof: in triangles $ABP$ and $ACP$ the law of sines applied to the common side $AP$, $BP$, $CP$ gives $\frac{PB}{PA}=\frac{\sin\angle BAP}{\sin\angle ABP}$, $\frac{PC}{PB}=\frac{\sin\angle CBP}{\sin\angle BCP}$, $\frac{PA}{PC}=\frac{\sin\angle ACP}{\sin\angle CAP}$. The product of the three left sides is $1$.)
-
 Here this reads
 $$\sin10^\circ\sin x\sin30^\circ=\sin40^\circ\sin20^\circ\sin(80^\circ-x),\quad\text{i.e.}\quad\frac{\sin x}{\sin(80^\circ-x)}=\frac{\sin40^\circ\sin20^\circ}{\sin10^\circ\sin30^\circ}.$$
 
-**Uniqueness.** On $(0^\circ,80^\circ)$ the function $x\mapsto\frac{\sin x}{\sin(80^\circ-x)}$ is strictly increasing (the numerator increases, the denominator decreases and stays positive). So there is at most one solution.
+**Uniqueness.** On $(0^\circ,80^\circ)$ the function $x\mapsto\frac{\sin x}{\sin(80^\circ-x)}$ is strictly increasing, so there is at most one solution.
 
-**The solution is $x=60^\circ$.** We need $\sin10^\circ\sin60^\circ\sin30^\circ=\sin40^\circ\sin20^\circ\sin20^\circ$. Using $2\sin20^\circ\sin40^\circ=\cos20^\circ-\cos60^\circ=\cos20^\circ-\frac12$,
-$$\sin40^\circ\sin^220^\circ=\tfrac12\sin20^\circ\left(\cos20^\circ-\tfrac12\right)=\tfrac14\left(\sin40^\circ-\sin20^\circ\right)=\tfrac12\cos30^\circ\sin10^\circ=\sin10^\circ\sin60^\circ\sin30^\circ,$$
-using $\sin20^\circ\cos20^\circ=\frac12\sin40^\circ$ and $\sin40^\circ-\sin20^\circ=2\cos30^\circ\sin10^\circ$. So $x=60^\circ$ is a solution, hence the only one.
+**The solution is $x=60^\circ$.** Using $2\sin20^\circ\sin40^\circ=\cos20^\circ-\cos60^\circ=\cos20^\circ-\frac12$ and $\sin40^\circ-\sin20^\circ=2\cos30^\circ\sin10^\circ$, one verifies the equality. Hence $x=60^\circ$ is the unique solution.
 
 **Conclusion.** $x=60^\circ$, $y=20^\circ$, so
 $$\angle A=50^\circ,\quad\angle B=80^\circ,\quad\angle C=50^\circ.$$
-Since $\angle A=\angle C$, we have $BA=BC$: triangle $ABC$ is isosceles.
+Since $\angle A=\angle C$, we have $BA=BC$.
 
 **Lesson.** Trigonometric Ceva converts a cevian configuration into one trigonometric equation; monotonicity then shows that a guessed solution is the only one.
 @@@ geo2-harmonic-division-from-ceva-and-menelaus.md
 ---
 title: Harmonic division from Ceva and Menelaus
-category: olympiad/oly-geometry
+category: geometry/plane
 level: olympiad
 difficulty: 4
 tags: Ceva, Menelaus, harmonic conjugates, cevians
@@ -1398,17 +1395,17 @@ Menelaus' theorem for the triangle $ABC$ and the line $EFG$ (in terms of unsigne
 $$\frac{BG}{GC}\cdot\frac{CE}{EA}\cdot\frac{AF}{FB}=1.$$
 Dividing the two relations gives $\dfrac{BD}{DC}=\dfrac{BG}{GC}$.
 
-**2.** A line cannot meet all three open sides of a triangle, and $E,F$ are interior to the sides $CA,AB$; hence the line $EF$ meets line $BC$ outside the segment $BC$. So $G$ is outside segment $BC$ while $D$ is inside, and they satisfy $\frac{DB}{DC}=\frac{GB}{GC}$: $D$ is the internal and $G$ the external point of division in the same ratio, that is $(B,C;D,G)=-1$ in cross-ratio language.
+**2.** A line cannot meet all three open sides of a triangle, and $E,F$ are interior to the sides $CA,AB$; hence the line $EF$ meets line $BC$ outside the segment $BC$. So $G$ is outside segment $BC$ while $D$ is inside: $D$ is the internal and $G$ the external point of division in the same ratio, i.e. $(B,C;D,G)=-1$.
 
-**3.** If $BD=DC$ then $\frac{CE}{EA}\cdot\frac{AF}{FB}=1$ by Ceva, i.e. $\frac{AF}{FB}=\frac{AE}{EC}$. By the converse of Thales' theorem $EF\parallel BC$. (This is the statement that the medians' cevian triangle is the medial triangle when all three cevians are medians.)
+**3.** If $BD=DC$ then $\frac{CE}{EA}\cdot\frac{AF}{FB}=1$ by Ceva, i.e. $\frac{AF}{FB}=\frac{AE}{EC}$. By the converse of Thales' theorem $EF\parallel BC$.
 
-**Remark.** Another consequence: if $AD$ is the bisector of $\angle BAC$ and $AG$ is the external bisector, then $D$ and $G$ are harmonic conjugates; this is the same ratio that defines the Apollonius circle.
+**Remark.** If $AD$ is the bisector of $\angle BAC$ and $AG$ the external bisector, then $D$ and $G$ are harmonic conjugates.
 
 **Lesson.** Ceva and Menelaus share a common product; dividing one by the other isolates the harmonic ratio.
 @@@ geo2-the-butterfly-theorem.md
 ---
 title: The butterfly theorem
-category: olympiad/oly-geometry
+category: geometry/analytic
 level: olympiad
 difficulty: 4
 tags: butterfly theorem, chords, coordinates, Vieta
@@ -1425,32 +1422,23 @@ Take $M$ as the origin and $PQ$ as the $x$-axis. A line through $M$ in direction
 
 ## Solution
 
-**Setup.** Put $M=(0,0)$, $P=(-p,0)$, $Q=(p,0)$. The centre is on the perpendicular bisector of $PQ$, so it is $(0,c)$, and the circle is $x^2+(y-c)^2=p^2+c^2$. For the line through $M$ with unit direction $u=(\cos\theta,\sin\theta)$, the point $tu$ lies on the circle iff
+**Setup.** Put $M=(0,0)$, $P=(-p,0)$, $Q=(p,0)$. The centre is $(0,c)$ and the circle is $x^2+(y-c)^2=p^2+c^2$. For the line through $M$ with unit direction $u=(\cos\theta,\sin\theta)$, the point $tu$ lies on the circle iff
 $$t^2-2ct\sin\theta-p^2=0.$$
-Its two roots $t_1,t_2$ satisfy $t_1+t_2=2c\sin\theta$ and $t_1t_2=-p^2$.
+Its two roots satisfy $t_1+t_2=2c\sin\theta$ and $t_1t_2=-p^2$.
 
-**Parametrising the points.** Let the chord $AB$ have direction $u=(\cos\alpha,\sin\alpha)$, with $A=t_1u$, $B=t_2u$, and the chord $CD$ have direction $v=(\cos\beta,\sin\beta)$, with $C=s_1v$, $D=s_2v$, where $t_1+t_2=2c\sin\alpha$, $t_1t_2=-p^2$, $s_1+s_2=2c\sin\beta$, $s_1s_2=-p^2$.
+**Parametrising.** Let chord $AB$ have direction $u=(\cos\alpha,\sin\alpha)$, $A=t_1u$, $B=t_2u$, and chord $CD$ direction $v=(\cos\beta,\sin\beta)$, $C=s_1v$, $D=s_2v$, with $t_1+t_2=2c\sin\alpha$, $s_1+s_2=2c\sin\beta$, $t_1t_2=s_1s_2=-p^2$.
 
-**The intersection $X=AD\cap Ox$.** The points of line $AD$ are $(1-\lambda)t_1u+\lambda s_2v$. Their $y$-coordinate vanishes when $(1-\lambda)t_1\sin\alpha+\lambda s_2\sin\beta=0$, i.e. $\lambda=\dfrac{t_1\sin\alpha}{t_1\sin\alpha-s_2\sin\beta}$. The corresponding $x$-coordinate is
-$$x_X=\frac{-s_2\sin\beta\cdot t_1\cos\alpha+t_1\sin\alpha\cdot s_2\cos\beta}{t_1\sin\alpha-s_2\sin\beta}=\frac{t_1s_2\sin(\alpha-\beta)}{t_1\sin\alpha-s_2\sin\beta}.$$
-In the same way, for $Y=BC\cap Ox$ (replace $t_1,s_2$ by $t_2,s_1$):
-$$x_Y=\frac{t_2s_1\sin(\alpha-\beta)}{t_2\sin\alpha-s_1\sin\beta}.$$
+**The intersections.** For $X=AD\cap Ox$ one computes $x_X=\dfrac{t_1s_2\sin(\alpha-\beta)}{t_1\sin\alpha-s_2\sin\beta}$, and for $Y=BC\cap Ox$, $x_Y=\dfrac{t_2s_1\sin(\alpha-\beta)}{t_2\sin\alpha-s_1\sin\beta}$.
 
-**Showing $x_X+x_Y=0$.** Since $\sin(\alpha-\beta)\ne0$ (the chords are distinct), $x_X+x_Y=0$ is equivalent to
-$$t_1s_2\,(t_2\sin\alpha-s_1\sin\beta)+t_2s_1\,(t_1\sin\alpha-s_2\sin\beta)=0.$$
-Group: the left side equals
-$$\sin\alpha\;t_1t_2\,(s_1+s_2)-\sin\beta\;s_1s_2\,(t_1+t_2).$$
-Substituting Vieta's relations:
-$$\sin\alpha\cdot(-p^2)\cdot2c\sin\beta-\sin\beta\cdot(-p^2)\cdot2c\sin\alpha=0.$$
-Hence $x_X=-x_Y$, so $M$ is the midpoint of $XY$. $\blacksquare$
+**Showing $x_X+x_Y=0$.** This reduces to
+$$\sin\alpha\;t_1t_2\,(s_1+s_2)-\sin\beta\;s_1s_2\,(t_1+t_2)=0,$$
+which is immediate after substituting Vieta's relations. Hence $x_X=-x_Y$, so $M$ is the midpoint of $XY$. $\blacksquare$
 
-**Remark.** The theorem holds for any configuration (the labelling of the four endpoints matters: $A,B$ on one chord, $C,D$ on the other, with $X=AD\cap PQ$ and $Y=BC\cap PQ$).
-
-**Lesson.** Parametrise all points of a configuration by distance along lines through a base point; the symmetric functions of the roots (Vieta) then do the work.
+**Lesson.** Parametrise points of a configuration by distance along lines through a base point; the symmetric functions of the roots (Vieta) then do the work.
 @@@ geo2-two-circles-and-a-line-through-a-common-point.md
 ---
 title: Two circles and a line through a common point
-category: olympiad/oly-geometry
+category: geometry/plane
 level: olympiad
 difficulty: 3
 tags: spiral similarity, two intersecting circles, chord length, projection
@@ -1467,26 +1455,22 @@ Two circles $\Gamma_1$ and $\Gamma_2$, with centres $O_1,O_2$ and radii $R_1,R_2
 
 ## Hint
 
-Part 1: in each circle, a chord equals $2R\sin$ of the inscribed angle that it subtends. Part 2: the foot of the perpendicular from the centre of a circle to a chord is the midpoint of the chord.
+Part 1: in each circle, a chord equals $2R\sin$ of the inscribed angle that it subtends. Part 2: the foot of the perpendicular from the centre to a chord is the midpoint of the chord.
 
 ## Solution
 
-**1.** In $\Gamma_1$, the chord $BP$ subtends the inscribed angle $\angle BAP$ at $A$, so $BP=2R_1\sin\angle BAP$. In $\Gamma_2$, $BQ=2R_2\sin\angle BAQ$. The points $P$, $A$, $Q$ are on the same line $\ell$, so the angles $\angle BAP$ and $\angle BAQ$ are equal or supplementary; in either case their sines are equal. Therefore
-$$\frac{BP}{BQ}=\frac{R_1}{R_2}.$$
-(So all the triangles $BPQ$ have the same ratio $BP:BQ$; they are all similar to each other, being images of one another by a spiral similarity centred at $B$.)
+**1.** In $\Gamma_1$, the chord $BP$ subtends the inscribed angle $\angle BAP$ at $A$, so $BP=2R_1\sin\angle BAP$. In $\Gamma_2$, $BQ=2R_2\sin\angle BAQ$. Since $P,A,Q$ are on $\ell$, the angles $\angle BAP$ and $\angle BAQ$ are equal or supplementary, so their sines are equal. Hence $\frac{BP}{BQ}=\frac{R_1}{R_2}$.
 
 **2.** Take $A$ as origin and $u$ as the direction of $\ell$. The foot of the perpendicular from $O_1$ to $\ell$ is the midpoint of the chord $AP$, so $P=2(O_1\cdot u)\,u$. Similarly $Q=2(O_2\cdot u)\,u$. Hence
-$$\overrightarrow{PQ}=2\bigl((O_2-O_1)\cdot u\bigr)u,\qquad PQ=2\,\bigl|\overrightarrow{O_1O_2}\cdot u\bigr|.$$
+$$PQ=2\,\bigl|\overrightarrow{O_1O_2}\cdot u\bigr|.$$
 
-**3.** By Cauchy–Schwarz, $\bigl|\overrightarrow{O_1O_2}\cdot u\bigr|\le O_1O_2$, with equality iff $u$ is parallel to $\overrightarrow{O_1O_2}$. So $PQ\le2\,O_1O_2$, and the maximum is attained when $\ell$ is parallel to the line of centres.
-
-**Remark.** The maximal segment $PQ$ has length exactly $2\,O_1O_2$; it is the "longest chord through $A$ cutting both circles".
+**3.** By Cauchy–Schwarz, $\bigl|\overrightarrow{O_1O_2}\cdot u\bigr|\le O_1O_2$, with equality iff $u\parallel\overrightarrow{O_1O_2}$. So $PQ\le2\,O_1O_2$.
 
 **Lesson.** For two circles meeting at $A$, project onto the line through $A$: midpoints of chords are the feet of perpendiculars from the centres.
 @@@ geo2-ptolemy-s-inequality-by-inversion.md
 ---
 title: Ptolemy's inequality by inversion
-category: olympiad/oly-geometry
+category: geometry/plane
 level: olympiad
 difficulty: 4
 tags: inversion, Ptolemy's inequality, triangle inequality
@@ -1504,25 +1488,23 @@ Invert about $A$ with radius $1$. First find the distance between the images of 
 
 ## Solution
 
-**The inversion.** Assume $B,C,D\ne A$ (otherwise the inequality is trivial). The inversion with centre $A$ and radius $1$ sends a point $X\ne A$ to the point $X'$ on ray $AX$ with $AX\cdot AX'=1$.
+**The inversion.** Assume $B,C,D\ne A$. The inversion with centre $A$ and radius $1$ sends a point $X\ne A$ to $X'$ on ray $AX$ with $AX\cdot AX'=1$.
 
-**Lemma.** For $X,Y\ne A$: $X'Y'=\dfrac{XY}{AX\cdot AY}$.
-
-*Proof.* Triangles $AX'Y'$ and $AYX$ share the angle at $A$ (the rays $AX'=AX$ and $AY'=AY$), and $\frac{AX'}{AY}=\frac{1/AX}{AY}=\frac1{AX\cdot AY}=\frac{AY'}{AX}$. So they are similar by SAS, with ratio $\frac1{AX\cdot AY}$, and $X'Y'=\frac{XY}{AX\cdot AY}$. (If $A,X,Y$ are collinear the formula follows directly from $\left|\frac1{AX}\mp\frac1{AY}\right|=\frac{|AY\mp AX|}{AX\cdot AY}$.)
+**Lemma.** For $X,Y\ne A$: $X'Y'=\dfrac{XY}{AX\cdot AY}$. (SAS similarity of $AX'Y'$ and $AYX$.)
 
 **The inequality.** The triangle inequality in the images gives $B'D'\le B'C'+C'D'$. By the lemma,
 $$\frac{BD}{AB\cdot AD}\le\frac{BC}{AB\cdot AC}+\frac{CD}{AC\cdot AD}.$$
 Multiply by $AB\cdot AC\cdot AD$:
 $$BD\cdot AC\le BC\cdot AD+CD\cdot AB.$$
-This is Ptolemy's inequality. $\blacksquare$
+$\blacksquare$
 
-**Remark (equality).** Equality holds in the triangle inequality when $C'$ lies on the segment $B'D'$. Since inversion maps a circle through $A$ to a line, this happens exactly when $A,B,C,D$ lie on a circle in this order (or on a line): Ptolemy's theorem for cyclic quadrilaterals.
+**Remark (equality).** Equality holds exactly when $A,B,C,D$ lie on a circle in this order (or on a line): Ptolemy's theorem.
 
 **Lesson.** Inversion turns a product of distances into a sum of distances; the triangle inequality in the image gives the inequality in the original configuration.
 @@@ geo2-two-locus-problems.md
 ---
 title: Two classical locus problems
-category: olympiad/oly-geometry
+category: geometry/analytic
 level: m1
 difficulty: 2
 tags: locus, coordinates, perpendicular, circle with a given diameter
@@ -1540,25 +1522,23 @@ For part 1, the line from the centre to the midpoint of a chord is perpendicular
 
 ## Solution
 
-**1.** Let $M$ be the midpoint of a chord through $P$. If $M\ne O$ and $M\ne P$, then $OM\perp$ chord, and the chord passes through $P$, so $OM\perp MP$: $M$ is on the circle with diameter $OP$. If $M=P$ (the chord is perpendicular to $OP$) or $M=O$ (the chord is a diameter, contained in line $OP$), $M$ is still on this circle, since $O$ and $P$ are on it.
-
-*Conversely*, let $M$ be on the circle with diameter $OP$. If $M\ne P$ and $M\ne O$, then the line $PM$ meets the big circle in a chord (as $P$ is inside), and the foot of the perpendicular from $O$ to this line is $M$ (since $\angle OMP=90^\circ$), which is the midpoint of the chord. For $M=P$ take the chord perpendicular to $OP$; for $M=O$ take the diameter through $P$.
+**1.** Let $M$ be the midpoint of a chord through $P$. If $M\ne O$ and $M\ne P$, then $OM\perp$ chord, and the chord passes through $P$, so $OM\perp MP$: $M$ is on the circle with diameter $OP$. The endpoints $M=P$ and $M=O$ are also on this circle. Conversely, every point of the circle with diameter $OP$ arises this way.
 
 **Answer.** The locus is the whole circle with diameter $OP$.
 
 **2.** Put $A=(0,0)$ and $B=(d,0)$ with $d=AB>0$. For $X=(x,y)$,
-$$XA^2-XB^2=x^2+y^2-(x-d)^2-y^2=2dx-d^2.$$
+$$XA^2-XB^2=2dx-d^2.$$
 This equals $k$ iff $x=\dfrac{k+d^2}{2d}$.
 
-**Answer.** The locus is a line perpendicular to $AB$, at abscissa $\frac{k+d^2}{2d}$ (for $k=0$, the perpendicular bisector of $AB$).
+**Answer.** The locus is a line perpendicular to $AB$ at abscissa $\frac{k+d^2}{2d}$ (for $k=0$, the perpendicular bisector of $AB$).
 
-**Remark.** Part 2 is the key lemma behind radical axes: the points having equal powers with respect to two circles satisfy $XO_1^2-XO_2^2=R_1^2-R_2^2$, a line perpendicular to $O_1O_2$.
+**Remark.** Part 2 is the key lemma behind radical axes.
 
 **Lesson.** A right angle gives a circle (Thales); a difference of squared distances gives a line.
 @@@ geo2-the-distance-between-the-circumcentre-and-the-orthocentre.md
 ---
 title: The distance between the circumcentre and the orthocentre
-category: olympiad/oly-geometry
+category: geometry/analytic
 level: olympiad
 difficulty: 3
 tags: vectors, orthocentre, circumcentre, Euler line
@@ -1575,33 +1555,29 @@ Let $ABC$ be a triangle with circumcentre $O$, circumradius $R$, orthocentre $H$
 
 ## Hint
 
-Set $h=a_v+b_v+c_v$ for the vectors $a_v=\vec{OA}$, etc., and show that $h-a_v$ is orthogonal to $b_v-c_v$ using $|b_v|=|c_v|=R$.
+Set $\mathbf h=\mathbf a+\mathbf b+\mathbf c$ for the vectors $\mathbf a=\vec{OA}$, etc., and show that $\mathbf h-\mathbf a$ is orthogonal to $\mathbf b-\mathbf c$ using $|\mathbf b|=|\mathbf c|=R$.
 
 ## Solution
 
-Write $\mathbf a,\mathbf b,\mathbf c$ for the vectors $\vec{OA},\vec{OB},\vec{OC}$; $|\mathbf a|=|\mathbf b|=|\mathbf c|=R$.
+Write $\mathbf a,\mathbf b,\mathbf c$ for $\vec{OA},\vec{OB},\vec{OC}$; $|\mathbf a|=|\mathbf b|=|\mathbf c|=R$.
 
 **1.** Let $\mathbf h=\mathbf a+\mathbf b+\mathbf c$ and $K$ the point with $\vec{OK}=\mathbf h$. Then
 $$(\mathbf h-\mathbf a)\cdot(\mathbf b-\mathbf c)=(\mathbf b+\mathbf c)\cdot(\mathbf b-\mathbf c)=|\mathbf b|^2-|\mathbf c|^2=0,$$
-so $AK\perp BC$ (or $K=A$). By symmetry $BK\perp CA$ and $CK\perp AB$. So $K$ lies on the three altitudes: $K=H$. The centroid is $\vec{OG}=\frac{\mathbf a+\mathbf b+\mathbf c}3$, hence $\vec{OH}=3\vec{OG}$.
+so $AK\perp BC$; by symmetry $BK\perp CA$ and $CK\perp AB$. So $K=H$. The centroid is $\vec{OG}=\frac{\mathbf a+\mathbf b+\mathbf c}3$, hence $\vec{OH}=3\vec{OG}$.
 
 **2.** Expanding,
-$$OH^2=|\mathbf a+\mathbf b+\mathbf c|^2=3R^2+2(\mathbf a\cdot\mathbf b+\mathbf b\cdot\mathbf c+\mathbf c\cdot\mathbf a).$$
-Also $c^2=|\mathbf a-\mathbf b|^2=2R^2-2\,\mathbf a\cdot\mathbf b$, and similarly for $a^2,b^2$, so
-$$a^2+b^2+c^2=6R^2-2(\mathbf a\cdot\mathbf b+\mathbf b\cdot\mathbf c+\mathbf c\cdot\mathbf a).$$
-Eliminating the sum of dot products, $OH^2=3R^2+\bigl(6R^2-(a^2+b^2+c^2)\bigr)=9R^2-(a^2+b^2+c^2)$.
+$$OH^2=3R^2+2(\mathbf a\cdot\mathbf b+\mathbf b\cdot\mathbf c+\mathbf c\cdot\mathbf a),$$
+and $a^2+b^2+c^2=6R^2-2(\mathbf a\cdot\mathbf b+\mathbf b\cdot\mathbf c+\mathbf c\cdot\mathbf a)$, so $OH^2=9R^2-(a^2+b^2+c^2)$.
 
-**3.** $OH^2\ge0$ gives the inequality, with equality iff $H=O$, i.e. iff the altitudes pass through the circumcentre, which happens exactly for the equilateral triangle (each altitude is then also a perpendicular bisector).
+**3.** $OH^2\ge0$ gives the inequality, with equality iff $H=O$, i.e. iff the triangle is equilateral.
 
-**Check.** Right triangle with sides $3,4,5$ ($R=2.5$): the orthocentre is the right-angle vertex, and $OH$ is the median $2.5$; formula: $9\cdot6.25-50=6.25=2.5^2$ ✓.
-
-**Remark.** Part 1 contains the Euler line: $H$, $G$, $O$ are collinear, with $G$ at one third of $OH$.
+**Check.** Right triangle $3$-$4$-$5$, $R=2.5$: $OH=2.5$ and formula gives $9\cdot6.25-50=6.25=2.5^2$ ✓.
 
 **Lesson.** Placing the origin at the circumcentre makes $|\mathbf a|=|\mathbf b|=|\mathbf c|$ and turns the orthocentre into the vector sum.
 @@@ geo2-equilateral-triangles-and-complex-numbers.md
 ---
 title: Equilateral triangles and complex numbers
-category: olympiad/oly-geometry
+category: geometry/analytic
 level: olympiad
 difficulty: 3
 tags: complex numbers, equilateral triangle, roots of unity, rotation
@@ -1620,23 +1596,20 @@ Let $\omega=e^{2\pi i/3}$. Factor $a^2+b^2+c^2-ab-bc-ca$ using $\omega$ and $\om
 ## Solution
 
 **Factorisation.** With $\omega^2+\omega+1=0$ and $\omega^3=1$,
-$$(a+\omega b+\omega^2c)(a+\omega^2b+\omega c)=a^2+b^2+c^2+(\omega+\omega^2)(ab+bc+ca)=a^2+b^2+c^2-ab-bc-ca.$$
-(The coefficient of $ab$ is $\omega^2+\omega=-1$, and similarly for $bc$ and $ca$; the squares appear with coefficient $1$ because $\omega\cdot\omega^2=1$ gives $b^2$, $c^2$ with coefficient $1$.) So the condition holds iff
-$$a+\omega b+\omega^2c=0\qquad\text{or}\qquad a+\omega^2b+\omega c=0.$$
+$$(a+\omega b+\omega^2c)(a+\omega^2b+\omega c)=a^2+b^2+c^2-ab-bc-ca.$$
+So the condition holds iff $a+\omega b+\omega^2c=0$ or $a+\omega^2b+\omega c=0$.
 
-**Geometric meaning.** Since $1+\omega+\omega^2=0$, we have $a+\omega b+\omega^2c=(a-c)+\omega(b-c)$. Therefore $a+\omega b+\omega^2c=0$ iff
-$$a-c=-\omega\,(b-c)=e^{-i\pi/3}(b-c).$$
-This says: the vector $\vec{CA}$ is the vector $\vec{CB}$ rotated by $-60^\circ$. Then $CA=CB$ and $\angle ACB=60^\circ$ (in the non-degenerate case), so $ABC$ is equilateral. Likewise $a+\omega^2b+\omega c=0$ says $\vec{CA}$ is $\vec{CB}$ rotated by $+60^\circ$, the equilateral triangle with the other orientation. Conversely, every equilateral triangle satisfies one of these two relations, since $\vec{CA}$ is obtained from $\vec{CB}$ by a rotation of $\pm60^\circ$.
+**Geometric meaning.** Since $1+\omega+\omega^2=0$, we have $a+\omega b+\omega^2c=(a-c)+\omega(b-c)$. Hence $a+\omega b+\omega^2c=0$ iff
+$$a-c=-\omega\,(b-c)=e^{-i\pi/3}(b-c):$$
+the vector $\vec{CA}$ is $\vec{CB}$ rotated by $-60^\circ$, so $ABC$ is equilateral. Likewise $a+\omega^2b+\omega c=0$ gives the other orientation.
 
 **Conclusion.** $a^2+b^2+c^2=ab+bc+ca$ iff $a,b,c$ form an equilateral triangle (degenerate when $b=c$ forces $a=b=c$).
 
-**Check.** $a=0$, $b=1$, $c=e^{i\pi/3}$ gives $c^2=e^{2i\pi/3}$ and $ab+bc+ca=c$; we need $1+c^2=c$, i.e. $c^2-c+1=0$, whose roots are $e^{\pm i\pi/3}$ ✓.
-
-**Lesson.** Factor symmetric expressions with cube roots of unity: multiplication by $\omega$ is a rotation by $120^\circ$, which is the language of equilateral triangles.
+**Lesson.** Factor symmetric expressions with cube roots of unity: multiplication by $\omega$ is a rotation by $120^\circ$.
 @@@ geo2-weitzenbock-s-inequality.md
 ---
 title: Weitzenböck's inequality
-category: olympiad/oly-geometry
+category: geometry/plane
 level: olympiad
 difficulty: 3
 tags: geometric inequality, Heron's formula, area, sum of squares
@@ -1655,25 +1628,23 @@ Use Heron's formula in the form $16S^2=2a^2b^2+2b^2c^2+2c^2a^2-a^4-b^4-c^4$, and
 
 ## Solution
 
-**Heron's formula.** $16S^2=(a+b+c)(-a+b+c)(a-b+c)(a+b-c)=2(a^2b^2+b^2c^2+c^2a^2)-(a^4+b^4+c^4)$.
+**Heron's formula.** $16S^2=2(a^2b^2+b^2c^2+c^2a^2)-(a^4+b^4+c^4)$.
 
-**Reduction.** Both sides of the claim are positive, so it is equivalent to its square:
-$$(a^2+b^2+c^2)^2\ge48S^2=3\left[2(a^2b^2+b^2c^2+c^2a^2)-(a^4+b^4+c^4)\right].$$
-Write $p=a^4+b^4+c^4$ and $q=a^2b^2+b^2c^2+c^2a^2$. The left side is $p+2q$, the right side $6q-3p$. The inequality becomes
-$$4p\ge4q\quad\Longleftrightarrow\quad a^4+b^4+c^4\ge a^2b^2+b^2c^2+c^2a^2.$$
+**Reduction.** Both sides of the claim are positive, so it is equivalent to its square, which becomes
+$$a^4+b^4+c^4\ge a^2b^2+b^2c^2+c^2a^2.$$
 
 **Proof of the last inequality.**
 $$a^4+b^4+c^4-a^2b^2-b^2c^2-c^2a^2=\tfrac12\left[(a^2-b^2)^2+(b^2-c^2)^2+(c^2-a^2)^2\right]\ge0.$$
 
 **Equality.** It needs $a^2=b^2=c^2$, i.e. $a=b=c$.
 
-**Remark.** The constant $4\sqrt3$ is sharp. A stronger inequality is Hadwiger–Finsler: $a^2+b^2+c^2\ge4\sqrt3S+(a-b)^2+(b-c)^2+(c-a)^2$.
+**Remark.** The constant $4\sqrt3$ is sharp. Hadwiger–Finsler strengthens this to $a^2+b^2+c^2\ge4\sqrt3S+(a-b)^2+(b-c)^2+(c-a)^2$.
 
 **Lesson.** A geometric inequality involving an area becomes algebraic through Heron's formula; after squaring it is often a sum of squares.
 @@@ geo2-the-erdos-mordell-inequality.md
 ---
 title: The Erdős–Mordell inequality
-category: olympiad/oly-geometry
+category: geometry/plane
 level: olympiad
 difficulty: 5
 tags: Erdős–Mordell, projections, pedal points, geometric inequality
@@ -1693,31 +1664,27 @@ Show first that $PA\ge\dfrac ca\,PE+\dfrac ba\,PF$. For this, note that $A,F,P,E
 
 Let $a,b,c$ be the sides, and $A,B,C$ the angles.
 
-**Step 1: $EF=PA\sin A$.** The angles $\angle AFP$ and $\angle AEP$ are right angles, so $E$ and $F$ lie on the circle with diameter $AP$. In this circle the chord $EF$ subtends an inscribed angle at $A$ equal to $A$ or $180^\circ-A$ (it is the angle between lines $AB$ and $AC$), so $EF=AP\sin A$.
+**Step 1: $EF=PA\sin A$.** Since $\angle AFP=\angle AEP=90^\circ$, $E,F$ lie on the circle with diameter $AP$. The chord $EF$ subtends the inscribed angle $A$, so $EF=AP\sin A$.
 
-**Step 2: the projection of $EF$ on $BC$.** Let $d$ be a unit vector along $BC$. Place $B$ at the origin, $C=(a,0)$, with $A$ above the $x$-axis, $d=(1,0)$. The vector $\vec{PF}$ points from $P$ towards line $AB$, perpendicular to it; since $P$ is inside the triangle, it is the outward normal of side $AB$, namely $|PF|\,(-\sin B,\cos B)$. The vector $\vec{PE}$ is $|PE|$ times the outward normal of $CA$, which is $(\sin C,\cos C)$. Then
-$$\vec{FE}=\vec{PE}-\vec{PF}\quad\text{has }x\text{-component}\quad|PE|\sin C+|PF|\sin B.$$
-A segment is at least as long as its projection on any line, so
+**Step 2: projection on $BC$.** Place $B=(0,0)$, $C=(a,0)$, $A$ above the $x$-axis. The vector $\vec{PF}$ points toward line $AB$, perpendicular to it, so it is $|PF|\,(-\sin B,\cos B)$; $\vec{PE}$ is $|PE|\,(\sin C,\cos C)$. Then $\vec{FE}=\vec{PE}-\vec{PF}$ has $x$-component $|PE|\sin C+|PF|\sin B$. Since $EF\ge$ its projection on any line,
 $$EF\ge PE\sin C+PF\sin B.$$
 
-**Step 3.** Combining with Step 1: $PA\sin A\ge PE\sin C+PF\sin B$. Dividing by $\sin A$ and using the law of sines ($\frac{\sin C}{\sin A}=\frac ca$, $\frac{\sin B}{\sin A}=\frac ba$):
+**Step 3.** Combining with Step 1: $PA\sin A\ge PE\sin C+PF\sin B$, i.e.
 $$PA\ge\frac ca\,PE+\frac ba\,PF.$$
 By cyclic permutation,
 $$PB\ge\frac ab\,PF+\frac cb\,PD,\qquad PC\ge\frac bc\,PD+\frac ac\,PE.$$
 
 **Step 4: summing.**
-$$PA+PB+PC\ge PD\left(\frac cb+\frac bc\right)+PE\left(\frac ca+\frac ac\right)+PF\left(\frac ba+\frac ab\right)\ge2\,(PD+PE+PF),$$
-because $x+\frac1x\ge2$ for $x>0$. $\blacksquare$
+$$PA+PB+PC\ge PD\left(\frac cb+\frac bc\right)+PE\left(\frac ca+\frac ac\right)+PF\left(\frac ba+\frac ab\right)\ge2(PD+PE+PF),$$
+because $x+\frac1x\ge2$. $\blacksquare$
 
-**Equality.** It requires $a=b=c$ and $P$ the centre of the equilateral triangle.
-
-**Remark.** This is a famous result (conjectured by Erdős in 1935, first proved by Mordell and Barrow); the proof above is a short projection argument.
+**Equality.** $a=b=c$ and $P$ the centre.
 
 **Lesson.** A segment is longer than its projection; choose the projection direction so that the lengths to compare appear as projections of known perpendiculars.
 @@@ geo2-pick-s-theorem-and-lattice-triangles.md
 ---
 title: Pick's theorem and lattice triangles
-category: olympiad/oly-geometry
+category: geometry/analytic
 level: olympiad
 difficulty: 3
 tags: Pick's theorem, lattice points, area, equilateral triangle
@@ -1726,7 +1693,7 @@ date: 2026-11-05
 
 ## Statement
 
-**Pick's theorem.** A polygon with vertices at lattice points (integer coordinates), $I$ lattice points in its interior and $B$ lattice points on its boundary, has area $I+\frac B2-1$.
+**Pick's theorem.** A polygon with vertices at lattice points, $I$ lattice points in its interior and $B$ lattice points on its boundary, has area $I+\frac B2-1$.
 
 Using it:
 
@@ -1740,19 +1707,19 @@ For part 1, the number of lattice points on a segment from $(0,0)$ to $(p,q)$ (e
 
 ## Solution
 
-**1. The triangle.** Its area is $\frac12|5\cdot3-2\cdot2|=\frac{11}2$. The sides are the vectors $(5,2)$, $(-3,1)$, $(-2,-3)$, with gcds $1,1,1$, so each side contains only its two endpoints as lattice points: $B=3$. Pick's theorem: $\frac{11}2=I+\frac32-1$, so $I=5$. (Check by listing: the interior lattice points are $(1,1),(2,1),(2,2),(3,2),(4,2)$.)
+**1. The triangle.** Its area is $\frac12|5\cdot3-2\cdot2|=\frac{11}2$. The sides are the vectors $(5,2)$, $(-3,1)$, $(-2,-3)$, with gcds $1,1,1$, so $B=3$. Pick: $\frac{11}2=I+\frac32-1$, so $I=5$. The interior lattice points are $(1,1),(2,1),(2,2),(3,2),(4,2)$.
 
-**2. Triangles without other lattice points.** Here $I=0$ and $B=3$, so the area is $0+\frac32-1=\frac12$.
+**2. Triangles without other lattice points.** $I=0$, $B=3$, so area $=\frac12$.
 
-**3. No lattice equilateral triangle.** Suppose the vertices are lattice points and the side has squared length $n=a^2$, where $n=p^2+q^2$ is a positive integer (the squared distance between two lattice points). The area of the equilateral triangle is $\frac{\sqrt3}4\,n$. By Pick's theorem the area of a lattice polygon is a rational number $I+\frac B2-1$. But $\frac{\sqrt3}4n$ is irrational since $n$ is a positive integer and $\sqrt3$ is irrational. Contradiction.
+**3. No lattice equilateral triangle.** Suppose the vertices are lattice points and the side has squared length $n=p^2+q^2$. The area is $\frac{\sqrt3}4\,n$, irrational. But by Pick, the area of a lattice polygon is a rational $I+\frac B2-1$. Contradiction.
 
-**Remark.** The same argument rules out the regular hexagon and the regular $n$-gon for $n=3,6$ (areas are rational multiples of $\sqrt3$). In fact the square is the only regular polygon with lattice vertices in the plane; in three dimensions equilateral lattice triangles exist, e.g. $(1,0,0),(0,1,0),(0,0,1)$.
+**Remark.** The square is the only regular polygon with lattice vertices in the plane.
 
 **Lesson.** Pick's theorem forces rationality of areas of lattice polygons: any area containing $\sqrt3$ is impossible.
 @@@ geo2-the-symmedian-and-the-tangents-at-b-and-c.md
 ---
 title: The symmedian and the tangents at B and C
-category: olympiad/oly-geometry
+category: geometry/plane
 level: olympiad
 difficulty: 4
 tags: symmedian, tangent-chord angle, areas, law of sines
@@ -1763,7 +1730,6 @@ date: 2026-11-05
 
 Let $ABC$ be a triangle with $\angle A$ acute, inscribed in a circle $\omega$. The tangents to $\omega$ at $B$ and $C$ meet at a point $T$. The line $AT$ meets $BC$ at $D$. Prove that
 $$\frac{BD}{DC}=\frac{c^2}{b^2},\qquad\text{where }b=CA,\ c=AB.$$
-(Thus $AD$ is the reflection of the median in the bisector of $\angle A$: the symmedian.)
 
 ## Hint
 
@@ -1771,19 +1737,16 @@ Compare the areas of triangles $ABT$ and $ACT$, using $TB=TC$ and the tangent–
 
 ## Solution
 
-**Setup.** Since $\angle A$ is acute, the tangents at $B$ and $C$ meet at a point $T$ on the other side of $BC$ from $A$, and $TB=TC$ (equal tangent segments). By the tangent–chord theorem, $\angle TBC=\angle TCB=\angle A$.
+**Setup.** $\angle A$ acute $\Rightarrow$ the tangents at $B$ and $C$ meet at $T$ on the other side of $BC$ from $A$; $TB=TC$. By the tangent–chord theorem, $\angle TBC=\angle TCB=\angle A$.
 
-**Angles at $B$ and $C$.** $\angle ABT=\angle ABC+\angle CBT=B+A$, so $\sin\angle ABT=\sin(A+B)=\sin C$. Similarly $\angle ACT=C+A$ and $\sin\angle ACT=\sin B$.
+**Angles.** $\angle ABT=\angle ABC+\angle CBT=B+A$, so $\sin\angle ABT=\sin C$; similarly $\sin\angle ACT=\sin B$.
 
-**Area ratio.** The points $B$ and $C$ are on opposite sides of line $AT$, and $D=AT\cap BC$, so
-$$\frac{BD}{DC}=\frac{[ABT]}{[ACT]}$$
-(the triangles $ABT$ and $ACT$ have the common base $AT$ and heights proportional to $BD$ and $DC$). Using $[XYZ]=\frac12\,XY\cdot YZ\sin\angle XYZ$:
-$$\frac{[ABT]}{[ACT]}=\frac{\frac12\,AB\cdot BT\sin\angle ABT}{\frac12\,AC\cdot CT\sin\angle ACT}=\frac{c\cdot\sin C}{b\cdot\sin B}\quad(\text{since }BT=CT).$$
-By the law of sines $\frac{\sin C}{\sin B}=\frac cb$, so
-$$\frac{BD}{DC}=\frac{c^2}{b^2}.$$
+**Area ratio.** $D=AT\cap BC$ so
+$$\frac{BD}{DC}=\frac{[ABT]}{[ACT]}=\frac{c\cdot\sin C}{b\cdot\sin B}=\frac{c^2}{b^2},$$
+using the law of sines.
 
-**Why "symmedian".** The median from $A$ meets $BC$ at the midpoint with ratio $1$, the bisector at ratio $\frac cb$, and the symmedian at ratio $\frac{c^2}{b^2}$: the reflection of the median in the bisector has the squared ratio, as can be checked with the law of sines in the two sub-triangles.
+**Why "symmedian".** The median gives ratio $1$, the bisector $\frac cb$, the symmedian $\frac{c^2}{b^2}$: the reflection of the median in the bisector.
 
-**Remark.** If $\angle A$ is obtuse, the same computation works with $\angle ABT=|A+B-180^\circ|=C$ and the same sines. For $\angle A=90^\circ$ the tangents at $B$ and $C$ are parallel (they are perpendicular to the diameter $BC$) and $T$ does not exist.
+**Remark.** If $\angle A$ is obtuse, the same works. For $\angle A=90^\circ$ the tangents are parallel and $T$ does not exist.
 
 **Lesson.** A ratio of segments on a line equals a ratio of areas with a common base; the tangent–chord angle then makes the sines match the sides.
