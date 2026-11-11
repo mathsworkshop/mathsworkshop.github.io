@@ -348,7 +348,7 @@ Use Legendre's formula $v_p(m!)=\sum_{k\ge1}\lfloor m/p^k\rfloor$ and write $v_p
 
 **1.** $\binom{2n}n=\frac{(2n)!}{n!\,n!}$. The prime $p\le2n$ divides $(2n)!$, but $p>n$ does not divide $n!$. So $p$ divides the numerator and not the denominator.
 
-**2.** Legendre's formula gives
+**2.** Legendre's formula gives 
 $$v_p\binom{2n}n=\sum_{k\ge1}\left(\left\lfloor\frac{2n}{p^k}\right\rfloor-2\left\lfloor\frac n{p^k}\right\rfloor\right).$$
 
 - For $k\ge2$: $p^k\ge p^2>2n$, so both floors are $0$.
