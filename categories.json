@@ -215,7 +215,65 @@
           "id": "topology-of-mnr",
           "name": "Topology of Mn(ℝ)",
           "description": "Open and closed sets, compact sets and connectedness.",
-          "subcategories": []
+          "subcategories": ["Norms, open and closed sets, compactness, connectedness, density and the exponential in the space of real square matrices.",
+          "subcategories": [
+            {
+              "id": "mn-norms",
+              "name": "Norms and metric structure",
+              "description": "Frobenius and operator norms, equivalence of norms, balls and distances in Mâ‚™(â„).",
+              "subcategories": []
+            },
+            {
+              "id": "mn-open-closed",
+              "name": "Open, closed, interior, boundary",
+              "description": "Which sets of matrices are open or closed, and their interiors and boundaries.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-continuity",
+              "name": "Continuity of matrix maps",
+              "description": "Continuity of determinant, trace, powers, inverse, adjugate and other matrix maps.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-compactness",
+              "name": "Compactness",
+              "description": "Compact sets of matrices, orthogonal group, extreme values and fixed points.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-connectedness",
+              "name": "Connectedness",
+              "description": "Path-connected sets of matrices, components of GLâ‚™ and related groups.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-density",
+              "name": "Density and closures",
+              "description": "Dense subsets of Mâ‚™(â„), diagonalisable matrices, closures and applications of density.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-rank-spectrum",
+              "name": "Rank, spectrum and norms",
+              "description": "Semicontinuity of rank, continuity of eigenvalues, singular values and spectral radius.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-exp-log",
+              "name": "Exponential, logarithm and group topology",
+              "description": "The matrix exponential, logarithm and the topology of matrix groups.",
+              "subcategories": []
+            },
+            {
+              "id": "mn-applications",
+              "name": "Applications and the case n = 2",
+              "description": "Density arguments, closed-form results and detailed study of 2Ã—2 matrices.",
+              "subcategories": []
+            }
+          ]
+        }
+      ]
         },
         {
           "id": "metric",
