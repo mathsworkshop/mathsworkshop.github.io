@@ -515,42 +515,5 @@
         }
       ]
     },
-    {
-      "id": "olympiad",
-      "name": "Olympiad training",
-      "description": "Problems in the style of national and international mathematical olympiads, with the standard techniques to prepare for them.",
-      "subcategories": [
-        {
-          "id": "oly-inequalities",
-          "name": "Inequalities",
-          "description": "AM-GM, Cauchy-Schwarz, SOS, substitutions and smoothing.",
-          "subcategories": []
-        },
-        {
-          "id": "oly-number-theory",
-          "name": "Number theory",
-          "description": "Divisibility, congruences, Diophantine equations, orders and p-adic valuations.",
-          "subcategories": []
-        },
-        {
-          "id": "oly-combinatorics",
-          "name": "Combinatorics and techniques",
-          "description": "Pigeonhole, invariants, extremal principle, induction, counting and games.",
-          "subcategories": []
-        },
-        {
-          "id": "oly-geometry",
-          "name": "Geometry",
-          "description": "Synthetic geometry, angle chasing, power of a point, coordinates and complex numbers.",
-          "subcategories": []
-        },
-        {
-          "id": "oly-algebra",
-          "name": "Polynomials, sequences and trigonometry",
-          "description": "Polynomials, recurrences, complex numbers and trigonometric identities.",
-          "subcategories": []
-        }
-      ]
-    }
   ]
 }
