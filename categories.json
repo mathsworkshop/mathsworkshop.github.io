@@ -194,6 +194,7 @@
         }
       ]
     },
+
 {
   "id": "topology",
   "name": "Topology",
@@ -279,15 +280,7 @@
       "subcategories": []
     }
   ]
-},
-        {
-          "id": "metric",
-          "name": "Metric and normed spaces",
-          "description": "Topological Properties, Convergence, Compactness and Completeness.",
-          "subcategories": []
-        }
-      ]
-    }
+}
     {
       "id": "linear",
       "name": "Linear algebra",
