@@ -1,3 +1,30 @@
+@@@ a-plane-as-a-subspace.md
+---
+title: A plane as a subspace
+category: linear/vector-spaces
+level: l1
+difficulty: 2
+tags: subspaces, basis
+date: 2026-10-31
+---
+
+## Statement
+
+Let $F=\{(x,y,z)\in\mathbb{R}^3:\ x+y+z=0\}$. Show that $F$ is a subspace of $\mathbb{R}^3$, and find a basis and the dimension of $F$.
+
+## Hint
+
+Check that $F$ contains $0$ and is stable under sums and scalar multiples. Then solve for $z$.
+
+## Solution
+
+**Subspace.** $(0,0,0)\in F$. If $(x,y,z),(x',y',z')\in F$ and $\lambda\in\mathbb{R}$, then
+$$(x+\lambda x')+(y+\lambda y')+(z+\lambda z')=(x+y+z)+\lambda(x'+y'+z')=0,$$
+so $(x,y,z)+\lambda(x',y',z')\in F$.
+
+**Basis.** A vector of $F$ has $z=-x-y$, so
+$$(x,y,z)=x\,(1,0,-1)+y\,(0,1,-1).$$
+The vectors $(1,0,-1)$ and $(0,1,-1)$ span $F$ and are linearly independent (neither is a multiple of the other). They form a basis, and $\dim F=2$.
 @@@ determinant-2x2-basic.md
 ---
 title: Determinant of a 2Ã—2 matrix
