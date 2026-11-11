@@ -1,3 +1,27 @@
+@@@ a-cubic-with-exactly-one-real-root.md
+---
+title: A cubic with exactly one real root
+category: calculus/single-variable/continuity/intermediate-value-theorem
+level: l1
+difficulty: 2
+tags: intermediate value theorem, monotonicity
+date: 2026-10-31
+---
+
+## Statement
+
+Show that the equation $x^3+x-1=0$ has exactly one real solution, and that it lies in $(0,1)$.
+
+## Hint
+
+Use the intermediate value theorem for existence and the derivative for uniqueness.
+
+## Solution
+
+Let $f(x)=x^3+x-1$. It is continuous, with $f(0)=-1<0$ and $f(1)=1>0$. By the intermediate value theorem, $f$ vanishes at some point of $(0,1)$.
+
+Its derivative $f'(x)=3x^2+1$ is positive everywhere, so $f$ is strictly increasing on $\mathbb{R}$. A strictly increasing function takes each value at most once, so the root is unique.
+
 @@@ continuity-commuting-maps-shared-point.md
 ---
 title: Commuting maps on $[0,1]$ share a fixed point
