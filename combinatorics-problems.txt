@@ -125,7 +125,7 @@ Write every integer as $2^k\cdot m$ with $m$ odd. How many possible values of $m
 @@@ comb-numbers-on-a-board-parity-invariant.md
 ---
 title: Replacing two numbers by their difference
-category: combinatorics/counting
+category: combi/counting
 level: m1
 difficulty: 2
 tags: invariant, parity, board games
@@ -156,7 +156,7 @@ which is even. Hence the parity of $T$ never changes.
 @@@ comb-the-parliament-with-enemies.md
 ---
 title: Splitting a parliament into two houses
-category: combinatorics/graphs
+category: combi/graphs
 level: olympiad
 difficulty: 3
 tags: monovariant, graphs, extremal, process
@@ -190,7 +190,7 @@ Hence $E$ decreases by at least $1$.
 @@@ comb-dominoes-on-a-mutilated-chessboard.md
 ---
 title: Dominoes on a mutilated chessboard
-category: combinatorics/counting
+category: combi/counting
 level: m1
 difficulty: 2
 tags: colouring, tilings, dominoes
@@ -223,7 +223,7 @@ Use the usual black and white colouring and count the squares of each colour.
 @@@ comb-tetrominoes-on-a-ten-by-ten-board.md
 ---
 title: Tiling a 10 × 10 board with 1 × 4 tiles
-category: combinatorics/counting
+category: combi/counting
 level: olympiad
 difficulty: 3
 tags: colouring, tilings, tetrominoes, modular colouring
@@ -256,7 +256,7 @@ The chessboard colouring is useless here. Try four colours, according to the rem
 @@@ comb-no-finite-set-of-midpoints.md
 ---
 title: A finite set in which every point is a midpoint
-category: combinatorics/counting
+category: combi/counting
 level: olympiad
 difficulty: 3
 tags: extremal principle, plane geometry, midpoints
@@ -285,7 +285,7 @@ Look at the point of $S$ that is largest in some sense: for instance, largest ab
 @@@ comb-tiling-a-board-with-l-trominoes.md
 ---
 title: Tiling a 2ⁿ × 2ⁿ board with L-trominoes
-category: combinatorics/counting
+category: combi/counting
 level: olympiad
 difficulty: 3
 tags: induction, tilings, trominoes, divide and conquer
@@ -318,7 +318,7 @@ Now each quadrant has exactly one square that is missing. By the induction hypot
 @@@ comb-regions-cut-by-lines-in-the-plane.md
 ---
 title: Regions cut by n lines
-category: combinatorics/counting
+category: combi/counting
 level: m1
 difficulty: 2
 tags: induction, counting, lines in the plane
@@ -354,7 +354,7 @@ which is the formula for $n+1$.
 @@@ comb-mantel-s-theorem.md
 ---
 title: Triangle-free graphs have at most n²/4 edges (Mantel)
-category: combinatorics/graphs
+category: combi/graphs
 level: olympiad
 difficulty: 4
 tags: double counting, graphs, Cauchy–Schwarz, extremal graph theory
@@ -392,7 +392,7 @@ $$\sum_vd(v)^2\ge\frac{\left(\sum_vd(v)\right)^2}n=\frac{4e^2}n.$$
 @@@ comb-leaves-of-a-tree.md
 ---
 title: A tree has at least as many leaves as its maximum degree
-category: combinatorics/graphs
+category: combi/graphs
 level: olympiad
 difficulty: 3
 tags: trees, graphs, handshake lemma, degrees
@@ -426,7 +426,7 @@ Simplifying the right side: $2n-L-2+k$. Therefore $2n-2\ge2n-L-2+k$, i.e. $L\ge 
 @@@ comb-every-tournament-has-a-hamiltonian-path.md
 ---
 title: Every tournament has a Hamiltonian path
-category: combinatorics/graphs
+category: combi/graphs
 level: olympiad
 difficulty: 3
 tags: induction, tournaments, graphs, Hamiltonian path
@@ -460,7 +460,7 @@ In all cases we obtain the required ordering of all $n+1$ players.
 @@@ comb-coins-on-a-round-table.md
 ---
 title: The game of coins on a round table
-category: combinatorics/counting
+category: combi/counting
 level: olympiad
 difficulty: 3
 tags: games, symmetry, winning strategy
@@ -494,7 +494,7 @@ Use the centre of the table. The first player should have a reply to every possi
 @@@ comb-two-take-away-games.md
 ---
 title: Two take-away games
-category: combinatorics/counting
+category: combi/counting
 level: m1
 difficulty: 2
 tags: games, winning positions, pairing strategy, Nim
@@ -527,7 +527,7 @@ For part 1, find the positions that are lost for the player to move, starting fr
 @@@ comb-subsets-without-two-consecutive-integers.md
 ---
 title: Subsets without two consecutive integers
-category: combinatorics/counting
+category: combi/counting
 level: olympiad
 difficulty: 3
 tags: counting, recurrences, Fibonacci, bijection
@@ -559,7 +559,7 @@ Hence $a_n=a_{n-1}+a_{n-2}$. The initial values are $a_0=1$ and $a_1=2$, which a
 @@@ comb-derangements-by-inclusion-exclusion.md
 ---
 title: Derangements and the number 1/e
-category: combinatorics/inclusion-exclusion
+category: combi/inclusion-exclusion
 level: olympiad
 difficulty: 3
 tags: inclusion-exclusion, permutations, derangements
@@ -594,7 +594,7 @@ The series is alternating with decreasing terms, so its absolute value is at mos
 @@@ comb-the-sum-of-squared-binomial-coefficients.md
 ---
 title: A combinatorial proof that Σ C(n,k)² = C(2n,n)
-category: combinatorics/binomial
+category: combi/binomial
 level: m1
 difficulty: 2
 tags: double counting, binomial identities, Vandermonde
@@ -628,7 +628,7 @@ using $\binom n{n-k}=\binom nk$. Summing over $k$ gives the left side.
 @@@ comb-paths-that-never-go-below-the-axis-catalan.md
 ---
 title: Paths that never go below the axis: Catalan numbers
-category: combinatorics/binomial
+category: combi/binomial
 level: olympiad
 difficulty: 4
 tags: reflection principle, Catalan numbers, lattice paths, bijection
@@ -666,7 +666,7 @@ The first values are $1,2,5,14,42,132,\dots$
 @@@ comb-flipping-rows-and-columns-of-a-board.md
 ---
 title: Flipping rows and columns of a board
-category: combinatorics/counting
+category: combi/counting
 level: olympiad
 difficulty: 3
 tags: invariant, parity, colouring, moves
@@ -700,7 +700,7 @@ Changing two squares changes their black count by $-2$, $0$ or $+2$: the parity 
 @@@ comb-finding-the-heavy-coin-with-a-balance.md
 ---
 title: Finding the heavy coin with a balance
-category: combinatorics/counting
+category: combi/counting
 level: olympiad
 difficulty: 3
 tags: algorithms, information, induction, weighings
