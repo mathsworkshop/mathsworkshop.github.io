@@ -667,36 +667,6 @@ The characteristic polynomial of $B$ divides $\chi_A$, so it also has all roots 
 
 **Conclusion.** Trigonalizability over $\mathbb{R}$ is equivalent to all eigenvalues being real.
 
-@@@ eigenvalues-eigenvector-subspace.md
----
-title: Eigenvectors for a given eigenvalue form a subspace
-category: linear/eigenvalues
-level: l1
-difficulty: 3
-tags: eigenspace, subspace, linear map
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $n\times n$ matrix and $\lambda$ a real number. Show that
-$$E_\lambda = \{v\in\mathbb{R}^n : Av=\lambda v\}$$
-is a subspace of $\mathbb{R}^n$.
-
-## Hint
-
-$E_\lambda=\ker(A-\lambda I)$.
-
-## Solution
-
-**Identification.** $Av=\lambda v\iff(A-\lambda I)v=0\iff v\in\ker(A-\lambda I)$.
-
-**Subspace.** The kernel of a linear map is a subspace. Indeed, $0\in\ker(A-\lambda I)$; if $v,w\in E_\lambda$, then $(A-\lambda I)(v+w)=0+0=0$; if $\alpha\in\mathbb{R}$ and $v\in E_\lambda$, then $(A-\lambda I)(\alpha v)=\alpha\cdot0=0$.
-
-**Conclusion.** $E_\lambda$ is a subspace, called the **eigenspace** of $A$ for $\lambda$.
-
-**Note.** If $\lambda$ is not an eigenvalue, $E_\lambda=\{0\}$.
-
 @@@ eigenvalues-sum-eigenvalues.md
 ---
 title: Sum of eigenvalues equals trace
