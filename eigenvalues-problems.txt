@@ -981,42 +981,6 @@ $E_\lambda=\ker(A-\lambda I)$.
 
 **Conclusion.** $E_\lambda$ is a subspace, called the eigenspace of $A$ for $\lambda$; the eigenvectors for $\lambda$ are its nonzero elements. (The set of eigenvectors alone is not a subspace, since it excludes $0$.) If $\lambda$ is not an eigenvalue, $E_\lambda=\{0\}$.
 
-@@@ eigenvalues-2x2-basic.md
----
-title: Eigenvalues and eigenvectors of a 2×2 matrix
-order: 2
-category: linear/eigenvalues
-level: l1
-difficulty: 2
-tags: eigenvalues, eigenvectors, characteristic polynomial
-date: 2026-11-03
----
-
-## Statement
-
-Find the eigenvalues and eigenspaces of
-$$A = \begin{pmatrix} 3 & 1 \\ 0 & 2 \end{pmatrix}.$$
-
-## Hint
-
-The eigenvalues are the roots of $\det(A-\lambda I)$; for a triangular matrix this determinant is the product of the diagonal entries of $A-\lambda I$. For each eigenvalue, solve $(A-\lambda I)v=0$.
-
-## Solution
-
-**Eigenvalues.** $A-\lambda I$ is upper triangular, so $\det(A-\lambda I)=(3-\lambda)(2-\lambda)$. The eigenvalues are $\lambda_1=3$ and $\lambda_2=2$.
-
-**Eigenspace for $\lambda=3$.**
-$$A-3I = \begin{pmatrix} 0 & 1 \\ 0 & -1 \end{pmatrix}.$$
-The kernel is given by $y=0$, so $E_3=\textrm{span}(v_1)$ with $v_1=(1,0)^T$.
-
-**Eigenspace for $\lambda=2$.**
-$$A-2I = \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}.$$
-The kernel is given by $x+y=0$, so $E_2=\textrm{span}(v_2)$ with $v_2=(1,-1)^T$.
-
-**Check.** $Av_1=(3,0)^T=3v_1$ and $Av_2=(3-1,\,-2)^T=(2,-2)^T=2v_2$.
-
-**Conclusion.** The eigenvalues are $3$ and $2$; the eigenvectors are the nonzero multiples of $(1,0)^T$ and of $(1,-1)^T$ respectively.
-
 @@@ eigenvalues-2x2-distinct.md
 ---
 title: A 2×2 matrix with distinct eigenvalues
