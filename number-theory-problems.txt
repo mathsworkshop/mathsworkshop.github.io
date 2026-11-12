@@ -770,11 +770,8 @@ Show that the product of a nonzero rational and an irrational is irrational.
 
 ## Hint
 
-Suppose $r\in\mathbb{Q}\setminus\{0\}$, $x\notin\mathbb{Q}$, and $rx=q\in\mathbb{Q}$. Then $x=q/r\in\mathbb{Q}$.
-
 ## Solution
-
-**Contradiction.** If $rx=q\in\mathbb{Q}$, then $x=q/r\in\mathbb{Q}$ (since $r\neq0$), contradicting $x\notin\mathbb{Q}$.
+Suppose $r\in\mathbb{Q}\setminus\{0\}$, $x\notin\mathbb{Q}$. By contradiction, if $rx=q\in\mathbb{Q}$, then $x=q/r\in\mathbb{Q}$ (since $r\neq0$), contradicting $x\notin\mathbb{Q}$.
 
 **Conclusion.** $rx$ is irrational.
 
