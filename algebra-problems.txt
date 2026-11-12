@@ -3521,11 +3521,11 @@ $$\sum_{k=0}^{n-1}\cos(k\theta)=\frac{\sin(n\theta/2)}{\sin(\theta/2)}\cos\left(
 
 @@@ complex-mobius.md
 ---
-title: The MÃ¶bius transformation
+title: The Möbius transformation
 category: algebra/complex-numbers
 level: m1
 difficulty: 5
-tags: MÃ¶bius, complex, transformation
+tags: Möbius, complex, transformation
 date: 2026-11-03
 ---
 
@@ -3543,7 +3543,7 @@ The set of circles and lines in $\mathbb{C}$ is exactly the set of solutions of 
 
 **Substitution.** For $w=\frac{az+b}{cz+d}$, $z=\frac{-dw+b}{cw-a}$. Then substitute in the equation; the result is again of the form $\alpha'|w|^2+\bar\beta'w+\beta'\bar w+\gamma'=0$.
 
-**Conclusion.** MÃ¶bius transformations map generalized circles to generalized circles.
+**Conclusion.** Möbius transformations map generalized circles to generalized circles.
 
 
 @@@ complex-representation-roots.md
@@ -5194,7 +5194,7 @@ The root $x_-=\frac{1-\sqrt{1+4a}}{2}$ is $\ge0$ iff $\sqrt{1+4a}\le1$, i.e. $a\
 
 @@@ equations-system-3x3-linear.md
 ---
-title: A 3Ã—3 linear system
+title: A 3×3 linear system
 category: algebra/equations
 level: lycee
 difficulty: 3
@@ -5960,7 +5960,7 @@ $$n+(n+r)=5\iff2n+r=5.$$
 
 @@@ equations-system-3-unknowns.md
 ---
-title: A nonlinear 3Ã—3 system
+title: A nonlinear 3×3 system
 category: algebra/equations
 level: olympiad
 difficulty: 5
@@ -6753,13 +6753,13 @@ $$\frac{S^2}{S^2-\sum x_i^2}\ge\frac{S^2}{S^2-S^2/n}=\frac{n}{n-1}.$$
 
 **Conclusion.** The inequality holds, with equality iff all $x_i$ are equal.
 
-@@@ inequalities-hÃ¶lder.md
+@@@ inequalities-hölder.md
 ---
-title: HÃ¶lder's inequality
+title: Hölder's inequality
 category: algebra/inequalities
 level: l1
 difficulty: 5
-tags: HÃ¶lder, inequality, conjugate exponents
+tags: Hölder, inequality, conjugate exponents
 date: 2026-11-03
 ---
 
@@ -6783,7 +6783,7 @@ This follows from concavity of $\ln$ (weighted AM-GM).
 **Apply Young.** $a_ib_i\le\frac{a_i^p}{p}+\frac{b_i^q}{q}$. Summing:
 $$\sum a_ib_i\le\frac1p\sum a_i^p+\frac1q\sum b_i^q=\frac1p+\frac1q=1.$$
 
-**Conclusion.** HÃ¶lder's inequality holds. For $p=q=2$, it reduces to Cauchy-Schwarz.
+**Conclusion.** Hölder's inequality holds. For $p=q=2$, it reduces to Cauchy-Schwarz.
 
 @@@ inequalities-sos-schur.md
 ---
