@@ -778,7 +778,7 @@ $$p(x+\lambda y)=\sum_i\big(\langle x,u_i\rangle+\lambda\langle y,u_i\rangle\big
 
 @@@ linear-map-matrix-kernel-image-relation.md
 ---
-title: Kernel and image of $A$ and $A^T$
+title: Kernel and image of a matrix and its transposition
 order: 25
 category: linear/linear-maps
 level: l1
