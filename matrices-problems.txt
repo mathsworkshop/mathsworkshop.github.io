@@ -89,7 +89,7 @@ The two sums are equal (same terms, reordered), so $(AB)^T = B^T A^T$.
 
 @@@ matrix-inverse-2x2.md
 ---
-title: Inverse of a 2Ã—2 matrix
+title: Inverse of a 2×2 matrix
 category: linear/matrices
 level: l1
 difficulty: 2
@@ -119,7 +119,7 @@ $$AA^{-1} = \begin{pmatrix} 3 & 5 \\ 1 & 2 \end{pmatrix}\begin{pmatrix} 2 & -5 \
 
 @@@ matrix-inverse-3x3.md
 ---
-title: Inverse of a 3Ã—3 matrix by row reduction
+title: Inverse of a 3×3 matrix by row reduction
 category: linear/matrices
 level: l1
 difficulty: 4
@@ -155,7 +155,7 @@ $$A^{-1} = \begin{pmatrix} -24 & 18 & 5 \\ 20 & -15 & -4 \\ -5 & 4 & 1 \end{pmat
 
 @@@ matrix-determinant-3x3-sarrus.md
 ---
-title: Determinant of a 3Ã—3 matrix by Sarrus' rule
+title: Determinant of a 3×3 matrix by Sarrus' rule
 category: linear/matrices
 level: lycee
 difficulty: 2
@@ -516,7 +516,7 @@ $$A^{k+1} = \begin{pmatrix} F_k & F_{k+1} \\ F_{k+1} & F_{k+2} \end{pmatrix}.$$
 
 @@@ matrix-eigenvalues-2x2.md
 ---
-title: Eigenvalues and eigenvectors of a 2Ã—2 matrix
+title: Eigenvalues and eigenvectors of a 2×2 matrix
 category: linear/matrices
 level: l1
 difficulty: 3
@@ -551,7 +551,7 @@ The kernel is spanned by $v_2 = (1,1)$.
 
 @@@ matrix-eigenvalues-3x3.md
 ---
-title: Eigenvalues of a 3Ã—3 matrix
+title: Eigenvalues of a 3×3 matrix
 category: linear/matrices
 level: l1
 difficulty: 4
@@ -580,7 +580,7 @@ Observe that the sum of each row is $4$, so $4$ is an eigenvalue. Then use the t
 
 @@@ matrix-diagonalization-2x2.md
 ---
-title: Diagonalizing a 2Ã—2 matrix
+title: Diagonalizing a 2×2 matrix
 category: linear/matrices
 level: l1
 difficulty: 4
@@ -612,7 +612,7 @@ $$A^k = PD^kP^{-1} = \begin{pmatrix} 1 & 1 \\ -2 & 1 \end{pmatrix}\begin{pmatrix
 
 @@@ matrix-diagonalization-3x3.md
 ---
-title: Diagonalizing a 3Ã—3 matrix
+title: Diagonalizing a 3×3 matrix
 category: linear/matrices
 level: l1
 difficulty: 4
@@ -855,7 +855,7 @@ So the characteristic polynomials coincide.
 
 @@@ matrix-cholesky-2x2.md
 ---
-title: Cholesky factorization of a 2Ã—2 matrix
+title: Cholesky factorization of a 2×2 matrix
 category: linear/matrices
 level: l1
 difficulty: 4
@@ -954,7 +954,7 @@ $$Q = \begin{pmatrix} 1/\sqrt2 & 1/\sqrt6 \\ 1/\sqrt2 & -1/\sqrt6 \\ 0 & \sqrt{2
 
 @@@ matrix-singular-value-decomposition-2x2.md
 ---
-title: Singular value decomposition of a 2Ã—2 matrix
+title: Singular value decomposition of a 2×2 matrix
 category: linear/matrices
 level: l1
 difficulty: 5
