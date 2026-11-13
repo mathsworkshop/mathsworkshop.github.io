@@ -1,4 +1,112 @@
+@@@ geo2-weitzenbock-s-inequality.md
+---
+title: Weitzenböck's inequality
+category: geometry/plane
+level: olympiad
+difficulty: 3
+tags: geometric inequality, Heron's formula, area, sum of squares
+date: 2026-11-05
+---
 
+## Statement
+
+In a triangle with sides $a,b,c$ and area $S$, prove that
+$$a^2+b^2+c^2\ge4\sqrt3\,S,$$
+with equality iff the triangle is equilateral.
+
+## Hint
+
+Use Heron's formula in the form $16S^2=2a^2b^2+2b^2c^2+2c^2a^2-a^4-b^4-c^4$, and square the inequality.
+
+## Solution
+
+**Heron's formula.** $16S^2=2(a^2b^2+b^2c^2+c^2a^2)-(a^4+b^4+c^4)$.
+
+**Reduction.** Both sides of the claim are positive, so it is equivalent to its square, which becomes
+$$a^4+b^4+c^4\ge a^2b^2+b^2c^2+c^2a^2.$$
+
+**Proof of the last inequality.**
+$$a^4+b^4+c^4-a^2b^2-b^2c^2-c^2a^2=\tfrac12\left[(a^2-b^2)^2+(b^2-c^2)^2+(c^2-a^2)^2\right]\ge0.$$
+
+**Equality.** It needs $a^2=b^2=c^2$, i.e. $a=b=c$.
+
+**Remark.** The constant $4\sqrt3$ is sharp. Hadwiger–Finsler strengthens this to $a^2+b^2+c^2\ge4\sqrt3S+(a-b)^2+(b-c)^2+(c-a)^2$.
+
+**Lesson.** A geometric inequality involving an area becomes algebraic through Heron's formula; after squaring it is often a sum of squares.
+@@@ geo2-the-symmedian-and-the-tangents-at-b-and-c.md
+---
+title: The symmedian and the tangents at B and C
+category: geometry/plane
+level: olympiad
+difficulty: 4
+tags: symmedian, tangent-chord angle, areas, law of sines
+date: 2026-11-05
+---
+
+## Statement
+
+Let $ABC$ be a triangle with $\angle A$ acute, inscribed in a circle $\omega$. The tangents to $\omega$ at $B$ and $C$ meet at a point $T$. The line $AT$ meets $BC$ at $D$. Prove that
+$$\frac{BD}{DC}=\frac{c^2}{b^2},\qquad\text{where }b=CA,\ c=AB.$$
+
+## Hint
+
+Compare the areas of triangles $ABT$ and $ACT$, using $TB=TC$ and the tangent–chord angle.
+
+## Solution
+
+**Setup.** $\angle A$ acute $\Rightarrow$ the tangents at $B$ and $C$ meet at $T$ on the other side of $BC$ from $A$; $TB=TC$. By the tangent–chord theorem, $\angle TBC=\angle TCB=\angle A$.
+
+**Angles.** $\angle ABT=\angle ABC+\angle CBT=B+A$, so $\sin\angle ABT=\sin C$; similarly $\sin\angle ACT=\sin B$.
+
+**Area ratio.** $D=AT\cap BC$ so
+$$\frac{BD}{DC}=\frac{[ABT]}{[ACT]}=\frac{c\cdot\sin C}{b\cdot\sin B}=\frac{c^2}{b^2},$$
+using the law of sines.
+
+**Why "symmedian".** The median gives ratio $1$, the bisector $\frac cb$, the symmedian $\frac{c^2}{b^2}$: the reflection of the median in the bisector.
+
+**Remark.** If $\angle A$ is obtuse, the same works. For $\angle A=90^\circ$ the tangents are parallel and $T$ does not exist.
+
+**Lesson.** A ratio of segments on a line equals a ratio of areas with a common base; the tangent–chord angle then makes the sines match the sides.
+@@@ geo2-the-erdos-mordell-inequality.md
+---
+title: The Erdős–Mordell inequality
+category: geometry/plane
+level: olympiad
+difficulty: 5
+tags: Erdős–Mordell, projections, pedal points, geometric inequality
+date: 2026-11-05
+---
+
+## Statement
+
+Let $P$ be a point inside a triangle $ABC$, and let $D,E,F$ be the feet of the perpendiculars from $P$ to the lines $BC$, $CA$, $AB$ respectively. Prove that
+$$PA+PB+PC\ge2\,(PD+PE+PF).$$
+
+## Hint
+
+Show first that $PA\ge\dfrac ca\,PE+\dfrac ba\,PF$. For this, note that $A,F,P,E$ lie on a circle of diameter $AP$, so $EF=PA\sin A$, and compare $EF$ with its projection on $BC$.
+
+## Solution
+
+Let $a,b,c$ be the sides, and $A,B,C$ the angles.
+
+**Step 1: $EF=PA\sin A$.** Since $\angle AFP=\angle AEP=90^\circ$, $E,F$ lie on the circle with diameter $AP$. The chord $EF$ subtends the inscribed angle $A$, so $EF=AP\sin A$.
+
+**Step 2: projection on $BC$.** Place $B=(0,0)$, $C=(a,0)$, $A$ above the $x$-axis. The vector $\vec{PF}$ points toward line $AB$, perpendicular to it, so it is $|PF|\,(-\sin B,\cos B)$; $\vec{PE}$ is $|PE|\,(\sin C,\cos C)$. Then $\vec{FE}=\vec{PE}-\vec{PF}$ has $x$-component $|PE|\sin C+|PF|\sin B$. Since $EF\ge$ its projection on any line,
+$$EF\ge PE\sin C+PF\sin B.$$
+
+**Step 3.** Combining with Step 1: $PA\sin A\ge PE\sin C+PF\sin B$, i.e.
+$$PA\ge\frac ca\,PE+\frac ba\,PF.$$
+By cyclic permutation,
+$$PB\ge\frac ab\,PF+\frac cb\,PD,\qquad PC\ge\frac bc\,PD+\frac ac\,PE.$$
+
+**Step 4: summing.**
+$$PA+PB+PC\ge PD\left(\frac cb+\frac bc\right)+PE\left(\frac ca+\frac ac\right)+PF\left(\frac ba+\frac ab\right)\ge2(PD+PE+PF),$$
+because $x+\frac1x\ge2$. $\blacksquare$
+
+**Equality.** $a=b=c$ and $P$ the centre.
+
+**Lesson.** A segment is longer than its projection; choose the projection direction so that the lengths to compare appear as projections of known perpendiculars.
 @@@ thales-theorem.md
 ---
 title: Thales' theorem
@@ -79,61 +187,6 @@ Hence the tangent length from $B$ is $a-r$ and from $A$ is $b-r$. The hypotenuse
 $$(a-r)+(b-r)=c\quad\Longrightarrow\quad r=\frac{a+b-c}{2}.$$
 
 For the $3$-$4$-$5$ triangle, $r=\dfrac{3+4-5}{2}=1$.
-@@@ distance-from-a-point-to-a-line.md
----
-title: Distance from a point to a line
-category: geometry/analytic
-level: lycee
-difficulty: 2
-tags: lines, projection
-date: 2026-10-31
----
-
-## Statement
-
-Compute the distance from the point $M(1,2)$ to the line $\mathcal D:\ 3x+4y-5=0$.
-
-## Hint
-
-The vector $\vec n=(3,4)$ is normal to $\mathcal D$. Project $M$ onto $\mathcal D$ along $\vec n$.
-
-## Solution
-
-The foot $H$ of the perpendicular from $M$ has the form $H=M-t\,\vec n$. Requiring $H\in\mathcal D$:
-$$3(1-3t)+4(2-4t)-5=0\quad\Longrightarrow\quad6-25t=0\quad\Longrightarrow\quad t=\frac6{25}.$$
-
-Then $MH=|t|\,\|\vec n\|=\dfrac6{25}\cdot5=\dfrac65$.
-
-This agrees with the general formula $d=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}=\dfrac{|3+8-5|}{5}=\dfrac65$.
-@@@ area-from-coordinates.md
----
-title: Area from coordinates
-category: geometry/analytic
-level: lycee
-difficulty: 1
-tags: vectors, area
-date: 2026-10-31
----
-
-## Statement
-
-Compute the area of the triangle with vertices $A(1,2)$, $B(5,3)$ and $C(2,7)$.
-
-## Hint
-
-The area is half the absolute value of the determinant of $\overrightarrow{AB}$ and $\overrightarrow{AC}$.
-
-## Solution
-
-We have $\overrightarrow{AB}=(4,1)$ and $\overrightarrow{AC}=(1,5)$. Then
-$$\text{Area}=\frac12\left|\begin{vmatrix}4&1\\1&5\end{vmatrix}\right|=\frac12|20-1|=\frac{19}2.$$
-
-## Solution
-
-MISSISSIPPI has $11$ letters: $1$ M, $4$ I, $4$ S and $2$ P.
-
-If all letters were different there would be $11!$ arrangements. Swapping identical letters does not change the word, so divide by the number of orderings of each repeated letter:
-$$\frac{11!}{1!\,4!\,4!\,2!}=\frac{39\,916\,800}{1152}=34\,650.$$
 
 @@@ geo-the-reflection-of-the-orthocentre.md
 ---
@@ -1356,41 +1409,7 @@ and Stewart gives $d^2=bc-mn=bc-\frac{a^2bc}{(b+c)^2}=bc\left(1-\frac{a^2}{(b+c)
 **Remark.** Stewart's theorem also gives the length of an altitude or any cevian once $m$ and $n$ are known.
 
 **Lesson.** When two angles are supplementary, write the law of cosines in both triangles and eliminate the cosine.
-@@@ geo2-the-apollonius-circle.md
----
-title: The Apollonius circle
-category: geometry/analytic
-level: olympiad
-difficulty: 3
-tags: locus, Apollonius circle, coordinates, angle bisector
-date: 2026-11-05
----
 
-## Statement
-
-Let $A$ and $B$ be two points at distance $d>0$, and let $k>0$, $k\ne1$.
-
-1. Prove that the locus of the points $P$ with $PA=k\cdot PB$ is a circle. Find its centre and radius.
-2. Let $E$ and $F$ be the two points of line $AB$ on this locus. Prove that the centre of the circle is the midpoint of $EF$.
-3. Let $P$ be a point of the locus not on line $AB$. Prove that $PE$ and $PF$ are the internal and external bisectors of $\angle APB$.
-
-## Hint
-
-Put $A=(0,0)$ and $B=(d,0)$ and square the condition $PA=kPB$.
-
-## Solution
-
-**1.** For $P=(x,y)$: $x^2+y^2=k^2\left((x-d)^2+y^2\right)$, i.e.
-$$(k^2-1)(x^2+y^2)-2k^2d\,x+k^2d^2=0\ \Longleftrightarrow\ \left(x-\frac{k^2d}{k^2-1}\right)^2+y^2=\frac{k^2d^2}{(k^2-1)^2}>0.$$
-So the locus is the circle with centre $\left(\dfrac{k^2d}{k^2-1},0\right)$ and radius $\dfrac{kd}{|k^2-1|}$.
-
-**2.** On line $AB$ (the $x$-axis) the circle meets the axis at $x=\frac{k^2d\pm kd}{k^2-1}$, that is at $x=\frac{kd}{k-1}$ and $x=\frac{kd}{k+1}$. These are the points $F$ and $E$ with $\frac{EA}{EB}=\frac{FA}{FB}=k$. Their midpoint is $\frac{k^2d}{k^2-1}$, the centre. Hence $EF$ is a diameter.
-
-**3.** Since $PA/PB=k=EA/EB$, the point $E$ lies on segment $AB$ and divides it in the ratio of $PA$ to $PB$, so by the converse of the angle bisector theorem $PE$ bisects $\angle APB$ internally. Similarly $F$ lies outside the segment on line $AB$ with $FA/FB=PA/PB$, so $PF$ is the external bisector.
-
-**Remark.** For $k=1$ the locus degenerates to the perpendicular bisector.
-
-**Lesson.** A locus defined by a distance relation is found by coordinates and completing the square; then identify the special points on the axis.
 @@@ geo2-excircles-and-tangent-lengths.md
 ---
 title: Excircles and tangent lengths
@@ -1539,39 +1558,7 @@ Dividing the two relations gives $\dfrac{BD}{DC}=\dfrac{BG}{GC}$.
 **Remark.** If $AD$ is the bisector of $\angle BAC$ and $AG$ the external bisector, then $D$ and $G$ are harmonic conjugates.
 
 **Lesson.** Ceva and Menelaus share a common product; dividing one by the other isolates the harmonic ratio.
-@@@ geo2-the-butterfly-theorem.md
----
-title: The butterfly theorem
-category: geometry/analytic
-level: olympiad
-difficulty: 4
-tags: butterfly theorem, chords, coordinates, Vieta
-date: 2026-11-05
----
 
-## Statement
-
-Let $M$ be the midpoint of a chord $PQ$ of a circle. Through $M$ draw two other chords $AB$ and $CD$. The lines $AD$ and $BC$ meet the line $PQ$ at $X$ and $Y$ respectively (assume they are not parallel to $PQ$). Prove that $M$ is the midpoint of $XY$.
-
-## Hint
-
-Take $M$ as the origin and $PQ$ as the $x$-axis. A line through $M$ in direction $(\cos\theta,\sin\theta)$ meets the circle at the points $t\,(\cos\theta,\sin\theta)$ where $t$ satisfies a quadratic: use Vieta's relations.
-
-## Solution
-
-**Setup.** Put $M=(0,0)$, $P=(-p,0)$, $Q=(p,0)$. The centre is $(0,c)$ and the circle is $x^2+(y-c)^2=p^2+c^2$. For the line through $M$ with unit direction $u=(\cos\theta,\sin\theta)$, the point $tu$ lies on the circle iff
-$$t^2-2ct\sin\theta-p^2=0.$$
-Its two roots satisfy $t_1+t_2=2c\sin\theta$ and $t_1t_2=-p^2$.
-
-**Parametrising.** Let chord $AB$ have direction $u=(\cos\alpha,\sin\alpha)$, $A=t_1u$, $B=t_2u$, and chord $CD$ direction $v=(\cos\beta,\sin\beta)$, $C=s_1v$, $D=s_2v$, with $t_1+t_2=2c\sin\alpha$, $s_1+s_2=2c\sin\beta$, $t_1t_2=s_1s_2=-p^2$.
-
-**The intersections.** For $X=AD\cap Ox$ one computes $x_X=\dfrac{t_1s_2\sin(\alpha-\beta)}{t_1\sin\alpha-s_2\sin\beta}$, and for $Y=BC\cap Ox$, $x_Y=\dfrac{t_2s_1\sin(\alpha-\beta)}{t_2\sin\alpha-s_1\sin\beta}$.
-
-**Showing $x_X+x_Y=0$.** This reduces to
-$$\sin\alpha\;t_1t_2\,(s_1+s_2)-\sin\beta\;s_1s_2\,(t_1+t_2)=0,$$
-which is immediate after substituting Vieta's relations. Hence $x_X=-x_Y$, so $M$ is the midpoint of $XY$. $\blacksquare$
-
-**Lesson.** Parametrise points of a configuration by distance along lines through a base point; the symmetric functions of the roots (Vieta) then do the work.
 @@@ geo2-two-circles-and-a-line-through-a-common-point.md
 ---
 title: Two circles and a line through a common point
@@ -1743,81 +1730,7 @@ the vector $\vec{CA}$ is $\vec{CB}$ rotated by $-60^\circ$, so $ABC$ is equilate
 **Conclusion.** $a^2+b^2+c^2=ab+bc+ca$ iff $a,b,c$ form an equilateral triangle (degenerate when $b=c$ forces $a=b=c$).
 
 **Lesson.** Factor symmetric expressions with cube roots of unity: multiplication by $\omega$ is a rotation by $120^\circ$.
-@@@ geo2-weitzenbock-s-inequality.md
----
-title: Weitzenböck's inequality
-category: geometry/plane
-level: olympiad
-difficulty: 3
-tags: geometric inequality, Heron's formula, area, sum of squares
-date: 2026-11-05
----
 
-## Statement
-
-In a triangle with sides $a,b,c$ and area $S$, prove that
-$$a^2+b^2+c^2\ge4\sqrt3\,S,$$
-with equality iff the triangle is equilateral.
-
-## Hint
-
-Use Heron's formula in the form $16S^2=2a^2b^2+2b^2c^2+2c^2a^2-a^4-b^4-c^4$, and square the inequality.
-
-## Solution
-
-**Heron's formula.** $16S^2=2(a^2b^2+b^2c^2+c^2a^2)-(a^4+b^4+c^4)$.
-
-**Reduction.** Both sides of the claim are positive, so it is equivalent to its square, which becomes
-$$a^4+b^4+c^4\ge a^2b^2+b^2c^2+c^2a^2.$$
-
-**Proof of the last inequality.**
-$$a^4+b^4+c^4-a^2b^2-b^2c^2-c^2a^2=\tfrac12\left[(a^2-b^2)^2+(b^2-c^2)^2+(c^2-a^2)^2\right]\ge0.$$
-
-**Equality.** It needs $a^2=b^2=c^2$, i.e. $a=b=c$.
-
-**Remark.** The constant $4\sqrt3$ is sharp. Hadwiger–Finsler strengthens this to $a^2+b^2+c^2\ge4\sqrt3S+(a-b)^2+(b-c)^2+(c-a)^2$.
-
-**Lesson.** A geometric inequality involving an area becomes algebraic through Heron's formula; after squaring it is often a sum of squares.
-@@@ geo2-the-erdos-mordell-inequality.md
----
-title: The Erdős–Mordell inequality
-category: geometry/plane
-level: olympiad
-difficulty: 5
-tags: Erdős–Mordell, projections, pedal points, geometric inequality
-date: 2026-11-05
----
-
-## Statement
-
-Let $P$ be a point inside a triangle $ABC$, and let $D,E,F$ be the feet of the perpendiculars from $P$ to the lines $BC$, $CA$, $AB$ respectively. Prove that
-$$PA+PB+PC\ge2\,(PD+PE+PF).$$
-
-## Hint
-
-Show first that $PA\ge\dfrac ca\,PE+\dfrac ba\,PF$. For this, note that $A,F,P,E$ lie on a circle of diameter $AP$, so $EF=PA\sin A$, and compare $EF$ with its projection on $BC$.
-
-## Solution
-
-Let $a,b,c$ be the sides, and $A,B,C$ the angles.
-
-**Step 1: $EF=PA\sin A$.** Since $\angle AFP=\angle AEP=90^\circ$, $E,F$ lie on the circle with diameter $AP$. The chord $EF$ subtends the inscribed angle $A$, so $EF=AP\sin A$.
-
-**Step 2: projection on $BC$.** Place $B=(0,0)$, $C=(a,0)$, $A$ above the $x$-axis. The vector $\vec{PF}$ points toward line $AB$, perpendicular to it, so it is $|PF|\,(-\sin B,\cos B)$; $\vec{PE}$ is $|PE|\,(\sin C,\cos C)$. Then $\vec{FE}=\vec{PE}-\vec{PF}$ has $x$-component $|PE|\sin C+|PF|\sin B$. Since $EF\ge$ its projection on any line,
-$$EF\ge PE\sin C+PF\sin B.$$
-
-**Step 3.** Combining with Step 1: $PA\sin A\ge PE\sin C+PF\sin B$, i.e.
-$$PA\ge\frac ca\,PE+\frac ba\,PF.$$
-By cyclic permutation,
-$$PB\ge\frac ab\,PF+\frac cb\,PD,\qquad PC\ge\frac bc\,PD+\frac ac\,PE.$$
-
-**Step 4: summing.**
-$$PA+PB+PC\ge PD\left(\frac cb+\frac bc\right)+PE\left(\frac ca+\frac ac\right)+PF\left(\frac ba+\frac ab\right)\ge2(PD+PE+PF),$$
-because $x+\frac1x\ge2$. $\blacksquare$
-
-**Equality.** $a=b=c$ and $P$ the centre.
-
-**Lesson.** A segment is longer than its projection; choose the projection direction so that the lengths to compare appear as projections of known perpendiculars.
 @@@ geo2-pick-s-theorem-and-lattice-triangles.md
 ---
 title: Pick's theorem and lattice triangles
@@ -1853,37 +1766,127 @@ For part 1, the number of lattice points on a segment from $(0,0)$ to $(p,q)$ (e
 **Remark.** The square is the only regular polygon with lattice vertices in the plane.
 
 **Lesson.** Pick's theorem forces rationality of areas of lattice polygons: any area containing $\sqrt3$ is impossible.
-@@@ geo2-the-symmedian-and-the-tangents-at-b-and-c.md
+
+@@@ distance-from-a-point-to-a-line.md
 ---
-title: The symmedian and the tangents at B and C
-category: geometry/plane
+title: Distance from a point to a line
+category: geometry/analytic
+level: lycee
+difficulty: 2
+tags: lines, projection
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the distance from the point $M(1,2)$ to the line $\mathcal D:\ 3x+4y-5=0$.
+
+## Hint
+
+The vector $\vec n=(3,4)$ is normal to $\mathcal D$. Project $M$ onto $\mathcal D$ along $\vec n$.
+
+## Solution
+
+The foot $H$ of the perpendicular from $M$ has the form $H=M-t\,\vec n$. Requiring $H\in\mathcal D$:
+$$3(1-3t)+4(2-4t)-5=0\quad\Longrightarrow\quad6-25t=0\quad\Longrightarrow\quad t=\frac6{25}.$$
+
+Then $MH=|t|\,\|\vec n\|=\dfrac6{25}\cdot5=\dfrac65$.
+
+This agrees with the general formula $d=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}=\dfrac{|3+8-5|}{5}=\dfrac65$.
+@@@ area-from-coordinates.md
+---
+title: Area from coordinates
+category: geometry/analytic
+level: lycee
+difficulty: 1
+tags: vectors, area
+date: 2026-10-31
+---
+
+## Statement
+
+Compute the area of the triangle with vertices $A(1,2)$, $B(5,3)$ and $C(2,7)$.
+
+## Hint
+
+The area is half the absolute value of the determinant of $\overrightarrow{AB}$ and $\overrightarrow{AC}$.
+
+## Solution
+
+We have $\overrightarrow{AB}=(4,1)$ and $\overrightarrow{AC}=(1,5)$. Then
+$$\text{Area}=\frac12\left|\begin{vmatrix}4&1\\1&5\end{vmatrix}\right|=\frac12|20-1|=\frac{19}2.$$
+
+## Solution
+
+MISSISSIPPI has $11$ letters: $1$ M, $4$ I, $4$ S and $2$ P.
+
+If all letters were different there would be $11!$ arrangements. Swapping identical letters does not change the word, so divide by the number of orderings of each repeated letter:
+$$\frac{11!}{1!\,4!\,4!\,2!}=\frac{39\,916\,800}{1152}=34\,650.$$
+@@@ geo2-the-apollonius-circle.md
+---
+title: The Apollonius circle
+category: geometry/analytic
 level: olympiad
-difficulty: 4
-tags: symmedian, tangent-chord angle, areas, law of sines
+difficulty: 3
+tags: locus, Apollonius circle, coordinates, angle bisector
 date: 2026-11-05
 ---
 
 ## Statement
 
-Let $ABC$ be a triangle with $\angle A$ acute, inscribed in a circle $\omega$. The tangents to $\omega$ at $B$ and $C$ meet at a point $T$. The line $AT$ meets $BC$ at $D$. Prove that
-$$\frac{BD}{DC}=\frac{c^2}{b^2},\qquad\text{where }b=CA,\ c=AB.$$
+Let $A$ and $B$ be two points at distance $d>0$, and let $k>0$, $k\ne1$.
+
+1. Prove that the locus of the points $P$ with $PA=k\cdot PB$ is a circle. Find its centre and radius.
+2. Let $E$ and $F$ be the two points of line $AB$ on this locus. Prove that the centre of the circle is the midpoint of $EF$.
+3. Let $P$ be a point of the locus not on line $AB$. Prove that $PE$ and $PF$ are the internal and external bisectors of $\angle APB$.
 
 ## Hint
 
-Compare the areas of triangles $ABT$ and $ACT$, using $TB=TC$ and the tangent–chord angle.
+Put $A=(0,0)$ and $B=(d,0)$ and square the condition $PA=kPB$.
 
 ## Solution
 
-**Setup.** $\angle A$ acute $\Rightarrow$ the tangents at $B$ and $C$ meet at $T$ on the other side of $BC$ from $A$; $TB=TC$. By the tangent–chord theorem, $\angle TBC=\angle TCB=\angle A$.
+**1.** For $P=(x,y)$: $x^2+y^2=k^2\left((x-d)^2+y^2\right)$, i.e.
+$$(k^2-1)(x^2+y^2)-2k^2d\,x+k^2d^2=0\ \Longleftrightarrow\ \left(x-\frac{k^2d}{k^2-1}\right)^2+y^2=\frac{k^2d^2}{(k^2-1)^2}>0.$$
+So the locus is the circle with centre $\left(\dfrac{k^2d}{k^2-1},0\right)$ and radius $\dfrac{kd}{|k^2-1|}$.
 
-**Angles.** $\angle ABT=\angle ABC+\angle CBT=B+A$, so $\sin\angle ABT=\sin C$; similarly $\sin\angle ACT=\sin B$.
+**2.** On line $AB$ (the $x$-axis) the circle meets the axis at $x=\frac{k^2d\pm kd}{k^2-1}$, that is at $x=\frac{kd}{k-1}$ and $x=\frac{kd}{k+1}$. These are the points $F$ and $E$ with $\frac{EA}{EB}=\frac{FA}{FB}=k$. Their midpoint is $\frac{k^2d}{k^2-1}$, the centre. Hence $EF$ is a diameter.
 
-**Area ratio.** $D=AT\cap BC$ so
-$$\frac{BD}{DC}=\frac{[ABT]}{[ACT]}=\frac{c\cdot\sin C}{b\cdot\sin B}=\frac{c^2}{b^2},$$
-using the law of sines.
+**3.** Since $PA/PB=k=EA/EB$, the point $E$ lies on segment $AB$ and divides it in the ratio of $PA$ to $PB$, so by the converse of the angle bisector theorem $PE$ bisects $\angle APB$ internally. Similarly $F$ lies outside the segment on line $AB$ with $FA/FB=PA/PB$, so $PF$ is the external bisector.
 
-**Why "symmedian".** The median gives ratio $1$, the bisector $\frac cb$, the symmedian $\frac{c^2}{b^2}$: the reflection of the median in the bisector.
+**Remark.** For $k=1$ the locus degenerates to the perpendicular bisector.
 
-**Remark.** If $\angle A$ is obtuse, the same works. For $\angle A=90^\circ$ the tangents are parallel and $T$ does not exist.
+**Lesson.** A locus defined by a distance relation is found by coordinates and completing the square; then identify the special points on the axis.
+@@@ geo2-the-butterfly-theorem.md
+---
+title: The butterfly theorem
+category: geometry/analytic
+level: olympiad
+difficulty: 4
+tags: butterfly theorem, chords, coordinates, Vieta
+date: 2026-11-05
+---
 
-**Lesson.** A ratio of segments on a line equals a ratio of areas with a common base; the tangent–chord angle then makes the sines match the sides.
+## Statement
+
+Let $M$ be the midpoint of a chord $PQ$ of a circle. Through $M$ draw two other chords $AB$ and $CD$. The lines $AD$ and $BC$ meet the line $PQ$ at $X$ and $Y$ respectively (assume they are not parallel to $PQ$). Prove that $M$ is the midpoint of $XY$.
+
+## Hint
+
+Take $M$ as the origin and $PQ$ as the $x$-axis. A line through $M$ in direction $(\cos\theta,\sin\theta)$ meets the circle at the points $t\,(\cos\theta,\sin\theta)$ where $t$ satisfies a quadratic: use Vieta's relations.
+
+## Solution
+
+**Setup.** Put $M=(0,0)$, $P=(-p,0)$, $Q=(p,0)$. The centre is $(0,c)$ and the circle is $x^2+(y-c)^2=p^2+c^2$. For the line through $M$ with unit direction $u=(\cos\theta,\sin\theta)$, the point $tu$ lies on the circle iff
+$$t^2-2ct\sin\theta-p^2=0.$$
+Its two roots satisfy $t_1+t_2=2c\sin\theta$ and $t_1t_2=-p^2$.
+
+**Parametrising.** Let chord $AB$ have direction $u=(\cos\alpha,\sin\alpha)$, $A=t_1u$, $B=t_2u$, and chord $CD$ direction $v=(\cos\beta,\sin\beta)$, $C=s_1v$, $D=s_2v$, with $t_1+t_2=2c\sin\alpha$, $s_1+s_2=2c\sin\beta$, $t_1t_2=s_1s_2=-p^2$.
+
+**The intersections.** For $X=AD\cap Ox$ one computes $x_X=\dfrac{t_1s_2\sin(\alpha-\beta)}{t_1\sin\alpha-s_2\sin\beta}$, and for $Y=BC\cap Ox$, $x_Y=\dfrac{t_2s_1\sin(\alpha-\beta)}{t_2\sin\alpha-s_1\sin\beta}$.
+
+**Showing $x_X+x_Y=0$.** This reduces to
+$$\sin\alpha\;t_1t_2\,(s_1+s_2)-\sin\beta\;s_1s_2\,(t_1+t_2)=0,$$
+which is immediate after substituting Vieta's relations. Hence $x_X=-x_Y$, so $M$ is the midpoint of $XY$. $\blacksquare$
+
+**Lesson.** Parametrise points of a configuration by distance along lines through a base point; the symmetric functions of the roots (Vieta) then do the work.
