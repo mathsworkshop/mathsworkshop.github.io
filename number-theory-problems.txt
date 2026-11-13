@@ -1314,7 +1314,7 @@ Rational roots must be $\pm1$. Test both.
 ---
 title: A sum of radicals
 category: number/irrationality
-level: L1
+level: l1
 difficulty: 4
 order: 1
 tags: radicals, irrationality, algebraicity
