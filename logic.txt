@@ -1,58 +1,3 @@
-@@@ sum-of-squares-by-induction.md
----
-title: Sum of squares by induction
-category: logic/proof-techniques/induction
-level: lycee
-difficulty: 2
-tags: induction, sums
-date: 2026-10-31
----
-
-## Statement
-
-Prove that for every integer $n\ge1$,
-$$1^2+2^2+\cdots+n^2=\frac{n(n+1)(2n+1)}{6}.$$
-
-## Hint
-
-Prove it for $n=1$, then show that if it holds for $n$ it holds for $n+1$.
-
-## Solution
-
-**Base case.** For $n=1$, the left side is $1$ and the right side is $\frac{1\cdot2\cdot3}{6}=1$.
-
-**Induction step.** Assume the formula holds for some $n\ge1$. Then
-$$\sum_{k=1}^{n+1}k^2=\frac{n(n+1)(2n+1)}{6}+(n+1)^2=\frac{(n+1)\left[n(2n+1)+6(n+1)\right]}{6}.$$
-Since $n(2n+1)+6(n+1)=2n^2+7n+6=(n+2)(2n+3)$, this equals $\dfrac{(n+1)(n+2)(2n+3)}{6}$, which is the formula for $n+1$.
-
-By induction, the formula holds for all $n\ge1$.
-@@@ bernoulli-inequality.md
----
-title: Bernoulli's inequality
-category: logic/proof-techniques/induction
-level: l1
-difficulty: 2
-tags: induction, inequalities
-date: 2026-10-31
----
-
-## Statement
-
-Prove that for every real $x\ge-1$ and every integer $n\ge0$,
-$$(1+x)^n\ge1+nx.$$
-
-## Hint
-
-Use induction on $n$, and remember that $1+x\ge0$.
-
-## Solution
-
-**Base case.** For $n=0$ both sides equal $1$.
-
-**Induction step.** Assume $(1+x)^n\ge1+nx$. Since $1+x\ge0$, multiplying by $1+x$ keeps the inequality:
-$$(1+x)^{n+1}\ge(1+nx)(1+x)=1+(n+1)x+nx^2\ge1+(n+1)x.$$
-
-So the statement holds for $n+1$, and by induction for all $n\ge0$.
 @@@ proof-two-implications-imply-not-p.md
 ---
 title: Two implications imply the negation of $p$
@@ -474,7 +419,41 @@ Consider the "set of all sets not containing themselves".
 **Consequence.** Naive comprehension (every property defines a set) is inconsistent. Axiomatic set theory (ZFC) restricts comprehension to avoid self-reference.
 
 **Conclusion.** Russell's paradox motivated modern axiomatic set theory.
+@@@ logic-summary.md
+---
+title: Summary of logic and proof techniques
+category: logic/proof-techniques
+level: lycee
+difficulty: 2
+tags: summary, proof, logic
+date: 2026-11-03
+---
 
+## Statement
+
+Summarize the key proof techniques.
+
+## Hint
+
+Review the main methods.
+
+## Solution
+
+**Direct proof.** Assume hypothesis, derive conclusion step by step.
+
+**Contraposition.** Prove $\neg Q\Rightarrow\neg P$ instead of $P\Rightarrow Q$.
+
+**Contradiction.** Assume the negation of the claim, derive a contradiction.
+
+**Cases.** Split into exhaustive cases and prove each.
+
+**Counterexample.** To disprove a universal statement, exhibit one counterexample.
+
+**Induction.** Base case + inductive step (weak, strong, or structural).
+
+**Quantifiers.** $\forall$ and $\exists$; order matters.
+
+**Conclusion.** These techniques cover most standard mathematical proofs.
 @@@ logic-proof-of-existence.md
 ---
 title: Existence proofs
@@ -500,6 +479,62 @@ Consider $x=\sqrt2$, $y=\sqrt2$; if $x^y$ is rational, done. Otherwise try $x=(\
 **Attempt 2.** If not, set $x=(\sqrt2)^{\sqrt2}$, $y=\sqrt2$. Then $x^y=((\sqrt2)^{\sqrt2})^{\sqrt2}=(\sqrt2)^2=2$, rational. And $x$ is irrational (by assumption).
 
 **Conclusion.** In all cases, there exist irrational $x,y$ with $x^y$ rational. This proof is non-constructive in determining which case holds.
+
+@@@ sum-of-squares-by-induction.md
+---
+title: Sum of squares by induction
+category: logic/proof-techniques/induction
+level: lycee
+difficulty: 2
+tags: induction, sums
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for every integer $n\ge1$,
+$$1^2+2^2+\cdots+n^2=\frac{n(n+1)(2n+1)}{6}.$$
+
+## Hint
+
+Prove it for $n=1$, then show that if it holds for $n$ it holds for $n+1$.
+
+## Solution
+
+**Base case.** For $n=1$, the left side is $1$ and the right side is $\frac{1\cdot2\cdot3}{6}=1$.
+
+**Induction step.** Assume the formula holds for some $n\ge1$. Then
+$$\sum_{k=1}^{n+1}k^2=\frac{n(n+1)(2n+1)}{6}+(n+1)^2=\frac{(n+1)\left[n(2n+1)+6(n+1)\right]}{6}.$$
+Since $n(2n+1)+6(n+1)=2n^2+7n+6=(n+2)(2n+3)$, this equals $\dfrac{(n+1)(n+2)(2n+3)}{6}$, which is the formula for $n+1$.
+
+By induction, the formula holds for all $n\ge1$.
+@@@ bernoulli-inequality.md
+---
+title: Bernoulli's inequality
+category: logic/proof-techniques/induction
+level: l1
+difficulty: 2
+tags: induction, inequalities
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for every real $x\ge-1$ and every integer $n\ge0$,
+$$(1+x)^n\ge1+nx.$$
+
+## Hint
+
+Use induction on $n$, and remember that $1+x\ge0$.
+
+## Solution
+
+**Base case.** For $n=0$ both sides equal $1$.
+
+**Induction step.** Assume $(1+x)^n\ge1+nx$. Since $1+x\ge0$, multiplying by $1+x$ keeps the inequality:
+$$(1+x)^{n+1}\ge(1+nx)(1+x)=1+(n+1)x+nx^2\ge1+(n+1)x.$$
+
+So the statement holds for $n+1$, and by induction for all $n\ge0$.
 
 @@@ logic-proof-induction-sum.md
 ---
@@ -1165,41 +1200,7 @@ Then $S=[a,b]$.
 
 **Conclusion.** Real induction is a powerful tool for proofs on intervals.
 
-@@@ logic-summary.md
----
-title: Summary of logic and proof techniques
-category: logic/proof-techniques
-level: lycee
-difficulty: 2
-tags: summary, proof, logic
-date: 2026-11-03
----
 
-## Statement
-
-Summarize the key proof techniques.
-
-## Hint
-
-Review the main methods.
-
-## Solution
-
-**Direct proof.** Assume hypothesis, derive conclusion step by step.
-
-**Contraposition.** Prove $\neg Q\Rightarrow\neg P$ instead of $P\Rightarrow Q$.
-
-**Contradiction.** Assume the negation of the claim, derive a contradiction.
-
-**Cases.** Split into exhaustive cases and prove each.
-
-**Counterexample.** To disprove a universal statement, exhibit one counterexample.
-
-**Induction.** Base case + inductive step (weak, strong, or structural).
-
-**Quantifiers.** $\forall$ and $\exists$; order matters.
-
-**Conclusion.** These techniques cover most standard mathematical proofs.
 
 @@@ logic-summary-induction.md
 ---
