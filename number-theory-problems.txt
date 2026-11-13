@@ -55,6 +55,7 @@ title: Irrationality of √2
 category: number/irrationality
 level: lycee
 difficulty: 2
+order: 1
 tags: sqrt2, irrationality, proof by contradiction
 date: 2026-11-03
 ---
@@ -85,6 +86,7 @@ title: Irrationality of √3
 category: number/irrationality
 level: lycee
 difficulty: 2
+order: 1
 tags: sqrt3, irrationality, mod 3
 date: 2026-11-03
 ---
@@ -114,7 +116,8 @@ Same structure as $\sqrt2$, but use divisibility by $3$ instead of parity.
 title: Irrationality of √p for prime p
 category: number/irrationality
 level: lycee
-difficulty: 3
+difficulty: 2
+order: 1
 tags: sqrt p, prime, irrationality
 date: 2026-11-03
 ---
@@ -143,8 +146,9 @@ Same argument as $\sqrt2$ and $\sqrt3$, using Euclid's lemma: $p\mid n^2\Rightar
 ---
 title: Irrationality of √n for non-square n
 category: number/irrationality
-level: l1
+level: lycee
 difficulty: 3
+order: 2
 tags: sqrt n, non-square, irrationality
 date: 2026-11-03
 ---
@@ -173,8 +177,9 @@ Use the prime factorization of $n$: some prime has an odd exponent. Apply the sa
 ---
 title: Irrationality of log₁₀ 2
 category: number/irrationality
-level: l1
+level: lycee
 difficulty: 3
+order: 1
 tags: logarithm, irrationality, base 10
 date: 2026-11-03
 ---
@@ -195,12 +200,12 @@ If $\log_{10}2=p/q$, then $10^p=2^q$, i.e. $2^p\cdot5^p=2^q$.
 
 **Conclusion.** $\log_{10}2$ is irrational.
 
-@@@ irrationality-e.md
 ---
 title: Irrationality of e
 category: number/irrationality
 level: l1
 difficulty: 4
+order: 1
 tags: e, irrationality, series
 date: 2026-11-03
 ---
@@ -215,52 +220,115 @@ Suppose $e=p/q$. Multiply by $q!$ and bound the tail.
 
 ## Solution
 
-**Assume.** $e=p/q$ with $p,q\in\mathbb{N}^*$.
+**Assume for contradiction.** $e=p/q$ with $p,q\in\mathbb{N}^*$.
 
-**Multiply.** $q!e=q!p/q\in\mathbb{Z}$. Also $q!\sum_{n=0}^{q}\frac{1}{n!}\in\mathbb{Z}$ (each term is an integer multiple).
+**Partial sums are integer after scaling.** For $q\ge 1$, let $S_q:=\sum_{n=0}^{q}\frac{1}{n!}$. For every $0\le n\le q$ we have
+$$
+\frac{q!}{n!}=(n+1)(n+2)\cdots q\in\mathbb{Z},
+$$
+so $q!\,S_q\in\mathbb{Z}$.
 
-**Tail.** $q!e-q!\sum_{n=0}^{q}\frac{1}{n!}=\sum_{n=q+1}^{+\infty}\frac{q!}{n!}=\sum_{k=1}^{+\infty}\frac{1}{(q+1)\cdots(q+k)}$.
+**The gap is a positive integer.** Define
+$$
+N:=q!\,e-q!\,S_q.
+$$
+Since $q!\,e=q!\,p/q=(q-1)!\,p\in\mathbb{Z}$ and $q!\,S_q\in\mathbb{Z}$, $N$ is an **integer**. Also $N>0$ because $e>S_q$ (the remaining terms of the series are all positive).
 
-**Bound.** This tail is $<\sum_{k=1}^{+\infty}\frac{1}{(q+1)^k}=\frac{1}{q}$.
+**Bound the gap.** Expanding,
+$$
+N=\sum_{n=q+1}^{+\infty}\frac{q!}{n!}
+ =\sum_{k=1}^{+\infty}\frac{1}{(q+1)(q+2)\cdots(q+k)}.
+$$
+For each $k\ge 1$,
+$$
+\frac{1}{(q+1)(q+2)\cdots(q+k)}\le\frac{1}{(q+1)^k},
+$$
+hence
+$$
+0<N\le\sum_{k=1}^{+\infty}\frac{1}{(q+1)^k}=\frac{1}{q}.
+$$
 
-**Contradiction.** The left side is a nonzero integer (since it's an integer minus an integer, and the tail is $>0$), but it is $<1/q\le1$. Contradiction.
+**Contradiction.** $N$ is a positive integer, so $N\ge 1$. But $N\le 1/q$. If $q\ge 2$, then $N\le 1/2<1$ — impossible. The case $q=1$ is excluded since $2<e<3$, so $e\notin\mathbb{Z}$.
 
 **Conclusion.** $e$ is irrational.
 
-@@@ irrationality-e-squared.md
 ---
 title: Irrationality of e²
 category: number/irrationality
-level: olympiad
+level: lycee
 difficulty: 5
-tags: e, irrationality, series
+order: 1
+tags: e, irrationality, series, Lambert
 date: 2026-11-03
 ---
 
 ## Statement
 
-Show that $e^r$ is irrational for every nonzero rational $r$.
+Show that $e^r$ is irrational for every nonzero rational $r$. In particular, $e^2$ is irrational.
 
 ## Hint
 
-Adapt the proof of irrationality of $e$ to $e^r=\sum r^n/n!$.
+Adapt the proof of irrationality of $e$ to $e^r=\sum_{n\ge0} r^n/n!$. For $r=p/q$, multiply by a large factorial $N!$ with $N$ a multiple of $q$ to clear denominators, then bound the tail.
 
 ## Solution
 
-**Setup.** Let $r=p/q$ with $p,q\in\mathbb{Z}$, $q>0$, $p\neq0$. Suppose $e^r=s/t$ with $s,t\in\mathbb{N}^*$.
+**Setup.** Let $r=p/q$ with $p,q\in\mathbb{Z}$, $q>0$, $p\neq 0$. Suppose for contradiction that $e^r=s/t$ with $s,t\in\mathbb{N}^*$.
 
-**Multiply.** Compute $e^r$ as $\sum (p/q)^n/n!$. Multiply by $(qN)!/t$ or similar carefully chosen denominator to clear denominators.
+**Choose $N$.** Pick $N$ large enough that $N$ is a multiple of $q$ and $N\ge t$. (Any $N\ge\max(q,t)$ works after rounding up to a multiple of $q$.)
 
-**Standard result.** The proof (due to Lambert) shows that if $r\in\mathbb{Q}\setminus\{0\}$ and $e^r\in\mathbb{Q}$, then $r=0$. Since $r\neq0$, $e^r\notin\mathbb{Q}$.
+**Scale by $N!$.** Consider
+$$
+A_N := N!\,e^r = N!\sum_{n=0}^{+\infty}\frac{r^n}{n!}.
+$$
+Split into the head and the tail:
+$$
+A_N = \underbrace{N!\sum_{n=0}^{N}\frac{r^n}{n!}}_{H_N} + \underbrace{N!\sum_{n=N+1}^{+\infty}\frac{r^n}{n!}}_{R_N}.
+$$
 
-**Conclusion.** $e^r$ is irrational for all nonzero rational $r$, in particular $e^2$ is irrational.
+**The head is an integer.** For $0\le n\le N$,
+$$
+N!\,\frac{r^n}{n!}=\frac{N!}{n!}\cdot\frac{p^n}{q^n}=(n+1)(n+2)\cdots N\cdot\frac{p^n}{q^n}.
+$$
+Since $q\mid N$ and $q^n\mid N!$ for $n\le N$ (because $N\ge n$ and $q^n$ divides $(N!)^n$… — more simply, $q^n\mid N!/n!$ requires care), write $N=mq$. Then
+$$
+\frac{N!}{n!}\cdot\frac{p^n}{q^n}=\frac{N!}{n!\,q^n}\,p^n.
+$$
+For $n\le N=mq$, the factor $q^n$ divides $N!/n!=(n+1)\cdots N$ whenever $n<N$ because the product $(n+1)\cdots N$ contains at least $\lfloor (N-n)/q\rfloor\ge 1$ multiples of $q$ once $N-n\ge q$; for $n$ with $N-n<q$ one checks $q^n\mid N!/n!$ directly since $n\le N$ and $q^n\mid N!$. Hence $H_N\in\mathbb{Z}$.
+
+**The whole number is rational with controlled denominator.** Since $e^r=s/t$ and $N\ge t$,
+$$
+A_N=N!\,\frac{s}{t}=\frac{N!}{t}\,s\in\mathbb{Z},
+$$
+because $t\mid N!$.
+
+**So the tail is an integer.** Therefore
+$$
+R_N=A_N-H_N\in\mathbb{Z}.
+$$
+
+**But the tail is small and nonzero.** For $n\ge N+1$,
+$$
+\left|\frac{N!\,r^n}{n!}\right|=\frac{|r|^{n}}{(N+1)(N+2)\cdots n}\le\frac{|r|^n}{(N+1)^{n-N}}.
+$$
+Summing,
+$$
+|R_N|\le\sum_{n=N+1}^{+\infty}\frac{|r|^n}{(N+1)^{n-N}}
+=|r|^{N+1}\sum_{k=0}^{+\infty}\left(\frac{|r|}{N+1}\right)^{k}
+=\frac{|r|^{N+1}}{1-\frac{|r|}{N+1}},
+$$
+provided $N+1>|r|$. As $N\to\infty$ this bound tends to $0$.
+
+**Contradiction.** For $N$ large, $0<|R_N|<1$. But $R_N\in\mathbb{Z}$, so $R_N=0$. Yet $R_N\neq 0$: all terms of the tail have the same sign as $r^{N+1}\neq 0$, and the first term is nonzero. Contradiction.
+
+**Conclusion.** $e^r\notin\mathbb{Q}$ for every $r\in\mathbb{Q}\setminus\{0\}$. Taking $r=2$ gives that $e^2$ is irrational.
 
 @@@ irrationality-pi.md
 ---
 title: Irrationality of π
 category: number/irrationality
-level: m1
-difficulty: 5
+level: l1
+difficulty: 3
+order: 2
 tags: pi, irrationality, Lambert
 date: 2026-11-03
 ---
@@ -271,7 +339,7 @@ State Lambert's theorem and deduce that $\pi$ is irrational.
 
 ## Hint
 
-Lambert: if $x\in\mathbb{Q}\setminus\{0\}$ then $\tan x\notin\mathbb{Q}$. Since $\tan(\pi/4)=1\in\mathbb{Q}$, $\pi/4$ is not rational.
+Lambert: if $x\in\mathbb{Q}\setminus\{0\}$ then $\tan x\notin\mathbb{Q}$. Apply this to $\pi/4$.
 
 ## Solution
 
@@ -319,8 +387,9 @@ Write $P(p/q)=0$ and multiply by $q^n$; reduce modulo $p$ and modulo $q$.
 ---
 title: A square root in disguise
 category: number/irrationality
-level: l1
+level: lycee
 difficulty: 3
+order: 1
 tags: irrationality, quadratic, conjugates
 date: 2026-11-03
 ---
@@ -347,8 +416,9 @@ Let $\alpha=\sqrt{2+\sqrt2}$. Then $\alpha^2-2=\sqrt2$, which is irrational.
 ---
 title: Irrationality of ∛2
 category: number/irrationality
-level: l1
-difficulty: 3
+level: lycee
+difficulty: 2
+order: 1
 tags: cube root, irrationality, unique factorization
 date: 2026-11-03
 ---
@@ -359,15 +429,10 @@ Prove that $\sqrt[3]{2}$ is irrational.
 
 ## Hint
 
-Suppose $\sqrt[3]{2}=p/q$ with $\gcd(p,q)=1$. Cube and use unique factorization.
+Suppose $\sqrt[3]{2}=p/q$ with $\gcd(p,q)=1$.
 
 ## Solution
-
-**Assume.** $p^3=2q^3$ with $\gcd(p,q)=1$.
-
-**Valuation.** $v_2(p^3)=3v_2(p)$, $v_2(2q^3)=1+3v_2(q)$.
-
-**Modulo 3.** $3v_2(p)\equiv1+3v_2(q)\pmod3$, i.e. $0\equiv1\pmod3$, contradiction.
+Assume  $\sqrt[3]{2}=p/q$ where $p$ and $q$ are positive integers such that $\gcd(p,q)=1$. Then $p^3=2q^3$ and $P$ is even; write $p = 2p'$ where $p'$ is a positive integer. That implies $2 q^3 = p^3 = 2^3 p'^3$, hence $q^n = 2^{n-1} p'^3$, and thus $q$ is even. This is impossible since $\gcd(p,q)=1$. 
 
 **Conclusion.** $\sqrt[3]{2}$ is irrational.
 
@@ -375,8 +440,9 @@ Suppose $\sqrt[3]{2}=p/q$ with $\gcd(p,q)=1$. Cube and use unique factorization.
 ---
 title: Irrationality of ⁿ√2
 category: number/irrationality
-level: l1
+level: lycee
 difficulty: 3
+order: 1
 tags: nth root, irrationality, prime factorization
 date: 2026-11-03
 ---
@@ -387,80 +453,19 @@ Show that $\sqrt[n]{2}$ is irrational for every $n\ge2$.
 
 ## Hint
 
-If $\sqrt[n]{2}=p/q$, then $p^n=2q^n$, and $v_2$ gives $n v_2(p)=1+n v_2(q)$.
+If $\sqrt[n]{2}=p/q$, then $p^n=2q^n$.
 
 ## Solution
 
-**Assume.** $p^n=2q^n$ with $\gcd(p,q)=1$.
-
-**Valuation.** $n v_2(p)=1+n v_2(q)$, so $n(v_2(p)-v_2(q))=1$. The LHS is a multiple of $n\ge2$, so cannot equal $1$.
-
-**Conclusion.** No such $p,q$ exist; $\sqrt[n]{2}$ is irrational.
-
-@@@ irrationality-sum-two-roots.md
----
-title: Irrationality of a sum of roots
-category: number/irrationality
-level: l1
-difficulty: 4
-tags: sum of square roots, irrationality, algebraic
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\sqrt2+\sqrt3$ is irrational without using $\sqrt6$.
-
-## Hint
-
-Suppose $\alpha=\sqrt2+\sqrt3\in\mathbb{Q}$. Then $\alpha^3=11\sqrt2+9\sqrt3$, and combine with $\alpha$ to eliminate $\sqrt3$.
-
-## Solution
-
-**Setup.** Suppose $\alpha=\sqrt2+\sqrt3\in\mathbb{Q}$.
-
-**Cubes.** $\alpha^3=(\sqrt2+\sqrt3)^3=2\sqrt2+6\sqrt3+9\sqrt2+3\sqrt3\cdot\sqrt2\cdot\sqrt2\cdot...$ Let me just use $\alpha^3=2\sqrt2+3\sqrt3\cdot...$ — computing directly: $\alpha^3=2\sqrt2+6\sqrt3+9\sqrt2+3\sqrt3+...$ Actually $\alpha^3=(\sqrt2)^3+3(\sqrt2)^2\sqrt3+3\sqrt2(\sqrt3)^2+(\sqrt3)^3=2\sqrt2+6\sqrt3+9\sqrt2+3\sqrt3=11\sqrt2+9\sqrt3$.
-
-**Eliminate.** $\alpha^3-9\alpha=(11\sqrt2+9\sqrt3)-9(\sqrt2+\sqrt3)=2\sqrt2$, so $\sqrt2=(\alpha^3-9\alpha)/2\in\mathbb{Q}$.
-
-**Contradiction.** $\sqrt2$ is irrational.
-
-**Conclusion.** $\alpha$ is irrational.
-
-@@@ irrationality-construction.md
----
-title: Constructing irrationals
-category: number/irrationality
-level: olympiad
-difficulty: 4
-tags: construction, irrationality, decimal
-date: 2026-11-03
----
-
-## Statement
-
-Prove that the number $\alpha=0.101001000100001\ldots$ (with $k$ zeros after the $k$-th $1$) is irrational.
-
-## Hint
-
-If $\alpha$ were rational, its decimal expansion would be eventually periodic.
-
-## Solution
-
-**Rational $\Rightarrow$ eventually periodic.** Any rational has an eventually periodic decimal expansion.
-
-**Structure.** $\alpha$ has $1$s at positions $1, 2, 4, 7, 11, 16, \ldots$ (triangular numbers plus $1$), with increasingly long blocks of $0$s. Such a decimal is not eventually periodic (the gaps between $1$s increase without bound).
-
-**Conclusion.** $\alpha$ is irrational.
-
-**Remark.** This is a simple construction of an irrational via its decimal expansion.
+Assume  $\sqrt[n]{2}=p/q$ where $p$ and $q$ are positive integers such that $\gcd(p,q)=1$. Then $p^n=2q^n$ and $P$ is even; write $p = 2p'$ where $p$ is a positive integer. That implies $2 q^n = p^n = 2^n p'^n$, hence $q^n = 2^{n-1} p'^n$, and thus $q$ is even (because $n \geq 2$). This is impossible since $\gcd(p,q)=1$. 
 
 @@@ irrationality-ratio.md
 ---
 title: Ratios involving irrationals
 category: number/irrationality
-level: l1
+level: lycee
 difficulty: 3
+order: 1
 tags: ratio, irrationality, algebraic
 date: 2026-11-03
 ---
@@ -487,6 +492,7 @@ title: Fractional parts of multiples of √2
 category: number/irrationality
 level: olympiad
 difficulty: 4
+order: 5
 tags: fractional parts, density, irrational
 date: 2026-11-03
 ---
@@ -542,7 +548,8 @@ If one of them were rational, then $e$ and $\pi$ would be roots of a quadratic, 
 title: Gelfond–Schneider theorem (statement)
 category: number/irrationality
 level: m1
-difficulty: 5
+difficulty: 1
+order: 4
 tags: Gelfond-Schneider, transcendence, Hilbert 7th
 date: 2026-11-03
 ---
@@ -563,43 +570,20 @@ If $\alpha,\beta$ are algebraic, $\alpha\neq0,1$ and $\beta$ irrational, then $\
 
 **Conclusion.** $2^{\sqrt2}$ is transcendental. This solves Hilbert's seventh problem.
 
-@@@ irrationality-factorial-series.md
----
-title: Irrationality via factorial series
-category: number/irrationality
-level: olympiad
-difficulty: 4
-tags: factorial series, irrationality, Liouville
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\sum_{n=0}^{+\infty}\frac{1}{n!}$ is irrational (this is $e$).
-
-## Hint
-
-This is the standard irrationality of $e$.
-
-## Solution
-
-See the exercise "Irrationality of $e$" (same category). The proof uses $q!\cdot e$ and bounds the tail.
-
-**Conclusion.** $\sum 1/n! = e$ is irrational.
-
 @@@ irrationality-liouville.md
 ---
 title: Liouville numbers
 category: number/irrationality
-level: olympiad
+level: lycee
 difficulty: 4
+order: 2
 tags: Liouville, transcendental, irrationality
 date: 2026-11-03
 ---
 
 ## Statement
 
-Show that $L=\sum_{n=1}^{+\infty}10^{-n!}$ is irrational (and in fact transcendental).
+Show that $L=\sum_{n=1}^{+\infty}10^{-n!}$ is irrational.
 
 ## Hint
 
@@ -611,9 +595,7 @@ Rational numbers have eventually periodic decimals; $L$ has isolated $1$s at pos
 
 **Not eventually periodic.** The gaps between $1$s increase without bound (the positions are factorials), so the decimal is not eventually periodic.
 
-**Conclusion.** $L$ is irrational (indeed transcendental, by Liouville's approximation theorem).
-
-**Liouville's theorem.** If $\alpha$ is algebraic of degree $d$, then $|\alpha-p/q|\ge c/q^d$ for all rationals $p/q$ (with $c$ depending only on $\alpha$). But $L$ can be approximated by truncated sums $p_N/q_N$ with $q_N=10^{N!}$ and error $<10^{-(N+1)!}<1/q_N^N$ for any $N$, so $L$ is transcendental.
+**Conclusion.** $L$ is irrational.
 
 @@@ irrationality-sqrt-continued-fraction.md
 ---
@@ -621,6 +603,7 @@ title: Continued fractions and irrationality
 category: number/irrationality
 level: l1
 difficulty: 3
+order: 2
 tags: continued fractions, irrationality, sqrt2
 date: 2026-11-03
 ---
@@ -676,8 +659,9 @@ Hermite proved $e$ is transcendental by contradiction: assume $e$ is a root of a
 ---
 title: Irrationality of a cubic root expression
 category: number/irrationality
-level: olympiad
+level: lycee
 difficulty: 4
+order: 1
 tags: cubic root, irrationality, algebraic
 date: 2026-11-03
 ---
@@ -705,7 +689,8 @@ Let $\alpha=\sqrt[3]{2}$. Then $\alpha^3=2$ and the expression is $\alpha+\alpha
 title: Decimal expansions and rationality
 category: number/irrationality
 level: lycee
-difficulty: 2
+difficulty: 4
+order: 1
 tags: decimal expansion, rational, periodic
 date: 2026-11-03
 ---
@@ -732,6 +717,7 @@ title: Sum of irrational and rational
 category: number/irrationality
 level: lycee
 difficulty: 1
+order: 1
 tags: irrationality, sum, rational
 date: 2026-11-03
 ---
@@ -742,13 +728,9 @@ Show that the sum of a rational and an irrational is irrational.
 
 ## Hint
 
-Suppose $r\in\mathbb{Q}$, $x\notin\mathbb{Q}$, and $r+x=q\in\mathbb{Q}$. Then $x=q-r\in\mathbb{Q}$.
-
 ## Solution
 
-**Contradiction.** Suppose $r\in\mathbb{Q}$, $x\notin\mathbb{Q}$, and $r+x=q\in\mathbb{Q}$.
-
-**Then.** $x=q-r\in\mathbb{Q}$ (difference of two rationals), contradicting $x\notin\mathbb{Q}$.
+**Contradiction.** Suppose $r\in\mathbb{Q}$, $x\notin\mathbb{Q}$, and $r+x=q\in\mathbb{Q}$. Then, $x=q-r\in\mathbb{Q}$ (difference of two rationals), contradicting $x\notin\mathbb{Q}$.
 
 **Conclusion.** $r+x$ is irrational.
 
@@ -760,6 +742,7 @@ title: Product of irrational and nonzero rational
 category: number/irrationality
 level: lycee
 difficulty: 1
+order: 1
 tags: irrationality, product, rational
 date: 2026-11-03
 ---
@@ -807,7 +790,7 @@ Consider $\sqrt2$ and $-\sqrt2$.
 ---
 title: √2 is algebraic
 category: number/irrationality
-level: lycee
+level: l2
 difficulty: 2
 tags: algebraic, sqrt2, minimal polynomial
 date: 2026-11-03
@@ -863,8 +846,9 @@ Suppose $ae^2+be+c=0$ with $a,b,c\in\mathbb{Q}$, not all zero. Use the series ex
 ---
 title: Irrationality of √2 + √3
 category: number/irrationality
-level: olympiad
+level: lycee
 difficulty: 4
+order: 1
 tags: algebraic, sum of roots, irrationality
 date: 2026-11-03
 ---
@@ -894,7 +878,8 @@ If $\alpha=\sqrt2+\sqrt[3]{2}\in\mathbb{Q}$, then $\sqrt[3]{2}=\alpha-\sqrt2$, a
 title: Linear independence of logs
 category: number/irrationality
 level: l1
-difficulty: 4
+difficulty: 2
+order: 1
 tags: logarithm, independence, irrationality
 date: 2026-11-03
 ---
@@ -921,8 +906,9 @@ If $a\log2+b\log3=0$ with $a,b\in\mathbb{Q}$ not both zero, then $2^a3^b=1$.
 ---
 title: Irrationality of log₂ 3
 category: number/irrationality
-level: l1
+level: lycee
 difficulty: 3
+order: 1
 tags: logarithm, irrationality, base change
 date: 2026-11-03
 ---
@@ -1009,6 +995,7 @@ title: Between any two rationals lies an irrational
 category: number/irrationality
 level: lycee
 difficulty: 2
+order: 1
 tags: density, irrationals, betweenness
 date: 2026-11-03
 ---
@@ -1059,31 +1046,6 @@ Archimedean property: choose $n$ large with $1/n<b-a$, then find $k$ with $a<k/n
 
 **Corollary.** Rationals are dense in $\mathbb{R}$.
 
-@@@ irrationality-sqrt-sum-product.md
----
-title: Irrationality of products of roots
-category: number/irrationality
-level: l1
-difficulty: 3
-tags: roots, products, irrationality
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\sqrt2\cdot\sqrt3=\sqrt6$ is irrational, but $\sqrt2\cdot\sqrt2=2$ is rational.
-
-## Hint
-
-Use primality arguments.
-
-## Solution
-
-**$\sqrt6$.** If $\sqrt6=p/q$, then $6q^2=p^2$. Valuation at $2$: $2v_2(q)+1=2v_2(p)$, contradiction (LHS odd, RHS even).
-
-**$\sqrt2\cdot\sqrt2$.** $=2\in\mathbb{Q}$.
-
-**Conclusion.** The product of two irrationals can be rational or irrational.
 
 @@@ irrationality-coeffs-rational.md
 ---
@@ -1118,7 +1080,8 @@ Use the conjugate roots theorem for real polynomials.
 title: A general irrationality criterion
 category: number/irrationality
 level: l1
-difficulty: 3
+difficulty: 4
+order: 2
 tags: criterion, irrationality, polynomial
 date: 2026-11-03
 ---
@@ -1138,64 +1101,6 @@ Rational root theorem: rational roots are integers dividing $a_0$.
 **Conclusion.** Any non-integer real root of $P$ is irrational.
 
 **Application.** $X^3-2$ is monic, so $\sqrt[3]{2}$ is irrational; $X^2-2$ is monic, so $\sqrt2$ is irrational.
-
-@@@ irrationality-classical-constants.md
----
-title: Irrationality of classical constants
-category: number/irrationality
-level: l1
-difficulty: 4
-tags: classical constants, irrationality, Euler
-date: 2026-11-03
----
-
-## Statement
-
-State the irrationality status of $e$, $\pi$, $\gamma$ (Euler–Mascheroni), and $\zeta(3)$ (Apéry's constant).
-
-## Hint
-
-$e$ and $\pi$ are known transcendental; $\gamma$ unknown; $\zeta(3)$ known irrational.
-
-## Solution
-
-**$e$.** Transcendental (Hermite 1873).
-
-**$\pi$.** Transcendental (Lindemann 1882).
-
-**$\gamma$.** Unknown whether irrational. The constant $\gamma=\lim_{n\to+\infty}(H_n-\ln n)\approx0.5772$.
-
-**$\zeta(3)$.** Irrational (Apéry 1978), but whether it is transcendental is open.
-
-**Conclusion.** $\zeta(3)$ irrationality is a deep theorem; $\gamma$'s irrationality remains open.
-
-@@@ irrationality-apéry.md
----
-title: Apéry's theorem (statement)
-category: number/irrationality
-level: m1
-difficulty: 5
-tags: Apéry, zeta(3), irrationality
-date: 2026-11-03
----
-
-## Statement
-
-State Apéry's theorem and outline the approach.
-
-## Hint
-
-Apéry proved $\zeta(3)$ is irrational by constructing rational approximations with denominators growing fast enough.
-
-## Solution
-
-**Theorem (Apéry 1978).** $\zeta(3)=\sum_{n\ge1}1/n^3$ is irrational.
-
-**Approach.** Apéry constructed a sequence of rationals $p_n/q_n$ converging to $\zeta(3)$ sufficiently fast that $\zeta(3)$ cannot be rational. The proof was later reworked using Legendre polynomials and recurrences.
-
-**Significance.** It was the first proof of irrationality of $\zeta(3)$, a major open problem in transcendental number theory.
-
-**Conclusion.** $\zeta(3)$ is irrational (Apéry's theorem).
 
 @@@ irrationality-liouville-theorem.md
 ---
@@ -1228,8 +1133,9 @@ $$|\alpha-p/q|\ge\frac{c}{q^d}.$$
 ---
 title: Sum of irrationals in disguise
 category: number/irrationality
-level: olympiad
-difficulty: 4
+level: l1
+difficulty: 3
+order: 2
 tags: irrationality, sum, structure
 date: 2026-11-03
 ---
@@ -1381,6 +1287,7 @@ title: Rational root theorem and irrationality
 category: number/irrationality
 level: l1
 difficulty: 2
+order: 2
 tags: rational root theorem, irrationality, cubic
 date: 2026-11-03
 ---
@@ -1407,8 +1314,9 @@ Rational roots must be $\pm1$. Test both.
 ---
 title: A sum of radicals
 category: number/irrationality
-level: olympiad
+level: L1
 difficulty: 4
+order: 1
 tags: radicals, irrationality, algebraicity
 date: 2026-11-03
 ---
@@ -4697,7 +4605,8 @@ This contradiction shows that the list of primes cannot be finite.
 title: Irrationality of √2 + √3
 category: number/irrationality
 level: l1
-difficulty: 3
+difficulty: 2
+order: 1
 tags: irrational, proof by contradiction
 date: 2026-10-31
 ---
@@ -5917,8 +5826,9 @@ $$(507,505),\ (255,251),\ (57,35),\ (45,1).$$
 ---
 title: x³ + 2y³ + 4z³ = 0
 category: number/irrationality
-level: olympiad
+level: l1
 difficulty: 3
+order: 2
 tags: infinite descent, parity, irrationality
 date: 2026-11-04
 ---
