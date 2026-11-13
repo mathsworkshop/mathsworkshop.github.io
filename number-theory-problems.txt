@@ -1,3 +1,466 @@
+@@@ nt-the-gcd-of-two-numbers-of-the-form-two-to-the-n-minus-one.md
+---
+title: The gcd of 2ᵃ − 1 and 2ᵇ − 1
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: gcd, Euclidean algorithm, divisibility
+date: 2026-11-04
+---
+
+## Statement
+
+Let $a,b$ be positive integers. Prove that
+$$\gcd(2^a-1,\,2^b-1)=2^{\gcd(a,b)}-1. $$
+Deduce that $2^a-1$ divides $2^b-1$ if and only if $a$ divides $b$.
+
+## Hint
+
+Suppose $a>b$. Write $2^a-1=2^{a-b}(2^b-1)+(2^{a-b}-1)$ and compare with the Euclidean algorithm.
+
+## Solution
+
+**Idea.** The Euclidean algorithm on the exponents is mirrored by the Euclidean algorithm on the numbers $2^k-1$.
+
+**Key step.** For $a>b$,
+$$2^a-1=2^{a-b}\bigl(2^b-1\bigr)+\bigl(2^{a-b}-1\bigr),$$
+so $\gcd(2^a-1,2^b-1)=\gcd(2^b-1,2^{a-b}-1)$, because $\gcd(u,v)=\gcd(v,u-qv)$ for any integer $q$. Thus the pair of exponents $(a,b)$ is replaced by $(b,a-b)$.
+
+**Conclusion.** Repeating the subtraction step, the exponents follow the subtractive Euclidean algorithm and end at $(g,g)$ with $g=\gcd(a,b)$ (or at $(g,0)$ if one uses $\gcd(u,0)=u$, where $2^0-1=0$). Hence the gcd equals $2^g-1$.
+
+**Divisibility.** $2^a-1\mid2^b-1\iff\gcd(2^a-1,2^b-1)=2^a-1\iff2^{\gcd(a,b)}-1=2^a-1\iff\gcd(a,b)=a\iff a\mid b$.
+
+**Check.** $\gcd(2^{12}-1,2^{18}-1)=\gcd(4095,262143)=63=2^6-1$ ✓.
+
+**Lesson.** When a gcd involves a parametrised expression, show that the Euclidean algorithm on the parameter reproduces the Euclidean algorithm on the values.
+@@@ nt-the-product-of-a-pythagorean-triple-is-divisible-by-sixty.md
+---
+title: 60 divides xyz for every Pythagorean triple
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: Pythagorean triples, residues, squares modulo n
+date: 2026-11-04
+---
+
+## Statement
+
+Let $x,y,z$ be positive integers with $x^2+y^2=z^2$. Prove that $xyz$ is divisible by $60$.
+
+## Hint
+
+Since $60=3\cdot4\cdot5$, prove separately that $3$, $4$ and $5$ divide $xyz$, looking at the possible residues of squares modulo $3$, $8$ and $5$.
+
+## Solution
+
+**Idea.** Squares have very few residues, so each prime power can be handled by a short case check.
+
+**Modulo $3$.** Squares are $0$ or $1$. If $3\nmid x$ and $3\nmid y$, then $z^2\equiv1+1=2\pmod3$, impossible. So $3\mid xy$.
+
+**Modulo $5$.** Squares are $0,1,4\equiv-1$. If $5\nmid xyz$, then $x^2,y^2,z^2\in\{\pm1\}$ and $x^2+y^2\in\{-2,0,2\}$ is never $\equiv\pm1$. So $5\mid xyz$.
+
+**Divisibility by $4$.** Squares modulo $4$ are $0,1$, so $x,y$ are not both odd (else $z^2\equiv2$).
+- If $x,y$ are both even, then $4\mid xy$.
+- Otherwise exactly one is even, say $x$, and $y,z$ are odd. Odd squares are $\equiv1\pmod8$, so $x^2=z^2-y^2\equiv0\pmod8$. Writing $x=2m$, $4m^2\equiv0\pmod8$ forces $m$ even, so $4\mid x$.
+
+**Conclusion.** $3$, $4$ and $5$ are pairwise coprime and each divides $xyz$, so $60\mid xyz$.
+
+**Check.** $(3,4,5)$: $60$. $(5,12,13)$: $780=13\cdot60$. $(8,15,17)$: $2040=34\cdot60$ ✓.
+
+**Lesson.** Reduce to the list of squares modulo $3$, $4$ (or $8$) and $5$: most "which numbers divide..." questions about squares are closed by such a check.
+@@@ nt-consecutive-integers-each-divisible-by-a-square.md
+---
+title: Long runs of non-squarefree numbers
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: Chinese remainder theorem, squarefree numbers
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that for every positive integer $n$ there exist $n$ consecutive positive integers, each divisible by the square of an integer greater than $1$.
+
+## Hint
+
+Choose $n$ distinct primes $p_1,\dots,p_n$ and impose $x+i\equiv0\pmod{p_i^2}$ for each $i$.
+
+## Solution
+
+**Idea.** The Chinese remainder theorem lets us prescribe divisibility conditions independently, as long as the moduli are pairwise coprime.
+
+**Proof.** Take distinct primes $p_1,\dots,p_n$. The moduli $p_1^2,\dots,p_n^2$ are pairwise coprime, so by the Chinese remainder theorem there is a positive integer $x$ with
+$$x\equiv-i\pmod{p_i^2}\qquad(i=1,\dots,n).$$
+Then $p_i^2\mid x+i$ for each $i$, so $x+1,x+2,\dots,x+n$ are $n$ consecutive integers each divisible by a square greater than $1$.
+
+**Example.** $n=3$ with primes $2,3,5$: $x\equiv-1\pmod4$, $x\equiv-2\pmod9$, $x\equiv-3\pmod{25}$ gives $x=547$: $548=4\cdot137$, $549=9\cdot61$, $550=25\cdot22$ ✓.
+
+**Remark.** So the gaps between consecutive squarefree numbers are unbounded.
+
+**Lesson.** To find consecutive integers with prescribed divisibility properties, use the Chinese remainder theorem.
+@@@ nt-thirteen-divides-two-to-the-seventy-plus-three-to-the-seventy.md
+---
+title: 13 divides 2⁷⁰ + 3⁷⁰
+category: number/divisibility
+level: m1
+difficulty: 2
+tags: Fermat's little theorem, modular exponentiation
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that $13$ divides $2^{70}+3^{70}$.
+
+## Hint
+
+By Fermat's little theorem $a^{12}\equiv1\pmod{13}$. Reduce the exponents. Also $3^3=27\equiv1\pmod{13}$.
+
+## Solution
+
+**Powers of $2$.** $70=5\cdot12+10$, so $2^{70}\equiv2^{10}=1024\pmod{13}$. Since $1024=13\cdot78+10$, $2^{70}\equiv10$.
+
+**Powers of $3$.** $3^3=27\equiv1\pmod{13}$, and $70=3\cdot23+1$, so $3^{70}\equiv3^1=3$.
+
+**Sum.** $2^{70}+3^{70}\equiv10+3=13\equiv0\pmod{13}$.
+
+**Remark.** Another approach: $2^{70}+3^{70}$ is divisible by $13$ because $3^2\equiv-4=-2^2\pmod{13}$, hence $3^{70}=(3^2)^{35}\equiv(-4)^{35}=-2^{70}$.
+
+**Lesson.** Reduce the base and the exponent: use Fermat's theorem (or the actual order) to shrink exponents modulo $p-1$ (or modulo the order).
+@@@ nt-prime-factors-of-fermat-numbers.md
+---
+title: Prime factors of Fermat numbers
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: order, Fermat numbers, Fermat's little theorem
+date: 2026-11-04
+---
+
+## Statement
+
+Let $F_k=2^{2^k}+1$. Prove that every prime divisor $p$ of $F_k$ satisfies $p\equiv1\pmod{2^{k+1}}$. Deduce that every prime divisor of $F_5=2^{32}+1$ is of the form $64m+1$, and verify that $641\mid F_5$.
+
+## Hint
+
+Compute the order of $2$ modulo $p$. It divides $2^{k+1}$, but does not divide $2^k$.
+
+## Solution
+
+**Idea.** The order of $2$ modulo $p$ is exactly $2^{k+1}$, and orders divide $p-1$.
+
+**Proof.** Let $p\mid F_k$. Then $p$ is odd and $2^{2^k}\equiv-1\pmod p$. Squaring, $2^{2^{k+1}}\equiv1\pmod p$, so the order $d$ of $2$ divides $2^{k+1}$, hence $d=2^j$ with $j\le k+1$. If $j\le k$, then $2^{2^k}\equiv1$ (as $d\mid2^k$), but we know $2^{2^k}\equiv-1\not\equiv1\pmod p$ since $p>2$. Thus $d=2^{k+1}$. By Fermat's little theorem $d\mid p-1$, so $p\equiv1\pmod{2^{k+1}}$.
+
+**Case $k=5$.** The primes dividing $F_5$ are among $64m+1$: $193,257,449,577,641,\dots$ Only $641=10\cdot64+1$ is needed.
+We use two expressions for $641$: $641=5\cdot2^7+1$ and $641=2^4+5^4$. The first gives $5\cdot2^7\equiv-1\pmod{641}$, so $5^4\cdot2^{28}\equiv1$. The second gives $5^4\equiv-2^4$. Substituting, $-2^4\cdot2^{28}\equiv1$, i.e. $2^{32}\equiv-1\pmod{641}$, so $641\mid F_5$ ✓.
+
+**Remark.** $F_5=641\cdot6\,700\,417$. Euler found $641$ in 1732 using exactly this restriction on divisors, refuting Fermat's belief that all $F_k$ are prime.
+
+**Lesson.** Compute the exact order of an element from a congruence like $a^m\equiv-1$; it restricts the possible primes to an arithmetic progression.
+@@@ nt-counting-divisors-and-the-hundred-lockers.md
+---
+title: Counting divisors and the hundred lockers
+category: number/divisibility
+level: olympiad
+difficulty: 2
+tags: divisor function, perfect squares, pairing
+date: 2026-11-04
+---
+
+## Statement
+
+Let $d(n)$ be the number of positive divisors of $n$.
+
+1. Prove that $d(n)$ is odd if and only if $n$ is a perfect square.
+2. There are $100$ lockers, all closed. For $k=1,\dots,100$, student number $k$ changes the state (open/closed) of every $k$-th locker. Which lockers are open at the end?
+3. What is the smallest positive integer with exactly $12$ divisors?
+
+## Hint
+
+Pair each divisor $d$ with $n/d$.
+
+## Solution
+
+**1.** The map $d\mapsto n/d$ is an involution on the set of divisors of $n$. Its fixed points satisfy $d^2=n$. So divisors come in pairs $\{d,n/d\}$ with $d\ne n/d$, except when $n$ is a square, where $\sqrt n$ is unpaired. Hence $d(n)$ is odd iff $n$ is a square.
+
+**2.** Locker $m$ is touched once by every student $k$ dividing $m$, i.e. $d(m)$ times. It ends open iff $d(m)$ is odd iff $m$ is a perfect square. The open lockers are $1,4,9,16,25,36,49,64,81,100$ (ten lockers).
+
+**3.** If $n=\prod p_i^{a_i}$ then $d(n)=\prod(a_i+1)$. To get $12$ divisors, the exponents are $\{11\}$, $\{5,1\}$, $\{3,2\}$ or $\{2,1,1\}$. Minimal numbers: $2^{11}=2048$, $2^5\cdot3=96$, $2^3\cdot3^2=72$, $2^2\cdot3\cdot5=60$. The smallest is $60$.
+
+**Lesson.** Pair divisors $d\leftrightarrow n/d$; and recall $d(n)=\prod(a_i+1)$ to optimise over factorisation types.
+@@@ nt-a-floor-identity-with-square-roots.md
+---
+title: ⌊√n + √(n+1)⌋ = ⌊√(4n+2)⌋
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: floor function, square roots, squares modulo 4
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that for every positive integer $n$,
+$$\left\lfloor\sqrt n+\sqrt{n+1}\right\rfloor=\left\lfloor\sqrt{4n+2}\right\rfloor.$$
+
+## Hint
+
+Show that $\sqrt n+\sqrt{n+1}<\sqrt{4n+2}$, then show that no integer lies between the two numbers.
+
+## Solution
+
+**Idea.** The two numbers are very close; an integer between them would be a square near $4n+2$, and $4n+2$ is never a square.
+
+**Upper comparison.** $(\sqrt n+\sqrt{n+1})^2=2n+1+2\sqrt{n(n+1)}$, and $n(n+1)<\left(n+\frac12\right)^2$, so $2\sqrt{n(n+1)}<2n+1$ and
+$$(\sqrt n+\sqrt{n+1})^2<4n+2.$$
+
+**Lower comparison.** $n(n+1)>n^2$ so $2\sqrt{n(n+1)}>2n$ and
+$$(\sqrt n+\sqrt{n+1})^2>4n+1.$$
+
+**No integer in between.** Suppose an integer $k$ satisfies $\sqrt n+\sqrt{n+1}<k\le\sqrt{4n+2}$. Squaring, $4n+1<k^2\le4n+2$, so $k^2=4n+2$. But squares are $\equiv0,1\pmod4$ while $4n+2\equiv2$. Contradiction.
+
+**Conclusion.** The numbers $\sqrt n+\sqrt{n+1}\le\sqrt{4n+2}$ have no integer in $(\sqrt n+\sqrt{n+1},\sqrt{4n+2}]$, so their floors coincide.
+
+**Check.** $n=1$: $1+1.414=2.414$, $\sqrt6=2.449$, both floors $2$.
+
+**Lesson.** To compare floors of two close irrational expressions, show that no integer (or the square of an integer) can separate them, often with a congruence argument.
+@@@ nt-the-gcd-of-two-consecutive-factorials-plus-one.md
+---
+title: gcd(n! + 1, (n + 1)! + 1) = 1
+category: number/divisibility
+level: m1
+difficulty: 2
+tags: gcd, divisibility, factorials
+date: 2026-11-04
+---
+
+## Statement
+
+Prove that for every positive integer $n$, $n!+1$ and $(n+1)!+1$ are coprime.
+
+## Hint
+
+Let $d$ divide both. Express $(n+1)!+1$ in terms of $n!$ and reduce modulo $d$.
+
+## Solution
+
+**Proof.** Let $d$ be a common divisor. Then $n!\equiv-1\pmod d$. Since $(n+1)!=(n+1)\,n!$,
+$$0\equiv(n+1)!+1\equiv-(n+1)+1=-n\pmod d,$$
+so $d\mid n$. But $n\mid n!$, hence $d\mid n!$. Together with $d\mid n!+1$ this gives $d\mid1$.
+
+**Check.** $n=3$: $\gcd(7,25)=1$; $n=4$: $\gcd(25,121)=1$ ✓.
+
+**Remark.** Equivalently, $\gcd(n!+1,(n+1)!+1)=\gcd(n!+1,n)=1$ by the Euclidean algorithm.
+
+**Lesson.** To prove coprimality, assume a common divisor $d$, reduce one expression modulo $d$ using the other, and show that $d$ divides $1$.
+@@@ nt2-legendre-s-formula-in-base-p.md
+---
+title: v_p(n!) from the digits of n in base p
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: Legendre's formula, digit sum, p-adic valuation, base p
+date: 2026-11-05
+---
+
+## Statement
+
+Let $p$ be a prime and $s_p(n)$ the sum of the digits of $n$ in base $p$.
+
+1. Prove that $v_p(n!)=\dfrac{n-s_p(n)}{p-1}$.
+2. Deduce that $2^{n-1}\mid n!$ iff $n$ is a power of $2$, and that $v_2\binom{2n}n=s_2(n)$.
+
+## Hint
+
+Write $n=\sum a_ip^i$. What is $\lfloor n/p^k\rfloor$ in terms of the digits?
+
+## Solution
+
+**1.** Write $n=\sum_{i\ge0}a_ip^i$ with $0\le a_i\le p-1$. Then $\lfloor n/p^k\rfloor=\sum_{i\ge k}a_ip^{i-k}$. By Legendre's formula,
+$$v_p(n!)=\sum_{k\ge1}\sum_{i\ge k}a_ip^{i-k}=\sum_{i\ge1}a_i\left(1+p+\dots+p^{i-1}\right)=\sum_{i\ge1}a_i\frac{p^i-1}{p-1}.$$
+Since the term $i=0$ contributes $0$, the sum equals $\dfrac{n-s_p(n)}{p-1}$.
+
+**2.** For $p=2$: $v_2(n!)=n-s_2(n)$. Since $s_2(n)\ge1$, $v_2(n!)\le n-1$, with equality iff $s_2(n)=1$, i.e. $n$ is a power of $2$. So $2^{n-1}\mid n!$ iff $n$ is a power of $2$.
+
+Next, $s_2(2n)=s_2(n)$, so
+$$v_2\binom{2n}n=v_2((2n)!)-2v_2(n!)=(2n-s_2(n))-2(n-s_2(n))=s_2(n).$$
+
+**Check.** $\binom63=20=2^2\cdot5$ and $s_2(3)=2$ ✓. $\binom{8}{4}=70$, $s_2(4)=1$, $v_2(70)=1$ ✓.
+
+**Lesson.** Legendre's formula is just a statement about the digits of $n$ in base $p$; switching to digits often turns a messy floor sum into a clean closed form.
+@@@ nt2-even-perfect-numbers.md
+---
+title: Even perfect numbers (Euclid–Euler)
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: perfect numbers, sigma function, multiplicativity, Mersenne primes
+date: 2026-11-05
+---
+
+## Statement
+
+A positive integer $n$ is **perfect** if $\sigma(n)=2n$, where $\sigma(n)$ is the sum of all positive divisors of $n$. Prove that an even number $n$ is perfect if and only if $n=2^k(2^{k+1}-1)$ with $k\ge1$ and $2^{k+1}-1$ prime.
+
+## Hint
+
+Write $n=2^km$ with $m$ odd. Use that $\sigma$ is multiplicative and that $\gcd(2^{k+1}-1,2^{k+1})=1$.
+
+## Solution
+
+**Converse (easy).** If $q=2^{k+1}-1$ is prime and $n=2^kq$, then $\sigma(n)=\sigma(2^k)\sigma(q)=(2^{k+1}-1)(q+1)=q\cdot2^{k+1}=2n$.
+
+**Direct part.** Let $n$ be even and perfect, $n=2^km$ with $k\ge1$ and $m$ odd. By multiplicativity,
+$$\sigma(n)=(2^{k+1}-1)\,\sigma(m)=2n=2^{k+1}m.$$
+
+Since $2^{k+1}-1$ is odd, it is coprime to $2^{k+1}$, so $2^{k+1}-1$ divides $m$: $m=(2^{k+1}-1)\,t$, and then $\sigma(m)=2^{k+1}t$.
+
+**Claim: $t=1$.** Suppose $t>1$. Since $2^{k+1}-1\ge3$, the numbers $1<t<m$ are three distinct divisors of $m$, so
+$$\sigma(m)\ge1+t+m=1+t+(2^{k+1}-1)t=1+2^{k+1}t>\sigma(m),$$
+a contradiction. So $t=1$, $m=2^{k+1}-1$ and $\sigma(m)=2^{k+1}=m+1$.
+
+**Primality.** $\sigma(m)=m+1$ means $m$ has no divisors other than $1$ and $m$, i.e. $m=2^{k+1}-1$ is prime.
+
+**Examples.** $6=2\cdot3$, $28=4\cdot7$, $496=16\cdot31$, $8128=64\cdot127$.
+
+**Remark.** Whether an odd perfect number exists is a famous open problem.
+
+**Lesson.** Split off the power of $2$, use multiplicativity, then compare the exact value of $\sigma$ with a lower bound given by a few obvious divisors.
+@@@ nt2-the-sum-of-phi-over-the-divisors.md
+---
+title: The sum of φ(d) over the divisors of n
+category: number/divisibility
+level: m1
+difficulty: 2
+tags: Euler totient, divisors, counting, fractions
+date: 2026-11-05
+---
+
+## Statement
+
+Let $\varphi$ be Euler's totient function ($\varphi(d)$ is the number of integers $a$ with $1\le a\le d$ and $\gcd(a,d)=1$). Prove that for every positive integer $n$,
+$$\sum_{d\mid n}\varphi(d)=n.$$
+
+## Hint
+
+Look at the $n$ fractions $\frac1n,\frac2n,\dots,\frac nn$ and write each in lowest terms. What can you say about the denominators?
+
+## Solution
+
+**Idea.** Count the same set of $n$ objects in two ways: all together, and grouped according to the denominator in lowest terms.
+
+**Grouping.** Take $k\in\{1,\dots,n\}$ and write $\frac kn=\frac ad$ in lowest terms, i.e. $\gcd(a,d)=1$ and $1\le a\le d$. The denominator $d$ divides $n$ (because $\frac kn=\frac ad$ gives $kd=an$, and $\gcd(a,d)=1$ forces $d\mid n$).
+
+**Counting a group.** Fix a divisor $d$ of $n$. A fraction $\frac kn$ has lowest-terms denominator $d$ exactly when it equals $\frac ad$ with $1\le a\le d$ and $\gcd(a,d)=1$. Each such $a$ gives exactly one $k=a\cdot\frac nd$, and distinct $a$ give distinct fractions. Hence exactly $\varphi(d)$ of the fractions $\frac kn$ have denominator $d$.
+
+**Conclusion.** Every one of the $n$ fractions has exactly one lowest-terms denominator $d\mid n$, so
+$$n=\sum_{d\mid n}\varphi(d).$$
+
+**Check.** $n=12$: $\varphi(1)+\varphi(2)+\varphi(3)+\varphi(4)+\varphi(6)+\varphi(12)=1+1+2+2+2+4=12$.
+
+**Lesson.** Classify the elements of a set by an invariant (here the reduced denominator) and count each class.
+@@@ nt2-the-gcd-of-fibonacci-numbers.md
+---
+title: gcd(F_m, F_n) = F_gcd(m,n)
+category: number/divisibility
+level: olympiad
+difficulty: 4
+tags: Fibonacci numbers, gcd, Euclidean algorithm, divisibility sequences
+date: 2026-11-05
+---
+
+## Statement
+
+Let $F_0=0$, $F_1=1$, $F_{k+2}=F_{k+1}+F_k$. Prove that for all positive integers $m,n$,
+$$\gcd(F_m,F_n)=F_{\gcd(m,n)}.$$
+
+## Hint
+
+Prove first the addition formula $F_{a+b}=F_aF_{b+1}+F_{a-1}F_b$, and that consecutive Fibonacci numbers are coprime. Then imitate the Euclidean algorithm.
+
+## Solution
+
+**Step 1: addition formula.** For $a\ge1$ and $b\ge0$: $F_{a+b}=F_aF_{b+1}+F_{a-1}F_b$. Induction on $b$.
+
+**Step 2: consecutive terms are coprime.** $\gcd(F_{k+1},F_k)=\gcd(F_{k-1},F_k)=\dots=\gcd(F_1,F_0)=1$.
+
+**Step 3: subtractive Euclid.** Let $m>n\ge1$. Apply the formula with $a=m-n\ge1$, $b=n$:
+$$F_m=F_{m-n}F_{n+1}+F_{m-n-1}F_n.$$
+Hence $\gcd(F_m,F_n)=\gcd(F_{m-n}F_{n+1},F_n)$. Since $\gcd(F_{n+1},F_n)=1$ (Step 2), any common divisor of $F_{m-n}F_{n+1}$ and $F_n$ is a common divisor of $F_{m-n}$ and $F_n$, so
+$$\gcd(F_m,F_n)=\gcd(F_{m-n},F_n).$$
+
+**Step 4: conclusion.** Applying Step 3 repeatedly mimics the subtractive Euclidean algorithm on the indices; it ends at $(d,d)$ with $d=\gcd(m,n)$, and $\gcd(F_d,F_d)=F_d$.
+
+**Check.** $\gcd(F_{12},F_{18})=\gcd(144,2584)=8=F_6$.
+
+**Remark.** Consequently, if $F_n$ is prime then $n$ is prime, or $n=4$.
+
+**Lesson.** A sequence with the "addition formula" structure inherits the Euclidean algorithm on its indices.
+@@@ nt2-infinitely-many-n-with-n-dividing-two-to-the-n-plus-one.md
+---
+title: Infinitely many n dividing 2ⁿ + 1
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: induction, lifting the exponent, infinitely many, factorisation
+date: 2026-11-05
+---
+
+## Statement
+
+Prove that for every integer $k\ge0$, $3^{k+1}\mid2^{3^k}+1$. Deduce that $n=3^k$ satisfies $n\mid2^n+1$, so there are infinitely many positive integers $n$ with $n\mid2^n+1$.
+
+## Hint
+
+Use induction and the factorisation $x^3+1=(x+1)(x^2-x+1)$ with $x=2^{3^k}$.
+
+## Solution
+
+**Base case.** $k=0$: $3^1\mid2^1+1=3$ ✓.
+
+**Induction step.** Assume $3^{k+1}\mid2^{3^k}+1$, and let $x=2^{3^k}$. Then
+$$2^{3^{k+1}}+1=x^3+1=(x+1)(x^2-x+1).$$
+The first factor is divisible by $3^{k+1}$. For the second, $x\equiv-1\pmod3$, so $x^2-x+1\equiv1+1+1=3\equiv0\pmod3$. Therefore $3^{k+2}$ divides the product.
+
+**Conclusion.** So $3^{k+1}\mid2^{3^k}+1$, in particular $3^k\mid2^{3^k}+1$: with $n=3^k$, $n\mid2^n+1$. There are infinitely many such $n$.
+
+**Check.** $k=2$: $2^9+1=513=27\cdot19$ ✓.
+
+**Lesson.** To gain one more power of a prime, factor $x^p\pm1$ and show that the cofactor is divisible by $p$ exactly once.
+@@@ nt2-an-integrality-proof-by-counting.md
+---
+title: (n²)! is divisible by (n!)^(n+1)
+category: number/divisibility
+level: olympiad
+difficulty: 3
+tags: integrality, factorials, double counting, multinomial
+date: 2026-11-05
+---
+
+## Statement
+
+Prove that $\dfrac{(n^2)!}{(n!)^{n+1}}$ is an integer for every positive integer $n$.
+
+## Hint
+
+Count the number of ways to split $n^2$ people into $n$ unordered teams of $n$ people each.
+
+## Solution
+
+**Idea.** Interpret the quotient as the number of something, which is automatically an integer.
+
+**Counting.** Let $N$ be the number of ways to partition a set of $n^2$ distinct objects into $n$ unlabelled groups of size $n$. Line the $n^2$ objects up in a row in any of $(n^2)!$ orders, and cut the row into consecutive blocks of $n$: this gives a partition. Each partition arises from exactly $(n!)^n\cdot n!$ orderings: $n!$ orders inside each of the $n$ groups, and $n!$ orders in which the groups appear. Hence
+$$N=\frac{(n^2)!}{(n!)^n\cdot n!}=\frac{(n^2)!}{(n!)^{n+1}}.$$
+
+Since $N$ is a number of objects, it is a positive integer.
+
+**Check.** $n=2$: $\frac{4!}{(2!)^3}=\frac{24}8=3$, the three ways to split four people into two pairs.
+
+**Remark.** More generally $\dfrac{(kn)!}{(n!)^kk!}$ is an integer.
+
+**Lesson.** To prove that an expression is an integer, find a set of objects that it counts.
+
 @@@ the-last-digit-of-7-to-the-2026.md
 ---
 title: The last digit of 7^2026
@@ -4631,39 +5094,6 @@ But $\sqrt3$ is irrational. Indeed, if $\sqrt3=\frac pq$ with $p,q$ coprime, the
 
 Hence $\sqrt2+\sqrt3$ is irrational.
 
-@@@ nt2-the-sum-of-phi-over-the-divisors.md
----
-title: The sum of φ(d) over the divisors of n
-category: number/divisibility
-level: m1
-difficulty: 2
-tags: Euler totient, divisors, counting, fractions
-date: 2026-11-05
----
-
-## Statement
-
-Let $\varphi$ be Euler's totient function ($\varphi(d)$ is the number of integers $a$ with $1\le a\le d$ and $\gcd(a,d)=1$). Prove that for every positive integer $n$,
-$$\sum_{d\mid n}\varphi(d)=n.$$
-
-## Hint
-
-Look at the $n$ fractions $\frac1n,\frac2n,\dots,\frac nn$ and write each in lowest terms. What can you say about the denominators?
-
-## Solution
-
-**Idea.** Count the same set of $n$ objects in two ways: all together, and grouped according to the denominator in lowest terms.
-
-**Grouping.** Take $k\in\{1,\dots,n\}$ and write $\frac kn=\frac ad$ in lowest terms, i.e. $\gcd(a,d)=1$ and $1\le a\le d$. The denominator $d$ divides $n$ (because $\frac kn=\frac ad$ gives $kd=an$, and $\gcd(a,d)=1$ forces $d\mid n$).
-
-**Counting a group.** Fix a divisor $d$ of $n$. A fraction $\frac kn$ has lowest-terms denominator $d$ exactly when it equals $\frac ad$ with $1\le a\le d$ and $\gcd(a,d)=1$. Each such $a$ gives exactly one $k=a\cdot\frac nd$, and distinct $a$ give distinct fractions. Hence exactly $\varphi(d)$ of the fractions $\frac kn$ have denominator $d$.
-
-**Conclusion.** Every one of the $n$ fractions has exactly one lowest-terms denominator $d\mid n$, so
-$$n=\sum_{d\mid n}\varphi(d).$$
-
-**Check.** $n=12$: $\varphi(1)+\varphi(2)+\varphi(3)+\varphi(4)+\varphi(6)+\varphi(12)=1+1+2+2+2+4=12$.
-
-**Lesson.** Classify the elements of a set by an invariant (here the reduced denominator) and count each class.
 @@@ nt2-prime-divisors-of-n-squared-plus-n-plus-one.md
 ---
 title: Prime divisors of n² + n + 1
@@ -4884,44 +5314,7 @@ Part 1: consider the repunits $R_k=\underbrace{11\ldots1}_{k}$ for $k=0,1,\dots,
 **Remark.** If $n$ has factors $2$ or $5$, part 2 fails, but part 1 still holds: $2\mid10$, $5\mid10$.
 
 **Lesson.** Pigeonhole on a sequence of residues gives a nonzero difference divisible by $n$; the structure of the sequence ($R_j-R_i$) tells you what that difference looks like.
-@@@ nt2-even-perfect-numbers.md
----
-title: Even perfect numbers (Euclid–Euler)
-category: number/divisibility
-level: olympiad
-difficulty: 4
-tags: perfect numbers, sigma function, multiplicativity, Mersenne primes
-date: 2026-11-05
----
 
-## Statement
-
-A positive integer $n$ is **perfect** if $\sigma(n)=2n$, where $\sigma(n)$ is the sum of all positive divisors of $n$. Prove that an even number $n$ is perfect if and only if $n=2^k(2^{k+1}-1)$ with $k\ge1$ and $2^{k+1}-1$ prime.
-
-## Hint
-
-Write $n=2^km$ with $m$ odd. Use that $\sigma$ is multiplicative and that $\gcd(2^{k+1}-1,2^{k+1})=1$.
-
-## Solution
-
-**Converse (easy).** If $q=2^{k+1}-1$ is prime and $n=2^kq$, then $\sigma(n)=\sigma(2^k)\sigma(q)=(2^{k+1}-1)(q+1)=q\cdot2^{k+1}=2n$.
-
-**Direct part.** Let $n$ be even and perfect, $n=2^km$ with $k\ge1$ and $m$ odd. By multiplicativity,
-$$\sigma(n)=(2^{k+1}-1)\,\sigma(m)=2n=2^{k+1}m.$$
-
-Since $2^{k+1}-1$ is odd, it is coprime to $2^{k+1}$, so $2^{k+1}-1$ divides $m$: $m=(2^{k+1}-1)\,t$, and then $\sigma(m)=2^{k+1}t$.
-
-**Claim: $t=1$.** Suppose $t>1$. Since $2^{k+1}-1\ge3$, the numbers $1<t<m$ are three distinct divisors of $m$, so
-$$\sigma(m)\ge1+t+m=1+t+(2^{k+1}-1)t=1+2^{k+1}t>\sigma(m),$$
-a contradiction. So $t=1$, $m=2^{k+1}-1$ and $\sigma(m)=2^{k+1}=m+1$.
-
-**Primality.** $\sigma(m)=m+1$ means $m$ has no divisors other than $1$ and $m$, i.e. $m=2^{k+1}-1$ is prime.
-
-**Examples.** $6=2\cdot3$, $28=4\cdot7$, $496=16\cdot31$, $8128=64\cdot127$.
-
-**Remark.** Whether an odd perfect number exists is a famous open problem.
-
-**Lesson.** Split off the power of $2$, use multiplicativity, then compare the exact value of $\sigma$ with a lower bound given by a few obvious divisors.
 @@@ nt2-odd-entries-in-pascal-s-triangle.md
 ---
 title: Counting odd entries in a row of Pascal's triangle
@@ -4994,73 +5387,7 @@ So $v_p\binom{2n}n=0$.
 **Remark.** These two facts are the heart of Erdős's proof of Bertrand's postulate.
 
 **Lesson.** Express $v_p$ of a binomial coefficient via Legendre's formula as a sum of terms $\lfloor2x\rfloor-2\lfloor x\rfloor\in\{0,1\}$ and control each term.
-@@@ nt2-an-integrality-proof-by-counting.md
----
-title: (n²)! is divisible by (n!)^(n+1)
-category: number/divisibility
-level: olympiad
-difficulty: 3
-tags: integrality, factorials, double counting, multinomial
-date: 2026-11-05
----
 
-## Statement
-
-Prove that $\dfrac{(n^2)!}{(n!)^{n+1}}$ is an integer for every positive integer $n$.
-
-## Hint
-
-Count the number of ways to split $n^2$ people into $n$ unordered teams of $n$ people each.
-
-## Solution
-
-**Idea.** Interpret the quotient as the number of something, which is automatically an integer.
-
-**Counting.** Let $N$ be the number of ways to partition a set of $n^2$ distinct objects into $n$ unlabelled groups of size $n$. Line the $n^2$ objects up in a row in any of $(n^2)!$ orders, and cut the row into consecutive blocks of $n$: this gives a partition. Each partition arises from exactly $(n!)^n\cdot n!$ orderings: $n!$ orders inside each of the $n$ groups, and $n!$ orders in which the groups appear. Hence
-$$N=\frac{(n^2)!}{(n!)^n\cdot n!}=\frac{(n^2)!}{(n!)^{n+1}}.$$
-
-Since $N$ is a number of objects, it is a positive integer.
-
-**Check.** $n=2$: $\frac{4!}{(2!)^3}=\frac{24}8=3$, the three ways to split four people into two pairs.
-
-**Remark.** More generally $\dfrac{(kn)!}{(n!)^kk!}$ is an integer.
-
-**Lesson.** To prove that an expression is an integer, find a set of objects that it counts.
-@@@ nt2-legendre-s-formula-in-base-p.md
----
-title: v_p(n!) from the digits of n in base p
-category: number/divisibility
-level: olympiad
-difficulty: 3
-tags: Legendre's formula, digit sum, p-adic valuation, base p
-date: 2026-11-05
----
-
-## Statement
-
-Let $p$ be a prime and $s_p(n)$ the sum of the digits of $n$ in base $p$.
-
-1. Prove that $v_p(n!)=\dfrac{n-s_p(n)}{p-1}$.
-2. Deduce that $2^{n-1}\mid n!$ iff $n$ is a power of $2$, and that $v_2\binom{2n}n=s_2(n)$.
-
-## Hint
-
-Write $n=\sum a_ip^i$. What is $\lfloor n/p^k\rfloor$ in terms of the digits?
-
-## Solution
-
-**1.** Write $n=\sum_{i\ge0}a_ip^i$ with $0\le a_i\le p-1$. Then $\lfloor n/p^k\rfloor=\sum_{i\ge k}a_ip^{i-k}$. By Legendre's formula,
-$$v_p(n!)=\sum_{k\ge1}\sum_{i\ge k}a_ip^{i-k}=\sum_{i\ge1}a_i\left(1+p+\dots+p^{i-1}\right)=\sum_{i\ge1}a_i\frac{p^i-1}{p-1}.$$
-Since the term $i=0$ contributes $0$, the sum equals $\dfrac{n-s_p(n)}{p-1}$.
-
-**2.** For $p=2$: $v_2(n!)=n-s_2(n)$. Since $s_2(n)\ge1$, $v_2(n!)\le n-1$, with equality iff $s_2(n)=1$, i.e. $n$ is a power of $2$. So $2^{n-1}\mid n!$ iff $n$ is a power of $2$.
-
-Next, $s_2(2n)=s_2(n)$, so
-$$v_2\binom{2n}n=v_2((2n)!)-2v_2(n!)=(2n-s_2(n))-2(n-s_2(n))=s_2(n).$$
-
-**Check.** $\binom63=20=2^2\cdot5$ and $s_2(3)=2$ ✓. $\binom{8}{4}=70$, $s_2(4)=1$, $v_2(70)=1$ ✓.
-
-**Lesson.** Legendre's formula is just a statement about the digits of $n$ in base $p$; switching to digits often turns a messy floor sum into a clean closed form.
 @@@ nt2-a-sum-of-factorials-that-is-a-square.md
 ---
 title: When is 1! + 2! + … + n! a perfect square?
@@ -5121,74 +5448,7 @@ The second term is $p\cdot b^{p-1}\cdot kp$, a multiple of $p^2$. For $j\ge2$ th
 **Remark.** First step of "lifting the exponent": $v_p(a^p-b^p)=v_p(a-b)+1$ when $p\mid a-b$ and $p$ is odd.
 
 **Lesson.** When two numbers are congruent modulo $p$, write one as the other plus a multiple of $p$; the binomial expansion then shows the $p$-th powers agree one power of $p$ higher.
-@@@ nt2-the-gcd-of-fibonacci-numbers.md
----
-title: gcd(F_m, F_n) = F_gcd(m,n)
-category: number/divisibility
-level: olympiad
-difficulty: 4
-tags: Fibonacci numbers, gcd, Euclidean algorithm, divisibility sequences
-date: 2026-11-05
----
 
-## Statement
-
-Let $F_0=0$, $F_1=1$, $F_{k+2}=F_{k+1}+F_k$. Prove that for all positive integers $m,n$,
-$$\gcd(F_m,F_n)=F_{\gcd(m,n)}.$$
-
-## Hint
-
-Prove first the addition formula $F_{a+b}=F_aF_{b+1}+F_{a-1}F_b$, and that consecutive Fibonacci numbers are coprime. Then imitate the Euclidean algorithm.
-
-## Solution
-
-**Step 1: addition formula.** For $a\ge1$ and $b\ge0$: $F_{a+b}=F_aF_{b+1}+F_{a-1}F_b$. Induction on $b$.
-
-**Step 2: consecutive terms are coprime.** $\gcd(F_{k+1},F_k)=\gcd(F_{k-1},F_k)=\dots=\gcd(F_1,F_0)=1$.
-
-**Step 3: subtractive Euclid.** Let $m>n\ge1$. Apply the formula with $a=m-n\ge1$, $b=n$:
-$$F_m=F_{m-n}F_{n+1}+F_{m-n-1}F_n.$$
-Hence $\gcd(F_m,F_n)=\gcd(F_{m-n}F_{n+1},F_n)$. Since $\gcd(F_{n+1},F_n)=1$ (Step 2), any common divisor of $F_{m-n}F_{n+1}$ and $F_n$ is a common divisor of $F_{m-n}$ and $F_n$, so
-$$\gcd(F_m,F_n)=\gcd(F_{m-n},F_n).$$
-
-**Step 4: conclusion.** Applying Step 3 repeatedly mimics the subtractive Euclidean algorithm on the indices; it ends at $(d,d)$ with $d=\gcd(m,n)$, and $\gcd(F_d,F_d)=F_d$.
-
-**Check.** $\gcd(F_{12},F_{18})=\gcd(144,2584)=8=F_6$.
-
-**Remark.** Consequently, if $F_n$ is prime then $n$ is prime, or $n=4$.
-
-**Lesson.** A sequence with the "addition formula" structure inherits the Euclidean algorithm on its indices.
-@@@ nt2-infinitely-many-n-with-n-dividing-two-to-the-n-plus-one.md
----
-title: Infinitely many n dividing 2ⁿ + 1
-category: number/divisibility
-level: olympiad
-difficulty: 3
-tags: induction, lifting the exponent, infinitely many, factorisation
-date: 2026-11-05
----
-
-## Statement
-
-Prove that for every integer $k\ge0$, $3^{k+1}\mid2^{3^k}+1$. Deduce that $n=3^k$ satisfies $n\mid2^n+1$, so there are infinitely many positive integers $n$ with $n\mid2^n+1$.
-
-## Hint
-
-Use induction and the factorisation $x^3+1=(x+1)(x^2-x+1)$ with $x=2^{3^k}$.
-
-## Solution
-
-**Base case.** $k=0$: $3^1\mid2^1+1=3$ ✓.
-
-**Induction step.** Assume $3^{k+1}\mid2^{3^k}+1$, and let $x=2^{3^k}$. Then
-$$2^{3^{k+1}}+1=x^3+1=(x+1)(x^2-x+1).$$
-The first factor is divisible by $3^{k+1}$. For the second, $x\equiv-1\pmod3$, so $x^2-x+1\equiv1+1+1=3\equiv0\pmod3$. Therefore $3^{k+2}$ divides the product.
-
-**Conclusion.** So $3^{k+1}\mid2^{3^k}+1$, in particular $3^k\mid2^{3^k}+1$: with $n=3^k$, $n\mid2^n+1$. There are infinitely many such $n$.
-
-**Check.** $k=2$: $2^9+1=513=27\cdot19$ ✓.
-
-**Lesson.** To gain one more power of a prime, factor $x^p\pm1$ and show that the cofactor is divisible by $p$ exactly once.
 @@@ nt2-infinitely-many-primes-congruent-to-one-modulo-four.md
 ---
 title: Infinitely many primes ≡ 1 (mod 4)
@@ -5347,41 +5607,6 @@ $$(p-1)!=\prod_{k=1}^m k\cdot\prod_{k=1}^m(p-k)\equiv\prod_{k=1}^mk\cdot\prod_{k
 **Remark.** For $p\equiv1\pmod4$ the same computation gives $(m!)^2\equiv-1$, which is the key to writing such a prime as a sum of two squares.
 
 **Lesson.** Wilson's theorem plus the pairing $k\leftrightarrow p-k$ turns $(p-1)!$ into a square (up to sign) of half the product.
-@@@ nt-the-gcd-of-two-numbers-of-the-form-two-to-the-n-minus-one.md
----
-title: The gcd of 2ᵃ − 1 and 2ᵇ − 1
-category: number/divisibility
-level: olympiad
-difficulty: 3
-tags: gcd, Euclidean algorithm, divisibility
-date: 2026-11-04
----
-
-## Statement
-
-Let $a,b$ be positive integers. Prove that
-$$\gcd(2^a-1,\,2^b-1)=2^{\gcd(a,b)}-1. $$
-Deduce that $2^a-1$ divides $2^b-1$ if and only if $a$ divides $b$.
-
-## Hint
-
-Suppose $a>b$. Write $2^a-1=2^{a-b}(2^b-1)+(2^{a-b}-1)$ and compare with the Euclidean algorithm.
-
-## Solution
-
-**Idea.** The Euclidean algorithm on the exponents is mirrored by the Euclidean algorithm on the numbers $2^k-1$.
-
-**Key step.** For $a>b$,
-$$2^a-1=2^{a-b}\bigl(2^b-1\bigr)+\bigl(2^{a-b}-1\bigr),$$
-so $\gcd(2^a-1,2^b-1)=\gcd(2^b-1,2^{a-b}-1)$, because $\gcd(u,v)=\gcd(v,u-qv)$ for any integer $q$. Thus the pair of exponents $(a,b)$ is replaced by $(b,a-b)$.
-
-**Conclusion.** Repeating the subtraction step, the exponents follow the subtractive Euclidean algorithm and end at $(g,g)$ with $g=\gcd(a,b)$ (or at $(g,0)$ if one uses $\gcd(u,0)=u$, where $2^0-1=0$). Hence the gcd equals $2^g-1$.
-
-**Divisibility.** $2^a-1\mid2^b-1\iff\gcd(2^a-1,2^b-1)=2^a-1\iff2^{\gcd(a,b)}-1=2^a-1\iff\gcd(a,b)=a\iff a\mid b$.
-
-**Check.** $\gcd(2^{12}-1,2^{18}-1)=\gcd(4095,262143)=63=2^6-1$ ✓.
-
-**Lesson.** When a gcd involves a parametrised expression, show that the Euclidean algorithm on the parameter reproduces the Euclidean algorithm on the values.
 @@@ nt-n-divides-two-to-the-n-minus-one.md
 ---
 title: n divides 2ⁿ − 1 only for n = 1
@@ -5449,41 +5674,7 @@ $$x_1^2+y_1^2=3z_1^2,$$
 a solution with $|z_1|=|z|/3<|z|$ and $z_1\ne0$. Contradiction with minimality.
 
 **Lesson.** Infinite descent: reduce modulo a well-chosen number, show all variables are divisible by it, divide, and get a smaller solution.
-@@@ nt-the-product-of-a-pythagorean-triple-is-divisible-by-sixty.md
----
-title: 60 divides xyz for every Pythagorean triple
-category: number/divisibility
-level: olympiad
-difficulty: 3
-tags: Pythagorean triples, residues, squares modulo n
-date: 2026-11-04
----
 
-## Statement
-
-Let $x,y,z$ be positive integers with $x^2+y^2=z^2$. Prove that $xyz$ is divisible by $60$.
-
-## Hint
-
-Since $60=3\cdot4\cdot5$, prove separately that $3$, $4$ and $5$ divide $xyz$, looking at the possible residues of squares modulo $3$, $8$ and $5$.
-
-## Solution
-
-**Idea.** Squares have very few residues, so each prime power can be handled by a short case check.
-
-**Modulo $3$.** Squares are $0$ or $1$. If $3\nmid x$ and $3\nmid y$, then $z^2\equiv1+1=2\pmod3$, impossible. So $3\mid xy$.
-
-**Modulo $5$.** Squares are $0,1,4\equiv-1$. If $5\nmid xyz$, then $x^2,y^2,z^2\in\{\pm1\}$ and $x^2+y^2\in\{-2,0,2\}$ is never $\equiv\pm1$. So $5\mid xyz$.
-
-**Divisibility by $4$.** Squares modulo $4$ are $0,1$, so $x,y$ are not both odd (else $z^2\equiv2$).
-- If $x,y$ are both even, then $4\mid xy$.
-- Otherwise exactly one is even, say $x$, and $y,z$ are odd. Odd squares are $\equiv1\pmod8$, so $x^2=z^2-y^2\equiv0\pmod8$. Writing $x=2m$, $4m^2\equiv0\pmod8$ forces $m$ even, so $4\mid x$.
-
-**Conclusion.** $3$, $4$ and $5$ are pairwise coprime and each divides $xyz$, so $60\mid xyz$.
-
-**Check.** $(3,4,5)$: $60$. $(5,12,13)$: $780=13\cdot60$. $(8,15,17)$: $2040=34\cdot60$ ✓.
-
-**Lesson.** Reduce to the list of squares modulo $3$, $4$ (or $8$) and $5$: most "which numbers divide..." questions about squares are closed by such a check.
 @@@ nt-infinitely-many-primes-congruent-to-three-modulo-four.md
 ---
 title: Infinitely many primes of the form 4k + 3
@@ -5667,96 +5858,7 @@ by the inequality with $x=\frac m{p^k}$, $y=\frac n{p^k}$. All the valuations ar
 **Remark.** These are the "super Catalan numbers". The case $m=n$ gives $\binom{2n}n$.
 
 **Lesson.** To prove that a quotient of factorials is an integer, compare prime by prime using Legendre's formula, and reduce to an elementary inequality for floor functions.
-@@@ nt-consecutive-integers-each-divisible-by-a-square.md
----
-title: Long runs of non-squarefree numbers
-category: number/divisibility
-level: olympiad
-difficulty: 3
-tags: Chinese remainder theorem, squarefree numbers
-date: 2026-11-04
----
 
-## Statement
-
-Prove that for every positive integer $n$ there exist $n$ consecutive positive integers, each divisible by the square of an integer greater than $1$.
-
-## Hint
-
-Choose $n$ distinct primes $p_1,\dots,p_n$ and impose $x+i\equiv0\pmod{p_i^2}$ for each $i$.
-
-## Solution
-
-**Idea.** The Chinese remainder theorem lets us prescribe divisibility conditions independently, as long as the moduli are pairwise coprime.
-
-**Proof.** Take distinct primes $p_1,\dots,p_n$. The moduli $p_1^2,\dots,p_n^2$ are pairwise coprime, so by the Chinese remainder theorem there is a positive integer $x$ with
-$$x\equiv-i\pmod{p_i^2}\qquad(i=1,\dots,n).$$
-Then $p_i^2\mid x+i$ for each $i$, so $x+1,x+2,\dots,x+n$ are $n$ consecutive integers each divisible by a square greater than $1$.
-
-**Example.** $n=3$ with primes $2,3,5$: $x\equiv-1\pmod4$, $x\equiv-2\pmod9$, $x\equiv-3\pmod{25}$ gives $x=547$: $548=4\cdot137$, $549=9\cdot61$, $550=25\cdot22$ ✓.
-
-**Remark.** So the gaps between consecutive squarefree numbers are unbounded.
-
-**Lesson.** To find consecutive integers with prescribed divisibility properties, use the Chinese remainder theorem.
-@@@ nt-thirteen-divides-two-to-the-seventy-plus-three-to-the-seventy.md
----
-title: 13 divides 2⁷⁰ + 3⁷⁰
-category: number/divisibility
-level: m1
-difficulty: 2
-tags: Fermat's little theorem, modular exponentiation
-date: 2026-11-04
----
-
-## Statement
-
-Prove that $13$ divides $2^{70}+3^{70}$.
-
-## Hint
-
-By Fermat's little theorem $a^{12}\equiv1\pmod{13}$. Reduce the exponents. Also $3^3=27\equiv1\pmod{13}$.
-
-## Solution
-
-**Powers of $2$.** $70=5\cdot12+10$, so $2^{70}\equiv2^{10}=1024\pmod{13}$. Since $1024=13\cdot78+10$, $2^{70}\equiv10$.
-
-**Powers of $3$.** $3^3=27\equiv1\pmod{13}$, and $70=3\cdot23+1$, so $3^{70}\equiv3^1=3$.
-
-**Sum.** $2^{70}+3^{70}\equiv10+3=13\equiv0\pmod{13}$.
-
-**Remark.** Another approach: $2^{70}+3^{70}$ is divisible by $13$ because $3^2\equiv-4=-2^2\pmod{13}$, hence $3^{70}=(3^2)^{35}\equiv(-4)^{35}=-2^{70}$.
-
-**Lesson.** Reduce the base and the exponent: use Fermat's theorem (or the actual order) to shrink exponents modulo $p-1$ (or modulo the order).
-@@@ nt-prime-factors-of-fermat-numbers.md
----
-title: Prime factors of Fermat numbers
-category: number/divisibility
-level: olympiad
-difficulty: 4
-tags: order, Fermat numbers, Fermat's little theorem
-date: 2026-11-04
----
-
-## Statement
-
-Let $F_k=2^{2^k}+1$. Prove that every prime divisor $p$ of $F_k$ satisfies $p\equiv1\pmod{2^{k+1}}$. Deduce that every prime divisor of $F_5=2^{32}+1$ is of the form $64m+1$, and verify that $641\mid F_5$.
-
-## Hint
-
-Compute the order of $2$ modulo $p$. It divides $2^{k+1}$, but does not divide $2^k$.
-
-## Solution
-
-**Idea.** The order of $2$ modulo $p$ is exactly $2^{k+1}$, and orders divide $p-1$.
-
-**Proof.** Let $p\mid F_k$. Then $p$ is odd and $2^{2^k}\equiv-1\pmod p$. Squaring, $2^{2^{k+1}}\equiv1\pmod p$, so the order $d$ of $2$ divides $2^{k+1}$, hence $d=2^j$ with $j\le k+1$. If $j\le k$, then $2^{2^k}\equiv1$ (as $d\mid2^k$), but we know $2^{2^k}\equiv-1\not\equiv1\pmod p$ since $p>2$. Thus $d=2^{k+1}$. By Fermat's little theorem $d\mid p-1$, so $p\equiv1\pmod{2^{k+1}}$.
-
-**Case $k=5$.** The primes dividing $F_5$ are among $64m+1$: $193,257,449,577,641,\dots$ Only $641=10\cdot64+1$ is needed.
-We use two expressions for $641$: $641=5\cdot2^7+1$ and $641=2^4+5^4$. The first gives $5\cdot2^7\equiv-1\pmod{641}$, so $5^4\cdot2^{28}\equiv1$. The second gives $5^4\equiv-2^4$. Substituting, $-2^4\cdot2^{28}\equiv1$, i.e. $2^{32}\equiv-1\pmod{641}$, so $641\mid F_5$ ✓.
-
-**Remark.** $F_5=641\cdot6\,700\,417$. Euler found $641$ in 1732 using exactly this restriction on divisors, refuting Fermat's belief that all $F_k$ are prime.
-
-**Lesson.** Compute the exact order of an element from a congruence like $a^m\equiv-1$; it restricts the possible primes to an arithmetic progression.
 @@@ nt-when-is-two-to-the-n-plus-one-prime.md
 ---
 title: When can 2ⁿ + 1 or 2ⁿ − 1 be prime?
@@ -5970,102 +6072,7 @@ and comparing with $4N=4n^4+4n^3+4n^2+4n+4$ gives $n^2-2n-3=0$, i.e. $(n-3)(n+1)
 **Check.** $81+27+9+3+1=121$ ✓. (Compare: $n=1$ gives $5$, $n=2$ gives $31$, $n=4$ gives $341$.)
 
 **Lesson.** To solve "polynomial = square", sandwich the polynomial (suitably scaled) between two consecutive squares and treat the few possible intermediate values.
-@@@ nt-counting-divisors-and-the-hundred-lockers.md
----
-title: Counting divisors and the hundred lockers
-category: number/divisibility
-level: olympiad
-difficulty: 2
-tags: divisor function, perfect squares, pairing
-date: 2026-11-04
----
 
-## Statement
-
-Let $d(n)$ be the number of positive divisors of $n$.
-
-1. Prove that $d(n)$ is odd if and only if $n$ is a perfect square.
-2. There are $100$ lockers, all closed. For $k=1,\dots,100$, student number $k$ changes the state (open/closed) of every $k$-th locker. Which lockers are open at the end?
-3. What is the smallest positive integer with exactly $12$ divisors?
-
-## Hint
-
-Pair each divisor $d$ with $n/d$.
-
-## Solution
-
-**1.** The map $d\mapsto n/d$ is an involution on the set of divisors of $n$. Its fixed points satisfy $d^2=n$. So divisors come in pairs $\{d,n/d\}$ with $d\ne n/d$, except when $n$ is a square, where $\sqrt n$ is unpaired. Hence $d(n)$ is odd iff $n$ is a square.
-
-**2.** Locker $m$ is touched once by every student $k$ dividing $m$, i.e. $d(m)$ times. It ends open iff $d(m)$ is odd iff $m$ is a perfect square. The open lockers are $1,4,9,16,25,36,49,64,81,100$ (ten lockers).
-
-**3.** If $n=\prod p_i^{a_i}$ then $d(n)=\prod(a_i+1)$. To get $12$ divisors, the exponents are $\{11\}$, $\{5,1\}$, $\{3,2\}$ or $\{2,1,1\}$. Minimal numbers: $2^{11}=2048$, $2^5\cdot3=96$, $2^3\cdot3^2=72$, $2^2\cdot3\cdot5=60$. The smallest is $60$.
-
-**Lesson.** Pair divisors $d\leftrightarrow n/d$; and recall $d(n)=\prod(a_i+1)$ to optimise over factorisation types.
-@@@ nt-a-floor-identity-with-square-roots.md
----
-title: ⌊√n + √(n+1)⌋ = ⌊√(4n+2)⌋
-category: number/divisibility
-level: olympiad
-difficulty: 4
-tags: floor function, square roots, squares modulo 4
-date: 2026-11-04
----
-
-## Statement
-
-Prove that for every positive integer $n$,
-$$\left\lfloor\sqrt n+\sqrt{n+1}\right\rfloor=\left\lfloor\sqrt{4n+2}\right\rfloor.$$
-
-## Hint
-
-Show that $\sqrt n+\sqrt{n+1}<\sqrt{4n+2}$, then show that no integer lies between the two numbers.
-
-## Solution
-
-**Idea.** The two numbers are very close; an integer between them would be a square near $4n+2$, and $4n+2$ is never a square.
-
-**Upper comparison.** $(\sqrt n+\sqrt{n+1})^2=2n+1+2\sqrt{n(n+1)}$, and $n(n+1)<\left(n+\frac12\right)^2$, so $2\sqrt{n(n+1)}<2n+1$ and
-$$(\sqrt n+\sqrt{n+1})^2<4n+2.$$
-
-**Lower comparison.** $n(n+1)>n^2$ so $2\sqrt{n(n+1)}>2n$ and
-$$(\sqrt n+\sqrt{n+1})^2>4n+1.$$
-
-**No integer in between.** Suppose an integer $k$ satisfies $\sqrt n+\sqrt{n+1}<k\le\sqrt{4n+2}$. Squaring, $4n+1<k^2\le4n+2$, so $k^2=4n+2$. But squares are $\equiv0,1\pmod4$ while $4n+2\equiv2$. Contradiction.
-
-**Conclusion.** The numbers $\sqrt n+\sqrt{n+1}\le\sqrt{4n+2}$ have no integer in $(\sqrt n+\sqrt{n+1},\sqrt{4n+2}]$, so their floors coincide.
-
-**Check.** $n=1$: $1+1.414=2.414$, $\sqrt6=2.449$, both floors $2$.
-
-**Lesson.** To compare floors of two close irrational expressions, show that no integer (or the square of an integer) can separate them, often with a congruence argument.
-@@@ nt-the-gcd-of-two-consecutive-factorials-plus-one.md
----
-title: gcd(n! + 1, (n + 1)! + 1) = 1
-category: number/divisibility
-level: m1
-difficulty: 2
-tags: gcd, divisibility, factorials
-date: 2026-11-04
----
-
-## Statement
-
-Prove that for every positive integer $n$, $n!+1$ and $(n+1)!+1$ are coprime.
-
-## Hint
-
-Let $d$ divide both. Express $(n+1)!+1$ in terms of $n!$ and reduce modulo $d$.
-
-## Solution
-
-**Proof.** Let $d$ be a common divisor. Then $n!\equiv-1\pmod d$. Since $(n+1)!=(n+1)\,n!$,
-$$0\equiv(n+1)!+1\equiv-(n+1)+1=-n\pmod d,$$
-so $d\mid n$. But $n\mid n!$, hence $d\mid n!$. Together with $d\mid n!+1$ this gives $d\mid1$.
-
-**Check.** $n=3$: $\gcd(7,25)=1$; $n=4$: $\gcd(25,121)=1$ ✓.
-
-**Remark.** Equivalently, $\gcd(n!+1,(n+1)!+1)=\gcd(n!+1,n)=1$ by the Euclidean algorithm.
-
-**Lesson.** To prove coprimality, assume a common divisor $d$, reduce one expression modulo $d$ using the other, and show that $d$ divides $1$.
 @@@ nt-a-number-of-the-form-eight-k-plus-seven-is-not-a-sum-of-three-squares.md
 ---
 title: 8k + 7 is not a sum of three squares
