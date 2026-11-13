@@ -1,79 +1,76 @@
-@@@ squares-and-pairwise-products.md
+@@@ alg2-the-sum-of-the-reciprocals-of-x-minus-the-roots-of-unity.md
 ---
-title: Squares and pairwise products
-category: algebra/inequalities
-level: lycee
-difficulty: 1
-tags: inequalities, squares
-date: 2026-10-31
----
-
-## Statement
-
-Prove that for all real numbers $a,b,c$,
-$$a^2+b^2+c^2\ge ab+bc+ca,$$
-with equality if and only if $a=b=c$.
-
-## Hint
-
-Look at $(a-b)^2+(b-c)^2+(c-a)^2$.
-
-## Solution
-
-Expanding each square,
-$$(a-b)^2+(b-c)^2+(c-a)^2=2\left(a^2+b^2+c^2-ab-bc-ca\right).$$
-
-A sum of squares is non-negative, so $a^2+b^2+c^2-ab-bc-ca\ge0$. It equals $0$ exactly when all three squares are $0$, that is when $a=b=c$.
-
-@@@ sum-of-cubes-of-roots.md
----
-title: Sum of cubes of the roots
-category: algebra/polynomials
-level: lycee
-difficulty: 2
-tags: vieta, polynomials
-date: 2026-10-31
+title: Sums over roots of unity from a logarithmic derivative
+category: algebra/complex-numbers
+level: olympiad
+difficulty: 3
+tags: roots of unity, logarithmic derivative, complex numbers, symmetry
+date: 2026-11-05
 ---
 
 ## Statement
 
-Let $x_1$ and $x_2$ be the roots of $x^2-3x+1=0$. Compute $x_1^3+x_2^3$ without computing the roots.
+Let $n\ge2$ and $\omega=e^{2\pi i/n}$.
+
+1. Prove that for every complex $x$ that is not an $n$-th root of unity,
+$$\sum_{k=0}^{n-1}\frac1{x-\omega^k}=\frac{nx^{n-1}}{x^n-1}.$$
+2. Compute $\displaystyle\sum_{k=0}^{n-1}\frac1{2-\omega^k}$.
+3. Prove that $\displaystyle\sum_{k=1}^{n-1}\frac1{1-\omega^k}=\frac{n-1}2$.
 
 ## Hint
 
-Write $x_1^3+x_2^3$ using the sum $s=x_1+x_2$ and the product $p=x_1x_2$.
+For part 1, $x^n-1=\prod_{k=0}^{n-1}(x-\omega^k)$. Differentiate the product and divide by the product. For part 3, pair $k$ with $n-k$.
 
 ## Solution
 
-By Vieta's formulas, $s=x_1+x_2=3$ and $p=x_1x_2=1$.
+**1.** Let $f(x)=x^n-1=\prod_k(x-\omega^k)$. By the product rule,
+$$\frac{f'(x)}{f(x)}=\sum_{k=0}^{n-1}\frac1{x-\omega^k}.$$
+Since $f'(x)=nx^{n-1}$, the identity follows.
 
-Since $(x_1+x_2)^3=x_1^3+x_2^3+3x_1x_2(x_1+x_2)$, we get
-$$x_1^3+x_2^3=s^3-3ps=27-9=18.$$
-@@@ remainder-of-a-polynomial.md
+**2.** Take $x=2$:
+$$\sum_{k=0}^{n-1}\frac1{2-\omega^k}=\frac{n\,2^{n-1}}{2^n-1}.$$
+For $n=3$ this is $\frac{12}7\approx1.714$.
+
+**3.** The terms $k$ and $n-k$ have $\omega^{n-k}=\omega^{-k}=\overline{\omega^k}$. For $z=\omega^k\ne1$ with $|z|=1$,
+$$\frac1{1-z}+\frac1{1-\frac1z}=\frac1{1-z}+\frac z{z-1}=\frac{1-z}{1-z}=1.$$
+So the terms $k=1,\dots,n-1$ can be grouped into pairs $\{k,n-k\}$ each summing to $1$. If $n$ is even, the term $k=\frac n2$ has $\omega^k=-1$ and equals $\frac12$, which is half of a "pair with itself". In all cases the total is $\frac{n-1}2$. $\blacksquare$
+
+**Lesson.** A logarithmic derivative turns a product over roots into a sum over roots; pairing $z$ with $\bar z=1/z$ evaluates sums over the unit circle.
+@@@ alg2-complex-numbers-of-modulus-one-and-symmetric-expressions.md
 ---
-title: Remainder of a polynomial
-category: algebra/polynomials
-level: l1
-difficulty: 2
-tags: polynomials, euclidean division
-date: 2026-10-31
+title: Three complex numbers of modulus one
+category: algebra/complex-numbers
+level: olympiad
+difficulty: 3
+tags: complex numbers, unit circle, conjugation, equilateral triangle
+date: 2026-11-05
 ---
 
 ## Statement
 
-Find the remainder of the division of $P(x)=x^{100}+x+1$ by $x^2-1$.
+Let $a,b,c$ be complex numbers with $|a|=|b|=|c|=1$.
+
+1. Prove that $|ab+bc+ca|=|a+b+c|$.
+2. Prove that if $a+b+c=0$, then $a,b,c$ are the vertices of an equilateral triangle.
+3. Prove that $\dfrac{(a+b)(b+c)(c+a)}{abc}$ is a real number.
 
 ## Hint
 
-The remainder has degree at most $1$. Evaluate $P$ at the roots of $x^2-1$.
+On the unit circle, $\bar a=\frac1a$. Express $\overline{a+b+c}$ in terms of $ab+bc+ca$.
 
 ## Solution
 
-Write $P(x)=(x^2-1)Q(x)+ax+b$, where $a,b$ are real numbers.
+**1.** Since $\bar a=1/a$, etc.,
+$$\overline{a+b+c}=\frac1a+\frac1b+\frac1c=\frac{ab+bc+ca}{abc}.$$
+Taking moduli and using $|abc|=1$: $|a+b+c|=|ab+bc+ca|$.
 
-Evaluating at $x=1$ gives $P(1)=3=a+b$. Evaluating at $x=-1$ gives $P(-1)=1-1+1=1=-a+b$.
+**2.** If $a+b+c=0$, part 1 gives $ab+bc+ca=0$. Then $a,b,c$ are the roots of $t^3-abc=0$. The equation $t^3=abc$ has three distinct roots (since $abc\ne0$): the three cube roots of $abc$, which are $r,r\omega,r\omega^2$ — vertices of an equilateral triangle centred at $0$.
 
-Adding the two equations gives $2b=4$, so $b=2$ and $a=1$. The remainder is $x+2$.
+**3.** Let $Z=\dfrac{(a+b)(b+c)(c+a)}{abc}$. For $a,b\ne0$: $\overline{a+b}=\frac1a+\frac1b=\frac{a+b}{ab}$. Therefore
+$$\overline{(a+b)(b+c)(c+a)}=\frac{(a+b)(b+c)(c+a)}{(abc)^2},\qquad\overline{abc}=\frac1{abc}.$$
+Hence $\bar Z=\dfrac{(a+b)(b+c)(c+a)}{(abc)^2}\cdot abc=Z$, so $Z$ is real. $\blacksquare$
+
+**Lesson.** On the unit circle replace $\bar z$ by $1/z$: symmetric expressions become rational functions you can compare with their conjugates.
 @@@ power-of-1-plus-i.md
 ---
 title: A power of 1 + i
@@ -96,2352 +93,6 @@ Compute $(1+i)^2$ first.
 
 We have $(1+i)^2=1+2i+i^2=2i$. Therefore
 $$(1+i)^{20}=\left((1+i)^2\right)^{10}=(2i)^{10}=2^{10}\,i^{10}=1024\cdot(i^2)^5=1024\cdot(-1)^5=-1024.$$
-@@@ am-gm-for-three-numbers.md
----
-title: AM-GM for three numbers
-category: algebra/inequalities
-level: l1
-difficulty: 3
-tags: inequalities, AM-GM
-date: 2026-10-31
----
-
-## Statement
-
-Let $a,b,c>0$ with $abc=1$. Prove that $a+b+c\ge3$, and find when equality holds.
-
-## Hint
-
-First prove that $x^3+y^3+z^3\ge3xyz$ for $x,y,z\ge0$, using a factorisation. Then take cube roots of $a,b,c$.
-
-## Solution
-
-For $x,y,z\ge0$ we have the identity
-$$x^3+y^3+z^3-3xyz=\tfrac12(x+y+z)\left[(x-y)^2+(y-z)^2+(z-x)^2\right]\ge0.$$
-
-Apply it to $x=a^{1/3}$, $y=b^{1/3}$, $z=c^{1/3}$. Then $xyz=(abc)^{1/3}=1$ and $x^3+y^3+z^3=a+b+c$, so $a+b+c\ge3$.
-
-Equality holds exactly when $x=y=z$, that is $a=b=c$, and with $abc=1$ this gives $a=b=c=1$.
-
-@@@ an-equation-with-absolute-values.md
----
-title: An equation with absolute values
-category: algebra/equations
-level: lycee
-difficulty: 2
-tags: absolute value, equations
-date: 2026-10-31
----
-
-## Statement
-
-Solve in $\mathbb{R}$ the equation $|x-1|+|x+2|=5$.
-
-## Hint
-
-Split $\mathbb{R}$ into three intervals according to the signs of $x-1$ and $x+2$.
-
-## Solution
-
-**Case $x\ge1$.** The equation becomes $(x-1)+(x+2)=5$, that is $2x+1=5$, so $x=2$, which is in the interval.
-
-**Case $-2\le x<1$.** The equation becomes $(1-x)+(x+2)=3=5$, which is impossible.
-
-**Case $x<-2$.** The equation becomes $(1-x)+(-x-2)=5$, that is $-2x-1=5$, so $x=-3$, which is in the interval.
-
-The solution set is $\{-3,\,2\}$.
-@@@ a-nested-radical.md
----
-title: A nested radical
-category: algebra/equations
-level: lycee
-difficulty: 1
-tags: radicals, identities
-date: 2026-10-31
----
-
-## Statement
-
-Simplify $\sqrt{3+2\sqrt2}$.
-
-## Hint
-
-Look for integers $a,b$ with $(a+b\sqrt2)^2=3+2\sqrt2$.
-
-## Solution
-
-We compute $(1+\sqrt2)^2=1+2\sqrt2+2=3+2\sqrt2$.
-
-Since $1+\sqrt2>0$, the square root of $(1+\sqrt2)^2$ is $1+\sqrt2$. Hence
-$$\sqrt{3+2\sqrt2}=1+\sqrt2.$$
-@@@ a-classic-inequality.md
----
-title: A classic inequality
-category: algebra/inequalities
-level: lycee
-difficulty: 1
-tags: inequalities, AM-GM
-date: 2026-10-31
----
-
-## Statement
-
-For $a,b>0$, prove that
-$$(a+b)\left(\frac1a+\frac1b\right)\ge 4,$$
-with equality if and only if $a=b$.
-
-## Hint
-
-Expand the product, then set $t=a/b$.
-
-## Solution
-
-Expanding gives $(a+b)\left(\frac1a+\frac1b\right)=2+\dfrac ab+\dfrac ba$.
-
-Let $t=a/b>0$. Then $t+\dfrac1t-2=\dfrac{(t-1)^2}{t}\ge0$, so the product is at least $4$, with equality iff $t=1$, that is $a=b$.
-@@@ rings-definition-check.md
----
-title: Checking the ring axioms
-category: algebra/rings-and-fields
-level: lycee
-difficulty: 1
-tags: ring axioms, examples, counterexamples
-date: 2026-11-03
----
-
-## Statement
-
-Determine whether each of the following is a ring under the usual operations:
-
-(a) $(\mathbb{Z},+,\times)$;
-(b) $(2\mathbb{Z},+,\times)$;
-(c) $(\mathbb{N},+,\times)$;
-(d) $(\mathbb{R}[X],+,\times)$;
-(e) $(M_n(\mathbb{R}),+,\times)$.
-
-## Hint
-
-Check: $(A,+)$ is an abelian group, multiplication is associative, and distributivity holds. Commutativity of multiplication and existence of a unit are optional.
-
-## Solution
-
-**(a)** $(\mathbb{Z},+)$ abelian group, multiplication associative and distributive. Unit $1$. **Commutative ring with unit.**
-
-**(b)** $2\mathbb{Z}$: abelian group, closed under multiplication ($2a\cdot2b=4ab\in2\mathbb{Z}$), associative and distributive. But no unit (1 is not in $2\mathbb{Z}$). **Commutative ring without unit** (a pseudo-ring).
-
-**(c)** $(\mathbb{N},+)$ is not a group (no additive inverses). **Not a ring.**
-
-**(d)** $\mathbb{R}[X]$: polynomial addition is an abelian group, multiplication associative/distributive. Unit $1$. **Commutative ring with unit.**
-
-**(e)** $M_n(\mathbb{R})$: abelian group under addition, matrix multiplication associative, distributive. Unit $I_n$. Non-commutative for $n\ge2$. **Non-commutative ring with unit.**
-
-**Conclusion.** (a), (d), (e) are rings with unit; (b) is a ring without unit; (c) is not a ring.
-
-@@@ rings-zero-divisors.md
----
-title: Zero divisors
-category: algebra/rings-and-fields
-level: lycee
-difficulty: 2
-tags: zero divisors, examples, rings
-date: 2026-11-03
----
-
-## Statement
-
-Find all zero divisors in each ring:
-
-(a) $\mathbb{Z}/6\mathbb{Z}$;
-(b) $\mathbb{Z}/7\mathbb{Z}$;
-(c) $M_2(\mathbb{R})$.
-
-## Hint
-
-$a$ is a zero divisor if $a\neq0$ and there exists $b\neq0$ with $ab=0$ (or $ba=0$).
-
-## Solution
-
-**(a)** $\mathbb{Z}/6\mathbb{Z}$. $\bar2\cdot\bar3=\bar6=\bar0$, so $\bar2$ and $\bar3$ are zero divisors. Also $\bar4\cdot\bar3=\bar{12}=\bar0$. Zero divisors: $\bar2,\bar3,\bar4$.
-
-**(b)** $\mathbb{Z}/7\mathbb{Z}$: $7$ prime, so every nonzero element is invertible, hence no zero divisors. **No zero divisors** (field).
-
-**(c)** $M_2(\mathbb{R})$: $\begin{pmatrix}1&0\\0&0\end{pmatrix}\begin{pmatrix}0&0\\0&1\end{pmatrix}=\begin{pmatrix}0&0\\0&0\end{pmatrix}$, so non-invertible nonzero matrices are zero divisors.
-
-**Conclusion.** (a) has zero divisors $2,3,4$; (b) has none; (c) has many (all non-invertible nonzero matrices).
-
-@@@ rings-integral-domain.md
----
-title: Integral domains
-category: algebra/rings-and-fields
-level: l1
-difficulty: 2
-tags: integral domain, examples, cancellation
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\mathbb{Z}$, $\mathbb{R}[X]$, and $\mathbb{Z}/p\mathbb{Z}$ (for $p$ prime) are integral domains. Show that $\mathbb{Z}/6\mathbb{Z}$ is not.
-
-## Hint
-
-An integral domain is a commutative ring with unit and no zero divisors.
-
-## Solution
-
-**$\mathbb{Z}$.** Commutative with unit, and $ab=0\Rightarrow a=0$ or $b=0$ (for integers). Integral domain.
-
-**$\mathbb{R}[X]$.** Commutative with unit, and the product of two nonzero polynomials is nonzero (degree adds). Integral domain.
-
-**$\mathbb{Z}/p\mathbb{Z}$.** For $p$ prime, if $\bar a\bar b=\bar0$, then $p\mid ab$, so $p\mid a$ or $p\mid b$ (Euclid's lemma). Hence $\bar a=\bar0$ or $\bar b=\bar0$. Integral domain.
-
-**$\mathbb{Z}/6\mathbb{Z}$.** $\bar2\cdot\bar3=\bar0$ with $\bar2,\bar3\neq\bar0$. Not an integral domain.
-
-**Conclusion.** The cancellation law holds in integral domains: $ab=ac$ and $a\neq0$ imply $b=c$.
-
-@@@ rings-field-definition.md
----
-title: Fields
-category: algebra/rings-and-fields
-level: l1
-difficulty: 2
-tags: field, examples, invertible elements
-date: 2026-11-03
----
-
-## Statement
-
-Which of the following are fields?
-
-(a) $\mathbb{Q}$; (b) $\mathbb{R}$; (c) $\mathbb{C}$; (d) $\mathbb{Z}$; (e) $\mathbb{Z}/5\mathbb{Z}$; (f) $\mathbb{Z}/4\mathbb{Z}$.
-
-## Hint
-
-A field is a commutative ring with unit where every nonzero element is invertible.
-
-## Solution
-
-**(a),(b),(c)** $\mathbb{Q},\mathbb{R},\mathbb{C}$ are fields: every nonzero element has an inverse in the same set.
-
-**(d)** $\mathbb{Z}$: not a field ($2$ has no inverse in $\mathbb{Z}$).
-
-**(e)** $\mathbb{Z}/5\mathbb{Z}$: $5$ prime, so $\mathbb{Z}/5\mathbb{Z}$ is a field ($\mathbb{F}_5$).
-
-**(f)** $\mathbb{Z}/4\mathbb{Z}$: $\bar2$ is not invertible ($\bar2\cdot\bar k\in\{\bar0,\bar2\}$), so not a field.
-
-**Conclusion.** $\mathbb{Q},\mathbb{R},\mathbb{C},\mathbb{Z}/5\mathbb{Z}$ are fields; $\mathbb{Z}$ and $\mathbb{Z}/4\mathbb{Z}$ are not.
-
-@@@ rings-ideal-definition.md
----
-title: Ideals
-category: algebra/rings-and-fields
-level: l1
-difficulty: 3
-tags: ideal, definition, examples
-date: 2026-11-03
----
-
-## Statement
-
-Let $R$ be a commutative ring. An ideal $I\subseteq R$ is an additive subgroup such that $rx\in I$ for all $r\in R$, $x\in I$. Show that:
-
-(a) $n\mathbb{Z}$ is an ideal of $\mathbb{Z}$;
-(b) the set of polynomials with zero constant term is an ideal of $\mathbb{R}[X]$;
-(c) $\{0\}$ and $R$ are ideals.
-
-## Hint
-
-Check closure under addition and absorption by multiplication.
-
-## Solution
-
-**(a)** $n\mathbb{Z}$ is an additive subgroup of $\mathbb{Z}$. For $r\in\mathbb{Z}$ and $x=nk$, $rx=rnk=n(rk)\in n\mathbb{Z}$. Ideal.
-
-**(b)** Let $I=\{P\in\mathbb{R}[X]:P(0)=0\}$. Sum of two such polynomials has value $0$ at $0$; product $QP$ has $(QP)(0)=Q(0)\cdot0=0$. Ideal (the kernel of evaluation at $0$).
-
-**(c)** $\{0\}$: trivially an ideal. $R$: trivially an ideal. These are the **trivial ideals**.
-
-**Conclusion.** All three are ideals.
-
-@@@ rings-quotient.md
----
-title: Quotient rings
-category: algebra/rings-and-fields
-level: l1
-difficulty: 4
-tags: quotient ring, ideal, operations
-date: 2026-11-03
----
-
-## Statement
-
-Let $I$ be an ideal of a commutative ring $R$. Show that $R/I$ with operations $(a+I)+(b+I)=(a+b)+I$ and $(a+I)(b+I)=ab+I$ is a commutative ring.
-
-## Hint
-
-Well-definedness is the main point. Then check the axioms.
-
-## Solution
-
-**Well-defined.** If $a+I=a'+I$ and $b+I=b'+I$, then $a-a'\in I$, $b-b'\in I$. Then $(a+b)-(a'+b')\in I$ (I is additive subgroup) and $ab-a'b'=a(b-b')+(a-a')b'\in I$ (I is an ideal). So the operations are well defined.
-
-**Ring axioms.** Inherited from $R$: associativity of addition/multiplication, distributivity, commutativity. Identity: $1+I$. Zero: $0+I=0$.
-
-**Conclusion.** $R/I$ is a commutative ring (with unit if $R$ has one).
-
-@@@ rings-prime-maximal.md
----
-title: Prime and maximal ideals
-category: algebra/rings-and-fields
-level: l1
-difficulty: 4
-tags: prime ideal, maximal ideal, quotient
-date: 2026-11-03
----
-
-## Statement
-
-Let $R$ be a commutative ring with unit. An ideal $I$ is:
-- prime if $I\neq R$ and $ab\in I\Rightarrow a\in I$ or $b\in I$;
-- maximal if $I\neq R$ and the only ideals containing $I$ are $I$ and $R$.
-
-Show that:
-1. $I$ is prime iff $R/I$ is an integral domain;
-2. $I$ is maximal iff $R/I$ is a field;
-3. maximal $\Rightarrow$ prime.
-
-## Hint
-
-Use the correspondence between ideals of $R$ containing $I$ and ideals of $R/I$.
-
-## Solution
-
-**1.** If $I$ prime: $\bar a\bar b=0$ in $R/I$ iff $ab\in I$, iff $a\in I$ or $b\in I$, iff $\bar a=0$ or $\bar b=0$. So $R/I$ is an integral domain. Conversely, if $R/I$ integral domain, $I$ prime.
-
-**2.** If $I$ maximal: any nonzero ideal of $R/I$ lifts to an ideal containing $I$, so equals $R/I$. So $R/I$ is a field (every nonzero element invertible). Conversely, if $R/I$ is a field, every ideal containing $I$ is $I$ or $R$, so $I$ maximal.
-
-**3.** A field is an integral domain, so maximal implies prime.
-
-**Conclusion.** The quotient ring structure reflects the ideal's type: integral domain for prime, field for maximal.
-
-@@@ rings-polynomial-field.md
----
-title: The field $\mathbb{R}[X]/(X^2+1)$
-category: algebra/rings-and-fields
-level: l1
-difficulty: 4
-tags: quotient ring, polynomial, complex numbers
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\mathbb{R}[X]/(X^2+1)\cong\mathbb{C}$.
-
-## Hint
-
-Define $\varphi:\mathbb{R}[X]\to\mathbb{C}$ by $\varphi(P)=P(i)$, and show its kernel is $(X^2+1)$.
-
-## Solution
-
-**Homomorphism.** $\varphi(P+Q)=P(i)+Q(i)=\varphi(P)+\varphi(Q)$ and $\varphi(PQ)=P(i)Q(i)=\varphi(P)\varphi(Q)$.
-
-**Kernel.** $P(i)=0$ iff $X-i$ divides $P$ over $\mathbb{C}$. But $P\in\mathbb{R}[X]$, so if $i$ is a root, $-i$ is also a root (conjugate roots). So $(X-i)(X+i)=X^2+1$ divides $P$ over $\mathbb{R}[X]$. Kernel = $(X^2+1)$.
-
-**Surjective.** $a+bi=\varphi(a+bX)$.
-
-**Conclusion.** By the first isomorphism theorem, $\mathbb{R}[X]/(X^2+1)\cong\mathbb{C}$.
-
-@@@ rings-euclidean-division.md
----
-title: Euclidean division in $\mathbb{R}[X]$
-category: algebra/rings-and-fields
-level: l1
-difficulty: 3
-tags: Euclidean division, polynomials, quotient and remainder
-date: 2026-11-03
----
-
-## Statement
-
-In $\mathbb{R}[X]$, perform the Euclidean division of $A=X^3-2X^2+X-3$ by $B=X-2$.
-
-## Hint
-
-Use the factor theorem: the remainder of division by $X-a$ is $A(a)$.
-
-## Solution
-
-**Remainder.** $A(2)=8-8+2-3=-1$. So the remainder is $-1$.
-
-**Quotient.** $A=(X-2)Q-1$. To find $Q$, perform the division:
-$$X^3-2X^2+X-3=(X-2)(X^2+1)-1.$$
-So $Q=X^2+1$.
-
-**Check.** $(X-2)(X^2+1)-1=X^3+X-2X^2-2-1=X^3-2X^2+X-3$. Correct.
-
-**Conclusion.** $A=(X-2)(X^2+1)-1$, quotient $X^2+1$, remainder $-1$.
-
-@@@ rings-gcd-polynomials.md
----
-title: GCD in $\mathbb{R}[X]$
-category: algebra/rings-and-fields
-level: l1
-difficulty: 4
-tags: GCD, Euclidean algorithm, Bézout
-date: 2026-11-03
----
-
-## Statement
-
-Compute $\gcd(X^3-1,X^2-1)$ in $\mathbb{R}[X]$, and find $U,V$ with $U(X)(X^3-1)+V(X)(X^2-1)=\gcd$.
-
-## Hint
-
-Euclidean algorithm: divide $X^3-1$ by $X^2-1$.
-
-## Solution
-
-**Division.** $X^3-1=(X^2-1)X+(X-1)$.
-
-**Division.** $X^2-1=(X-1)(X+1)+0$.
-
-**GCD.** $X-1$.
-
-**Bézout.** $X-1=(X^3-1)-X(X^2-1)$. So $U=-X$, $V=1$.
-
-**Conclusion.** $\gcd=X-1$, and $-X(X^3-1)+1(X^2-1)=X-1$.
-
-@@@ rings-irreducibility.md
----
-title: Irreducibility in $\mathbb{R}[X]$ and $\mathbb{C}[X]$
-category: algebra/rings-and-fields
-level: l1
-difficulty: 4
-tags: irreducibility, polynomial, fields
-date: 2026-11-03
----
-
-## Statement
-
-Classify irreducible polynomials over $\mathbb{R}$ and over $\mathbb{C}$.
-
-## Hint
-
-Use the fundamental theorem of algebra.
-
-## Solution
-
-**Over $\mathbb{C}$.** Every non-constant polynomial has a root in $\mathbb{C}$ (fundamental theorem of algebra). So the only irreducible polynomials are the linear ones: $aX+b$ with $a\neq0$.
-
-**Over $\mathbb{R}$.** Irreducible polynomials are:
-- Linear polynomials $aX+b$ ($a\neq0$);
-- Quadratic polynomials $aX^2+bX+c$ with $a\neq0$ and $\Delta=b^2-4ac<0$.
-
-Why? Any real polynomial factors into linear and quadratic factors by pairing conjugate complex roots.
-
-**Conclusion.** Over $\mathbb{C}$: linear only. Over $\mathbb{R}$: linear and quadratic with negative discriminant.
-
-@@@ rings-ideals-in-z.md
----
-title: Ideals in $\mathbb{Z}$
-category: algebra/rings-and-fields
-level: l1
-difficulty: 3
-tags: ideals, Z, principal ideal
-date: 2026-11-03
----
-
-## Statement
-
-Show that every ideal of $\mathbb{Z}$ is principal, i.e. of the form $n\mathbb{Z}$ for some $n\ge0$.
-
-## Hint
-
-Let $I$ be an ideal, $I\neq\{0\}$. Take $n$ = smallest positive element of $I$, and show $I=n\mathbb{Z}$.
-
-## Solution
-
-**Setup.** If $I=\{0\}$, then $I=0\mathbb{Z}$. Otherwise, $I$ contains positive elements (if $x\in I$, $-x\in I$, so $|x|\in I$). Let $n$ be the smallest positive element of $I$.
-
-**$n\mathbb{Z}\subseteq I$.** Since $n\in I$ and $I$ is closed under multiplication by $\mathbb{Z}$, every multiple of $n$ is in $I$.
-
-**$I\subseteq n\mathbb{Z}$.** Let $a\in I$. Euclidean division: $a=qn+r$ with $0\le r<n$. Then $r=a-qn\in I$. By minimality of $n$, $r=0$, so $a=qn\in n\mathbb{Z}$.
-
-**Conclusion.** $I=n\mathbb{Z}$. $\mathbb{Z}$ is a **principal ideal domain**.
-
-@@@ rings-z-prime-ideals.md
----
-title: Prime ideals in $\mathbb{Z}$
-category: algebra/rings-and-fields
-level: l1
-difficulty: 3
-tags: prime ideals, Z, primes
-date: 2026-11-03
----
-
-## Statement
-
-Determine the prime and maximal ideals of $\mathbb{Z}$.
-
-## Hint
-
-$n\mathbb{Z}$ is prime iff $n$ is prime (or $0$). $n\mathbb{Z}$ is maximal iff $n$ is prime.
-
-## Solution
-
-**Prime ideals.** $n\mathbb{Z}$ is prime iff $\mathbb{Z}/n\mathbb{Z}$ is an integral domain, iff $n$ is prime or $n=0$ (since $\mathbb{Z}/0\mathbb{Z}\cong\mathbb{Z}$ is an integral domain).
-
-**Maximal ideals.** $n\mathbb{Z}$ is maximal iff $\mathbb{Z}/n\mathbb{Z}$ is a field, iff $n$ is prime.
-
-**Conclusion.** 
-- Prime ideals: $(0)$ and $(p)$ for $p$ prime.
-- Maximal ideals: $(p)$ for $p$ prime (not $(0)$, since $\mathbb{Z}$ is not a field).
-
-@@@ rings-gaussian-integers.md
----
-title: The Gaussian integers $\mathbb{Z}[i]$
-category: algebra/rings-and-fields
-level: l1
-difficulty: 4
-tags: Gaussian integers, ring, norm
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\mathbb{Z}[i]=\{a+bi:a,b\in\mathbb{Z}\}$ is an integral domain, and compute the units.
-
-## Hint
-
-Define the norm $N(a+bi)=a^2+b^2$, which is multiplicative. Find elements of norm $1$.
-
-## Solution
-
-**Ring.** Closed under addition/subtraction and multiplication: $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$ with integer coefficients. Commutative with unit $1$.
-
-**Integral domain.** $\mathbb{Z}[i]\subseteq\mathbb{C}$, which is a field, so no zero divisors.
-
-**Norm.** $N(z)=z\bar z=a^2+b^2\in\mathbb{Z}_{\ge0}$, multiplicative: $N(zw)=N(z)N(w)$.
-
-**Units.** $u$ is a unit iff $N(u)=1$ (since $u^{-1}$ would have norm $1/N(u)$, and this must be an integer). Solutions of $a^2+b^2=1$: $(\pm1,0),(0,\pm1)$. So units are $\pm1,\pm i$.
-
-**Conclusion.** $\mathbb{Z}[i]$ is an integral domain with units $\{\pm1,\pm i\}$.
-
-@@@ rings-euclidean-domain-z-i.md
----
-title: $\mathbb{Z}[i]$ is Euclidean
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: Euclidean domain, Gaussian integers, division
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\mathbb{Z}[i]$ is a Euclidean domain with the norm $N(a+bi)=a^2+b^2$.
-
-## Hint
-
-For $z,w\in\mathbb{Z}[i]$ with $w\neq0$, write $z/w=x+yi$ with $x,y\in\mathbb{Q}$, then round to nearest integers.
-
-## Solution
-
-**Division.** Let $z,w\in\mathbb{Z}[i]$, $w\neq0$. Write $z/w=x+yi\in\mathbb{Q}[i]$. Let $q=m+ni$ with $m,n$ the nearest integers to $x,y$. Then $|x-m|\le1/2$, $|y-n|\le1/2$.
-
-**Remainder.** Let $r=z-qw$. Then $N(r)=N(w)N(z/w-q)=N(w)[(x-m)^2+(y-n)^2]\le N(w)(1/4+1/4)=N(w)/2<N(w)$.
-
-**Conclusion.** For every $z,w$ with $w\neq0$, there exist $q,r\in\mathbb{Z}[i]$ with $z=qw+r$ and $N(r)<N(w)$. So $\mathbb{Z}[i]$ is Euclidean, hence a PID and UFD.
-
-@@@ rings-fermat-sum-squares.md
----
-title: Sums of two squares via $\mathbb{Z}[i]$
-category: algebra/rings-and-fields
-level: m1
-difficulty: 5
-tags: sums of squares, Gaussian integers, factorization
-date: 2026-11-03
----
-
-## Statement
-
-Using $\mathbb{Z}[i]$, show that a prime $p\equiv1\pmod4$ is a sum of two squares.
-
-## Hint
-
-$-1$ is a quadratic residue mod $p$ when $p\equiv1\pmod4$ (Wilson's theorem or Euler's criterion). So $p\mid a^2+1$ for some $a$, i.e. $p\mid(a+i)(a-i)$ in $\mathbb{Z}[i]$.
-
-## Solution
-
-**$-1$ is a square mod $p$.** For $p\equiv1\pmod4$, by Euler's criterion $(-1)^{(p-1)/2}=1$, so there is $a$ with $a^2\equiv-1\pmod p$. Thus $p\mid a^2+1=(a+i)(a-i)$.
-
-**$p$ is not irreducible in $\mathbb{Z}[i]$.** If $p$ were prime in $\mathbb{Z}[i]$, then $p\mid a+i$ or $p\mid a-i$, which is impossible (the imaginary part is $\pm1$, not divisible by $p$).
-
-**Factorization.** So $p=zw$ with $z,w$ non-units. Taking norms: $p^2=N(p)=N(z)N(w)$, and since $z,w$ are non-units, $N(z),N(w)>1$. So $N(z)=N(w)=p$.
-
-**Conclusion.** If $z=a+bi$, then $a^2+b^2=p$. Every prime $p\equiv1\pmod4$ is a sum of two squares.
-
-@@@ rings-field-extension.md
----
-title: Field extensions
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: field extension, degree, minimal polynomial
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\mathbb{Q}(\sqrt2)=\{a+b\sqrt2:a,b\in\mathbb{Q}\}$ is a field, and compute $[\mathbb{Q}(\sqrt2):\mathbb{Q}]$.
-
-## Hint
-
-Show closure under inverse: $\frac{1}{a+b\sqrt2}=\frac{a-b\sqrt2}{a^2-2b^2}$.
-
-## Solution
-
-**Subfield.** Closed under addition, subtraction, multiplication: $(a+b\sqrt2)(c+d\sqrt2)=(ac+2bd)+(ad+bc)\sqrt2$.
-
-**Inverse.** For $a+b\sqrt2\neq0$: $a^2-2b^2\neq0$ (since $\sqrt2\notin\mathbb{Q}$). Then
-$$\frac{1}{a+b\sqrt2}=\frac{a-b\sqrt2}{a^2-2b^2}\in\mathbb{Q}(\sqrt2).$$
-
-**Degree.** $\sqrt2$ is a root of $X^2-2$, irreducible over $\mathbb{Q}$ (rational root test). So the minimal polynomial has degree $2$, and $[\mathbb{Q}(\sqrt2):\mathbb{Q}]=2$.
-
-**Conclusion.** $\mathbb{Q}(\sqrt2)$ is a field extension of $\mathbb{Q}$ of degree $2$, with basis $\{1,\sqrt2\}$.
-
-@@@ rings-algebraic-numbers.md
----
-title: Algebraic numbers
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: algebraic numbers, minimal polynomial, degree
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\alpha=\sqrt2+\sqrt3$ is algebraic over $\mathbb{Q}$ and find its minimal polynomial.
-
-## Hint
-
-Compute $(\alpha^2-5)^2$ and simplify.
-
-## Solution
-
-**Computation.** $\alpha^2=2+3+2\sqrt6=5+2\sqrt6$. So $\alpha^2-5=2\sqrt6$. Squaring: $(\alpha^2-5)^2=24$.
-
-**Minimal polynomial.** $\alpha$ is a root of $(X^2-5)^2-24=X^4-10X^2+1$.
-
-**Irreducibility.** $X^4-10X^2+1$ factors over $\mathbb{Q}$? It has no rational root (candidates $\pm1$ give $-8$). If it factors into quadratics, $X^4-10X^2+1=(X^2+aX+b)(X^2-aX+c)$. Expanding and comparing coefficients gives $b+c-a^2=-10$, $bc=1$, $a(b-c)=0$. If $a=0$: $b+c=-10$, $bc=1$, giving $b,c$ roots of $Y^2+10Y+1=0$, discriminant $96$, not a square. Contradiction. If $b=c$: $2b=-10$, $b=-5$, $b^2=1$, impossible. So irreducible.
-
-**Conclusion.** The minimal polynomial is $X^4-10X^2+1$, of degree $4$, and $\alpha$ is algebraic over $\mathbb{Q}$.
-
-@@@ rings-cyclotomic-irreducible.md
----
-title: Irreducibility of the cyclotomic polynomial
-category: algebra/rings-and-fields
-level: m1
-difficulty: 5
-tags: cyclotomic, irreducibility, field
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\Phi_p(X)=1+X+\cdots+X^{p-1}$ is irreducible over $\mathbb{Q}$ for $p$ prime.
-
-## Hint
-
-Use Eisenstein's criterion on $\Phi_p(X+1)=\frac{(X+1)^p-1}{X}$.
-
-## Solution
-
-**Shift.** $\Phi_p(X+1)=\frac{(X+1)^p-1}{X}=\sum_{k=1}^p\binom pk X^{k-1}=X^{p-1}+pX^{p-2}+\cdots+p$.
-
-**Eisenstein.** The polynomial $\Phi_p(X+1)$ has leading coefficient $1$ and all other coefficients divisible by $p$, with constant term $p$ not divisible by $p^2$. By Eisenstein's criterion, $\Phi_p(X+1)$ is irreducible over $\mathbb{Q}$.
-
-**Conclusion.** $\Phi_p(X)$ is irreducible over $\mathbb{Q}$ (irreducibility is preserved by the shift $X\mapsto X+1$).
-
-@@@ rings-maximal-ideal-polynomial.md
----
-title: Maximal ideals in $\mathbb{R}[X]$
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: maximal ideals, polynomials, irreducibility
-date: 2026-11-03
----
-
-## Statement
-
-Show that $(X^2+1)$ is a maximal ideal of $\mathbb{R}[X]$.
-
-## Hint
-
-$X^2+1$ is irreducible over $\mathbb{R}$. Show that for any irreducible polynomial $P$, $(P)$ is maximal.
-
-## Solution
-
-**Irreducibility.** $X^2+1$ has no real root (discriminant $-4<0$), so it is irreducible over $\mathbb{R}$.
-
-**Maximality.** Let $I$ be an ideal with $(P)\subseteq I\subseteq\mathbb{R}[X]$. Since $\mathbb{R}[X]$ is a PID, $I=(Q)$ for some $Q$. Then $P\in(Q)$, so $Q\mid P$. Since $P$ is irreducible, $Q$ is a unit (then $I=\mathbb{R}[X]$) or $Q$ is an associate of $P$ (then $I=(P)$). So $(P)$ is maximal.
-
-**Conclusion.** $(X^2+1)$ is maximal. Moreover, $\mathbb{R}[X]/(X^2+1)\cong\mathbb{C}$ is a field.
-
-@@@ rings-chinese-remainder.md
----
-title: Chinese remainder theorem for rings
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: Chinese remainder, coprime ideals, isomorphism
-date: 2026-11-03
----
-
-## Statement
-
-Let $I,J$ be coprime ideals of a commutative ring $R$ (i.e. $I+J=R$). Show that $R/(I\cap J)\cong R/I\times R/J$.
-
-## Hint
-
-Define $\varphi:R\to R/I\times R/J$ by $\varphi(r)=(r+I,r+J)$. Show kernel is $I\cap J$ and surjectivity uses $I+J=R$.
-
-## Solution
-
-**Kernel.** $r\in\ker\varphi$ iff $r\in I$ and $r\in J$, i.e. $r\in I\cap J$.
-
-**Surjectivity.** Let $(a+I,b+J)\in R/I\times R/J$. Since $I+J=R$, there exist $i\in I$, $j\in J$ with $i+j=1$. Set $r=aj+bi$. Then $r\equiv a(1-i)+bi\equiv a\pmod I$ (since $aj\equiv a\pmod I$ because $i\in I$). Similarly, $r\equiv b\pmod J$. So $\varphi(r)=(a+I,b+J)$.
-
-**Conclusion.** By the first isomorphism theorem, $R/(I\cap J)\cong R/I\times R/J$.
-
-**Application.** $\mathbb{Z}/mn\mathbb{Z}\cong\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}/n\mathbb{Z}$ for $\gcd(m,n)=1$.
-
-@@@ rings-ufd.md
----
-title: Unique factorization domains
-category: algebra/rings-and-fields
-level: m1
-difficulty: 5
-tags: UFD, unique factorization, examples
-date: 2026-11-03
----
-
-## Statement
-
-State the definition of a unique factorization domain (UFD) and give an example of a ring that is an integral domain but not a UFD.
-
-## Hint
-
-$\mathbb{Z}[\sqrt{-5}]$ is a classical example.
-
-## Solution
-
-**Definition.** An integral domain $R$ is a UFD if every nonzero non-unit element can be written as a product of irreducibles, uniquely up to order and units.
-
-**Example UFD.** $\mathbb{Z}$, $\mathbb{R}[X]$, $\mathbb{Z}[i]$ (Euclidean $\Rightarrow$ PID $\Rightarrow$ UFD).
-
-**Non-example.** $\mathbb{Z}[\sqrt{-5}]=\{a+b\sqrt{-5}:a,b\in\mathbb{Z}\}$. It is an integral domain (subring of $\mathbb{C}$). However, $6=2\cdot3=(1+\sqrt{-5})(1-\sqrt{-5})$ gives two distinct factorizations into irreducibles:
-- $2$, $3$ are irreducible in $\mathbb{Z}[\sqrt{-5}]$ (via norm argument);
-- $1\pm\sqrt{-5}$ are irreducible (norm $6$).
-
-So $\mathbb{Z}[\sqrt{-5}]$ is not a UFD.
-
-**Conclusion.** UFD is a strong property, satisfied by PIDs but not all integral domains.
-
-@@@ rings-pid.md
----
-title: Principal ideal domains
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: PID, principal ideal, examples
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\mathbb{Z}$ and $\mathbb{R}[X]$ are PIDs.
-
-## Hint
-
-For $\mathbb{R}[X]$, use Euclidean division to show that every ideal is generated by the element of minimal degree.
-
-## Solution
-
-**$\mathbb{Z}$.** Shown earlier: every ideal is $n\mathbb{Z}$ for some $n\ge0$.
-
-**$\mathbb{R}[X]$.** Let $I$ be a nonzero ideal. Let $P$ be a nonzero element of $I$ of minimal degree. For any $Q\in I$, Euclidean division: $Q=AP+R$ with $\deg R<\deg P$. Since $R=Q-AP\in I$ and $\deg R<\deg P$, by minimality $R=0$. So $Q=AP\in(P)$. Hence $I=(P)$.
-
-**Conclusion.** Both are PIDs. Since every Euclidean domain is a PID, and $\mathbb{Z}$ and $\mathbb{R}[X]$ are Euclidean, this is consistent.
-
-@@@ rings-nilpotent.md
----
-title: Nilpotent elements
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: nilpotent, ring, quotient
-date: 2026-11-03
----
-
-## Statement
-
-Let $R$ be a commutative ring. An element $a\in R$ is nilpotent if $a^n=0$ for some $n\ge1$. Show that if $a,b$ are nilpotent, then $a+b$ is nilpotent.
-
-## Hint
-
-Use the binomial theorem: $(a+b)^{m+n}=\sum\binom{m+n}{k}a^kb^{m+n-k}$. Each term has either $a^k$ with $k\ge m$ or $b^{m+n-k}$ with $m+n-k\ge n$.
-
-## Solution
-
-**Binomial expansion.** Suppose $a^m=0$, $b^n=0$. In the sum $(a+b)^{m+n}=\sum_{k=0}^{m+n}\binom{m+n}{k}a^kb^{m+n-k}$, each term has either $k\ge m$ (so $a^k=0$) or $m+n-k\ge n$ (so $b^{m+n-k}=0$).
-
-**Conclusion.** Every term is zero, so $(a+b)^{m+n}=0$: $a+b$ is nilpotent.
-
-**Remark.** The set of nilpotent elements forms an ideal, called the **nilradical** of $R$.
-
-@@@ rings-boolean-ring.md
----
-title: Boolean rings
-category: algebra/rings-and-fields
-level: olympiad
-difficulty: 4
-tags: Boolean ring, idempotent, commutative
-date: 2026-11-03
----
-
-## Statement
-
-A ring $R$ is Boolean if $x^2=x$ for all $x\in R$. Show that any Boolean ring is commutative and has characteristic $2$.
-
-## Hint
-
-Compute $(x+y)^2$ in two ways. Also compute $(x+x)^2$.
-
-## Solution
-
-**Characteristic 2.** $(x+x)^2=(2x)^2=4x^2=4x$, while $(x+x)^2=x+x=2x$ (since $x+x$ is also in $R$ and is idempotent). So $4x=2x$, hence $2x=0$.
-
-**Commutativity.** $(x+y)^2=x+y$. Expanding (using the fact that addition is commutative in the ring structure, but multiplication may not be): $(x+y)^2=x^2+xy+yx+y^2=x+xy+yx+y$. Equating: $x+y=x+xy+yx+y$, so $xy+yx=0$, i.e. $yx=-xy=xy$ (since $-1=1$). Commutative.
-
-**Conclusion.** Boolean rings are commutative and have characteristic $2$.
-
-@@@ rings-matrix-ring.md
----
-title: Matrix rings and zero divisors
-category: algebra/rings-and-fields
-level: l1
-difficulty: 3
-tags: matrix ring, zero divisors, non-commutative
-date: 2026-11-03
----
-
-## Statement
-
-Show that $M_2(\mathbb{R})$ is a ring with unit but not an integral domain.
-
-## Hint
-
-Matrix ring axioms hold. Find zero divisors.
-
-## Solution
-
-**Ring.** $M_2(\mathbb{R})$ with usual addition and multiplication is a non-commutative ring with unit $I_2$.
-
-**Zero divisors.** $\begin{pmatrix}1&0\\0&0\end{pmatrix}\begin{pmatrix}0&0\\1&0\end{pmatrix}=\begin{pmatrix}0&0\\0&0\end{pmatrix}$, with both factors nonzero.
-
-**Conclusion.** $M_2(\mathbb{R})$ is a non-commutative ring with unit, not an integral domain.
-
-@@@ rings-characteristic.md
----
-title: Characteristic of a ring
-category: algebra/rings-and-fields
-level: l1
-difficulty: 3
-tags: characteristic, ring, examples
-date: 2026-11-03
----
-
-## Statement
-
-Define the characteristic of a ring $R$ and compute it for:
-(a) $\mathbb{Z}$; (b) $\mathbb{Z}/n\mathbb{Z}$; (c) $\mathbb{R}$; (d) $\mathbb{F}_p\times\mathbb{F}_p$.
-
-## Hint
-
-The characteristic is the smallest $n\ge1$ with $n\cdot1=0$, or $0$ if none exists.
-
-## Solution
-
-**Definition.** $\operatorname{char}(R)=n$ if $n\cdot1_R=0$ and no smaller positive integer works. If no such $n$, $\operatorname{char}(R)=0$.
-
-**(a)** $\operatorname{char}(\mathbb{Z})=0$ (no positive multiple of $1$ equals $0$).
-
-**(b)** $\operatorname{char}(\mathbb{Z}/n\mathbb{Z})=n$.
-
-**(c)** $\operatorname{char}(\mathbb{R})=0$.
-
-**(d)** $\operatorname{char}(\mathbb{F}_p\times\mathbb{F}_p)=p$.
-
-**Conclusion.** $\operatorname{char}(\mathbb{Z})=\operatorname{char}(\mathbb{R})=0$; $\operatorname{char}(\mathbb{Z}/n\mathbb{Z})=n$; $\operatorname{char}(\mathbb{F}_p\times\mathbb{F}_p)=p$.
-
-@@@ rings-localization.md
----
-title: Localization
-category: algebra/rings-and-fields
-level: m1
-difficulty: 5
-tags: localization, fraction field, ring
-date: 2026-11-03
----
-
-## Statement
-
-Let $R$ be an integral domain. Show that $R$ embeds in its fraction field $\operatorname{Frac}(R)$, and compute $\operatorname{Frac}(\mathbb{Z})=\mathbb{Q}$.
-
-## Hint
-
-The fraction field consists of equivalence classes of pairs $(a,b)$ with $a\in R$, $b\in R\setminus\{0\}$, under $(a,b)\sim(c,d)\iff ad=bc$.
-
-## Solution
-
-**Equivalence.** Define $(a,b)\sim(c,d)\iff ad=bc$. This is an equivalence relation (reflexive, symmetric, transitive, using that $R$ is an integral domain for cancellation).
-
-**Field structure.** Addition: $\frac ab+\frac cd=\frac{ad+bc}{bd}$. Multiplication: $\frac ab\cdot\frac cd=\frac{ac}{bd}$. These are well-defined. The zero is $\frac01$, the unit is $\frac11$. Every nonzero $\frac ab$ has inverse $\frac ba$.
-
-**Embedding.** $R\hookrightarrow\operatorname{Frac}(R)$ by $a\mapsto\frac a1$.
-
-**Example.** $\operatorname{Frac}(\mathbb{Z})=\mathbb{Q}$: every $\frac pq$ with $p,q\in\mathbb{Z}$, $q\neq0$, is a rational number, and every rational is of this form.
-
-**Conclusion.** Every integral domain embeds in a field.
-
-@@@ rings-eisenstein.md
----
-title: Eisenstein's criterion
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: Eisenstein criterion, irreducibility, polynomials
-date: 2026-11-03
----
-
-## Statement
-
-Show that $P(X)=X^4+2X^3+2X^2+2X+2$ is irreducible over $\mathbb{Q}$.
-
-## Hint
-
-Apply Eisenstein's criterion with $p=2$.
-
-## Solution
-
-**Eisenstein.** $P$ has integer coefficients. For $p=2$:
-- $2\mid$ all non-leading coefficients: $2,2,2,2$.
-- $2\nmid$ leading coefficient $1$.
-- $4\nmid$ constant term $2$.
-
-By Eisenstein's criterion, $P$ is irreducible over $\mathbb{Q}$.
-
-**Conclusion.** $P$ is irreducible over $\mathbb{Q}$.
-
-@@@ rings-finite-fields.md
----
-title: Finite fields
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: finite field, order, prime power
-date: 2026-11-03
----
-
-## Statement
-
-Show that a finite field has $p^n$ elements for some prime $p$ and integer $n\ge1$.
-
-## Hint
-
-The characteristic is a prime $p$, so $\mathbb{F}_p\subseteq F$. Then $F$ is a finite-dimensional vector space over $\mathbb{F}_p$.
-
-## Solution
-
-**Characteristic.** The characteristic of a finite field $F$ is $p$ (prime): otherwise, $\mathbb{Z}/n\mathbb{Z}\subseteq F$ for composite $n$, which has zero divisors, contradicting that $F$ is a field.
-
-**Vector space.** $F$ contains $\mathbb{F}_p=\mathbb{Z}/p\mathbb{Z}$, and is a finite-dimensional $\mathbb{F}_p$-vector space of dimension $n=[F:\mathbb{F}_p]$.
-
-**Order.** $|F|=|\mathbb{F}_p|^n=p^n$.
-
-**Conclusion.** Every finite field has order $p^n$. Conversely, for every prime power $p^n$, there exists a finite field of order $p^n$ (unique up to isomorphism, denoted $\mathbb{F}_{p^n}$).
-
-@@@ rings-polynomial-ring-property.md
----
-title: The polynomial ring $R[X]$
-category: algebra/rings-and-fields
-level: l1
-difficulty: 3
-tags: polynomial ring, properties, integral domain
-date: 2026-11-03
----
-
-## Statement
-
-Show that if $R$ is an integral domain, then $R[X]$ is an integral domain, and the units of $R[X]$ are the units of $R$.
-
-## Hint
-
-Degree is additive: $\deg(PQ)=\deg P+\deg Q$.
-
-## Solution
-
-**Integral domain.** For nonzero $P,Q\in R[X]$, $\deg P,\deg Q\ge0$ and $\deg(PQ)=\deg P+\deg Q\ge0$, so $PQ\neq0$.
-
-**Units.** If $PQ=1$, then $\deg P+\deg Q=0$, so $\deg P=\deg Q=0$. So $P,Q\in R$ and $PQ=1$ in $R$.
-
-**Conclusion.** $R[X]$ is an integral domain, and $R[X]^\times=R^\times$.
-
-@@@ rings-prime-characteristic.md
----
-title: Prime characteristic
-category: algebra/rings-and-fields
-level: m1
-difficulty: 4
-tags: characteristic, prime, field
-date: 2026-11-03
----
-
-## Statement
-
-Show that the characteristic of an integral domain is either $0$ or a prime.
-
-## Hint
-
-Suppose $\operatorname{char}(R)=n$ composite, $n=ab$ with $1<a,b<n$. Then $ab\cdot1=0$ in $R$, giving zero divisors.
-
-## Solution
-
-**Setup.** The characteristic map $k\mapsto k\cdot1_R$ is a ring homomorphism from $\mathbb{Z}$ to $R$, with kernel $n\mathbb{Z}$.
-
-**Integral domain.** $R$ is an integral domain, so $\mathbb{Z}/n\mathbb{Z}\cong\operatorname{Im}$ is an integral domain. This forces $n$ to be prime or $0$ (if $n=ab$ with $a,b>1$, then $\bar a\bar b=\bar0$ in $\mathbb{Z}/n\mathbb{Z}$, giving zero divisors in $R$).
-
-**Conclusion.** The characteristic of an integral domain is $0$ or prime.
-
-@@@ rings-spectrum.md
----
-title: The spectrum of a ring (statement)
-category: algebra/rings-and-fields
-level: m1
-difficulty: 5
-tags: spectrum, prime ideals, Zariski topology
-date: 2026-11-03
----
-
-## Statement
-
-Define the spectrum $\operatorname{Spec}(R)$ of a commutative ring $R$ and compute it for $R=\mathbb{Z}$.
-
-## Hint
-
-$\operatorname{Spec}(R)$ is the set of prime ideals of $R$, equipped with the Zariski topology.
-
-## Solution
-
-**Definition.** $\operatorname{Spec}(R)=\{\mathfrak{p}\subseteq R:\mathfrak{p}\text{ prime ideal}\}$.
-
-**Zariski topology.** Closed sets are $V(I)=\{\mathfrak{p}:\mathfrak{p}\supseteq I\}$ for ideals $I\subseteq R$.
-
-**Example.** $\operatorname{Spec}(\mathbb{Z})=\{(0)\}\cup\{(p):p\text{ prime}\}$.
-
-**Topological structure.** The point $(0)$ is the generic point, dense in $\operatorname{Spec}(\mathbb{Z})$. The points $(p)$ are closed.
-
-**Conclusion.** $\operatorname{Spec}(\mathbb{Z})$ consists of the zero ideal and the prime ideals $(p)$, with Zariski topology where $(0)$ is dense and each $(p)$ is a closed point.
-
-@@@ groups-definition-check.md
----
-title: Checking the group axioms
-category: algebra/groups
-level: lycee
-difficulty: 1
-tags: group axioms, examples, counterexamples
-date: 2026-11-03
----
-
-## Statement
-
-Determine whether each of the following is a group under the given operation:
-
-(a) $(\mathbb{Z},+)$;
-(b) $(\mathbb{Z},\times)$;
-(c) $(\mathbb{N},+)$;
-(d) $(\mathbb{R}^*,\times)$;
-(e) $(\{1,-1\},\times)$.
-
-## Hint
-
-Check the four axioms: closure, associativity, identity element, and inverses.
-
-## Solution
-
-**(a)** $(\mathbb{Z},+)$: closed (sum of integers is integer), associative, identity $0$, inverse $-n$. **Group** (abelian).
-
-**(b)** $(\mathbb{Z},\times)$: closed, associative, identity $1$. But $2$ has no inverse in $\mathbb{Z}$ ($1/2\notin\mathbb{Z}$). **Not a group** (it is only a monoid).
-
-**(c)** $(\mathbb{N},+)$: closed, associative, identity $0$. But no inverse: $-1\notin\mathbb{N}$. **Not a group**.
-
-**(d)** $(\mathbb{R}^*,\times)$: closed (product of nonzero reals is nonzero), associative, identity $1$, inverse $1/x$. **Group** (abelian).
-
-**(e)** $(\{1,-1\},\times)$: closed ($1\cdot1=1$, $1\cdot(-1)=-1$, $(-1)\cdot(-1)=1$), associative, identity $1$, inverse $1$ and $-1$ are their own inverses. **Group** of order $2$ (cyclic, generated by $-1$).
-
-**Conclusion.** (a), (d), (e) are groups; (b), (c) are not.
-
-@@@ groups-additive-multiplicative.md
----
-title: Additive and multiplicative notations
-category: algebra/groups
-level: lycee
-difficulty: 1
-tags: notation, abelian group, convention
-date: 2026-11-03
----
-
-## Statement
-
-Let $G$ be a group. Rewrite each statement in multiplicative notation as its additive counterpart (assuming $G$ is abelian):
-
-1. $(ab)^n=a^nb^n$;
-2. $a^{-1}b^{-1}=(ab)^{-1}$;
-3. $a^m a^n=a^{m+n}$;
-4. the identity is $e$.
-
-## Hint
-
-Replace product by sum, $a^n$ by $na$, $a^{-1}$ by $-a$, and $e$ by $0$.
-
-## Solution
-
-**1.** $n(a+b)=na+nb$.
-
-**2.** $(-a)+(-b)=-(a+b)$.
-
-**3.** $ma+na=(m+n)a$.
-
-**4.** The identity is $0$.
-
-**Conclusion.** The translation between multiplicative and additive notation is purely cosmetic. In additive notation, the group operation is written $+$, the identity $0$, and the inverse $-a$.
-
-@@@ groups-order-element.md
----
-title: Order of an element
-category: algebra/groups
-level: lycee
-difficulty: 2
-tags: order, cyclic subgroup, element
-date: 2026-11-03
----
-
-## Statement
-
-In $(\mathbb{Z}/8\mathbb{Z},+)$, compute the order of each element.
-
-## Hint
-
-The order of $k$ is the smallest $n\ge1$ with $nk\equiv0\pmod8$.
-
-## Solution
-
-**Computation.**
-- $\bar 0$: order $1$.
-- $\bar 1$: $8\cdot1\equiv0$, order $8$.
-- $\bar 2$: $4\cdot2=8\equiv0$, order $4$.
-- $\bar 3$: $8\cdot3=24\equiv0$, order $8$.
-- $\bar 4$: $2\cdot4=8\equiv0$, order $2$.
-- $\bar 5$: $8\cdot5=40\equiv0$, order $8$.
-- $\bar 6$: $4\cdot6=24\equiv0$, order $4$.
-- $\bar 7$: $8\cdot7=56\equiv0$, order $8$.
-
-**Conclusion.** Orders: $1,8,4,8,2,8,4,8$.
-
-**Remark.** The order of $\bar k$ in $\mathbb{Z}/n\mathbb{Z}$ is $n/\gcd(k,n)$.
-
-@@@ groups-cyclic-examples.md
----
-title: Cyclic groups
-category: algebra/groups
-level: lycee
-difficulty: 2
-tags: cyclic group, generator, examples
-date: 2026-11-03
----
-
-## Statement
-
-Show that each of the following groups is cyclic, and find a generator:
-
-(a) $(\mathbb{Z}/6\mathbb{Z},+)$;
-(b) $(\{1,i,-1,-i\},\times)$;
-(c) $(\mathbb{Z}/5\mathbb{Z})^*,\times)$.
-
-## Hint
-
-A generator is an element whose powers (or multiples) give the whole group.
-
-## Solution
-
-**(a)** $\bar 1$ generates: $\bar 1,\bar 2,\bar 3,\bar 4,\bar 5,\bar 0$. Also $\bar 5$ is a generator.
-
-**(b)** $i$ generates: $i,i^2=-1,i^3=-i,i^4=1$. Also $-i$ is a generator.
-
-**(c)** $(\mathbb{Z}/5\mathbb{Z})^*=\{1,2,3,4\}$ under multiplication mod $5$. $\bar 2$ generates: $2,4,3,1$.
-
-**Conclusion.** All three groups are cyclic.
-
-@@@ groups-subgroup-criterion.md
----
-title: The subgroup criterion
-category: algebra/groups
-level: l1
-difficulty: 2
-tags: subgroup, criterion, nonempty
-date: 2026-11-03
----
-
-## Statement
-
-Let $G$ be a group and $H\subseteq G$ nonempty. Prove that $H$ is a subgroup of $G$ iff for all $a,b\in H$, $ab^{-1}\in H$.
-
-## Hint
-
-The forward direction is immediate from the subgroup axioms. For the converse, derive each axiom.
-
-## Solution
-
-**Forward.** If $H$ is a subgroup, it is closed under products and inverses, so $ab^{-1}\in H$.
-
-**Converse.** Suppose $ab^{-1}\in H$ whenever $a,b\in H$.
-- *Identity.* Since $H\neq\emptyset$, take $a\in H$. Then $aa^{-1}=e\in H$.
-- *Inverse.* For $b\in H$, $eb^{-1}=b^{-1}\in H$.
-- *Closure.* For $a,b\in H$, $b^{-1}\in H$, so $a(b^{-1})^{-1}=ab\in H$.
-
-**Conclusion.** $H$ is a subgroup.
-
-@@@ groups-subgroup-examples.md
----
-title: Which subsets are subgroups?
-category: algebra/groups
-level: lycee
-difficulty: 2
-tags: subgroup, examples, counterexamples
-date: 2026-11-03
----
-
-## Statement
-
-Determine whether each subset is a subgroup:
-
-(a) $2\mathbb{Z}\subseteq(\mathbb{Z},+)$;
-(b) $\mathbb{N}\subseteq(\mathbb{Z},+)$;
-(c) $\{1,-1\}\subseteq(\mathbb{R}^*,\times)$;
-(d) $\{z\in\mathbb{C}:|z|=1\}\subseteq(\mathbb{C}^*,\times)$.
-
-## Hint
-
-Check the subgroup criterion: nonempty, closed under product and inverse.
-
-## Solution
-
-**(a)** $2\mathbb{Z}$: $0\in2\mathbb{Z}$; sum of evens is even; inverse of even is even. **Subgroup.**
-
-**(b)** $\mathbb{N}$: closed under sum, but no inverse for positive integers. **Not a subgroup.**
-
-**(c)** $\{1,-1\}$: products stay in the set, inverses are themselves. **Subgroup.**
-
-**(d)** $|z|=|w|=1\Rightarrow|zw|=1$ and $|z^{-1}|=1$. **Subgroup** (the circle group).
-
-**Conclusion.** (a), (c), (d) are subgroups; (b) is not.
-
-@@@ groups-lagrange-theorem.md
----
-title: Lagrange's theorem
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: Lagrange, order, subgroup
-date: 2026-11-03
----
-
-## Statement
-
-State and prove Lagrange's theorem: if $G$ is a finite group and $H$ is a subgroup, then $|H|$ divides $|G|$.
-
-## Hint
-
-Partition $G$ into left cosets of $H$ and show they all have the same size $|H|$.
-
-## Solution
-
-**Cosets.** For $g\in G$, the left coset $gH=\{gh:h\in H\}$ has cardinality $|H|$ (the map $h\mapsto gh$ is a bijection).
-
-**Partition.** The left cosets form a partition of $G$: they cover $G$ (each $g\in gH$) and are disjoint (if $g_1H\cap g_2H\neq\emptyset$, then $g_1H=g_2H$).
-
-**Count.** If there are $k$ distinct cosets, then $|G|=k|H|$, so $|H|$ divides $|G|$.
-
-**Conclusion.** Lagrange's theorem holds; the integer $k=|G|/|H|$ is the index of $H$ in $G$.
-
-@@@ groups-lagrange-corollary.md
----
-title: Corollary of Lagrange's theorem
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: Lagrange, order of element, corollary
-date: 2026-11-03
----
-
-## Statement
-
-Let $G$ be a finite group of order $n$. Show that for every $g\in G$, $g^n=e$.
-
-## Hint
-
-The order of $g$ equals the order of the cyclic subgroup $\langle g\rangle$, which divides $|G|$ by Lagrange.
-
-## Solution
-
-**Order of $g$.** Let $d$ be the order of $g$ (the smallest positive integer with $g^d=e$). Then $\langle g\rangle=\{e,g,\ldots,g^{d-1}\}$ has order $d$.
-
-**Lagrange.** By Lagrange's theorem, $d=|H|$ divides $|G|=n$.
-
-**Conclusion.** $n=kd$ for some $k$, so $g^n=g^{kd}=(g^d)^k=e^k=e$.
-
-**Corollary.** In $(\mathbb{Z}/p\mathbb{Z})^*$ with $p$ prime, for any $a\not\equiv0$, $a^{p-1}\equiv1\pmod p$ (Fermat's little theorem).
-
-@@@ groups-finite-order-prime.md
----
-title: Groups of prime order
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: prime order, cyclic, subgroups
-date: 2026-11-03
----
-
-## Statement
-
-Let $G$ be a group of prime order $p$. Show that $G$ is cyclic.
-
-## Hint
-
-Take any $g\neq e$ and consider $\langle g\rangle$. Its order divides $p$.
-
-## Solution
-
-**Order of $\langle g\rangle$.** By Lagrange, $|\langle g\rangle|$ divides $p$. Since $g\neq e$, $|\langle g\rangle|>1$, so $|\langle g\rangle|=p$.
-
-**Conclusion.** $\langle g\rangle=G$, so $G$ is cyclic.
-
-**Remark.** Every group of prime order is isomorphic to $(\mathbb{Z}/p\mathbb{Z},+)$.
-
-@@@ groups-homomorphism-basic.md
----
-title: Group homomorphisms
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: homomorphism, kernel, image
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:G\to G'$ be a group homomorphism. Show that:
-1. $f(e)=e'$;
-2. $f(g^{-1})=f(g)^{-1}$;
-3. $\ker f$ is a subgroup of $G$;
-4. $\operatorname{Im} f$ is a subgroup of $G'$.
-
-## Hint
-
-Use the homomorphism property $f(ab)=f(a)f(b)$.
-
-## Solution
-
-**1.** $f(e)=f(ee)=f(e)f(e)$, so multiplying by $f(e)^{-1}$: $e'=f(e)$.
-
-**2.** $f(g)f(g^{-1})=f(gg^{-1})=f(e)=e'$, so $f(g^{-1})=f(g)^{-1}$.
-
-**3.** $\ker f=\{g:f(g)=e'\}$. Contains $e$ (by 1). If $a,b\in\ker f$: $f(ab^{-1})=f(a)f(b)^{-1}=e'(e')^{-1}=e'$, so $ab^{-1}\in\ker f$. Subgroup.
-
-**4.** $\operatorname{Im} f=\{f(g):g\in G\}$. Nonempty (contains $e'$). If $f(a),f(b)\in\operatorname{Im}$, then $f(a)f(b)^{-1}=f(ab^{-1})\in\operatorname{Im}$. Subgroup.
-
-**Conclusion.** All four properties hold.
-
-@@@ groups-homomorphism-examples.md
----
-title: Homomorphisms between familiar groups
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: homomorphism, examples, kernels
-date: 2026-11-03
----
-
-## Statement
-
-For each map, determine whether it is a group homomorphism, and if so, compute its kernel and image:
-
-(a) $f:(\mathbb{Z},+)\to(\mathbb{Z}/n\mathbb{Z},+)$, $k\mapsto\bar k$;
-(b) $g:(\mathbb{R},+)\to(\mathbb{R}^*,\times)$, $x\mapsto e^x$;
-(c) $h:(\mathbb{C}^*,\times)\to(\mathbb{R}^*_+,\times)$, $z\mapsto|z|$;
-(d) $\varphi:(\mathbb{R},+)\to(\mathbb{R},+)$, $x\mapsto x^2$.
-
-## Hint
-
-Check $f(ab)=f(a)f(b)$ (or the additive analogue).
-
-## Solution
-
-**(a)** $f(k+\ell)=\overline{k+\ell}=\bar k+\bar\ell=f(k)+f(\ell)$. Homomorphism. Kernel $n\mathbb{Z}$, image $\mathbb{Z}/n\mathbb{Z}$ (surjective).
-
-**(b)** $g(x+y)=e^{x+y}=e^xe^y=g(x)g(y)$. Homomorphism. Kernel $\{0\}$ (injective), image $\mathbb{R}^*_+$.
-
-**(c)** $h(zw)=|zw|=|z||w|=h(z)h(w)$. Homomorphism. Kernel $\{z:|z|=1\}$ (unit circle), image $\mathbb{R}^*_+$ (surjective).
-
-**(d)** $\varphi(x+y)=(x+y)^2\neq x^2+y^2$ in general. **Not a homomorphism** (unless the group operation is trivial).
-
-**Conclusion.** (a), (b), (c) are homomorphisms; (d) is not.
-
-@@@ groups-kernel-injectivity.md
----
-title: Injectivity and kernel
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: kernel, injectivity, homomorphism
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:G\to G'$ be a group homomorphism. Show that $f$ is injective iff $\ker f=\{e\}$.
-
-## Hint
-
-For the forward direction, use $f(e)=e'$. For the converse, assume $f(a)=f(b)$.
-
-## Solution
-
-**If injective.** If $g\in\ker f$, then $f(g)=e'=f(e)$, so $g=e$ by injectivity. Hence $\ker f=\{e\}$.
-
-**Conversely.** Suppose $\ker f=\{e\}$. If $f(a)=f(b)$, then $f(ab^{-1})=f(a)f(b)^{-1}=e'$, so $ab^{-1}\in\ker f=\{e\}$, i.e. $a=b$. So $f$ is injective.
-
-**Conclusion.** $f$ is injective iff its kernel is trivial.
-
-@@@ groups-isomorphism-criterion.md
----
-title: Isomorphism criteria
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: isomorphism, bijective homomorphism, criterion
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:G\to G'$ be a homomorphism of finite groups with $|G|=|G'|$. Show that $f$ is an isomorphism iff $f$ is injective iff $f$ is surjective.
-
-## Hint
-
-Use $|G|=|\ker f|\cdot|\operatorname{Im} f|$.
-
-## Solution
-
-**Counting.** For any homomorphism $f$, by the first isomorphism theorem, $|G|=|\ker f|\cdot|\operatorname{Im} f|$.
-
-**Injectivity.** $f$ injective $\iff\ker f=\{e\}\iff|\ker f|=1\iff|\operatorname{Im} f|=|G|=|G'|$. Since $\operatorname{Im} f\subseteq G'$ and $|G'|=|G|$, we get $\operatorname{Im} f=G'$.
-
-**Surjectivity.** Similarly, $\operatorname{Im} f=G'\iff|\operatorname{Im} f|=|G'|=|G|\iff|\ker f|=1\iff$ injective.
-
-**Conclusion.** For finite groups of the same order, injective $\Leftrightarrow$ surjective $\Leftrightarrow$ isomorphism.
-
-@@@ groups-cyclic-subgroups.md
----
-title: Subgroups of a cyclic group
-category: algebra/groups
-level: l1
-difficulty: 4
-tags: cyclic group, subgroups, divisors
-date: 2026-11-03
----
-
-## Statement
-
-Let $G=\langle g\rangle$ be a cyclic group of order $n$. Show that for each divisor $d$ of $n$, there is a unique subgroup of order $d$, namely $\langle g^{n/d}\rangle$.
-
-## Hint
-
-By Lagrange, any subgroup $H$ has order $d\mid n$. Show that $H\subseteq\langle g^{n/d}\rangle$ and use equality of cardinalities.
-
-## Solution
-
-**Subgroup existence.** Let $d\mid n$. Then $g^{n/d}$ has order $d$ (since $(g^{n/d})^d=g^n=e$ and no smaller power works), so $\langle g^{n/d}\rangle$ is a subgroup of order $d$.
-
-**Uniqueness.** Let $H$ be a subgroup of order $d$. $H$ is cyclic (subgroup of a cyclic group), say $H=\langle g^k\rangle$. Then the order of $g^k$ is $n/\gcd(k,n)=d$, so $\gcd(k,n)=n/d$. In particular, $n/d\mid k$, so $g^k\in\langle g^{n/d}\rangle$, hence $H\subseteq\langle g^{n/d}\rangle$. Since both have $d$ elements, $H=\langle g^{n/d}\rangle$.
-
-**Conclusion.** There is a bijection between subgroups of $G$ and divisors of $n$.
-
-@@@ groups-quotient-group.md
----
-title: Quotient groups
-category: algebra/groups
-level: l1
-difficulty: 4
-tags: quotient group, normal subgroup, cosets
-date: 2026-11-03
----
-
-## Statement
-
-Let $G$ be a group and $N\triangleleft G$ a normal subgroup. Show that the set $G/N$ of left cosets of $N$ forms a group under the operation $(gN)(hN)=ghN$.
-
-## Hint
-
-Well-definedness is the main point: if $gN=g'N$ and $hN=h'N$, show $ghN=g'h'N$.
-
-## Solution
-
-**Well-definedness.** Suppose $g'=gn_1$, $h'=hn_2$ with $n_1,n_2\in N$. Then
-$$g'h'=gn_1hn_2=g(h n_1' h^{-1})hn_2$$
-where $n_1'=h^{-1}n_1h\in N$ (normality). So $g'h'=ghn_3$ with $n_3\in N$, hence $g'h'N=ghN$.
-
-**Group axioms.**
-- Associativity inherited from $G$.
-- Identity: $N$ (since $gN\cdot N=gN$).
-- Inverse: $(gN)^{-1}=g^{-1}N$.
-
-**Conclusion.** $G/N$ is a group of order $|G|/|N|$ (if $G$ finite), called the quotient group.
-
-@@@ groups-first-isomorphism.md
----
-title: The first isomorphism theorem
-category: algebra/groups
-level: l1
-difficulty: 4
-tags: first isomorphism theorem, quotient, kernel
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:G\to G'$ be a group homomorphism. Show that $G/\ker f\cong\operatorname{Im} f$.
-
-## Hint
-
-Define $\bar f:G/\ker f\to\operatorname{Im} f$ by $\bar f(gK)=f(g)$ where $K=\ker f$. Show it is a well-defined isomorphism.
-
-## Solution
-
-**Well-defined.** If $g_1K=g_2K$, then $g_2^{-1}g_1\in K$, so $f(g_2^{-1}g_1)=e'$, hence $f(g_1)=f(g_2)$.
-
-**Homomorphism.** $\bar f(g_1K\cdot g_2K)=\bar f(g_1g_2K)=f(g_1g_2)=f(g_1)f(g_2)=\bar f(g_1K)\bar f(g_2K)$.
-
-**Injective.** If $\bar f(gK)=e'$, then $f(g)=e'$, so $g\in K$, hence $gK=K$.
-
-**Surjective.** Every element of $\operatorname{Im} f$ is $f(g)=\bar f(gK)$.
-
-**Conclusion.** $\bar f$ is an isomorphism, so $G/\ker f\cong\operatorname{Im} f$.
-
-**Consequence.** $|G|=|\ker f|\cdot|\operatorname{Im} f|$ for finite groups.
-
-@@@ groups-symmetric-group-s3.md
----
-title: The symmetric group $S_3$
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: symmetric group, permutations, order
-date: 2026-11-03
----
-
-## Statement
-
-Compute the order of $S_3$, list its elements, and identify the subgroup of even permutations.
-
-## Hint
-
-$|S_n|=n!$. Permutations of $\{1,2,3\}$: $6$ in total, three even and three odd.
-
-## Solution
-
-**Order.** $|S_3|=3!=6$.
-
-**Elements.**
-- Identity: $e$.
-- Transpositions (odd): $(12),(13),(23)$.
-- $3$-cycles (even): $(123),(132)$.
-
-**Even permutations.** $\{e,(123),(132)\}$, which forms a subgroup of order $3$ isomorphic to $\mathbb{Z}/3\mathbb{Z}$ (the alternating group $A_3$).
-
-**Conclusion.** $|S_3|=6$, $A_3$ has order $3$ and is normal (index $2$).
-
-@@@ groups-symmetric-transpositions.md
----
-title: Transpositions generate $S_n$
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: transpositions, generation, symmetric group
-date: 2026-11-03
----
-
-## Statement
-
-Show that every permutation in $S_n$ is a product of transpositions.
-
-## Hint
-
-Decompose a permutation into disjoint cycles, then each cycle into transpositions.
-
-## Solution
-
-**Cycles.** Every permutation decomposes into disjoint cycles.
-
-**Cycle decomposition.** A $k$-cycle $(a_1\,a_2\,\cdots\,a_k)$ equals
-$$(a_1\,a_k)(a_1\,a_{k-1})\cdots(a_1\,a_2).$$
-So each cycle is a product of $k-1$ transpositions.
-
-**Conclusion.** Every permutation is a product of transpositions. Hence transpositions generate $S_n$.
-
-**Parity.** A permutation is even iff it decomposes into an even number of transpositions; this parity is well defined.
-
-@@@ groups-sign-homomorphism.md
----
-title: The sign homomorphism
-category: algebra/groups
-level: l1
-difficulty: 4
-tags: sign, parity, homomorphism
-date: 2026-11-03
----
-
-## Statement
-
-Show that the sign map $\varepsilon:S_n\to\{1,-1\}$ is a group homomorphism, and compute its kernel.
-
-## Hint
-
-$\varepsilon(\sigma)=(-1)^{N(\sigma)}$ where $N(\sigma)$ is the number of inversions. Show $N(\sigma\tau)\equiv N(\sigma)+N(\tau)\pmod 2$.
-
-## Solution
-
-**Homomorphism.** For any transposition $\tau$, the number of inversions of $\sigma\tau$ differs from that of $\sigma$ by an odd number (since swapping two positions changes the parity of the number of inversions). By induction, decomposing a permutation into transpositions shows that the parity of the number of inversions is a homomorphism to $\{1,-1\}$.
-
-**Kernel.** $\ker\varepsilon=\{\sigma:\varepsilon(\sigma)=1\}=A_n$, the alternating group (even permutations).
-
-**Order.** $|A_n|=n!/2$ for $n\ge2$ (by the first isomorphism theorem, since $\varepsilon$ is surjective).
-
-**Conclusion.** $\varepsilon$ is a surjective homomorphism with kernel $A_n$.
-
-@@@ groups-cauchy-theorem.md
----
-title: Cauchy's theorem for groups
-category: algebra/groups
-level: olympiad
-difficulty: 4
-tags: Cauchy theorem, prime order, existence
-date: 2026-11-03
----
-
-## Statement
-
-Let $G$ be a finite group of order $n$, and $p$ a prime dividing $n$. Show that $G$ has an element of order $p$.
-
-## Hint
-
-Use induction on $|G|$. If $G$ has a proper subgroup of order divisible by $p$, conclude by induction. Otherwise, use the class equation.
-
-## Solution
-
-**Induction on $|G|$.** If $G$ is abelian, Cauchy's theorem is classical (structure of finite abelian groups). In general, consider the class equation
-$$|G|=|Z(G)|+\sum_i[G:C(g_i)]$$
-where the sum is over non-central conjugacy classes.
-
-**Case 1:** $p\mid|Z(G)|$. Then $Z(G)$ has an element of order $p$ by the abelian case.
-
-**Case 2:** $p\nmid|Z(G)|$. Then some $[G:C(g_i)]$ is not divisible by $p$, hence $p\mid|C(g_i)|$ with $|C(g_i)|<|G|$. By induction on $C(g_i)$, it has an element of order $p$, hence so does $G$.
-
-**Conclusion.** $G$ has an element of order $p$.
-
-@@@ groups-cauchy-application.md
----
-title: Cauchy's theorem applied to $A_4$
-category: algebra/groups
-level: olympiad
-difficulty: 4
-tags: Cauchy, alternating group, elements of order
-date: 2026-11-03
----
-
-## Statement
-
-Using Cauchy's theorem, show that $A_4$ has elements of order $2$ and order $3$.
-
-## Hint
-
-$|A_4|=12=2^2\cdot3$. Cauchy's theorem gives an element of each prime order.
-
-## Solution
-
-**Order $3$.** The $3$-cycles $(123),(124),(134),(234)$ and their inverses are $8$ elements of order $3$.
-
-**Order $2$.** Products of disjoint transpositions like $(12)(34)$ have order $2$. There are $3$ such elements: $(12)(34),(13)(24),(14)(23)$.
-
-**Cauchy.** Since $|A_4|=12$ is divisible by $2$ and $3$, Cauchy's theorem guarantees elements of order $2$ and $3$.
-
-**Conclusion.** $A_4$ has $8$ elements of order $3$ and $3$ elements of order $2$, plus the identity.
-
-@@@ groups-sylow-first.md
----
-title: Sylow's first theorem
-category: algebra/groups
-level: m1
-difficulty: 5
-tags: Sylow, p-subgroup, existence
-date: 2026-11-03
----
-
-## Statement
-
-State Sylow's first theorem and apply it to a group of order $12$.
-
-## Hint
-
-For $|G|=p^a m$ with $\gcd(p,m)=1$, $G$ has a subgroup of order $p^a$.
-
-## Solution
-
-**Statement.** Let $G$ be a finite group of order $p^a m$ with $p\nmid m$. Then $G$ has a subgroup of order $p^a$ (a Sylow $p$-subgroup).
-
-**Application to $|G|=12$.** $12=2^2\cdot3$. Sylow's first theorem gives:
-- A subgroup of order $4$ (Sylow $2$-subgroup).
-- A subgroup of order $3$ (Sylow $3$-subgroup).
-
-**Conclusion.** Every group of order $12$ has subgroups of order $4$ and $3$.
-
-@@@ groups-sylow-third.md
----
-title: Sylow's third theorem
-category: algebra/groups
-level: m1
-difficulty: 5
-tags: Sylow, congruence, number of subgroups
-date: 2026-11-03
----
-
-## Statement
-
-State Sylow's third theorem and compute the possible numbers of Sylow $3$-subgroups in a group of order $45$.
-
-## Hint
-
-$|G|=45=3^2\cdot5$. Let $n_3$ be the number of Sylow $3$-subgroups. Then $n_3\equiv1\pmod 3$ and $n_3\mid5$.
-
-## Solution
-
-**Statement.** The number $n_p$ of Sylow $p$-subgroups satisfies:
-- $n_p\equiv1\pmod p$;
-- $n_p\mid m=|G|/p^a$.
-
-**Application.** $|G|=45=3^2\cdot5$. $n_3\equiv1\pmod3$ and $n_3\mid5$: possible values are $1$ and $5$.
-
-**Conclusion.** $n_3\in\{1,5\}$. If $n_3=1$, the Sylow $3$-subgroup is normal.
-
-@@@ groups-normal-subgroup.md
----
-title: Normal subgroups
-category: algebra/groups
-level: l1
-difficulty: 4
-tags: normal subgroup, conjugation, criterion
-date: 2026-11-03
----
-
-## Statement
-
-Let $N$ be a subgroup of $G$. Show that the following are equivalent:
-1. $N\triangleleft G$;
-2. $gNg^{-1}=N$ for all $g\in G$;
-3. $gNg^{-1}\subseteq N$ for all $g\in G$;
-4. every left coset is a right coset.
-
-## Hint
-
-For (3) $\Rightarrow$ (2), apply (3) to $g^{-1}$.
-
-## Solution
-
-**1 $\Leftrightarrow$ 2.** $N$ normal means $gN=Ng$ for all $g$, i.e. $gNg^{-1}=N$.
-
-**2 $\Leftrightarrow$ 3.** If $gNg^{-1}\subseteq N$ for all $g$, then applying to $g^{-1}$ gives $g^{-1}Ng\subseteq N$, hence $N\subseteq gNg^{-1}$, so equality. Conversely, equality implies inclusion.
-
-**2 $\Leftrightarrow$ 4.** $gN=Ng\iff gNg^{-1}=N$. The condition that left cosets equal right cosets is the same.
-
-**Conclusion.** All four are equivalent.
-
-@@@ groups-index-2-normal.md
----
-title: Subgroups of index 2 are normal
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: index, normal, cosets
-date: 2026-11-03
----
-
-## Statement
-
-Show that any subgroup $H$ of index $2$ in $G$ is normal.
-
-## Hint
-
-There are only two left cosets: $H$ and $G\setminus H$. The same holds for right cosets.
-
-## Solution
-
-**Cosets.** Left cosets: $H$ and $gH$ for $g\notin H$. Since $H$ has index $2$, $gH=G\setminus H$. Similarly, right cosets are $H$ and $Hg=G\setminus H$.
-
-**Equality.** For $g\notin H$: $gH=G\setminus H=Hg$. For $g\in H$: $gH=H=Hg$.
-
-**Conclusion.** $gH=Hg$ for all $g$, so $H\triangleleft G$. Any index-$2$ subgroup is normal.
-
-@@@ groups-dihedral.md
----
-title: The dihedral group $D_n$
-category: algebra/groups
-level: l1
-difficulty: 4
-tags: dihedral group, symmetries, presentation
-date: 2026-11-03
----
-
-## Statement
-
-Describe the dihedral group $D_n$ (symmetries of a regular $n$-gon), give its order, and a presentation.
-
-## Hint
-
-Symmetries are generated by a rotation $r$ of order $n$ and a reflection $s$ of order $2$, with $srs=r^{-1}$.
-
-## Solution
-
-**Order.** $D_n$ has $2n$ elements: $n$ rotations $r^0,\ldots,r^{n-1}$ and $n$ reflections $sr^k$ ($k=0,\ldots,n-1$).
-
-**Presentation.** $\langle r,s:r^n=s^2=e,\,srs=r^{-1}\rangle$.
-
-**Example $n=3$:** $D_3\cong S_3$.
-
-**Conclusion.** $|D_n|=2n$, and $D_n$ has a cyclic subgroup of rotations (normal, index $2$) and $n$ reflections.
-
-@@@ groups-order-formula.md
----
-title: Order of an element in $\mathbb{Z}/n\mathbb{Z}$
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: order, cyclic group, gcd
-date: 2026-11-03
----
-
-## Statement
-
-Show that the order of $\bar k$ in $(\mathbb{Z}/n\mathbb{Z},+)$ is $n/\gcd(k,n)$.
-
-## Hint
-
-The order is the smallest positive integer $m$ with $mk\equiv0\pmod n$.
-
-## Solution
-
-**Condition.** $mk\equiv0\pmod n\iff n\mid mk\iff n/\gcd(k,n)\mid m$.
-
-**Order.** The smallest such $m$ is $n/\gcd(k,n)$.
-
-**Conclusion.** $\operatorname{ord}(\bar k)=n/\gcd(k,n)$.
-
-**Application.** In $\mathbb{Z}/8\mathbb{Z}$: order of $\bar2$ is $8/2=4$; order of $\bar3$ is $8/1=8$; order of $\bar4$ is $8/4=2$.
-
-@@@ groups-product-groups.md
----
-title: Direct products of groups
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: direct product, product group, order
-date: 2026-11-03
----
-
-## Statement
-
-Let $G$ and $H$ be groups. Show that $G\times H$ is a group under $(g,h)(g',h')=(gg',hh')$, and compute $|\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}|$.
-
-## Hint
-
-The group axioms hold component-wise.
-
-## Solution
-
-**Group axioms.** Closure, associativity, identity $(e_G,e_H)$, inverse $(g^{-1},h^{-1})$ all hold component-wise.
-
-**Order.** $|G\times H|=|G|\cdot|H|$, so $|\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}|=6$.
-
-**Isomorphism.** $\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}\cong\mathbb{Z}/6\mathbb{Z}$ (Chinese remainder theorem, since $\gcd(2,3)=1$).
-
-**Conclusion.** The direct product is a group of order $|G||H|$.
-
-@@@ groups-chinese-remainder.md
----
-title: The Chinese remainder theorem for groups
-category: algebra/groups
-level: l1
-difficulty: 4
-tags: Chinese remainder, direct product, cyclic group
-date: 2026-11-03
----
-
-## Statement
-
-Show that if $\gcd(m,n)=1$, then $\mathbb{Z}/mn\mathbb{Z}\cong\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}/n\mathbb{Z}$.
-
-## Hint
-
-Define $\varphi:\mathbb{Z}/mn\mathbb{Z}\to\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}/n\mathbb{Z}$ by $\varphi(\bar k)=(\bar k\bmod m,\bar k\bmod n)$.
-
-## Solution
-
-**Homomorphism.** $\varphi(\bar k+\bar\ell)=(\overline{k+\ell}\bmod m,\overline{k+\ell}\bmod n)=\varphi(\bar k)+\varphi(\bar\ell)$.
-
-**Injectivity.** If $\varphi(\bar k)=(\bar0,\bar0)$, then $m\mid k$ and $n\mid k$. Since $\gcd(m,n)=1$, $mn\mid k$, so $\bar k=\bar0$.
-
-**Surjectivity.** Both sides have $mn$ elements, and injectivity plus equal cardinalities gives surjectivity.
-
-**Conclusion.** $\mathbb{Z}/mn\mathbb{Z}\cong\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}/n\mathbb{Z}$, so the cyclic group of order $mn$ splits as a direct product of coprime cyclic factors.
-
-@@@ groups-general-linear.md
----
-title: The general linear group $GL_n(\mathbb{R})$
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: general linear group, matrices, invertibility
-date: 2026-11-03
----
-
-## Statement
-
-Show that $GL_n(\mathbb{R})$, the set of invertible $n\times n$ real matrices, is a group under multiplication. Is it abelian?
-
-## Hint
-
-The product of invertible matrices is invertible, and the identity is $I_n$.
-
-## Solution
-
-**Closure.** If $A,B$ are invertible, $AB$ is invertible with inverse $B^{-1}A^{-1}$.
-
-**Associativity.** Matrix multiplication is associative.
-
-**Identity.** $I_n$ is invertible and $I_nA=A=AI_n$.
-
-**Inverse.** By definition, each $A\in GL_n$ has $A^{-1}\in GL_n$.
-
-**Non-abelian (for $n\ge2$).** For example, $\begin{pmatrix}1&1\\0&1\end{pmatrix}\begin{pmatrix}1&0\\1&1\end{pmatrix}\neq\begin{pmatrix}1&0\\1&1\end{pmatrix}\begin{pmatrix}1&1\\0&1\end{pmatrix}$.
-
-**Conclusion.** $GL_n(\mathbb{R})$ is a non-abelian group for $n\ge2$.
-
-@@@ groups-special-linear.md
----
-title: The special linear group $SL_n(\mathbb{R})$
-category: algebra/groups
-level: l1
-difficulty: 4
-tags: special linear group, determinant, normal subgroup
-date: 2026-11-03
----
-
-## Statement
-
-Show that $SL_n(\mathbb{R})=\{A\in GL_n(\mathbb{R}):\det A=1\}$ is a normal subgroup of $GL_n(\mathbb{R})$.
-
-## Hint
-
-$SL_n$ is the kernel of the determinant homomorphism.
-
-## Solution
-
-**Homomorphism.** $\det:GL_n(\mathbb{R})\to(\mathbb{R}^*,\times)$ satisfies $\det(AB)=\det A\det B$.
-
-**Kernel.** $\ker\det=\{A:\det A=1\}=SL_n(\mathbb{R})$.
-
-**Kernel is normal.** The kernel of any homomorphism is a normal subgroup: for $A\in SL_n$ and $B\in GL_n$, $\det(BAB^{-1})=\det B\cdot1\cdot(\det B)^{-1}=1$.
-
-**Conclusion.** $SL_n(\mathbb{R})$ is a normal subgroup of $GL_n(\mathbb{R})$; the quotient is $GL_n/SL_n\cong\mathbb{R}^*$.
-
-@@@ groups-finite-abelian-structure.md
----
-title: Structure of finite abelian groups
-category: algebra/groups
-level: m1
-difficulty: 5
-tags: abelian group, structure theorem, decomposition
-date: 2026-11-03
----
-
-## Statement
-
-Classify all abelian groups of order $12$.
-
-## Hint
-
-$12=2^2\cdot3$. Decompose into Sylow subgroups: $G\cong G_2\times G_3$ with $|G_2|=4$, $|G_3|=3$.
-
-## Solution
-
-**Sylow decomposition.** Since $G$ is abelian, $G\cong G_2\times G_3$ with $G_2$ the Sylow $2$-subgroup (order $4$) and $G_3$ the Sylow $3$-subgroup (order $3$).
-
-**$G_3$.** Unique abelian group of order $3$: $\mathbb{Z}/3\mathbb{Z}$.
-
-**$G_2$.** Abelian groups of order $4$: $\mathbb{Z}/4\mathbb{Z}$ and $\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/2\mathbb{Z}$.
-
-**Classification.** The abelian groups of order $12$ are:
-- $\mathbb{Z}/4\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}\cong\mathbb{Z}/12\mathbb{Z}$;
-- $(\mathbb{Z}/2\mathbb{Z})^2\times\mathbb{Z}/3\mathbb{Z}\cong\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/6\mathbb{Z}$.
-
-**Conclusion.** Two abelian groups of order $12$ up to isomorphism.
-
-@@@ groups-p-group.md
----
-title: Groups of order $p^2$
-category: algebra/groups
-level: m1
-difficulty: 5
-tags: p-group, abelian, order
-date: 2026-11-03
----
-
-## Statement
-
-Show that any group of order $p^2$ (with $p$ prime) is abelian.
-
-## Hint
-
-The center of a finite $p$-group is nontrivial. If $G$ has order $p^2$, either $Z(G)=G$ or $Z(G)$ has order $p$ and $G/Z(G)$ is cyclic.
-
-## Solution
-
-**Center is nontrivial.** By the class equation, $|Z(G)|\equiv|G|\equiv0\pmod p$, so $p$ divides $|Z(G)|$.
-
-**Case 1: $Z(G)=G$.** Done, $G$ abelian.
-
-**Case 2: $|Z(G)|=p$.** Then $|G/Z(G)|=p$, so $G/Z(G)$ is cyclic (any group of prime order is cyclic). But if $G/Z(G)$ is cyclic, then $G$ is abelian (a standard lemma: if $G/Z(G)$ is cyclic, $G$ is abelian).
-
-**Contradiction.** But $G$ abelian implies $Z(G)=G$, contradicting $|Z(G)|=p$.
-
-**Conclusion.** Case 2 is impossible, so $G$ is abelian.
-
-@@@ groups-normalizer.md
----
-title: The normalizer
-category: algebra/groups
-level: l1
-difficulty: 4
-tags: normalizer, subgroup, normal
-date: 2026-11-03
----
-
-## Statement
-
-Let $H$ be a subgroup of $G$. The normalizer of $H$ is $N_G(H)=\{g\in G:gHg^{-1}=H\}$. Show that $N_G(H)$ is a subgroup of $G$ containing $H$, and $H\triangleleft N_G(H)$.
-
-## Hint
-
-Show $N_G(H)$ is closed under product and inverse.
-
-## Solution
-
-**Contains $H$.** For $h\in H$, $hHh^{-1}=H$, so $h\in N_G(H)$.
-
-**Subgroup.** If $g_1,g_2\in N_G(H)$: $(g_1g_2)H(g_1g_2)^{-1}=g_1(g_2Hg_2^{-1})g_1^{-1}=g_1Hg_1^{-1}=H$, so $g_1g_2\in N_G(H)$. And $g^{-1}Hg=H\iff gHg^{-1}=H$, so $g^{-1}\in N_G(H)$.
-
-**Normal.** By definition, $H\triangleleft N_G(H)$.
-
-**Conclusion.** $N_G(H)$ is a subgroup of $G$ containing $H$, and $H$ is normal in $N_G(H)$.
-
-@@@ groups-center.md
----
-title: The center of a group
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: center, abelian, subgroup
-date: 2026-11-03
----
-
-## Statement
-
-Show that $Z(G)=\{g\in G:gh=hg\text{ for all }h\in G\}$ is an abelian normal subgroup of $G$.
-
-## Hint
-
-Show $Z(G)$ is a subgroup and that it commutes with all elements by definition.
-
-## Solution
-
-**Subgroup.** $e\in Z(G)$ trivially. If $g_1,g_2\in Z(G)$ and $h\in G$: $(g_1g_2)h=g_1hg_2=hg_1g_2$ (using commutation of $g_2$, then of $g_1$). So $g_1g_2\in Z(G)$. If $g\in Z(G)$, then $gh=hg$ for all $h$, so $g^{-1}h=hg^{-1}$ for all $h$, hence $g^{-1}\in Z(G)$.
-
-**Abelian.** By definition, elements of $Z(G)$ commute with each other.
-
-**Normal.** For $g\in Z(G)$ and $x\in G$: $xgx^{-1}=gxx^{-1}=g\in Z(G)$.
-
-**Conclusion.** $Z(G)$ is an abelian normal subgroup of $G$.
-
-@@@ groups-class-equation.md
----
-title: The class equation
-category: algebra/groups
-level: m1
-difficulty: 5
-tags: class equation, conjugacy, center
-date: 2026-11-03
----
-
-## Statement
-
-State the class equation for a finite group $G$ and use it to prove that a non-trivial $p$-group has a non-trivial center.
-
-## Hint
-
-$|G|=|Z(G)|+\sum[G:C(g_i)]$ over representatives of non-central conjugacy classes.
-
-## Solution
-
-**Class equation.** $G$ decomposes into conjugacy classes. Central elements are singleton classes. For non-central representatives $g_i$:
-$$|G|=|Z(G)|+\sum_i[G:C(g_i)].$$
-
-**$p$-group.** Suppose $|G|=p^n$ with $n\ge1$. Each index $[G:C(g_i)]$ for $g_i$ non-central is a positive power of $p$ (since $C(g_i)\neq G$). So every term in the sum is divisible by $p$.
-
-**Conclusion.** $|Z(G)|\equiv|G|\equiv0\pmod p$, so $|Z(G)|\ge p$: the center is non-trivial.
-
-@@@ groups-free-group.md
----
-title: Free groups (statement)
-category: algebra/groups
-level: m1
-difficulty: 5
-tags: free group, generators, relations
-date: 2026-11-03
----
-
-## Statement
-
-Define the free group on two generators $F_2$, describe its elements, and explain why it is not abelian.
-
-## Hint
-
-Elements are reduced words in $a,b,a^{-1},b^{-1}$.
-
-## Solution
-
-**Definition.** $F_2$ is the set of reduced words in the alphabet $\{a,b,a^{-1},b^{-1}\}$ (no adjacent $x$ and $x^{-1}$), with concatenation followed by reduction as operation.
-
-**Structure.** $F_2$ is infinite; it has a presentation $F_2=\langle a,b:\emptyset\rangle$ (no relations).
-
-**Non-abelian.** The words $ab$ and $ba$ are distinct reduced words, so $ab\neq ba$.
-
-**Universal property.** For any group $G$ and any $g,h\in G$, there is a unique homomorphism $F_2\to G$ sending $a\mapsto g$, $b\mapsto h$.
-
-**Conclusion.** $F_2$ is the free group on two generators; it is infinite and non-abelian.
-
-@@@ groups-group-action.md
----
-title: Group actions and orbits
-category: algebra/groups
-level: m1
-difficulty: 5
-tags: group action, orbit, stabilizer
-date: 2026-11-03
----
-
-## Statement
-
-Let $G$ act on a set $X$. Show that the orbits form a partition of $X$, and state the orbit-stabilizer theorem.
-
-## Hint
-
-Two orbits are either equal or disjoint. For the orbit-stabilizer theorem, use the bijection $G/\operatorname{Stab}(x)\to\operatorname{Orb}(x)$, $g\mapsto gx$.
-
-## Solution
-
-**Partition.** Define $x\sim y$ if $y\in\operatorname{Orb}(x)$. This is an equivalence relation: reflexive ($x=ex$), symmetric ($y=gx\Rightarrow x=g^{-1}y$), transitive ($y=gx,z=hy\Rightarrow z=(hg)x$). So orbits are equivalence classes, hence partition $X$.
-
-**Orbit-stabilizer.** The map $G/\operatorname{Stab}(x)\to\operatorname{Orb}(x)$ given by $g\operatorname{Stab}(x)\mapsto gx$ is well defined and bijective.
-
-**Conclusion.** $|\operatorname{Orb}(x)|=[G:\operatorname{Stab}(x)]$. For $G$ finite: $|G|=|\operatorname{Stab}(x)|\cdot|\operatorname{Orb}(x)|$.
-
-@@@ groups-burnside.md
----
-title: Burnside's lemma
-category: algebra/groups
-level: m1
-difficulty: 5
-tags: Burnside lemma, group action, counting
-date: 2026-11-03
----
-
-## Statement
-
-Let $G$ (finite) act on a finite set $X$. Show that the number of orbits equals
-$$\frac{1}{|G|}\sum_{g\in G}|X^g|,$$
-where $X^g=\{x\in X:gx=x\}$.
-
-## Hint
-
-Count the set $\{(g,x):gx=x\}$ in two ways.
-
-## Solution
-
-**Double count.** Let $S=\{(g,x)\in G\times X:gx=x\}$. Then
-$$|S|=\sum_{g\in G}|X^g|=\sum_{x\in X}|\operatorname{Stab}(x)|.$$
-
-**Orbit-stabilizer.** For each orbit $O$, all stabilizers have the same size $|G|/|O|$ (since $[G:\operatorname{Stab}(x)]=|O|$). So
-$$\sum_{x\in O}|\operatorname{Stab}(x)|=|O|\cdot\frac{|G|}{|O|}=|G|.$$
-Summing over orbits: $\sum_{x\in X}|\operatorname{Stab}(x)|=|G|\cdot\#\text{orbits}$.
-
-**Conclusion.** $\#\text{orbits}=\frac{1}{|G|}\sum_g|X^g|$.
-
-@@@ groups-simple-group.md
----
-title: Simple groups
-category: algebra/groups
-level: m1
-difficulty: 4
-tags: simple group, normal subgroup, examples
-date: 2026-11-03
----
-
-## Statement
-
-Define a simple group. Show that $\mathbb{Z}/p\mathbb{Z}$ is simple for $p$ prime, and that $\mathbb{Z}/n\mathbb{Z}$ is not simple for $n$ composite.
-
-## Hint
-
-A simple group has no proper non-trivial normal subgroups. In an abelian group, every subgroup is normal.
-
-## Solution
-
-**Definition.** A group is simple if its only normal subgroups are $\{e\}$ and $G$.
-
-**$\mathbb{Z}/p\mathbb{Z}$.** Its only subgroups are $\{0\}$ and the whole group (since $p$ is prime). So it has no proper non-trivial normal subgroups. Simple.
-
-**$\mathbb{Z}/n\mathbb{Z}$ for composite $n$.** If $d$ divides $n$ with $1<d<n$, the subgroup generated by $\overline{n/d}$ has order $d$. Since the group is abelian, this subgroup is normal. So the group is not simple.
-
-**Conclusion.** $\mathbb{Z}/p\mathbb{Z}$ is simple for $p$ prime; $\mathbb{Z}/n\mathbb{Z}$ is not simple for $n$ composite.
-
-@@@ groups-coset-count.md
----
-title: Counting cosets
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: cosets, index, counting
-date: 2026-11-03
----
-
-## Statement
-
-In $G=\mathbb{Z}/12\mathbb{Z}$, let $H=\langle\bar4\rangle$. Compute $|H|$, the index $[G:H]$, and list the elements of $H$ and $G/H$.
-
-## Hint
-
-$\bar4$ has order $12/\gcd(4,12)=3$.
-
-## Solution
-
-**$|H|$.** Order of $\bar4$ is $12/4=3$. So $H=\{\bar0,\bar4,\bar8\}$.
-
-**Index.** $[G:H]=12/3=4$.
-
-**Cosets.** $G/H$ has $4$ elements:
-- $H=\{\bar0,\bar4,\bar8\}$;
-- $\bar1+H=\{\bar1,\bar5,\bar9\}$;
-- $\bar2+H=\{\bar2,\bar6,\bar{10}\}$;
-- $\bar3+H=\{\bar3,\bar7,\bar{11}\}$.
-
-**Conclusion.** $|H|=3$, $[G:H]=4$, and $G/H\cong\mathbb{Z}/4\mathbb{Z}$.
-
-@@@ groups-subgroup-lattice.md
----
-title: Subgroup lattice of $\mathbb{Z}/6\mathbb{Z}$
-category: algebra/groups
-level: l1
-difficulty: 3
-tags: subgroup lattice, cyclic group, divisors
-date: 2026-11-03
----
-
-## Statement
-
-List all subgroups of $\mathbb{Z}/6\mathbb{Z}$ and draw the subgroup lattice.
-
-## Hint
-
-Subgroups correspond to divisors of $6$: $1,2,3,6$.
-
-## Solution
-
-**Subgroups.** 
-- Order $1$: $\{\bar0\}$.
-- Order $2$: $\{\bar0,\bar3\}$ (generated by $\bar3$).
-- Order $3$: $\{\bar0,\bar2,\bar4\}$ (generated by $\bar2$).
-- Order $6$: the whole group.
-
-**Lattice.**
-$$\{\bar0\}\subset\{\bar0,\bar3\}\subset\mathbb{Z}/6\mathbb{Z},$$
-$$\{\bar0\}\subset\{\bar0,\bar2,\bar4\}\subset\mathbb{Z}/6\mathbb{Z}.$$
-The subgroups of orders $2$ and $3$ are incomparable.
-
-**Conclusion.** Four subgroups, forming a diamond lattice.
-
-@@@ groups-general-linear-finite.md
----
-title: The order of $GL_n(\mathbb{F}_p)$
-category: algebra/groups
-level: m1
-difficulty: 4
-tags: general linear group, finite field, order
-date: 2026-11-03
----
-
-## Statement
-
-Compute $|GL_2(\mathbb{F}_p)|$ for $p$ prime.
-
-## Hint
-
-Count invertible $2\times2$ matrices over $\mathbb{F}_p$ by choosing columns.
-
-## Solution
-
-**First column.** A nonzero vector in $\mathbb{F}_p^2$: $p^2-1$ choices.
-
-**Second column.** Must not be in the span of the first: $p^2-p$ choices.
-
-**Total.** $|GL_2(\mathbb{F}_p)|=(p^2-1)(p^2-p)$.
-
-**Example $p=2$.** $|GL_2(\mathbb{F}_2)|=3\cdot2=6\cong S_3$.
-
-**Conclusion.** $|GL_2(\mathbb{F}_p)|=(p^2-1)(p^2-p)=p(p-1)^2(p+1)$.
-
 @@@ complex-basic-operations.md
 ---
 title: Basic operations on complex numbers
@@ -3793,8 +1444,2429 @@ Factor $X^n-1$ and evaluate at $X=1$.
 **Modulus.** $|1-\omega^k|^2=2-2\cos(2k\pi/n)=4\sin^2(k\pi/n)$, so $|1-\omega^k|=2\sin(k\pi/n)$ (positive for $k=1,\ldots,n-1$).
 
 **Conclusion.** $\prod_{k=1}^{n-1}2\sin(k\pi/n)=n$, i.e. $\prod_{k=1}^{n-1}\sin(k\pi/n)=\frac{n}{2^{n-1}}$.
+@@@ groups-definition-check.md
+---
+title: Checking the group axioms
+category: algebra/groups
+level: lycee
+difficulty: 1
+tags: group axioms, examples, counterexamples
+date: 2026-11-03
+---
 
+## Statement
 
+Determine whether each of the following is a group under the given operation:
+
+(a) $(\mathbb{Z},+)$;
+(b) $(\mathbb{Z},\times)$;
+(c) $(\mathbb{N},+)$;
+(d) $(\mathbb{R}^*,\times)$;
+(e) $(\{1,-1\},\times)$.
+
+## Hint
+
+Check the four axioms: closure, associativity, identity element, and inverses.
+
+## Solution
+
+**(a)** $(\mathbb{Z},+)$: closed (sum of integers is integer), associative, identity $0$, inverse $-n$. **Group** (abelian).
+
+**(b)** $(\mathbb{Z},\times)$: closed, associative, identity $1$. But $2$ has no inverse in $\mathbb{Z}$ ($1/2\notin\mathbb{Z}$). **Not a group** (it is only a monoid).
+
+**(c)** $(\mathbb{N},+)$: closed, associative, identity $0$. But no inverse: $-1\notin\mathbb{N}$. **Not a group**.
+
+**(d)** $(\mathbb{R}^*,\times)$: closed (product of nonzero reals is nonzero), associative, identity $1$, inverse $1/x$. **Group** (abelian).
+
+**(e)** $(\{1,-1\},\times)$: closed ($1\cdot1=1$, $1\cdot(-1)=-1$, $(-1)\cdot(-1)=1$), associative, identity $1$, inverse $1$ and $-1$ are their own inverses. **Group** of order $2$ (cyclic, generated by $-1$).
+
+**Conclusion.** (a), (d), (e) are groups; (b), (c) are not.
+
+@@@ groups-additive-multiplicative.md
+---
+title: Additive and multiplicative notations
+category: algebra/groups
+level: lycee
+difficulty: 1
+tags: notation, abelian group, convention
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G$ be a group. Rewrite each statement in multiplicative notation as its additive counterpart (assuming $G$ is abelian):
+
+1. $(ab)^n=a^nb^n$;
+2. $a^{-1}b^{-1}=(ab)^{-1}$;
+3. $a^m a^n=a^{m+n}$;
+4. the identity is $e$.
+
+## Hint
+
+Replace product by sum, $a^n$ by $na$, $a^{-1}$ by $-a$, and $e$ by $0$.
+
+## Solution
+
+**1.** $n(a+b)=na+nb$.
+
+**2.** $(-a)+(-b)=-(a+b)$.
+
+**3.** $ma+na=(m+n)a$.
+
+**4.** The identity is $0$.
+
+**Conclusion.** The translation between multiplicative and additive notation is purely cosmetic. In additive notation, the group operation is written $+$, the identity $0$, and the inverse $-a$.
+
+@@@ groups-order-element.md
+---
+title: Order of an element
+category: algebra/groups
+level: lycee
+difficulty: 2
+tags: order, cyclic subgroup, element
+date: 2026-11-03
+---
+
+## Statement
+
+In $(\mathbb{Z}/8\mathbb{Z},+)$, compute the order of each element.
+
+## Hint
+
+The order of $k$ is the smallest $n\ge1$ with $nk\equiv0\pmod8$.
+
+## Solution
+
+**Computation.**
+- $\bar 0$: order $1$.
+- $\bar 1$: $8\cdot1\equiv0$, order $8$.
+- $\bar 2$: $4\cdot2=8\equiv0$, order $4$.
+- $\bar 3$: $8\cdot3=24\equiv0$, order $8$.
+- $\bar 4$: $2\cdot4=8\equiv0$, order $2$.
+- $\bar 5$: $8\cdot5=40\equiv0$, order $8$.
+- $\bar 6$: $4\cdot6=24\equiv0$, order $4$.
+- $\bar 7$: $8\cdot7=56\equiv0$, order $8$.
+
+**Conclusion.** Orders: $1,8,4,8,2,8,4,8$.
+
+**Remark.** The order of $\bar k$ in $\mathbb{Z}/n\mathbb{Z}$ is $n/\gcd(k,n)$.
+
+@@@ groups-cyclic-examples.md
+---
+title: Cyclic groups
+category: algebra/groups
+level: lycee
+difficulty: 2
+tags: cyclic group, generator, examples
+date: 2026-11-03
+---
+
+## Statement
+
+Show that each of the following groups is cyclic, and find a generator:
+
+(a) $(\mathbb{Z}/6\mathbb{Z},+)$;
+(b) $(\{1,i,-1,-i\},\times)$;
+(c) $(\mathbb{Z}/5\mathbb{Z})^*,\times)$.
+
+## Hint
+
+A generator is an element whose powers (or multiples) give the whole group.
+
+## Solution
+
+**(a)** $\bar 1$ generates: $\bar 1,\bar 2,\bar 3,\bar 4,\bar 5,\bar 0$. Also $\bar 5$ is a generator.
+
+**(b)** $i$ generates: $i,i^2=-1,i^3=-i,i^4=1$. Also $-i$ is a generator.
+
+**(c)** $(\mathbb{Z}/5\mathbb{Z})^*=\{1,2,3,4\}$ under multiplication mod $5$. $\bar 2$ generates: $2,4,3,1$.
+
+**Conclusion.** All three groups are cyclic.
+
+@@@ groups-subgroup-criterion.md
+---
+title: The subgroup criterion
+category: algebra/groups
+level: l1
+difficulty: 2
+tags: subgroup, criterion, nonempty
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G$ be a group and $H\subseteq G$ nonempty. Prove that $H$ is a subgroup of $G$ iff for all $a,b\in H$, $ab^{-1}\in H$.
+
+## Hint
+
+The forward direction is immediate from the subgroup axioms. For the converse, derive each axiom.
+
+## Solution
+
+**Forward.** If $H$ is a subgroup, it is closed under products and inverses, so $ab^{-1}\in H$.
+
+**Converse.** Suppose $ab^{-1}\in H$ whenever $a,b\in H$.
+- *Identity.* Since $H\neq\emptyset$, take $a\in H$. Then $aa^{-1}=e\in H$.
+- *Inverse.* For $b\in H$, $eb^{-1}=b^{-1}\in H$.
+- *Closure.* For $a,b\in H$, $b^{-1}\in H$, so $a(b^{-1})^{-1}=ab\in H$.
+
+**Conclusion.** $H$ is a subgroup.
+
+@@@ groups-subgroup-examples.md
+---
+title: Which subsets are subgroups?
+category: algebra/groups
+level: lycee
+difficulty: 2
+tags: subgroup, examples, counterexamples
+date: 2026-11-03
+---
+
+## Statement
+
+Determine whether each subset is a subgroup:
+
+(a) $2\mathbb{Z}\subseteq(\mathbb{Z},+)$;
+(b) $\mathbb{N}\subseteq(\mathbb{Z},+)$;
+(c) $\{1,-1\}\subseteq(\mathbb{R}^*,\times)$;
+(d) $\{z\in\mathbb{C}:|z|=1\}\subseteq(\mathbb{C}^*,\times)$.
+
+## Hint
+
+Check the subgroup criterion: nonempty, closed under product and inverse.
+
+## Solution
+
+**(a)** $2\mathbb{Z}$: $0\in2\mathbb{Z}$; sum of evens is even; inverse of even is even. **Subgroup.**
+
+**(b)** $\mathbb{N}$: closed under sum, but no inverse for positive integers. **Not a subgroup.**
+
+**(c)** $\{1,-1\}$: products stay in the set, inverses are themselves. **Subgroup.**
+
+**(d)** $|z|=|w|=1\Rightarrow|zw|=1$ and $|z^{-1}|=1$. **Subgroup** (the circle group).
+
+**Conclusion.** (a), (c), (d) are subgroups; (b) is not.
+
+@@@ groups-lagrange-theorem.md
+---
+title: Lagrange's theorem
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: Lagrange, order, subgroup
+date: 2026-11-03
+---
+
+## Statement
+
+State and prove Lagrange's theorem: if $G$ is a finite group and $H$ is a subgroup, then $|H|$ divides $|G|$.
+
+## Hint
+
+Partition $G$ into left cosets of $H$ and show they all have the same size $|H|$.
+
+## Solution
+
+**Cosets.** For $g\in G$, the left coset $gH=\{gh:h\in H\}$ has cardinality $|H|$ (the map $h\mapsto gh$ is a bijection).
+
+**Partition.** The left cosets form a partition of $G$: they cover $G$ (each $g\in gH$) and are disjoint (if $g_1H\cap g_2H\neq\emptyset$, then $g_1H=g_2H$).
+
+**Count.** If there are $k$ distinct cosets, then $|G|=k|H|$, so $|H|$ divides $|G|$.
+
+**Conclusion.** Lagrange's theorem holds; the integer $k=|G|/|H|$ is the index of $H$ in $G$.
+
+@@@ groups-lagrange-corollary.md
+---
+title: Corollary of Lagrange's theorem
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: Lagrange, order of element, corollary
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G$ be a finite group of order $n$. Show that for every $g\in G$, $g^n=e$.
+
+## Hint
+
+The order of $g$ equals the order of the cyclic subgroup $\langle g\rangle$, which divides $|G|$ by Lagrange.
+
+## Solution
+
+**Order of $g$.** Let $d$ be the order of $g$ (the smallest positive integer with $g^d=e$). Then $\langle g\rangle=\{e,g,\ldots,g^{d-1}\}$ has order $d$.
+
+**Lagrange.** By Lagrange's theorem, $d=|H|$ divides $|G|=n$.
+
+**Conclusion.** $n=kd$ for some $k$, so $g^n=g^{kd}=(g^d)^k=e^k=e$.
+
+**Corollary.** In $(\mathbb{Z}/p\mathbb{Z})^*$ with $p$ prime, for any $a\not\equiv0$, $a^{p-1}\equiv1\pmod p$ (Fermat's little theorem).
+
+@@@ groups-finite-order-prime.md
+---
+title: Groups of prime order
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: prime order, cyclic, subgroups
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G$ be a group of prime order $p$. Show that $G$ is cyclic.
+
+## Hint
+
+Take any $g\neq e$ and consider $\langle g\rangle$. Its order divides $p$.
+
+## Solution
+
+**Order of $\langle g\rangle$.** By Lagrange, $|\langle g\rangle|$ divides $p$. Since $g\neq e$, $|\langle g\rangle|>1$, so $|\langle g\rangle|=p$.
+
+**Conclusion.** $\langle g\rangle=G$, so $G$ is cyclic.
+
+**Remark.** Every group of prime order is isomorphic to $(\mathbb{Z}/p\mathbb{Z},+)$.
+
+@@@ groups-homomorphism-basic.md
+---
+title: Group homomorphisms
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: homomorphism, kernel, image
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:G\to G'$ be a group homomorphism. Show that:
+1. $f(e)=e'$;
+2. $f(g^{-1})=f(g)^{-1}$;
+3. $\ker f$ is a subgroup of $G$;
+4. $\operatorname{Im} f$ is a subgroup of $G'$.
+
+## Hint
+
+Use the homomorphism property $f(ab)=f(a)f(b)$.
+
+## Solution
+
+**1.** $f(e)=f(ee)=f(e)f(e)$, so multiplying by $f(e)^{-1}$: $e'=f(e)$.
+
+**2.** $f(g)f(g^{-1})=f(gg^{-1})=f(e)=e'$, so $f(g^{-1})=f(g)^{-1}$.
+
+**3.** $\ker f=\{g:f(g)=e'\}$. Contains $e$ (by 1). If $a,b\in\ker f$: $f(ab^{-1})=f(a)f(b)^{-1}=e'(e')^{-1}=e'$, so $ab^{-1}\in\ker f$. Subgroup.
+
+**4.** $\operatorname{Im} f=\{f(g):g\in G\}$. Nonempty (contains $e'$). If $f(a),f(b)\in\operatorname{Im}$, then $f(a)f(b)^{-1}=f(ab^{-1})\in\operatorname{Im}$. Subgroup.
+
+**Conclusion.** All four properties hold.
+
+@@@ groups-homomorphism-examples.md
+---
+title: Homomorphisms between familiar groups
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: homomorphism, examples, kernels
+date: 2026-11-03
+---
+
+## Statement
+
+For each map, determine whether it is a group homomorphism, and if so, compute its kernel and image:
+
+(a) $f:(\mathbb{Z},+)\to(\mathbb{Z}/n\mathbb{Z},+)$, $k\mapsto\bar k$;
+(b) $g:(\mathbb{R},+)\to(\mathbb{R}^*,\times)$, $x\mapsto e^x$;
+(c) $h:(\mathbb{C}^*,\times)\to(\mathbb{R}^*_+,\times)$, $z\mapsto|z|$;
+(d) $\varphi:(\mathbb{R},+)\to(\mathbb{R},+)$, $x\mapsto x^2$.
+
+## Hint
+
+Check $f(ab)=f(a)f(b)$ (or the additive analogue).
+
+## Solution
+
+**(a)** $f(k+\ell)=\overline{k+\ell}=\bar k+\bar\ell=f(k)+f(\ell)$. Homomorphism. Kernel $n\mathbb{Z}$, image $\mathbb{Z}/n\mathbb{Z}$ (surjective).
+
+**(b)** $g(x+y)=e^{x+y}=e^xe^y=g(x)g(y)$. Homomorphism. Kernel $\{0\}$ (injective), image $\mathbb{R}^*_+$.
+
+**(c)** $h(zw)=|zw|=|z||w|=h(z)h(w)$. Homomorphism. Kernel $\{z:|z|=1\}$ (unit circle), image $\mathbb{R}^*_+$ (surjective).
+
+**(d)** $\varphi(x+y)=(x+y)^2\neq x^2+y^2$ in general. **Not a homomorphism** (unless the group operation is trivial).
+
+**Conclusion.** (a), (b), (c) are homomorphisms; (d) is not.
+
+@@@ groups-kernel-injectivity.md
+---
+title: Injectivity and kernel
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: kernel, injectivity, homomorphism
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:G\to G'$ be a group homomorphism. Show that $f$ is injective iff $\ker f=\{e\}$.
+
+## Hint
+
+For the forward direction, use $f(e)=e'$. For the converse, assume $f(a)=f(b)$.
+
+## Solution
+
+**If injective.** If $g\in\ker f$, then $f(g)=e'=f(e)$, so $g=e$ by injectivity. Hence $\ker f=\{e\}$.
+
+**Conversely.** Suppose $\ker f=\{e\}$. If $f(a)=f(b)$, then $f(ab^{-1})=f(a)f(b)^{-1}=e'$, so $ab^{-1}\in\ker f=\{e\}$, i.e. $a=b$. So $f$ is injective.
+
+**Conclusion.** $f$ is injective iff its kernel is trivial.
+
+@@@ groups-isomorphism-criterion.md
+---
+title: Isomorphism criteria
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: isomorphism, bijective homomorphism, criterion
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:G\to G'$ be a homomorphism of finite groups with $|G|=|G'|$. Show that $f$ is an isomorphism iff $f$ is injective iff $f$ is surjective.
+
+## Hint
+
+Use $|G|=|\ker f|\cdot|\operatorname{Im} f|$.
+
+## Solution
+
+**Counting.** For any homomorphism $f$, by the first isomorphism theorem, $|G|=|\ker f|\cdot|\operatorname{Im} f|$.
+
+**Injectivity.** $f$ injective $\iff\ker f=\{e\}\iff|\ker f|=1\iff|\operatorname{Im} f|=|G|=|G'|$. Since $\operatorname{Im} f\subseteq G'$ and $|G'|=|G|$, we get $\operatorname{Im} f=G'$.
+
+**Surjectivity.** Similarly, $\operatorname{Im} f=G'\iff|\operatorname{Im} f|=|G'|=|G|\iff|\ker f|=1\iff$ injective.
+
+**Conclusion.** For finite groups of the same order, injective $\Leftrightarrow$ surjective $\Leftrightarrow$ isomorphism.
+
+@@@ groups-cyclic-subgroups.md
+---
+title: Subgroups of a cyclic group
+category: algebra/groups
+level: l1
+difficulty: 4
+tags: cyclic group, subgroups, divisors
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G=\langle g\rangle$ be a cyclic group of order $n$. Show that for each divisor $d$ of $n$, there is a unique subgroup of order $d$, namely $\langle g^{n/d}\rangle$.
+
+## Hint
+
+By Lagrange, any subgroup $H$ has order $d\mid n$. Show that $H\subseteq\langle g^{n/d}\rangle$ and use equality of cardinalities.
+
+## Solution
+
+**Subgroup existence.** Let $d\mid n$. Then $g^{n/d}$ has order $d$ (since $(g^{n/d})^d=g^n=e$ and no smaller power works), so $\langle g^{n/d}\rangle$ is a subgroup of order $d$.
+
+**Uniqueness.** Let $H$ be a subgroup of order $d$. $H$ is cyclic (subgroup of a cyclic group), say $H=\langle g^k\rangle$. Then the order of $g^k$ is $n/\gcd(k,n)=d$, so $\gcd(k,n)=n/d$. In particular, $n/d\mid k$, so $g^k\in\langle g^{n/d}\rangle$, hence $H\subseteq\langle g^{n/d}\rangle$. Since both have $d$ elements, $H=\langle g^{n/d}\rangle$.
+
+**Conclusion.** There is a bijection between subgroups of $G$ and divisors of $n$.
+
+@@@ groups-quotient-group.md
+---
+title: Quotient groups
+category: algebra/groups
+level: l1
+difficulty: 4
+tags: quotient group, normal subgroup, cosets
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G$ be a group and $N\triangleleft G$ a normal subgroup. Show that the set $G/N$ of left cosets of $N$ forms a group under the operation $(gN)(hN)=ghN$.
+
+## Hint
+
+Well-definedness is the main point: if $gN=g'N$ and $hN=h'N$, show $ghN=g'h'N$.
+
+## Solution
+
+**Well-definedness.** Suppose $g'=gn_1$, $h'=hn_2$ with $n_1,n_2\in N$. Then
+$$g'h'=gn_1hn_2=g(h n_1' h^{-1})hn_2$$
+where $n_1'=h^{-1}n_1h\in N$ (normality). So $g'h'=ghn_3$ with $n_3\in N$, hence $g'h'N=ghN$.
+
+**Group axioms.**
+- Associativity inherited from $G$.
+- Identity: $N$ (since $gN\cdot N=gN$).
+- Inverse: $(gN)^{-1}=g^{-1}N$.
+
+**Conclusion.** $G/N$ is a group of order $|G|/|N|$ (if $G$ finite), called the quotient group.
+
+@@@ groups-first-isomorphism.md
+---
+title: The first isomorphism theorem
+category: algebra/groups
+level: l1
+difficulty: 4
+tags: first isomorphism theorem, quotient, kernel
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:G\to G'$ be a group homomorphism. Show that $G/\ker f\cong\operatorname{Im} f$.
+
+## Hint
+
+Define $\bar f:G/\ker f\to\operatorname{Im} f$ by $\bar f(gK)=f(g)$ where $K=\ker f$. Show it is a well-defined isomorphism.
+
+## Solution
+
+**Well-defined.** If $g_1K=g_2K$, then $g_2^{-1}g_1\in K$, so $f(g_2^{-1}g_1)=e'$, hence $f(g_1)=f(g_2)$.
+
+**Homomorphism.** $\bar f(g_1K\cdot g_2K)=\bar f(g_1g_2K)=f(g_1g_2)=f(g_1)f(g_2)=\bar f(g_1K)\bar f(g_2K)$.
+
+**Injective.** If $\bar f(gK)=e'$, then $f(g)=e'$, so $g\in K$, hence $gK=K$.
+
+**Surjective.** Every element of $\operatorname{Im} f$ is $f(g)=\bar f(gK)$.
+
+**Conclusion.** $\bar f$ is an isomorphism, so $G/\ker f\cong\operatorname{Im} f$.
+
+**Consequence.** $|G|=|\ker f|\cdot|\operatorname{Im} f|$ for finite groups.
+
+@@@ groups-symmetric-group-s3.md
+---
+title: The symmetric group $S_3$
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: symmetric group, permutations, order
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the order of $S_3$, list its elements, and identify the subgroup of even permutations.
+
+## Hint
+
+$|S_n|=n!$. Permutations of $\{1,2,3\}$: $6$ in total, three even and three odd.
+
+## Solution
+
+**Order.** $|S_3|=3!=6$.
+
+**Elements.**
+- Identity: $e$.
+- Transpositions (odd): $(12),(13),(23)$.
+- $3$-cycles (even): $(123),(132)$.
+
+**Even permutations.** $\{e,(123),(132)\}$, which forms a subgroup of order $3$ isomorphic to $\mathbb{Z}/3\mathbb{Z}$ (the alternating group $A_3$).
+
+**Conclusion.** $|S_3|=6$, $A_3$ has order $3$ and is normal (index $2$).
+
+@@@ groups-symmetric-transpositions.md
+---
+title: Transpositions generate $S_n$
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: transpositions, generation, symmetric group
+date: 2026-11-03
+---
+
+## Statement
+
+Show that every permutation in $S_n$ is a product of transpositions.
+
+## Hint
+
+Decompose a permutation into disjoint cycles, then each cycle into transpositions.
+
+## Solution
+
+**Cycles.** Every permutation decomposes into disjoint cycles.
+
+**Cycle decomposition.** A $k$-cycle $(a_1\,a_2\,\cdots\,a_k)$ equals
+$$(a_1\,a_k)(a_1\,a_{k-1})\cdots(a_1\,a_2).$$
+So each cycle is a product of $k-1$ transpositions.
+
+**Conclusion.** Every permutation is a product of transpositions. Hence transpositions generate $S_n$.
+
+**Parity.** A permutation is even iff it decomposes into an even number of transpositions; this parity is well defined.
+
+@@@ groups-sign-homomorphism.md
+---
+title: The sign homomorphism
+category: algebra/groups
+level: l1
+difficulty: 4
+tags: sign, parity, homomorphism
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the sign map $\varepsilon:S_n\to\{1,-1\}$ is a group homomorphism, and compute its kernel.
+
+## Hint
+
+$\varepsilon(\sigma)=(-1)^{N(\sigma)}$ where $N(\sigma)$ is the number of inversions. Show $N(\sigma\tau)\equiv N(\sigma)+N(\tau)\pmod 2$.
+
+## Solution
+
+**Homomorphism.** For any transposition $\tau$, the number of inversions of $\sigma\tau$ differs from that of $\sigma$ by an odd number (since swapping two positions changes the parity of the number of inversions). By induction, decomposing a permutation into transpositions shows that the parity of the number of inversions is a homomorphism to $\{1,-1\}$.
+
+**Kernel.** $\ker\varepsilon=\{\sigma:\varepsilon(\sigma)=1\}=A_n$, the alternating group (even permutations).
+
+**Order.** $|A_n|=n!/2$ for $n\ge2$ (by the first isomorphism theorem, since $\varepsilon$ is surjective).
+
+**Conclusion.** $\varepsilon$ is a surjective homomorphism with kernel $A_n$.
+
+@@@ groups-cauchy-theorem.md
+---
+title: Cauchy's theorem for groups
+category: algebra/groups
+level: olympiad
+difficulty: 4
+tags: Cauchy theorem, prime order, existence
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G$ be a finite group of order $n$, and $p$ a prime dividing $n$. Show that $G$ has an element of order $p$.
+
+## Hint
+
+Use induction on $|G|$. If $G$ has a proper subgroup of order divisible by $p$, conclude by induction. Otherwise, use the class equation.
+
+## Solution
+
+**Induction on $|G|$.** If $G$ is abelian, Cauchy's theorem is classical (structure of finite abelian groups). In general, consider the class equation
+$$|G|=|Z(G)|+\sum_i[G:C(g_i)]$$
+where the sum is over non-central conjugacy classes.
+
+**Case 1:** $p\mid|Z(G)|$. Then $Z(G)$ has an element of order $p$ by the abelian case.
+
+**Case 2:** $p\nmid|Z(G)|$. Then some $[G:C(g_i)]$ is not divisible by $p$, hence $p\mid|C(g_i)|$ with $|C(g_i)|<|G|$. By induction on $C(g_i)$, it has an element of order $p$, hence so does $G$.
+
+**Conclusion.** $G$ has an element of order $p$.
+
+@@@ groups-cauchy-application.md
+---
+title: Cauchy's theorem applied to $A_4$
+category: algebra/groups
+level: olympiad
+difficulty: 4
+tags: Cauchy, alternating group, elements of order
+date: 2026-11-03
+---
+
+## Statement
+
+Using Cauchy's theorem, show that $A_4$ has elements of order $2$ and order $3$.
+
+## Hint
+
+$|A_4|=12=2^2\cdot3$. Cauchy's theorem gives an element of each prime order.
+
+## Solution
+
+**Order $3$.** The $3$-cycles $(123),(124),(134),(234)$ and their inverses are $8$ elements of order $3$.
+
+**Order $2$.** Products of disjoint transpositions like $(12)(34)$ have order $2$. There are $3$ such elements: $(12)(34),(13)(24),(14)(23)$.
+
+**Cauchy.** Since $|A_4|=12$ is divisible by $2$ and $3$, Cauchy's theorem guarantees elements of order $2$ and $3$.
+
+**Conclusion.** $A_4$ has $8$ elements of order $3$ and $3$ elements of order $2$, plus the identity.
+
+@@@ groups-sylow-first.md
+---
+title: Sylow's first theorem
+category: algebra/groups
+level: m1
+difficulty: 5
+tags: Sylow, p-subgroup, existence
+date: 2026-11-03
+---
+
+## Statement
+
+State Sylow's first theorem and apply it to a group of order $12$.
+
+## Hint
+
+For $|G|=p^a m$ with $\gcd(p,m)=1$, $G$ has a subgroup of order $p^a$.
+
+## Solution
+
+**Statement.** Let $G$ be a finite group of order $p^a m$ with $p\nmid m$. Then $G$ has a subgroup of order $p^a$ (a Sylow $p$-subgroup).
+
+**Application to $|G|=12$.** $12=2^2\cdot3$. Sylow's first theorem gives:
+- A subgroup of order $4$ (Sylow $2$-subgroup).
+- A subgroup of order $3$ (Sylow $3$-subgroup).
+
+**Conclusion.** Every group of order $12$ has subgroups of order $4$ and $3$.
+
+@@@ groups-sylow-third.md
+---
+title: Sylow's third theorem
+category: algebra/groups
+level: m1
+difficulty: 5
+tags: Sylow, congruence, number of subgroups
+date: 2026-11-03
+---
+
+## Statement
+
+State Sylow's third theorem and compute the possible numbers of Sylow $3$-subgroups in a group of order $45$.
+
+## Hint
+
+$|G|=45=3^2\cdot5$. Let $n_3$ be the number of Sylow $3$-subgroups. Then $n_3\equiv1\pmod 3$ and $n_3\mid5$.
+
+## Solution
+
+**Statement.** The number $n_p$ of Sylow $p$-subgroups satisfies:
+- $n_p\equiv1\pmod p$;
+- $n_p\mid m=|G|/p^a$.
+
+**Application.** $|G|=45=3^2\cdot5$. $n_3\equiv1\pmod3$ and $n_3\mid5$: possible values are $1$ and $5$.
+
+**Conclusion.** $n_3\in\{1,5\}$. If $n_3=1$, the Sylow $3$-subgroup is normal.
+
+@@@ groups-normal-subgroup.md
+---
+title: Normal subgroups
+category: algebra/groups
+level: l1
+difficulty: 4
+tags: normal subgroup, conjugation, criterion
+date: 2026-11-03
+---
+
+## Statement
+
+Let $N$ be a subgroup of $G$. Show that the following are equivalent:
+1. $N\triangleleft G$;
+2. $gNg^{-1}=N$ for all $g\in G$;
+3. $gNg^{-1}\subseteq N$ for all $g\in G$;
+4. every left coset is a right coset.
+
+## Hint
+
+For (3) $\Rightarrow$ (2), apply (3) to $g^{-1}$.
+
+## Solution
+
+**1 $\Leftrightarrow$ 2.** $N$ normal means $gN=Ng$ for all $g$, i.e. $gNg^{-1}=N$.
+
+**2 $\Leftrightarrow$ 3.** If $gNg^{-1}\subseteq N$ for all $g$, then applying to $g^{-1}$ gives $g^{-1}Ng\subseteq N$, hence $N\subseteq gNg^{-1}$, so equality. Conversely, equality implies inclusion.
+
+**2 $\Leftrightarrow$ 4.** $gN=Ng\iff gNg^{-1}=N$. The condition that left cosets equal right cosets is the same.
+
+**Conclusion.** All four are equivalent.
+
+@@@ groups-index-2-normal.md
+---
+title: Subgroups of index 2 are normal
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: index, normal, cosets
+date: 2026-11-03
+---
+
+## Statement
+
+Show that any subgroup $H$ of index $2$ in $G$ is normal.
+
+## Hint
+
+There are only two left cosets: $H$ and $G\setminus H$. The same holds for right cosets.
+
+## Solution
+
+**Cosets.** Left cosets: $H$ and $gH$ for $g\notin H$. Since $H$ has index $2$, $gH=G\setminus H$. Similarly, right cosets are $H$ and $Hg=G\setminus H$.
+
+**Equality.** For $g\notin H$: $gH=G\setminus H=Hg$. For $g\in H$: $gH=H=Hg$.
+
+**Conclusion.** $gH=Hg$ for all $g$, so $H\triangleleft G$. Any index-$2$ subgroup is normal.
+
+@@@ groups-dihedral.md
+---
+title: The dihedral group $D_n$
+category: algebra/groups
+level: l1
+difficulty: 4
+tags: dihedral group, symmetries, presentation
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the dihedral group $D_n$ (symmetries of a regular $n$-gon), give its order, and a presentation.
+
+## Hint
+
+Symmetries are generated by a rotation $r$ of order $n$ and a reflection $s$ of order $2$, with $srs=r^{-1}$.
+
+## Solution
+
+**Order.** $D_n$ has $2n$ elements: $n$ rotations $r^0,\ldots,r^{n-1}$ and $n$ reflections $sr^k$ ($k=0,\ldots,n-1$).
+
+**Presentation.** $\langle r,s:r^n=s^2=e,\,srs=r^{-1}\rangle$.
+
+**Example $n=3$:** $D_3\cong S_3$.
+
+**Conclusion.** $|D_n|=2n$, and $D_n$ has a cyclic subgroup of rotations (normal, index $2$) and $n$ reflections.
+
+@@@ groups-order-formula.md
+---
+title: Order of an element in $\mathbb{Z}/n\mathbb{Z}$
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: order, cyclic group, gcd
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the order of $\bar k$ in $(\mathbb{Z}/n\mathbb{Z},+)$ is $n/\gcd(k,n)$.
+
+## Hint
+
+The order is the smallest positive integer $m$ with $mk\equiv0\pmod n$.
+
+## Solution
+
+**Condition.** $mk\equiv0\pmod n\iff n\mid mk\iff n/\gcd(k,n)\mid m$.
+
+**Order.** The smallest such $m$ is $n/\gcd(k,n)$.
+
+**Conclusion.** $\operatorname{ord}(\bar k)=n/\gcd(k,n)$.
+
+**Application.** In $\mathbb{Z}/8\mathbb{Z}$: order of $\bar2$ is $8/2=4$; order of $\bar3$ is $8/1=8$; order of $\bar4$ is $8/4=2$.
+
+@@@ groups-product-groups.md
+---
+title: Direct products of groups
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: direct product, product group, order
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G$ and $H$ be groups. Show that $G\times H$ is a group under $(g,h)(g',h')=(gg',hh')$, and compute $|\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}|$.
+
+## Hint
+
+The group axioms hold component-wise.
+
+## Solution
+
+**Group axioms.** Closure, associativity, identity $(e_G,e_H)$, inverse $(g^{-1},h^{-1})$ all hold component-wise.
+
+**Order.** $|G\times H|=|G|\cdot|H|$, so $|\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}|=6$.
+
+**Isomorphism.** $\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}\cong\mathbb{Z}/6\mathbb{Z}$ (Chinese remainder theorem, since $\gcd(2,3)=1$).
+
+**Conclusion.** The direct product is a group of order $|G||H|$.
+
+@@@ groups-chinese-remainder.md
+---
+title: The Chinese remainder theorem for groups
+category: algebra/groups
+level: l1
+difficulty: 4
+tags: Chinese remainder, direct product, cyclic group
+date: 2026-11-03
+---
+
+## Statement
+
+Show that if $\gcd(m,n)=1$, then $\mathbb{Z}/mn\mathbb{Z}\cong\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}/n\mathbb{Z}$.
+
+## Hint
+
+Define $\varphi:\mathbb{Z}/mn\mathbb{Z}\to\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}/n\mathbb{Z}$ by $\varphi(\bar k)=(\bar k\bmod m,\bar k\bmod n)$.
+
+## Solution
+
+**Homomorphism.** $\varphi(\bar k+\bar\ell)=(\overline{k+\ell}\bmod m,\overline{k+\ell}\bmod n)=\varphi(\bar k)+\varphi(\bar\ell)$.
+
+**Injectivity.** If $\varphi(\bar k)=(\bar0,\bar0)$, then $m\mid k$ and $n\mid k$. Since $\gcd(m,n)=1$, $mn\mid k$, so $\bar k=\bar0$.
+
+**Surjectivity.** Both sides have $mn$ elements, and injectivity plus equal cardinalities gives surjectivity.
+
+**Conclusion.** $\mathbb{Z}/mn\mathbb{Z}\cong\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}/n\mathbb{Z}$, so the cyclic group of order $mn$ splits as a direct product of coprime cyclic factors.
+
+@@@ groups-general-linear.md
+---
+title: The general linear group $GL_n(\mathbb{R})$
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: general linear group, matrices, invertibility
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $GL_n(\mathbb{R})$, the set of invertible $n\times n$ real matrices, is a group under multiplication. Is it abelian?
+
+## Hint
+
+The product of invertible matrices is invertible, and the identity is $I_n$.
+
+## Solution
+
+**Closure.** If $A,B$ are invertible, $AB$ is invertible with inverse $B^{-1}A^{-1}$.
+
+**Associativity.** Matrix multiplication is associative.
+
+**Identity.** $I_n$ is invertible and $I_nA=A=AI_n$.
+
+**Inverse.** By definition, each $A\in GL_n$ has $A^{-1}\in GL_n$.
+
+**Non-abelian (for $n\ge2$).** For example, $\begin{pmatrix}1&1\\0&1\end{pmatrix}\begin{pmatrix}1&0\\1&1\end{pmatrix}\neq\begin{pmatrix}1&0\\1&1\end{pmatrix}\begin{pmatrix}1&1\\0&1\end{pmatrix}$.
+
+**Conclusion.** $GL_n(\mathbb{R})$ is a non-abelian group for $n\ge2$.
+
+@@@ groups-special-linear.md
+---
+title: The special linear group $SL_n(\mathbb{R})$
+category: algebra/groups
+level: l1
+difficulty: 4
+tags: special linear group, determinant, normal subgroup
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $SL_n(\mathbb{R})=\{A\in GL_n(\mathbb{R}):\det A=1\}$ is a normal subgroup of $GL_n(\mathbb{R})$.
+
+## Hint
+
+$SL_n$ is the kernel of the determinant homomorphism.
+
+## Solution
+
+**Homomorphism.** $\det:GL_n(\mathbb{R})\to(\mathbb{R}^*,\times)$ satisfies $\det(AB)=\det A\det B$.
+
+**Kernel.** $\ker\det=\{A:\det A=1\}=SL_n(\mathbb{R})$.
+
+**Kernel is normal.** The kernel of any homomorphism is a normal subgroup: for $A\in SL_n$ and $B\in GL_n$, $\det(BAB^{-1})=\det B\cdot1\cdot(\det B)^{-1}=1$.
+
+**Conclusion.** $SL_n(\mathbb{R})$ is a normal subgroup of $GL_n(\mathbb{R})$; the quotient is $GL_n/SL_n\cong\mathbb{R}^*$.
+
+@@@ groups-finite-abelian-structure.md
+---
+title: Structure of finite abelian groups
+category: algebra/groups
+level: m1
+difficulty: 5
+tags: abelian group, structure theorem, decomposition
+date: 2026-11-03
+---
+
+## Statement
+
+Classify all abelian groups of order $12$.
+
+## Hint
+
+$12=2^2\cdot3$. Decompose into Sylow subgroups: $G\cong G_2\times G_3$ with $|G_2|=4$, $|G_3|=3$.
+
+## Solution
+
+**Sylow decomposition.** Since $G$ is abelian, $G\cong G_2\times G_3$ with $G_2$ the Sylow $2$-subgroup (order $4$) and $G_3$ the Sylow $3$-subgroup (order $3$).
+
+**$G_3$.** Unique abelian group of order $3$: $\mathbb{Z}/3\mathbb{Z}$.
+
+**$G_2$.** Abelian groups of order $4$: $\mathbb{Z}/4\mathbb{Z}$ and $\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/2\mathbb{Z}$.
+
+**Classification.** The abelian groups of order $12$ are:
+- $\mathbb{Z}/4\mathbb{Z}\times\mathbb{Z}/3\mathbb{Z}\cong\mathbb{Z}/12\mathbb{Z}$;
+- $(\mathbb{Z}/2\mathbb{Z})^2\times\mathbb{Z}/3\mathbb{Z}\cong\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/6\mathbb{Z}$.
+
+**Conclusion.** Two abelian groups of order $12$ up to isomorphism.
+
+@@@ groups-p-group.md
+---
+title: Groups of order $p^2$
+category: algebra/groups
+level: m1
+difficulty: 5
+tags: p-group, abelian, order
+date: 2026-11-03
+---
+
+## Statement
+
+Show that any group of order $p^2$ (with $p$ prime) is abelian.
+
+## Hint
+
+The center of a finite $p$-group is nontrivial. If $G$ has order $p^2$, either $Z(G)=G$ or $Z(G)$ has order $p$ and $G/Z(G)$ is cyclic.
+
+## Solution
+
+**Center is nontrivial.** By the class equation, $|Z(G)|\equiv|G|\equiv0\pmod p$, so $p$ divides $|Z(G)|$.
+
+**Case 1: $Z(G)=G$.** Done, $G$ abelian.
+
+**Case 2: $|Z(G)|=p$.** Then $|G/Z(G)|=p$, so $G/Z(G)$ is cyclic (any group of prime order is cyclic). But if $G/Z(G)$ is cyclic, then $G$ is abelian (a standard lemma: if $G/Z(G)$ is cyclic, $G$ is abelian).
+
+**Contradiction.** But $G$ abelian implies $Z(G)=G$, contradicting $|Z(G)|=p$.
+
+**Conclusion.** Case 2 is impossible, so $G$ is abelian.
+
+@@@ groups-normalizer.md
+---
+title: The normalizer
+category: algebra/groups
+level: l1
+difficulty: 4
+tags: normalizer, subgroup, normal
+date: 2026-11-03
+---
+
+## Statement
+
+Let $H$ be a subgroup of $G$. The normalizer of $H$ is $N_G(H)=\{g\in G:gHg^{-1}=H\}$. Show that $N_G(H)$ is a subgroup of $G$ containing $H$, and $H\triangleleft N_G(H)$.
+
+## Hint
+
+Show $N_G(H)$ is closed under product and inverse.
+
+## Solution
+
+**Contains $H$.** For $h\in H$, $hHh^{-1}=H$, so $h\in N_G(H)$.
+
+**Subgroup.** If $g_1,g_2\in N_G(H)$: $(g_1g_2)H(g_1g_2)^{-1}=g_1(g_2Hg_2^{-1})g_1^{-1}=g_1Hg_1^{-1}=H$, so $g_1g_2\in N_G(H)$. And $g^{-1}Hg=H\iff gHg^{-1}=H$, so $g^{-1}\in N_G(H)$.
+
+**Normal.** By definition, $H\triangleleft N_G(H)$.
+
+**Conclusion.** $N_G(H)$ is a subgroup of $G$ containing $H$, and $H$ is normal in $N_G(H)$.
+
+@@@ groups-center.md
+---
+title: The center of a group
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: center, abelian, subgroup
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $Z(G)=\{g\in G:gh=hg\text{ for all }h\in G\}$ is an abelian normal subgroup of $G$.
+
+## Hint
+
+Show $Z(G)$ is a subgroup and that it commutes with all elements by definition.
+
+## Solution
+
+**Subgroup.** $e\in Z(G)$ trivially. If $g_1,g_2\in Z(G)$ and $h\in G$: $(g_1g_2)h=g_1hg_2=hg_1g_2$ (using commutation of $g_2$, then of $g_1$). So $g_1g_2\in Z(G)$. If $g\in Z(G)$, then $gh=hg$ for all $h$, so $g^{-1}h=hg^{-1}$ for all $h$, hence $g^{-1}\in Z(G)$.
+
+**Abelian.** By definition, elements of $Z(G)$ commute with each other.
+
+**Normal.** For $g\in Z(G)$ and $x\in G$: $xgx^{-1}=gxx^{-1}=g\in Z(G)$.
+
+**Conclusion.** $Z(G)$ is an abelian normal subgroup of $G$.
+
+@@@ groups-class-equation.md
+---
+title: The class equation
+category: algebra/groups
+level: m1
+difficulty: 5
+tags: class equation, conjugacy, center
+date: 2026-11-03
+---
+
+## Statement
+
+State the class equation for a finite group $G$ and use it to prove that a non-trivial $p$-group has a non-trivial center.
+
+## Hint
+
+$|G|=|Z(G)|+\sum[G:C(g_i)]$ over representatives of non-central conjugacy classes.
+
+## Solution
+
+**Class equation.** $G$ decomposes into conjugacy classes. Central elements are singleton classes. For non-central representatives $g_i$:
+$$|G|=|Z(G)|+\sum_i[G:C(g_i)].$$
+
+**$p$-group.** Suppose $|G|=p^n$ with $n\ge1$. Each index $[G:C(g_i)]$ for $g_i$ non-central is a positive power of $p$ (since $C(g_i)\neq G$). So every term in the sum is divisible by $p$.
+
+**Conclusion.** $|Z(G)|\equiv|G|\equiv0\pmod p$, so $|Z(G)|\ge p$: the center is non-trivial.
+
+@@@ groups-free-group.md
+---
+title: Free groups (statement)
+category: algebra/groups
+level: m1
+difficulty: 5
+tags: free group, generators, relations
+date: 2026-11-03
+---
+
+## Statement
+
+Define the free group on two generators $F_2$, describe its elements, and explain why it is not abelian.
+
+## Hint
+
+Elements are reduced words in $a,b,a^{-1},b^{-1}$.
+
+## Solution
+
+**Definition.** $F_2$ is the set of reduced words in the alphabet $\{a,b,a^{-1},b^{-1}\}$ (no adjacent $x$ and $x^{-1}$), with concatenation followed by reduction as operation.
+
+**Structure.** $F_2$ is infinite; it has a presentation $F_2=\langle a,b:\emptyset\rangle$ (no relations).
+
+**Non-abelian.** The words $ab$ and $ba$ are distinct reduced words, so $ab\neq ba$.
+
+**Universal property.** For any group $G$ and any $g,h\in G$, there is a unique homomorphism $F_2\to G$ sending $a\mapsto g$, $b\mapsto h$.
+
+**Conclusion.** $F_2$ is the free group on two generators; it is infinite and non-abelian.
+
+@@@ groups-group-action.md
+---
+title: Group actions and orbits
+category: algebra/groups
+level: m1
+difficulty: 5
+tags: group action, orbit, stabilizer
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G$ act on a set $X$. Show that the orbits form a partition of $X$, and state the orbit-stabilizer theorem.
+
+## Hint
+
+Two orbits are either equal or disjoint. For the orbit-stabilizer theorem, use the bijection $G/\operatorname{Stab}(x)\to\operatorname{Orb}(x)$, $g\mapsto gx$.
+
+## Solution
+
+**Partition.** Define $x\sim y$ if $y\in\operatorname{Orb}(x)$. This is an equivalence relation: reflexive ($x=ex$), symmetric ($y=gx\Rightarrow x=g^{-1}y$), transitive ($y=gx,z=hy\Rightarrow z=(hg)x$). So orbits are equivalence classes, hence partition $X$.
+
+**Orbit-stabilizer.** The map $G/\operatorname{Stab}(x)\to\operatorname{Orb}(x)$ given by $g\operatorname{Stab}(x)\mapsto gx$ is well defined and bijective.
+
+**Conclusion.** $|\operatorname{Orb}(x)|=[G:\operatorname{Stab}(x)]$. For $G$ finite: $|G|=|\operatorname{Stab}(x)|\cdot|\operatorname{Orb}(x)|$.
+
+@@@ groups-burnside.md
+---
+title: Burnside's lemma
+category: algebra/groups
+level: m1
+difficulty: 5
+tags: Burnside lemma, group action, counting
+date: 2026-11-03
+---
+
+## Statement
+
+Let $G$ (finite) act on a finite set $X$. Show that the number of orbits equals
+$$\frac{1}{|G|}\sum_{g\in G}|X^g|,$$
+where $X^g=\{x\in X:gx=x\}$.
+
+## Hint
+
+Count the set $\{(g,x):gx=x\}$ in two ways.
+
+## Solution
+
+**Double count.** Let $S=\{(g,x)\in G\times X:gx=x\}$. Then
+$$|S|=\sum_{g\in G}|X^g|=\sum_{x\in X}|\operatorname{Stab}(x)|.$$
+
+**Orbit-stabilizer.** For each orbit $O$, all stabilizers have the same size $|G|/|O|$ (since $[G:\operatorname{Stab}(x)]=|O|$). So
+$$\sum_{x\in O}|\operatorname{Stab}(x)|=|O|\cdot\frac{|G|}{|O|}=|G|.$$
+Summing over orbits: $\sum_{x\in X}|\operatorname{Stab}(x)|=|G|\cdot\#\text{orbits}$.
+
+**Conclusion.** $\#\text{orbits}=\frac{1}{|G|}\sum_g|X^g|$.
+
+@@@ groups-simple-group.md
+---
+title: Simple groups
+category: algebra/groups
+level: m1
+difficulty: 4
+tags: simple group, normal subgroup, examples
+date: 2026-11-03
+---
+
+## Statement
+
+Define a simple group. Show that $\mathbb{Z}/p\mathbb{Z}$ is simple for $p$ prime, and that $\mathbb{Z}/n\mathbb{Z}$ is not simple for $n$ composite.
+
+## Hint
+
+A simple group has no proper non-trivial normal subgroups. In an abelian group, every subgroup is normal.
+
+## Solution
+
+**Definition.** A group is simple if its only normal subgroups are $\{e\}$ and $G$.
+
+**$\mathbb{Z}/p\mathbb{Z}$.** Its only subgroups are $\{0\}$ and the whole group (since $p$ is prime). So it has no proper non-trivial normal subgroups. Simple.
+
+**$\mathbb{Z}/n\mathbb{Z}$ for composite $n$.** If $d$ divides $n$ with $1<d<n$, the subgroup generated by $\overline{n/d}$ has order $d$. Since the group is abelian, this subgroup is normal. So the group is not simple.
+
+**Conclusion.** $\mathbb{Z}/p\mathbb{Z}$ is simple for $p$ prime; $\mathbb{Z}/n\mathbb{Z}$ is not simple for $n$ composite.
+
+@@@ groups-coset-count.md
+---
+title: Counting cosets
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: cosets, index, counting
+date: 2026-11-03
+---
+
+## Statement
+
+In $G=\mathbb{Z}/12\mathbb{Z}$, let $H=\langle\bar4\rangle$. Compute $|H|$, the index $[G:H]$, and list the elements of $H$ and $G/H$.
+
+## Hint
+
+$\bar4$ has order $12/\gcd(4,12)=3$.
+
+## Solution
+
+**$|H|$.** Order of $\bar4$ is $12/4=3$. So $H=\{\bar0,\bar4,\bar8\}$.
+
+**Index.** $[G:H]=12/3=4$.
+
+**Cosets.** $G/H$ has $4$ elements:
+- $H=\{\bar0,\bar4,\bar8\}$;
+- $\bar1+H=\{\bar1,\bar5,\bar9\}$;
+- $\bar2+H=\{\bar2,\bar6,\bar{10}\}$;
+- $\bar3+H=\{\bar3,\bar7,\bar{11}\}$.
+
+**Conclusion.** $|H|=3$, $[G:H]=4$, and $G/H\cong\mathbb{Z}/4\mathbb{Z}$.
+
+@@@ groups-subgroup-lattice.md
+---
+title: Subgroup lattice of $\mathbb{Z}/6\mathbb{Z}$
+category: algebra/groups
+level: l1
+difficulty: 3
+tags: subgroup lattice, cyclic group, divisors
+date: 2026-11-03
+---
+
+## Statement
+
+List all subgroups of $\mathbb{Z}/6\mathbb{Z}$ and draw the subgroup lattice.
+
+## Hint
+
+Subgroups correspond to divisors of $6$: $1,2,3,6$.
+
+## Solution
+
+**Subgroups.** 
+- Order $1$: $\{\bar0\}$.
+- Order $2$: $\{\bar0,\bar3\}$ (generated by $\bar3$).
+- Order $3$: $\{\bar0,\bar2,\bar4\}$ (generated by $\bar2$).
+- Order $6$: the whole group.
+
+**Lattice.**
+$$\{\bar0\}\subset\{\bar0,\bar3\}\subset\mathbb{Z}/6\mathbb{Z},$$
+$$\{\bar0\}\subset\{\bar0,\bar2,\bar4\}\subset\mathbb{Z}/6\mathbb{Z}.$$
+The subgroups of orders $2$ and $3$ are incomparable.
+
+**Conclusion.** Four subgroups, forming a diamond lattice.
+
+@@@ groups-general-linear-finite.md
+---
+title: The order of $GL_n(\mathbb{F}_p)$
+category: algebra/groups
+level: m1
+difficulty: 4
+tags: general linear group, finite field, order
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $|GL_2(\mathbb{F}_p)|$ for $p$ prime.
+
+## Hint
+
+Count invertible $2\times2$ matrices over $\mathbb{F}_p$ by choosing columns.
+
+## Solution
+
+**First column.** A nonzero vector in $\mathbb{F}_p^2$: $p^2-1$ choices.
+
+**Second column.** Must not be in the span of the first: $p^2-p$ choices.
+
+**Total.** $|GL_2(\mathbb{F}_p)|=(p^2-1)(p^2-p)$.
+
+**Example $p=2$.** $|GL_2(\mathbb{F}_2)|=3\cdot2=6\cong S_3$.
+
+**Conclusion.** $|GL_2(\mathbb{F}_p)|=(p^2-1)(p^2-p)=p(p-1)^2(p+1)$.
+
+@@@ rings-definition-check.md
+---
+title: Checking the ring axioms
+category: algebra/rings-and-fields
+level: lycee
+difficulty: 1
+tags: ring axioms, examples, counterexamples
+date: 2026-11-03
+---
+
+## Statement
+
+Determine whether each of the following is a ring under the usual operations:
+
+(a) $(\mathbb{Z},+,\times)$;
+(b) $(2\mathbb{Z},+,\times)$;
+(c) $(\mathbb{N},+,\times)$;
+(d) $(\mathbb{R}[X],+,\times)$;
+(e) $(M_n(\mathbb{R}),+,\times)$.
+
+## Hint
+
+Check: $(A,+)$ is an abelian group, multiplication is associative, and distributivity holds. Commutativity of multiplication and existence of a unit are optional.
+
+## Solution
+
+**(a)** $(\mathbb{Z},+)$ abelian group, multiplication associative and distributive. Unit $1$. **Commutative ring with unit.**
+
+**(b)** $2\mathbb{Z}$: abelian group, closed under multiplication ($2a\cdot2b=4ab\in2\mathbb{Z}$), associative and distributive. But no unit (1 is not in $2\mathbb{Z}$). **Commutative ring without unit** (a pseudo-ring).
+
+**(c)** $(\mathbb{N},+)$ is not a group (no additive inverses). **Not a ring.**
+
+**(d)** $\mathbb{R}[X]$: polynomial addition is an abelian group, multiplication associative/distributive. Unit $1$. **Commutative ring with unit.**
+
+**(e)** $M_n(\mathbb{R})$: abelian group under addition, matrix multiplication associative, distributive. Unit $I_n$. Non-commutative for $n\ge2$. **Non-commutative ring with unit.**
+
+**Conclusion.** (a), (d), (e) are rings with unit; (b) is a ring without unit; (c) is not a ring.
+
+@@@ rings-zero-divisors.md
+---
+title: Zero divisors
+category: algebra/rings-and-fields
+level: lycee
+difficulty: 2
+tags: zero divisors, examples, rings
+date: 2026-11-03
+---
+
+## Statement
+
+Find all zero divisors in each ring:
+
+(a) $\mathbb{Z}/6\mathbb{Z}$;
+(b) $\mathbb{Z}/7\mathbb{Z}$;
+(c) $M_2(\mathbb{R})$.
+
+## Hint
+
+$a$ is a zero divisor if $a\neq0$ and there exists $b\neq0$ with $ab=0$ (or $ba=0$).
+
+## Solution
+
+**(a)** $\mathbb{Z}/6\mathbb{Z}$. $\bar2\cdot\bar3=\bar6=\bar0$, so $\bar2$ and $\bar3$ are zero divisors. Also $\bar4\cdot\bar3=\bar{12}=\bar0$. Zero divisors: $\bar2,\bar3,\bar4$.
+
+**(b)** $\mathbb{Z}/7\mathbb{Z}$: $7$ prime, so every nonzero element is invertible, hence no zero divisors. **No zero divisors** (field).
+
+**(c)** $M_2(\mathbb{R})$: $\begin{pmatrix}1&0\\0&0\end{pmatrix}\begin{pmatrix}0&0\\0&1\end{pmatrix}=\begin{pmatrix}0&0\\0&0\end{pmatrix}$, so non-invertible nonzero matrices are zero divisors.
+
+**Conclusion.** (a) has zero divisors $2,3,4$; (b) has none; (c) has many (all non-invertible nonzero matrices).
+
+@@@ rings-integral-domain.md
+---
+title: Integral domains
+category: algebra/rings-and-fields
+level: l1
+difficulty: 2
+tags: integral domain, examples, cancellation
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\mathbb{Z}$, $\mathbb{R}[X]$, and $\mathbb{Z}/p\mathbb{Z}$ (for $p$ prime) are integral domains. Show that $\mathbb{Z}/6\mathbb{Z}$ is not.
+
+## Hint
+
+An integral domain is a commutative ring with unit and no zero divisors.
+
+## Solution
+
+**$\mathbb{Z}$.** Commutative with unit, and $ab=0\Rightarrow a=0$ or $b=0$ (for integers). Integral domain.
+
+**$\mathbb{R}[X]$.** Commutative with unit, and the product of two nonzero polynomials is nonzero (degree adds). Integral domain.
+
+**$\mathbb{Z}/p\mathbb{Z}$.** For $p$ prime, if $\bar a\bar b=\bar0$, then $p\mid ab$, so $p\mid a$ or $p\mid b$ (Euclid's lemma). Hence $\bar a=\bar0$ or $\bar b=\bar0$. Integral domain.
+
+**$\mathbb{Z}/6\mathbb{Z}$.** $\bar2\cdot\bar3=\bar0$ with $\bar2,\bar3\neq\bar0$. Not an integral domain.
+
+**Conclusion.** The cancellation law holds in integral domains: $ab=ac$ and $a\neq0$ imply $b=c$.
+
+@@@ rings-field-definition.md
+---
+title: Fields
+category: algebra/rings-and-fields
+level: l1
+difficulty: 2
+tags: field, examples, invertible elements
+date: 2026-11-03
+---
+
+## Statement
+
+Which of the following are fields?
+
+(a) $\mathbb{Q}$; (b) $\mathbb{R}$; (c) $\mathbb{C}$; (d) $\mathbb{Z}$; (e) $\mathbb{Z}/5\mathbb{Z}$; (f) $\mathbb{Z}/4\mathbb{Z}$.
+
+## Hint
+
+A field is a commutative ring with unit where every nonzero element is invertible.
+
+## Solution
+
+**(a),(b),(c)** $\mathbb{Q},\mathbb{R},\mathbb{C}$ are fields: every nonzero element has an inverse in the same set.
+
+**(d)** $\mathbb{Z}$: not a field ($2$ has no inverse in $\mathbb{Z}$).
+
+**(e)** $\mathbb{Z}/5\mathbb{Z}$: $5$ prime, so $\mathbb{Z}/5\mathbb{Z}$ is a field ($\mathbb{F}_5$).
+
+**(f)** $\mathbb{Z}/4\mathbb{Z}$: $\bar2$ is not invertible ($\bar2\cdot\bar k\in\{\bar0,\bar2\}$), so not a field.
+
+**Conclusion.** $\mathbb{Q},\mathbb{R},\mathbb{C},\mathbb{Z}/5\mathbb{Z}$ are fields; $\mathbb{Z}$ and $\mathbb{Z}/4\mathbb{Z}$ are not.
+
+@@@ rings-ideal-definition.md
+---
+title: Ideals
+category: algebra/rings-and-fields
+level: l1
+difficulty: 3
+tags: ideal, definition, examples
+date: 2026-11-03
+---
+
+## Statement
+
+Let $R$ be a commutative ring. An ideal $I\subseteq R$ is an additive subgroup such that $rx\in I$ for all $r\in R$, $x\in I$. Show that:
+
+(a) $n\mathbb{Z}$ is an ideal of $\mathbb{Z}$;
+(b) the set of polynomials with zero constant term is an ideal of $\mathbb{R}[X]$;
+(c) $\{0\}$ and $R$ are ideals.
+
+## Hint
+
+Check closure under addition and absorption by multiplication.
+
+## Solution
+
+**(a)** $n\mathbb{Z}$ is an additive subgroup of $\mathbb{Z}$. For $r\in\mathbb{Z}$ and $x=nk$, $rx=rnk=n(rk)\in n\mathbb{Z}$. Ideal.
+
+**(b)** Let $I=\{P\in\mathbb{R}[X]:P(0)=0\}$. Sum of two such polynomials has value $0$ at $0$; product $QP$ has $(QP)(0)=Q(0)\cdot0=0$. Ideal (the kernel of evaluation at $0$).
+
+**(c)** $\{0\}$: trivially an ideal. $R$: trivially an ideal. These are the **trivial ideals**.
+
+**Conclusion.** All three are ideals.
+
+@@@ rings-quotient.md
+---
+title: Quotient rings
+category: algebra/rings-and-fields
+level: l1
+difficulty: 4
+tags: quotient ring, ideal, operations
+date: 2026-11-03
+---
+
+## Statement
+
+Let $I$ be an ideal of a commutative ring $R$. Show that $R/I$ with operations $(a+I)+(b+I)=(a+b)+I$ and $(a+I)(b+I)=ab+I$ is a commutative ring.
+
+## Hint
+
+Well-definedness is the main point. Then check the axioms.
+
+## Solution
+
+**Well-defined.** If $a+I=a'+I$ and $b+I=b'+I$, then $a-a'\in I$, $b-b'\in I$. Then $(a+b)-(a'+b')\in I$ (I is additive subgroup) and $ab-a'b'=a(b-b')+(a-a')b'\in I$ (I is an ideal). So the operations are well defined.
+
+**Ring axioms.** Inherited from $R$: associativity of addition/multiplication, distributivity, commutativity. Identity: $1+I$. Zero: $0+I=0$.
+
+**Conclusion.** $R/I$ is a commutative ring (with unit if $R$ has one).
+
+@@@ rings-prime-maximal.md
+---
+title: Prime and maximal ideals
+category: algebra/rings-and-fields
+level: l1
+difficulty: 4
+tags: prime ideal, maximal ideal, quotient
+date: 2026-11-03
+---
+
+## Statement
+
+Let $R$ be a commutative ring with unit. An ideal $I$ is:
+- prime if $I\neq R$ and $ab\in I\Rightarrow a\in I$ or $b\in I$;
+- maximal if $I\neq R$ and the only ideals containing $I$ are $I$ and $R$.
+
+Show that:
+1. $I$ is prime iff $R/I$ is an integral domain;
+2. $I$ is maximal iff $R/I$ is a field;
+3. maximal $\Rightarrow$ prime.
+
+## Hint
+
+Use the correspondence between ideals of $R$ containing $I$ and ideals of $R/I$.
+
+## Solution
+
+**1.** If $I$ prime: $\bar a\bar b=0$ in $R/I$ iff $ab\in I$, iff $a\in I$ or $b\in I$, iff $\bar a=0$ or $\bar b=0$. So $R/I$ is an integral domain. Conversely, if $R/I$ integral domain, $I$ prime.
+
+**2.** If $I$ maximal: any nonzero ideal of $R/I$ lifts to an ideal containing $I$, so equals $R/I$. So $R/I$ is a field (every nonzero element invertible). Conversely, if $R/I$ is a field, every ideal containing $I$ is $I$ or $R$, so $I$ maximal.
+
+**3.** A field is an integral domain, so maximal implies prime.
+
+**Conclusion.** The quotient ring structure reflects the ideal's type: integral domain for prime, field for maximal.
+
+@@@ rings-polynomial-field.md
+---
+title: The field $\mathbb{R}[X]/(X^2+1)$
+category: algebra/rings-and-fields
+level: l1
+difficulty: 4
+tags: quotient ring, polynomial, complex numbers
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\mathbb{R}[X]/(X^2+1)\cong\mathbb{C}$.
+
+## Hint
+
+Define $\varphi:\mathbb{R}[X]\to\mathbb{C}$ by $\varphi(P)=P(i)$, and show its kernel is $(X^2+1)$.
+
+## Solution
+
+**Homomorphism.** $\varphi(P+Q)=P(i)+Q(i)=\varphi(P)+\varphi(Q)$ and $\varphi(PQ)=P(i)Q(i)=\varphi(P)\varphi(Q)$.
+
+**Kernel.** $P(i)=0$ iff $X-i$ divides $P$ over $\mathbb{C}$. But $P\in\mathbb{R}[X]$, so if $i$ is a root, $-i$ is also a root (conjugate roots). So $(X-i)(X+i)=X^2+1$ divides $P$ over $\mathbb{R}[X]$. Kernel = $(X^2+1)$.
+
+**Surjective.** $a+bi=\varphi(a+bX)$.
+
+**Conclusion.** By the first isomorphism theorem, $\mathbb{R}[X]/(X^2+1)\cong\mathbb{C}$.
+
+@@@ rings-euclidean-division.md
+---
+title: Euclidean division in $\mathbb{R}[X]$
+category: algebra/rings-and-fields
+level: l1
+difficulty: 3
+tags: Euclidean division, polynomials, quotient and remainder
+date: 2026-11-03
+---
+
+## Statement
+
+In $\mathbb{R}[X]$, perform the Euclidean division of $A=X^3-2X^2+X-3$ by $B=X-2$.
+
+## Hint
+
+Use the factor theorem: the remainder of division by $X-a$ is $A(a)$.
+
+## Solution
+
+**Remainder.** $A(2)=8-8+2-3=-1$. So the remainder is $-1$.
+
+**Quotient.** $A=(X-2)Q-1$. To find $Q$, perform the division:
+$$X^3-2X^2+X-3=(X-2)(X^2+1)-1.$$
+So $Q=X^2+1$.
+
+**Check.** $(X-2)(X^2+1)-1=X^3+X-2X^2-2-1=X^3-2X^2+X-3$. Correct.
+
+**Conclusion.** $A=(X-2)(X^2+1)-1$, quotient $X^2+1$, remainder $-1$.
+
+@@@ rings-gcd-polynomials.md
+---
+title: GCD in $\mathbb{R}[X]$
+category: algebra/rings-and-fields
+level: l1
+difficulty: 4
+tags: GCD, Euclidean algorithm, Bézout
+date: 2026-11-03
+---
+
+## Statement
+
+Compute $\gcd(X^3-1,X^2-1)$ in $\mathbb{R}[X]$, and find $U,V$ with $U(X)(X^3-1)+V(X)(X^2-1)=\gcd$.
+
+## Hint
+
+Euclidean algorithm: divide $X^3-1$ by $X^2-1$.
+
+## Solution
+
+**Division.** $X^3-1=(X^2-1)X+(X-1)$.
+
+**Division.** $X^2-1=(X-1)(X+1)+0$.
+
+**GCD.** $X-1$.
+
+**Bézout.** $X-1=(X^3-1)-X(X^2-1)$. So $U=-X$, $V=1$.
+
+**Conclusion.** $\gcd=X-1$, and $-X(X^3-1)+1(X^2-1)=X-1$.
+
+@@@ rings-irreducibility.md
+---
+title: Irreducibility in $\mathbb{R}[X]$ and $\mathbb{C}[X]$
+category: algebra/rings-and-fields
+level: l1
+difficulty: 4
+tags: irreducibility, polynomial, fields
+date: 2026-11-03
+---
+
+## Statement
+
+Classify irreducible polynomials over $\mathbb{R}$ and over $\mathbb{C}$.
+
+## Hint
+
+Use the fundamental theorem of algebra.
+
+## Solution
+
+**Over $\mathbb{C}$.** Every non-constant polynomial has a root in $\mathbb{C}$ (fundamental theorem of algebra). So the only irreducible polynomials are the linear ones: $aX+b$ with $a\neq0$.
+
+**Over $\mathbb{R}$.** Irreducible polynomials are:
+- Linear polynomials $aX+b$ ($a\neq0$);
+- Quadratic polynomials $aX^2+bX+c$ with $a\neq0$ and $\Delta=b^2-4ac<0$.
+
+Why? Any real polynomial factors into linear and quadratic factors by pairing conjugate complex roots.
+
+**Conclusion.** Over $\mathbb{C}$: linear only. Over $\mathbb{R}$: linear and quadratic with negative discriminant.
+
+@@@ rings-ideals-in-z.md
+---
+title: Ideals in $\mathbb{Z}$
+category: algebra/rings-and-fields
+level: l1
+difficulty: 3
+tags: ideals, Z, principal ideal
+date: 2026-11-03
+---
+
+## Statement
+
+Show that every ideal of $\mathbb{Z}$ is principal, i.e. of the form $n\mathbb{Z}$ for some $n\ge0$.
+
+## Hint
+
+Let $I$ be an ideal, $I\neq\{0\}$. Take $n$ = smallest positive element of $I$, and show $I=n\mathbb{Z}$.
+
+## Solution
+
+**Setup.** If $I=\{0\}$, then $I=0\mathbb{Z}$. Otherwise, $I$ contains positive elements (if $x\in I$, $-x\in I$, so $|x|\in I$). Let $n$ be the smallest positive element of $I$.
+
+**$n\mathbb{Z}\subseteq I$.** Since $n\in I$ and $I$ is closed under multiplication by $\mathbb{Z}$, every multiple of $n$ is in $I$.
+
+**$I\subseteq n\mathbb{Z}$.** Let $a\in I$. Euclidean division: $a=qn+r$ with $0\le r<n$. Then $r=a-qn\in I$. By minimality of $n$, $r=0$, so $a=qn\in n\mathbb{Z}$.
+
+**Conclusion.** $I=n\mathbb{Z}$. $\mathbb{Z}$ is a **principal ideal domain**.
+
+@@@ rings-z-prime-ideals.md
+---
+title: Prime ideals in $\mathbb{Z}$
+category: algebra/rings-and-fields
+level: l1
+difficulty: 3
+tags: prime ideals, Z, primes
+date: 2026-11-03
+---
+
+## Statement
+
+Determine the prime and maximal ideals of $\mathbb{Z}$.
+
+## Hint
+
+$n\mathbb{Z}$ is prime iff $n$ is prime (or $0$). $n\mathbb{Z}$ is maximal iff $n$ is prime.
+
+## Solution
+
+**Prime ideals.** $n\mathbb{Z}$ is prime iff $\mathbb{Z}/n\mathbb{Z}$ is an integral domain, iff $n$ is prime or $n=0$ (since $\mathbb{Z}/0\mathbb{Z}\cong\mathbb{Z}$ is an integral domain).
+
+**Maximal ideals.** $n\mathbb{Z}$ is maximal iff $\mathbb{Z}/n\mathbb{Z}$ is a field, iff $n$ is prime.
+
+**Conclusion.** 
+- Prime ideals: $(0)$ and $(p)$ for $p$ prime.
+- Maximal ideals: $(p)$ for $p$ prime (not $(0)$, since $\mathbb{Z}$ is not a field).
+
+@@@ rings-gaussian-integers.md
+---
+title: The Gaussian integers $\mathbb{Z}[i]$
+category: algebra/rings-and-fields
+level: l1
+difficulty: 4
+tags: Gaussian integers, ring, norm
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\mathbb{Z}[i]=\{a+bi:a,b\in\mathbb{Z}\}$ is an integral domain, and compute the units.
+
+## Hint
+
+Define the norm $N(a+bi)=a^2+b^2$, which is multiplicative. Find elements of norm $1$.
+
+## Solution
+
+**Ring.** Closed under addition/subtraction and multiplication: $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$ with integer coefficients. Commutative with unit $1$.
+
+**Integral domain.** $\mathbb{Z}[i]\subseteq\mathbb{C}$, which is a field, so no zero divisors.
+
+**Norm.** $N(z)=z\bar z=a^2+b^2\in\mathbb{Z}_{\ge0}$, multiplicative: $N(zw)=N(z)N(w)$.
+
+**Units.** $u$ is a unit iff $N(u)=1$ (since $u^{-1}$ would have norm $1/N(u)$, and this must be an integer). Solutions of $a^2+b^2=1$: $(\pm1,0),(0,\pm1)$. So units are $\pm1,\pm i$.
+
+**Conclusion.** $\mathbb{Z}[i]$ is an integral domain with units $\{\pm1,\pm i\}$.
+
+@@@ rings-euclidean-domain-z-i.md
+---
+title: $\mathbb{Z}[i]$ is Euclidean
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: Euclidean domain, Gaussian integers, division
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\mathbb{Z}[i]$ is a Euclidean domain with the norm $N(a+bi)=a^2+b^2$.
+
+## Hint
+
+For $z,w\in\mathbb{Z}[i]$ with $w\neq0$, write $z/w=x+yi$ with $x,y\in\mathbb{Q}$, then round to nearest integers.
+
+## Solution
+
+**Division.** Let $z,w\in\mathbb{Z}[i]$, $w\neq0$. Write $z/w=x+yi\in\mathbb{Q}[i]$. Let $q=m+ni$ with $m,n$ the nearest integers to $x,y$. Then $|x-m|\le1/2$, $|y-n|\le1/2$.
+
+**Remainder.** Let $r=z-qw$. Then $N(r)=N(w)N(z/w-q)=N(w)[(x-m)^2+(y-n)^2]\le N(w)(1/4+1/4)=N(w)/2<N(w)$.
+
+**Conclusion.** For every $z,w$ with $w\neq0$, there exist $q,r\in\mathbb{Z}[i]$ with $z=qw+r$ and $N(r)<N(w)$. So $\mathbb{Z}[i]$ is Euclidean, hence a PID and UFD.
+
+@@@ rings-fermat-sum-squares.md
+---
+title: Sums of two squares via $\mathbb{Z}[i]$
+category: algebra/rings-and-fields
+level: m1
+difficulty: 5
+tags: sums of squares, Gaussian integers, factorization
+date: 2026-11-03
+---
+
+## Statement
+
+Using $\mathbb{Z}[i]$, show that a prime $p\equiv1\pmod4$ is a sum of two squares.
+
+## Hint
+
+$-1$ is a quadratic residue mod $p$ when $p\equiv1\pmod4$ (Wilson's theorem or Euler's criterion). So $p\mid a^2+1$ for some $a$, i.e. $p\mid(a+i)(a-i)$ in $\mathbb{Z}[i]$.
+
+## Solution
+
+**$-1$ is a square mod $p$.** For $p\equiv1\pmod4$, by Euler's criterion $(-1)^{(p-1)/2}=1$, so there is $a$ with $a^2\equiv-1\pmod p$. Thus $p\mid a^2+1=(a+i)(a-i)$.
+
+**$p$ is not irreducible in $\mathbb{Z}[i]$.** If $p$ were prime in $\mathbb{Z}[i]$, then $p\mid a+i$ or $p\mid a-i$, which is impossible (the imaginary part is $\pm1$, not divisible by $p$).
+
+**Factorization.** So $p=zw$ with $z,w$ non-units. Taking norms: $p^2=N(p)=N(z)N(w)$, and since $z,w$ are non-units, $N(z),N(w)>1$. So $N(z)=N(w)=p$.
+
+**Conclusion.** If $z=a+bi$, then $a^2+b^2=p$. Every prime $p\equiv1\pmod4$ is a sum of two squares.
+
+@@@ rings-field-extension.md
+---
+title: Field extensions
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: field extension, degree, minimal polynomial
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\mathbb{Q}(\sqrt2)=\{a+b\sqrt2:a,b\in\mathbb{Q}\}$ is a field, and compute $[\mathbb{Q}(\sqrt2):\mathbb{Q}]$.
+
+## Hint
+
+Show closure under inverse: $\frac{1}{a+b\sqrt2}=\frac{a-b\sqrt2}{a^2-2b^2}$.
+
+## Solution
+
+**Subfield.** Closed under addition, subtraction, multiplication: $(a+b\sqrt2)(c+d\sqrt2)=(ac+2bd)+(ad+bc)\sqrt2$.
+
+**Inverse.** For $a+b\sqrt2\neq0$: $a^2-2b^2\neq0$ (since $\sqrt2\notin\mathbb{Q}$). Then
+$$\frac{1}{a+b\sqrt2}=\frac{a-b\sqrt2}{a^2-2b^2}\in\mathbb{Q}(\sqrt2).$$
+
+**Degree.** $\sqrt2$ is a root of $X^2-2$, irreducible over $\mathbb{Q}$ (rational root test). So the minimal polynomial has degree $2$, and $[\mathbb{Q}(\sqrt2):\mathbb{Q}]=2$.
+
+**Conclusion.** $\mathbb{Q}(\sqrt2)$ is a field extension of $\mathbb{Q}$ of degree $2$, with basis $\{1,\sqrt2\}$.
+
+@@@ rings-algebraic-numbers.md
+---
+title: Algebraic numbers
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: algebraic numbers, minimal polynomial, degree
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\alpha=\sqrt2+\sqrt3$ is algebraic over $\mathbb{Q}$ and find its minimal polynomial.
+
+## Hint
+
+Compute $(\alpha^2-5)^2$ and simplify.
+
+## Solution
+
+**Computation.** $\alpha^2=2+3+2\sqrt6=5+2\sqrt6$. So $\alpha^2-5=2\sqrt6$. Squaring: $(\alpha^2-5)^2=24$.
+
+**Minimal polynomial.** $\alpha$ is a root of $(X^2-5)^2-24=X^4-10X^2+1$.
+
+**Irreducibility.** $X^4-10X^2+1$ factors over $\mathbb{Q}$? It has no rational root (candidates $\pm1$ give $-8$). If it factors into quadratics, $X^4-10X^2+1=(X^2+aX+b)(X^2-aX+c)$. Expanding and comparing coefficients gives $b+c-a^2=-10$, $bc=1$, $a(b-c)=0$. If $a=0$: $b+c=-10$, $bc=1$, giving $b,c$ roots of $Y^2+10Y+1=0$, discriminant $96$, not a square. Contradiction. If $b=c$: $2b=-10$, $b=-5$, $b^2=1$, impossible. So irreducible.
+
+**Conclusion.** The minimal polynomial is $X^4-10X^2+1$, of degree $4$, and $\alpha$ is algebraic over $\mathbb{Q}$.
+
+@@@ rings-cyclotomic-irreducible.md
+---
+title: Irreducibility of the cyclotomic polynomial
+category: algebra/rings-and-fields
+level: m1
+difficulty: 5
+tags: cyclotomic, irreducibility, field
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\Phi_p(X)=1+X+\cdots+X^{p-1}$ is irreducible over $\mathbb{Q}$ for $p$ prime.
+
+## Hint
+
+Use Eisenstein's criterion on $\Phi_p(X+1)=\frac{(X+1)^p-1}{X}$.
+
+## Solution
+
+**Shift.** $\Phi_p(X+1)=\frac{(X+1)^p-1}{X}=\sum_{k=1}^p\binom pk X^{k-1}=X^{p-1}+pX^{p-2}+\cdots+p$.
+
+**Eisenstein.** The polynomial $\Phi_p(X+1)$ has leading coefficient $1$ and all other coefficients divisible by $p$, with constant term $p$ not divisible by $p^2$. By Eisenstein's criterion, $\Phi_p(X+1)$ is irreducible over $\mathbb{Q}$.
+
+**Conclusion.** $\Phi_p(X)$ is irreducible over $\mathbb{Q}$ (irreducibility is preserved by the shift $X\mapsto X+1$).
+
+@@@ rings-maximal-ideal-polynomial.md
+---
+title: Maximal ideals in $\mathbb{R}[X]$
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: maximal ideals, polynomials, irreducibility
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $(X^2+1)$ is a maximal ideal of $\mathbb{R}[X]$.
+
+## Hint
+
+$X^2+1$ is irreducible over $\mathbb{R}$. Show that for any irreducible polynomial $P$, $(P)$ is maximal.
+
+## Solution
+
+**Irreducibility.** $X^2+1$ has no real root (discriminant $-4<0$), so it is irreducible over $\mathbb{R}$.
+
+**Maximality.** Let $I$ be an ideal with $(P)\subseteq I\subseteq\mathbb{R}[X]$. Since $\mathbb{R}[X]$ is a PID, $I=(Q)$ for some $Q$. Then $P\in(Q)$, so $Q\mid P$. Since $P$ is irreducible, $Q$ is a unit (then $I=\mathbb{R}[X]$) or $Q$ is an associate of $P$ (then $I=(P)$). So $(P)$ is maximal.
+
+**Conclusion.** $(X^2+1)$ is maximal. Moreover, $\mathbb{R}[X]/(X^2+1)\cong\mathbb{C}$ is a field.
+
+@@@ rings-chinese-remainder.md
+---
+title: Chinese remainder theorem for rings
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: Chinese remainder, coprime ideals, isomorphism
+date: 2026-11-03
+---
+
+## Statement
+
+Let $I,J$ be coprime ideals of a commutative ring $R$ (i.e. $I+J=R$). Show that $R/(I\cap J)\cong R/I\times R/J$.
+
+## Hint
+
+Define $\varphi:R\to R/I\times R/J$ by $\varphi(r)=(r+I,r+J)$. Show kernel is $I\cap J$ and surjectivity uses $I+J=R$.
+
+## Solution
+
+**Kernel.** $r\in\ker\varphi$ iff $r\in I$ and $r\in J$, i.e. $r\in I\cap J$.
+
+**Surjectivity.** Let $(a+I,b+J)\in R/I\times R/J$. Since $I+J=R$, there exist $i\in I$, $j\in J$ with $i+j=1$. Set $r=aj+bi$. Then $r\equiv a(1-i)+bi\equiv a\pmod I$ (since $aj\equiv a\pmod I$ because $i\in I$). Similarly, $r\equiv b\pmod J$. So $\varphi(r)=(a+I,b+J)$.
+
+**Conclusion.** By the first isomorphism theorem, $R/(I\cap J)\cong R/I\times R/J$.
+
+**Application.** $\mathbb{Z}/mn\mathbb{Z}\cong\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}/n\mathbb{Z}$ for $\gcd(m,n)=1$.
+
+@@@ rings-ufd.md
+---
+title: Unique factorization domains
+category: algebra/rings-and-fields
+level: m1
+difficulty: 5
+tags: UFD, unique factorization, examples
+date: 2026-11-03
+---
+
+## Statement
+
+State the definition of a unique factorization domain (UFD) and give an example of a ring that is an integral domain but not a UFD.
+
+## Hint
+
+$\mathbb{Z}[\sqrt{-5}]$ is a classical example.
+
+## Solution
+
+**Definition.** An integral domain $R$ is a UFD if every nonzero non-unit element can be written as a product of irreducibles, uniquely up to order and units.
+
+**Example UFD.** $\mathbb{Z}$, $\mathbb{R}[X]$, $\mathbb{Z}[i]$ (Euclidean $\Rightarrow$ PID $\Rightarrow$ UFD).
+
+**Non-example.** $\mathbb{Z}[\sqrt{-5}]=\{a+b\sqrt{-5}:a,b\in\mathbb{Z}\}$. It is an integral domain (subring of $\mathbb{C}$). However, $6=2\cdot3=(1+\sqrt{-5})(1-\sqrt{-5})$ gives two distinct factorizations into irreducibles:
+- $2$, $3$ are irreducible in $\mathbb{Z}[\sqrt{-5}]$ (via norm argument);
+- $1\pm\sqrt{-5}$ are irreducible (norm $6$).
+
+So $\mathbb{Z}[\sqrt{-5}]$ is not a UFD.
+
+**Conclusion.** UFD is a strong property, satisfied by PIDs but not all integral domains.
+
+@@@ rings-pid.md
+---
+title: Principal ideal domains
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: PID, principal ideal, examples
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\mathbb{Z}$ and $\mathbb{R}[X]$ are PIDs.
+
+## Hint
+
+For $\mathbb{R}[X]$, use Euclidean division to show that every ideal is generated by the element of minimal degree.
+
+## Solution
+
+**$\mathbb{Z}$.** Shown earlier: every ideal is $n\mathbb{Z}$ for some $n\ge0$.
+
+**$\mathbb{R}[X]$.** Let $I$ be a nonzero ideal. Let $P$ be a nonzero element of $I$ of minimal degree. For any $Q\in I$, Euclidean division: $Q=AP+R$ with $\deg R<\deg P$. Since $R=Q-AP\in I$ and $\deg R<\deg P$, by minimality $R=0$. So $Q=AP\in(P)$. Hence $I=(P)$.
+
+**Conclusion.** Both are PIDs. Since every Euclidean domain is a PID, and $\mathbb{Z}$ and $\mathbb{R}[X]$ are Euclidean, this is consistent.
+
+@@@ rings-nilpotent.md
+---
+title: Nilpotent elements
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: nilpotent, ring, quotient
+date: 2026-11-03
+---
+
+## Statement
+
+Let $R$ be a commutative ring. An element $a\in R$ is nilpotent if $a^n=0$ for some $n\ge1$. Show that if $a,b$ are nilpotent, then $a+b$ is nilpotent.
+
+## Hint
+
+Use the binomial theorem: $(a+b)^{m+n}=\sum\binom{m+n}{k}a^kb^{m+n-k}$. Each term has either $a^k$ with $k\ge m$ or $b^{m+n-k}$ with $m+n-k\ge n$.
+
+## Solution
+
+**Binomial expansion.** Suppose $a^m=0$, $b^n=0$. In the sum $(a+b)^{m+n}=\sum_{k=0}^{m+n}\binom{m+n}{k}a^kb^{m+n-k}$, each term has either $k\ge m$ (so $a^k=0$) or $m+n-k\ge n$ (so $b^{m+n-k}=0$).
+
+**Conclusion.** Every term is zero, so $(a+b)^{m+n}=0$: $a+b$ is nilpotent.
+
+**Remark.** The set of nilpotent elements forms an ideal, called the **nilradical** of $R$.
+
+@@@ rings-boolean-ring.md
+---
+title: Boolean rings
+category: algebra/rings-and-fields
+level: olympiad
+difficulty: 4
+tags: Boolean ring, idempotent, commutative
+date: 2026-11-03
+---
+
+## Statement
+
+A ring $R$ is Boolean if $x^2=x$ for all $x\in R$. Show that any Boolean ring is commutative and has characteristic $2$.
+
+## Hint
+
+Compute $(x+y)^2$ in two ways. Also compute $(x+x)^2$.
+
+## Solution
+
+**Characteristic 2.** $(x+x)^2=(2x)^2=4x^2=4x$, while $(x+x)^2=x+x=2x$ (since $x+x$ is also in $R$ and is idempotent). So $4x=2x$, hence $2x=0$.
+
+**Commutativity.** $(x+y)^2=x+y$. Expanding (using the fact that addition is commutative in the ring structure, but multiplication may not be): $(x+y)^2=x^2+xy+yx+y^2=x+xy+yx+y$. Equating: $x+y=x+xy+yx+y$, so $xy+yx=0$, i.e. $yx=-xy=xy$ (since $-1=1$). Commutative.
+
+**Conclusion.** Boolean rings are commutative and have characteristic $2$.
+
+@@@ rings-matrix-ring.md
+---
+title: Matrix rings and zero divisors
+category: algebra/rings-and-fields
+level: l1
+difficulty: 3
+tags: matrix ring, zero divisors, non-commutative
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $M_2(\mathbb{R})$ is a ring with unit but not an integral domain.
+
+## Hint
+
+Matrix ring axioms hold. Find zero divisors.
+
+## Solution
+
+**Ring.** $M_2(\mathbb{R})$ with usual addition and multiplication is a non-commutative ring with unit $I_2$.
+
+**Zero divisors.** $\begin{pmatrix}1&0\\0&0\end{pmatrix}\begin{pmatrix}0&0\\1&0\end{pmatrix}=\begin{pmatrix}0&0\\0&0\end{pmatrix}$, with both factors nonzero.
+
+**Conclusion.** $M_2(\mathbb{R})$ is a non-commutative ring with unit, not an integral domain.
+
+@@@ rings-characteristic.md
+---
+title: Characteristic of a ring
+category: algebra/rings-and-fields
+level: l1
+difficulty: 3
+tags: characteristic, ring, examples
+date: 2026-11-03
+---
+
+## Statement
+
+Define the characteristic of a ring $R$ and compute it for:
+(a) $\mathbb{Z}$; (b) $\mathbb{Z}/n\mathbb{Z}$; (c) $\mathbb{R}$; (d) $\mathbb{F}_p\times\mathbb{F}_p$.
+
+## Hint
+
+The characteristic is the smallest $n\ge1$ with $n\cdot1=0$, or $0$ if none exists.
+
+## Solution
+
+**Definition.** $\operatorname{char}(R)=n$ if $n\cdot1_R=0$ and no smaller positive integer works. If no such $n$, $\operatorname{char}(R)=0$.
+
+**(a)** $\operatorname{char}(\mathbb{Z})=0$ (no positive multiple of $1$ equals $0$).
+
+**(b)** $\operatorname{char}(\mathbb{Z}/n\mathbb{Z})=n$.
+
+**(c)** $\operatorname{char}(\mathbb{R})=0$.
+
+**(d)** $\operatorname{char}(\mathbb{F}_p\times\mathbb{F}_p)=p$.
+
+**Conclusion.** $\operatorname{char}(\mathbb{Z})=\operatorname{char}(\mathbb{R})=0$; $\operatorname{char}(\mathbb{Z}/n\mathbb{Z})=n$; $\operatorname{char}(\mathbb{F}_p\times\mathbb{F}_p)=p$.
+
+@@@ rings-localization.md
+---
+title: Localization
+category: algebra/rings-and-fields
+level: m1
+difficulty: 5
+tags: localization, fraction field, ring
+date: 2026-11-03
+---
+
+## Statement
+
+Let $R$ be an integral domain. Show that $R$ embeds in its fraction field $\operatorname{Frac}(R)$, and compute $\operatorname{Frac}(\mathbb{Z})=\mathbb{Q}$.
+
+## Hint
+
+The fraction field consists of equivalence classes of pairs $(a,b)$ with $a\in R$, $b\in R\setminus\{0\}$, under $(a,b)\sim(c,d)\iff ad=bc$.
+
+## Solution
+
+**Equivalence.** Define $(a,b)\sim(c,d)\iff ad=bc$. This is an equivalence relation (reflexive, symmetric, transitive, using that $R$ is an integral domain for cancellation).
+
+**Field structure.** Addition: $\frac ab+\frac cd=\frac{ad+bc}{bd}$. Multiplication: $\frac ab\cdot\frac cd=\frac{ac}{bd}$. These are well-defined. The zero is $\frac01$, the unit is $\frac11$. Every nonzero $\frac ab$ has inverse $\frac ba$.
+
+**Embedding.** $R\hookrightarrow\operatorname{Frac}(R)$ by $a\mapsto\frac a1$.
+
+**Example.** $\operatorname{Frac}(\mathbb{Z})=\mathbb{Q}$: every $\frac pq$ with $p,q\in\mathbb{Z}$, $q\neq0$, is a rational number, and every rational is of this form.
+
+**Conclusion.** Every integral domain embeds in a field.
+
+@@@ rings-eisenstein.md
+---
+title: Eisenstein's criterion
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: Eisenstein criterion, irreducibility, polynomials
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $P(X)=X^4+2X^3+2X^2+2X+2$ is irreducible over $\mathbb{Q}$.
+
+## Hint
+
+Apply Eisenstein's criterion with $p=2$.
+
+## Solution
+
+**Eisenstein.** $P$ has integer coefficients. For $p=2$:
+- $2\mid$ all non-leading coefficients: $2,2,2,2$.
+- $2\nmid$ leading coefficient $1$.
+- $4\nmid$ constant term $2$.
+
+By Eisenstein's criterion, $P$ is irreducible over $\mathbb{Q}$.
+
+**Conclusion.** $P$ is irreducible over $\mathbb{Q}$.
+
+@@@ rings-finite-fields.md
+---
+title: Finite fields
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: finite field, order, prime power
+date: 2026-11-03
+---
+
+## Statement
+
+Show that a finite field has $p^n$ elements for some prime $p$ and integer $n\ge1$.
+
+## Hint
+
+The characteristic is a prime $p$, so $\mathbb{F}_p\subseteq F$. Then $F$ is a finite-dimensional vector space over $\mathbb{F}_p$.
+
+## Solution
+
+**Characteristic.** The characteristic of a finite field $F$ is $p$ (prime): otherwise, $\mathbb{Z}/n\mathbb{Z}\subseteq F$ for composite $n$, which has zero divisors, contradicting that $F$ is a field.
+
+**Vector space.** $F$ contains $\mathbb{F}_p=\mathbb{Z}/p\mathbb{Z}$, and is a finite-dimensional $\mathbb{F}_p$-vector space of dimension $n=[F:\mathbb{F}_p]$.
+
+**Order.** $|F|=|\mathbb{F}_p|^n=p^n$.
+
+**Conclusion.** Every finite field has order $p^n$. Conversely, for every prime power $p^n$, there exists a finite field of order $p^n$ (unique up to isomorphism, denoted $\mathbb{F}_{p^n}$).
+
+@@@ rings-polynomial-ring-property.md
+---
+title: The polynomial ring $R[X]$
+category: algebra/rings-and-fields
+level: l1
+difficulty: 3
+tags: polynomial ring, properties, integral domain
+date: 2026-11-03
+---
+
+## Statement
+
+Show that if $R$ is an integral domain, then $R[X]$ is an integral domain, and the units of $R[X]$ are the units of $R$.
+
+## Hint
+
+Degree is additive: $\deg(PQ)=\deg P+\deg Q$.
+
+## Solution
+
+**Integral domain.** For nonzero $P,Q\in R[X]$, $\deg P,\deg Q\ge0$ and $\deg(PQ)=\deg P+\deg Q\ge0$, so $PQ\neq0$.
+
+**Units.** If $PQ=1$, then $\deg P+\deg Q=0$, so $\deg P=\deg Q=0$. So $P,Q\in R$ and $PQ=1$ in $R$.
+
+**Conclusion.** $R[X]$ is an integral domain, and $R[X]^\times=R^\times$.
+
+@@@ rings-prime-characteristic.md
+---
+title: Prime characteristic
+category: algebra/rings-and-fields
+level: m1
+difficulty: 4
+tags: characteristic, prime, field
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the characteristic of an integral domain is either $0$ or a prime.
+
+## Hint
+
+Suppose $\operatorname{char}(R)=n$ composite, $n=ab$ with $1<a,b<n$. Then $ab\cdot1=0$ in $R$, giving zero divisors.
+
+## Solution
+
+**Setup.** The characteristic map $k\mapsto k\cdot1_R$ is a ring homomorphism from $\mathbb{Z}$ to $R$, with kernel $n\mathbb{Z}$.
+
+**Integral domain.** $R$ is an integral domain, so $\mathbb{Z}/n\mathbb{Z}\cong\operatorname{Im}$ is an integral domain. This forces $n$ to be prime or $0$ (if $n=ab$ with $a,b>1$, then $\bar a\bar b=\bar0$ in $\mathbb{Z}/n\mathbb{Z}$, giving zero divisors in $R$).
+
+**Conclusion.** The characteristic of an integral domain is $0$ or prime.
+
+@@@ rings-spectrum.md
+---
+title: The spectrum of a ring (statement)
+category: algebra/rings-and-fields
+level: m1
+difficulty: 5
+tags: spectrum, prime ideals, Zariski topology
+date: 2026-11-03
+---
+
+## Statement
+
+Define the spectrum $\operatorname{Spec}(R)$ of a commutative ring $R$ and compute it for $R=\mathbb{Z}$.
+
+## Hint
+
+$\operatorname{Spec}(R)$ is the set of prime ideals of $R$, equipped with the Zariski topology.
+
+## Solution
+
+**Definition.** $\operatorname{Spec}(R)=\{\mathfrak{p}\subseteq R:\mathfrak{p}\text{ prime ideal}\}$.
+
+**Zariski topology.** Closed sets are $V(I)=\{\mathfrak{p}:\mathfrak{p}\supseteq I\}$ for ideals $I\subseteq R$.
+
+**Example.** $\operatorname{Spec}(\mathbb{Z})=\{(0)\}\cup\{(p):p\text{ prime}\}$.
+
+**Topological structure.** The point $(0)$ is the generic point, dense in $\operatorname{Spec}(\mathbb{Z})$. The points $(p)$ are closed.
+
+**Conclusion.** $\operatorname{Spec}(\mathbb{Z})$ consists of the zero ideal and the prime ideals $(p)$, with Zariski topology where $(0)$ is dense and each $(p)$ is a closed point.
+
+@@@ squares-and-pairwise-products.md
+---
+title: Squares and pairwise products
+category: algebra/inequalities
+level: lycee
+difficulty: 1
+tags: inequalities, squares
+date: 2026-10-31
+---
+
+## Statement
+
+Prove that for all real numbers $a,b,c$,
+$$a^2+b^2+c^2\ge ab+bc+ca,$$
+with equality if and only if $a=b=c$.
+
+## Hint
+
+Look at $(a-b)^2+(b-c)^2+(c-a)^2$.
+
+## Solution
+
+Expanding each square,
+$$(a-b)^2+(b-c)^2+(c-a)^2=2\left(a^2+b^2+c^2-ab-bc-ca\right).$$
+
+A sum of squares is non-negative, so $a^2+b^2+c^2-ab-bc-ca\ge0$. It equals $0$ exactly when all three squares are $0$, that is when $a=b=c$.
+
+@@@ sum-of-cubes-of-roots.md
+---
+title: Sum of cubes of the roots
+category: algebra/polynomials
+level: lycee
+difficulty: 2
+tags: vieta, polynomials
+date: 2026-10-31
+---
+
+## Statement
+
+Let $x_1$ and $x_2$ be the roots of $x^2-3x+1=0$. Compute $x_1^3+x_2^3$ without computing the roots.
+
+## Hint
+
+Write $x_1^3+x_2^3$ using the sum $s=x_1+x_2$ and the product $p=x_1x_2$.
+
+## Solution
+
+By Vieta's formulas, $s=x_1+x_2=3$ and $p=x_1x_2=1$.
+
+Since $(x_1+x_2)^3=x_1^3+x_2^3+3x_1x_2(x_1+x_2)$, we get
+$$x_1^3+x_2^3=s^3-3ps=27-9=18.$$
+@@@ remainder-of-a-polynomial.md
+---
+title: Remainder of a polynomial
+category: algebra/polynomials
+level: l1
+difficulty: 2
+tags: polynomials, euclidean division
+date: 2026-10-31
+---
+
+## Statement
+
+Find the remainder of the division of $P(x)=x^{100}+x+1$ by $x^2-1$.
+
+## Hint
+
+The remainder has degree at most $1$. Evaluate $P$ at the roots of $x^2-1$.
+
+## Solution
+
+Write $P(x)=(x^2-1)Q(x)+ax+b$, where $a,b$ are real numbers.
+
+Evaluating at $x=1$ gives $P(1)=3=a+b$. Evaluating at $x=-1$ gives $P(-1)=1-1+1=1=-a+b$.
+
+Adding the two equations gives $2b=4$, so $b=2$ and $a=1$. The remainder is $x+2$.
+
+@@@ am-gm-for-three-numbers.md
+---
+title: AM-GM for three numbers
+category: algebra/inequalities
+level: l1
+difficulty: 3
+tags: inequalities, AM-GM
+date: 2026-10-31
+---
+
+## Statement
+
+Let $a,b,c>0$ with $abc=1$. Prove that $a+b+c\ge3$, and find when equality holds.
+
+## Hint
+
+First prove that $x^3+y^3+z^3\ge3xyz$ for $x,y,z\ge0$, using a factorisation. Then take cube roots of $a,b,c$.
+
+## Solution
+
+For $x,y,z\ge0$ we have the identity
+$$x^3+y^3+z^3-3xyz=\tfrac12(x+y+z)\left[(x-y)^2+(y-z)^2+(z-x)^2\right]\ge0.$$
+
+Apply it to $x=a^{1/3}$, $y=b^{1/3}$, $z=c^{1/3}$. Then $xyz=(abc)^{1/3}=1$ and $x^3+y^3+z^3=a+b+c$, so $a+b+c\ge3$.
+
+Equality holds exactly when $x=y=z$, that is $a=b=c$, and with $abc=1$ this gives $a=b=c=1$.
+
+@@@ an-equation-with-absolute-values.md
+---
+title: An equation with absolute values
+category: algebra/equations
+level: lycee
+difficulty: 2
+tags: absolute value, equations
+date: 2026-10-31
+---
+
+## Statement
+
+Solve in $\mathbb{R}$ the equation $|x-1|+|x+2|=5$.
+
+## Hint
+
+Split $\mathbb{R}$ into three intervals according to the signs of $x-1$ and $x+2$.
+
+## Solution
+
+**Case $x\ge1$.** The equation becomes $(x-1)+(x+2)=5$, that is $2x+1=5$, so $x=2$, which is in the interval.
+
+**Case $-2\le x<1$.** The equation becomes $(1-x)+(x+2)=3=5$, which is impossible.
+
+**Case $x<-2$.** The equation becomes $(1-x)+(-x-2)=5$, that is $-2x-1=5$, so $x=-3$, which is in the interval.
+
+The solution set is $\{-3,\,2\}$.
+@@@ a-nested-radical.md
+---
+title: A nested radical
+category: algebra/equations
+level: lycee
+difficulty: 1
+tags: radicals, identities
+date: 2026-10-31
+---
+
+## Statement
+
+Simplify $\sqrt{3+2\sqrt2}$.
+
+## Hint
+
+Look for integers $a,b$ with $(a+b\sqrt2)^2=3+2\sqrt2$.
+
+## Solution
+
+We compute $(1+\sqrt2)^2=1+2\sqrt2+2=3+2\sqrt2$.
+
+Since $1+\sqrt2>0$, the square root of $(1+\sqrt2)^2$ is $1+\sqrt2$. Hence
+$$\sqrt{3+2\sqrt2}=1+\sqrt2.$$
+@@@ a-classic-inequality.md
+---
+title: A classic inequality
+category: algebra/inequalities
+level: lycee
+difficulty: 1
+tags: inequalities, AM-GM
+date: 2026-10-31
+---
+
+## Statement
+
+For $a,b>0$, prove that
+$$(a+b)\left(\frac1a+\frac1b\right)\ge 4,$$
+with equality if and only if $a=b$.
+
+## Hint
+
+Expand the product, then set $t=a/b$.
+
+## Solution
+
+Expanding gives $(a+b)\left(\frac1a+\frac1b\right)=2+\dfrac ab+\dfrac ba$.
+
+Let $t=a/b>0$. Then $t+\dfrac1t-2=\dfrac{(t-1)^2}{t}\ge0$, so the product is at least $4$, with equality iff $t=1$, that is $a=b$.
 @@@ polynomials-degree-operations.md
 ---
 title: Degree of sums and products
@@ -8302,44 +8374,7 @@ Suppose $P$ has another nonzero term, and let $bx^j$ ($b\ne0$, $j<n$) be the hig
 The two sides differ: contradiction. Hence $P$ has a single nonzero term, which is $x^n$. $\blacksquare$
 
 **Lesson.** When comparing coefficients in a polynomial identity, look at the leading term and the *next* term: one of the two sides often cannot produce the exponent the other one does.
-@@@ alg2-the-sum-of-the-reciprocals-of-x-minus-the-roots-of-unity.md
----
-title: Sums over roots of unity from a logarithmic derivative
-category: algebra/complex-numbers
-level: olympiad
-difficulty: 3
-tags: roots of unity, logarithmic derivative, complex numbers, symmetry
-date: 2026-11-05
----
 
-## Statement
-
-Let $n\ge2$ and $\omega=e^{2\pi i/n}$.
-
-1. Prove that for every complex $x$ that is not an $n$-th root of unity,
-$$\sum_{k=0}^{n-1}\frac1{x-\omega^k}=\frac{nx^{n-1}}{x^n-1}.$$
-2. Compute $\displaystyle\sum_{k=0}^{n-1}\frac1{2-\omega^k}$.
-3. Prove that $\displaystyle\sum_{k=1}^{n-1}\frac1{1-\omega^k}=\frac{n-1}2$.
-
-## Hint
-
-For part 1, $x^n-1=\prod_{k=0}^{n-1}(x-\omega^k)$. Differentiate the product and divide by the product. For part 3, pair $k$ with $n-k$.
-
-## Solution
-
-**1.** Let $f(x)=x^n-1=\prod_k(x-\omega^k)$. By the product rule,
-$$\frac{f'(x)}{f(x)}=\sum_{k=0}^{n-1}\frac1{x-\omega^k}.$$
-Since $f'(x)=nx^{n-1}$, the identity follows.
-
-**2.** Take $x=2$:
-$$\sum_{k=0}^{n-1}\frac1{2-\omega^k}=\frac{n\,2^{n-1}}{2^n-1}.$$
-For $n=3$ this is $\frac{12}7\approx1.714$.
-
-**3.** The terms $k$ and $n-k$ have $\omega^{n-k}=\omega^{-k}=\overline{\omega^k}$. For $z=\omega^k\ne1$ with $|z|=1$,
-$$\frac1{1-z}+\frac1{1-\frac1z}=\frac1{1-z}+\frac z{z-1}=\frac{1-z}{1-z}=1.$$
-So the terms $k=1,\dots,n-1$ can be grouped into pairs $\{k,n-k\}$ each summing to $1$. If $n$ is even, the term $k=\frac n2$ has $\omega^k=-1$ and equals $\frac12$, which is half of a "pair with itself". In all cases the total is $\frac{n-1}2$. $\blacksquare$
-
-**Lesson.** A logarithmic derivative turns a product over roots into a sum over roots; pairing $z$ with $\bar z=1/z$ evaluates sums over the unit circle.
 @@@ alg2-every-modulus-divides-a-fibonacci-number.md
 ---
 title: Every integer divides some Fibonacci number
@@ -8522,41 +8557,7 @@ So $s$ is a root of this monic integer polynomial of degree $8$.
 **Remark.** The degree $8$ is the best possible: the $8$ numbers $\pm\sqrt2\pm\sqrt3\pm\sqrt5$ are the roots of this polynomial.
 
 **Lesson.** To find a polynomial killing a sum of square roots, eliminate the radicals one at a time.
-@@@ alg2-complex-numbers-of-modulus-one-and-symmetric-expressions.md
----
-title: Three complex numbers of modulus one
-category: algebra/complex-numbers
-level: olympiad
-difficulty: 3
-tags: complex numbers, unit circle, conjugation, equilateral triangle
-date: 2026-11-05
----
 
-## Statement
-
-Let $a,b,c$ be complex numbers with $|a|=|b|=|c|=1$.
-
-1. Prove that $|ab+bc+ca|=|a+b+c|$.
-2. Prove that if $a+b+c=0$, then $a,b,c$ are the vertices of an equilateral triangle.
-3. Prove that $\dfrac{(a+b)(b+c)(c+a)}{abc}$ is a real number.
-
-## Hint
-
-On the unit circle, $\bar a=\frac1a$. Express $\overline{a+b+c}$ in terms of $ab+bc+ca$.
-
-## Solution
-
-**1.** Since $\bar a=1/a$, etc.,
-$$\overline{a+b+c}=\frac1a+\frac1b+\frac1c=\frac{ab+bc+ca}{abc}.$$
-Taking moduli and using $|abc|=1$: $|a+b+c|=|ab+bc+ca|$.
-
-**2.** If $a+b+c=0$, part 1 gives $ab+bc+ca=0$. Then $a,b,c$ are the roots of $t^3-abc=0$. The equation $t^3=abc$ has three distinct roots (since $abc\ne0$): the three cube roots of $abc$, which are $r,r\omega,r\omega^2$ — vertices of an equilateral triangle centred at $0$.
-
-**3.** Let $Z=\dfrac{(a+b)(b+c)(c+a)}{abc}$. For $a,b\ne0$: $\overline{a+b}=\frac1a+\frac1b=\frac{a+b}{ab}$. Therefore
-$$\overline{(a+b)(b+c)(c+a)}=\frac{(a+b)(b+c)(c+a)}{(abc)^2},\qquad\overline{abc}=\frac1{abc}.$$
-Hence $\bar Z=\dfrac{(a+b)(b+c)(c+a)}{(abc)^2}\cdot abc=Z$, so $Z$ is real. $\blacksquare$
-
-**Lesson.** On the unit circle replace $\bar z$ by $1/z$: symmetric expressions become rational functions you can compare with their conjugates.
 @@@ alg2-tan-20-tan-40-tan-80-and-a-sum-of-squares.md
 ---
 title: tan 20° tan 40° tan 80° and tan²20° + tan²40° + tan²80°
@@ -8735,3 +8736,4 @@ Multiplying by $P(x)^2>0$: $P'(x)^2-P(x)P''(x)=P(x)^2\sum_i\frac1{(x-r_i)^2}>0$.
 **Example.** For $P(x)=x^2-1$: $P'^2-PP''=2x^2+2>0$ ✓. For $P=x^2+1$ (no real roots): $4x^2-2(x^2+1)=2x^2-2<0$ at $x=0$, so the hypothesis cannot be dropped.
 
 **Lesson.** The logarithmic derivative turns a product into a sum, and its derivative $-\sum\frac1{(x-r_i)^2}$ has a definite sign when the roots are real.
+
