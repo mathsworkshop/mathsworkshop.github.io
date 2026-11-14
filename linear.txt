@@ -2321,8 +2321,6 @@ $$\Delta = 2(a+b+c)\cdot\left(-\tfrac12\bigl[(a-b)^2+(b-c)^2+(c-a)^2\bigr]\right
 **Conclusion.**
 $$\Delta = -(a+b+c)\bigl[(a-b)^2+(b-c)^2+(c-a)^2\bigr].$$
 
-**Symmetry check.** The result is symmetric in $a,b,c$, as it must be: swapping two rows of $\Delta$ swaps two of the (symmetric) factors, and the determinant of the resulting matrix equals the original, since the matrix is invariant under the corresponding permutation. Consistency check at $(a,b,c)=(1,2,3)$: $\Delta=-6\cdot(1+1+4)=-36$; direct computation gives $\det\begin{pmatrix}3&5&4\\5&4&3\\4&3&5\end{pmatrix}=3(20-9)-5(25-12)+4(15-16)=33-65-4=-36$. Correct.
-
 @@@ determinant-diagonalisable.md
 ---
 title: Determinant of a diagonalisable matrix
