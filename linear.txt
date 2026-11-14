@@ -3828,6 +3828,7 @@ Complete the square: $x^2-2xy=(x-y)^2-y^2$, which is not always $\ge0$.
 
 **Conclusion.** The inequality $Q\le R$ is **false** in general. The largest eigenvalue of $Q$'s matrix exceeds that of $R$.
 
+
 @@@ quadratic-form-eigenvalues.md
 ---
 title: Reduction of a quadratic form by eigenvalues
@@ -3881,29 +3882,46 @@ i.e. find an orthogonal matrix $Q$ and diagonal $D$ with $A=QDQ^T$.
 
 ## Hint
 
-The matrix is $A=2I+N$ where $N$ is a symmetric matrix with zero diagonal. Compute the eigenvalues and orthonormal eigenvectors of $N$.
+Compute the matrix $A$, its characteristic polynomial, and the eigenspaces. The eigenvalue $1$ is double; find an orthonormal basis of its eigenspace.
 
 ## Solution
 
 **Matrix.**
-$$A=\begin{pmatrix}2&1&-1\\1&2&-1\\-1&-1&2\end{pmatrix}=2I+N,\qquad N=\begin{pmatrix}0&1&-1\\1&0&-1\\-1&-1&0\end{pmatrix}.$$
+$$A=\begin{pmatrix}2&1&-1\\1&2&-1\\-1&-1&2\end{pmatrix}.$$
 
-**Eigenvalues of $N$.** $\operatorname{tr}(N)=0$ and $N(1,1,1)^T=0$, so $\lambda=0$ is an eigenvalue. For a symmetric matrix, $\operatorname{tr}(N^2)=\sum\lambda_i^2$; compute $\operatorname{tr}(N^2)=6$, so the two remaining eigenvalues satisfy $\mu^2+\nu^2=6$ and $\mu+\nu=0$, giving $\mu=\pm\sqrt3$. Thus $N$ has eigenvalues $0,\sqrt3,-\sqrt3$, and $A=2I+N$ has eigenvalues
-$$\lambda_1=2,\qquad \lambda_2=2+\sqrt3,\qquad \lambda_3=2-\sqrt3.$$
+**Characteristic polynomial.** Expand $\det(\lambda I-A)$:
+$$\det(\lambda I-A)=\begin{vmatrix}\lambda-2&-1&1\\-1&\lambda-2&1\\1&1&\lambda-2\end{vmatrix}.$$
+Compute: $(\lambda-2)\bigl[(\lambda-2)^2-1\bigr]+1\bigl[-(\lambda-2)-1\bigr]+1\bigl[-1-(\lambda-2)\bigr]$. Simplifying,
+$$\chi_A(\lambda)=(\lambda-2)(\lambda-1)(\lambda-3)-2(\lambda-2)-2=(\lambda-1)^2(\lambda-4).$$
+(Check: $\operatorname{tr}A=6=1+1+4$ ✓; $\det A=4=1\cdot1\cdot4$ ✓.)
 
-**Eigenvectors of $N$.**
-- For $\lambda=0$: $N(1,1,1)^T=0$, so $v_1=(1,1,1)/\sqrt3$.
-- For $\lambda=\sqrt3$: solve $Nx=\sqrt3 x$. Take $x=(1,-1,0)$: $Nx=(0-1,\,-1-0,\,-1+1)^T=(-1,-1,0)^T$, which is **not** $\sqrt3 x$. Instead solve directly. The equations are $y-z=\sqrt3 x$, $x-z=\sqrt3 y$, $-x-y=\sqrt3 z$. Subtract the first two: $y-x=\sqrt3(x-y)$, so $(1+\sqrt3)(y-x)=0$, hence $y=x$. Then $x-z=\sqrt3 x$, so $z=(1-\sqrt3)x$. So an eigenvector is $v_2'=(1,\,1,\,1-\sqrt3)$. Norm: $\|v_2'\|^2=1+1+(1-\sqrt3)^2=2+1-2\sqrt3+3=6-2\sqrt3$. So $v_2=(1,1,1-\sqrt3)/\sqrt{6-2\sqrt3}$.
-- For $\lambda=-\sqrt3$: similarly, $y=x$ and $z=(1+\sqrt3)x$, so an eigenvector is $v_3'=(1,\,1,\,1+\sqrt3)$, normalized to $v_3=(1,1,1+\sqrt3)/\sqrt{6+2\sqrt3}$.
+**Eigenvalues.** $\lambda_1=\lambda_2=1$ (double), $\lambda_3=4$ (simple).
 
-**Check orthogonality.** $\langle v_2',v_3'\rangle=1+1+(1-\sqrt3)(1+\sqrt3)=2+(1-3)=2-2=0$. ✓
+**Eigenvector for $\lambda_3=4$.** Solve $(A-4I)x=0$:
+$$\begin{pmatrix}-2&1&-1\\1&-2&-1\\-1&-1&-2\end{pmatrix}\begin{pmatrix}x\\y\\z\end{pmatrix}=0.$$
+Row 1: $-2x+y-z=0$. Row 2: $x-2y-z=0$. Subtracting: $-3x+3y=0$, so $y=x$. Then $-2x+x-z=0$, so $z=-x$. Hence $v_3=(1,1,-1)$, normalized to $v_3=(1,1,-1)/\sqrt3$.
 
-**Orthogonal matrix and diagonal form.** Let $Q=(v_1\,|\,v_2\,|\,v_3)$ (columns), the orthogonal matrix whose columns are the above orthonormal eigenvectors. Then
-$$A=Q\,\operatorname{diag}(2,\,2+\sqrt3,\,2-\sqrt3)\,Q^T.$$
+**Eigenspace for $\lambda=1$.** Solve $(A-I)x=0$:
+$$\begin{pmatrix}1&1&-1\\1&1&-1\\-1&-1&1\end{pmatrix}\begin{pmatrix}x\\y\\z\end{pmatrix}=0,$$
+i.e. $x+y-z=0$, a plane. A basis is $(1,-1,0)$ and $(1,0,1)$. Orthonormalize by Gram–Schmidt (both are orthogonal to $v_3$, as required):
+- $u_1=(1,-1,0)/\sqrt2$.
+- $u_2=(1,0,1)-\frac{\langle(1,0,1),u_1\rangle}{\|u_1\|^2}u_1$. Now $\langle(1,0,1),u_1\rangle=1/\sqrt2$ and $\|u_1\|^2=1$, so $u_2=(1,0,1)-\frac12(1,-1,0)=(1/2,1/2,1)$, normalized to $u_2=(1,1,2)/\sqrt6$.
 
-**Conclusion.** The orthogonal diagonalization is
-$$Q^TAQ=\begin{pmatrix}2&0&0\\0&2+\sqrt3&0\\0&0&2-\sqrt3\end{pmatrix},$$
-with $Q$ the orthogonal matrix whose columns are the three orthonormal eigenvectors above. The quadratic form is positive definite, with signature $(3,0,0)$.
+**Check orthonormality.**
+- $u_1\cdot u_2=(1-1+0)/\sqrt{12}=0$ ✓.
+- $u_1\cdot v_3=(1-1+0)/\sqrt6=0$ ✓.
+- $u_2\cdot v_3=(1+1-2)/\sqrt{18}=0$ ✓.
+
+**Orthogonal matrix.** Let $Q$ be the matrix whose columns are $u_1,u_2,v_3$:
+$$Q=\begin{pmatrix}1/\sqrt2&1/\sqrt6&1/\sqrt3\\-1/\sqrt2&1/\sqrt6&1/\sqrt3\\0&2/\sqrt6&-1/\sqrt3\end{pmatrix}.$$
+Then $Q^TQ=I$ (columns orthonormal).
+
+**Diagonal form.** Since $A$ is symmetric and $Q$ is orthogonal with columns eigenvectors,
+$$Q^TAQ=\begin{pmatrix}1&0&0\\0&1&0\\0&0&4\end{pmatrix}.$$
+
+**Conclusion.** The orthogonal diagonalization is $Q^TAQ=\operatorname{diag}(1,1,4)$, i.e.
+$$Q(x,y,z)=u^2+v^2+4w^2$$
+in the orthonormal coordinates $(u,v,w)$ defined by $(x,y,z)^T=Q\,(u,v,w)^T$. The quadratic form is positive definite with signature $(3,0,0)$.
 
 @@@ quadratic-form-LDL-decomposition.md
 ---
