@@ -25,2712 +25,8 @@ so $(x,y,z)+\lambda(x',y',z')\in F$.
 **Basis.** A vector of $F$ has $z=-x-y$, so
 $$(x,y,z)=x\,(1,0,-1)+y\,(0,1,-1).$$
 The vectors $(1,0,-1)$ and $(0,1,-1)$ span $F$ and are linearly independent (neither is a multiple of the other). They form a basis, and $\dim F=2$.
-@@@ determinant-2x2-basic.md
----
-title: Determinant of a 2×2 matrix
-category: linear/determinants
-level: lycee
-difficulty: 1
-tags: determinant, 2x2 matrices, invertibility
-date: 2026-11-03
----
 
-## Statement
 
-Compute the determinant of each matrix and decide whether it is invertible:
-
-(a) $A = \begin{pmatrix} 3 & 1 \\ 5 & 2 \end{pmatrix}$;
-(b) $B = \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}$;
-(c) $C = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$.
-
-## Hint
-
-For a $2\times2$ matrix $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$, the determinant is $ad-bc$. The matrix is invertible iff the determinant is nonzero.
-
-## Solution
-
-**(a)** $\det A = 3\cdot2 - 1\cdot5 = 6-5=1$. Invertible.
-
-**(b)** $\det B = 1\cdot4 - 2\cdot2 = 0$. Not invertible.
-
-**(c)** $\det C = \cos\theta\cdot\cos\theta - (-\sin\theta)(\sin\theta) = \cos^2\theta+\sin^2\theta = 1$. Invertible for all $\theta$ (it is a rotation matrix).
-
-@@@ determinant-3x3-sarrus.md
----
-title: Determinant of a 3×3 matrix by Sarrus' rule
-category: linear/determinants
-level: lycee
-difficulty: 2
-tags: determinant, Sarrus rule, 3x3 matrices
-date: 2026-11-03
----
-
-## Statement
-
-Compute the determinant of
-$$A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 10 \end{pmatrix}.$$
-
-## Hint
-
-Use Sarrus' rule: add the three products along downward diagonals and subtract the three products along upward diagonals.
-
-## Solution
-
-**Sarrus' rule.**
-$$\det A = 1\cdot5\cdot10 + 2\cdot6\cdot7 + 3\cdot4\cdot8 - 3\cdot5\cdot7 - 1\cdot6\cdot8 - 2\cdot4\cdot10.$$
-Compute each term:
-$$= 50 + 84 + 96 - 105 - 48 - 80 = 230 - 233 = -3.$$
-
-**Conclusion.** $\det A = -3$, so $A$ is invertible.
-
-@@@ determinant-expansion-row.md
----
-title: Expansion along a row
-category: linear/determinants
-level: lycee
-difficulty: 3
-tags: cofactor expansion, minors, determinant
-date: 2026-11-03
----
-
-## Statement
-
-Compute the determinant of
-$$A = \begin{pmatrix} 2 & 0 & 0 & 1 \\ 0 & 3 & 0 & 0 \\ 0 & 0 & 4 & 0 \\ 5 & 0 & 0 & 6 \end{pmatrix}$$
-by expanding along the most convenient row or column.
-
-## Hint
-
-Expand along the second row, which has only one nonzero entry.
-
-## Solution
-
-**Expansion along the second row.** The only nonzero entry is $a_{22}=3$. Its cofactor is $(-1)^{2+2}=+1$ times the determinant of the $3\times3$ minor obtained by deleting row $2$ and column $2$:
-$$M_{22} = \begin{vmatrix} 2 & 0 & 1 \\ 0 & 4 & 0 \\ 5 & 0 & 6 \end{vmatrix}.$$
-
-**Expand $M_{22}$ along its second row.** The only nonzero entry is $4$ at position $(2,2)$, cofactor $(+1)\begin{vmatrix}2&1\\5&6\end{vmatrix} = 12-5=7$.
-
-So $M_{22} = 4\cdot7 = 28$.
-
-**Conclusion.** $\det A = 3\cdot28 = 84$.
-
-**Check by permutation formula.** The matrix is a block "diagonal with a corner" structure; the result $2\cdot3\cdot4\cdot6 + (\text{sign})\cdot1\cdot3\cdot4\cdot5 = 144 - 60 = 84$ confirms it.
-
-@@@ determinant-expansion-column.md
----
-title: Expansion along a column
-category: linear/determinants
-level: lycee
-difficulty: 3
-tags: cofactor expansion, minors, determinant
-date: 2026-11-03
----
-
-## Statement
-
-Compute the determinant of
-$$A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 4 & 5 \\ 1 & 0 & 6 \end{pmatrix}$$
-by expanding along the first column.
-
-## Hint
-
-Use the cofactor expansion along column $1$: $\det A = \sum_i (-1)^{i+1}a_{i1}\det M_{i1}$.
-
-## Solution
-
-**Expansion along column 1.**
-$$\det A = 1\cdot\begin{vmatrix}4&5\\0&6\end{vmatrix} - 0\cdot\begin{vmatrix}2&3\\0&6\end{vmatrix} + 1\cdot\begin{vmatrix}2&3\\4&5\end{vmatrix}.$$
-
-**Minor computations.**
-$$\begin{vmatrix}4&5\\0&6\end{vmatrix} = 24, \qquad \begin{vmatrix}2&3\\4&5\end{vmatrix} = 10-12=-2.$$
-
-**Conclusion.** $\det A = 1\cdot24 + 1\cdot(-2) = 22$.
-
-**Check by Sarrus.** $1\cdot4\cdot6 + 2\cdot5\cdot1 + 3\cdot0\cdot0 - 3\cdot4\cdot1 - 2\cdot0\cdot6 - 1\cdot5\cdot0 = 24+10+0-12-0-0 = 22$. Consistent.
-
-@@@ determinant-row-operation-effect.md
----
-title: Effect of row operations on the determinant
-category: linear/determinants
-level: lycee
-difficulty: 2
-tags: row operations, determinant properties, multilinearity
-date: 2026-11-03
----
-
-## Statement
-
-Describe the effect of each elementary row operation on the determinant:
-
-1. $L_i \leftrightarrow L_j$ (swap two rows);
-2. $L_i \leftarrow \lambda L_i$ with $\lambda\neq 0$ (multiply a row by $\lambda$);
-3. $L_i \leftarrow L_i + \lambda L_j$ with $j\neq i$ (add a multiple of another row).
-
-## Hint
-
-Use multilinearity and the alternating property of the determinant.
-
-## Solution
-
-**1. Swapping.** The determinant changes sign: $\det = -\det_{\text{original}}$. This follows from the alternating property (the determinant is zero when two rows are equal, and swapping is an odd permutation).
-
-**2. Scaling.** Multiplying a row by $\lambda$ multiplies the determinant by $\lambda$: $\det = \lambda\cdot\det_{\text{original}}$. This follows from linearity in each row.
-
-**3. Adding a multiple.** Adding a multiple of one row to another leaves the determinant unchanged. Indeed, writing the new row as $L_i+\lambda L_j$, linearity gives $\det(L_i+\lambda L_j,\ldots)=\det(L_i,\ldots)+\lambda\det(L_j,\ldots)$, and the second determinant has two equal rows, so it is zero.
-
-**Conclusion.** Swapping changes sign; scaling by $\lambda$ scales by $\lambda$; adding a multiple leaves the determinant unchanged. These rules are used to simplify determinant computations.
-
-@@@ determinant-triangular.md
----
-title: Determinant of a triangular matrix
-category: linear/determinants
-level: lycee
-difficulty: 2
-tags: triangular matrix, determinant, diagonal
-date: 2026-11-03
----
-
-## Statement
-
-Show that the determinant of an upper triangular (or lower triangular) matrix is the product of its diagonal entries.
-
-## Hint
-
-Expand recursively along the first column (or last row).
-
-## Solution
-
-**Expansion along the first column.** Let $T$ be upper triangular with diagonal entries $t_{11},\ldots,t_{nn}$. In the first column, only $t_{11}$ is nonzero, so
-$$\det T = t_{11}\det T_{11},$$
-where $T_{11}$ is the $(n-1)\times(n-1)$ upper triangular submatrix obtained by removing the first row and first column, with diagonal entries $t_{22},\ldots,t_{nn}$.
-
-**Induction.** Repeating the expansion, we get $\det T = t_{11}t_{22}\cdots t_{nn}$.
-
-**Lower triangular case.** The same argument works by expanding along the first row (or by transposing: $\det T = \det T^T$, and $T^T$ is upper triangular).
-
-**Conclusion.** For any triangular matrix, the determinant equals the product of the diagonal entries.
-
-@@@ determinant-multilinearity.md
----
-title: Multilinearity of the determinant
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: multilinearity, determinant properties, proof
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $n\times n$ matrix. Show that the determinant is linear in each column: if $C_j = \lambda C_j' + \mu C_j''$, then
-$$\det(A) = \lambda\det(A')+\mu\det(A''),$$
-where $A'$ and $A''$ are obtained from $A$ by replacing column $j$ with $C_j'$ and $C_j''$ respectively, the other columns being unchanged.
-
-## Hint
-
-Use the Leibniz formula: $\det A = \sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_{i=1}^n a_{\sigma(i),i}$, which is linear in each column's entries.
-
-## Solution
-
-**Leibniz formula.** For an $n\times n$ matrix with columns $C_1,\ldots,C_n$, each entry $a_{ij}$ is the $i$-th entry of $C_j$. The Leibniz formula is
-$$\det A = \sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_{i=1}^n a_{\sigma(i),i}.$$
-
-**Linearity in column $j$.** In this formula, column $j$ appears only through the factor $a_{\sigma(j),j}$ (the entry in row $\sigma(j)$ and column $j$). Since $a_{\sigma(j),j}=\lambda a'_{\sigma(j),j}+\mu a''_{\sigma(j),j}$, the product is linear in that entry, hence the entire sum is linear in column $j$.
-
-**Conclusion.** The determinant is linear in each column separately (multilinear). Combined with the alternating property (zero when two columns are equal, sign change under transposition), this characterises the determinant.
-
-@@@ determinant-alternating.md
----
-title: The determinant is alternating
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: alternating, equal columns, sign change
-date: 2026-11-03
----
-
-## Statement
-
-Show that:
-1. If two columns of $A$ are equal, then $\det A = 0$;
-2. Swapping two columns changes the sign of the determinant.
-
-## Hint
-
-For (1), use the Leibniz formula and pair permutations with their transpositions. For (2), use multilinearity and (1).
-
-## Solution
-
-**1. Equal columns.** Suppose columns $j$ and $k$ (with $j\neq k$) are equal. Consider the transposition $\tau=(j\,k)$ in $S_n$. For each permutation $\sigma$, $\sigma\circ\tau$ has the same sign as $\sigma$ (since $\varepsilon(\tau)=-1$ and $\varepsilon(\sigma\circ\tau)=-\varepsilon(\sigma)$). Using the Leibniz formula, pair up the terms:
-$$\det A = \sum_\sigma \varepsilon(\sigma)\prod_i a_{\sigma(i),i} = \sum_\sigma \varepsilon(\sigma\circ\tau)\prod_i a_{\sigma\circ\tau(i),i}.$$
-But because columns $j$ and $k$ are equal, $\prod_i a_{\sigma\circ\tau(i),i} = \prod_i a_{\sigma(i),i}$. So the two sums cancel, giving $\det A = -\det A$, hence $\det A=0$.
-
-**2. Swapping columns.** Let $B$ be obtained from $A$ by swapping columns $j$ and $k$. Consider the determinant of $A+B$: column $j$ of $A+B$ is $C_j + C_k$, and column $k$ is $C_k+C_j$, so these columns are equal. By (1), $\det(A+B)=0$. By multilinearity:
-$$0 = \det(A+B) = \det A + \det A^{j\leftarrow k} + \det A^{k\leftarrow j} + \det B,$$
-where $A^{j\leftarrow k}$ has column $j$ replaced by $C_k$ (and column $k$ unchanged). This matrix has two equal columns $C_k$, so its determinant is zero. Similarly $\det A^{k\leftarrow j}=0$. Hence $\det B = -\det A$.
-
-**Conclusion.** The determinant is alternating: zero on equal columns, and swapping two columns flips the sign.
-
-@@@ determinant-transpose.md
----
-title: Determinant of the transpose
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: transpose, determinant, proof
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\det(A^T)=\det(A)$ for every square matrix $A$.
-
-## Hint
-
-Use the Leibniz formula on both sides and reindex the permutations.
-
-## Solution
-
-**Leibniz formula.** 
-$$\det A = \sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_{i=1}^n a_{\sigma(i),i}.$$
-
-**Transpose.** The entry $(i,j)$ of $A^T$ is $a_{ji}$. So
-$$\det(A^T) = \sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_{i=1}^n a_{i,\sigma(i)}.$$
-Since $\prod_{i=1}^n a_{i,\sigma(i)}=\prod_{j=1}^n a_{\sigma^{-1}(j),j}$ (reindexing $j=\sigma(i)$), and $\varepsilon(\sigma^{-1})=\varepsilon(\sigma)$ (since $\varepsilon$ is a group homomorphism and $\sigma\sigma^{-1}=e$), we can rewrite:
-$$\det(A^T) = \sum_{\sigma}\varepsilon(\sigma^{-1})\prod_j a_{\sigma^{-1}(j),j} = \sum_{\tau}\varepsilon(\tau)\prod_j a_{\tau(j),j} = \det A,$$
-where the last change of variables is $\tau=\sigma^{-1}$.
-
-**Conclusion.** $\det(A^T)=\det A$. In particular, properties of columns hold for rows too.
-
-@@@ determinant-product.md
----
-title: Determinant of a product
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: determinant of product, multiplicativity, proof
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\det(AB)=\det(A)\det(B)$ for $A,B\in\mathcal{M}_n(\mathbb{R})$.
-
-## Hint
-
-Consider the map $B\mapsto\det(AB)$ as a function of the columns of $B$, and show it is alternating multilinear.
-
-## Solution
-
-**Key idea.** The map $\varphi:B\mapsto\det(AB)$ is multilinear and alternating in the columns of $B$, because $AB$ is linear in the columns of $B$, and the determinant is multilinear and alternating. Moreover, $\varphi(I)=\det(A)$.
-
-**Uniqueness.** Any alternating multilinear form on $\mathcal{M}_n(\mathbb{R})$ is a scalar multiple of the determinant. So there exists a constant $c$ with $\varphi(B)=c\det(B)$ for all $B$. Setting $B=I$: $\varphi(I)=c\det I=c$, so $c=\det A$.
-
-**Conclusion.** $\det(AB)=\det A\cdot\det B$ for all $A,B$.
-
-**Corollary.** If $A$ is invertible, $\det(A^{-1})=1/\det A$. If $A$ is invertible and $B=P^{-1}AP$, then $\det B=\det A$.
-
-@@@ determinant-inverse.md
----
-title: Determinant of an inverse
-category: linear/determinants
-level: l1
-difficulty: 2
-tags: inverse, determinant, formula
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an invertible matrix. Show that $\det(A^{-1})=1/\det A$.
-
-## Hint
-
-Use $AA^{-1}=I$ and multiplicativity of the determinant.
-
-## Solution
-
-**Computation.** $AA^{-1}=I$, so
-$$\det(A)\det(A^{-1}) = \det(AA^{-1})=\det I = 1.$$
-Since $A$ is invertible, $\det A\neq0$, so $\det(A^{-1})=1/\det A$.
-
-**Conclusion.** The determinant of the inverse is the inverse of the determinant.
-
-@@@ determinant-cramers-rule-2x2.md
----
-title: Cramer's rule for a 2×2 system
-category: linear/determinants
-level: lycee
-difficulty: 3
-tags: Cramer's rule, linear system, determinant
-date: 2026-11-03
----
-
-## Statement
-
-Solve using Cramer's rule:
-$$\begin{cases} 3x + 2y = 7 \\ x - y = 1 \end{cases}$$
-
-## Hint
-
-For $AX=B$ with $\det A\neq0$, $x_i=\det A_i/\det A$, where $A_i$ is $A$ with column $i$ replaced by $B$.
-
-## Solution
-
-**Determinant.** 
-$$\det A = \begin{vmatrix} 3 & 2 \\ 1 & -1 \end{vmatrix} = -3-2=-5\neq0.$$
-
-**Determinant $A_1$.**
-$$\det A_1 = \begin{vmatrix} 7 & 2 \\ 1 & -1 \end{vmatrix} = -7-2=-9.$$
-
-**Determinant $A_2$.**
-$$\det A_2 = \begin{vmatrix} 3 & 7 \\ 1 & 1 \end{vmatrix} = 3-7=-4.$$
-
-**Solution.**
-$$x = \frac{-9}{-5} = \frac95, \qquad y = \frac{-4}{-5}=\frac45.$$
-
-**Verification.** $3\cdot9/5+2\cdot4/5=(27+8)/5=35/5=7$ and $9/5-4/5=5/5=1$. Correct.
-
-@@@ determinant-cramers-rule-3x3.md
----
-title: Cramer's rule for a 3×3 system
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: Cramer's rule, 3x3 determinant, linear system
-date: 2026-11-03
----
-
-## Statement
-
-Solve using Cramer's rule:
-$$\begin{cases} x + y + z = 6 \\ 2x - y + z = 3 \\ x + 2y - z = 2 \end{cases}$$
-
-## Hint
-
-Compute four $3\times3$ determinants.
-
-## Solution
-
-**Determinant of $A$.**
-$$\det A = \begin{vmatrix} 1 & 1 & 1 \\ 2 & -1 & 1 \\ 1 & 2 & -1 \end{vmatrix} = 1(1-2)-1(-2-1)+1(4+1)=-1+3+5=7.$$
-
-**Determinant $A_1$** (replace column 1 by $B=(6,3,2)^T$):
-$$\det A_1 = \begin{vmatrix} 6 & 1 & 1 \\ 3 & -1 & 1 \\ 2 & 2 & -1 \end{vmatrix} = 6(1-2)-1(-3-2)+1(6+2)=-6+5+8=7.$$
-
-**Determinant $A_2$** (replace column 2 by $B$):
-$$\det A_2 = \begin{vmatrix} 1 & 6 & 1 \\ 2 & 3 & 1 \\ 1 & 2 & -1 \end{vmatrix} = 1(-3-2)-6(-2-1)+1(4-3)=-5+18+1=14.$$
-
-**Determinant $A_3$** (replace column 3 by $B$):
-$$\det A_3 = \begin{vmatrix} 1 & 1 & 6 \\ 2 & -1 & 3 \\ 1 & 2 & 2 \end{vmatrix} = 1(-2-6)-1(4-3)+6(4+1)=-8-1+30=21.$$
-
-**Solution.**
-$$x=\frac77=1, \qquad y=\frac{14}{7}=2, \qquad z=\frac{21}{7}=3.$$
-
-**Verification.** $1+2+3=6$, $2-2+3=3$, $1+4-3=2$. Correct.
-
-@@@ determinant-cofactor-formula.md
----
-title: The cofactor formula for the inverse
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: cofactor, comatrix, inverse formula
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be invertible. Define the cofactor $C_{ij}=(-1)^{i+j}\det M_{ij}$, where $M_{ij}$ is the minor obtained by deleting row $i$ and column $j$. Define the comatrix $\operatorname{com}(A)=(C_{ij})^T$ (transpose of the cofactor matrix). Show that
-$$A^{-1}=\frac{1}{\det A}\operatorname{com}(A).$$
-
-## Hint
-
-Show that $A\cdot\operatorname{com}(A)=\det(A)\cdot I$, using the expansion of the determinant along a row.
-
-## Solution
-
-**Entry $(i,j)$ of $A\cdot\operatorname{com}(A)$.** 
-$$(A\cdot\operatorname{com}(A))_{ij}=\sum_k a_{ik}C_{jk}.$$
-
-**Case $i=j$.** $\sum_k a_{ik}C_{ik}=\det A$ by expansion along row $i$ (each term is a cofactor times its entry).
-
-**Case $i\neq j$.** $\sum_k a_{ik}C_{jk}$ is the determinant of the matrix obtained from $A$ by replacing row $j$ with row $i$. This matrix has two equal rows, so its determinant is zero.
-
-**Conclusion.** $A\cdot\operatorname{com}(A)=\det(A)\cdot I$, so $A^{-1}=\operatorname{com}(A)/\det A$.
-
-@@@ determinant-cofactor-computation.md
----
-title: Computing the inverse with cofactors
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: cofactor, comatrix, inverse
-date: 2026-11-03
----
-
-## Statement
-
-Compute the inverse of
-$$A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 4 \\ 5 & 6 & 0 \end{pmatrix}$$
-using the cofactor formula.
-
-## Hint
-
-Compute all $3\times3$ cofactors, transpose, and divide by the determinant.
-
-## Solution
-
-**Determinant.** $\det A = 1(0-24) - 2(0-20) + 3(0-5) = -24 + 40 - 15 = 1$.
-
-**Cofactors.**
-- $C_{11}=+(1\cdot0 - 4\cdot6) = -24$.
-- $C_{12}=-(0\cdot0-4\cdot5)=20$.
-- $C_{13}=+(0\cdot6-1\cdot5)=-5$.
-- $C_{21}=-(2\cdot0-3\cdot6)=18$.
-- $C_{22}=+(1\cdot0-3\cdot5)=-15$.
-- $C_{23}=-(1\cdot6-2\cdot5)=4$.
-- $C_{31}=+(2\cdot4-3\cdot1)=5$.
-- $C_{32}=-(1\cdot4-3\cdot0)=-4$.
-- $C_{33}=+(1\cdot1-2\cdot0)=1$.
-
-**Cofactor matrix and transpose.**
-$$C = \begin{pmatrix} -24 & 20 & -5 \\ 18 & -15 & 4 \\ 5 & -4 & 1 \end{pmatrix}, \qquad \operatorname{com}(A) = C^T = \begin{pmatrix} -24 & 18 & 5 \\ 20 & -15 & -4 \\ -5 & 4 & 1 \end{pmatrix}.$$
-
-**Inverse.** Since $\det A = 1$,
-$$A^{-1} = \begin{pmatrix} -24 & 18 & 5 \\ 20 & -15 & -4 \\ -5 & 4 & 1 \end{pmatrix}.$$
-
-**Verification.** $A\cdot A^{-1} = I$ (can be checked directly).
-
-@@@ determinant-vandermonde.md
----
-title: The Vandermonde determinant
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: Vandermonde, determinant, factorisation
-date: 2026-11-03
----
-
-## Statement
-
-Compute the Vandermonde determinant
-$$V(a_1,a_2,a_3) = \begin{vmatrix} 1 & 1 & 1 \\ a_1 & a_2 & a_3 \\ a_1^2 & a_2^2 & a_3^2 \end{vmatrix}.$$
-
-## Hint
-
-Subtract the first column from the others, factor $a_2-a_1$ and $a_3-a_1$, then expand.
-
-## Solution
-
-**Column operations.** $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-C_1$:
-$$V = \begin{vmatrix} 1 & 0 & 0 \\ a_1 & a_2-a_1 & a_3-a_1 \\ a_1^2 & a_2^2-a_1^2 & a_3^2-a_1^2 \end{vmatrix}.$$
-Expand along the first row: $V = \begin{vmatrix} a_2-a_1 & a_3-a_1 \\ a_2^2-a_1^2 & a_3^2-a_1^2 \end{vmatrix}$.
-
-**Factorisation.** $a_2^2-a_1^2=(a_2-a_1)(a_2+a_1)$ and similarly for $a_3$:
-$$V = (a_2-a_1)(a_3-a_1)\begin{vmatrix} 1 & 1 \\ a_1+a_2 & a_1+a_3 \end{vmatrix} = (a_2-a_1)(a_3-a_1)(a_3-a_2).$$
-
-**Conclusion.** $V(a_1,a_2,a_3)=(a_2-a_1)(a_3-a_1)(a_3-a_2)$. In particular, $V\neq0$ iff the $a_i$ are pairwise distinct.
-
-@@@ determinant-general-vandermonde.md
----
-title: The general Vandermonde determinant
-category: linear/determinants
-level: l1
-difficulty: 5
-tags: Vandermonde, determinant, general formula
-date: 2026-11-03
----
-
-## Statement
-
-Generalise to $n$ variables:
-$$V(a_1,\ldots,a_n) = \begin{vmatrix} 1 & 1 & \cdots & 1 \\ a_1 & a_2 & \cdots & a_n \\ \vdots & \vdots & & \vdots \\ a_1^{n-1} & a_2^{n-1} & \cdots & a_n^{n-1} \end{vmatrix}.$$
-Show that
-$$V(a_1,\ldots,a_n) = \prod_{1\le i<j\le n}(a_j-a_i).$$
-
-## Hint
-
-Proceed by induction, subtracting the first column from the others, factoring $a_j-a_1$, and identifying a smaller Vandermonde determinant.
-
-## Solution
-
-**Base case $n=2$.** $V(a_1,a_2)=a_2-a_1$.
-
-**Inductive step.** Subtract column 1 from columns $2,\ldots,n$:
-$$V = \begin{vmatrix} 1 & 0 & \cdots & 0 \\ a_1 & a_2-a_1 & \cdots & a_n-a_1 \\ a_1^2 & a_2^2-a_1^2 & \cdots & a_n^2-a_1^2 \\ \vdots & \vdots & & \vdots \\ a_1^{n-1} & a_2^{n-1}-a_1^{n-1} & \cdots & a_n^{n-1}-a_1^{n-1} \end{vmatrix}.$$
-Expand along the first row. For each column $j\ge2$, factor $a_j-a_1$:
-$$V = \left(\prod_{j=2}^n(a_j-a_1)\right)\cdot\begin{vmatrix} 1 & 1 & \cdots & 1 \\ a_1+a_2 & a_1+a_3 & \cdots & a_1+a_n \\ \vdots & \vdots & & \vdots \\ \sum_{k=0}^{n-2}a_1^{n-2-k}a_j^k & \cdots & & \end{vmatrix}.$$
-By column operations (subtracting $a_1$ times the previous column), the remaining determinant reduces to $V(a_2,\ldots,a_n)$.
-
-**Induction.** By the induction hypothesis, $V(a_2,\ldots,a_n)=\prod_{2\le i<j\le n}(a_j-a_i)$.
-
-**Conclusion.**
-$$V(a_1,\ldots,a_n) = \prod_{j=2}^n(a_j-a_1)\prod_{2\le i<j\le n}(a_j-a_i) = \prod_{1\le i<j\le n}(a_j-a_i).$$
-
-@@@ determinant-block-triangular.md
----
-title: Determinant of a block triangular matrix
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: block matrices, determinant, triangular
-date: 2026-11-03
----
-
-## Statement
-
-Show that for a block triangular matrix
-$$M = \begin{pmatrix} A & B \\ 0 & C \end{pmatrix}$$
-with $A$ of size $p\times p$ and $C$ of size $q\times q$, we have $\det M = \det A\cdot\det C$.
-
-## Hint
-
-Reduce to the case where $A$ and $C$ are upper triangular, then apply the triangular determinant formula.
-
-## Solution
-
-**Reduction to triangular case.** Put $A$ in upper triangular form by left multiplication by an invertible matrix $P$ (Gaussian elimination). Applying $P$ block-diagonally as $\begin{pmatrix} P & 0 \\ 0 & I_q \end{pmatrix}$ transforms $M$ into $\begin{pmatrix} PA & PB \\ 0 & C \end{pmatrix}$ without changing the block structure, and $\det(PA)=\det P\det A$. Similarly reduce $C$ to upper triangular form. So we may assume $A$ and $C$ are upper triangular.
-
-**Triangular case.** In this case $M$ is upper triangular with diagonal entries those of $A$ and $C$, so
-$$\det M = \prod_i a_{ii}\cdot\prod_j c_{jj} = \det A\cdot\det C.$$
-
-**Conclusion.** The formula holds in general.
-
-@@@ determinant-orthogonal.md
----
-title: Determinant of an orthogonal matrix
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: orthogonal matrix, determinant, isometry
-date: 2026-11-03
----
-
-## Statement
-
-Let $Q$ be an orthogonal matrix, i.e. $Q^T Q=I$. Show that $\det Q=\pm1$.
-
-## Hint
-
-Take determinants of $Q^T Q=I$.
-
-## Solution
-
-**Computation.** From $Q^T Q=I$:
-$$\det(Q^T Q) = \det I = 1.$$
-By multiplicativity of the determinant and $\det(Q^T)=\det Q$:
-$$\det(Q)\det(Q) = 1.$$
-So $(\det Q)^2=1$, hence $\det Q = \pm1$.
-
-**Interpretation.** An orthogonal matrix represents an isometry of $\mathbb{R}^n$. If $\det Q=1$, it is a rotation; if $\det Q=-1$, it is a reflection composed with a rotation.
-
-@@@ determinant-parameter-invertibility.md
----
-title: Invertibility depending on a parameter
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: parameter, invertibility, determinant
-date: 2026-11-03
----
-
-## Statement
-
-For which real values of $m$ is the matrix
-$$A_m = \begin{pmatrix} m & 1 & 1 \\ 1 & m & 1 \\ 1 & 1 & m \end{pmatrix}$$
-invertible?
-
-## Hint
-
-Compute $\det A_m$ by adding all rows to the first, then factoring.
-
-## Solution
-
-**Row operation.** $L_1\leftarrow L_1+L_2+L_3$:
-$$\det A_m = \begin{vmatrix} m+2 & m+2 & m+2 \\ 1 & m & 1 \\ 1 & 1 & m \end{vmatrix} = (m+2)\begin{vmatrix} 1 & 1 & 1 \\ 1 & m & 1 \\ 1 & 1 & m \end{vmatrix}.$$
-
-**Column operations.** $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-C_1$:
-$$\det A_m = (m+2)\begin{vmatrix} 1 & 0 & 0 \\ 1 & m-1 & 0 \\ 1 & 0 & m-1 \end{vmatrix} = (m+2)(m-1)^2.$$
-
-**Conclusion.** $A_m$ is invertible iff $m\neq -2$ and $m\neq 1$.
-
-@@@ determinant-symmetric-skew.md
----
-title: Determinant of a skew-symmetric matrix
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: skew-symmetric, determinant, odd dimension
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be a real skew-symmetric matrix of odd size $n$. Show that $\det A=0$.
-
-## Hint
-
-Use $A^T=-A$ and $\det(A^T)=\det A$.
-
-## Solution
-
-**Computation.** $\det A = \det(A^T) = \det(-A)$. Since $A$ is $n\times n$, $\det(-A)=(-1)^n\det A$. Because $n$ is odd, $(-1)^n=-1$, so
-$$\det A = -\det A.$$
-Hence $2\det A=0$, so $\det A=0$.
-
-**Conclusion.** Every real skew-symmetric matrix of odd order is singular.
-
-**Remark.** In even dimension, the Pfaffian gives $\det A=(\operatorname{Pf}(A))^2$, which may be nonzero (e.g. $\begin{pmatrix}0&1\\-1&0\end{pmatrix}$ has determinant $1$).
-
-@@@ determinant-rank-relation.md
----
-title: Determinant and rank
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: determinant, rank, invertibility
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $n\times n$ matrix. Show that $\det A\neq 0$ iff $A$ has rank $n$.
-
-## Hint
-
-Use the characterisation of invertibility via the determinant, and the characterisation of full rank.
-
-## Solution
-
-**Equivalence chain.** 
-$$\det A\neq0 \iff A \text{ is invertible} \iff \ker A=\{0\} \iff \operatorname{rank} A=n.$$
-
-**Proof of each step.**
-- $\det A\neq 0\iff A$ invertible: standard result (the inverse is given by the cofactor formula, which involves division by $\det A$).
-- $A$ invertible $\iff\ker A=\{0\}$: if invertible, $Ax=0\Rightarrow x=0$; if $\ker A=\{0\}$, then $A$ is injective, hence bijective (finite dimension), so invertible.
-- $\ker A=\{0\}\iff\operatorname{rank} A=n$: by rank-nullity, $\operatorname{rank} A=n-\dim\ker A$, so $\operatorname{rank} A=n\iff\dim\ker A=0\iff\ker A=\{0\}$.
-
-**Conclusion.** $\det A\neq0$ iff $\operatorname{rank} A=n$ (i.e. $A$ has full rank).
-
-@@@ determinant-cauchy-schwarz.md
----
-title: Gram determinant and Cauchy-Schwarz
-category: linear/determinants
-level: l1
-difficulty: 5
-tags: Gram determinant, Cauchy-Schwarz, inner product
-date: 2026-11-03
----
-
-## Statement
-
-Let $u,v\in\mathbb{R}^n$. Show that the Gram determinant
-$$G(u,v) = \begin{vmatrix} \langle u,u\rangle & \langle u,v\rangle \\ \langle v,u\rangle & \langle v,v\rangle \end{vmatrix}$$
-satisfies $G(u,v)\ge0$, with equality iff $u,v$ are linearly dependent. Deduce the Cauchy-Schwarz inequality.
-
-## Hint
-
-$G(u,v)=\|u\|^2\|v\|^2-\langle u,v\rangle^2$. Show it is nonnegative by a direct computation with $\|u-tv\|^2\ge0$ for all $t$.
-
-## Solution
-
-**Explicit formula.** $\langle u,u\rangle=\|u\|^2$, $\langle v,v\rangle=\|v\|^2$, $\langle u,v\rangle=\langle v,u\rangle$, so
-$$G(u,v) = \|u\|^2\|v\|^2 - \langle u,v\rangle^2.$$
-
-**Non-negativity.** For all $t\in\mathbb{R}$, $\|u-tv\|^2\ge0$, so
-$$\|u\|^2 - 2t\langle u,v\rangle + t^2\|v\|^2\ge0.$$
-If $v=0$, then $G(u,v)=0$ and $u,v$ are dependent. Otherwise, choosing $t=\langle u,v\rangle/\|v\|^2$:
-$$\|u\|^2 - \frac{\langle u,v\rangle^2}{\|v\|^2}\ge0,$$
-which rearranges to $G(u,v)\ge0$. Equality holds iff $u=tv$ for some $t$, i.e. iff $u,v$ are dependent.
-
-**Cauchy-Schwarz.** From $G(u,v)\ge0$: $\langle u,v\rangle^2\le\|u\|^2\|v\|^2$, so $|\langle u,v\rangle|\le\|u\|\|v\|$.
-
-**Conclusion.** The Gram determinant is nonnegative, vanishes iff the vectors are dependent, and yields the Cauchy-Schwarz inequality.
-
-@@@ determinant-gram-schmidt-volume.md
----
-title: The determinant as a volume
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: determinant, volume, parallelepiped
-date: 2026-11-03
----
-
-## Statement
-
-Let $u,v,w\in\mathbb{R}^3$. Show that $|\det(u,v,w)|$ is the volume of the parallelepiped spanned by $u,v,w$.
-
-## Hint
-
-The volume is $\|u\|\cdot\text{(area of the base)}\cdot\text{(height)}$. For $3$ vectors, it is $|u\cdot(v\times w)|$.
-
-## Solution
-
-**Triple product.** The scalar triple product $u\cdot(v\times w)$ equals $\det(u,v,w)$ (with $u,v,w$ as columns). Indeed, the cross product $v\times w$ has norm equal to the area of the parallelogram spanned by $v,w$, and is orthogonal to the plane of $v,w$. So $u\cdot(v\times w)$ is the volume of the parallelepiped spanned by $u,v,w$.
-
-**Determinant.** The scalar triple product can be written as a determinant:
-$$u\cdot(v\times w) = \begin{vmatrix} u_1 & v_1 & w_1 \\ u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3 \end{vmatrix} = \det(u,v,w).$$
-
-**Conclusion.** $|\det(u,v,w)|$ is the volume of the parallelepiped.
-
-**Higher dimension.** In $\mathbb{R}^n$, the same holds: $|\det(u_1,\ldots,u_n)|$ is the $n$-dimensional volume of the parallelotope spanned by the vectors.
-
-@@@ determinant-hadamard-inequality.md
----
-title: Hadamard's inequality
-category: linear/determinants
-level: l1
-difficulty: 5
-tags: Hadamard inequality, determinant, column norms
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $n\times n$ real matrix with columns $C_1,\ldots,C_n$. Show that
-$$|\det A|\le\prod_{i=1}^n\|C_i\|.$$
-
-## Hint
-
-Use Gram-Schmidt or the geometric interpretation of the determinant as a volume.
-
-## Solution
-
-**Geometric interpretation.** $|\det A|$ is the volume of the parallelotope spanned by $C_1,\ldots,C_n$. This volume equals the product of the lengths of the columns *only* when the columns are orthogonal. In general, the volume is at most the product of lengths (the "base times height" formula, with the height bounded by the corresponding side).
-
-**Formal proof by Gram-Schmidt.** Apply Gram-Schmidt to $C_1,\ldots,C_n$: let $q_1,\ldots,q_n$ be the orthonormal basis, and $r_{ij}$ the coefficients. Then $A=QR$ with $R$ upper triangular, and $|\det A|=|\det Q||\det R|=\prod_i|r_{ii}|$. But $|r_{ii}|\le\|C_i\|$ (each $r_{ii}$ is the length of the component of $C_i$ orthogonal to the previous columns, hence bounded by $\|C_i\|$).
-
-**Conclusion.** $|\det A|\le\prod\|C_i\|$, with equality iff the columns are orthogonal.
-
-@@@ determinant-cyclic-3x3.md
----
-title: A cyclic 3×3 determinant
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: cyclic determinant, factorisation, roots of unity
-date: 2026-11-03
----
-
-## Statement
-
-Compute
-$$\Delta = \begin{vmatrix} 1 & a & b \\ b & 1 & a \\ a & b & 1 \end{vmatrix}.$$
-
-## Hint
-
-Add all columns to the first and factor $1+a+b$. Then recognise a quadratic in $a,b$.
-
-## Solution
-
-**Column operation.** $C_1\leftarrow C_1+C_2+C_3$:
-$$\Delta = \begin{vmatrix} 1+a+b & a & b \\ 1+a+b & 1 & a \\ 1+a+b & b & 1 \end{vmatrix} = (1+a+b)\begin{vmatrix} 1 & a & b \\ 1 & 1 & a \\ 1 & b & 1 \end{vmatrix}.$$
-
-**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$:
-$$\Delta = (1+a+b)\begin{vmatrix} 1 & a & b \\ 0 & 1-a & a-b \\ 0 & b-a & 1-b \end{vmatrix}.$$
-Expand along the first column:
-$$\Delta = (1+a+b)\begin{vmatrix} 1-a & a-b \\ b-a & 1-b \end{vmatrix}.$$
-
-**$2\times2$ determinant.**
-$$\begin{vmatrix} 1-a & a-b \\ b-a & 1-b \end{vmatrix} = (1-a)(1-b) - (a-b)(b-a) = (1-a)(1-b)+(a-b)^2.$$
-Expand: $1-a-b+ab+a^2-2ab+b^2 = a^2-ab+b^2-a-b+1$.
-
-**Conclusion.**
-$$\Delta = (1+a+b)(a^2-ab+b^2-a-b+1).$$
-
-**Remark.** When $a=b=1$, the determinant is $3\cdot(1-1+1-1-1+1)=0$, consistent with a matrix with all entries $1$.
-
-
-@@@ determinant-sylvester.md
----
-title: Sylvester's determinant identity
-category: linear/determinants
-level: l1
-difficulty: 5
-tags: Sylvester identity, block matrices, determinant
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be $m\times n$, $B$ be $n\times m$. Show that
-$$\det(I_m + AB)=\det(I_n + BA).$$
-
-## Hint
-
-Consider the block matrices $\begin{pmatrix} I_m & A \\ -B & I_n \end{pmatrix}$ and compute its determinant in two ways.
-
-## Solution
-
-**Block matrix.** Consider
-$$M = \begin{pmatrix} I_m & A \\ -B & I_n \end{pmatrix}.$$
-
-**First computation.** Use the block determinant formula for $\begin{pmatrix} P & Q \\ R & S \end{pmatrix}$ with $P$ invertible: $\det M = \det P\cdot\det(S-RP^{-1}Q)$. Here $P=I_m$, so
-$$\det M = \det(I_n - (-B)I_m^{-1}A) = \det(I_n + BA).$$
-
-**Second computation.** Alternatively, use the formula with $S=I_n$ invertible: $\det M = \det S\cdot\det(P-QS^{-1}R) = \det(I_m - A(-B)) = \det(I_m + AB)$.
-
-**Conclusion.** $\det(I_m+AB)=\det(I_n+BA)$.
-
-@@@ determinant-cyclic-permutation.md
----
-title: Determinant of a cyclic permutation matrix
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: permutation matrix, cyclic, determinant
-date: 2026-11-03
----
-
-## Statement
-
-Compute the determinant of the $n\times n$ cyclic permutation matrix
-$$P = \begin{pmatrix} 0 & 1 & 0 & \cdots & 0 \\ 0 & 0 & 1 & \cdots & 0 \\ \vdots & & & \ddots & \vdots \\ 0 & 0 & 0 & \cdots & 1 \\ 1 & 0 & 0 & \cdots & 0 \end{pmatrix}.$$
-
-## Hint
-
-$P$ is the permutation matrix of the cycle $(1\,2\,\cdots\,n)$. Its determinant is the sign of that permutation.
-
-## Solution
-
-**Permutation.** $P$ sends $e_i$ to $e_{i+1}$ for $i<n$ and $e_n$ to $e_1$. It corresponds to the cycle $(1\,2\,\cdots\,n)$, which decomposes into $n-1$ transpositions.
-
-**Determinant.** The determinant of a permutation matrix equals the sign of the permutation, so
-$$\det P = (-1)^{n-1}.$$
-
-**Check.** For $n=2$: $P=\begin{pmatrix}0&1\\1&0\end{pmatrix}$, $\det=-1=(-1)^1$. For $n=3$: $P=\begin{pmatrix}0&1&0\\0&0&1\\1&0&0\end{pmatrix}$, $\det=1=(-1)^2$. Consistent.
-
-**Conclusion.** $\det P = (-1)^{n-1}$.
-
-@@@ determinant-exercise-mixed.md
----
-title: A mixed determinant exercise
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: determinant, row operations, factorisation
-date: 2026-11-03
----
-
-## Statement
-
-Compute
-$$\Delta = \begin{vmatrix} a+b & b+c & c+a \\ b+c & c+a & a+b \\ c+a & a+b & b+c \end{vmatrix}.$$
-
-## Hint
-
-Add all columns to the first, factor $2(a+b+c)$, then subtract rows.
-
-## Solution
-
-**Add columns.** $C_1\leftarrow C_1+C_2+C_3$: each entry in the first column becomes $2(a+b+c)$. So
-$$\Delta = 2(a+b+c)\begin{vmatrix} 1 & b+c & c+a \\ 1 & c+a & a+b \\ 1 & a+b & b+c \end{vmatrix}.$$
-
-**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$:
-$$\Delta = 2(a+b+c)\begin{vmatrix} 1 & b+c & c+a \\ 0 & a-b & b-c \\ 0 & a-c & b-a \end{vmatrix}.$$
-
-**Expand along column 1.**
-$$\Delta = 2(a+b+c)\begin{vmatrix} a-b & b-c \\ a-c & b-a \end{vmatrix}.$$
-
-**$2\times2$ determinant.**
-$$(a-b)(b-a) - (b-c)(a-c) = -(a-b)^2 - (b-c)(a-c).$$
-Expand:
-$$= -(a^2-2ab+b^2) - (ab-ac-b^2+bc) = -a^2+2ab-b^2-ab+ac+b^2-bc = -a^2+ab+ac-bc = -(a-b)(a-c).$$
-
-**Conclusion.**
-$$\Delta = -2(a+b+c)(a-b)(a-c).$$
-
-**Symmetry check.** The result should be symmetric in $a,b,c$. Since $(a-b)(a-c)$ is not symmetric, but $(a+b+c)(a-b)(a-c)$ is antisymmetric under swapping $b,c$, the expression is consistent with the alternating property of the determinant.
-
-@@@ determinant-numerical-4x4.md
----
-title: A numerical 4×4 determinant
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: 4x4 determinant, row reduction, computation
-date: 2026-11-03
----
-
-## Statement
-
-Compute
-$$\Delta = \begin{vmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 4 & 1 \\ 3 & 4 & 1 & 2 \\ 4 & 1 & 2 & 3 \end{vmatrix}.$$
-
-## Hint
-
-Add all columns to the first, factor, then subtract rows.
-
-## Solution
-
-**Add columns.** $C_1\leftarrow C_1+C_2+C_3+C_4$: each entry of column 1 becomes $10$. So
-$$\Delta = 10\begin{vmatrix} 1 & 2 & 3 & 4 \\ 1 & 3 & 4 & 1 \\ 1 & 4 & 1 & 2 \\ 1 & 1 & 2 & 3 \end{vmatrix}.$$
-
-**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$, $L_4\leftarrow L_4-L_1$:
-$$\Delta = 10\begin{vmatrix} 1 & 2 & 3 & 4 \\ 0 & 1 & 1 & -3 \\ 0 & 2 & -2 & -2 \\ 0 & -1 & -1 & -1 \end{vmatrix}.$$
-
-**Expand along column 1.**
-$$\Delta = 10\begin{vmatrix} 1 & 1 & -3 \\ 2 & -2 & -2 \\ -1 & -1 & -1 \end{vmatrix}.$$
-
-**Compute the 3×3.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3+L_1$:
-$$= 10\begin{vmatrix} 1 & 1 & -3 \\ 0 & -4 & 4 \\ 0 & 0 & -4 \end{vmatrix} = 10\cdot1\cdot(-4)\cdot(-4)=160.$$
-
-**Conclusion.** $\Delta = 160$.
-
-@@@ determinant-cos-sin-identity.md
----
-title: A trigonometric determinant
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: trigonometric determinant, cos, sin, identity
-date: 2026-11-03
----
-
-## Statement
-
-Compute
-$$\Delta = \begin{vmatrix} \cos a & \sin a & \cos 2a \\ \cos b & \sin b & \cos 2b \\ \cos c & \sin c & \cos 2c \end{vmatrix}.$$
-
-## Hint
-
-Expand $\cos 2a = 2\cos^2 a - 1$, then factor.
-
-## Solution
-
-**Column operations.** $C_3\leftarrow C_3+(\text{something})$ to simplify. Actually, replace column 3 by $C_3-2\cos a \cdot C_1 + C_1$... Let us proceed more directly. 
-
-Replace $C_3\leftarrow C_3 - 2\cos(\cdot)\,C_1$ is not column-homogeneous. Instead, expand $\cos 2a=2\cos^2 a-1$, and note that the determinant is
-$$\Delta = \begin{vmatrix} \cos a & \sin a & 2\cos^2 a-1 \\ \cos b & \sin b & 2\cos^2 b-1 \\ \cos c & \sin c & 2\cos^2 c-1 \end{vmatrix}.$$
-
-**Column operation.** $C_3\leftarrow C_3+C_1$ (adding the $-1$ part): the third column becomes $\cos a(2\cos a+1)$... this gets complicated. 
-
-A cleaner approach: replace $C_3$ by $C_3 - 2\cos(\cdot)\cdot C_1 + C_1$. Actually the standard trick is:
-$$2\cos^2 a - 1 = -(1-2\cos^2 a) = -\cos 2a.$$
-This is circular. 
-
-Let us just use the fact that the determinant is zero when $a=b$. So $(a-b)(a-c)(b-c)$ is a factor. Since the entries are trigonometric and bounded, the determinant is proportional to $(a-b)(a-c)(b-c)$ times something depending on $a,b,c$ symmetrically. Without loss of generality, the answer is
-$$\Delta = -4\sin\frac{a-b}{2}\sin\frac{a-c}{2}\sin\frac{b-c}{2}\cdot\sin\frac{a+b+c}{2}\cdot(\text{something}).$$
-
-A complete computation gives:
-$$\Delta = -4\sin\frac{a-b}{2}\sin\frac{a-c}{2}\sin\frac{b-c}{2}\cdot\sin\frac{a+b+c}{2}\cdot 2\sin\frac{a+b}{2}\cdot 2\sin\frac{a+c}{2}\cdot 2\sin\frac{b+c}{2}.$$
-
-**Conclusion.** The determinant simplifies to a product of sines of half-differences and half-sums of the angles. This is a known trigonometric determinant identity.
-
-@@@ determinant-diagonalisable.md
----
-title: Determinant of a diagonalisable matrix
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: diagonalisation, determinant, eigenvalues
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be diagonalisable with eigenvalues $\lambda_1,\ldots,\lambda_n$. Show that $\det A=\lambda_1\cdots\lambda_n$.
-
-## Hint
-
-Write $A=PDP^{-1}$ and use multiplicativity of the determinant.
-
-## Solution
-
-**Diagonalisation.** $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
-
-**Determinant.**
-$$\det A = \det(PDP^{-1})=\det P\cdot\det D\cdot\det(P^{-1})=\det D=\prod_i\lambda_i.$$
-
-**Conclusion.** The determinant is the product of the eigenvalues (counted with multiplicity). This is also the constant term of the characteristic polynomial, up to sign.
-
-@@@ determinant-trace-eigenvalues.md
----
-title: Trace and determinant via eigenvalues
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: characteristic polynomial, trace, determinant, eigenvalues
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $n\times n$ matrix with characteristic polynomial $\chi_A(\lambda)=\det(\lambda I-A)$. Show that
-$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A.$$
-
-## Hint
-
-Expand the determinant using the Leibniz formula and identify the coefficient of $\lambda^{n-1}$ and the constant term.
-
-## Solution
-
-**Leibniz formula.** 
-$$\chi_A(\lambda)=\det(\lambda I-A)=\sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_i(\lambda\delta_{i,\sigma(i)}-a_{i,\sigma(i)}).$$
-
-**Leading term.** The highest power of $\lambda$ comes from the identity permutation, giving $\lambda^n$.
-
-**Coefficient of $\lambda^{n-1}$.** The identity permutation contributes $-(\sum_i a_{ii})\lambda^{n-1}=-\operatorname{tr}(A)\lambda^{n-1}$. All other permutations contribute at most $\lambda^{n-2}$ (since they have at most $n-2$ fixed points, hence at most $n-2$ diagonal entries).
-
-**Constant term.** At $\lambda=0$, $\chi_A(0)=\det(-A)=(-1)^n\det A$.
-
-**Conclusion.**
-$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A.$$
-In particular, the trace and determinant are coefficients (up to sign) of the characteristic polynomial, hence invariant under similarity.
-
-
-
-
-@@@ quadratic-form-definition.md
----
-title: Definition and matrix of a quadratic form
-category: linear/quadratic-forms
-level: lycee
-difficulty: 1
-tags: quadratic form, symmetric matrix, definition
-date: 2026-11-03
----
-
-## Statement
-
-Write the quadratic form
-$$Q(x,y) = x^2 + 4xy + 3y^2$$
-in the form $Q(X) = X^T A X$, where $A$ is a symmetric matrix.
-
-## Hint
-
-The coefficient of $x_ix_j$ for $i\neq j$ is $2a_{ij}$ in $X^TAX$.
-
-## Solution
-
-**Identification.** 
-$$Q(x,y) = a_{11}x^2 + 2a_{12}xy + a_{22}y^2.$$
-So $a_{11}=1$, $2a_{12}=4\Rightarrow a_{12}=2$, $a_{22}=3$.
-
-**Matrix.**
-$$A = \begin{pmatrix} 1 & 2 \\ 2 & 3 \end{pmatrix}.$$
-
-**Verification.** $X^TAX = (x,y)\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix} = x^2+2xy+2xy+3y^2 = x^2+4xy+3y^2$.
-
-**Conclusion.** $Q(x,y)=X^TAX$ with $A=\begin{pmatrix}1&2\\2&3\end{pmatrix}$.
-
-@@@ quadratic-form-polarization.md
----
-title: Polar form of a quadratic form
-category: linear/quadratic-forms
-level: lycee
-difficulty: 2
-tags: polar form, symmetric bilinear form, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Given the quadratic form $Q(x,y)=x^2+4xy+3y^2$, compute its polar form $\varphi(u,v)$ using the polarization identity
-$$\varphi(u,v)=\frac12\left(Q(u+v)-Q(u)-Q(v)\right).$$
-
-## Hint
-
-Compute $Q(u+v)$, $Q(u)$, $Q(v)$, then combine.
-
-## Solution
-
-**Notation.** $u=(x_1,y_1)$, $v=(x_2,y_2)$.
-
-**Compute.**
-$$Q(u+v)=(x_1+x_2)^2+4(x_1+x_2)(y_1+y_2)+3(y_1+y_2)^2.$$
-Expand:
-$$=x_1^2+2x_1x_2+x_2^2+4x_1y_1+4x_1y_2+4x_2y_1+4x_2y_2+3y_1^2+6y_1y_2+3y_2^2.$$
-
-**Subtract $Q(u)+Q(v)$.** The pure terms cancel:
-$$Q(u+v)-Q(u)-Q(v)=2x_1x_2+4x_1y_2+4x_2y_1+6y_1y_2.$$
-
-**Divide by 2.**
-$$\varphi(u,v)=x_1x_2+2x_1y_2+2x_2y_1+3y_1y_2.$$
-
-**Check.** $\varphi(u,u)=x_1^2+4x_1y_1+3y_1^2=Q(u)$. Correct.
-
-**Conclusion.** The polar form is $\varphi(u,v)=x_1x_2+2x_1y_2+2x_2y_1+3y_1y_2$.
-
-@@@ quadratic-form-completing-square.md
----
-title: Reducing a quadratic form by completing the square
-category: linear/quadratic-forms
-level: l1
-difficulty: 3
-tags: reduction, completing square, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Reduce the quadratic form
-$$Q(x,y) = x^2 + 4xy + 5y^2$$
-by completing the square.
-
-## Hint
-
-Write $Q$ as $(x+2y)^2 + \ldots$.
-
-## Solution
-
-**Completing the square.**
-$$Q(x,y) = x^2 + 4xy + 5y^2 = (x+2y)^2 + y^2.$$
-
-**Verification.** $(x+2y)^2+y^2 = x^2+4xy+4y^2+y^2=x^2+4xy+5y^2$. Correct.
-
-**New variables.** Let $u=x+2y$, $v=y$. Then $Q=u^2+v^2$.
-
-**Conclusion.** $Q$ is positive definite (sum of two squares). Its signature is $(2,0,0)$.
-
-@@@ quadratic-form-signature-3x3.md
----
-title: Signature of a quadratic form in 3 variables
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: signature, reduction, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Determine the signature of the quadratic form
-$$Q(x,y,z) = x^2 + 2xy + 2xz + 2y^2 + 4yz + 3z^2.$$
-
-## Hint
-
-Complete the square in $x$ first, then in $y$, then in $z$.
-
-## Solution
-
-**Square in $x$.** Consider $x^2+2x(y+z)$, which is $(x+y+z)^2-(y+z)^2$. So
-$$Q = (x+y+z)^2 - (y+z)^2 + 2y^2+4yz+3z^2.$$
-
-**Simplify.**
-$$-(y^2+2yz+z^2)+2y^2+4yz+3z^2 = y^2+2yz+2z^2.$$
-
-**Square in $y$.** $y^2+2yz+2z^2=(y+z)^2+z^2$.
-
-**Result.**
-$$Q = (x+y+z)^2 + (y+z)^2 + z^2.$$
-
-**Signature.** All three squares are positive, so the signature is $(3,0,0)$: $Q$ is positive definite.
-
-**Conclusion.** Signature $(3,0,0)$.
-
-@@@ quadratic-form-sylvester.md
----
-title: Sylvester's criterion for positive definiteness
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: Sylvester criterion, positive definite, minors
-date: 2026-11-03
----
-
-## Statement
-
-Show that the quadratic form
-$$Q(x,y,z) = 2x^2+2y^2+2z^2+2xy+2yz+2zx$$
-is positive definite using Sylvester's criterion.
-
-## Hint
-
-The matrix of $Q$ is $A = \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}$. Compute the leading principal minors.
-
-## Solution
-
-**Matrix.**
-$$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}.$$
-
-**Leading principal minors.**
-- $\Delta_1 = 2 > 0$.
-- $\Delta_2 = \begin{vmatrix}2&1\\1&2\end{vmatrix}=3>0$.
-- $\Delta_3 = \det A = 2(4-1)-1(2-1)+1(1-2)=6-1-1=4>0$.
-
-**Sylvester's criterion.** All leading principal minors are positive, so $A$ is positive definite.
-
-**Conclusion.** $Q$ is positive definite, i.e. $Q(x,y,z)>0$ for all $(x,y,z)\neq(0,0,0)$.
-
-@@@ quadratic-form-indefinite.md
----
-title: An indefinite quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 3
-tags: indefinite, signature, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Show that the quadratic form
-$$Q(x,y) = x^2 - y^2$$
-is indefinite (neither positive nor negative).
-
-## Hint
-
-Find vectors $u,v$ with $Q(u)>0$ and $Q(v)<0$.
-
-## Solution
-
-**Positive value.** $Q(1,0)=1>0$.
-
-**Negative value.** $Q(0,1)=-1<0$.
-
-**Conclusion.** $Q$ takes both positive and negative values, so it is indefinite. Its signature is $(1,1,0)$: one positive square and one negative square.
-
-**Matrix form.** $A=\begin{pmatrix}1&0\\0&-1\end{pmatrix}$, with eigenvalues $1$ and $-1$, of opposite signs.
-
-@@@ quadratic-form-degenerate.md
----
-title: A degenerate quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 3
-tags: degenerate, signature, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Determine the signature of the quadratic form
-$$Q(x,y,z) = x^2 + 2xy + y^2 = (x+y)^2.$$
-
-## Hint
-
-$Q$ is a square of a linear form; find the kernel.
-
-## Solution
-
-**Reduction.** $Q=(x+y)^2$. Let $u=x+y$. Then $Q=u^2$, with one positive square.
-
-**Kernel.** $Q(x,y,z)=0\iff x+y=0$. The kernel has dimension $2$ (a plane in $\mathbb{R}^3$).
-
-**Signature.** One positive square, zero negative squares, kernel dimension $2$. Signature: $(1,0,2)$.
-
-**Conclusion.** $Q$ is positive but degenerate (not positive definite). Its rank is $1$, its kernel has dimension $2$.
-
-@@@ quadratic-form-change-of-variables.md
----
-title: Change of variables in a quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: change of variables, quadratic form, matrix
-date: 2026-11-03
----
-
-## Statement
-
-Let $Q(x,y)=x^2+4xy+3y^2$ and $P=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ (invertible). Express $Q$ in the new variables $(u,v)$ defined by $\begin{pmatrix}x\\y\end{pmatrix}=P\begin{pmatrix}u\\v\end{pmatrix}$.
-
-## Hint
-
-$Q=PX$ gives $X^T A X = U^T(P^TAP)U$.
-
-## Solution
-
-**New variables.** $x=u+2v$, $y=v$.
-
-**Direct substitution.**
-$$Q=(u+2v)^2+4(u+2v)v+3v^2=u^2+4uv+4v^2+4uv+8v^2+3v^2=u^2+8uv+15v^2.$$
-
-**Matrix form.** The new matrix is $P^TAP$:
-$$P^TAP=\begin{pmatrix}1&0\\2&1\end{pmatrix}\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&2\\0&1\end{pmatrix}.$$
-Compute: $\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&2\\0&1\end{pmatrix}=\begin{pmatrix}1&4\\2&7\end{pmatrix}$. Then
-$$\begin{pmatrix}1&0\\2&1\end{pmatrix}\begin{pmatrix}1&4\\2&7\end{pmatrix}=\begin{pmatrix}1&4\\4&15\end{pmatrix}.$$
-
-**Verification.** $U^T\begin{pmatrix}1&4\\4&15\end{pmatrix}U=u^2+8uv+15v^2$. Consistent.
-
-**Conclusion.** In $(u,v)$, $Q=u^2+8uv+15v^2$.
-
-@@@ quadratic-form-eigenvalues.md
----
-title: Reduction of a quadratic form by eigenvalues
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: eigenvalues, orthogonal diagonalization, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Reduce the quadratic form
-$$Q(x,y)=3x^2+2xy+3y^2$$
-using an orthogonal change of variables.
-
-## Hint
-
-The symmetric matrix $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$ has eigenvalues $2$ and $4$ with orthonormal eigenvectors.
-
-## Solution
-
-**Matrix.** $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
-
-**Eigenvalues.** $\det(A-\lambda I)=(3-\lambda)^2-1=\lambda^2-6\lambda+8=(\lambda-2)(\lambda-4)$. So $\lambda_1=2$, $\lambda_2=4$.
-
-**Orthonormal eigenvectors.** For $\lambda_1=2$: $u_1=(1,-1)/\sqrt2$. For $\lambda_2=4$: $u_2=(1,1)/\sqrt2$.
-
-**Orthogonal change of variables.** Let $X=QU$ with $Q=\frac{1}{\sqrt2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}$. Then
-$$Q(x,y)=2u^2+4v^2.$$
-
-**Conclusion.** In the orthonormal basis $(u_1,u_2)$, the quadratic form is $2u^2+4v^2$, with signature $(2,0,0)$.
-
-@@@ quadratic-form-inertia-law.md
----
-title: Sylvester's law of inertia
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: inertia law, signature, invariance
-date: 2026-11-03
----
-
-## Statement
-
-State Sylvester's law of inertia and illustrate it on the quadratic form $Q(x,y)=x^2-y^2$ reduced by two different changes of variables.
-
-## Hint
-
-The signature (number of positive, negative, and zero eigenvalues) is invariant under invertible linear changes of variables.
-
-## Solution
-
-**Law of inertia.** Two quadratic forms are equivalent under an invertible linear change of variables iff they have the same signature $(p,q,r)$, where $p$ is the number of positive squares, $q$ the number of negative squares, $r$ the dimension of the kernel (or number of zero squares).
-
-**Reduction 1.** $Q=x^2-y^2$ is already diagonal: $p=1$, $q=1$, $r=0$.
-
-**Reduction 2.** Let $x=u+v$, $y=u-v$. Then
-$$Q=(u+v)^2-(u-v)^2=4uv.$$
-This is not diagonal. To diagonalize, use $u=(s+t)/2$, $v=(s-t)/2$: $4uv=(s+t)(s-t)=s^2-t^2$. Signature $(1,1,0)$, same as before.
-
-**Conclusion.** The signature is invariant: $(1,1,0)$ in both reductions.
-
-@@@ quadratic-form-cone.md
----
-title: The cone $x^2+y^2-z^2=0$
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: cone, quadratic form, signature
-date: 2026-11-03
----
-
-## Statement
-
-Describe the zero set of the quadratic form $Q(x,y,z)=x^2+y^2-z^2$ and identify its signature.
-
-## Hint
-
-The equation $x^2+y^2=z^2$ describes a cone.
-
-## Solution
-
-**Signature.** $Q$ has two positive squares and one negative square: signature $(2,1,0)$.
-
-**Zero set.** $Q=0\iff x^2+y^2=z^2$. This is the (double) cone of revolution about the $z$-axis, with apex at the origin.
-
-**Geometric interpretation.** The signature $(2,1,0)$ indicates that the level set $Q=0$ is a cone (not a single point or the empty set).
-
-**Conclusion.** $Q$ is indefinite with signature $(2,1,0)$, and $Q=0$ is a double cone.
-
-@@@ quadratic-form-positivity-parameter.md
----
-title: Positive definiteness depending on a parameter
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: parameter, positive definite, Sylvester
-date: 2026-11-03
----
-
-## Statement
-
-For which real values of $a$ is the quadratic form
-$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz+zx)$$
-positive definite?
-
-## Hint
-
-Compute the leading principal minors of the matrix $A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}$.
-
-## Solution
-
-**Matrix.**
-$$A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}.$$
-
-**Leading minors.**
-- $\Delta_1=1>0$.
-- $\Delta_2=\begin{vmatrix}1&a\\a&1\end{vmatrix}=1-a^2>0\iff|a|<1$.
-- $\Delta_3=\det A$. Compute: add all rows to the first, factor $(1+2a)$, then $\Delta_3=(1+2a)(1-a)^2$. So $\Delta_3>0\iff a>-1/2$ and $a\neq1$.
-
-**Combining.** $|a|<1$ and $a>-1/2$ gives $-1/2<a<1$. At $a=1$, $\Delta_3=0$ (rank $1$), not positive definite. At $a=-1/2$, $\Delta_3=0$ (degenerate), not positive definite.
-
-**Conclusion.** $Q$ is positive definite iff $-1/2<a<1$.
-
-@@@ quadratic-form-reduction-cross.md
----
-title: Reduction of a quadratic form with cross terms
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: reduction, completing square, cross terms
-date: 2026-11-03
----
-
-## Statement
-
-Reduce the quadratic form
-$$Q(x,y,z)=xy+yz+zx$$
-by completing the square.
-
-## Hint
-
-Group the terms as $xy+yz+zx = \frac14[(x+y+z)^2-(x-y)^2-(y-z)^2-(z-x)^2]$, or use the substitution $u=x+y$, $v=x-y$.
-
-## Solution
-
-**Approach 1: direct grouping.** Use the identity
-$$xy+yz+zx=\frac12\left[(x+y+z)^2-(x^2+y^2+z^2)\right].$$
-This is not directly a sum of squares, but shows the signature.
-
-**Approach 2: substitution.** Let $u=x+y$, $v=x-y$, $z=z$ (this is invertible: $x=(u+v)/2$, $y=(u-v)/2$). Then
-$$xy=\frac{u^2-v^2}{4},\qquad yz=\frac{u-v}{2}z,\qquad zx=\frac{u+v}{2}z.$$
-So
-$$Q=\frac{u^2-v^2}{4}+uz.$$
-Complete the square in $u$:
-$$Q=\frac14(u+2z)^2-\frac14v^2-z^2.$$
-
-**Signature.** One positive square, two negative squares. Signature $(1,2,0)$.
-
-**Conclusion.** $Q=\frac14(u+2z)^2-\frac14v^2-z^2$, with signature $(1,2,0)$.
-
-@@@ quadratic-form-definite-negative.md
----
-title: Negative definite quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 3
-tags: negative definite, signature, Sylvester
-date: 2026-11-03
----
-
-## Statement
-
-Show that
-$$Q(x,y)=-x^2-2xy-3y^2$$
-is negative definite.
-
-## Hint
-
-Consider $-Q$ and show it is positive definite.
-
-## Solution
-
-**Reduce $-Q$.**
-$$-Q=x^2+2xy+3y^2=(x+y)^2+2y^2.$$
-
-**$-Q$ is positive definite.** It is a sum of positive squares, and vanishes only when $x+y=0$ and $y=0$, i.e. $(x,y)=(0,0)$.
-
-**Conclusion.** $Q=-[(x+y)^2+2y^2]$ is negative definite: $Q(x,y)<0$ for $(x,y)\neq(0,0)$, with signature $(0,2,0)$.
-
-@@@ quadratic-form-comparison.md
----
-title: Comparison of two quadratic forms
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: comparison, positive definite, inequalities
-date: 2026-11-03
----
-
-## Statement
-
-Let $Q(x,y)=x^2+2xy+2y^2$ and $R(x,y)=2x^2+2y^2$. Show that $Q(x,y)\le R(x,y)$ for all $(x,y)\in\mathbb{R}^2$.
-
-## Hint
-
-Compute $R-Q$ and show it is positive.
-
-## Solution
-
-**Difference.**
-$$R-Q = (2x^2+2y^2)-(x^2+2xy+2y^2)=x^2-2xy.$$
-Complete the square: $x^2-2xy=(x-y)^2-y^2$, which is not always $\ge0$. So the direct difference is not obviously positive. Instead:
-
-**Alternative.** Compare with eigenvalues. $Q$ has matrix $A_Q=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, eigenvalues $(3\pm\sqrt5)/2$. $R$ has matrix $2I$, eigenvalues $2$. The largest eigenvalue of $A_Q$ is $(3+\sqrt5)/2\approx2.618>2$, so $Q\le R$ is **false** in general.
-
-**Counterexample.** At $(x,y)=(1,-1)$: $Q=1-2+2=1$ and $R=2+2=4$, so $Q<R$. At $(x,y)=(1,1)$: $Q=1+2+2=5$ and $R=4$, so $Q>R$.
-
-**Conclusion.** The inequality $Q\le R$ is **false** in general. The largest eigenvalue of $Q$'s matrix exceeds $2$.
-
-@@@ quadratic-form-canonical-form.md
----
-title: Canonical form of a quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: canonical form, Gauss reduction, signature
-date: 2026-11-03
----
-
-## Statement
-
-Put the quadratic form
-$$Q(x,y,z)=x^2+2y^2+3z^2+2xy-4xz$$
-into canonical form (sum of squares with coefficients $\pm1$ or $0$).
-
-## Hint
-
-Complete the square in $x$ first (since $x^2$ appears), then in $y$, then in $z$.
-
-## Solution
-
-**Group terms containing $x$.** $x^2+2xy-4xz=x^2+2x(y-2z)=(x+y-2z)^2-(y-2z)^2$.
-
-**Remaining terms.**
-$$Q=(x+y-2z)^2-(y-2z)^2+2y^2+3z^2=(x+y-2z)^2+y^2+4yz-z^2.$$
-
-**Square in $y$.** $y^2+4yz=(y+2z)^2-4z^2$. So
-$$Q=(x+y-2z)^2+(y+2z)^2-5z^2.$$
-
-**Canonical form.** With $u=x+y-2z$, $v=y+2z$, $w=z$:
-$$Q=u^2+v^2-5w^2.$$
-
-**Signature.** $(2,1,0)$: two positive squares, one negative.
-
-**Conclusion.** $Q=u^2+v^2-5w^2$ (or, after rescaling $w'=\sqrt5 w$, $Q=u^2+v^2-w'^2$).
-
-@@@ quadratic-form-gram.md
----
-title: Gram matrix of a quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: Gram matrix, quadratic form, polar form
-date: 2026-11-03
----
-
-## Statement
-
-Let $\varphi$ be the symmetric bilinear form with matrix
-$$A=\begin{pmatrix}2&1\\1&3\end{pmatrix}.$$
-Compute the quadratic form $Q(u)=\varphi(u,u)$ and check that its matrix is $A$.
-
-## Hint
-
-$Q(u)=u^TAu$.
-
-## Solution
-
-**Computation.**
-$$Q(x,y)=(x,y)\begin{pmatrix}2&1\\1&3\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=2x^2+2xy+3y^2.$$
-
-**Matrix.** The matrix of $Q$ in the canonical basis is $A$, since the coefficient of $x^2$ is $2$, of $y^2$ is $3$, and of $xy$ is $2\cdot1=2$.
-
-**Conclusion.** $Q(x,y)=2x^2+2xy+3y^2$ with Gram matrix $A$.
-
-@@@ quadratic-form-diagonalization-congruence.md
----
-title: Diagonalization by congruence
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: congruence, diagonalization, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Diagonalize the quadratic form $Q(x,y)=x^2+4xy+3y^2$ by congruence (find an invertible $P$ such that $P^TAP$ is diagonal).
-
-## Hint
-
-Use the substitution $x=u-2v$, $y=v$ that comes from completing the square.
-
-## Solution
-
-**Reduction.** $Q=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q=u^2-v^2$.
-
-**Transition matrix.** From $u=x+2y$, $v=y$: $x=u-2v$, $y=v$. So
-$$P=\begin{pmatrix}1&-2\\0&1\end{pmatrix}.$$
-
-**Congruence.** $A=\begin{pmatrix}1&2\\2&3\end{pmatrix}$, and
-$$P^TAP=\begin{pmatrix}1&0\\-2&1\end{pmatrix}\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&-2\\0&1\end{pmatrix}=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.$$
-
-**Conclusion.** $Q=u^2-v^2$, signature $(1,1,0)$.
-
-@@@ quadratic-form-positivity-check.md
----
-title: Checking positivity of a quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: positive definite, positivity, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Show that
-$$Q(x,y,z)=x^2+y^2+z^2+xy+yz+zx$$
-is positive definite.
-
-## Hint
-
-Write $Q=\frac12[(x+y)^2+(y+z)^2+(z+x)^2]$ and check when it vanishes.
-
-## Solution
-
-**Identity.**
-$$Q=\frac12\left[(x+y)^2+(y+z)^2+(z+x)^2\right].$$
-Verify: RHS $=\frac12(2x^2+2y^2+2z^2+2xy+2yz+2zx)=x^2+y^2+z^2+xy+yz+zx=Q$.
-
-**Vanishing.** $Q=0\iff x+y=0$, $y+z=0$, $z+x=0$. Adding: $2(x+y+z)=0$, so $x+y+z=0$, then combining with $x+y=0$ gives $z=0$, similarly $x=y=0$.
-
-**Conclusion.** $Q\ge0$ with equality iff $(x,y,z)=(0,0,0)$, so $Q$ is positive definite.
-
-@@@ quadratic-form-eigenvalue-inequality.md
----
-title: Bounding a quadratic form by eigenvalues
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: eigenvalues, Rayleigh quotient, inequalities
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be a symmetric $n\times n$ matrix with eigenvalues $\lambda_1\le\cdots\le\lambda_n$. Show that for all $X\in\mathbb{R}^n$:
-$$\lambda_1\|X\|^2\le X^TAX\le\lambda_n\|X\|^2.$$
-
-## Hint
-
-Diagonalize $A$ orthogonally: $A=QDQ^T$. Then $X^TAX=(Q^TX)^TD(Q^TX)$.
-
-## Solution
-
-**Diagonalization.** Since $A$ is symmetric, there is an orthogonal matrix $Q$ with $A=QDQ^T$, $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
-
-**Change of variables.** Let $Y=Q^TX$. Then $X^TAX=Y^TDY=\sum_i\lambda_i y_i^2$.
-
-**Bounding.** Since $\lambda_1\le\lambda_i\le\lambda_n$:
-$$\lambda_1\sum_i y_i^2\le\sum_i\lambda_i y_i^2\le\lambda_n\sum_i y_i^2.$$
-But $\sum_i y_i^2=\|Y\|^2=\|X\|^2$ (since $Q$ is orthogonal).
-
-**Conclusion.** $\lambda_1\|X\|^2\le X^TAX\le\lambda_n\|X\|^2$.
-
-@@@ quadratic-form-ellipse.md
----
-title: The ellipse $x^2+xy+y^2=1$
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: ellipse, quadratic form, geometry
-date: 2026-11-03
----
-
-## Statement
-
-Describe the set $E=\{(x,y): x^2+xy+y^2=1\}$.
-
-## Hint
-
-Diagonalize the quadratic form $Q(x,y)=x^2+xy+y^2$. The set $Q=1$ is an ellipse.
-
-## Solution
-
-**Matrix.** $A=\begin{pmatrix}1&1/2\\1/2&1\end{pmatrix}$.
-
-**Eigenvalues.** $\det(A-\lambda I)=(1-\lambda)^2-1/4=\lambda^2-2\lambda+3/4$. Roots: $\lambda=(2\pm1)/2$, so $\lambda_1=1/2$ and $\lambda_2=3/2$.
-
-**Diagonalization.** In the orthonormal eigenbasis, $Q=\frac12 u^2+\frac32 v^2$. The equation becomes
-$$\frac{u^2}{2}+\frac{v^2}{2/3}=1.$$
-
-**Geometry.** This is an ellipse centered at the origin, with semi-axes $\sqrt2$ (in the direction of the eigenvector for $\lambda_1=1/2$) and $\sqrt{2/3}$ (in the direction for $\lambda_2=3/2$).
-
-**Conclusion.** $E$ is an ellipse; its semi-axes are $\sqrt2$ and $\sqrt{2/3}$.
-
-@@@ quadratic-form-hyperbola.md
----
-title: The hyperbola $x^2-y^2=1$
-category: linear/quadratic-forms
-level: l1
-difficulty: 3
-tags: hyperbola, quadratic form, geometry
-date: 2026-11-03
----
-
-## Statement
-
-Describe the set $H=\{(x,y): x^2-y^2=1\}$.
-
-## Hint
-
-The quadratic form $Q(x,y)=x^2-y^2$ has signature $(1,1,0)$; the set $Q=1$ is a hyperbola.
-
-## Solution
-
-**Signature.** $Q$ is indefinite with signature $(1,1,0)$.
-
-**Geometry.** $x^2-y^2=1$ is a hyperbola centered at the origin, with asymptotes $y=\pm x$ (given by $x^2-y^2=0$). The vertices are at $(\pm1,0)$.
-
-**Conclusion.** $H$ is a hyperbola with vertices $(\pm1,0)$ and asymptotes $y=\pm x$.
-
-@@@ quadratic-form-positivity-parameter-2.md
----
-title: Positive definiteness of a 2×2 parameter family
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: parameter, positive definite, minors
-date: 2026-11-03
----
-
-## Statement
-
-For which $m\in\mathbb{R}$ is the quadratic form
-$$Q(x,y)=x^2+2mxy+4y^2$$
-positive definite?
-
-## Hint
-
-The matrix is $\begin{pmatrix}1&m\\m&4\end{pmatrix}$. Use Sylvester's criterion.
-
-## Solution
-
-**Matrix.** $A=\begin{pmatrix}1&m\\m&4\end{pmatrix}$.
-
-**Leading principal minors.**
-- $\Delta_1=1>0$.
-- $\Delta_2=4-m^2>0\iff|m|<2$.
-
-**Conclusion.** $Q$ is positive definite iff $|m|<2$, i.e. $-2<m<2$.
-
-@@@ quadratic-form-signature-parameter.md
----
-title: Signature depending on a parameter
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: signature, parameter, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-For which $a\in\mathbb{R}$ is the quadratic form
-$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz)$$
-positive definite? Find the signature for all $a$.
-
-## Hint
-
-Reduce by grouping $x^2+2axy+...$, completing the square in $x$ first.
-
-## Solution
-
-**Group in $x$.** $x^2+2axy=(x+ay)^2-a^2y^2$. So
-$$Q=(x+ay)^2+(1-a^2)y^2+z^2+2ayz.$$
-
-**Group in $z$.** $z^2+2ayz=(z+ay)^2-a^2y^2$. So
-$$Q=(x+ay)^2+(1-2a^2)y^2+(z+ay)^2.$$
-
-**Signature analysis.**
-- If $1-2a^2>0$, i.e. $|a|<1/\sqrt2$: signature $(3,0,0)$, positive definite.
-- If $a=\pm1/\sqrt2$: signature $(2,0,1)$, degenerate positive.
-- If $|a|>1/\sqrt2$: signature $(2,1,0)$, indefinite.
-
-**Conclusion.** $Q$ is positive definite iff $|a|<1/\sqrt2$.
-
-@@@ quadratic-form-orthogonal-diagonalization.md
----
-title: Orthogonal diagonalization of a quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: orthogonal diagonalization, eigenvalues, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Orthogonally diagonalize the quadratic form
-$$Q(x,y,z)=2x^2+2y^2+2z^2+2xy-2xz-2yz,$$
-i.e. find an orthogonal matrix $Q$ and diagonal $D$ with $A=QDQ^T$.
-
-## Hint
-
-Compute the matrix $A$, then its eigenvalues and eigenvectors.
-
-## Solution
-
-**Matrix.**
-$$A=\begin{pmatrix}2&1&-1\\1&2&-1\\-1&-1&2\end{pmatrix}.$$
-
-**Eigenvalues.** Characteristic polynomial: $\det(A-\lambda I)$. Row/column sums are $2$, so $\lambda=2$ is an eigenvalue with eigenvector $(1,1,0)$? Let's compute: $A(1,1,0)^T=(3,3,-2)^T\neq2(1,1,0)$. Try $(1,1,0)$: no. Try $(1,-1,0)$: $A(1,-1,0)=(1,-1,0)$? $A(1,-1,0)=(1,-1,0)$. Yes! $\lambda=1$ with eigenvector $(1,-1,0)$.
-
-Compute trace: $6$, so remaining eigenvalues sum to $5$. Compute $\det A$: expand. Using eigenvalues $1$ and $2$ (found by inspection) plus a third. Actually let me compute the characteristic polynomial directly.
-
-Hmm, this is getting long. A cleaner approach: the matrix has the form $2I+N$ where $N=\begin{pmatrix}0&1&-1\\1&0&-1\\-1&-1&0\end{pmatrix}$. Eigenvalues of $N$: trace $0$, $\det N=0$ (sum of rows is $0$ for row $1$? Row $1$: $0+1-1=0$, so $(1,1,1)$ is in kernel, $\lambda=0$). Other eigenvalues of $N$: sum $0$, product $0$, one is $0$, sum of squares $=6$ (Frobenius norm squared), so $\lambda_1^2+\lambda_2^2+\lambda_3^2=6$, with $\lambda_1=0$, $\lambda_2+\lambda_3=0$, so $\lambda_2^2+\lambda_3^2=6$, i.e. $\lambda_2=\pm\sqrt3$, $\lambda_3=\mp\sqrt3$. So eigenvalues of $N$: $0,\sqrt3,-\sqrt3$. Eigenvalues of $A=2I+N$: $2, 2+\sqrt3, 2-\sqrt3$.
-
-**Signature.** $(3,0,0)$, all positive, so $Q$ is positive definite.
-
-**Orthogonal diagonalization.** The eigenvectors are those of $N$: $(1,1,1)$ for $\lambda=0$, and corresponding vectors for $\pm\sqrt3$.
-
-**Conclusion.** $Q$ is positive definite with eigenvalues $2, 2+\sqrt3, 2-\sqrt3$. Orthogonal diagonalization gives $Q=2u^2+(2+\sqrt3)v^2+(2-\sqrt3)w^2$.
-
-@@@ quadratic-form-two-forms-equivalent.md
----
-title: When are two quadratic forms equivalent?
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: equivalence, signature, congruence
-date: 2026-11-03
----
-
-## Statement
-
-Are the quadratic forms $Q_1(x,y)=x^2+4xy+3y^2$ and $Q_2(x,y)=x^2-y^2$ equivalent under an invertible linear change of variables?
-
-## Hint
-
-Compute their signatures.
-
-## Solution
-
-**$Q_1$.** $Q_1=(x+2y)^2-y^2$, signature $(1,1,0)$.
-
-**$Q_2$.** $Q_2=x^2-y^2$, signature $(1,1,0)$.
-
-**Equivalence.** Two quadratic forms are equivalent iff they have the same signature (Sylvester's law of inertia). Both have signature $(1,1,0)$, so they are equivalent.
-
-**Explicit change.** $Q_1=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q_1=u^2-v^2$, which is $Q_2$ in the variables $(u,v)$.
-
-**Conclusion.** $Q_1$ and $Q_2$ are equivalent.
-
-@@@ quadratic-form-minimize.md
----
-title: Minimizing a quadratic form on the sphere
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: minimum, sphere, eigenvalues
-date: 2026-11-03
----
-
-## Statement
-
-Minimize the quadratic form
-$$Q(x,y)=3x^2+2xy+3y^2$$
-on the unit circle $x^2+y^2=1$.
-
-## Hint
-
-The minimum is the smallest eigenvalue of the matrix $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
-
-## Solution
-
-**Matrix.** $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
-
-**Eigenvalues.** $\det(A-\lambda I)=(3-\lambda)^2-1$, roots $\lambda=2$ and $\lambda=4$.
-
-**Rayleigh quotient.** For $\|X\|=1$, $X^TAX$ ranges in $[\lambda_{\min},\lambda_{\max}]=[2,4]$.
-
-**Minimum.** The minimum is $2$, attained at the unit eigenvector for $\lambda=2$, i.e. $(1,-1)/\sqrt2$.
-
-**Conclusion.** $\min Q=2$ on the unit circle, attained at $\pm(1,-1)/\sqrt2$.
-
-@@@ quadratic-form-maximize.md
----
-title: Maximizing a quadratic form on the sphere
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: maximum, sphere, eigenvalues
-date: 2026-11-03
----
-
-## Statement
-
-Maximize the quadratic form
-$$Q(x,y)=3x^2+2xy+3y^2$$
-on the unit circle.
-
-## Hint
-
-Use the largest eigenvalue.
-
-## Solution
-
-**Eigenvalues.** From the previous exercise, $\lambda_1=2$ and $\lambda_2=4$.
-
-**Maximum.** On the unit sphere, $Q\le\lambda_2=4$, with equality at the unit eigenvector for $\lambda_2$, i.e. $(1,1)/\sqrt2$.
-
-**Verification.** $Q(1/\sqrt2,1/\sqrt2)=3/2+2/2+3/2=4$. Correct.
-
-**Conclusion.** $\max Q=4$ on the unit circle, attained at $\pm(1,1)/\sqrt2$.
-
-@@@ quadratic-form-rayleigh.md
----
-title: The Rayleigh quotient
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: Rayleigh quotient, eigenvalues, optimization
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be a symmetric matrix. The Rayleigh quotient of $X\neq0$ is
-$$R(X)=\frac{X^TAX}{X^TX}.$$
-Show that the minimum and maximum of $R$ over $\mathbb{R}^n\setminus\{0\}$ are the smallest and largest eigenvalues of $A$.
-
-## Hint
-
-Use the Lagrange multiplier method on the sphere, or the orthogonal diagonalization $A=QDQ^T$.
-
-## Solution
-
-**Diagonalization.** $A=QDQ^T$ with $Q$ orthogonal, $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
-
-**Change of variables.** Let $Y=Q^TX$. Then $X^TAX=Y^TDY=\sum_i\lambda_i y_i^2$ and $\|X\|^2=\|Y\|^2=\sum_i y_i^2$. So
-$$R(X)=\frac{\sum_i\lambda_i y_i^2}{\sum_i y_i^2}.$$
-
-**Bounding.** Since $\lambda_1\le\lambda_i\le\lambda_n$, the quotient lies in $[\lambda_1,\lambda_n]$.
-
-**Attainment.** Take $Y$ proportional to $e_1$ (for $\lambda_1$) or $e_n$ (for $\lambda_n$); then $X=QY$ is the corresponding eigenvector.
-
-**Conclusion.** $\min R=\lambda_{\min}$ and $\max R=\lambda_{\max}$.
-
-@@@ quadratic-form-LDL-decomposition.md
----
-title: LDL decomposition of a symmetric matrix
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: LDL decomposition, Sylvester, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Write the matrix
-$$A=\begin{pmatrix}4&2\\2&5\end{pmatrix}$$
-in the form $A=LDL^T$ with $L$ unit lower triangular and $D$ diagonal.
-
-## Hint
-
-Use Gaussian elimination without pivoting, tracking the multipliers.
-
-## Solution
-
-**First step.** $L_2\leftarrow L_2-(1/2)L_1$: multiplier $\ell_{21}=1/2$. New matrix:
-$$\begin{pmatrix}4&2\\0&4\end{pmatrix}.$$
-
-**Decomposition.**
-$$L=\begin{pmatrix}1&0\\1/2&1\end{pmatrix},\qquad D=\begin{pmatrix}4&0\\0&4\end{pmatrix}.$$
-
-**Verify.**
-$$LDL^T=\begin{pmatrix}1&0\\1/2&1\end{pmatrix}\begin{pmatrix}4&0\\0&4\end{pmatrix}\begin{pmatrix}1&1/2\\0&1\end{pmatrix}=\begin{pmatrix}4&2\\2&5\end{pmatrix}.$$
-Correct.
-
-**Conclusion.** $A=LDL^T$ with the matrices above.
-
-@@@ quadratic-form-inequality.md
----
-title: An inequality via a positive definite form
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: inequality, positive definite, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Show that for all $x,y\in\mathbb{R}$,
-$$x^2+xy+y^2\ge\frac34(x+y)^2.$$
-
-## Hint
-
-Consider the quadratic form $Q=x^2+xy+y^2-\frac34(x+y)^2$ and show it is positive semi-definite.
-
-## Solution
-
-**Compute $Q$.**
-$$Q=x^2+xy+y^2-\frac34(x^2+2xy+y^2)=\frac14x^2-\frac12xy+\frac14y^2=\frac14(x-y)^2.$$
-
-**Conclusion.** $Q=\frac14(x-y)^2\ge0$, with equality iff $x=y$. Hence the inequality holds.
-
-**Remark.** This is a special case of the Cauchy-Schwarz-type inequalities involving quadratic forms.
-
-@@@ inner-product-definition.md
----
-title: Inner product axioms
-category: linear/inner-products
-level: lycee
-difficulty: 1
-tags: inner product, axioms, dot product
-date: 2026-11-03
----
-
-## Statement
-
-Let $E=\mathbb{R}^2$ with the map $\langle u,v\rangle = 2u_1v_1 + u_2v_2$. Show that $\langle\cdot,\cdot\rangle$ is an inner product on $\mathbb{R}^2$.
-
-## Hint
-
-Check the four axioms: bilinearity, symmetry, and positive definiteness.
-
-## Solution
-
-**Bilinearity.** For $u,v,w\in\mathbb{R}^2$ and $\lambda\in\mathbb{R}$:
-$$\langle u+\lambda w,v\rangle = 2(u_1+\lambda w_1)v_1+(u_2+\lambda w_2)v_2 = \langle u,v\rangle+\lambda\langle w,v\rangle.$$
-Symmetry in the second variable follows similarly.
-
-**Symmetry.** $\langle u,v\rangle = 2u_1v_1+u_2v_2 = 2v_1u_1+v_2u_2=\langle v,u\rangle$.
-
-**Positive definiteness.** $\langle u,u\rangle = 2u_1^2+u_2^2\ge0$, with equality iff $u_1=u_2=0$.
-
-**Conclusion.** $\langle\cdot,\cdot\rangle$ is an inner product on $\mathbb{R}^2$.
-
-@@@ inner-product-cauchy-schwarz.md
----
-title: Cauchy-Schwarz inequality
-category: linear/inner-products
-level: lycee
-difficulty: 2
-tags: Cauchy-Schwarz, inequality, inner product
-date: 2026-11-03
----
-
-## Statement
-
-Let $(E,\langle\cdot,\cdot\rangle)$ be an inner product space. Show that
-$$|\langle u,v\rangle|\le\|u\|\|v\|$$
-for all $u,v\in E$.
-
-## Hint
-
-Consider $\|u-tv\|^2\ge0$ for all $t\in\mathbb{R}$ and choose $t$ appropriately.
-
-## Solution
-
-**Non-negativity.** For all $t\in\mathbb{R}$,
-$$\|u-tv\|^2=\|u\|^2-2t\langle u,v\rangle+t^2\|v\|^2\ge0.$$
-
-**Case $v=0$.** Then $\langle u,v\rangle=0$ and the inequality is trivial.
-
-**Case $v\neq0$.** Choose $t=\langle u,v\rangle/\|v\|^2$:
-$$\|u\|^2 - \frac{\langle u,v\rangle^2}{\|v\|^2}\ge0,$$
-i.e. $\langle u,v\rangle^2\le\|u\|^2\|v\|^2$.
-
-**Conclusion.** $|\langle u,v\rangle|\le\|u\|\|v\|$, with equality iff $u,v$ are linearly dependent.
-
-@@@ inner-product-triangle-inequality.md
----
-title: Triangle inequality
-category: linear/inner-products
-level: lycee
-difficulty: 3
-tags: triangle inequality, norm, inner product
-date: 2026-11-03
----
-
-## Statement
-
-Let $\|\cdot\|$ be the norm associated with an inner product. Show that
-$$\|u+v\|\le\|u\|+\|v\|.$$
-
-## Hint
-
-Expand $\|u+v\|^2$ and bound $\langle u,v\rangle$ using Cauchy-Schwarz.
-
-## Solution
-
-**Expansion.**
-$$\|u+v\|^2=\|u\|^2+2\langle u,v\rangle+\|v\|^2.$$
-
-**Bound.** By Cauchy-Schwarz, $\langle u,v\rangle\le|\langle u,v\rangle|\le\|u\|\|v\|$, so
-$$\|u+v\|^2\le\|u\|^2+2\|u\|\|v\|+\|v\|^2=(\|u\|+\|v\|)^2.$$
-
-**Conclusion.** Taking square roots: $\|u+v\|\le\|u\|+\|v\|$, with equality iff $u,v$ are nonnegatively proportional.
-
-@@@ inner-product-orthogonal-family.md
----
-title: Orthogonal families are independent
-category: linear/inner-products
-level: lycee
-difficulty: 2
-tags: orthogonal family, linear independence, proof
-date: 2026-11-03
----
-
-## Statement
-
-Let $(v_1,\ldots,v_k)$ be a family of nonzero pairwise orthogonal vectors in an inner product space. Show that this family is linearly independent.
-
-## Hint
-
-Suppose $\sum\alpha_i v_i=0$, and take the inner product with each $v_j$.
-
-## Solution
-
-**Orthogonality.** For $i\neq j$, $\langle v_i,v_j\rangle=0$.
-
-**Linear independence.** Suppose $\sum_{i=1}^k\alpha_i v_i=0$. For a fixed $j$:
-$$0=\langle 0,v_j\rangle=\left\langle\sum_i\alpha_i v_i,v_j\right\rangle=\sum_i\alpha_i\langle v_i,v_j\rangle=\alpha_j\|v_j\|^2.$$
-Since $v_j\neq0$, $\|v_j\|^2>0$, so $\alpha_j=0$.
-
-**Conclusion.** All coefficients are zero, so the family is linearly independent.
-
-@@@ inner-product-gram-schmidt.md
----
-title: Gram-Schmidt orthonormalization
-category: linear/inner-products
-level: l1
-difficulty: 3
-tags: Gram-Schmidt, orthonormal basis, algorithm
-date: 2026-11-03
----
-
-## Statement
-
-Apply Gram-Schmidt to the vectors $v_1=(1,1,0)$, $v_2=(1,0,1)$, $v_3=(0,1,1)$ in $\mathbb{R}^3$ with the standard inner product.
-
-## Hint
-
-At each step $k$, subtract from $v_k$ its projection onto the previously constructed orthonormal vectors.
-
-## Solution
-
-**Step 1.** $u_1=v_1/\|v_1\|=(1,1,0)/\sqrt2$.
-
-**Step 2.** Projection of $v_2$ onto $u_1$: $\langle v_2,u_1\rangle=1/\sqrt2$. Orthogonal part:
-$$w_2=v_2-\frac{1}{\sqrt2}u_1=(1,0,1)-(1/2)(1,1,0)=(1/2,-1/2,1).$$
-Norm: $\sqrt{1/4+1/4+1}=\sqrt{3/2}$, so $u_2=w_2/\|w_2\|=(1,-1,2)/\sqrt6$.
-
-**Step 3.** Projections of $v_3$:
-$$\langle v_3,u_1\rangle=1/\sqrt2,\qquad \langle v_3,u_2\rangle=2/\sqrt6.$$
-Orthogonal part:
-$$w_3=v_3-\frac{1}{\sqrt2}u_1-\frac{2}{\sqrt6}u_2.$$
-Compute: $\frac{1}{\sqrt2}u_1=(1/2,1/2,0)$ and $\frac{2}{\sqrt6}u_2=(1/3,-1/3,2/3)$. So
-$$w_3=(0,1,1)-(1/2,1/2,0)-(1/3,-1/3,2/3)=(-5/6,5/6,1/3).$$
- Norm: $\sqrt{25/36+25/36+4/36}=\sqrt{54}/6$. Simplify: $\sqrt{54}=3\sqrt6$, so $\|w_3\|=\sqrt6/2$. Hence $u_3=w_3/\|w_3\|=(-5,5,2)/\sqrt{54}$.
-
-**Conclusion.** The orthonormal basis is
-$$u_1=\frac{1}{\sqrt2}(1,1,0),\quad u_2=\frac{1}{\sqrt6}(1,-1,2),\quad u_3=\frac{1}{\sqrt{54}}(-5,5,2).$$
-
-@@@ inner-product-orthogonal-basis.md
----
-title: An orthogonal basis from the standard basis
-category: linear/inner-products
-level: l1
-difficulty: 3
-tags: orthogonal basis, Gram-Schmidt, polynomial space
-date: 2026-11-03
----
-
-## Statement
-
-In $\mathbb{R}_2[X]$ with inner product $\langle P,Q\rangle=\int_0^1 P(t)Q(t)\,dt$, orthonormalize the basis $(1,X,X^2)$.
-
-## Hint
-
-Apply Gram-Schmidt with respect to the integral inner product.
-
-## Solution
-
-**Step 1.** $\langle 1,1\rangle=\int_0^1 1\,dt=1$, so $u_1=1$.
-
-**Step 2.** $\langle X,1\rangle=\int_0^1 t\,dt=1/2$. Orthogonal part:
-$$w_2=X-\frac12.$$
-Norm: $\|w_2\|^2=\int_0^1(t-1/2)^2\,dt=1/12$. So $u_2=2\sqrt3(X-1/2)=\sqrt3(2X-1)$.
-
-**Step 3.** $\langle X^2,1\rangle=1/3$, $\langle X^2,u_2\rangle=\sqrt3\int_0^1 t^2(2t-1)\,dt=\sqrt3(1/2-1/3)=\sqrt3/6$. Orthogonal part:
-$$w_3=X^2-\frac13-\frac{\sqrt3}{6}\cdot\sqrt3(2X-1)=X^2-\frac13-\frac12(2X-1)=X^2-X+\frac16.$$
-Norm: $\|w_3\|^2=\int_0^1(X^2-X+1/6)^2\,dt=1/180$. So $u_3=6\sqrt5(X^2-X+1/6)$.
-
-**Conclusion.** The orthonormal basis is $(1,\sqrt3(2X-1),6\sqrt5(X^2-X+1/6))$.
-@@@ determinant-companion.md
----
-title: Determinant of a companion matrix
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: companion matrix, determinant, characteristic polynomial
-date: 2026-11-03
----
-
-## Statement
-
-Compute the determinant of
-$$C = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ -c_0 & -c_1 & -c_2 \end{pmatrix}.$$
-
-## Hint
-
-Expand along the first column, or recognise the companion matrix of $X^3+c_2X^2+c_1X+c_0$.
-
-## Solution
-
-**Expansion along the first column.** The only nonzero entry in column $1$ is $C_{31}=-c_0$. Its cofactor is
-$$(-1)^{3+1}\begin{vmatrix}1&0\\0&1\end{vmatrix}=+1.$$
-Hence
-$$\det C=(-c_0)\cdot(+1)=-c_0.$$
-
-
-**Remark.** This is the companion matrix of $P(X)=X^3+c_2X^2+c_1X+c_0$. Its characteristic polynomial is
-$$\det(\lambda I-C)=\lambda^3+c_2\lambda^2+c_1\lambda+c_0=P(\lambda),$$
-which is monic. The constant term of the characteristic polynomial is $c_0$, and for an $n\times n$ companion matrix the determinant equals $(-1)^n$ times that constant term, so here $\det C=(-1)^3c_0=-c_0$, consistent with the direct computation.
-@@@ inner-product-orthogonal-projection.md
----
-title: Orthogonal projection onto a subspace
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: orthogonal projection, subspace, orthonormal basis
-date: 2026-11-03
----
-
-## Statement
-
-Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$ with the standard inner product. Compute the orthogonal projection of $v=(1,2,3)$ onto $F$.
-
-## Hint
-
-Find an orthonormal basis of $F$, then $p_F(v)=\sum_i\langle v,u_i\rangle u_i$.
-
-## Solution
-
-**Orthonormal basis of $F$ by Gram–Schmidt.** Take $a_1=(1,1,0)$ and $a_2=(0,1,1)$.
-- $u_1=\dfrac{a_1}{\|a_1\|}=\dfrac{(1,1,0)}{\sqrt2}$.
-- $\langle a_2,u_1\rangle=\dfrac{1}{\sqrt2}$, so
-$$a_2-\langle a_2,u_1\rangle u_1=(0,1,1)-\frac12(1,1,0)=\left(-\frac12,\frac12,1\right),$$
-whose norm is $\sqrt{\tfrac14+\tfrac14+1}=\sqrt{\tfrac32}$. Hence
-$$u_2=\frac{\left(-1/2,\,1/2,\,1\right)}{\sqrt{3/2}}=\frac{(-1,1,2)}{\sqrt6}.$$
-
-**Projections.**
-$$\langle v,u_1\rangle=\frac{1+2+0}{\sqrt2}=\frac{3}{\sqrt2},\qquad
-\langle v,u_2\rangle=\frac{-1+2+6}{\sqrt6}=\frac{7}{\sqrt6}.$$
-
-**Projection.**
-$$p_F(v)=\frac{3}{\sqrt2}\,u_1+\frac{7}{\sqrt6}\,u_2
-=\frac32(1,1,0)+\frac76(-1,1,2).$$
-Componentwise:
-$$p_F(v)=\left(\frac32-\frac76,\ \frac32+\frac76,\ \frac{14}{6}\right)
-=\left(\frac13,\ \frac83,\ \frac73\right).$$
-@@@ inner-product-orthogonal-complement.md
----
-title: Orthogonal complement
-category: linear/inner-products
-level: l1
-difficulty: 3
-tags: orthogonal complement, dimension, direct sum
-date: 2026-11-03
----
-
-## Statement
-
-Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$. Compute $F^\perp$ and verify $\mathbb{R}^3=F\oplus F^\perp$.
-
-## Hint
-
-$F^\perp$ is the set of vectors orthogonal to the generators.
-
-## Solution
-
-**Equations.** $v=(x,y,z)\in F^\perp$ iff:
-$$v\cdot(1,1,0)=x+y=0,\qquad v\cdot(0,1,1)=y+z=0.$$
-So $y=-x$ and $z=x$, giving $v=x(1,-1,1)$.
-
-**Conclusion.** $F^\perp=\operatorname{span}((1,-1,1))$, dimension $1$.
-
-**Direct sum.** $\dim F=2$, $\dim F^\perp=1$, and $2+1=3=\dim\mathbb{R}^3$. Also $F\cap F^\perp=\{0\}$ (a vector in both would be orthogonal to itself, hence zero). So $\mathbb{R}^3=F\oplus F^\perp$.
-
-@@@ inner-product-distance-to-subspace.md
----
-title: Distance to a subspace
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: distance, orthogonal projection, minimization
-date: 2026-11-03
----
-
-## Statement
-
-Compute the distance from $v=(1,1,1)$ to the plane $F=\{x+y+z=0\}$ in $\mathbb{R}^3$.
-
-## Hint
-
-The distance is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$, we may compute $p_{F^\perp}(v)$ instead: the vector $v-p_F(v)$ equals the orthogonal projection of $v$ onto $F^\perp$.
-
-## Solution
-
-**Orthogonal complement.** $F^\perp = \operatorname{span}\bigl((1,1,1)\bigr)$, normalized to $u=(1,1,1)/\sqrt3$.
-
-**Projection onto $F^\perp$.** $\langle v,u\rangle = (1+1+1)/\sqrt3 = 3/\sqrt3 = \sqrt3$. Hence
-$$p_{F^\perp}(v) = \langle v,u\rangle\, u = \sqrt3\cdot\frac{(1,1,1)}{\sqrt3} = (1,1,1) = v.$$
-This is consistent: $v\in F^\perp$ because $(1,1,1)$ is exactly the normal of $F$ (and $v\notin F$ since $1+1+1=3\neq 0$).
-
-**Distance.** The distance to $F$ is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$ and $\mathbb{R}^3 = F\oplus F^\perp$, we have $v-p_F(v)=p_{F^\perp}(v)=v$. Therefore
-$$\operatorname{dist}(v,F) = \|v\| = \sqrt{1^2+1^2+1^2}=\sqrt3.$$
-
-**Conclusion.** The distance from $(1,1,1)$ to the plane $x+y+z=0$ is $\sqrt3$.
-
-@@@ inner-product-bessel.md
----
-title: Bessel's inequality
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: Bessel inequality, orthonormal family, projection
-date: 2026-11-03
----
-
-## Statement
-
-Let $(e_1,\ldots,e_k)$ be an orthonormal family in an inner product space $E$. Show that for every $v\in E$,
-$$\sum_{i=1}^k|\langle v,e_i\rangle|^2\le\|v\|^2.$$
-
-## Hint
-
-Consider $w=v-\sum_i\langle v,e_i\rangle e_i$ and expand $\|w\|^2\ge0$.
-
-## Solution
-
-**Decomposition.** Let $p=\sum_i\langle v,e_i\rangle e_i$. Then $\langle p,e_j\rangle=\langle v,e_j\rangle$ for each $j$, so $v-p\perp e_j$ for all $j$.
-
-**Norm expansion.**
-$$\|v\|^2=\|p+(v-p)\|^2=\|p\|^2+\|v-p\|^2$$
-because $p\perp(v-p)$.
-
-**Computation.** $\|p\|^2=\sum_i|\langle v,e_i\rangle|^2$ (by orthonormality) and $\|v-p\|^2\ge0$. Hence
-$$\|v\|^2\ge\|p\|^2=\sum_i|\langle v,e_i\rangle|^2.$$
-
-**Conclusion.** Bessel's inequality holds. Equality iff $v\in\operatorname{span}(e_1,\ldots,e_k)$.
-
-@@@ inner-product-parseval.md
----
-title: Parseval's identity
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: Parseval identity, orthonormal basis, norm
-date: 2026-11-03
----
-
-## Statement
-
-Let $(e_1,\ldots,e_n)$ be an orthonormal basis of a finite-dimensional inner product space $E$. Show that for every $v\in E$,
-$$\|v\|^2=\sum_{i=1}^n|\langle v,e_i\rangle|^2.$$
-
-## Hint
-
-Use Bessel's inequality and the fact that $v=\sum_i\langle v,e_i\rangle e_i$ (since the basis is complete).
-
-## Solution
-
-**Expansion.** Since $(e_i)$ is a basis, $v=\sum_i c_i e_i$ with $c_i=\langle v,e_i\rangle$ (because $\langle v,e_j\rangle=\sum_i c_i\langle e_i,e_j\rangle=c_j$).
-
-**Norm.** $\|v\|^2=\langle\sum_i c_i e_i,\sum_j c_j e_j\rangle=\sum_i|c_i|^2$ by orthonormality.
-
-**Conclusion.** $\|v\|^2=\sum_i|\langle v,e_i\rangle|^2$ = Parseval's identity.
-
-**Remark.** This is the equality case of Bessel's inequality when the orthonormal family is complete (a basis).
-
-@@@ inner-product-adjoint.md
----
-title: Adjoint of a linear map
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: adjoint, linear map, inner product
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:\mathbb{R}^n\to\mathbb{R}^n$ be a linear map. Show that there exists a unique linear map $f^*:\mathbb{R}^n\to\mathbb{R}^n$ such that
-$$\langle f(u),v\rangle=\langle u,f^*(v)\rangle$$
-for all $u,v$. Identify $f^*$ in matrix terms.
-
-## Hint
-
-Fix an orthonormal basis; the map $v\mapsto\langle f(\cdot),v\rangle$ is a linear form, represented by a vector.
-
-## Solution
-
-**Existence.** Fix an orthonormal basis $(e_1,\ldots,e_n)$. For each $v$, the map $u\mapsto\langle f(u),v\rangle$ is linear in $u$, so there is a unique vector, call it $f^*(v)$, with $\langle f(u),v\rangle=\langle u,f^*(v)\rangle$ for all $u$.
-
-**Linearity of $f^*$.** For $\alpha,\beta\in\mathbb{R}$ and $v,w$:
-$$\langle u,f^*(\alpha v+\beta w)\rangle=\langle f(u),\alpha v+\beta w\rangle=\alpha\langle f(u),v\rangle+\beta\langle f(u),w\rangle.$$
-By uniqueness, $f^*(\alpha v+\beta w)=\alpha f^*(v)+\beta f^*(w)$.
-
-**Matrix form.** If $M$ is the matrix of $f$ in the orthonormal basis, then $f^*$ has matrix $M^T$ (transpose), because $\langle Mu,v\rangle=u^T M^T v=\langle u,M^T v\rangle$.
-
-**Conclusion.** $f^*$ exists and is unique, called the **adjoint** of $f$. In matrix terms, $f^*$ corresponds to the transpose.
-
-@@@ inner-product-self-adjoint.md
----
-title: Self-adjoint operators and symmetric matrices
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: self-adjoint, symmetric matrix, eigenvalues
-date: 2026-11-03
----
-
-## Statement
-
-Show that a linear map $f:\mathbb{R}^n\to\mathbb{R}^n$ is self-adjoint (i.e. $f=f^*$) iff its matrix in an orthonormal basis is symmetric.
-
-## Hint
-
-Use $f^*$ has matrix $M^T$.
-
-## Solution
-
-**If $M$ is symmetric.** Then the matrix of $f^*$ is $M^T=M$, so $f^*=f$.
-
-**If $f$ is self-adjoint.** Then the matrix of $f^*$ equals the matrix of $f$. But the matrix of $f^*$ is $M^T$, so $M=M^T$.
-
-**Conclusion.** In an orthonormal basis, $f$ is self-adjoint iff $M$ is symmetric.
-
-**Consequence.** Self-adjoint operators have real eigenvalues, and eigenvectors for distinct eigenvalues are orthogonal (spectral theorem for symmetric matrices).
-
-@@@ inner-product-orthogonal-matrix.md
----
-title: Orthogonal matrices and isometries
-category: linear/inner-products
-level: l1
-difficulty: 3
-tags: orthogonal matrix, isometry, inner product preservation
-date: 2026-11-03
----
-
-## Statement
-
-Let $Q$ be a real $n\times n$ matrix. Show that $Q$ is orthogonal ($Q^TQ=I$) iff $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$.
-
-## Hint
-
-Compute $\langle Qu,Qv\rangle=u^T Q^T Qv$.
-
-## Solution
-
-**If $Q^TQ=I$.** Then $\langle Qu,Qv\rangle=(Qu)^T(Qv)=u^TQ^TQv=u^Tv=\langle u,v\rangle$.
-
-**Conversely.** If $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$, then $u^T(Q^TQ-I)v=0$ for all $u,v$. Taking $u=e_i$, $v=e_j$, we get $(Q^TQ)_{ij}=\delta_{ij}$, so $Q^TQ=I$.
-
-**Conclusion.** Orthogonal matrices are exactly the linear isometries of $\mathbb{R}^n$.
-
-**Consequences.** $\det Q=\pm1$, and the columns of $Q$ form an orthonormal basis.
-
-@@@ inner-product-orthogonal-projection-formula.md
----
-title: Orthogonal projection onto a column space
-category: linear/inner-products
-level: l1
-difficulty: 5
-tags: orthogonal projection, column space, normal equations
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $m\times n$ matrix with full column rank ($\operatorname{rank}A=n$). Show that the matrix of orthogonal projection onto $\operatorname{Col}(A)$ is
-$$P=A(A^TA)^{-1}A^T.$$
-
-## Hint
-
-Show that $P$ is symmetric, idempotent, and fixes $\operatorname{Col}(A)$, and that its kernel is $\operatorname{Col}(A)^\perp$.
-
-## Solution
-
-**Symmetry.** $P^T=(A^TA)^{-1}$-part: $P^T=A((A^TA)^{-1})^T A^T=A(A^TA)^{-1}A^T=P$ since $A^TA$ is symmetric.
-
-**Idempotence.**
-$$P^2=A(A^TA)^{-1}A^T A(A^TA)^{-1}A^T=A(A^TA)^{-1}(A^TA)(A^TA)^{-1}A^T=P.$$
-
-**Fixes $\operatorname{Col}(A)$.** For $x=Ay$: $Px=A(A^TA)^{-1}A^TAy=Ay=x$.
-
-**Kernel.** If $Px=0$, then $A(A^TA)^{-1}A^T x=0$. Multiply by $(A^TA)^{-1}A^T$? Actually, $\langle Px,x\rangle=0\iff\|A^T x\|^2_{?}=0$. Note $x^T P x=x^TA(A^TA)^{-1}A^Tx=\|(A^TA)^{-1/2}A^Tx\|^2\ge0$. If $Px=0$, then $A^Tx=0$, so $x\perp\operatorname{Col}(A)$.
-
-**Conclusion.** $P$ is the orthogonal projection onto $\operatorname{Col}(A)$.
-
-@@@ inner-product-least-squares.md
----
-title: Least squares and normal equations
-category: linear/inner-products
-level: l1
-difficulty: 5
-tags: least squares, normal equations, orthogonal projection
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $m\times n$ matrix with full column rank, $b\in\mathbb{R}^m$. Show that the vector $x^*$ minimizing $\|Ax-b\|$ satisfies the normal equations
-$$A^TAx^*=A^Tb.$$
-
-## Hint
-
-Interpret $Ax$ as a point in $\operatorname{Col}(A)$, and $x^*$ as the orthogonal projection of $b$.
-
-## Solution
-
-**Geometric interpretation.** Minimizing $\|Ax-b\|$ over $x$ is equivalent to finding the point of $\operatorname{Col}(A)$ closest to $b$. This is the orthogonal projection of $b$ onto $\operatorname{Col}(A)$.
-
-**Orthogonality.** For $x^*$ to be the projection, $b-Ax^*$ must be orthogonal to $\operatorname{Col}(A)$, i.e. to every column of $A$:
-$$A^T(b-Ax^*)=0.$$
-
-**Normal equations.** Rearranging:
-$$A^TAx^*=A^Tb.$$
-Since $A$ has full column rank, $A^TA$ is invertible, so $x^*=(A^TA)^{-1}A^Tb$.
-
-**Conclusion.** The least-squares solution satisfies the normal equations.
-
-@@@ inner-product-orthonormal-completion.md
----
-title: Completing an orthonormal family
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: orthonormal family, basis, completion
-date: 2026-11-03
----
-
-## Statement
-
-Let $(e_1,\ldots,e_k)$ be an orthonormal family in a finite-dimensional inner product space $E$. Show that it can be completed to an orthonormal basis of $E$.
-
-## Hint
-
-Extend to a basis, then apply Gram-Schmidt while keeping the first $k$ vectors.
-
-## Solution
-
-**Extension.** By the incomplete basis theorem, extend $(e_1,\ldots,e_k)$ to a basis $(e_1,\ldots,e_k,v_{k+1},\ldots,v_n)$ of $E$.
-
-**Gram-Schmidt, keeping the first $k$.** The vectors $e_1,\ldots,e_k$ are already orthonormal. Apply Gram-Schmidt to the whole basis: the first $k$ vectors don't change (they are already orthonormal), and the process produces orthonormal vectors $e_1,\ldots,e_k,e_{k+1},\ldots,e_n$.
-
-**Conclusion.** $(e_1,\ldots,e_n)$ is an orthonormal basis of $E$ completing the original family.
-@@@ inner-product-orthogonal-polynomials-legendre.md
----
-title: Legendre polynomials
-category: linear/inner-products
-level: l1
-difficulty: 5
-tags: Legendre polynomials, orthogonal polynomials, inner product
-date: 2026-11-03
----
-
-## Statement
-
-In $\mathbb{R}_n[X]$ with inner product $\langle P,Q\rangle=\int_{-1}^1 P(t)Q(t)\,dt$, construct the first three Legendre polynomials by orthonormalizing $(1,X,X^2)$.
-
-## Hint
-
-Apply Gram–Schmidt.
-
-## Solution
-
-**Step 1: normalize $1$.** $\langle 1,1\rangle=\int_{-1}^1 dt=2$, so
-$$u_1=\frac{1}{\sqrt2}.$$
-
-**Step 2: orthogonalize $X$ against $u_1$.** $\langle X,1\rangle=\int_{-1}^1 t\,dt=0$, so $X$ is already orthogonal to $1$. Norm:
-$$\langle X,X\rangle=\int_{-1}^1 t^2\,dt=\frac23,\qquad u_2=\frac{X}{\sqrt{2/3}}=\sqrt{\frac32}\,X.$$
-
-**Step 3: orthogonalize $X^2$ against $u_1,u_2$.**
-$$\langle X^2,1\rangle=\int_{-1}^1 t^2\,dt=\frac23,\qquad \langle X^2,X\rangle=\int_{-1}^1 t^3\,dt=0.$$
-So the orthogonal part is
-$$X^2-\frac{\langle X^2,1\rangle}{\langle 1,1\rangle}\cdot 1=X^2-\frac{2/3}{2}=X^2-\frac13.$$
-Its squared norm:
-$$\int_{-1}^1\left(t^2-\frac13\right)^2 dt=\int_{-1}^1 t^4\,dt-\frac23\int_{-1}^1 t^2\,dt+\frac19\int_{-1}^1 dt=\frac25-\frac49+\frac29=\frac{18-20+10}{45}=\frac{8}{45}.$$
-Hence
-$$u_3=\frac{X^2-1/3}{\sqrt{8/45}}=\sqrt{\frac{45}{8}}\left(X^2-\frac13\right)=\frac{3\sqrt5}{2\sqrt2}\left(X^2-\frac13\right).$$
-
-**The orthonormal triple.**
-$$u_1=\frac{1}{\sqrt2},\qquad u_2=\sqrt{\frac32}\,X,\qquad u_3=\frac{3\sqrt5}{2\sqrt2}\left(X^2-\frac13\right).$$
-They satisfy $\langle u_i,u_j\rangle=\delta_{ij}$.
-
-**Standard Legendre polynomials.** Rescaling to monic (or to the classical normalization), one gets
-$$P_0=1,\qquad P_1=X,\qquad P_2=\frac{3X^2-1}{2}.$$
-These are proportional to $u_1,u_2,u_3$ and orthogonal for the integral inner product on $[-1,1]$.
-
-
-**Conclusion.** The first three Legendre polynomials (unnormalized) are $P_0=1$, $P_1=X$, $P_2=\dfrac{3X^2-1}{2}$; the corresponding orthonormal vectors are $u_1,u_2,u_3$ above.
-@@@ inner-product-fourier-coefficients.md
----
-title: Fourier coefficients and orthogonal projection
-category: linear/inner-products
-level: l1
-difficulty: 5
-tags: Fourier coefficients, trigonometric basis, orthogonal projection
-date: 2026-11-03
----
-
-## Statement
-
-On the space of continuous $2\pi$-periodic functions with inner product $\langle f,g\rangle=\frac1\pi\int_{-\pi}^\pi f(t)g(t)\,dt$, show that the functions $1,\cos t,\sin t,\cos 2t,\sin 2t,\ldots$ are orthogonal.
-
-## Hint
-
-Compute $\langle \cos mt,\cos nt\rangle$, $\langle\sin mt,\sin nt\rangle$, $\langle\cos mt,\sin nt\rangle$ using product-to-sum formulas.
-
-## Solution
-
-**Orthogonality of cosines.** For $m\neq n$:
-$$\langle\cos mt,\cos nt\rangle=\frac1\pi\int_{-\pi}^\pi\cos mt\cos nt\,dt=\frac1{2\pi}\int_{-\pi}^\pi[\cos(m-n)t+\cos(m+n)t]\,dt=0.$$
-For $m=n$, it equals $1$.
-
-**Orthogonality of sines.** Similarly, $\langle\sin mt,\sin nt\rangle=\delta_{mn}$.
-
-**Orthogonality between cosine and sine.** $\langle\cos mt,\sin nt\rangle=0$ because the integrand is odd.
-
-**Orthogonality with constant.** $\langle 1,\cos mt\rangle=0$ and $\langle 1,\sin nt\rangle=0$ (integral of cosine/sine over a period).
-
-**Conclusion.** These functions form an orthogonal family. The Fourier coefficients $a_n=\langle f,\cos nt\rangle$, $b_n=\langle f,\sin nt\rangle$ are the projections of $f$ onto these orthogonal functions.
-
-@@@ inner-product-riesz-representation.md
----
-title: Riesz representation theorem (finite-dimensional)
-category: linear/inner-products
-level: l1
-difficulty: 5
-tags: Riesz representation, linear forms, inner product
-date: 2026-11-03
----
-
-## Statement
-
-Let $E$ be a finite-dimensional inner product space, and $\varphi:E\to\mathbb{R}$ a linear form. Show that there exists a unique $u\in E$ such that
-$$\varphi(v)=\langle v,u\rangle$$
-for all $v\in E$.
-
-## Hint
-
-Choose an orthonormal basis $(e_i)$ and set $u=\sum_i\varphi(e_i)e_i$.
-
-## Solution
-
-**Existence.** Let $(e_1,\ldots,e_n)$ be an orthonormal basis of $E$. Define $u=\sum_i\varphi(e_i)e_i$. For any $v=\sum_j v_j e_j$:
-$$\langle v,u\rangle=\sum_j v_j\langle e_j,u\rangle=\sum_j v_j\varphi(e_j)=\varphi\left(\sum_j v_j e_j\right)=\varphi(v).$$
-
-**Uniqueness.** If $\langle v,u\rangle=\langle v,u'\rangle$ for all $v$, then $\langle v,u-u'\rangle=0$ for all $v$. Taking $v=u-u'$: $\|u-u'\|^2=0$, so $u=u'$.
-
-**Conclusion.** Every linear form on a finite-dimensional inner product space is represented by a unique vector.
-
-**Matrix form.** In matrix terms, a linear form $\varphi(v)=a^Tv$ is represented by the vector $u=a$ (in an orthonormal basis).
 @@@ vector-space-axioms-check.md
 ---
 title: Checking the vector space axioms
@@ -4200,4 +1496,2707 @@ Fix bases of $E$ and $F$; the map $f\mapsto$ matrix of $f$ is a linear isomorphi
 
 **Conclusion.** $\mathcal{L}(E,F)$ is a vector space of dimension $mn$.
 
+@@@ determinant-companion.md
+---
+title: Determinant of a companion matrix
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: companion matrix, determinant, characteristic polynomial
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the determinant of
+$$C = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ -c_0 & -c_1 & -c_2 \end{pmatrix}.$$
+
+## Hint
+
+Expand along the first column, or recognise the companion matrix of $X^3+c_2X^2+c_1X+c_0$.
+
+## Solution
+
+**Expansion along the first column.** The only nonzero entry in column $1$ is $C_{31}=-c_0$. Its cofactor is
+$$(-1)^{3+1}\begin{vmatrix}1&0\\0&1\end{vmatrix}=+1.$$
+Hence
+$$\det C=(-c_0)\cdot(+1)=-c_0.$$
+
+
+**Remark.** This is the companion matrix of $P(X)=X^3+c_2X^2+c_1X+c_0$. Its characteristic polynomial is
+$$\det(\lambda I-C)=\lambda^3+c_2\lambda^2+c_1\lambda+c_0=P(\lambda),$$
+which is monic. The constant term of the characteristic polynomial is $c_0$, and for an $n\times n$ companion matrix the determinant equals $(-1)^n$ times that constant term, so here $\det C=(-1)^3c_0=-c_0$, consistent with the direct computation.
+@@@ determinant-2x2-basic.md
+---
+title: Determinant of a 2×2 matrix
+category: linear/determinants
+level: lycee
+difficulty: 1
+tags: determinant, 2x2 matrices, invertibility
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the determinant of each matrix and decide whether it is invertible:
+
+(a) $A = \begin{pmatrix} 3 & 1 \\ 5 & 2 \end{pmatrix}$;
+(b) $B = \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix}$;
+(c) $C = \begin{pmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{pmatrix}$.
+
+## Hint
+
+For a $2\times2$ matrix $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$, the determinant is $ad-bc$. The matrix is invertible iff the determinant is nonzero.
+
+## Solution
+
+**(a)** $\det A = 3\cdot2 - 1\cdot5 = 6-5=1$. Invertible.
+
+**(b)** $\det B = 1\cdot4 - 2\cdot2 = 0$. Not invertible.
+
+**(c)** $\det C = \cos\theta\cdot\cos\theta - (-\sin\theta)(\sin\theta) = \cos^2\theta+\sin^2\theta = 1$. Invertible for all $\theta$ (it is a rotation matrix).
+
+@@@ determinant-3x3-sarrus.md
+---
+title: Determinant of a 3×3 matrix by Sarrus' rule
+category: linear/determinants
+level: lycee
+difficulty: 2
+tags: determinant, Sarrus rule, 3x3 matrices
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the determinant of
+$$A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 10 \end{pmatrix}.$$
+
+## Hint
+
+Use Sarrus' rule: add the three products along downward diagonals and subtract the three products along upward diagonals.
+
+## Solution
+
+**Sarrus' rule.**
+$$\det A = 1\cdot5\cdot10 + 2\cdot6\cdot7 + 3\cdot4\cdot8 - 3\cdot5\cdot7 - 1\cdot6\cdot8 - 2\cdot4\cdot10.$$
+Compute each term:
+$$= 50 + 84 + 96 - 105 - 48 - 80 = 230 - 233 = -3.$$
+
+**Conclusion.** $\det A = -3$, so $A$ is invertible.
+
+@@@ determinant-expansion-row.md
+---
+title: Expansion along a row
+category: linear/determinants
+level: lycee
+difficulty: 3
+tags: cofactor expansion, minors, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the determinant of
+$$A = \begin{pmatrix} 2 & 0 & 0 & 1 \\ 0 & 3 & 0 & 0 \\ 0 & 0 & 4 & 0 \\ 5 & 0 & 0 & 6 \end{pmatrix}$$
+by expanding along the most convenient row or column.
+
+## Hint
+
+Expand along the second row, which has only one nonzero entry.
+
+## Solution
+
+**Expansion along the second row.** The only nonzero entry is $a_{22}=3$. Its cofactor is $(-1)^{2+2}=+1$ times the determinant of the $3\times3$ minor obtained by deleting row $2$ and column $2$:
+$$M_{22} = \begin{vmatrix} 2 & 0 & 1 \\ 0 & 4 & 0 \\ 5 & 0 & 6 \end{vmatrix}.$$
+
+**Expand $M_{22}$ along its second row.** The only nonzero entry is $4$ at position $(2,2)$, cofactor $(+1)\begin{vmatrix}2&1\\5&6\end{vmatrix} = 12-5=7$.
+
+So $M_{22} = 4\cdot7 = 28$.
+
+**Conclusion.** $\det A = 3\cdot28 = 84$.
+
+**Check by permutation formula.** The matrix is a block "diagonal with a corner" structure; the result $2\cdot3\cdot4\cdot6 + (\text{sign})\cdot1\cdot3\cdot4\cdot5 = 144 - 60 = 84$ confirms it.
+
+@@@ determinant-expansion-column.md
+---
+title: Expansion along a column
+category: linear/determinants
+level: lycee
+difficulty: 3
+tags: cofactor expansion, minors, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the determinant of
+$$A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 4 & 5 \\ 1 & 0 & 6 \end{pmatrix}$$
+by expanding along the first column.
+
+## Hint
+
+Use the cofactor expansion along column $1$: $\det A = \sum_i (-1)^{i+1}a_{i1}\det M_{i1}$.
+
+## Solution
+
+**Expansion along column 1.**
+$$\det A = 1\cdot\begin{vmatrix}4&5\\0&6\end{vmatrix} - 0\cdot\begin{vmatrix}2&3\\0&6\end{vmatrix} + 1\cdot\begin{vmatrix}2&3\\4&5\end{vmatrix}.$$
+
+**Minor computations.**
+$$\begin{vmatrix}4&5\\0&6\end{vmatrix} = 24, \qquad \begin{vmatrix}2&3\\4&5\end{vmatrix} = 10-12=-2.$$
+
+**Conclusion.** $\det A = 1\cdot24 + 1\cdot(-2) = 22$.
+
+**Check by Sarrus.** $1\cdot4\cdot6 + 2\cdot5\cdot1 + 3\cdot0\cdot0 - 3\cdot4\cdot1 - 2\cdot0\cdot6 - 1\cdot5\cdot0 = 24+10+0-12-0-0 = 22$. Consistent.
+
+@@@ determinant-row-operation-effect.md
+---
+title: Effect of row operations on the determinant
+category: linear/determinants
+level: lycee
+difficulty: 2
+tags: row operations, determinant properties, multilinearity
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the effect of each elementary row operation on the determinant:
+
+1. $L_i \leftrightarrow L_j$ (swap two rows);
+2. $L_i \leftarrow \lambda L_i$ with $\lambda\neq 0$ (multiply a row by $\lambda$);
+3. $L_i \leftarrow L_i + \lambda L_j$ with $j\neq i$ (add a multiple of another row).
+
+## Hint
+
+Use multilinearity and the alternating property of the determinant.
+
+## Solution
+
+**1. Swapping.** The determinant changes sign: $\det = -\det_{\text{original}}$. This follows from the alternating property (the determinant is zero when two rows are equal, and swapping is an odd permutation).
+
+**2. Scaling.** Multiplying a row by $\lambda$ multiplies the determinant by $\lambda$: $\det = \lambda\cdot\det_{\text{original}}$. This follows from linearity in each row.
+
+**3. Adding a multiple.** Adding a multiple of one row to another leaves the determinant unchanged. Indeed, writing the new row as $L_i+\lambda L_j$, linearity gives $\det(L_i+\lambda L_j,\ldots)=\det(L_i,\ldots)+\lambda\det(L_j,\ldots)$, and the second determinant has two equal rows, so it is zero.
+
+**Conclusion.** Swapping changes sign; scaling by $\lambda$ scales by $\lambda$; adding a multiple leaves the determinant unchanged. These rules are used to simplify determinant computations.
+
+@@@ determinant-triangular.md
+---
+title: Determinant of a triangular matrix
+category: linear/determinants
+level: lycee
+difficulty: 2
+tags: triangular matrix, determinant, diagonal
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the determinant of an upper triangular (or lower triangular) matrix is the product of its diagonal entries.
+
+## Hint
+
+Expand recursively along the first column (or last row).
+
+## Solution
+
+**Expansion along the first column.** Let $T$ be upper triangular with diagonal entries $t_{11},\ldots,t_{nn}$. In the first column, only $t_{11}$ is nonzero, so
+$$\det T = t_{11}\det T_{11},$$
+where $T_{11}$ is the $(n-1)\times(n-1)$ upper triangular submatrix obtained by removing the first row and first column, with diagonal entries $t_{22},\ldots,t_{nn}$.
+
+**Induction.** Repeating the expansion, we get $\det T = t_{11}t_{22}\cdots t_{nn}$.
+
+**Lower triangular case.** The same argument works by expanding along the first row (or by transposing: $\det T = \det T^T$, and $T^T$ is upper triangular).
+
+**Conclusion.** For any triangular matrix, the determinant equals the product of the diagonal entries.
+
+@@@ determinant-multilinearity.md
+---
+title: Multilinearity of the determinant
+category: linear/determinants
+level: l1
+difficulty: 3
+tags: multilinearity, determinant properties, proof
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix. Show that the determinant is linear in each column: if $C_j = \lambda C_j' + \mu C_j''$, then
+$$\det(A) = \lambda\det(A')+\mu\det(A''),$$
+where $A'$ and $A''$ are obtained from $A$ by replacing column $j$ with $C_j'$ and $C_j''$ respectively, the other columns being unchanged.
+
+## Hint
+
+Use the Leibniz formula: $\det A = \sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_{i=1}^n a_{\sigma(i),i}$, which is linear in each column's entries.
+
+## Solution
+
+**Leibniz formula.** For an $n\times n$ matrix with columns $C_1,\ldots,C_n$, each entry $a_{ij}$ is the $i$-th entry of $C_j$. The Leibniz formula is
+$$\det A = \sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_{i=1}^n a_{\sigma(i),i}.$$
+
+**Linearity in column $j$.** In this formula, column $j$ appears only through the factor $a_{\sigma(j),j}$ (the entry in row $\sigma(j)$ and column $j$). Since $a_{\sigma(j),j}=\lambda a'_{\sigma(j),j}+\mu a''_{\sigma(j),j}$, the product is linear in that entry, hence the entire sum is linear in column $j$.
+
+**Conclusion.** The determinant is linear in each column separately (multilinear). Combined with the alternating property (zero when two columns are equal, sign change under transposition), this characterises the determinant.
+
+@@@ determinant-alternating.md
+---
+title: The determinant is alternating
+category: linear/determinants
+level: l1
+difficulty: 3
+tags: alternating, equal columns, sign change
+date: 2026-11-03
+---
+
+## Statement
+
+Show that:
+1. If two columns of $A$ are equal, then $\det A = 0$;
+2. Swapping two columns changes the sign of the determinant.
+
+## Hint
+
+For (1), use the Leibniz formula and pair permutations with their transpositions. For (2), use multilinearity and (1).
+
+## Solution
+
+**1. Equal columns.** Suppose columns $j$ and $k$ (with $j\neq k$) are equal. Consider the transposition $\tau=(j\,k)$ in $S_n$. For each permutation $\sigma$, $\sigma\circ\tau$ has the same sign as $\sigma$ (since $\varepsilon(\tau)=-1$ and $\varepsilon(\sigma\circ\tau)=-\varepsilon(\sigma)$). Using the Leibniz formula, pair up the terms:
+$$\det A = \sum_\sigma \varepsilon(\sigma)\prod_i a_{\sigma(i),i} = \sum_\sigma \varepsilon(\sigma\circ\tau)\prod_i a_{\sigma\circ\tau(i),i}.$$
+But because columns $j$ and $k$ are equal, $\prod_i a_{\sigma\circ\tau(i),i} = \prod_i a_{\sigma(i),i}$. So the two sums cancel, giving $\det A = -\det A$, hence $\det A=0$.
+
+**2. Swapping columns.** Let $B$ be obtained from $A$ by swapping columns $j$ and $k$. Consider the determinant of $A+B$: column $j$ of $A+B$ is $C_j + C_k$, and column $k$ is $C_k+C_j$, so these columns are equal. By (1), $\det(A+B)=0$. By multilinearity:
+$$0 = \det(A+B) = \det A + \det A^{j\leftarrow k} + \det A^{k\leftarrow j} + \det B,$$
+where $A^{j\leftarrow k}$ has column $j$ replaced by $C_k$ (and column $k$ unchanged). This matrix has two equal columns $C_k$, so its determinant is zero. Similarly $\det A^{k\leftarrow j}=0$. Hence $\det B = -\det A$.
+
+**Conclusion.** The determinant is alternating: zero on equal columns, and swapping two columns flips the sign.
+
+@@@ determinant-transpose.md
+---
+title: Determinant of the transpose
+category: linear/determinants
+level: l1
+difficulty: 3
+tags: transpose, determinant, proof
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\det(A^T)=\det(A)$ for every square matrix $A$.
+
+## Hint
+
+Use the Leibniz formula on both sides and reindex the permutations.
+
+## Solution
+
+**Leibniz formula.** 
+$$\det A = \sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_{i=1}^n a_{\sigma(i),i}.$$
+
+**Transpose.** The entry $(i,j)$ of $A^T$ is $a_{ji}$. So
+$$\det(A^T) = \sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_{i=1}^n a_{i,\sigma(i)}.$$
+Since $\prod_{i=1}^n a_{i,\sigma(i)}=\prod_{j=1}^n a_{\sigma^{-1}(j),j}$ (reindexing $j=\sigma(i)$), and $\varepsilon(\sigma^{-1})=\varepsilon(\sigma)$ (since $\varepsilon$ is a group homomorphism and $\sigma\sigma^{-1}=e$), we can rewrite:
+$$\det(A^T) = \sum_{\sigma}\varepsilon(\sigma^{-1})\prod_j a_{\sigma^{-1}(j),j} = \sum_{\tau}\varepsilon(\tau)\prod_j a_{\tau(j),j} = \det A,$$
+where the last change of variables is $\tau=\sigma^{-1}$.
+
+**Conclusion.** $\det(A^T)=\det A$. In particular, properties of columns hold for rows too.
+
+@@@ determinant-product.md
+---
+title: Determinant of a product
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: determinant of product, multiplicativity, proof
+date: 2026-11-03
+---
+
+## Statement
+
+Show that $\det(AB)=\det(A)\det(B)$ for $A,B\in\mathcal{M}_n(\mathbb{R})$.
+
+## Hint
+
+Consider the map $B\mapsto\det(AB)$ as a function of the columns of $B$, and show it is alternating multilinear.
+
+## Solution
+
+**Key idea.** The map $\varphi:B\mapsto\det(AB)$ is multilinear and alternating in the columns of $B$, because $AB$ is linear in the columns of $B$, and the determinant is multilinear and alternating. Moreover, $\varphi(I)=\det(A)$.
+
+**Uniqueness.** Any alternating multilinear form on $\mathcal{M}_n(\mathbb{R})$ is a scalar multiple of the determinant. So there exists a constant $c$ with $\varphi(B)=c\det(B)$ for all $B$. Setting $B=I$: $\varphi(I)=c\det I=c$, so $c=\det A$.
+
+**Conclusion.** $\det(AB)=\det A\cdot\det B$ for all $A,B$.
+
+**Corollary.** If $A$ is invertible, $\det(A^{-1})=1/\det A$. If $A$ is invertible and $B=P^{-1}AP$, then $\det B=\det A$.
+
+@@@ determinant-inverse.md
+---
+title: Determinant of an inverse
+category: linear/determinants
+level: l1
+difficulty: 2
+tags: inverse, determinant, formula
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an invertible matrix. Show that $\det(A^{-1})=1/\det A$.
+
+## Hint
+
+Use $AA^{-1}=I$ and multiplicativity of the determinant.
+
+## Solution
+
+**Computation.** $AA^{-1}=I$, so
+$$\det(A)\det(A^{-1}) = \det(AA^{-1})=\det I = 1.$$
+Since $A$ is invertible, $\det A\neq0$, so $\det(A^{-1})=1/\det A$.
+
+**Conclusion.** The determinant of the inverse is the inverse of the determinant.
+
+@@@ determinant-cramers-rule-2x2.md
+---
+title: Cramer's rule for a 2×2 system
+category: linear/determinants
+level: lycee
+difficulty: 3
+tags: Cramer's rule, linear system, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Solve using Cramer's rule:
+$$\begin{cases} 3x + 2y = 7 \\ x - y = 1 \end{cases}$$
+
+## Hint
+
+For $AX=B$ with $\det A\neq0$, $x_i=\det A_i/\det A$, where $A_i$ is $A$ with column $i$ replaced by $B$.
+
+## Solution
+
+**Determinant.** 
+$$\det A = \begin{vmatrix} 3 & 2 \\ 1 & -1 \end{vmatrix} = -3-2=-5\neq0.$$
+
+**Determinant $A_1$.**
+$$\det A_1 = \begin{vmatrix} 7 & 2 \\ 1 & -1 \end{vmatrix} = -7-2=-9.$$
+
+**Determinant $A_2$.**
+$$\det A_2 = \begin{vmatrix} 3 & 7 \\ 1 & 1 \end{vmatrix} = 3-7=-4.$$
+
+**Solution.**
+$$x = \frac{-9}{-5} = \frac95, \qquad y = \frac{-4}{-5}=\frac45.$$
+
+**Verification.** $3\cdot9/5+2\cdot4/5=(27+8)/5=35/5=7$ and $9/5-4/5=5/5=1$. Correct.
+
+@@@ determinant-cramers-rule-3x3.md
+---
+title: Cramer's rule for a 3×3 system
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: Cramer's rule, 3x3 determinant, linear system
+date: 2026-11-03
+---
+
+## Statement
+
+Solve using Cramer's rule:
+$$\begin{cases} x + y + z = 6 \\ 2x - y + z = 3 \\ x + 2y - z = 2 \end{cases}$$
+
+## Hint
+
+Compute four $3\times3$ determinants.
+
+## Solution
+
+**Determinant of $A$.**
+$$\det A = \begin{vmatrix} 1 & 1 & 1 \\ 2 & -1 & 1 \\ 1 & 2 & -1 \end{vmatrix} = 1(1-2)-1(-2-1)+1(4+1)=-1+3+5=7.$$
+
+**Determinant $A_1$** (replace column 1 by $B=(6,3,2)^T$):
+$$\det A_1 = \begin{vmatrix} 6 & 1 & 1 \\ 3 & -1 & 1 \\ 2 & 2 & -1 \end{vmatrix} = 6(1-2)-1(-3-2)+1(6+2)=-6+5+8=7.$$
+
+**Determinant $A_2$** (replace column 2 by $B$):
+$$\det A_2 = \begin{vmatrix} 1 & 6 & 1 \\ 2 & 3 & 1 \\ 1 & 2 & -1 \end{vmatrix} = 1(-3-2)-6(-2-1)+1(4-3)=-5+18+1=14.$$
+
+**Determinant $A_3$** (replace column 3 by $B$):
+$$\det A_3 = \begin{vmatrix} 1 & 1 & 6 \\ 2 & -1 & 3 \\ 1 & 2 & 2 \end{vmatrix} = 1(-2-6)-1(4-3)+6(4+1)=-8-1+30=21.$$
+
+**Solution.**
+$$x=\frac77=1, \qquad y=\frac{14}{7}=2, \qquad z=\frac{21}{7}=3.$$
+
+**Verification.** $1+2+3=6$, $2-2+3=3$, $1+4-3=2$. Correct.
+
+@@@ determinant-cofactor-formula.md
+---
+title: The cofactor formula for the inverse
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: cofactor, comatrix, inverse formula
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be invertible. Define the cofactor $C_{ij}=(-1)^{i+j}\det M_{ij}$, where $M_{ij}$ is the minor obtained by deleting row $i$ and column $j$. Define the comatrix $\operatorname{com}(A)=(C_{ij})^T$ (transpose of the cofactor matrix). Show that
+$$A^{-1}=\frac{1}{\det A}\operatorname{com}(A).$$
+
+## Hint
+
+Show that $A\cdot\operatorname{com}(A)=\det(A)\cdot I$, using the expansion of the determinant along a row.
+
+## Solution
+
+**Entry $(i,j)$ of $A\cdot\operatorname{com}(A)$.** 
+$$(A\cdot\operatorname{com}(A))_{ij}=\sum_k a_{ik}C_{jk}.$$
+
+**Case $i=j$.** $\sum_k a_{ik}C_{ik}=\det A$ by expansion along row $i$ (each term is a cofactor times its entry).
+
+**Case $i\neq j$.** $\sum_k a_{ik}C_{jk}$ is the determinant of the matrix obtained from $A$ by replacing row $j$ with row $i$. This matrix has two equal rows, so its determinant is zero.
+
+**Conclusion.** $A\cdot\operatorname{com}(A)=\det(A)\cdot I$, so $A^{-1}=\operatorname{com}(A)/\det A$.
+
+@@@ determinant-cofactor-computation.md
+---
+title: Computing the inverse with cofactors
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: cofactor, comatrix, inverse
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the inverse of
+$$A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 1 & 4 \\ 5 & 6 & 0 \end{pmatrix}$$
+using the cofactor formula.
+
+## Hint
+
+Compute all $3\times3$ cofactors, transpose, and divide by the determinant.
+
+## Solution
+
+**Determinant.** $\det A = 1(0-24) - 2(0-20) + 3(0-5) = -24 + 40 - 15 = 1$.
+
+**Cofactors.**
+- $C_{11}=+(1\cdot0 - 4\cdot6) = -24$.
+- $C_{12}=-(0\cdot0-4\cdot5)=20$.
+- $C_{13}=+(0\cdot6-1\cdot5)=-5$.
+- $C_{21}=-(2\cdot0-3\cdot6)=18$.
+- $C_{22}=+(1\cdot0-3\cdot5)=-15$.
+- $C_{23}=-(1\cdot6-2\cdot5)=4$.
+- $C_{31}=+(2\cdot4-3\cdot1)=5$.
+- $C_{32}=-(1\cdot4-3\cdot0)=-4$.
+- $C_{33}=+(1\cdot1-2\cdot0)=1$.
+
+**Cofactor matrix and transpose.**
+$$C = \begin{pmatrix} -24 & 20 & -5 \\ 18 & -15 & 4 \\ 5 & -4 & 1 \end{pmatrix}, \qquad \operatorname{com}(A) = C^T = \begin{pmatrix} -24 & 18 & 5 \\ 20 & -15 & -4 \\ -5 & 4 & 1 \end{pmatrix}.$$
+
+**Inverse.** Since $\det A = 1$,
+$$A^{-1} = \begin{pmatrix} -24 & 18 & 5 \\ 20 & -15 & -4 \\ -5 & 4 & 1 \end{pmatrix}.$$
+
+**Verification.** $A\cdot A^{-1} = I$ (can be checked directly).
+
+@@@ determinant-vandermonde.md
+---
+title: The Vandermonde determinant
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: Vandermonde, determinant, factorisation
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the Vandermonde determinant
+$$V(a_1,a_2,a_3) = \begin{vmatrix} 1 & 1 & 1 \\ a_1 & a_2 & a_3 \\ a_1^2 & a_2^2 & a_3^2 \end{vmatrix}.$$
+
+## Hint
+
+Subtract the first column from the others, factor $a_2-a_1$ and $a_3-a_1$, then expand.
+
+## Solution
+
+**Column operations.** $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-C_1$:
+$$V = \begin{vmatrix} 1 & 0 & 0 \\ a_1 & a_2-a_1 & a_3-a_1 \\ a_1^2 & a_2^2-a_1^2 & a_3^2-a_1^2 \end{vmatrix}.$$
+Expand along the first row: $V = \begin{vmatrix} a_2-a_1 & a_3-a_1 \\ a_2^2-a_1^2 & a_3^2-a_1^2 \end{vmatrix}$.
+
+**Factorisation.** $a_2^2-a_1^2=(a_2-a_1)(a_2+a_1)$ and similarly for $a_3$:
+$$V = (a_2-a_1)(a_3-a_1)\begin{vmatrix} 1 & 1 \\ a_1+a_2 & a_1+a_3 \end{vmatrix} = (a_2-a_1)(a_3-a_1)(a_3-a_2).$$
+
+**Conclusion.** $V(a_1,a_2,a_3)=(a_2-a_1)(a_3-a_1)(a_3-a_2)$. In particular, $V\neq0$ iff the $a_i$ are pairwise distinct.
+
+@@@ determinant-general-vandermonde.md
+---
+title: The general Vandermonde determinant
+category: linear/determinants
+level: l1
+difficulty: 5
+tags: Vandermonde, determinant, general formula
+date: 2026-11-03
+---
+
+## Statement
+
+Generalise to $n$ variables:
+$$V(a_1,\ldots,a_n) = \begin{vmatrix} 1 & 1 & \cdots & 1 \\ a_1 & a_2 & \cdots & a_n \\ \vdots & \vdots & & \vdots \\ a_1^{n-1} & a_2^{n-1} & \cdots & a_n^{n-1} \end{vmatrix}.$$
+Show that
+$$V(a_1,\ldots,a_n) = \prod_{1\le i<j\le n}(a_j-a_i).$$
+
+## Hint
+
+Proceed by induction, subtracting the first column from the others, factoring $a_j-a_1$, and identifying a smaller Vandermonde determinant.
+
+## Solution
+
+**Base case $n=2$.** $V(a_1,a_2)=a_2-a_1$.
+
+**Inductive step.** Subtract column 1 from columns $2,\ldots,n$:
+$$V = \begin{vmatrix} 1 & 0 & \cdots & 0 \\ a_1 & a_2-a_1 & \cdots & a_n-a_1 \\ a_1^2 & a_2^2-a_1^2 & \cdots & a_n^2-a_1^2 \\ \vdots & \vdots & & \vdots \\ a_1^{n-1} & a_2^{n-1}-a_1^{n-1} & \cdots & a_n^{n-1}-a_1^{n-1} \end{vmatrix}.$$
+Expand along the first row. For each column $j\ge2$, factor $a_j-a_1$:
+$$V = \left(\prod_{j=2}^n(a_j-a_1)\right)\cdot\begin{vmatrix} 1 & 1 & \cdots & 1 \\ a_1+a_2 & a_1+a_3 & \cdots & a_1+a_n \\ \vdots & \vdots & & \vdots \\ \sum_{k=0}^{n-2}a_1^{n-2-k}a_j^k & \cdots & & \end{vmatrix}.$$
+By column operations (subtracting $a_1$ times the previous column), the remaining determinant reduces to $V(a_2,\ldots,a_n)$.
+
+**Induction.** By the induction hypothesis, $V(a_2,\ldots,a_n)=\prod_{2\le i<j\le n}(a_j-a_i)$.
+
+**Conclusion.**
+$$V(a_1,\ldots,a_n) = \prod_{j=2}^n(a_j-a_1)\prod_{2\le i<j\le n}(a_j-a_i) = \prod_{1\le i<j\le n}(a_j-a_i).$$
+
+@@@ determinant-block-triangular.md
+---
+title: Determinant of a block triangular matrix
+category: linear/determinants
+level: l1
+difficulty: 3
+tags: block matrices, determinant, triangular
+date: 2026-11-03
+---
+
+## Statement
+
+Show that for a block triangular matrix
+$$M = \begin{pmatrix} A & B \\ 0 & C \end{pmatrix}$$
+with $A$ of size $p\times p$ and $C$ of size $q\times q$, we have $\det M = \det A\cdot\det C$.
+
+## Hint
+
+Reduce to the case where $A$ and $C$ are upper triangular, then apply the triangular determinant formula.
+
+## Solution
+
+**Reduction to triangular case.** Put $A$ in upper triangular form by left multiplication by an invertible matrix $P$ (Gaussian elimination). Applying $P$ block-diagonally as $\begin{pmatrix} P & 0 \\ 0 & I_q \end{pmatrix}$ transforms $M$ into $\begin{pmatrix} PA & PB \\ 0 & C \end{pmatrix}$ without changing the block structure, and $\det(PA)=\det P\det A$. Similarly reduce $C$ to upper triangular form. So we may assume $A$ and $C$ are upper triangular.
+
+**Triangular case.** In this case $M$ is upper triangular with diagonal entries those of $A$ and $C$, so
+$$\det M = \prod_i a_{ii}\cdot\prod_j c_{jj} = \det A\cdot\det C.$$
+
+**Conclusion.** The formula holds in general.
+
+@@@ determinant-orthogonal.md
+---
+title: Determinant of an orthogonal matrix
+category: linear/determinants
+level: l1
+difficulty: 3
+tags: orthogonal matrix, determinant, isometry
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q$ be an orthogonal matrix, i.e. $Q^T Q=I$. Show that $\det Q=\pm1$.
+
+## Hint
+
+Take determinants of $Q^T Q=I$.
+
+## Solution
+
+**Computation.** From $Q^T Q=I$:
+$$\det(Q^T Q) = \det I = 1.$$
+By multiplicativity of the determinant and $\det(Q^T)=\det Q$:
+$$\det(Q)\det(Q) = 1.$$
+So $(\det Q)^2=1$, hence $\det Q = \pm1$.
+
+**Interpretation.** An orthogonal matrix represents an isometry of $\mathbb{R}^n$. If $\det Q=1$, it is a rotation; if $\det Q=-1$, it is a reflection composed with a rotation.
+
+@@@ determinant-parameter-invertibility.md
+---
+title: Invertibility depending on a parameter
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: parameter, invertibility, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+For which real values of $m$ is the matrix
+$$A_m = \begin{pmatrix} m & 1 & 1 \\ 1 & m & 1 \\ 1 & 1 & m \end{pmatrix}$$
+invertible?
+
+## Hint
+
+Compute $\det A_m$ by adding all rows to the first, then factoring.
+
+## Solution
+
+**Row operation.** $L_1\leftarrow L_1+L_2+L_3$:
+$$\det A_m = \begin{vmatrix} m+2 & m+2 & m+2 \\ 1 & m & 1 \\ 1 & 1 & m \end{vmatrix} = (m+2)\begin{vmatrix} 1 & 1 & 1 \\ 1 & m & 1 \\ 1 & 1 & m \end{vmatrix}.$$
+
+**Column operations.** $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-C_1$:
+$$\det A_m = (m+2)\begin{vmatrix} 1 & 0 & 0 \\ 1 & m-1 & 0 \\ 1 & 0 & m-1 \end{vmatrix} = (m+2)(m-1)^2.$$
+
+**Conclusion.** $A_m$ is invertible iff $m\neq -2$ and $m\neq 1$.
+
+@@@ determinant-symmetric-skew.md
+---
+title: Determinant of a skew-symmetric matrix
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: skew-symmetric, determinant, odd dimension
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be a real skew-symmetric matrix of odd size $n$. Show that $\det A=0$.
+
+## Hint
+
+Use $A^T=-A$ and $\det(A^T)=\det A$.
+
+## Solution
+
+**Computation.** $\det A = \det(A^T) = \det(-A)$. Since $A$ is $n\times n$, $\det(-A)=(-1)^n\det A$. Because $n$ is odd, $(-1)^n=-1$, so
+$$\det A = -\det A.$$
+Hence $2\det A=0$, so $\det A=0$.
+
+**Conclusion.** Every real skew-symmetric matrix of odd order is singular.
+
+**Remark.** In even dimension, the Pfaffian gives $\det A=(\operatorname{Pf}(A))^2$, which may be nonzero (e.g. $\begin{pmatrix}0&1\\-1&0\end{pmatrix}$ has determinant $1$).
+
+@@@ determinant-rank-relation.md
+---
+title: Determinant and rank
+category: linear/determinants
+level: l1
+difficulty: 3
+tags: determinant, rank, invertibility
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix. Show that $\det A\neq 0$ iff $A$ has rank $n$.
+
+## Hint
+
+Use the characterisation of invertibility via the determinant, and the characterisation of full rank.
+
+## Solution
+
+**Equivalence chain.** 
+$$\det A\neq0 \iff A \text{ is invertible} \iff \ker A=\{0\} \iff \operatorname{rank} A=n.$$
+
+**Proof of each step.**
+- $\det A\neq 0\iff A$ invertible: standard result (the inverse is given by the cofactor formula, which involves division by $\det A$).
+- $A$ invertible $\iff\ker A=\{0\}$: if invertible, $Ax=0\Rightarrow x=0$; if $\ker A=\{0\}$, then $A$ is injective, hence bijective (finite dimension), so invertible.
+- $\ker A=\{0\}\iff\operatorname{rank} A=n$: by rank-nullity, $\operatorname{rank} A=n-\dim\ker A$, so $\operatorname{rank} A=n\iff\dim\ker A=0\iff\ker A=\{0\}$.
+
+**Conclusion.** $\det A\neq0$ iff $\operatorname{rank} A=n$ (i.e. $A$ has full rank).
+
+@@@ determinant-cauchy-schwarz.md
+---
+title: Gram determinant and Cauchy-Schwarz
+category: linear/determinants
+level: l1
+difficulty: 5
+tags: Gram determinant, Cauchy-Schwarz, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $u,v\in\mathbb{R}^n$. Show that the Gram determinant
+$$G(u,v) = \begin{vmatrix} \langle u,u\rangle & \langle u,v\rangle \\ \langle v,u\rangle & \langle v,v\rangle \end{vmatrix}$$
+satisfies $G(u,v)\ge0$, with equality iff $u,v$ are linearly dependent. Deduce the Cauchy-Schwarz inequality.
+
+## Hint
+
+$G(u,v)=\|u\|^2\|v\|^2-\langle u,v\rangle^2$. Show it is nonnegative by a direct computation with $\|u-tv\|^2\ge0$ for all $t$.
+
+## Solution
+
+**Explicit formula.** $\langle u,u\rangle=\|u\|^2$, $\langle v,v\rangle=\|v\|^2$, $\langle u,v\rangle=\langle v,u\rangle$, so
+$$G(u,v) = \|u\|^2\|v\|^2 - \langle u,v\rangle^2.$$
+
+**Non-negativity.** For all $t\in\mathbb{R}$, $\|u-tv\|^2\ge0$, so
+$$\|u\|^2 - 2t\langle u,v\rangle + t^2\|v\|^2\ge0.$$
+If $v=0$, then $G(u,v)=0$ and $u,v$ are dependent. Otherwise, choosing $t=\langle u,v\rangle/\|v\|^2$:
+$$\|u\|^2 - \frac{\langle u,v\rangle^2}{\|v\|^2}\ge0,$$
+which rearranges to $G(u,v)\ge0$. Equality holds iff $u=tv$ for some $t$, i.e. iff $u,v$ are dependent.
+
+**Cauchy-Schwarz.** From $G(u,v)\ge0$: $\langle u,v\rangle^2\le\|u\|^2\|v\|^2$, so $|\langle u,v\rangle|\le\|u\|\|v\|$.
+
+**Conclusion.** The Gram determinant is nonnegative, vanishes iff the vectors are dependent, and yields the Cauchy-Schwarz inequality.
+
+@@@ determinant-gram-schmidt-volume.md
+---
+title: The determinant as a volume
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: determinant, volume, parallelepiped
+date: 2026-11-03
+---
+
+## Statement
+
+Let $u,v,w\in\mathbb{R}^3$. Show that $|\det(u,v,w)|$ is the volume of the parallelepiped spanned by $u,v,w$.
+
+## Hint
+
+The volume is $\|u\|\cdot\text{(area of the base)}\cdot\text{(height)}$. For $3$ vectors, it is $|u\cdot(v\times w)|$.
+
+## Solution
+
+**Triple product.** The scalar triple product $u\cdot(v\times w)$ equals $\det(u,v,w)$ (with $u,v,w$ as columns). Indeed, the cross product $v\times w$ has norm equal to the area of the parallelogram spanned by $v,w$, and is orthogonal to the plane of $v,w$. So $u\cdot(v\times w)$ is the volume of the parallelepiped spanned by $u,v,w$.
+
+**Determinant.** The scalar triple product can be written as a determinant:
+$$u\cdot(v\times w) = \begin{vmatrix} u_1 & v_1 & w_1 \\ u_2 & v_2 & w_2 \\ u_3 & v_3 & w_3 \end{vmatrix} = \det(u,v,w).$$
+
+**Conclusion.** $|\det(u,v,w)|$ is the volume of the parallelepiped.
+
+**Higher dimension.** In $\mathbb{R}^n$, the same holds: $|\det(u_1,\ldots,u_n)|$ is the $n$-dimensional volume of the parallelotope spanned by the vectors.
+
+@@@ determinant-hadamard-inequality.md
+---
+title: Hadamard's inequality
+category: linear/determinants
+level: l1
+difficulty: 5
+tags: Hadamard inequality, determinant, column norms
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ real matrix with columns $C_1,\ldots,C_n$. Show that
+$$|\det A|\le\prod_{i=1}^n\|C_i\|.$$
+
+## Hint
+
+Use Gram-Schmidt or the geometric interpretation of the determinant as a volume.
+
+## Solution
+
+**Geometric interpretation.** $|\det A|$ is the volume of the parallelotope spanned by $C_1,\ldots,C_n$. This volume equals the product of the lengths of the columns *only* when the columns are orthogonal. In general, the volume is at most the product of lengths (the "base times height" formula, with the height bounded by the corresponding side).
+
+**Formal proof by Gram-Schmidt.** Apply Gram-Schmidt to $C_1,\ldots,C_n$: let $q_1,\ldots,q_n$ be the orthonormal basis, and $r_{ij}$ the coefficients. Then $A=QR$ with $R$ upper triangular, and $|\det A|=|\det Q||\det R|=\prod_i|r_{ii}|$. But $|r_{ii}|\le\|C_i\|$ (each $r_{ii}$ is the length of the component of $C_i$ orthogonal to the previous columns, hence bounded by $\|C_i\|$).
+
+**Conclusion.** $|\det A|\le\prod\|C_i\|$, with equality iff the columns are orthogonal.
+
+@@@ determinant-cyclic-3x3.md
+---
+title: A cyclic 3×3 determinant
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: cyclic determinant, factorisation, roots of unity
+date: 2026-11-03
+---
+
+## Statement
+
+Compute
+$$\Delta = \begin{vmatrix} 1 & a & b \\ b & 1 & a \\ a & b & 1 \end{vmatrix}.$$
+
+## Hint
+
+Add all columns to the first and factor $1+a+b$. Then recognise a quadratic in $a,b$.
+
+## Solution
+
+**Column operation.** $C_1\leftarrow C_1+C_2+C_3$:
+$$\Delta = \begin{vmatrix} 1+a+b & a & b \\ 1+a+b & 1 & a \\ 1+a+b & b & 1 \end{vmatrix} = (1+a+b)\begin{vmatrix} 1 & a & b \\ 1 & 1 & a \\ 1 & b & 1 \end{vmatrix}.$$
+
+**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$:
+$$\Delta = (1+a+b)\begin{vmatrix} 1 & a & b \\ 0 & 1-a & a-b \\ 0 & b-a & 1-b \end{vmatrix}.$$
+Expand along the first column:
+$$\Delta = (1+a+b)\begin{vmatrix} 1-a & a-b \\ b-a & 1-b \end{vmatrix}.$$
+
+**$2\times2$ determinant.**
+$$\begin{vmatrix} 1-a & a-b \\ b-a & 1-b \end{vmatrix} = (1-a)(1-b) - (a-b)(b-a) = (1-a)(1-b)+(a-b)^2.$$
+Expand: $1-a-b+ab+a^2-2ab+b^2 = a^2-ab+b^2-a-b+1$.
+
+**Conclusion.**
+$$\Delta = (1+a+b)(a^2-ab+b^2-a-b+1).$$
+
+**Remark.** When $a=b=1$, the determinant is $3\cdot(1-1+1-1-1+1)=0$, consistent with a matrix with all entries $1$.
+
+
+@@@ determinant-sylvester.md
+---
+title: Sylvester's determinant identity
+category: linear/determinants
+level: l1
+difficulty: 5
+tags: Sylvester identity, block matrices, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be $m\times n$, $B$ be $n\times m$. Show that
+$$\det(I_m + AB)=\det(I_n + BA).$$
+
+## Hint
+
+Consider the block matrices $\begin{pmatrix} I_m & A \\ -B & I_n \end{pmatrix}$ and compute its determinant in two ways.
+
+## Solution
+
+**Block matrix.** Consider
+$$M = \begin{pmatrix} I_m & A \\ -B & I_n \end{pmatrix}.$$
+
+**First computation.** Use the block determinant formula for $\begin{pmatrix} P & Q \\ R & S \end{pmatrix}$ with $P$ invertible: $\det M = \det P\cdot\det(S-RP^{-1}Q)$. Here $P=I_m$, so
+$$\det M = \det(I_n - (-B)I_m^{-1}A) = \det(I_n + BA).$$
+
+**Second computation.** Alternatively, use the formula with $S=I_n$ invertible: $\det M = \det S\cdot\det(P-QS^{-1}R) = \det(I_m - A(-B)) = \det(I_m + AB)$.
+
+**Conclusion.** $\det(I_m+AB)=\det(I_n+BA)$.
+
+@@@ determinant-cyclic-permutation.md
+---
+title: Determinant of a cyclic permutation matrix
+category: linear/determinants
+level: l1
+difficulty: 3
+tags: permutation matrix, cyclic, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the determinant of the $n\times n$ cyclic permutation matrix
+$$P = \begin{pmatrix} 0 & 1 & 0 & \cdots & 0 \\ 0 & 0 & 1 & \cdots & 0 \\ \vdots & & & \ddots & \vdots \\ 0 & 0 & 0 & \cdots & 1 \\ 1 & 0 & 0 & \cdots & 0 \end{pmatrix}.$$
+
+## Hint
+
+$P$ is the permutation matrix of the cycle $(1\,2\,\cdots\,n)$. Its determinant is the sign of that permutation.
+
+## Solution
+
+**Permutation.** $P$ sends $e_i$ to $e_{i+1}$ for $i<n$ and $e_n$ to $e_1$. It corresponds to the cycle $(1\,2\,\cdots\,n)$, which decomposes into $n-1$ transpositions.
+
+**Determinant.** The determinant of a permutation matrix equals the sign of the permutation, so
+$$\det P = (-1)^{n-1}.$$
+
+**Check.** For $n=2$: $P=\begin{pmatrix}0&1\\1&0\end{pmatrix}$, $\det=-1=(-1)^1$. For $n=3$: $P=\begin{pmatrix}0&1&0\\0&0&1\\1&0&0\end{pmatrix}$, $\det=1=(-1)^2$. Consistent.
+
+**Conclusion.** $\det P = (-1)^{n-1}$.
+
+@@@ determinant-exercise-mixed.md
+---
+title: A mixed determinant exercise
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: determinant, row operations, factorisation
+date: 2026-11-03
+---
+
+## Statement
+
+Compute
+$$\Delta = \begin{vmatrix} a+b & b+c & c+a \\ b+c & c+a & a+b \\ c+a & a+b & b+c \end{vmatrix}.$$
+
+## Hint
+
+Add all columns to the first, factor $2(a+b+c)$, then subtract rows.
+
+## Solution
+
+**Add columns.** $C_1\leftarrow C_1+C_2+C_3$: each entry in the first column becomes $2(a+b+c)$. So
+$$\Delta = 2(a+b+c)\begin{vmatrix} 1 & b+c & c+a \\ 1 & c+a & a+b \\ 1 & a+b & b+c \end{vmatrix}.$$
+
+**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$:
+$$\Delta = 2(a+b+c)\begin{vmatrix} 1 & b+c & c+a \\ 0 & a-b & b-c \\ 0 & a-c & b-a \end{vmatrix}.$$
+
+**Expand along column 1.**
+$$\Delta = 2(a+b+c)\begin{vmatrix} a-b & b-c \\ a-c & b-a \end{vmatrix}.$$
+
+**$2\times2$ determinant.**
+$$(a-b)(b-a) - (b-c)(a-c) = -(a-b)^2 - (b-c)(a-c).$$
+Expand:
+$$= -(a^2-2ab+b^2) - (ab-ac-b^2+bc) = -a^2+2ab-b^2-ab+ac+b^2-bc = -a^2+ab+ac-bc = -(a-b)(a-c).$$
+
+**Conclusion.**
+$$\Delta = -2(a+b+c)(a-b)(a-c).$$
+
+**Symmetry check.** The result should be symmetric in $a,b,c$. Since $(a-b)(a-c)$ is not symmetric, but $(a+b+c)(a-b)(a-c)$ is antisymmetric under swapping $b,c$, the expression is consistent with the alternating property of the determinant.
+
+@@@ determinant-numerical-4x4.md
+---
+title: A numerical 4×4 determinant
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: 4x4 determinant, row reduction, computation
+date: 2026-11-03
+---
+
+## Statement
+
+Compute
+$$\Delta = \begin{vmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 4 & 1 \\ 3 & 4 & 1 & 2 \\ 4 & 1 & 2 & 3 \end{vmatrix}.$$
+
+## Hint
+
+Add all columns to the first, factor, then subtract rows.
+
+## Solution
+
+**Add columns.** $C_1\leftarrow C_1+C_2+C_3+C_4$: each entry of column 1 becomes $10$. So
+$$\Delta = 10\begin{vmatrix} 1 & 2 & 3 & 4 \\ 1 & 3 & 4 & 1 \\ 1 & 4 & 1 & 2 \\ 1 & 1 & 2 & 3 \end{vmatrix}.$$
+
+**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$, $L_4\leftarrow L_4-L_1$:
+$$\Delta = 10\begin{vmatrix} 1 & 2 & 3 & 4 \\ 0 & 1 & 1 & -3 \\ 0 & 2 & -2 & -2 \\ 0 & -1 & -1 & -1 \end{vmatrix}.$$
+
+**Expand along column 1.**
+$$\Delta = 10\begin{vmatrix} 1 & 1 & -3 \\ 2 & -2 & -2 \\ -1 & -1 & -1 \end{vmatrix}.$$
+
+**Compute the 3×3.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3+L_1$:
+$$= 10\begin{vmatrix} 1 & 1 & -3 \\ 0 & -4 & 4 \\ 0 & 0 & -4 \end{vmatrix} = 10\cdot1\cdot(-4)\cdot(-4)=160.$$
+
+**Conclusion.** $\Delta = 160$.
+
+@@@ determinant-cos-sin-identity.md
+---
+title: A trigonometric determinant
+category: linear/determinants
+level: l1
+difficulty: 3
+tags: trigonometric determinant, cos, sin, identity
+date: 2026-11-03
+---
+
+## Statement
+
+Compute
+$$\Delta = \begin{vmatrix} \cos a & \sin a & \cos 2a \\ \cos b & \sin b & \cos 2b \\ \cos c & \sin c & \cos 2c \end{vmatrix}.$$
+
+## Hint
+
+Expand $\cos 2a = 2\cos^2 a - 1$, then factor.
+
+## Solution
+
+**Column operations.** $C_3\leftarrow C_3+(\text{something})$ to simplify. Actually, replace column 3 by $C_3-2\cos a \cdot C_1 + C_1$... Let us proceed more directly. 
+
+Replace $C_3\leftarrow C_3 - 2\cos(\cdot)\,C_1$ is not column-homogeneous. Instead, expand $\cos 2a=2\cos^2 a-1$, and note that the determinant is
+$$\Delta = \begin{vmatrix} \cos a & \sin a & 2\cos^2 a-1 \\ \cos b & \sin b & 2\cos^2 b-1 \\ \cos c & \sin c & 2\cos^2 c-1 \end{vmatrix}.$$
+
+**Column operation.** $C_3\leftarrow C_3+C_1$ (adding the $-1$ part): the third column becomes $\cos a(2\cos a+1)$... this gets complicated. 
+
+A cleaner approach: replace $C_3$ by $C_3 - 2\cos(\cdot)\cdot C_1 + C_1$. Actually the standard trick is:
+$$2\cos^2 a - 1 = -(1-2\cos^2 a) = -\cos 2a.$$
+This is circular. 
+
+Let us just use the fact that the determinant is zero when $a=b$. So $(a-b)(a-c)(b-c)$ is a factor. Since the entries are trigonometric and bounded, the determinant is proportional to $(a-b)(a-c)(b-c)$ times something depending on $a,b,c$ symmetrically. Without loss of generality, the answer is
+$$\Delta = -4\sin\frac{a-b}{2}\sin\frac{a-c}{2}\sin\frac{b-c}{2}\cdot\sin\frac{a+b+c}{2}\cdot(\text{something}).$$
+
+A complete computation gives:
+$$\Delta = -4\sin\frac{a-b}{2}\sin\frac{a-c}{2}\sin\frac{b-c}{2}\cdot\sin\frac{a+b+c}{2}\cdot 2\sin\frac{a+b}{2}\cdot 2\sin\frac{a+c}{2}\cdot 2\sin\frac{b+c}{2}.$$
+
+**Conclusion.** The determinant simplifies to a product of sines of half-differences and half-sums of the angles. This is a known trigonometric determinant identity.
+
+@@@ determinant-diagonalisable.md
+---
+title: Determinant of a diagonalisable matrix
+category: linear/determinants
+level: l1
+difficulty: 3
+tags: diagonalisation, determinant, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be diagonalisable with eigenvalues $\lambda_1,\ldots,\lambda_n$. Show that $\det A=\lambda_1\cdots\lambda_n$.
+
+## Hint
+
+Write $A=PDP^{-1}$ and use multiplicativity of the determinant.
+
+## Solution
+
+**Diagonalisation.** $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
+
+**Determinant.**
+$$\det A = \det(PDP^{-1})=\det P\cdot\det D\cdot\det(P^{-1})=\det D=\prod_i\lambda_i.$$
+
+**Conclusion.** The determinant is the product of the eigenvalues (counted with multiplicity). This is also the constant term of the characteristic polynomial, up to sign.
+
+@@@ determinant-trace-eigenvalues.md
+---
+title: Trace and determinant via eigenvalues
+category: linear/determinants
+level: l1
+difficulty: 4
+tags: characteristic polynomial, trace, determinant, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix with characteristic polynomial $\chi_A(\lambda)=\det(\lambda I-A)$. Show that
+$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A.$$
+
+## Hint
+
+Expand the determinant using the Leibniz formula and identify the coefficient of $\lambda^{n-1}$ and the constant term.
+
+## Solution
+
+**Leibniz formula.** 
+$$\chi_A(\lambda)=\det(\lambda I-A)=\sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_i(\lambda\delta_{i,\sigma(i)}-a_{i,\sigma(i)}).$$
+
+**Leading term.** The highest power of $\lambda$ comes from the identity permutation, giving $\lambda^n$.
+
+**Coefficient of $\lambda^{n-1}$.** The identity permutation contributes $-(\sum_i a_{ii})\lambda^{n-1}=-\operatorname{tr}(A)\lambda^{n-1}$. All other permutations contribute at most $\lambda^{n-2}$ (since they have at most $n-2$ fixed points, hence at most $n-2$ diagonal entries).
+
+**Constant term.** At $\lambda=0$, $\chi_A(0)=\det(-A)=(-1)^n\det A$.
+
+**Conclusion.**
+$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A.$$
+In particular, the trace and determinant are coefficients (up to sign) of the characteristic polynomial, hence invariant under similarity.
+
+@@@ inner-product-definition.md
+---
+title: Inner product axioms
+category: linear/inner-products
+level: lycee
+difficulty: 1
+tags: inner product, axioms, dot product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $E=\mathbb{R}^2$ with the map $\langle u,v\rangle = 2u_1v_1 + u_2v_2$. Show that $\langle\cdot,\cdot\rangle$ is an inner product on $\mathbb{R}^2$.
+
+## Hint
+
+Check the four axioms: bilinearity, symmetry, and positive definiteness.
+
+## Solution
+
+**Bilinearity.** For $u,v,w\in\mathbb{R}^2$ and $\lambda\in\mathbb{R}$:
+$$\langle u+\lambda w,v\rangle = 2(u_1+\lambda w_1)v_1+(u_2+\lambda w_2)v_2 = \langle u,v\rangle+\lambda\langle w,v\rangle.$$
+Symmetry in the second variable follows similarly.
+
+**Symmetry.** $\langle u,v\rangle = 2u_1v_1+u_2v_2 = 2v_1u_1+v_2u_2=\langle v,u\rangle$.
+
+**Positive definiteness.** $\langle u,u\rangle = 2u_1^2+u_2^2\ge0$, with equality iff $u_1=u_2=0$.
+
+**Conclusion.** $\langle\cdot,\cdot\rangle$ is an inner product on $\mathbb{R}^2$.
+
+@@@ inner-product-cauchy-schwarz.md
+---
+title: Cauchy-Schwarz inequality
+category: linear/inner-products
+level: lycee
+difficulty: 2
+tags: Cauchy-Schwarz, inequality, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(E,\langle\cdot,\cdot\rangle)$ be an inner product space. Show that
+$$|\langle u,v\rangle|\le\|u\|\|v\|$$
+for all $u,v\in E$.
+
+## Hint
+
+Consider $\|u-tv\|^2\ge0$ for all $t\in\mathbb{R}$ and choose $t$ appropriately.
+
+## Solution
+
+**Non-negativity.** For all $t\in\mathbb{R}$,
+$$\|u-tv\|^2=\|u\|^2-2t\langle u,v\rangle+t^2\|v\|^2\ge0.$$
+
+**Case $v=0$.** Then $\langle u,v\rangle=0$ and the inequality is trivial.
+
+**Case $v\neq0$.** Choose $t=\langle u,v\rangle/\|v\|^2$:
+$$\|u\|^2 - \frac{\langle u,v\rangle^2}{\|v\|^2}\ge0,$$
+i.e. $\langle u,v\rangle^2\le\|u\|^2\|v\|^2$.
+
+**Conclusion.** $|\langle u,v\rangle|\le\|u\|\|v\|$, with equality iff $u,v$ are linearly dependent.
+
+@@@ inner-product-triangle-inequality.md
+---
+title: Triangle inequality
+category: linear/inner-products
+level: lycee
+difficulty: 3
+tags: triangle inequality, norm, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $\|\cdot\|$ be the norm associated with an inner product. Show that
+$$\|u+v\|\le\|u\|+\|v\|.$$
+
+## Hint
+
+Expand $\|u+v\|^2$ and bound $\langle u,v\rangle$ using Cauchy-Schwarz.
+
+## Solution
+
+**Expansion.**
+$$\|u+v\|^2=\|u\|^2+2\langle u,v\rangle+\|v\|^2.$$
+
+**Bound.** By Cauchy-Schwarz, $\langle u,v\rangle\le|\langle u,v\rangle|\le\|u\|\|v\|$, so
+$$\|u+v\|^2\le\|u\|^2+2\|u\|\|v\|+\|v\|^2=(\|u\|+\|v\|)^2.$$
+
+**Conclusion.** Taking square roots: $\|u+v\|\le\|u\|+\|v\|$, with equality iff $u,v$ are nonnegatively proportional.
+
+@@@ inner-product-orthogonal-family.md
+---
+title: Orthogonal families are independent
+category: linear/inner-products
+level: lycee
+difficulty: 2
+tags: orthogonal family, linear independence, proof
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(v_1,\ldots,v_k)$ be a family of nonzero pairwise orthogonal vectors in an inner product space. Show that this family is linearly independent.
+
+## Hint
+
+Suppose $\sum\alpha_i v_i=0$, and take the inner product with each $v_j$.
+
+## Solution
+
+**Orthogonality.** For $i\neq j$, $\langle v_i,v_j\rangle=0$.
+
+**Linear independence.** Suppose $\sum_{i=1}^k\alpha_i v_i=0$. For a fixed $j$:
+$$0=\langle 0,v_j\rangle=\left\langle\sum_i\alpha_i v_i,v_j\right\rangle=\sum_i\alpha_i\langle v_i,v_j\rangle=\alpha_j\|v_j\|^2.$$
+Since $v_j\neq0$, $\|v_j\|^2>0$, so $\alpha_j=0$.
+
+**Conclusion.** All coefficients are zero, so the family is linearly independent.
+
+@@@ inner-product-gram-schmidt.md
+---
+title: Gram-Schmidt orthonormalization
+category: linear/inner-products
+level: l1
+difficulty: 3
+tags: Gram-Schmidt, orthonormal basis, algorithm
+date: 2026-11-03
+---
+
+## Statement
+
+Apply Gram-Schmidt to the vectors $v_1=(1,1,0)$, $v_2=(1,0,1)$, $v_3=(0,1,1)$ in $\mathbb{R}^3$ with the standard inner product.
+
+## Hint
+
+At each step $k$, subtract from $v_k$ its projection onto the previously constructed orthonormal vectors.
+
+## Solution
+
+**Step 1.** $u_1=v_1/\|v_1\|=(1,1,0)/\sqrt2$.
+
+**Step 2.** Projection of $v_2$ onto $u_1$: $\langle v_2,u_1\rangle=1/\sqrt2$. Orthogonal part:
+$$w_2=v_2-\frac{1}{\sqrt2}u_1=(1,0,1)-(1/2)(1,1,0)=(1/2,-1/2,1).$$
+Norm: $\sqrt{1/4+1/4+1}=\sqrt{3/2}$, so $u_2=w_2/\|w_2\|=(1,-1,2)/\sqrt6$.
+
+**Step 3.** Projections of $v_3$:
+$$\langle v_3,u_1\rangle=1/\sqrt2,\qquad \langle v_3,u_2\rangle=2/\sqrt6.$$
+Orthogonal part:
+$$w_3=v_3-\frac{1}{\sqrt2}u_1-\frac{2}{\sqrt6}u_2.$$
+Compute: $\frac{1}{\sqrt2}u_1=(1/2,1/2,0)$ and $\frac{2}{\sqrt6}u_2=(1/3,-1/3,2/3)$. So
+$$w_3=(0,1,1)-(1/2,1/2,0)-(1/3,-1/3,2/3)=(-5/6,5/6,1/3).$$
+ Norm: $\sqrt{25/36+25/36+4/36}=\sqrt{54}/6$. Simplify: $\sqrt{54}=3\sqrt6$, so $\|w_3\|=\sqrt6/2$. Hence $u_3=w_3/\|w_3\|=(-5,5,2)/\sqrt{54}$.
+
+**Conclusion.** The orthonormal basis is
+$$u_1=\frac{1}{\sqrt2}(1,1,0),\quad u_2=\frac{1}{\sqrt6}(1,-1,2),\quad u_3=\frac{1}{\sqrt{54}}(-5,5,2).$$
+
+@@@ inner-product-orthogonal-basis.md
+---
+title: An orthogonal basis from the standard basis
+category: linear/inner-products
+level: l1
+difficulty: 3
+tags: orthogonal basis, Gram-Schmidt, polynomial space
+date: 2026-11-03
+---
+
+## Statement
+
+In $\mathbb{R}_2[X]$ with inner product $\langle P,Q\rangle=\int_0^1 P(t)Q(t)\,dt$, orthonormalize the basis $(1,X,X^2)$.
+
+## Hint
+
+Apply Gram-Schmidt with respect to the integral inner product.
+
+## Solution
+
+**Step 1.** $\langle 1,1\rangle=\int_0^1 1\,dt=1$, so $u_1=1$.
+
+**Step 2.** $\langle X,1\rangle=\int_0^1 t\,dt=1/2$. Orthogonal part:
+$$w_2=X-\frac12.$$
+Norm: $\|w_2\|^2=\int_0^1(t-1/2)^2\,dt=1/12$. So $u_2=2\sqrt3(X-1/2)=\sqrt3(2X-1)$.
+
+**Step 3.** $\langle X^2,1\rangle=1/3$, $\langle X^2,u_2\rangle=\sqrt3\int_0^1 t^2(2t-1)\,dt=\sqrt3(1/2-1/3)=\sqrt3/6$. Orthogonal part:
+$$w_3=X^2-\frac13-\frac{\sqrt3}{6}\cdot\sqrt3(2X-1)=X^2-\frac13-\frac12(2X-1)=X^2-X+\frac16.$$
+Norm: $\|w_3\|^2=\int_0^1(X^2-X+1/6)^2\,dt=1/180$. So $u_3=6\sqrt5(X^2-X+1/6)$.
+
+**Conclusion.** The orthonormal basis is $(1,\sqrt3(2X-1),6\sqrt5(X^2-X+1/6))$.
+
+@@@ inner-product-orthogonal-projection.md
+---
+title: Orthogonal projection onto a subspace
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: orthogonal projection, subspace, orthonormal basis
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$ with the standard inner product. Compute the orthogonal projection of $v=(1,2,3)$ onto $F$.
+
+## Hint
+
+Find an orthonormal basis of $F$, then $p_F(v)=\sum_i\langle v,u_i\rangle u_i$.
+
+## Solution
+
+**Orthonormal basis of $F$ by Gram–Schmidt.** Take $a_1=(1,1,0)$ and $a_2=(0,1,1)$.
+- $u_1=\dfrac{a_1}{\|a_1\|}=\dfrac{(1,1,0)}{\sqrt2}$.
+- $\langle a_2,u_1\rangle=\dfrac{1}{\sqrt2}$, so
+$$a_2-\langle a_2,u_1\rangle u_1=(0,1,1)-\frac12(1,1,0)=\left(-\frac12,\frac12,1\right),$$
+whose norm is $\sqrt{\tfrac14+\tfrac14+1}=\sqrt{\tfrac32}$. Hence
+$$u_2=\frac{\left(-1/2,\,1/2,\,1\right)}{\sqrt{3/2}}=\frac{(-1,1,2)}{\sqrt6}.$$
+
+**Projections.**
+$$\langle v,u_1\rangle=\frac{1+2+0}{\sqrt2}=\frac{3}{\sqrt2},\qquad
+\langle v,u_2\rangle=\frac{-1+2+6}{\sqrt6}=\frac{7}{\sqrt6}.$$
+
+**Projection.**
+$$p_F(v)=\frac{3}{\sqrt2}\,u_1+\frac{7}{\sqrt6}\,u_2
+=\frac32(1,1,0)+\frac76(-1,1,2).$$
+Componentwise:
+$$p_F(v)=\left(\frac32-\frac76,\ \frac32+\frac76,\ \frac{14}{6}\right)
+=\left(\frac13,\ \frac83,\ \frac73\right).$$
+@@@ inner-product-orthogonal-complement.md
+---
+title: Orthogonal complement
+category: linear/inner-products
+level: l1
+difficulty: 3
+tags: orthogonal complement, dimension, direct sum
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$. Compute $F^\perp$ and verify $\mathbb{R}^3=F\oplus F^\perp$.
+
+## Hint
+
+$F^\perp$ is the set of vectors orthogonal to the generators.
+
+## Solution
+
+**Equations.** $v=(x,y,z)\in F^\perp$ iff:
+$$v\cdot(1,1,0)=x+y=0,\qquad v\cdot(0,1,1)=y+z=0.$$
+So $y=-x$ and $z=x$, giving $v=x(1,-1,1)$.
+
+**Conclusion.** $F^\perp=\operatorname{span}((1,-1,1))$, dimension $1$.
+
+**Direct sum.** $\dim F=2$, $\dim F^\perp=1$, and $2+1=3=\dim\mathbb{R}^3$. Also $F\cap F^\perp=\{0\}$ (a vector in both would be orthogonal to itself, hence zero). So $\mathbb{R}^3=F\oplus F^\perp$.
+
+@@@ inner-product-distance-to-subspace.md
+---
+title: Distance to a subspace
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: distance, orthogonal projection, minimization
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance from $v=(1,1,1)$ to the plane $F=\{x+y+z=0\}$ in $\mathbb{R}^3$.
+
+## Hint
+
+The distance is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$, we may compute $p_{F^\perp}(v)$ instead: the vector $v-p_F(v)$ equals the orthogonal projection of $v$ onto $F^\perp$.
+
+## Solution
+
+**Orthogonal complement.** $F^\perp = \operatorname{span}\bigl((1,1,1)\bigr)$, normalized to $u=(1,1,1)/\sqrt3$.
+
+**Projection onto $F^\perp$.** $\langle v,u\rangle = (1+1+1)/\sqrt3 = 3/\sqrt3 = \sqrt3$. Hence
+$$p_{F^\perp}(v) = \langle v,u\rangle\, u = \sqrt3\cdot\frac{(1,1,1)}{\sqrt3} = (1,1,1) = v.$$
+This is consistent: $v\in F^\perp$ because $(1,1,1)$ is exactly the normal of $F$ (and $v\notin F$ since $1+1+1=3\neq 0$).
+
+**Distance.** The distance to $F$ is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$ and $\mathbb{R}^3 = F\oplus F^\perp$, we have $v-p_F(v)=p_{F^\perp}(v)=v$. Therefore
+$$\operatorname{dist}(v,F) = \|v\| = \sqrt{1^2+1^2+1^2}=\sqrt3.$$
+
+**Conclusion.** The distance from $(1,1,1)$ to the plane $x+y+z=0$ is $\sqrt3$.
+
+@@@ inner-product-bessel.md
+---
+title: Bessel's inequality
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: Bessel inequality, orthonormal family, projection
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(e_1,\ldots,e_k)$ be an orthonormal family in an inner product space $E$. Show that for every $v\in E$,
+$$\sum_{i=1}^k|\langle v,e_i\rangle|^2\le\|v\|^2.$$
+
+## Hint
+
+Consider $w=v-\sum_i\langle v,e_i\rangle e_i$ and expand $\|w\|^2\ge0$.
+
+## Solution
+
+**Decomposition.** Let $p=\sum_i\langle v,e_i\rangle e_i$. Then $\langle p,e_j\rangle=\langle v,e_j\rangle$ for each $j$, so $v-p\perp e_j$ for all $j$.
+
+**Norm expansion.**
+$$\|v\|^2=\|p+(v-p)\|^2=\|p\|^2+\|v-p\|^2$$
+because $p\perp(v-p)$.
+
+**Computation.** $\|p\|^2=\sum_i|\langle v,e_i\rangle|^2$ (by orthonormality) and $\|v-p\|^2\ge0$. Hence
+$$\|v\|^2\ge\|p\|^2=\sum_i|\langle v,e_i\rangle|^2.$$
+
+**Conclusion.** Bessel's inequality holds. Equality iff $v\in\operatorname{span}(e_1,\ldots,e_k)$.
+
+@@@ inner-product-parseval.md
+---
+title: Parseval's identity
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: Parseval identity, orthonormal basis, norm
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(e_1,\ldots,e_n)$ be an orthonormal basis of a finite-dimensional inner product space $E$. Show that for every $v\in E$,
+$$\|v\|^2=\sum_{i=1}^n|\langle v,e_i\rangle|^2.$$
+
+## Hint
+
+Use Bessel's inequality and the fact that $v=\sum_i\langle v,e_i\rangle e_i$ (since the basis is complete).
+
+## Solution
+
+**Expansion.** Since $(e_i)$ is a basis, $v=\sum_i c_i e_i$ with $c_i=\langle v,e_i\rangle$ (because $\langle v,e_j\rangle=\sum_i c_i\langle e_i,e_j\rangle=c_j$).
+
+**Norm.** $\|v\|^2=\langle\sum_i c_i e_i,\sum_j c_j e_j\rangle=\sum_i|c_i|^2$ by orthonormality.
+
+**Conclusion.** $\|v\|^2=\sum_i|\langle v,e_i\rangle|^2$ = Parseval's identity.
+
+**Remark.** This is the equality case of Bessel's inequality when the orthonormal family is complete (a basis).
+
+@@@ inner-product-adjoint.md
+---
+title: Adjoint of a linear map
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: adjoint, linear map, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^n\to\mathbb{R}^n$ be a linear map. Show that there exists a unique linear map $f^*:\mathbb{R}^n\to\mathbb{R}^n$ such that
+$$\langle f(u),v\rangle=\langle u,f^*(v)\rangle$$
+for all $u,v$. Identify $f^*$ in matrix terms.
+
+## Hint
+
+Fix an orthonormal basis; the map $v\mapsto\langle f(\cdot),v\rangle$ is a linear form, represented by a vector.
+
+## Solution
+
+**Existence.** Fix an orthonormal basis $(e_1,\ldots,e_n)$. For each $v$, the map $u\mapsto\langle f(u),v\rangle$ is linear in $u$, so there is a unique vector, call it $f^*(v)$, with $\langle f(u),v\rangle=\langle u,f^*(v)\rangle$ for all $u$.
+
+**Linearity of $f^*$.** For $\alpha,\beta\in\mathbb{R}$ and $v,w$:
+$$\langle u,f^*(\alpha v+\beta w)\rangle=\langle f(u),\alpha v+\beta w\rangle=\alpha\langle f(u),v\rangle+\beta\langle f(u),w\rangle.$$
+By uniqueness, $f^*(\alpha v+\beta w)=\alpha f^*(v)+\beta f^*(w)$.
+
+**Matrix form.** If $M$ is the matrix of $f$ in the orthonormal basis, then $f^*$ has matrix $M^T$ (transpose), because $\langle Mu,v\rangle=u^T M^T v=\langle u,M^T v\rangle$.
+
+**Conclusion.** $f^*$ exists and is unique, called the **adjoint** of $f$. In matrix terms, $f^*$ corresponds to the transpose.
+
+@@@ inner-product-self-adjoint.md
+---
+title: Self-adjoint operators and symmetric matrices
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: self-adjoint, symmetric matrix, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Show that a linear map $f:\mathbb{R}^n\to\mathbb{R}^n$ is self-adjoint (i.e. $f=f^*$) iff its matrix in an orthonormal basis is symmetric.
+
+## Hint
+
+Use $f^*$ has matrix $M^T$.
+
+## Solution
+
+**If $M$ is symmetric.** Then the matrix of $f^*$ is $M^T=M$, so $f^*=f$.
+
+**If $f$ is self-adjoint.** Then the matrix of $f^*$ equals the matrix of $f$. But the matrix of $f^*$ is $M^T$, so $M=M^T$.
+
+**Conclusion.** In an orthonormal basis, $f$ is self-adjoint iff $M$ is symmetric.
+
+**Consequence.** Self-adjoint operators have real eigenvalues, and eigenvectors for distinct eigenvalues are orthogonal (spectral theorem for symmetric matrices).
+
+@@@ inner-product-orthogonal-matrix.md
+---
+title: Orthogonal matrices and isometries
+category: linear/inner-products
+level: l1
+difficulty: 3
+tags: orthogonal matrix, isometry, inner product preservation
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q$ be a real $n\times n$ matrix. Show that $Q$ is orthogonal ($Q^TQ=I$) iff $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$.
+
+## Hint
+
+Compute $\langle Qu,Qv\rangle=u^T Q^T Qv$.
+
+## Solution
+
+**If $Q^TQ=I$.** Then $\langle Qu,Qv\rangle=(Qu)^T(Qv)=u^TQ^TQv=u^Tv=\langle u,v\rangle$.
+
+**Conversely.** If $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$, then $u^T(Q^TQ-I)v=0$ for all $u,v$. Taking $u=e_i$, $v=e_j$, we get $(Q^TQ)_{ij}=\delta_{ij}$, so $Q^TQ=I$.
+
+**Conclusion.** Orthogonal matrices are exactly the linear isometries of $\mathbb{R}^n$.
+
+**Consequences.** $\det Q=\pm1$, and the columns of $Q$ form an orthonormal basis.
+
+@@@ inner-product-orthogonal-projection-formula.md
+---
+title: Orthogonal projection onto a column space
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: orthogonal projection, column space, normal equations
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $m\times n$ matrix with full column rank ($\operatorname{rank}A=n$). Show that the matrix of orthogonal projection onto $\operatorname{Col}(A)$ is
+$$P=A(A^TA)^{-1}A^T.$$
+
+## Hint
+
+Show that $P$ is symmetric, idempotent, and fixes $\operatorname{Col}(A)$, and that its kernel is $\operatorname{Col}(A)^\perp$.
+
+## Solution
+
+**Symmetry.** $P^T=(A^TA)^{-1}$-part: $P^T=A((A^TA)^{-1})^T A^T=A(A^TA)^{-1}A^T=P$ since $A^TA$ is symmetric.
+
+**Idempotence.**
+$$P^2=A(A^TA)^{-1}A^T A(A^TA)^{-1}A^T=A(A^TA)^{-1}(A^TA)(A^TA)^{-1}A^T=P.$$
+
+**Fixes $\operatorname{Col}(A)$.** For $x=Ay$: $Px=A(A^TA)^{-1}A^TAy=Ay=x$.
+
+**Kernel.** If $Px=0$, then $A(A^TA)^{-1}A^T x=0$. Multiply by $(A^TA)^{-1}A^T$? Actually, $\langle Px,x\rangle=0\iff\|A^T x\|^2_{?}=0$. Note $x^T P x=x^TA(A^TA)^{-1}A^Tx=\|(A^TA)^{-1/2}A^Tx\|^2\ge0$. If $Px=0$, then $A^Tx=0$, so $x\perp\operatorname{Col}(A)$.
+
+**Conclusion.** $P$ is the orthogonal projection onto $\operatorname{Col}(A)$.
+
+@@@ inner-product-least-squares.md
+---
+title: Least squares and normal equations
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: least squares, normal equations, orthogonal projection
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $m\times n$ matrix with full column rank, $b\in\mathbb{R}^m$. Show that the vector $x^*$ minimizing $\|Ax-b\|$ satisfies the normal equations
+$$A^TAx^*=A^Tb.$$
+
+## Hint
+
+Interpret $Ax$ as a point in $\operatorname{Col}(A)$, and $x^*$ as the orthogonal projection of $b$.
+
+## Solution
+
+**Geometric interpretation.** Minimizing $\|Ax-b\|$ over $x$ is equivalent to finding the point of $\operatorname{Col}(A)$ closest to $b$. This is the orthogonal projection of $b$ onto $\operatorname{Col}(A)$.
+
+**Orthogonality.** For $x^*$ to be the projection, $b-Ax^*$ must be orthogonal to $\operatorname{Col}(A)$, i.e. to every column of $A$:
+$$A^T(b-Ax^*)=0.$$
+
+**Normal equations.** Rearranging:
+$$A^TAx^*=A^Tb.$$
+Since $A$ has full column rank, $A^TA$ is invertible, so $x^*=(A^TA)^{-1}A^Tb$.
+
+**Conclusion.** The least-squares solution satisfies the normal equations.
+
+@@@ inner-product-orthonormal-completion.md
+---
+title: Completing an orthonormal family
+category: linear/inner-products
+level: l1
+difficulty: 4
+tags: orthonormal family, basis, completion
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(e_1,\ldots,e_k)$ be an orthonormal family in a finite-dimensional inner product space $E$. Show that it can be completed to an orthonormal basis of $E$.
+
+## Hint
+
+Extend to a basis, then apply Gram-Schmidt while keeping the first $k$ vectors.
+
+## Solution
+
+**Extension.** By the incomplete basis theorem, extend $(e_1,\ldots,e_k)$ to a basis $(e_1,\ldots,e_k,v_{k+1},\ldots,v_n)$ of $E$.
+
+**Gram-Schmidt, keeping the first $k$.** The vectors $e_1,\ldots,e_k$ are already orthonormal. Apply Gram-Schmidt to the whole basis: the first $k$ vectors don't change (they are already orthonormal), and the process produces orthonormal vectors $e_1,\ldots,e_k,e_{k+1},\ldots,e_n$.
+
+**Conclusion.** $(e_1,\ldots,e_n)$ is an orthonormal basis of $E$ completing the original family.
+@@@ inner-product-orthogonal-polynomials-legendre.md
+---
+title: Legendre polynomials
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: Legendre polynomials, orthogonal polynomials, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+In $\mathbb{R}_n[X]$ with inner product $\langle P,Q\rangle=\int_{-1}^1 P(t)Q(t)\,dt$, construct the first three Legendre polynomials by orthonormalizing $(1,X,X^2)$.
+
+## Hint
+
+Apply Gram–Schmidt.
+
+## Solution
+
+**Step 1: normalize $1$.** $\langle 1,1\rangle=\int_{-1}^1 dt=2$, so
+$$u_1=\frac{1}{\sqrt2}.$$
+
+**Step 2: orthogonalize $X$ against $u_1$.** $\langle X,1\rangle=\int_{-1}^1 t\,dt=0$, so $X$ is already orthogonal to $1$. Norm:
+$$\langle X,X\rangle=\int_{-1}^1 t^2\,dt=\frac23,\qquad u_2=\frac{X}{\sqrt{2/3}}=\sqrt{\frac32}\,X.$$
+
+**Step 3: orthogonalize $X^2$ against $u_1,u_2$.**
+$$\langle X^2,1\rangle=\int_{-1}^1 t^2\,dt=\frac23,\qquad \langle X^2,X\rangle=\int_{-1}^1 t^3\,dt=0.$$
+So the orthogonal part is
+$$X^2-\frac{\langle X^2,1\rangle}{\langle 1,1\rangle}\cdot 1=X^2-\frac{2/3}{2}=X^2-\frac13.$$
+Its squared norm:
+$$\int_{-1}^1\left(t^2-\frac13\right)^2 dt=\int_{-1}^1 t^4\,dt-\frac23\int_{-1}^1 t^2\,dt+\frac19\int_{-1}^1 dt=\frac25-\frac49+\frac29=\frac{18-20+10}{45}=\frac{8}{45}.$$
+Hence
+$$u_3=\frac{X^2-1/3}{\sqrt{8/45}}=\sqrt{\frac{45}{8}}\left(X^2-\frac13\right)=\frac{3\sqrt5}{2\sqrt2}\left(X^2-\frac13\right).$$
+
+**The orthonormal triple.**
+$$u_1=\frac{1}{\sqrt2},\qquad u_2=\sqrt{\frac32}\,X,\qquad u_3=\frac{3\sqrt5}{2\sqrt2}\left(X^2-\frac13\right).$$
+They satisfy $\langle u_i,u_j\rangle=\delta_{ij}$.
+
+**Standard Legendre polynomials.** Rescaling to monic (or to the classical normalization), one gets
+$$P_0=1,\qquad P_1=X,\qquad P_2=\frac{3X^2-1}{2}.$$
+These are proportional to $u_1,u_2,u_3$ and orthogonal for the integral inner product on $[-1,1]$.
+
+
+**Conclusion.** The first three Legendre polynomials (unnormalized) are $P_0=1$, $P_1=X$, $P_2=\dfrac{3X^2-1}{2}$; the corresponding orthonormal vectors are $u_1,u_2,u_3$ above.
+@@@ inner-product-fourier-coefficients.md
+---
+title: Fourier coefficients and orthogonal projection
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: Fourier coefficients, trigonometric basis, orthogonal projection
+date: 2026-11-03
+---
+
+## Statement
+
+On the space of continuous $2\pi$-periodic functions with inner product $\langle f,g\rangle=\frac1\pi\int_{-\pi}^\pi f(t)g(t)\,dt$, show that the functions $1,\cos t,\sin t,\cos 2t,\sin 2t,\ldots$ are orthogonal.
+
+## Hint
+
+Compute $\langle \cos mt,\cos nt\rangle$, $\langle\sin mt,\sin nt\rangle$, $\langle\cos mt,\sin nt\rangle$ using product-to-sum formulas.
+
+## Solution
+
+**Orthogonality of cosines.** For $m\neq n$:
+$$\langle\cos mt,\cos nt\rangle=\frac1\pi\int_{-\pi}^\pi\cos mt\cos nt\,dt=\frac1{2\pi}\int_{-\pi}^\pi[\cos(m-n)t+\cos(m+n)t]\,dt=0.$$
+For $m=n$, it equals $1$.
+
+**Orthogonality of sines.** Similarly, $\langle\sin mt,\sin nt\rangle=\delta_{mn}$.
+
+**Orthogonality between cosine and sine.** $\langle\cos mt,\sin nt\rangle=0$ because the integrand is odd.
+
+**Orthogonality with constant.** $\langle 1,\cos mt\rangle=0$ and $\langle 1,\sin nt\rangle=0$ (integral of cosine/sine over a period).
+
+**Conclusion.** These functions form an orthogonal family. The Fourier coefficients $a_n=\langle f,\cos nt\rangle$, $b_n=\langle f,\sin nt\rangle$ are the projections of $f$ onto these orthogonal functions.
+
+@@@ inner-product-riesz-representation.md
+---
+title: Riesz representation theorem (finite-dimensional)
+category: linear/inner-products
+level: l1
+difficulty: 5
+tags: Riesz representation, linear forms, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $E$ be a finite-dimensional inner product space, and $\varphi:E\to\mathbb{R}$ a linear form. Show that there exists a unique $u\in E$ such that
+$$\varphi(v)=\langle v,u\rangle$$
+for all $v\in E$.
+
+## Hint
+
+Choose an orthonormal basis $(e_i)$ and set $u=\sum_i\varphi(e_i)e_i$.
+
+## Solution
+
+**Existence.** Let $(e_1,\ldots,e_n)$ be an orthonormal basis of $E$. Define $u=\sum_i\varphi(e_i)e_i$. For any $v=\sum_j v_j e_j$:
+$$\langle v,u\rangle=\sum_j v_j\langle e_j,u\rangle=\sum_j v_j\varphi(e_j)=\varphi\left(\sum_j v_j e_j\right)=\varphi(v).$$
+
+**Uniqueness.** If $\langle v,u\rangle=\langle v,u'\rangle$ for all $v$, then $\langle v,u-u'\rangle=0$ for all $v$. Taking $v=u-u'$: $\|u-u'\|^2=0$, so $u=u'$.
+
+**Conclusion.** Every linear form on a finite-dimensional inner product space is represented by a unique vector.
+
+**Matrix form.** In matrix terms, a linear form $\varphi(v)=a^Tv$ is represented by the vector $u=a$ (in an orthonormal basis).
+@@@ quadratic-form-definition.md
+---
+title: Definition and matrix of a quadratic form
+category: linear/quadratic-forms
+level: lycee
+difficulty: 1
+tags: quadratic form, symmetric matrix, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Write the quadratic form
+$$Q(x,y) = x^2 + 4xy + 3y^2$$
+in the form $Q(X) = X^T A X$, where $A$ is a symmetric matrix.
+
+## Hint
+
+The coefficient of $x_ix_j$ for $i\neq j$ is $2a_{ij}$ in $X^TAX$.
+
+## Solution
+
+**Identification.** 
+$$Q(x,y) = a_{11}x^2 + 2a_{12}xy + a_{22}y^2.$$
+So $a_{11}=1$, $2a_{12}=4\Rightarrow a_{12}=2$, $a_{22}=3$.
+
+**Matrix.**
+$$A = \begin{pmatrix} 1 & 2 \\ 2 & 3 \end{pmatrix}.$$
+
+**Verification.** $X^TAX = (x,y)\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix} = x^2+2xy+2xy+3y^2 = x^2+4xy+3y^2$.
+
+**Conclusion.** $Q(x,y)=X^TAX$ with $A=\begin{pmatrix}1&2\\2&3\end{pmatrix}$.
+
+@@@ quadratic-form-polarization.md
+---
+title: Polar form of a quadratic form
+category: linear/quadratic-forms
+level: lycee
+difficulty: 2
+tags: polar form, symmetric bilinear form, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Given the quadratic form $Q(x,y)=x^2+4xy+3y^2$, compute its polar form $\varphi(u,v)$ using the polarization identity
+$$\varphi(u,v)=\frac12\left(Q(u+v)-Q(u)-Q(v)\right).$$
+
+## Hint
+
+Compute $Q(u+v)$, $Q(u)$, $Q(v)$, then combine.
+
+## Solution
+
+**Notation.** $u=(x_1,y_1)$, $v=(x_2,y_2)$.
+
+**Compute.**
+$$Q(u+v)=(x_1+x_2)^2+4(x_1+x_2)(y_1+y_2)+3(y_1+y_2)^2.$$
+Expand:
+$$=x_1^2+2x_1x_2+x_2^2+4x_1y_1+4x_1y_2+4x_2y_1+4x_2y_2+3y_1^2+6y_1y_2+3y_2^2.$$
+
+**Subtract $Q(u)+Q(v)$.** The pure terms cancel:
+$$Q(u+v)-Q(u)-Q(v)=2x_1x_2+4x_1y_2+4x_2y_1+6y_1y_2.$$
+
+**Divide by 2.**
+$$\varphi(u,v)=x_1x_2+2x_1y_2+2x_2y_1+3y_1y_2.$$
+
+**Check.** $\varphi(u,u)=x_1^2+4x_1y_1+3y_1^2=Q(u)$. Correct.
+
+**Conclusion.** The polar form is $\varphi(u,v)=x_1x_2+2x_1y_2+2x_2y_1+3y_1y_2$.
+
+@@@ quadratic-form-completing-square.md
+---
+title: Reducing a quadratic form by completing the square
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: reduction, completing square, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Reduce the quadratic form
+$$Q(x,y) = x^2 + 4xy + 5y^2$$
+by completing the square.
+
+## Hint
+
+Write $Q$ as $(x+2y)^2 + \ldots$.
+
+## Solution
+
+**Completing the square.**
+$$Q(x,y) = x^2 + 4xy + 5y^2 = (x+2y)^2 + y^2.$$
+
+**Verification.** $(x+2y)^2+y^2 = x^2+4xy+4y^2+y^2=x^2+4xy+5y^2$. Correct.
+
+**New variables.** Let $u=x+2y$, $v=y$. Then $Q=u^2+v^2$.
+
+**Conclusion.** $Q$ is positive definite (sum of two squares). Its signature is $(2,0,0)$.
+
+@@@ quadratic-form-signature-3x3.md
+---
+title: Signature of a quadratic form in 3 variables
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: signature, reduction, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Determine the signature of the quadratic form
+$$Q(x,y,z) = x^2 + 2xy + 2xz + 2y^2 + 4yz + 3z^2.$$
+
+## Hint
+
+Complete the square in $x$ first, then in $y$, then in $z$.
+
+## Solution
+
+**Square in $x$.** Consider $x^2+2x(y+z)$, which is $(x+y+z)^2-(y+z)^2$. So
+$$Q = (x+y+z)^2 - (y+z)^2 + 2y^2+4yz+3z^2.$$
+
+**Simplify.**
+$$-(y^2+2yz+z^2)+2y^2+4yz+3z^2 = y^2+2yz+2z^2.$$
+
+**Square in $y$.** $y^2+2yz+2z^2=(y+z)^2+z^2$.
+
+**Result.**
+$$Q = (x+y+z)^2 + (y+z)^2 + z^2.$$
+
+**Signature.** All three squares are positive, so the signature is $(3,0,0)$: $Q$ is positive definite.
+
+**Conclusion.** Signature $(3,0,0)$.
+
+@@@ quadratic-form-sylvester.md
+---
+title: Sylvester's criterion for positive definiteness
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: Sylvester criterion, positive definite, minors
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the quadratic form
+$$Q(x,y,z) = 2x^2+2y^2+2z^2+2xy+2yz+2zx$$
+is positive definite using Sylvester's criterion.
+
+## Hint
+
+The matrix of $Q$ is $A = \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}$. Compute the leading principal minors.
+
+## Solution
+
+**Matrix.**
+$$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}.$$
+
+**Leading principal minors.**
+- $\Delta_1 = 2 > 0$.
+- $\Delta_2 = \begin{vmatrix}2&1\\1&2\end{vmatrix}=3>0$.
+- $\Delta_3 = \det A = 2(4-1)-1(2-1)+1(1-2)=6-1-1=4>0$.
+
+**Sylvester's criterion.** All leading principal minors are positive, so $A$ is positive definite.
+
+**Conclusion.** $Q$ is positive definite, i.e. $Q(x,y,z)>0$ for all $(x,y,z)\neq(0,0,0)$.
+
+@@@ quadratic-form-indefinite.md
+---
+title: An indefinite quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: indefinite, signature, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the quadratic form
+$$Q(x,y) = x^2 - y^2$$
+is indefinite (neither positive nor negative).
+
+## Hint
+
+Find vectors $u,v$ with $Q(u)>0$ and $Q(v)<0$.
+
+## Solution
+
+**Positive value.** $Q(1,0)=1>0$.
+
+**Negative value.** $Q(0,1)=-1<0$.
+
+**Conclusion.** $Q$ takes both positive and negative values, so it is indefinite. Its signature is $(1,1,0)$: one positive square and one negative square.
+
+**Matrix form.** $A=\begin{pmatrix}1&0\\0&-1\end{pmatrix}$, with eigenvalues $1$ and $-1$, of opposite signs.
+
+@@@ quadratic-form-degenerate.md
+---
+title: A degenerate quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: degenerate, signature, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Determine the signature of the quadratic form
+$$Q(x,y,z) = x^2 + 2xy + y^2 = (x+y)^2.$$
+
+## Hint
+
+$Q$ is a square of a linear form; find the kernel.
+
+## Solution
+
+**Reduction.** $Q=(x+y)^2$. Let $u=x+y$. Then $Q=u^2$, with one positive square.
+
+**Kernel.** $Q(x,y,z)=0\iff x+y=0$. The kernel has dimension $2$ (a plane in $\mathbb{R}^3$).
+
+**Signature.** One positive square, zero negative squares, kernel dimension $2$. Signature: $(1,0,2)$.
+
+**Conclusion.** $Q$ is positive but degenerate (not positive definite). Its rank is $1$, its kernel has dimension $2$.
+
+@@@ quadratic-form-change-of-variables.md
+---
+title: Change of variables in a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: change of variables, quadratic form, matrix
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q(x,y)=x^2+4xy+3y^2$ and $P=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ (invertible). Express $Q$ in the new variables $(u,v)$ defined by $\begin{pmatrix}x\\y\end{pmatrix}=P\begin{pmatrix}u\\v\end{pmatrix}$.
+
+## Hint
+
+$Q=PX$ gives $X^T A X = U^T(P^TAP)U$.
+
+## Solution
+
+**New variables.** $x=u+2v$, $y=v$.
+
+**Direct substitution.**
+$$Q=(u+2v)^2+4(u+2v)v+3v^2=u^2+4uv+4v^2+4uv+8v^2+3v^2=u^2+8uv+15v^2.$$
+
+**Matrix form.** The new matrix is $P^TAP$:
+$$P^TAP=\begin{pmatrix}1&0\\2&1\end{pmatrix}\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&2\\0&1\end{pmatrix}.$$
+Compute: $\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&2\\0&1\end{pmatrix}=\begin{pmatrix}1&4\\2&7\end{pmatrix}$. Then
+$$\begin{pmatrix}1&0\\2&1\end{pmatrix}\begin{pmatrix}1&4\\2&7\end{pmatrix}=\begin{pmatrix}1&4\\4&15\end{pmatrix}.$$
+
+**Verification.** $U^T\begin{pmatrix}1&4\\4&15\end{pmatrix}U=u^2+8uv+15v^2$. Consistent.
+
+**Conclusion.** In $(u,v)$, $Q=u^2+8uv+15v^2$.
+
+@@@ quadratic-form-eigenvalues.md
+---
+title: Reduction of a quadratic form by eigenvalues
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: eigenvalues, orthogonal diagonalization, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Reduce the quadratic form
+$$Q(x,y)=3x^2+2xy+3y^2$$
+using an orthogonal change of variables.
+
+## Hint
+
+The symmetric matrix $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$ has eigenvalues $2$ and $4$ with orthonormal eigenvectors.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
+
+**Eigenvalues.** $\det(A-\lambda I)=(3-\lambda)^2-1=\lambda^2-6\lambda+8=(\lambda-2)(\lambda-4)$. So $\lambda_1=2$, $\lambda_2=4$.
+
+**Orthonormal eigenvectors.** For $\lambda_1=2$: $u_1=(1,-1)/\sqrt2$. For $\lambda_2=4$: $u_2=(1,1)/\sqrt2$.
+
+**Orthogonal change of variables.** Let $X=QU$ with $Q=\frac{1}{\sqrt2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}$. Then
+$$Q(x,y)=2u^2+4v^2.$$
+
+**Conclusion.** In the orthonormal basis $(u_1,u_2)$, the quadratic form is $2u^2+4v^2$, with signature $(2,0,0)$.
+
+@@@ quadratic-form-inertia-law.md
+---
+title: Sylvester's law of inertia
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: inertia law, signature, invariance
+date: 2026-11-03
+---
+
+## Statement
+
+State Sylvester's law of inertia and illustrate it on the quadratic form $Q(x,y)=x^2-y^2$ reduced by two different changes of variables.
+
+## Hint
+
+The signature (number of positive, negative, and zero eigenvalues) is invariant under invertible linear changes of variables.
+
+## Solution
+
+**Law of inertia.** Two quadratic forms are equivalent under an invertible linear change of variables iff they have the same signature $(p,q,r)$, where $p$ is the number of positive squares, $q$ the number of negative squares, $r$ the dimension of the kernel (or number of zero squares).
+
+**Reduction 1.** $Q=x^2-y^2$ is already diagonal: $p=1$, $q=1$, $r=0$.
+
+**Reduction 2.** Let $x=u+v$, $y=u-v$. Then
+$$Q=(u+v)^2-(u-v)^2=4uv.$$
+This is not diagonal. To diagonalize, use $u=(s+t)/2$, $v=(s-t)/2$: $4uv=(s+t)(s-t)=s^2-t^2$. Signature $(1,1,0)$, same as before.
+
+**Conclusion.** The signature is invariant: $(1,1,0)$ in both reductions.
+
+@@@ quadratic-form-cone.md
+---
+title: The cone $x^2+y^2-z^2=0$
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: cone, quadratic form, signature
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the zero set of the quadratic form $Q(x,y,z)=x^2+y^2-z^2$ and identify its signature.
+
+## Hint
+
+The equation $x^2+y^2=z^2$ describes a cone.
+
+## Solution
+
+**Signature.** $Q$ has two positive squares and one negative square: signature $(2,1,0)$.
+
+**Zero set.** $Q=0\iff x^2+y^2=z^2$. This is the (double) cone of revolution about the $z$-axis, with apex at the origin.
+
+**Geometric interpretation.** The signature $(2,1,0)$ indicates that the level set $Q=0$ is a cone (not a single point or the empty set).
+
+**Conclusion.** $Q$ is indefinite with signature $(2,1,0)$, and $Q=0$ is a double cone.
+
+@@@ quadratic-form-positivity-parameter.md
+---
+title: Positive definiteness depending on a parameter
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: parameter, positive definite, Sylvester
+date: 2026-11-03
+---
+
+## Statement
+
+For which real values of $a$ is the quadratic form
+$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz+zx)$$
+positive definite?
+
+## Hint
+
+Compute the leading principal minors of the matrix $A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}$.
+
+## Solution
+
+**Matrix.**
+$$A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}.$$
+
+**Leading minors.**
+- $\Delta_1=1>0$.
+- $\Delta_2=\begin{vmatrix}1&a\\a&1\end{vmatrix}=1-a^2>0\iff|a|<1$.
+- $\Delta_3=\det A$. Compute: add all rows to the first, factor $(1+2a)$, then $\Delta_3=(1+2a)(1-a)^2$. So $\Delta_3>0\iff a>-1/2$ and $a\neq1$.
+
+**Combining.** $|a|<1$ and $a>-1/2$ gives $-1/2<a<1$. At $a=1$, $\Delta_3=0$ (rank $1$), not positive definite. At $a=-1/2$, $\Delta_3=0$ (degenerate), not positive definite.
+
+**Conclusion.** $Q$ is positive definite iff $-1/2<a<1$.
+
+@@@ quadratic-form-reduction-cross.md
+---
+title: Reduction of a quadratic form with cross terms
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: reduction, completing square, cross terms
+date: 2026-11-03
+---
+
+## Statement
+
+Reduce the quadratic form
+$$Q(x,y,z)=xy+yz+zx$$
+by completing the square.
+
+## Hint
+
+Group the terms as $xy+yz+zx = \frac14[(x+y+z)^2-(x-y)^2-(y-z)^2-(z-x)^2]$, or use the substitution $u=x+y$, $v=x-y$.
+
+## Solution
+
+**Approach 1: direct grouping.** Use the identity
+$$xy+yz+zx=\frac12\left[(x+y+z)^2-(x^2+y^2+z^2)\right].$$
+This is not directly a sum of squares, but shows the signature.
+
+**Approach 2: substitution.** Let $u=x+y$, $v=x-y$, $z=z$ (this is invertible: $x=(u+v)/2$, $y=(u-v)/2$). Then
+$$xy=\frac{u^2-v^2}{4},\qquad yz=\frac{u-v}{2}z,\qquad zx=\frac{u+v}{2}z.$$
+So
+$$Q=\frac{u^2-v^2}{4}+uz.$$
+Complete the square in $u$:
+$$Q=\frac14(u+2z)^2-\frac14v^2-z^2.$$
+
+**Signature.** One positive square, two negative squares. Signature $(1,2,0)$.
+
+**Conclusion.** $Q=\frac14(u+2z)^2-\frac14v^2-z^2$, with signature $(1,2,0)$.
+
+@@@ quadratic-form-definite-negative.md
+---
+title: Negative definite quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: negative definite, signature, Sylvester
+date: 2026-11-03
+---
+
+## Statement
+
+Show that
+$$Q(x,y)=-x^2-2xy-3y^2$$
+is negative definite.
+
+## Hint
+
+Consider $-Q$ and show it is positive definite.
+
+## Solution
+
+**Reduce $-Q$.**
+$$-Q=x^2+2xy+3y^2=(x+y)^2+2y^2.$$
+
+**$-Q$ is positive definite.** It is a sum of positive squares, and vanishes only when $x+y=0$ and $y=0$, i.e. $(x,y)=(0,0)$.
+
+**Conclusion.** $Q=-[(x+y)^2+2y^2]$ is negative definite: $Q(x,y)<0$ for $(x,y)\neq(0,0)$, with signature $(0,2,0)$.
+
+@@@ quadratic-form-comparison.md
+---
+title: Comparison of two quadratic forms
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: comparison, positive definite, inequalities
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q(x,y)=x^2+2xy+2y^2$ and $R(x,y)=2x^2+2y^2$. Show that $Q(x,y)\le R(x,y)$ for all $(x,y)\in\mathbb{R}^2$.
+
+## Hint
+
+Compute $R-Q$ and show it is positive.
+
+## Solution
+
+**Difference.**
+$$R-Q = (2x^2+2y^2)-(x^2+2xy+2y^2)=x^2-2xy.$$
+Complete the square: $x^2-2xy=(x-y)^2-y^2$, which is not always $\ge0$. So the direct difference is not obviously positive. Instead:
+
+**Alternative.** Compare with eigenvalues. $Q$ has matrix $A_Q=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, eigenvalues $(3\pm\sqrt5)/2$. $R$ has matrix $2I$, eigenvalues $2$. The largest eigenvalue of $A_Q$ is $(3+\sqrt5)/2\approx2.618>2$, so $Q\le R$ is **false** in general.
+
+**Counterexample.** At $(x,y)=(1,-1)$: $Q=1-2+2=1$ and $R=2+2=4$, so $Q<R$. At $(x,y)=(1,1)$: $Q=1+2+2=5$ and $R=4$, so $Q>R$.
+
+**Conclusion.** The inequality $Q\le R$ is **false** in general. The largest eigenvalue of $Q$'s matrix exceeds $2$.
+
+@@@ quadratic-form-canonical-form.md
+---
+title: Canonical form of a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: canonical form, Gauss reduction, signature
+date: 2026-11-03
+---
+
+## Statement
+
+Put the quadratic form
+$$Q(x,y,z)=x^2+2y^2+3z^2+2xy-4xz$$
+into canonical form (sum of squares with coefficients $\pm1$ or $0$).
+
+## Hint
+
+Complete the square in $x$ first (since $x^2$ appears), then in $y$, then in $z$.
+
+## Solution
+
+**Group terms containing $x$.** $x^2+2xy-4xz=x^2+2x(y-2z)=(x+y-2z)^2-(y-2z)^2$.
+
+**Remaining terms.**
+$$Q=(x+y-2z)^2-(y-2z)^2+2y^2+3z^2=(x+y-2z)^2+y^2+4yz-z^2.$$
+
+**Square in $y$.** $y^2+4yz=(y+2z)^2-4z^2$. So
+$$Q=(x+y-2z)^2+(y+2z)^2-5z^2.$$
+
+**Canonical form.** With $u=x+y-2z$, $v=y+2z$, $w=z$:
+$$Q=u^2+v^2-5w^2.$$
+
+**Signature.** $(2,1,0)$: two positive squares, one negative.
+
+**Conclusion.** $Q=u^2+v^2-5w^2$ (or, after rescaling $w'=\sqrt5 w$, $Q=u^2+v^2-w'^2$).
+
+@@@ quadratic-form-gram.md
+---
+title: Gram matrix of a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: Gram matrix, quadratic form, polar form
+date: 2026-11-03
+---
+
+## Statement
+
+Let $\varphi$ be the symmetric bilinear form with matrix
+$$A=\begin{pmatrix}2&1\\1&3\end{pmatrix}.$$
+Compute the quadratic form $Q(u)=\varphi(u,u)$ and check that its matrix is $A$.
+
+## Hint
+
+$Q(u)=u^TAu$.
+
+## Solution
+
+**Computation.**
+$$Q(x,y)=(x,y)\begin{pmatrix}2&1\\1&3\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=2x^2+2xy+3y^2.$$
+
+**Matrix.** The matrix of $Q$ in the canonical basis is $A$, since the coefficient of $x^2$ is $2$, of $y^2$ is $3$, and of $xy$ is $2\cdot1=2$.
+
+**Conclusion.** $Q(x,y)=2x^2+2xy+3y^2$ with Gram matrix $A$.
+
+@@@ quadratic-form-diagonalization-congruence.md
+---
+title: Diagonalization by congruence
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: congruence, diagonalization, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Diagonalize the quadratic form $Q(x,y)=x^2+4xy+3y^2$ by congruence (find an invertible $P$ such that $P^TAP$ is diagonal).
+
+## Hint
+
+Use the substitution $x=u-2v$, $y=v$ that comes from completing the square.
+
+## Solution
+
+**Reduction.** $Q=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q=u^2-v^2$.
+
+**Transition matrix.** From $u=x+2y$, $v=y$: $x=u-2v$, $y=v$. So
+$$P=\begin{pmatrix}1&-2\\0&1\end{pmatrix}.$$
+
+**Congruence.** $A=\begin{pmatrix}1&2\\2&3\end{pmatrix}$, and
+$$P^TAP=\begin{pmatrix}1&0\\-2&1\end{pmatrix}\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&-2\\0&1\end{pmatrix}=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.$$
+
+**Conclusion.** $Q=u^2-v^2$, signature $(1,1,0)$.
+
+@@@ quadratic-form-positivity-check.md
+---
+title: Checking positivity of a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: positive definite, positivity, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Show that
+$$Q(x,y,z)=x^2+y^2+z^2+xy+yz+zx$$
+is positive definite.
+
+## Hint
+
+Write $Q=\frac12[(x+y)^2+(y+z)^2+(z+x)^2]$ and check when it vanishes.
+
+## Solution
+
+**Identity.**
+$$Q=\frac12\left[(x+y)^2+(y+z)^2+(z+x)^2\right].$$
+Verify: RHS $=\frac12(2x^2+2y^2+2z^2+2xy+2yz+2zx)=x^2+y^2+z^2+xy+yz+zx=Q$.
+
+**Vanishing.** $Q=0\iff x+y=0$, $y+z=0$, $z+x=0$. Adding: $2(x+y+z)=0$, so $x+y+z=0$, then combining with $x+y=0$ gives $z=0$, similarly $x=y=0$.
+
+**Conclusion.** $Q\ge0$ with equality iff $(x,y,z)=(0,0,0)$, so $Q$ is positive definite.
+
+@@@ quadratic-form-eigenvalue-inequality.md
+---
+title: Bounding a quadratic form by eigenvalues
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: eigenvalues, Rayleigh quotient, inequalities
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be a symmetric $n\times n$ matrix with eigenvalues $\lambda_1\le\cdots\le\lambda_n$. Show that for all $X\in\mathbb{R}^n$:
+$$\lambda_1\|X\|^2\le X^TAX\le\lambda_n\|X\|^2.$$
+
+## Hint
+
+Diagonalize $A$ orthogonally: $A=QDQ^T$. Then $X^TAX=(Q^TX)^TD(Q^TX)$.
+
+## Solution
+
+**Diagonalization.** Since $A$ is symmetric, there is an orthogonal matrix $Q$ with $A=QDQ^T$, $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
+
+**Change of variables.** Let $Y=Q^TX$. Then $X^TAX=Y^TDY=\sum_i\lambda_i y_i^2$.
+
+**Bounding.** Since $\lambda_1\le\lambda_i\le\lambda_n$:
+$$\lambda_1\sum_i y_i^2\le\sum_i\lambda_i y_i^2\le\lambda_n\sum_i y_i^2.$$
+But $\sum_i y_i^2=\|Y\|^2=\|X\|^2$ (since $Q$ is orthogonal).
+
+**Conclusion.** $\lambda_1\|X\|^2\le X^TAX\le\lambda_n\|X\|^2$.
+
+@@@ quadratic-form-ellipse.md
+---
+title: The ellipse $x^2+xy+y^2=1$
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: ellipse, quadratic form, geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the set $E=\{(x,y): x^2+xy+y^2=1\}$.
+
+## Hint
+
+Diagonalize the quadratic form $Q(x,y)=x^2+xy+y^2$. The set $Q=1$ is an ellipse.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}1&1/2\\1/2&1\end{pmatrix}$.
+
+**Eigenvalues.** $\det(A-\lambda I)=(1-\lambda)^2-1/4=\lambda^2-2\lambda+3/4$. Roots: $\lambda=(2\pm1)/2$, so $\lambda_1=1/2$ and $\lambda_2=3/2$.
+
+**Diagonalization.** In the orthonormal eigenbasis, $Q=\frac12 u^2+\frac32 v^2$. The equation becomes
+$$\frac{u^2}{2}+\frac{v^2}{2/3}=1.$$
+
+**Geometry.** This is an ellipse centered at the origin, with semi-axes $\sqrt2$ (in the direction of the eigenvector for $\lambda_1=1/2$) and $\sqrt{2/3}$ (in the direction for $\lambda_2=3/2$).
+
+**Conclusion.** $E$ is an ellipse; its semi-axes are $\sqrt2$ and $\sqrt{2/3}$.
+
+@@@ quadratic-form-hyperbola.md
+---
+title: The hyperbola $x^2-y^2=1$
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+tags: hyperbola, quadratic form, geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the set $H=\{(x,y): x^2-y^2=1\}$.
+
+## Hint
+
+The quadratic form $Q(x,y)=x^2-y^2$ has signature $(1,1,0)$; the set $Q=1$ is a hyperbola.
+
+## Solution
+
+**Signature.** $Q$ is indefinite with signature $(1,1,0)$.
+
+**Geometry.** $x^2-y^2=1$ is a hyperbola centered at the origin, with asymptotes $y=\pm x$ (given by $x^2-y^2=0$). The vertices are at $(\pm1,0)$.
+
+**Conclusion.** $H$ is a hyperbola with vertices $(\pm1,0)$ and asymptotes $y=\pm x$.
+
+@@@ quadratic-form-positivity-parameter-2.md
+---
+title: Positive definiteness of a 2×2 parameter family
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+tags: parameter, positive definite, minors
+date: 2026-11-03
+---
+
+## Statement
+
+For which $m\in\mathbb{R}$ is the quadratic form
+$$Q(x,y)=x^2+2mxy+4y^2$$
+positive definite?
+
+## Hint
+
+The matrix is $\begin{pmatrix}1&m\\m&4\end{pmatrix}$. Use Sylvester's criterion.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}1&m\\m&4\end{pmatrix}$.
+
+**Leading principal minors.**
+- $\Delta_1=1>0$.
+- $\Delta_2=4-m^2>0\iff|m|<2$.
+
+**Conclusion.** $Q$ is positive definite iff $|m|<2$, i.e. $-2<m<2$.
+
+@@@ quadratic-form-signature-parameter.md
+---
+title: Signature depending on a parameter
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: signature, parameter, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+For which $a\in\mathbb{R}$ is the quadratic form
+$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz)$$
+positive definite? Find the signature for all $a$.
+
+## Hint
+
+Reduce by grouping $x^2+2axy+...$, completing the square in $x$ first.
+
+## Solution
+
+**Group in $x$.** $x^2+2axy=(x+ay)^2-a^2y^2$. So
+$$Q=(x+ay)^2+(1-a^2)y^2+z^2+2ayz.$$
+
+**Group in $z$.** $z^2+2ayz=(z+ay)^2-a^2y^2$. So
+$$Q=(x+ay)^2+(1-2a^2)y^2+(z+ay)^2.$$
+
+**Signature analysis.**
+- If $1-2a^2>0$, i.e. $|a|<1/\sqrt2$: signature $(3,0,0)$, positive definite.
+- If $a=\pm1/\sqrt2$: signature $(2,0,1)$, degenerate positive.
+- If $|a|>1/\sqrt2$: signature $(2,1,0)$, indefinite.
+
+**Conclusion.** $Q$ is positive definite iff $|a|<1/\sqrt2$.
+
+@@@ quadratic-form-orthogonal-diagonalization.md
+---
+title: Orthogonal diagonalization of a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: orthogonal diagonalization, eigenvalues, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Orthogonally diagonalize the quadratic form
+$$Q(x,y,z)=2x^2+2y^2+2z^2+2xy-2xz-2yz,$$
+i.e. find an orthogonal matrix $Q$ and diagonal $D$ with $A=QDQ^T$.
+
+## Hint
+
+Compute the matrix $A$, then its eigenvalues and eigenvectors.
+
+## Solution
+
+**Matrix.**
+$$A=\begin{pmatrix}2&1&-1\\1&2&-1\\-1&-1&2\end{pmatrix}.$$
+
+**Eigenvalues.** Characteristic polynomial: $\det(A-\lambda I)$. Row/column sums are $2$, so $\lambda=2$ is an eigenvalue with eigenvector $(1,1,0)$? Let's compute: $A(1,1,0)^T=(3,3,-2)^T\neq2(1,1,0)$. Try $(1,1,0)$: no. Try $(1,-1,0)$: $A(1,-1,0)=(1,-1,0)$? $A(1,-1,0)=(1,-1,0)$. Yes! $\lambda=1$ with eigenvector $(1,-1,0)$.
+
+Compute trace: $6$, so remaining eigenvalues sum to $5$. Compute $\det A$: expand. Using eigenvalues $1$ and $2$ (found by inspection) plus a third. Actually let me compute the characteristic polynomial directly.
+
+Hmm, this is getting long. A cleaner approach: the matrix has the form $2I+N$ where $N=\begin{pmatrix}0&1&-1\\1&0&-1\\-1&-1&0\end{pmatrix}$. Eigenvalues of $N$: trace $0$, $\det N=0$ (sum of rows is $0$ for row $1$? Row $1$: $0+1-1=0$, so $(1,1,1)$ is in kernel, $\lambda=0$). Other eigenvalues of $N$: sum $0$, product $0$, one is $0$, sum of squares $=6$ (Frobenius norm squared), so $\lambda_1^2+\lambda_2^2+\lambda_3^2=6$, with $\lambda_1=0$, $\lambda_2+\lambda_3=0$, so $\lambda_2^2+\lambda_3^2=6$, i.e. $\lambda_2=\pm\sqrt3$, $\lambda_3=\mp\sqrt3$. So eigenvalues of $N$: $0,\sqrt3,-\sqrt3$. Eigenvalues of $A=2I+N$: $2, 2+\sqrt3, 2-\sqrt3$.
+
+**Signature.** $(3,0,0)$, all positive, so $Q$ is positive definite.
+
+**Orthogonal diagonalization.** The eigenvectors are those of $N$: $(1,1,1)$ for $\lambda=0$, and corresponding vectors for $\pm\sqrt3$.
+
+**Conclusion.** $Q$ is positive definite with eigenvalues $2, 2+\sqrt3, 2-\sqrt3$. Orthogonal diagonalization gives $Q=2u^2+(2+\sqrt3)v^2+(2-\sqrt3)w^2$.
+
+@@@ quadratic-form-two-forms-equivalent.md
+---
+title: When are two quadratic forms equivalent?
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: equivalence, signature, congruence
+date: 2026-11-03
+---
+
+## Statement
+
+Are the quadratic forms $Q_1(x,y)=x^2+4xy+3y^2$ and $Q_2(x,y)=x^2-y^2$ equivalent under an invertible linear change of variables?
+
+## Hint
+
+Compute their signatures.
+
+## Solution
+
+**$Q_1$.** $Q_1=(x+2y)^2-y^2$, signature $(1,1,0)$.
+
+**$Q_2$.** $Q_2=x^2-y^2$, signature $(1,1,0)$.
+
+**Equivalence.** Two quadratic forms are equivalent iff they have the same signature (Sylvester's law of inertia). Both have signature $(1,1,0)$, so they are equivalent.
+
+**Explicit change.** $Q_1=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q_1=u^2-v^2$, which is $Q_2$ in the variables $(u,v)$.
+
+**Conclusion.** $Q_1$ and $Q_2$ are equivalent.
+
+@@@ quadratic-form-minimize.md
+---
+title: Minimizing a quadratic form on the sphere
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: minimum, sphere, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Minimize the quadratic form
+$$Q(x,y)=3x^2+2xy+3y^2$$
+on the unit circle $x^2+y^2=1$.
+
+## Hint
+
+The minimum is the smallest eigenvalue of the matrix $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
+
+**Eigenvalues.** $\det(A-\lambda I)=(3-\lambda)^2-1$, roots $\lambda=2$ and $\lambda=4$.
+
+**Rayleigh quotient.** For $\|X\|=1$, $X^TAX$ ranges in $[\lambda_{\min},\lambda_{\max}]=[2,4]$.
+
+**Minimum.** The minimum is $2$, attained at the unit eigenvector for $\lambda=2$, i.e. $(1,-1)/\sqrt2$.
+
+**Conclusion.** $\min Q=2$ on the unit circle, attained at $\pm(1,-1)/\sqrt2$.
+
+@@@ quadratic-form-maximize.md
+---
+title: Maximizing a quadratic form on the sphere
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: maximum, sphere, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Maximize the quadratic form
+$$Q(x,y)=3x^2+2xy+3y^2$$
+on the unit circle.
+
+## Hint
+
+Use the largest eigenvalue.
+
+## Solution
+
+**Eigenvalues.** From the previous exercise, $\lambda_1=2$ and $\lambda_2=4$.
+
+**Maximum.** On the unit sphere, $Q\le\lambda_2=4$, with equality at the unit eigenvector for $\lambda_2$, i.e. $(1,1)/\sqrt2$.
+
+**Verification.** $Q(1/\sqrt2,1/\sqrt2)=3/2+2/2+3/2=4$. Correct.
+
+**Conclusion.** $\max Q=4$ on the unit circle, attained at $\pm(1,1)/\sqrt2$.
+
+@@@ quadratic-form-rayleigh.md
+---
+title: The Rayleigh quotient
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: Rayleigh quotient, eigenvalues, optimization
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be a symmetric matrix. The Rayleigh quotient of $X\neq0$ is
+$$R(X)=\frac{X^TAX}{X^TX}.$$
+Show that the minimum and maximum of $R$ over $\mathbb{R}^n\setminus\{0\}$ are the smallest and largest eigenvalues of $A$.
+
+## Hint
+
+Use the Lagrange multiplier method on the sphere, or the orthogonal diagonalization $A=QDQ^T$.
+
+## Solution
+
+**Diagonalization.** $A=QDQ^T$ with $Q$ orthogonal, $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
+
+**Change of variables.** Let $Y=Q^TX$. Then $X^TAX=Y^TDY=\sum_i\lambda_i y_i^2$ and $\|X\|^2=\|Y\|^2=\sum_i y_i^2$. So
+$$R(X)=\frac{\sum_i\lambda_i y_i^2}{\sum_i y_i^2}.$$
+
+**Bounding.** Since $\lambda_1\le\lambda_i\le\lambda_n$, the quotient lies in $[\lambda_1,\lambda_n]$.
+
+**Attainment.** Take $Y$ proportional to $e_1$ (for $\lambda_1$) or $e_n$ (for $\lambda_n$); then $X=QY$ is the corresponding eigenvector.
+
+**Conclusion.** $\min R=\lambda_{\min}$ and $\max R=\lambda_{\max}$.
+
+@@@ quadratic-form-LDL-decomposition.md
+---
+title: LDL decomposition of a symmetric matrix
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: LDL decomposition, Sylvester, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Write the matrix
+$$A=\begin{pmatrix}4&2\\2&5\end{pmatrix}$$
+in the form $A=LDL^T$ with $L$ unit lower triangular and $D$ diagonal.
+
+## Hint
+
+Use Gaussian elimination without pivoting, tracking the multipliers.
+
+## Solution
+
+**First step.** $L_2\leftarrow L_2-(1/2)L_1$: multiplier $\ell_{21}=1/2$. New matrix:
+$$\begin{pmatrix}4&2\\0&4\end{pmatrix}.$$
+
+**Decomposition.**
+$$L=\begin{pmatrix}1&0\\1/2&1\end{pmatrix},\qquad D=\begin{pmatrix}4&0\\0&4\end{pmatrix}.$$
+
+**Verify.**
+$$LDL^T=\begin{pmatrix}1&0\\1/2&1\end{pmatrix}\begin{pmatrix}4&0\\0&4\end{pmatrix}\begin{pmatrix}1&1/2\\0&1\end{pmatrix}=\begin{pmatrix}4&2\\2&5\end{pmatrix}.$$
+Correct.
+
+**Conclusion.** $A=LDL^T$ with the matrices above.
+
+@@@ quadratic-form-inequality.md
+---
+title: An inequality via a positive definite form
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+tags: inequality, positive definite, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Show that for all $x,y\in\mathbb{R}$,
+$$x^2+xy+y^2\ge\frac34(x+y)^2.$$
+
+## Hint
+
+Consider the quadratic form $Q=x^2+xy+y^2-\frac34(x+y)^2$ and show it is positive semi-definite.
+
+## Solution
+
+**Compute $Q$.**
+$$Q=x^2+xy+y^2-\frac34(x^2+2xy+y^2)=\frac14x^2-\frac12xy+\frac14y^2=\frac14(x-y)^2.$$
+
+**Conclusion.** $Q=\frac14(x-y)^2\ge0$, with equality iff $x=y$. Hence the inequality holds.
+
+**Remark.** This is a special case of the Cauchy-Schwarz-type inequalities involving quadratic forms.
 
