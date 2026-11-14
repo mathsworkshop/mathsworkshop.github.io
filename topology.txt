@@ -1,3 +1,75 @@
+@@@ rt-cn-003-connected-implies-interval.md
+---
+title: Connected subsets of R are intervals
+category: topology/topology-of-r/r-connectedness
+level: l2
+difficulty: 2
+order: 3
+tags: connectedness, intervals, convexity
+date: 2026-11-12
+---
+
+## Statement
+
+Call $S\subset\mathbb{R}$ an **interval** if $a,b\in S$ and $a<c<b$ imply $c\in S$. Prove that:
+
+1. every connected subset of $\mathbb{R}$ is an interval;
+2. a subset of $\mathbb{R}$ is an interval iff it is of one of the forms $\varnothing$, $\{a\}$, $(a,b)$, $[a,b)$, $(a,b]$, $[a,b]$, $(a,\infty)$, $[a,\infty)$, $(-\infty,b)$, $(-\infty,b]$, $\mathbb{R}$.
+
+## Hint
+
+For part 1, argue by contraposition: if some $c$ between two points of $S$ is missing from $S$, cut $S$ at $c$.
+
+For part 2, let $\alpha=\inf S$, $\beta=\sup S$ and show $(\alpha,\beta)\subset S\subset[\alpha,\beta]$.
+
+## Solution
+
+**Idea.** Connectedness forbids "holes", and a set without holes is by definition an interval.
+
+**Part 1.** Let $S$ be connected and suppose, for a contradiction, that $a,b\in S$, $a<c<b$ but $c\notin S$. Let $U=S\cap(-\infty,c)$ and $V=S\cap(c,\infty)$. Then $a\in U$, $b\in V$ (non-empty), $U\cap V=\varnothing$, $U\cup V=S$ (because $c\notin S$) and both are relatively open. This is a separation, contradicting the connectedness of $S$.
+
+**Part 2.** *Every listed set is an interval:* if $a',b'$ belong to it and $a'<c<b'$, then $c$ is trivially between the endpoints and lies in the set; check each form.
+
+*Conversely*, let $S\neq\varnothing$ be an interval, and let $\alpha=\inf S\in[-\infty,\infty)$, $\beta=\sup S\in(-\infty,\infty]$ (with the usual convention $\inf S=-\infty$ if $S$ is unbounded below, and $\sup S=+\infty$ if unbounded above).
+
+- Clearly $S\subset[\alpha,\beta]_{\overline{\mathbb{R}}}\cap\mathbb{R}$, where the bracket denotes the interval in $\overline{\mathbb{R}}$ with endpoints $\alpha,\beta$ (understood as an interval of $\mathbb{R}$ after intersecting with $\mathbb{R}$).
+- If $\alpha<c<\beta$: by definition of inf and sup there exist $a,b\in S$ with $a<c<b$ (since $c>\alpha$ gives some $a\in S$ with $a<c$, and $c<\beta$ gives $b\in S$ with $b>c$). Since $S$ is an interval, $c\in S$. Hence $(\alpha,\beta)\subset S$.
+
+So $S$ is $(\alpha,\beta)$ together with possibly one or both endpoints (when finite): it is one of the listed forms. If $\alpha=\beta$, $S$ is a singleton.
+
+**Remark.** Part 1 says "connected $\Rightarrow$ interval". The converse ("interval $\Rightarrow$ connected") is the content of the next problem; it uses the completeness of $\mathbb{R}$ (the supremum property). The analogous statement fails in $\mathbb{Q}$: $\mathbb{Q}\cap(0,1)$ contains every rational lying between two of its points, yet it is disconnected, as the previous problem shows.
+
+@@@ rt-cn-015-the-line-is-not-the-plane.md
+---
+title: R is not homeomorphic to R²
+category: topology/topology-of-r/r-connectedness
+level: l3
+difficulty: 4
+order: 15
+tags: homeomorphism, cut point, path-connectedness
+date: 2026-11-12
+---
+
+## Statement
+
+1. Show that $\mathbb{R}^2\setminus\{p\}$ is path-connected for every point $p$, and that a path-connected set is connected.
+2. Prove that $\mathbb{R}$ and $\mathbb{R}^2$ are not homeomorphic.
+
+## Hint
+
+For part 1: join $x$ to $y$ directly if the segment avoids $p$; otherwise use a third point $z$ off the line $(xy)$.
+
+For part 2: remove a point on each side and compare the connectedness of what remains.
+
+## Solution
+
+**Part 1: path-connected.** Let $x,y\in\mathbb{R}^2\setminus\{p\}$. If $p\notin[x,y]$, the segment $t\mapsto(1-t)x+ty$ is a path in the set. If $p\in[x,y]$, then $p$ lies on the line $L=(xy)$; choose $z\notin L$. The segment $[x,z]$ meets $L$ only at $x$ (two distinct lines meet in at most one point) and $p\ne x$, so $p\notin[x,z]$; likewise $p\notin[z,y]$. The concatenation of the two segments is a path from $x$ to $y$ avoiding $p$.
+
+**Part 1: path-connected $\Rightarrow$ connected.** Let $X$ be path-connected and suppose $X=U\cup V$ is a separation. Pick $a\in U$, $b\in V$ and a path $\gamma:[0,1]\to X$ from $a$ to $b$. Then $\gamma^{-1}(U)$, $\gamma^{-1}(V)$ are non-empty, disjoint, relatively open in $[0,1]$ (continuity) and cover $[0,1]$: they separate $[0,1]$, but $[0,1]$ is connected. Contradiction.
+
+**Part 2.** Suppose $h:\mathbb{R}\to\mathbb{R}^2$ is a homeomorphism and let $p=h(0)$. Its restriction is a homeomorphism $\mathbb{R}\setminus\{0\}\to\mathbb{R}^2\setminus\{p\}$. A homeomorphism preserves connectedness (a continuous image of a connected set is connected, and so is the image under the inverse). But $\mathbb{R}\setminus\{0\}=(-\infty,0)\cup(0,\infty)$ is **not** connected, whereas $\mathbb{R}^2\setminus\{p\}$ is connected by Part 1. Contradiction. $\square$
+
+**Remark.** The same argument shows $\mathbb{R}^n\not\cong\mathbb{R}$ for every $n\ge2$. Distinguishing $\mathbb{R}^2$ from $\mathbb{R}^3$ needs more subtle tools (invariance of domain; removing a *circle*-shaped curve or fundamental groups); and there exist *continuous bijections* $[0,1)\to$ circle, showing that "bijective continuous" is not enough for homeomorphism.
 @@@ rt-dn-027-countable-closed-sets.md
 ---
 title: Countable closed sets and their derived sets
