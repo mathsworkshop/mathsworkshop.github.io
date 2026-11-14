@@ -1,7 +1,7 @@
 @@@ rt-ct-03-what-continuous-maps-preserve.md
 ---
 title: What continuous maps do and do not preserve
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 2
 order: 3
@@ -52,7 +52,7 @@ For the true ones, use sequences (for compactness) and the intermediate value th
 @@@ rt-ct-10-cauchy-sequences-and-uniform-continuity.md
 ---
 title: Uniformly continuous maps and Cauchy sequences
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 4
 order: 10
@@ -92,7 +92,7 @@ converges to $\ell$ (it has the two sub-sequences converging to the same limit),
 @@@ rt-ct-19-extending-a-continuous-function-from-a-closed-set.md
 ---
 title: Extending a continuous function from a closed set (Tietze in dimension one)
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: m1
 difficulty: 5
 order: 19
