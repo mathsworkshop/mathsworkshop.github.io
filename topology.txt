@@ -4918,7 +4918,7 @@ $0\in C$, so $\mathbb{Q}\subset E$. For part 2, $C+q$ is a translate of a closed
 @@@ rt-ct-01-continuity-through-open-sets.md
 ---
 title: Continuity through open sets
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 1
 order: 1
@@ -4957,7 +4957,7 @@ which is the complement of an open set, hence closed.
 @@@ rt-ct-02-zero-sets-and-sublevel-sets.md
 ---
 title: Zero sets and level sets of continuous functions
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 1
 order: 2
@@ -5000,7 +5000,7 @@ Write each set as a preimage of an open or closed set under a continuous functio
 @@@ rt-ct-03-what-continuous-maps-preserve.md
 ---
 title: What continuous maps do and do not preserve
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 2
 order: 3
@@ -5051,7 +5051,7 @@ For the true ones, use sequences (for compactness) and the intermediate value th
 @@@ rt-ct-04-closed-graph.md
 ---
 title: Continuous functions have a closed graph (and conversely?)
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 3
 order: 4
@@ -5094,7 +5094,7 @@ In all cases $(x,y)\in\Gamma_f$: the graph is closed.
 @@@ rt-ct-05-determined-by-a-dense-set.md
 ---
 title: A continuous function is determined by its values on a dense set
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 2
 order: 5
@@ -5135,7 +5135,7 @@ so $h$ is continuous and additive, hence $h(x)=cx$ by part 2. Therefore $f(x)=cx
 @@@ rt-ct-06-the-real-line-and-the-interval.md
 ---
 title: The real line is homeomorphic to an open interval
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 2
 order: 6
@@ -5181,7 +5181,7 @@ Compositions and inverses of homeomorphisms are homeomorphisms, so all open inte
 @@@ rt-ct-07-compactness-distinguishes-intervals.md
 ---
 title: Compactness distinguishes [0,1] from (0,1) and from the real line
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 2
 order: 7
@@ -5216,7 +5216,7 @@ Continuous images of compact sets are compact. Is $(0,1)$ compact? Find a sequen
 @@@ rt-ct-08-removing-a-point.md
 ---
 title: Telling intervals apart by removing a point
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 3
 order: 8
@@ -5251,7 +5251,7 @@ The left side is an interval, hence connected, so its continuous image $(0,q)\cu
 @@@ rt-ct-09-open-maps-on-the-line.md
 ---
 title: Continuous open maps of the line are strictly monotone
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: m1
 difficulty: 4
 order: 9
@@ -5298,7 +5298,7 @@ Since $x<y$ and $a<b$, we have $tx+(1-t)a<ty+(1-t)b$ for every $t\in[0,1]$, so t
 @@@ rt-ct-10-cauchy-sequences-and-uniform-continuity.md
 ---
 title: Uniformly continuous maps and Cauchy sequences
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 4
 order: 10
@@ -5338,7 +5338,7 @@ converges to $\ell$ (it has the two sub-sequences converging to the same limit),
 @@@ rt-ct-11-testing-uniform-continuity.md
 ---
 title: Testing uniform continuity on examples
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 2
 order: 11
@@ -5387,7 +5387,7 @@ $$y_n-x_n=\frac{\pi/2}{x_n+y_n}\longrightarrow0.$$
 @@@ rt-ct-12-lipschitz-functions.md
 ---
 title: Lipschitz functions
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 2
 order: 12
@@ -5429,7 +5429,7 @@ On $[\delta,\infty)$ the derivative is $\frac1{2\sqrt x}\le\frac1{2\sqrt\delta}$
 @@@ rt-ct-13-banach-fixed-point-on-the-line.md
 ---
 title: Contractions and the fixed point theorem on the line
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 3
 order: 13
@@ -5474,7 +5474,7 @@ so $(x_n)$ is Cauchy and converges to some $x^*\in\mathbb{R}$. Since $x_n\in F$ 
 @@@ rt-ct-14-fixed-points-of-continuous-self-maps.md
 ---
 title: Fixed points of continuous maps of [0,1] and the necessity of the hypotheses
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 2
 order: 14
@@ -5517,7 +5517,7 @@ So $h(0)$ and $h(\frac12)$ have opposite signs (or are both zero), and the IVT g
 @@@ rt-ct-15-semicontinuous-functions.md
 ---
 title: Lower and upper semicontinuous functions
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: m1
 difficulty: 4
 order: 15
@@ -5562,7 +5562,7 @@ Part 5: take a minimising sequence, extract a convergent subsequence, and use lo
 @@@ rt-ct-16-discontinuities-of-monotone-functions.md
 ---
 title: A monotone function has countably many discontinuities
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l3
 difficulty: 4
 order: 16
@@ -5606,7 +5606,7 @@ So $f$ is continuous at $x_0$.
 @@@ rt-ct-17-the-set-of-continuity-points-is-a-g-delta.md
 ---
 title: The set of continuity points is a G_delta
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: m1
 difficulty: 4
 order: 17
@@ -5648,7 +5648,7 @@ is a countable intersection of open sets: a $G_\delta$. Its complement, the set 
 @@@ rt-ct-18-computing-oscillations.md
 ---
 title: Computing oscillations: the sign function, sin(1/x), the indicator of Q and Thomae
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l3
 difficulty: 3
 order: 18
@@ -5691,7 +5691,7 @@ For Thomae, near $p/q$ every other rational has a denominator larger than any gi
 @@@ rt-ct-19-extending-a-continuous-function-from-a-closed-set.md
 ---
 title: Extending a continuous function from a closed set (Tietze in dimension one)
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: m1
 difficulty: 5
 order: 19
@@ -5737,7 +5737,7 @@ Hence $\tilde f$ is continuous at every $x_0\in F$.
 @@@ rt-ct-20-periodic-continuous-functions.md
 ---
 title: Continuous periodic functions are bounded and uniformly continuous
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 3
 order: 20
@@ -5780,7 +5780,7 @@ So $\cos p=1$ and $\cos\sqrt2p=1$: $p=2\pi m$ and $\sqrt2p=2\pi n$ with $m,n$ po
 @@@ rt-ct-21-every-closed-set-is-a-zero-set.md
 ---
 title: Every closed set is the zero set of a continuous function
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 3
 order: 21
@@ -5823,7 +5823,7 @@ is continuous with values in $[0,1]$, $h=0$ exactly on $A$ and $h=1$ exactly on 
 @@@ rt-ct-22-a-continuous-bijection-that-is-not-a-homeomorphism.md
 ---
 title: A continuous bijection that is not a homeomorphism
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 3
 order: 22
@@ -5864,7 +5864,7 @@ Part 3: a continuous injective function on an interval is strictly monotone.
 @@@ rt-ct-23-which-intervals-are-continuous-images-of-which.md
 ---
 title: Which intervals are continuous images of which
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: l2
 difficulty: 3
 order: 23
@@ -5914,7 +5914,7 @@ Use $\tan$ for $\mathbb{R}$, and oscillating functions such as $\sin\frac1{x(1-x
 @@@ rt-ct-24-no-continuous-function-takes-every-value-exactly-twice.md
 ---
 title: No continuous function takes every value exactly twice
-category: real-analysis/topology-of-r/r-continuity
+category: topology/topology-of-r/r-continuity
 level: m1
 difficulty: 5
 order: 24
