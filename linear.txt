@@ -4,6 +4,7 @@ title: A plane as a subspace
 category: linear/vector-spaces
 level: l1
 difficulty: 2
+order: 4
 tags: subspaces, basis
 date: 2026-10-31
 ---
@@ -24,7 +25,7 @@ so $(x,y,z)+\lambda(x',y',z')\in F$.
 
 **Basis.** A vector of $F$ has $z=-x-y$, so
 $$(x,y,z)=x\,(1,0,-1)+y\,(0,1,-1).$$
-The vectors $(1,0,-1)$ and $(0,1,-1)$ span $F$ and are linearly independent (neither is a multiple of the other). They form a basis, and $\dim F=2$.
+The vectors $(1,0,-1)$ and $(0,1,-1)$ span $F$. They are linearly independent: if $x(1,0,-1)+y(0,1,-1)=(0,0,0)$, the first two coordinates give $x=0$ and $y=0$. They form a basis, and $\dim F=2$ (all bases of a finite-dimensional space have the same cardinality, which defines the dimension).
 
 
 @@@ vector-space-axioms-check.md
