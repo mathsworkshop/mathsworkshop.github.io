@@ -16,7 +16,6 @@ const DEFAULT_CATEGORIES = [
   { id: 'algebra', name: 'Algebra', description: 'Equations, inequalities, polynomials and algebraic identities.' },
   { id: 'analysis', name: 'Analysis', description: 'Limits, sequences, series, derivatives and integrals.' },
   { id: 'linear', name: 'Linear algebra', description: 'Matrices, vector spaces, determinants and diagonalisation.' },
-  { id: 'proba', name: 'Probability', description: 'Counting outcomes, conditional probability and random variables.' },
   { id: 'geometry', name: 'Geometry', description: 'Plane and space geometry, triangles, circles and transformations.' },
   { id: 'number', name: 'Number theory', description: 'Divisibility, primes, congruences and irrationality proofs.' },
   { id: 'combi', name: 'Combinatorics', description: 'Counting arguments, binomial coefficients and bijections.' },
@@ -329,7 +328,7 @@ function infoPage(title, urlPath, desc, inner) {
   return shell({ title, desc, urlPath, body: `<div class="wrap page"><article class="prose"><h1>${esc(title)}</h1>${inner}</article></div>` });
 }
 const aboutHtml = `<p>${esc(config.name)} is a collection of maths problems with hints and complete solutions. Each problem is written, typeset and checked by ${esc(config.owner)}.</p>
-<p>The problems are grouped by topic (algebra, analysis, linear algebra, probability, number theory, combinatorics and more) and by level, from high school to master's. Every problem has a difficulty rating from 1 to 5, a hint you can open if you are stuck, and a full solution you can reveal once you have tried.</p>
+<p>The problems are grouped by topic (algebra, analysis, linear algebra, number theory, combinatorics and more) and by level, from high school to master's. Every problem has a difficulty rating from 1 to 5, a hint you can open if you are stuck, and a full solution you can reveal once you have tried.</p>
 <h2>How to use it</h2>
 <ul><li>Read the statement and try it on paper first.</li><li>If you are stuck, open the hint, then try again.</li><li>Open the solution to compare with your own work.</li></ul>
 <p>If you find a mistake or have a problem to suggest, please <a href="/contact/">get in touch</a>.</p>`;
