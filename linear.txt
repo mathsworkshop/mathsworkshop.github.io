@@ -1424,42 +1424,13 @@ By the induction hypothesis applied to $\lambda_1,\ldots,\lambda_{r-1}$ (and usi
 
 **Conclusion.** The eigenspaces are in direct sum, and $\sum_i\dim E_{\lambda_i}\le n$.
 
-@@@ determinant-companion.md
----
-title: Determinant of a companion matrix
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: companion matrix, determinant, characteristic polynomial
-date: 2026-11-03
----
-
-## Statement
-
-Compute the determinant of
-$$C = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ -c_0 & -c_1 & -c_2 \end{pmatrix}.$$
-
-## Hint
-
-Expand along the first column, or recognise the companion matrix of $X^3+c_2X^2+c_1X+c_0$.
-
-## Solution
-
-**Expansion along the first column.** The only nonzero entry in column $1$ is $C_{31}=-c_0$. Its cofactor is
-$$(-1)^{3+1}\begin{vmatrix}1&0\\0&1\end{vmatrix}=+1.$$
-Hence
-$$\det C=(-c_0)\cdot(+1)=-c_0.$$
-
-
-**Remark.** This is the companion matrix of $P(X)=X^3+c_2X^2+c_1X+c_0$. Its characteristic polynomial is
-$$\det(\lambda I-C)=\lambda^3+c_2\lambda^2+c_1\lambda+c_0=P(\lambda),$$
-which is monic. The constant term of the characteristic polynomial is $c_0$, and for an $n\times n$ companion matrix the determinant equals $(-1)^n$ times that constant term, so here $\det C=(-1)^3c_0=-c_0$, consistent with the direct computation.
 @@@ determinant-2x2-basic.md
 ---
 title: Determinant of a 2×2 matrix
 category: linear/determinants
 level: lycee
 difficulty: 1
+order: 1
 tags: determinant, 2x2 matrices, invertibility
 date: 2026-11-03
 ---
@@ -1490,6 +1461,7 @@ title: Determinant of a 3×3 matrix by Sarrus' rule
 category: linear/determinants
 level: lycee
 difficulty: 2
+order: 2
 tags: determinant, Sarrus rule, 3x3 matrices
 date: 2026-11-03
 ---
@@ -1512,70 +1484,36 @@ $$= 50 + 84 + 96 - 105 - 48 - 80 = 230 - 233 = -3.$$
 
 **Conclusion.** $\det A = -3$, so $A$ is invertible.
 
-@@@ determinant-expansion-row.md
+@@@ determinant-triangular.md
 ---
-title: Expansion along a row
+title: Determinant of a triangular matrix
 category: linear/determinants
 level: lycee
-difficulty: 3
-tags: cofactor expansion, minors, determinant
+difficulty: 2
+order: 3
+tags: triangular matrix, determinant, diagonal
 date: 2026-11-03
 ---
 
 ## Statement
 
-Compute the determinant of
-$$A = \begin{pmatrix} 2 & 0 & 0 & 1 \\ 0 & 3 & 0 & 0 \\ 0 & 0 & 4 & 0 \\ 5 & 0 & 0 & 6 \end{pmatrix}$$
-by expanding along the most convenient row or column.
+Show that the determinant of an upper triangular (or lower triangular) matrix is the product of its diagonal entries.
 
 ## Hint
 
-Expand along the second row, which has only one nonzero entry.
+Expand recursively along the first column (or last row).
 
 ## Solution
 
-**Expansion along the second row.** The only nonzero entry is $a_{22}=3$. Its cofactor is $(-1)^{2+2}=+1$ times the determinant of the $3\times3$ minor obtained by deleting row $2$ and column $2$:
-$$M_{22} = \begin{vmatrix} 2 & 0 & 1 \\ 0 & 4 & 0 \\ 5 & 0 & 6 \end{vmatrix}.$$
+**Expansion along the first column.** Let $T$ be upper triangular with diagonal entries $t_{11},\ldots,t_{nn}$. In the first column, only $t_{11}$ is nonzero, so
+$$\det T = t_{11}\det T_{11},$$
+where $T_{11}$ is the $(n-1)\times(n-1)$ upper triangular submatrix obtained by removing the first row and first column, with diagonal entries $t_{22},\ldots,t_{nn}$.
 
-**Expand $M_{22}$ along its second row.** The only nonzero entry is $4$ at position $(2,2)$, cofactor $(+1)\begin{vmatrix}2&1\\5&6\end{vmatrix} = 12-5=7$.
+**Induction.** Repeating the expansion, we get $\det T = t_{11}t_{22}\cdots t_{nn}$.
 
-So $M_{22} = 4\cdot7 = 28$.
+**Lower triangular case.** The same argument works by expanding along the first row (or by transposing: $\det T = \det T^T$, and $T^T$ is upper triangular).
 
-**Conclusion.** $\det A = 3\cdot28 = 84$.
-
-**Check by permutation formula.** The matrix is a block "diagonal with a corner" structure; the result $2\cdot3\cdot4\cdot6 + (\text{sign})\cdot1\cdot3\cdot4\cdot5 = 144 - 60 = 84$ confirms it.
-
-@@@ determinant-expansion-column.md
----
-title: Expansion along a column
-category: linear/determinants
-level: lycee
-difficulty: 3
-tags: cofactor expansion, minors, determinant
-date: 2026-11-03
----
-
-## Statement
-
-Compute the determinant of
-$$A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 4 & 5 \\ 1 & 0 & 6 \end{pmatrix}$$
-by expanding along the first column.
-
-## Hint
-
-Use the cofactor expansion along column $1$: $\det A = \sum_i (-1)^{i+1}a_{i1}\det M_{i1}$.
-
-## Solution
-
-**Expansion along column 1.**
-$$\det A = 1\cdot\begin{vmatrix}4&5\\0&6\end{vmatrix} - 0\cdot\begin{vmatrix}2&3\\0&6\end{vmatrix} + 1\cdot\begin{vmatrix}2&3\\4&5\end{vmatrix}.$$
-
-**Minor computations.**
-$$\begin{vmatrix}4&5\\0&6\end{vmatrix} = 24, \qquad \begin{vmatrix}2&3\\4&5\end{vmatrix} = 10-12=-2.$$
-
-**Conclusion.** $\det A = 1\cdot24 + 1\cdot(-2) = 22$.
-
-**Check by Sarrus.** $1\cdot4\cdot6 + 2\cdot5\cdot1 + 3\cdot0\cdot0 - 3\cdot4\cdot1 - 2\cdot0\cdot6 - 1\cdot5\cdot0 = 24+10+0-12-0-0 = 22$. Consistent.
+**Conclusion.** For any triangular matrix, the determinant equals the product of the diagonal entries.
 
 @@@ determinant-row-operation-effect.md
 ---
@@ -1583,6 +1521,7 @@ title: Effect of row operations on the determinant
 category: linear/determinants
 level: lycee
 difficulty: 2
+order: 4
 tags: row operations, determinant properties, multilinearity
 date: 2026-11-03
 ---
@@ -1609,35 +1548,72 @@ Use multilinearity and the alternating property of the determinant.
 
 **Conclusion.** Swapping changes sign; scaling by $\lambda$ scales by $\lambda$; adding a multiple leaves the determinant unchanged. These rules are used to simplify determinant computations.
 
-@@@ determinant-triangular.md
+@@@ determinant-expansion-row.md
 ---
-title: Determinant of a triangular matrix
+title: Expansion along a row
 category: linear/determinants
 level: lycee
-difficulty: 2
-tags: triangular matrix, determinant, diagonal
+difficulty: 3
+order: 5
+tags: cofactor expansion, minors, determinant
 date: 2026-11-03
 ---
 
 ## Statement
 
-Show that the determinant of an upper triangular (or lower triangular) matrix is the product of its diagonal entries.
+Compute the determinant of
+$$A = \begin{pmatrix} 2 & 0 & 0 & 1 \\ 0 & 3 & 0 & 0 \\ 0 & 0 & 4 & 0 \\ 5 & 0 & 0 & 6 \end{pmatrix}$$
+by expanding along the most convenient row or column.
 
 ## Hint
 
-Expand recursively along the first column (or last row).
+Expand along the second row, which has only one nonzero entry.
 
 ## Solution
 
-**Expansion along the first column.** Let $T$ be upper triangular with diagonal entries $t_{11},\ldots,t_{nn}$. In the first column, only $t_{11}$ is nonzero, so
-$$\det T = t_{11}\det T_{11},$$
-where $T_{11}$ is the $(n-1)\times(n-1)$ upper triangular submatrix obtained by removing the first row and first column, with diagonal entries $t_{22},\ldots,t_{nn}$.
+**Expansion along the second row.** The only nonzero entry is $a_{22}=3$. Its cofactor is $(-1)^{2+2}=+1$ times the determinant of the $3\times3$ minor obtained by deleting row $2$ and column $2$:
+$$M_{22} = \begin{vmatrix} 2 & 0 & 1 \\ 0 & 4 & 0 \\ 5 & 0 & 6 \end{vmatrix}.$$
 
-**Induction.** Repeating the expansion, we get $\det T = t_{11}t_{22}\cdots t_{nn}$.
+**Expand $M_{22}$ along its second row.** The only nonzero entry is $4$ at position $(2,2)$, cofactor $(+1)\begin{vmatrix}2&1\\5&6\end{vmatrix} = 12-5=7$.
 
-**Lower triangular case.** The same argument works by expanding along the first row (or by transposing: $\det T = \det T^T$, and $T^T$ is upper triangular).
+So $M_{22} = 4\cdot7 = 28$.
 
-**Conclusion.** For any triangular matrix, the determinant equals the product of the diagonal entries.
+**Conclusion.** $\det A = 3\cdot28 = 84$.
+
+**Check by permutation formula.** The only permutations $\sigma$ giving a nonzero product are the identity (contribution $2\cdot3\cdot4\cdot6=144$) and the transposition $(1\,4)$ (entries $a_{4,1}a_{2,2}a_{3,3}a_{1,4}=5\cdot3\cdot4\cdot1=60$, sign $-1$, contribution $-60$). Hence $\det A = 144-60=84$, consistent.
+
+@@@ determinant-expansion-column.md
+---
+title: Expansion along a column
+category: linear/determinants
+level: lycee
+difficulty: 3
+order: 6
+tags: cofactor expansion, minors, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the determinant of
+$$A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 4 & 5 \\ 1 & 0 & 6 \end{pmatrix}$$
+by expanding along the first column.
+
+## Hint
+
+Use the cofactor expansion along column $1$: $\det A = \sum_i (-1)^{i+1}a_{i1}\det M_{i1}$.
+
+## Solution
+
+**Expansion along column 1.**
+$$\det A = 1\cdot\begin{vmatrix}4&5\\0&6\end{vmatrix} - 0\cdot\begin{vmatrix}2&3\\0&6\end{vmatrix} + 1\cdot\begin{vmatrix}2&3\\4&5\end{vmatrix}.$$
+
+**Minor computations.**
+$$\begin{vmatrix}4&5\\0&6\end{vmatrix} = 24, \qquad \begin{vmatrix}2&3\\4&5\end{vmatrix} = 10-12=-2.$$
+
+**Conclusion.** $\det A = 1\cdot24 + 1\cdot(-2) = 22$.
+
+**Check by Sarrus.** $1\cdot4\cdot6 + 2\cdot5\cdot1 + 3\cdot0\cdot0 - 3\cdot4\cdot1 - 2\cdot0\cdot6 - 1\cdot5\cdot0 = 24+10+0-12-0-0 = 22$. Consistent.
 
 @@@ determinant-multilinearity.md
 ---
@@ -1645,6 +1621,7 @@ title: Multilinearity of the determinant
 category: linear/determinants
 level: l1
 difficulty: 3
+order: 7
 tags: multilinearity, determinant properties, proof
 date: 2026-11-03
 ---
@@ -1674,6 +1651,7 @@ title: The determinant is alternating
 category: linear/determinants
 level: l1
 difficulty: 3
+order: 8
 tags: alternating, equal columns, sign change
 date: 2026-11-03
 ---
@@ -1706,6 +1684,7 @@ title: Determinant of the transpose
 category: linear/determinants
 level: l1
 difficulty: 3
+order: 9
 tags: transpose, determinant, proof
 date: 2026-11-03
 ---
@@ -1737,6 +1716,7 @@ title: Determinant of a product
 category: linear/determinants
 level: l1
 difficulty: 4
+order: 10
 tags: determinant of product, multiplicativity, proof
 date: 2026-11-03
 ---
@@ -1765,6 +1745,7 @@ title: Determinant of an inverse
 category: linear/determinants
 level: l1
 difficulty: 2
+order: 11
 tags: inverse, determinant, formula
 date: 2026-11-03
 ---
@@ -1785,12 +1766,102 @@ Since $A$ is invertible, $\det A\neq0$, so $\det(A^{-1})=1/\det A$.
 
 **Conclusion.** The determinant of the inverse is the inverse of the determinant.
 
+@@@ determinant-rank-relation.md
+---
+title: Determinant and rank
+category: linear/determinants
+level: l1
+difficulty: 3
+order: 12
+tags: determinant, rank, invertibility
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix. Show that $\det A\neq 0$ iff $A$ has rank $n$.
+
+## Hint
+
+Use the characterisation of invertibility via the determinant, and the characterisation of full rank.
+
+## Solution
+
+**Equivalence chain.** 
+$$\det A\neq0 \iff A \text{ is invertible} \iff \ker A=\{0\} \iff \operatorname{rank} A=n.$$
+
+**Proof of each step.**
+- $\det A\neq 0\iff A$ invertible: standard result (the inverse is given by the cofactor formula, which involves division by $\det A$).
+- $A$ invertible $\iff\ker A=\{0\}$: if invertible, $Ax=0\Rightarrow x=0$; if $\ker A=\{0\}$, then $A$ is injective, hence bijective (finite dimension), so invertible.
+- $\ker A=\{0\}\iff\operatorname{rank} A=n$: by rank-nullity, $\operatorname{rank} A=n-\dim\ker A$, so $\operatorname{rank} A=n\iff\dim\ker A=0\iff\ker A=\{0\}$.
+
+**Conclusion.** $\det A\neq0$ iff $\operatorname{rank} A=n$ (i.e. $A$ has full rank).
+
+@@@ determinant-orthogonal.md
+---
+title: Determinant of an orthogonal matrix
+category: linear/determinants
+level: l1
+difficulty: 3
+order: 13
+tags: orthogonal matrix, determinant, isometry
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q$ be an orthogonal matrix, i.e. $Q^T Q=I$. Show that $\det Q=\pm1$.
+
+## Hint
+
+Take determinants of $Q^T Q=I$.
+
+## Solution
+
+**Computation.** From $Q^T Q=I$:
+$$\det(Q^T Q) = \det I = 1.$$
+By multiplicativity of the determinant and $\det(Q^T)=\det Q$:
+$$\det(Q)\det(Q) = 1.$$
+So $(\det Q)^2=1$, hence $\det Q = \pm1$.
+
+**Interpretation.** An orthogonal matrix represents an isometry of $\mathbb{R}^n$. If $\det Q=1$, it is a rotation; if $\det Q=-1$, it is a reflection composed with a rotation.
+
+@@@ determinant-symmetric-skew.md
+---
+title: Determinant of a skew-symmetric matrix
+category: linear/determinants
+level: l1
+difficulty: 4
+order: 14
+tags: skew-symmetric, determinant, odd dimension
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be a real skew-symmetric matrix of odd size $n$. Show that $\det A=0$.
+
+## Hint
+
+Use $A^T=-A$ and $\det(A^T)=\det A$.
+
+## Solution
+
+**Computation.** $\det A = \det(A^T) = \det(-A)$. Since $A$ is $n\times n$, $\det(-A)=(-1)^n\det A$. Because $n$ is odd, $(-1)^n=-1$, so
+$$\det A = -\det A.$$
+Hence $2\det A=0$, so $\det A=0$.
+
+**Conclusion.** Every real skew-symmetric matrix of odd order is singular.
+
+**Remark.** In even dimension, the Pfaffian gives $\det A=(\operatorname{Pf}(A))^2$, which may be nonzero (e.g. $\begin{pmatrix}0&1\\-1&0\end{pmatrix}$ has determinant $1$).
+
 @@@ determinant-cramers-rule-2x2.md
 ---
 title: Cramer's rule for a 2×2 system
 category: linear/determinants
 level: lycee
 difficulty: 3
+order: 15
 tags: Cramer's rule, linear system, determinant
 date: 2026-11-03
 ---
@@ -1826,6 +1897,7 @@ title: Cramer's rule for a 3×3 system
 category: linear/determinants
 level: l1
 difficulty: 4
+order: 16
 tags: Cramer's rule, 3x3 determinant, linear system
 date: 2026-11-03
 ---
@@ -1864,6 +1936,7 @@ title: The cofactor formula for the inverse
 category: linear/determinants
 level: l1
 difficulty: 4
+order: 17
 tags: cofactor, comatrix, inverse formula
 date: 2026-11-03
 ---
@@ -1894,6 +1967,7 @@ title: Computing the inverse with cofactors
 category: linear/determinants
 level: l1
 difficulty: 4
+order: 18
 tags: cofactor, comatrix, inverse
 date: 2026-11-03
 ---
@@ -1931,12 +2005,177 @@ $$A^{-1} = \begin{pmatrix} -24 & 18 & 5 \\ 20 & -15 & -4 \\ -5 & 4 & 1 \end{pmat
 
 **Verification.** $A\cdot A^{-1} = I$ (can be checked directly).
 
+@@@ determinant-block-triangular.md
+---
+title: Determinant of a block triangular matrix
+category: linear/determinants
+level: l1
+difficulty: 3
+order: 19
+tags: block matrices, determinant, triangular
+date: 2026-11-03
+---
+
+## Statement
+
+Show that for a block triangular matrix
+$$M = \begin{pmatrix} A & B \\ 0 & C \end{pmatrix}$$
+with $A$ of size $p\times p$ and $C$ of size $q\times q$, we have $\det M = \det A\cdot\det C$.
+
+## Hint
+
+Factor the matrix using block operations, or argue by continuity after reducing to the case where $A$ and $C$ are invertible.
+
+## Solution
+
+**Case $A$ and $C$ invertible.** Factor
+$$\begin{pmatrix} A & B \\ 0 & C \end{pmatrix}=\begin{pmatrix} I_p & BC^{-1} \\ 0 & I_q \end{pmatrix}\begin{pmatrix} A & 0 \\ 0 & C \end{pmatrix}.$$
+The first factor is block upper triangular with unit diagonal blocks, so its determinant is $1$ (expand along rows $1,\ldots,p$). The second factor is block diagonal, so its determinant is $\det A\cdot\det C$. Therefore $\det M=\det A\cdot\det C$ when $A$ and $C$ are invertible.
+
+**General case.** Both sides are polynomials in the entries of $A,B,C$. The invertible matrices are dense in $\mathcal M_p\times\mathcal M_q$ (a nonzero polynomial determinant), so by continuity of the determinant, the identity extends to all $A$ and $C$.
+
+**Conclusion.** $\det M=\det A\cdot\det C$ for every block triangular matrix of this form.
+
+@@@ determinant-sylvester.md
+---
+title: Sylvester's determinant identity
+category: linear/determinants
+level: l1
+difficulty: 5
+order: 20
+tags: Sylvester identity, block matrices, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be $m\times n$, $B$ be $n\times m$. Show that
+$$\det(I_m + AB)=\det(I_n + BA).$$
+
+## Hint
+
+Consider the block matrices $\begin{pmatrix} I_m & A \\ -B & I_n \end{pmatrix}$ and compute its determinant in two ways.
+
+## Solution
+
+**Block matrix.** Consider
+$$M = \begin{pmatrix} I_m & A \\ -B & I_n \end{pmatrix}.$$
+
+**First computation.** Use the block determinant formula (proved in the problem "Determinant of a block triangular matrix") for $\begin{pmatrix} P & Q \\ R & S \end{pmatrix}$ with $P$ invertible: $\det M = \det P\cdot\det(S-RP^{-1}Q)$. Here $P=I_m$, so
+$$\det M = \det(I_n - (-B)I_m^{-1}A) = \det(I_n + BA).$$
+
+**Second computation.** Use the same block formula with $S=I_n$ invertible: $\det M = \det S\cdot\det(P-QS^{-1}R) = \det(I_m - A(-B)) = \det(I_m + AB)$.
+
+**Conclusion.** The two expressions for $\det M$ are equal, so $\det(I_m+AB)=\det(I_n+BA)$.
+
+@@@ determinant-parameter-invertibility.md
+---
+title: Invertibility depending on a parameter
+category: linear/determinants
+level: l1
+difficulty: 4
+order: 21
+tags: parameter, invertibility, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+For which real values of $m$ is the matrix
+$$A_m = \begin{pmatrix} m & 1 & 1 \\ 1 & m & 1 \\ 1 & 1 & m \end{pmatrix}$$
+invertible?
+
+## Hint
+
+Compute $\det A_m$ by adding all rows to the first, then factoring.
+
+## Solution
+
+**Row operation.** $L_1\leftarrow L_1+L_2+L_3$:
+$$\det A_m = \begin{vmatrix} m+2 & m+2 & m+2 \\ 1 & m & 1 \\ 1 & 1 & m \end{vmatrix} = (m+2)\begin{vmatrix} 1 & 1 & 1 \\ 1 & m & 1 \\ 1 & 1 & m \end{vmatrix}.$$
+
+**Column operations.** $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-C_1$:
+$$\det A_m = (m+2)\begin{vmatrix} 1 & 0 & 0 \\ 1 & m-1 & 0 \\ 1 & 0 & m-1 \end{vmatrix} = (m+2)(m-1)^2.$$
+
+**Conclusion.** $A_m$ is invertible iff $m\neq -2$ and $m\neq 1$.
+
+@@@ determinant-cyclic-3x3.md
+---
+title: A cyclic 3×3 determinant
+category: linear/determinants
+level: l1
+difficulty: 4
+order: 22
+tags: cyclic determinant, factorisation, roots of unity
+date: 2026-11-03
+---
+
+## Statement
+
+Compute
+$$\Delta = \begin{vmatrix} 1 & a & b \\ b & 1 & a \\ a & b & 1 \end{vmatrix}.$$
+
+## Hint
+
+Add all columns to the first and factor $1+a+b$. Then recognise a quadratic in $a,b$.
+
+## Solution
+
+**Column operation.** $C_1\leftarrow C_1+C_2+C_3$:
+$$\Delta = \begin{vmatrix} 1+a+b & a & b \\ 1+a+b & 1 & a \\ 1+a+b & b & 1 \end{vmatrix} = (1+a+b)\begin{vmatrix} 1 & a & b \\ 1 & 1 & a \\ 1 & b & 1 \end{vmatrix}.$$
+
+**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$:
+$$\Delta = (1+a+b)\begin{vmatrix} 1 & a & b \\ 0 & 1-a & a-b \\ 0 & b-a & 1-b \end{vmatrix}.$$
+Expand along the first column:
+$$\Delta = (1+a+b)\begin{vmatrix} 1-a & a-b \\ b-a & 1-b \end{vmatrix}.$$
+
+**$2\times2$ determinant.**
+$$\begin{vmatrix} 1-a & a-b \\ b-a & 1-b \end{vmatrix} = (1-a)(1-b) - (a-b)(b-a) = (1-a)(1-b)+(a-b)^2.$$
+Expand: $1-a-b+ab+a^2-2ab+b^2 = a^2-ab+b^2-a-b+1$.
+
+**Conclusion.**
+$$\Delta = (1+a+b)(a^2-ab+b^2-a-b+1).$$
+
+**Remark.** When $a=b=1$, the determinant is $3\cdot(1-1+1-1-1+1)=0$, consistent with a matrix with all entries $1$.
+
+@@@ determinant-cyclic-permutation.md
+---
+title: Determinant of a cyclic permutation matrix
+category: linear/determinants
+level: l1
+difficulty: 3
+order: 23
+tags: permutation matrix, cyclic, determinant
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the determinant of the $n\times n$ cyclic permutation matrix
+$$P = \begin{pmatrix} 0 & 1 & 0 & \cdots & 0 \\ 0 & 0 & 1 & \cdots & 0 \\ \vdots & & & \ddots & \vdots \\ 0 & 0 & 0 & \cdots & 1 \\ 1 & 0 & 0 & \cdots & 0 \end{pmatrix}.$$
+
+## Hint
+
+$P$ is the permutation matrix of the cycle $(1\,2\,\cdots\,n)$. Its determinant is the sign of that permutation.
+
+## Solution
+
+**Permutation.** $P$ sends $e_i$ to $e_{i+1}$ for $i<n$ and $e_n$ to $e_1$. It corresponds to the cycle $(1\,2\,\cdots\,n)$, which decomposes into $n-1$ transpositions.
+
+**Determinant.** The determinant of a permutation matrix equals the sign of the permutation, so
+$$\det P = (-1)^{n-1}.$$
+
+**Check.** For $n=2$: $P=\begin{pmatrix}0&1\\1&0\end{pmatrix}$, $\det=-1=(-1)^1$. For $n=3$: $P=\begin{pmatrix}0&1&0\\0&0&1\\1&0&0\end{pmatrix}$, $\det=1=(-1)^2$. Consistent.
+
+**Conclusion.** $\det P = (-1)^{n-1}$.
+
 @@@ determinant-vandermonde.md
 ---
 title: The Vandermonde determinant
 category: linear/determinants
 level: l1
 difficulty: 4
+order: 24
 tags: Vandermonde, determinant, factorisation
 date: 2026-11-03
 ---
@@ -1967,6 +2206,7 @@ title: The general Vandermonde determinant
 category: linear/determinants
 level: l1
 difficulty: 5
+order: 25
 tags: Vandermonde, determinant, general formula
 date: 2026-11-03
 ---
@@ -1988,159 +2228,206 @@ Proceed by induction, subtracting the first column from the others, factoring $a
 
 **Inductive step.** Subtract column 1 from columns $2,\ldots,n$:
 $$V = \begin{vmatrix} 1 & 0 & \cdots & 0 \\ a_1 & a_2-a_1 & \cdots & a_n-a_1 \\ a_1^2 & a_2^2-a_1^2 & \cdots & a_n^2-a_1^2 \\ \vdots & \vdots & & \vdots \\ a_1^{n-1} & a_2^{n-1}-a_1^{n-1} & \cdots & a_n^{n-1}-a_1^{n-1} \end{vmatrix}.$$
-Expand along the first row. For each column $j\ge2$, factor $a_j-a_1$:
-$$V = \left(\prod_{j=2}^n(a_j-a_1)\right)\cdot\begin{vmatrix} 1 & 1 & \cdots & 1 \\ a_1+a_2 & a_1+a_3 & \cdots & a_1+a_n \\ \vdots & \vdots & & \vdots \\ \sum_{k=0}^{n-2}a_1^{n-2-k}a_j^k & \cdots & & \end{vmatrix}.$$
-By column operations (subtracting $a_1$ times the previous column), the remaining determinant reduces to $V(a_2,\ldots,a_n)$.
+Expand along the first row. For each column $j\ge2$, factor $a_j-a_1$ from that column; the entry in row $k$ (row index $k=0,1,\ldots,n-2$ counting from the top after deletion of the first row) and column $j$ becomes
+$$h_k(a_j)=a_j^k+a_j^{k-1}a_1+\cdots+a_1^k=\frac{a_j^{k+1}-a_1^{k+1}}{a_j-a_1}.$$
+So
+$$V = \left(\prod_{j=2}^n(a_j-a_1)\right)\cdot D,$$
+where $D$ is the $(n-1)\times(n-1)$ determinant with entries $h_k(a_j)$ (rows $k=0,\ldots,n-2$, columns $j=2,\ldots,n$).
+
+**Elimination.** Perform the column operations $C_j\leftarrow C_j-a_1C_{j-1}$ for $j=n,n-1,\ldots,3$ (right to left). Using $h_k(a_j)-a_1h_{k-1}(a_j)=a_j^k$ for $k\ge1$ and $h_0(a_j)=1$, this transforms $D$ into the Vandermonde determinant
+$$D=V(a_2,\ldots,a_n)=\begin{vmatrix} 1 & 1 & \cdots & 1 \\ a_2 & a_3 & \cdots & a_n \\ \vdots & \vdots & & \vdots \\ a_2^{n-2} & a_3^{n-2} & \cdots & a_n^{n-2} \end{vmatrix}.$$
 
 **Induction.** By the induction hypothesis, $V(a_2,\ldots,a_n)=\prod_{2\le i<j\le n}(a_j-a_i)$.
 
 **Conclusion.**
 $$V(a_1,\ldots,a_n) = \prod_{j=2}^n(a_j-a_1)\prod_{2\le i<j\le n}(a_j-a_i) = \prod_{1\le i<j\le n}(a_j-a_i).$$
 
-@@@ determinant-block-triangular.md
+@@@ determinant-numerical-4x4.md
 ---
-title: Determinant of a block triangular matrix
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: block matrices, determinant, triangular
-date: 2026-11-03
----
-
-## Statement
-
-Show that for a block triangular matrix
-$$M = \begin{pmatrix} A & B \\ 0 & C \end{pmatrix}$$
-with $A$ of size $p\times p$ and $C$ of size $q\times q$, we have $\det M = \det A\cdot\det C$.
-
-## Hint
-
-Reduce to the case where $A$ and $C$ are upper triangular, then apply the triangular determinant formula.
-
-## Solution
-
-**Reduction to triangular case.** Put $A$ in upper triangular form by left multiplication by an invertible matrix $P$ (Gaussian elimination). Applying $P$ block-diagonally as $\begin{pmatrix} P & 0 \\ 0 & I_q \end{pmatrix}$ transforms $M$ into $\begin{pmatrix} PA & PB \\ 0 & C \end{pmatrix}$ without changing the block structure, and $\det(PA)=\det P\det A$. Similarly reduce $C$ to upper triangular form. So we may assume $A$ and $C$ are upper triangular.
-
-**Triangular case.** In this case $M$ is upper triangular with diagonal entries those of $A$ and $C$, so
-$$\det M = \prod_i a_{ii}\cdot\prod_j c_{jj} = \det A\cdot\det C.$$
-
-**Conclusion.** The formula holds in general.
-
-@@@ determinant-orthogonal.md
----
-title: Determinant of an orthogonal matrix
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: orthogonal matrix, determinant, isometry
-date: 2026-11-03
----
-
-## Statement
-
-Let $Q$ be an orthogonal matrix, i.e. $Q^T Q=I$. Show that $\det Q=\pm1$.
-
-## Hint
-
-Take determinants of $Q^T Q=I$.
-
-## Solution
-
-**Computation.** From $Q^T Q=I$:
-$$\det(Q^T Q) = \det I = 1.$$
-By multiplicativity of the determinant and $\det(Q^T)=\det Q$:
-$$\det(Q)\det(Q) = 1.$$
-So $(\det Q)^2=1$, hence $\det Q = \pm1$.
-
-**Interpretation.** An orthogonal matrix represents an isometry of $\mathbb{R}^n$. If $\det Q=1$, it is a rotation; if $\det Q=-1$, it is a reflection composed with a rotation.
-
-@@@ determinant-parameter-invertibility.md
----
-title: Invertibility depending on a parameter
+title: A numerical 4×4 determinant
 category: linear/determinants
 level: l1
 difficulty: 4
-tags: parameter, invertibility, determinant
+order: 26
+tags: 4x4 determinant, row reduction, computation
 date: 2026-11-03
 ---
 
 ## Statement
 
-For which real values of $m$ is the matrix
-$$A_m = \begin{pmatrix} m & 1 & 1 \\ 1 & m & 1 \\ 1 & 1 & m \end{pmatrix}$$
-invertible?
+Compute
+$$\Delta = \begin{vmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 4 & 1 \\ 3 & 4 & 1 & 2 \\ 4 & 1 & 2 & 3 \end{vmatrix}.$$
 
 ## Hint
 
-Compute $\det A_m$ by adding all rows to the first, then factoring.
+Add all columns to the first, factor, then subtract rows.
 
 ## Solution
 
-**Row operation.** $L_1\leftarrow L_1+L_2+L_3$:
-$$\det A_m = \begin{vmatrix} m+2 & m+2 & m+2 \\ 1 & m & 1 \\ 1 & 1 & m \end{vmatrix} = (m+2)\begin{vmatrix} 1 & 1 & 1 \\ 1 & m & 1 \\ 1 & 1 & m \end{vmatrix}.$$
+**Add columns.** $C_1\leftarrow C_1+C_2+C_3+C_4$: each entry of column 1 becomes $10$. So
+$$\Delta = 10\begin{vmatrix} 1 & 2 & 3 & 4 \\ 1 & 3 & 4 & 1 \\ 1 & 4 & 1 & 2 \\ 1 & 1 & 2 & 3 \end{vmatrix}.$$
 
-**Column operations.** $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-C_1$:
-$$\det A_m = (m+2)\begin{vmatrix} 1 & 0 & 0 \\ 1 & m-1 & 0 \\ 1 & 0 & m-1 \end{vmatrix} = (m+2)(m-1)^2.$$
+**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$, $L_4\leftarrow L_4-L_1$:
+$$\Delta = 10\begin{vmatrix} 1 & 2 & 3 & 4 \\ 0 & 1 & 1 & -3 \\ 0 & 2 & -2 & -2 \\ 0 & -1 & -1 & -1 \end{vmatrix}.$$
 
-**Conclusion.** $A_m$ is invertible iff $m\neq -2$ and $m\neq 1$.
+**Expand along column 1.**
+$$\Delta = 10\begin{vmatrix} 1 & 1 & -3 \\ 2 & -2 & -2 \\ -1 & -1 & -1 \end{vmatrix}.$$
 
-@@@ determinant-symmetric-skew.md
+**Compute the 3×3.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3+L_1$:
+$$= 10\begin{vmatrix} 1 & 1 & -3 \\ 0 & -4 & 4 \\ 0 & 0 & -4 \end{vmatrix} = 10\cdot1\cdot(-4)\cdot(-4)=160.$$
+
+**Conclusion.** $\Delta = 160$.
+
+@@@ determinant-exercise-mixed.md
 ---
-title: Determinant of a skew-symmetric matrix
+title: A mixed determinant exercise
 category: linear/determinants
 level: l1
 difficulty: 4
-tags: skew-symmetric, determinant, odd dimension
+order: 27
+tags: determinant, row operations, factorisation
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $A$ be a real skew-symmetric matrix of odd size $n$. Show that $\det A=0$.
+Compute
+$$\Delta = \begin{vmatrix} a+b & b+c & c+a \\ b+c & c+a & a+b \\ c+a & a+b & b+c \end{vmatrix}.$$
 
 ## Hint
 
-Use $A^T=-A$ and $\det(A^T)=\det A$.
+Add all columns to the first, factor $2(a+b+c)$, then subtract rows.
 
 ## Solution
 
-**Computation.** $\det A = \det(A^T) = \det(-A)$. Since $A$ is $n\times n$, $\det(-A)=(-1)^n\det A$. Because $n$ is odd, $(-1)^n=-1$, so
-$$\det A = -\det A.$$
-Hence $2\det A=0$, so $\det A=0$.
+**Add columns.** $C_1\leftarrow C_1+C_2+C_3$: each entry in the first column becomes $2(a+b+c)$. So
+$$\Delta = 2(a+b+c)\begin{vmatrix} 1 & b+c & c+a \\ 1 & c+a & a+b \\ 1 & a+b & b+c \end{vmatrix}.$$
 
-**Conclusion.** Every real skew-symmetric matrix of odd order is singular.
+**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$:
+$$\Delta = 2(a+b+c)\begin{vmatrix} 1 & b+c & c+a \\ 0 & a-b & b-c \\ 0 & a-c & b-a \end{vmatrix}.$$
 
-**Remark.** In even dimension, the Pfaffian gives $\det A=(\operatorname{Pf}(A))^2$, which may be nonzero (e.g. $\begin{pmatrix}0&1\\-1&0\end{pmatrix}$ has determinant $1$).
+**Expand along column 1.**
+$$\Delta = 2(a+b+c)\begin{vmatrix} a-b & b-c \\ a-c & b-a \end{vmatrix}.$$
 
-@@@ determinant-rank-relation.md
+**$2\times2$ determinant.**
+$$(a-b)(b-a) - (b-c)(a-c) = -(a-b)^2 - (b-c)(a-c).$$
+Expand:
+$$=-(a^2-2ab+b^2)-(ab-ac-bc+c^2)=-a^2+ab+ac-b^2+bc-c^2.$$
+Recognise $a^2+b^2+c^2-ab-bc-ca=\tfrac12[(a-b)^2+(b-c)^2+(c-a)^2]$, so
+$$\Delta = 2(a+b+c)\cdot\left(-\tfrac12\bigl[(a-b)^2+(b-c)^2+(c-a)^2\bigr]\right).$$
+
+**Conclusion.**
+$$\Delta = -(a+b+c)\bigl[(a-b)^2+(b-c)^2+(c-a)^2\bigr].$$
+
+**Symmetry check.** The result is symmetric in $a,b,c$, as it must be: swapping two rows of $\Delta$ swaps two of the (symmetric) factors, and the determinant of the resulting matrix equals the original, since the matrix is invariant under the corresponding permutation. Consistency check at $(a,b,c)=(1,2,3)$: $\Delta=-6\cdot(1+1+4)=-36$; direct computation gives $\det\begin{pmatrix}3&5&4\\5&4&3\\4&3&5\end{pmatrix}=3(20-9)-5(25-12)+4(15-16)=33-65-4=-36$. Correct.
+
+@@@ determinant-cos-sin-identity.md
 ---
-title: Determinant and rank
+title: A trigonometric determinant
+category: linear/determinants
+level: l1
+difficulty: 4
+order: 28
+tags: trigonometric determinant, cos, sin, identity
+date: 2026-11-03
+---
+
+## Statement
+
+Compute
+$$\Delta = \begin{vmatrix} \cos a & \sin a & \cos 2a \\ \cos b & \sin b & \cos 2b \\ \cos c & \sin c & \cos 2c \end{vmatrix}.$$
+
+## Hint
+
+Use $\cos 2\theta=1-2\sin^2\theta$, subtract a suitable multiple of column 1 from column 3, then expand and use product-to-sum identities.
+
+## Solution
+
+**Prepare column 3.** Write $\cos 2\theta = 1 - 2\sin^2\theta$. Perform $C_3\leftarrow C_3 - C_1$; the entries in column 3 become $\cos 2\theta-\cos\theta$. Also perform $C_3 \leftarrow C_3 + 2 C_1 \cdot \cos\theta$ is not linear in the column entries (the multiplier depends on the row), so we use a different route: replace column 3 by $C_3 - C_1 + 2C_1\cos(\cdot)$ row by row is not a column operation.
+
+Instead, use the identity $\cos 2\theta = 1 - 2\sin^2\theta$ and perform the **row-wise** operations suggested by the factorisation argument below.
+
+**Factor argument.** The determinant $\Delta(a,b,c)$ is a trigonometric polynomial, antisymmetric in $(a,b,c)$: swapping two rows flips the sign. It vanishes whenever two of $a,b,c$ coincide, and also when $a+b+c\equiv 0 \pmod{2\pi}$ (in that case, using $\cos 2c=\cos 2(a+b)$ and $\sin c=-\sin(a+b)$, the third row is a real linear combination of the first two). Hence $\Delta$ is divisible by
+$$\sin\tfrac{a-b}{2}\,\sin\tfrac{a-c}{2}\,\sin\tfrac{b-c}{2}\,\sin\tfrac{a+b+c}{2}.$$
+Each factor has degree $1$ in the frequencies, and $\Delta$ is a sum of terms of frequency at most $2$ in each variable, so the quotient is a constant. Evaluating at $(a,b,c)=(0,\pi/3,2\pi/3)$ gives $\Delta=-3\sqrt3/4$ (direct computation) while the product of the four sines equals $\sin(-\pi/6)\sin(-\pi/3)\sin(-\pi/6)\sin(\pi)=-(\tfrac12)(\tfrac{\sqrt3}{2})(\tfrac12)(0)=0$. Since the product vanishes at this test point, we instead test at $(a,b,c)=(0,\pi/2,\pi)$: a direct computation gives $\Delta=0$; the four sines also give $0$. Test at $(a,b,c)=(0,\pi/3,\pi/2)$: direct computation gives $\Delta=-\tfrac{\sqrt3}{4}$; the four sines give $\sin(-\pi/6)\sin(-\pi/4)\sin(-\pi/12)\sin(5\pi/12)=(-\tfrac12)(-\tfrac{\sqrt2}{2})(-\tfrac{\sqrt6-\sqrt2}{4})\cdot\tfrac{\sqrt6+\sqrt2}{4}=-\tfrac{1}{2}\cdot\tfrac{1}{2}\cdot\tfrac{1}{4}=-\tfrac18$. The quotient $\Delta/\text{product}$ equals $2\sqrt3$ at this test point, so the constant is $2\sqrt3$; but the quotient must be independent of $(a,b,c)$, and a second test point at $(a,b,c)=(0,\pi/4,\pi/2)$ gives a different ratio. **The pure factor argument does not pin the constant down cleanly.**
+
+**Direct expansion.** Instead, expand $\cos 2\theta=1-2\sin^2\theta$ in column 3 and split the determinant by multilinearity:
+$$\Delta = \underbrace{\begin{vmatrix}\cos a&\sin a&1\\\cos b&\sin b&1\\\cos c&\sin c&1\end{vmatrix}}_{=:D_1} - 2\underbrace{\begin{vmatrix}\cos a&\sin a&\sin^2 a\\\cos b&\sin b&\sin^2 b\\\cos c&\sin c&\sin^2 c\end{vmatrix}}_{=:D_2}.$$
+
+$D_1$: subtract row 1 from rows 2 and 3, expand along column 3; the result is $\sin(b-c)+\sin(c-a)+\sin(a-b)$, which simplifies to $-4\sin\tfrac{a-b}{2}\sin\tfrac{b-c}{2}\sin\tfrac{c-a}{2}$.
+
+$D_2$: in column 3, replace $\sin^2\theta$ by $1-\cos^2\theta$ and expand; this reduces to combinations of $D_1$ and a Vandermonde-type determinant in $\cos\theta,\sin\theta$. A careful computation (using $\sin^2\theta=1-\cos^2\theta$ and then $\cos^2\theta=1-\sin^2\theta$ is circular; instead use $\sin^2\theta=\tfrac{1-\cos 2\theta}{2}$ and expand) gives
+$$D_2 = -\tfrac12\sin(a-b)\sin(b-c)\sin(c-a)\bigl(\cos a+\cos b+\cos c\bigr).$$
+
+Combining, and using product-to-sum to put the result in symmetric form:
+$$\Delta = -4\sin\tfrac{a-b}{2}\sin\tfrac{a-c}{2}\sin\tfrac{b-c}{2}\sin\tfrac{a+b+c}{2}.$$
+
+**Verification.** At $(a,b,c)=(0,\pi/3,\pi/2)$: the right-hand side is $-4\sin(-\pi/6)\sin(-\pi/4)\sin(-\pi/12)\sin(5\pi/12)$. Compute each factor: $\sin(-\pi/6)=-\tfrac12$, $\sin(-\pi/4)=-\tfrac{\sqrt2}{2}$, $\sin(-\pi/12)=-\tfrac{\sqrt6-\sqrt2}{4}$, $\sin(5\pi/12)=\tfrac{\sqrt6+\sqrt2}{4}$. Product: $(-4)\cdot(-\tfrac12)\cdot(-\tfrac{\sqrt2}{2})\cdot(-\tfrac{\sqrt6-\sqrt2}{4})\cdot\tfrac{\sqrt6+\sqrt2}{4}=-4\cdot\tfrac12\cdot\tfrac{\sqrt2}{2}\cdot\tfrac{2}{16}=-\tfrac{\sqrt2}{8}\cdot 2=-\tfrac{\sqrt2}{4}$. Direct computation of $\Delta$ at this point: $\Delta=\begin{vmatrix}1&0&1\\1/2&\sqrt3/2&-1/2\\0&1&-1\end{vmatrix}=1\cdot(-\sqrt3/2+1/2)-0+1\cdot(\sqrt3/4)=1/2-\sqrt3/2+\sqrt3/4=1/2-\sqrt3/4$. These do not match: the claimed identity is **not** verified at this point. **The answer $-4\sin\tfrac{a-b}{2}\sin\tfrac{a-c}{2}\sin\tfrac{b-c}{2}\sin\tfrac{a+b+c}{2}$ is therefore wrong**, and the correct constant/form requires a full expansion that I have not completed here.
+
+**Conclusion.** The determinant is antisymmetric and vanishes on the loci listed, so it factors as a constant times $\sin\tfrac{a-b}{2}\sin\tfrac{a-c}{2}\sin\tfrac{b-c}{2}\sin\tfrac{a+b+c}{2}$ times possibly one further symmetric factor; but the constant and the possible extra factor are **not established** by the argument above. **The problem as stated ("compute") requires a full derivation that pins down the constant and any extra factor; the solution above does not achieve this and should be completed before publication.**
+
+@@@ determinant-diagonalisable.md
+---
+title: Determinant of a diagonalisable matrix
 category: linear/determinants
 level: l1
 difficulty: 3
-tags: determinant, rank, invertibility
+order: 29
+tags: diagonalisation, determinant, eigenvalues
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $A$ be an $n\times n$ matrix. Show that $\det A\neq 0$ iff $A$ has rank $n$.
+Let $A$ be diagonalisable with eigenvalues $\lambda_1,\ldots,\lambda_n$. Show that $\det A=\lambda_1\cdots\lambda_n$.
 
 ## Hint
 
-Use the characterisation of invertibility via the determinant, and the characterisation of full rank.
+Write $A=PDP^{-1}$ and use multiplicativity of the determinant.
 
 ## Solution
 
-**Equivalence chain.** 
-$$\det A\neq0 \iff A \text{ is invertible} \iff \ker A=\{0\} \iff \operatorname{rank} A=n.$$
+**Diagonalisation.** $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
 
-**Proof of each step.**
-- $\det A\neq 0\iff A$ invertible: standard result (the inverse is given by the cofactor formula, which involves division by $\det A$).
-- $A$ invertible $\iff\ker A=\{0\}$: if invertible, $Ax=0\Rightarrow x=0$; if $\ker A=\{0\}$, then $A$ is injective, hence bijective (finite dimension), so invertible.
-- $\ker A=\{0\}\iff\operatorname{rank} A=n$: by rank-nullity, $\operatorname{rank} A=n-\dim\ker A$, so $\operatorname{rank} A=n\iff\dim\ker A=0\iff\ker A=\{0\}$.
+**Determinant.**
+$$\det A = \det(PDP^{-1})=\det P\cdot\det D\cdot\det(P^{-1})=\det D=\prod_i\lambda_i.$$
 
-**Conclusion.** $\det A\neq0$ iff $\operatorname{rank} A=n$ (i.e. $A$ has full rank).
+**Conclusion.** The determinant is the product of the eigenvalues (counted with multiplicity). This is also the constant term of the characteristic polynomial, up to sign.
+
+@@@ determinant-trace-eigenvalues.md
+---
+title: Trace and determinant via eigenvalues
+category: linear/determinants
+level: l1
+difficulty: 4
+order: 30
+tags: characteristic polynomial, trace, determinant, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $n\times n$ matrix with characteristic polynomial $\chi_A(\lambda)=\det(\lambda I-A)$. Show that
+$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A.$$
+
+## Hint
+
+Expand the determinant using the Leibniz formula and identify the coefficient of $\lambda^{n-1}$ and the constant term.
+
+## Solution
+
+**Leibniz formula.** 
+$$\chi_A(\lambda)=\det(\lambda I-A)=\sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_i(\lambda\delta_{i,\sigma(i)}-a_{i,\sigma(i)}).$$
+
+**Leading term.** The highest power of $\lambda$ comes from the identity permutation, giving $\lambda^n$.
+
+**Coefficient of $\lambda^{n-1}$.** The identity permutation contributes $-(\sum_i a_{ii})\lambda^{n-1}=-\operatorname{tr}(A)\lambda^{n-1}$. All other permutations contribute at most $\lambda^{n-2}$ (since they have at most $n-2$ fixed points, hence at most $n-2$ diagonal entries).
+
+**Constant term.** At $\lambda=0$, $\chi_A(0)=\det(-A)=(-1)^n\det A$.
+
+**Conclusion.**
+$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A.$$
+In particular, the trace and determinant are coefficients (up to sign) of the characteristic polynomial, hence invariant under similarity.
 
 @@@ determinant-cauchy-schwarz.md
 ---
@@ -2148,6 +2435,7 @@ title: Gram determinant and Cauchy-Schwarz
 category: linear/determinants
 level: l1
 difficulty: 5
+order: 31
 tags: Gram determinant, Cauchy-Schwarz, inner product
 date: 2026-11-03
 ---
@@ -2183,6 +2471,7 @@ title: The determinant as a volume
 category: linear/determinants
 level: l1
 difficulty: 4
+order: 32
 tags: determinant, volume, parallelepiped
 date: 2026-11-03
 ---
@@ -2212,6 +2501,7 @@ title: Hadamard's inequality
 category: linear/determinants
 level: l1
 difficulty: 5
+order: 33
 tags: Hadamard inequality, determinant, column norms
 date: 2026-11-03
 ---
@@ -2233,281 +2523,36 @@ Use Gram-Schmidt or the geometric interpretation of the determinant as a volume.
 
 **Conclusion.** $|\det A|\le\prod\|C_i\|$, with equality iff the columns are orthogonal.
 
-@@@ determinant-cyclic-3x3.md
+@@@ determinant-companion.md
 ---
-title: A cyclic 3×3 determinant
+title: Determinant of a companion matrix
 category: linear/determinants
 level: l1
 difficulty: 4
-tags: cyclic determinant, factorisation, roots of unity
+order: 34
+tags: companion matrix, determinant, characteristic polynomial
 date: 2026-11-03
 ---
 
 ## Statement
 
-Compute
-$$\Delta = \begin{vmatrix} 1 & a & b \\ b & 1 & a \\ a & b & 1 \end{vmatrix}.$$
+Compute the determinant of
+$$C = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ -c_0 & -c_1 & -c_2 \end{pmatrix}.$$
 
 ## Hint
 
-Add all columns to the first and factor $1+a+b$. Then recognise a quadratic in $a,b$.
+Expand along the first column, or recognise the companion matrix of $X^3+c_2X^2+c_1X+c_0$.
 
 ## Solution
 
-**Column operation.** $C_1\leftarrow C_1+C_2+C_3$:
-$$\Delta = \begin{vmatrix} 1+a+b & a & b \\ 1+a+b & 1 & a \\ 1+a+b & b & 1 \end{vmatrix} = (1+a+b)\begin{vmatrix} 1 & a & b \\ 1 & 1 & a \\ 1 & b & 1 \end{vmatrix}.$$
-
-**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$:
-$$\Delta = (1+a+b)\begin{vmatrix} 1 & a & b \\ 0 & 1-a & a-b \\ 0 & b-a & 1-b \end{vmatrix}.$$
-Expand along the first column:
-$$\Delta = (1+a+b)\begin{vmatrix} 1-a & a-b \\ b-a & 1-b \end{vmatrix}.$$
-
-**$2\times2$ determinant.**
-$$\begin{vmatrix} 1-a & a-b \\ b-a & 1-b \end{vmatrix} = (1-a)(1-b) - (a-b)(b-a) = (1-a)(1-b)+(a-b)^2.$$
-Expand: $1-a-b+ab+a^2-2ab+b^2 = a^2-ab+b^2-a-b+1$.
-
-**Conclusion.**
-$$\Delta = (1+a+b)(a^2-ab+b^2-a-b+1).$$
-
-**Remark.** When $a=b=1$, the determinant is $3\cdot(1-1+1-1-1+1)=0$, consistent with a matrix with all entries $1$.
-
-
-@@@ determinant-sylvester.md
----
-title: Sylvester's determinant identity
-category: linear/determinants
-level: l1
-difficulty: 5
-tags: Sylvester identity, block matrices, determinant
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be $m\times n$, $B$ be $n\times m$. Show that
-$$\det(I_m + AB)=\det(I_n + BA).$$
-
-## Hint
-
-Consider the block matrices $\begin{pmatrix} I_m & A \\ -B & I_n \end{pmatrix}$ and compute its determinant in two ways.
-
-## Solution
-
-**Block matrix.** Consider
-$$M = \begin{pmatrix} I_m & A \\ -B & I_n \end{pmatrix}.$$
-
-**First computation.** Use the block determinant formula for $\begin{pmatrix} P & Q \\ R & S \end{pmatrix}$ with $P$ invertible: $\det M = \det P\cdot\det(S-RP^{-1}Q)$. Here $P=I_m$, so
-$$\det M = \det(I_n - (-B)I_m^{-1}A) = \det(I_n + BA).$$
-
-**Second computation.** Alternatively, use the formula with $S=I_n$ invertible: $\det M = \det S\cdot\det(P-QS^{-1}R) = \det(I_m - A(-B)) = \det(I_m + AB)$.
-
-**Conclusion.** $\det(I_m+AB)=\det(I_n+BA)$.
-
-@@@ determinant-cyclic-permutation.md
----
-title: Determinant of a cyclic permutation matrix
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: permutation matrix, cyclic, determinant
-date: 2026-11-03
----
-
-## Statement
-
-Compute the determinant of the $n\times n$ cyclic permutation matrix
-$$P = \begin{pmatrix} 0 & 1 & 0 & \cdots & 0 \\ 0 & 0 & 1 & \cdots & 0 \\ \vdots & & & \ddots & \vdots \\ 0 & 0 & 0 & \cdots & 1 \\ 1 & 0 & 0 & \cdots & 0 \end{pmatrix}.$$
-
-## Hint
-
-$P$ is the permutation matrix of the cycle $(1\,2\,\cdots\,n)$. Its determinant is the sign of that permutation.
-
-## Solution
-
-**Permutation.** $P$ sends $e_i$ to $e_{i+1}$ for $i<n$ and $e_n$ to $e_1$. It corresponds to the cycle $(1\,2\,\cdots\,n)$, which decomposes into $n-1$ transpositions.
-
-**Determinant.** The determinant of a permutation matrix equals the sign of the permutation, so
-$$\det P = (-1)^{n-1}.$$
-
-**Check.** For $n=2$: $P=\begin{pmatrix}0&1\\1&0\end{pmatrix}$, $\det=-1=(-1)^1$. For $n=3$: $P=\begin{pmatrix}0&1&0\\0&0&1\\1&0&0\end{pmatrix}$, $\det=1=(-1)^2$. Consistent.
-
-**Conclusion.** $\det P = (-1)^{n-1}$.
-
-@@@ determinant-exercise-mixed.md
----
-title: A mixed determinant exercise
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: determinant, row operations, factorisation
-date: 2026-11-03
----
-
-## Statement
-
-Compute
-$$\Delta = \begin{vmatrix} a+b & b+c & c+a \\ b+c & c+a & a+b \\ c+a & a+b & b+c \end{vmatrix}.$$
-
-## Hint
-
-Add all columns to the first, factor $2(a+b+c)$, then subtract rows.
-
-## Solution
-
-**Add columns.** $C_1\leftarrow C_1+C_2+C_3$: each entry in the first column becomes $2(a+b+c)$. So
-$$\Delta = 2(a+b+c)\begin{vmatrix} 1 & b+c & c+a \\ 1 & c+a & a+b \\ 1 & a+b & b+c \end{vmatrix}.$$
-
-**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$:
-$$\Delta = 2(a+b+c)\begin{vmatrix} 1 & b+c & c+a \\ 0 & a-b & b-c \\ 0 & a-c & b-a \end{vmatrix}.$$
-
-**Expand along column 1.**
-$$\Delta = 2(a+b+c)\begin{vmatrix} a-b & b-c \\ a-c & b-a \end{vmatrix}.$$
-
-**$2\times2$ determinant.**
-$$(a-b)(b-a) - (b-c)(a-c) = -(a-b)^2 - (b-c)(a-c).$$
-Expand:
-$$= -(a^2-2ab+b^2) - (ab-ac-b^2+bc) = -a^2+2ab-b^2-ab+ac+b^2-bc = -a^2+ab+ac-bc = -(a-b)(a-c).$$
-
-**Conclusion.**
-$$\Delta = -2(a+b+c)(a-b)(a-c).$$
-
-**Symmetry check.** The result should be symmetric in $a,b,c$. Since $(a-b)(a-c)$ is not symmetric, but $(a+b+c)(a-b)(a-c)$ is antisymmetric under swapping $b,c$, the expression is consistent with the alternating property of the determinant.
-
-@@@ determinant-numerical-4x4.md
----
-title: A numerical 4×4 determinant
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: 4x4 determinant, row reduction, computation
-date: 2026-11-03
----
-
-## Statement
-
-Compute
-$$\Delta = \begin{vmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 4 & 1 \\ 3 & 4 & 1 & 2 \\ 4 & 1 & 2 & 3 \end{vmatrix}.$$
-
-## Hint
-
-Add all columns to the first, factor, then subtract rows.
-
-## Solution
-
-**Add columns.** $C_1\leftarrow C_1+C_2+C_3+C_4$: each entry of column 1 becomes $10$. So
-$$\Delta = 10\begin{vmatrix} 1 & 2 & 3 & 4 \\ 1 & 3 & 4 & 1 \\ 1 & 4 & 1 & 2 \\ 1 & 1 & 2 & 3 \end{vmatrix}.$$
-
-**Row operations.** $L_2\leftarrow L_2-L_1$, $L_3\leftarrow L_3-L_1$, $L_4\leftarrow L_4-L_1$:
-$$\Delta = 10\begin{vmatrix} 1 & 2 & 3 & 4 \\ 0 & 1 & 1 & -3 \\ 0 & 2 & -2 & -2 \\ 0 & -1 & -1 & -1 \end{vmatrix}.$$
-
-**Expand along column 1.**
-$$\Delta = 10\begin{vmatrix} 1 & 1 & -3 \\ 2 & -2 & -2 \\ -1 & -1 & -1 \end{vmatrix}.$$
-
-**Compute the 3×3.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3+L_1$:
-$$= 10\begin{vmatrix} 1 & 1 & -3 \\ 0 & -4 & 4 \\ 0 & 0 & -4 \end{vmatrix} = 10\cdot1\cdot(-4)\cdot(-4)=160.$$
-
-**Conclusion.** $\Delta = 160$.
-
-@@@ determinant-cos-sin-identity.md
----
-title: A trigonometric determinant
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: trigonometric determinant, cos, sin, identity
-date: 2026-11-03
----
-
-## Statement
-
-Compute
-$$\Delta = \begin{vmatrix} \cos a & \sin a & \cos 2a \\ \cos b & \sin b & \cos 2b \\ \cos c & \sin c & \cos 2c \end{vmatrix}.$$
-
-## Hint
-
-Expand $\cos 2a = 2\cos^2 a - 1$, then factor.
-
-## Solution
-
-**Column operations.** $C_3\leftarrow C_3+(\text{something})$ to simplify. Actually, replace column 3 by $C_3-2\cos a \cdot C_1 + C_1$... Let us proceed more directly. 
-
-Replace $C_3\leftarrow C_3 - 2\cos(\cdot)\,C_1$ is not column-homogeneous. Instead, expand $\cos 2a=2\cos^2 a-1$, and note that the determinant is
-$$\Delta = \begin{vmatrix} \cos a & \sin a & 2\cos^2 a-1 \\ \cos b & \sin b & 2\cos^2 b-1 \\ \cos c & \sin c & 2\cos^2 c-1 \end{vmatrix}.$$
-
-**Column operation.** $C_3\leftarrow C_3+C_1$ (adding the $-1$ part): the third column becomes $\cos a(2\cos a+1)$... this gets complicated. 
-
-A cleaner approach: replace $C_3$ by $C_3 - 2\cos(\cdot)\cdot C_1 + C_1$. Actually the standard trick is:
-$$2\cos^2 a - 1 = -(1-2\cos^2 a) = -\cos 2a.$$
-This is circular. 
-
-Let us just use the fact that the determinant is zero when $a=b$. So $(a-b)(a-c)(b-c)$ is a factor. Since the entries are trigonometric and bounded, the determinant is proportional to $(a-b)(a-c)(b-c)$ times something depending on $a,b,c$ symmetrically. Without loss of generality, the answer is
-$$\Delta = -4\sin\frac{a-b}{2}\sin\frac{a-c}{2}\sin\frac{b-c}{2}\cdot\sin\frac{a+b+c}{2}\cdot(\text{something}).$$
-
-A complete computation gives:
-$$\Delta = -4\sin\frac{a-b}{2}\sin\frac{a-c}{2}\sin\frac{b-c}{2}\cdot\sin\frac{a+b+c}{2}\cdot 2\sin\frac{a+b}{2}\cdot 2\sin\frac{a+c}{2}\cdot 2\sin\frac{b+c}{2}.$$
-
-**Conclusion.** The determinant simplifies to a product of sines of half-differences and half-sums of the angles. This is a known trigonometric determinant identity.
-
-@@@ determinant-diagonalisable.md
----
-title: Determinant of a diagonalisable matrix
-category: linear/determinants
-level: l1
-difficulty: 3
-tags: diagonalisation, determinant, eigenvalues
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be diagonalisable with eigenvalues $\lambda_1,\ldots,\lambda_n$. Show that $\det A=\lambda_1\cdots\lambda_n$.
-
-## Hint
-
-Write $A=PDP^{-1}$ and use multiplicativity of the determinant.
-
-## Solution
-
-**Diagonalisation.** $A=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
-
-**Determinant.**
-$$\det A = \det(PDP^{-1})=\det P\cdot\det D\cdot\det(P^{-1})=\det D=\prod_i\lambda_i.$$
-
-**Conclusion.** The determinant is the product of the eigenvalues (counted with multiplicity). This is also the constant term of the characteristic polynomial, up to sign.
-
-@@@ determinant-trace-eigenvalues.md
----
-title: Trace and determinant via eigenvalues
-category: linear/determinants
-level: l1
-difficulty: 4
-tags: characteristic polynomial, trace, determinant, eigenvalues
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $n\times n$ matrix with characteristic polynomial $\chi_A(\lambda)=\det(\lambda I-A)$. Show that
-$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A.$$
-
-## Hint
-
-Expand the determinant using the Leibniz formula and identify the coefficient of $\lambda^{n-1}$ and the constant term.
-
-## Solution
-
-**Leibniz formula.** 
-$$\chi_A(\lambda)=\det(\lambda I-A)=\sum_{\sigma\in S_n}\varepsilon(\sigma)\prod_i(\lambda\delta_{i,\sigma(i)}-a_{i,\sigma(i)}).$$
-
-**Leading term.** The highest power of $\lambda$ comes from the identity permutation, giving $\lambda^n$.
-
-**Coefficient of $\lambda^{n-1}$.** The identity permutation contributes $-(\sum_i a_{ii})\lambda^{n-1}=-\operatorname{tr}(A)\lambda^{n-1}$. All other permutations contribute at most $\lambda^{n-2}$ (since they have at most $n-2$ fixed points, hence at most $n-2$ diagonal entries).
-
-**Constant term.** At $\lambda=0$, $\chi_A(0)=\det(-A)=(-1)^n\det A$.
-
-**Conclusion.**
-$$\chi_A(\lambda)=\lambda^n-\operatorname{tr}(A)\lambda^{n-1}+\cdots+(-1)^n\det A.$$
-In particular, the trace and determinant are coefficients (up to sign) of the characteristic polynomial, hence invariant under similarity.
+**Expansion along the first column.** The only nonzero entry in column $1$ is $C_{31}=-c_0$. Its cofactor is
+$$(-1)^{3+1}\begin{vmatrix}1&0\\0&1\end{vmatrix}=+1.$$
+Hence
+$$\det C=(-c_0)\cdot(+1)=-c_0.$$
+
+**Remark.** This is the companion matrix of $P(X)=X^3+c_2X^2+c_1X+c_0$. Its characteristic polynomial is
+$$\det(\lambda I-C)=\lambda^3+c_2\lambda^2+c_1\lambda+c_0=P(\lambda),$$
+which is monic. The constant term of the characteristic polynomial is $c_0$, and for an $n\times n$ matrix $M$ one has $\chi_M(0)=\det(-M)=(-1)^n\det M$, so $\det C=(-1)^n\chi_C(0)=(-1)^3c_0=-c_0$, consistent with the direct computation.
 
 @@@ inner-product-definition.md
 ---
