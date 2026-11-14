@@ -1,7 +1,7 @@
 {
   "name": "Maths Workshop",
   "tagline": "Maths problems with full solutions",
-  "description": "A growing collection of original maths problems with hints and complete solutions: algebra, analysis, linear algebra, probability, number theory and more.",
+  "description": "A growing collection of classical and original maths problems with hints and complete solutions: algebra, analysis, linear algebra, number theory and more.",
   "url": "https://mathsworkshop.github.io",
   "sort": "difficulty",
   "owner": "Maths Workshop",
