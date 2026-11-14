@@ -1,3 +1,139 @@
+@@@ rt-ct-03-what-continuous-maps-preserve.md
+---
+title: What continuous maps do and do not preserve
+category: real-analysis/topology-of-r/r-continuity
+level: l2
+difficulty: 2
+order: 3
+tags: continuous images, counterexamples, compact, connected, open, closed
+date: 2026-11-12
+---
+
+## Statement
+
+Decide whether each statement is true or false for continuous functions $f:\mathbb{R}\to\mathbb{R}$. Prove the true ones and give a counterexample to the false ones.
+
+1. The image of an open set is open.
+2. The image of a closed set is closed.
+3. The image of a bounded set is bounded.
+4. The image of a compact set is compact.
+5. The image of an interval is an interval.
+6. The preimage of a compact set is compact.
+7. The preimage of a bounded set is bounded.
+
+## Hint
+
+For the false ones, think of $x^2$, $e^x$ and $\sin$.
+
+For the true ones, use sequences (for compactness) and the intermediate value theorem (for intervals).
+
+## Solution
+
+**Idea.** Continuity controls **preimages of open and closed sets** and the images of **compact** and **connected** sets. Everything else typically fails.
+
+**1. False.** $f(x)=x^2$ maps the open set $(-1,1)$ onto $[0,1)$, which is not open. Even simpler: a constant function maps $\mathbb{R}$ to a single point.
+
+**2. False.** $f(x)=e^x$ maps the closed set $\mathbb{R}$ onto $(0,\infty)$, not closed. Another example: $f(x)=\frac1{1+x^2}$ maps the closed set $\mathbb{R}$ onto $(0,1]$.
+
+**3. True.** Let $A$ be bounded, say $A\subset[-M,M]$. The interval $[-M,M]$ is compact, so $f([-M,M])$ is compact by the argument of part 4 below, hence bounded, and $f(A)\subset f([-M,M])$ is bounded. (This uses that $f$ is defined and continuous on all of $\mathbb{R}$: $\tan$ on $(-\pi/2,\pi/2)$ or $\frac1x$ on $(0,1)$ have unbounded images of bounded sets, but they are not defined and continuous on $\mathbb{R}$.)
+
+**4. True.** Let $K$ be compact and $(y_n)$ a sequence in $f(K)$, $y_n=f(x_n)$ with $x_n\in K$. By compactness a subsequence $x_{n_k}\to x\in K$. By continuity, $y_{n_k}=f(x_{n_k})\to f(x)\in f(K)$. So every sequence in $f(K)$ has a subsequence converging in $f(K)$: $f(K)$ is compact. (In $\mathbb{R}$: compact means closed and bounded.)
+
+**5. True.** Let $I$ be an interval, $f(a)<c<f(b)$ with $a,b\in I$. The intermediate value theorem applied on the segment between $a$ and $b$ (contained in $I$) gives a point $x$ with $f(x)=c$. So $f(I)$ contains every value between two of its values, which characterises intervals.
+
+**6. False.** $f=\sin$ and $K=\{0\}$: $f^{-1}(K)=\pi\mathbb{Z}$ is closed but unbounded, so not compact.
+
+**7. False.** Same example: $f^{-1}(\{0\})=\pi\mathbb{Z}$, or $f^{-1}([-1,1])=\mathbb{R}$.
+
+**When does it work?** If $|f(x)|\to\infty$ as $|x|\to\infty$ (for example $f(x)=x^2$), then preimages of bounded sets are bounded, preimages of compact sets are compact and images of closed sets are closed.
+
+**Remark.** The slogan: *continuous images preserve compactness and connectedness, continuous preimages preserve closedness and openness.* Mixing these up is the most frequent error in this chapter.
+
+@@@ rt-ct-10-cauchy-sequences-and-uniform-continuity.md
+---
+title: Uniformly continuous maps and Cauchy sequences
+category: real-analysis/topology-of-r/r-continuity
+level: l2
+difficulty: 4
+order: 10
+tags: uniform continuity, Cauchy sequences, extension to the closure
+date: 2026-11-12
+---
+
+## Statement
+
+1. Prove that a uniformly continuous function sends Cauchy sequences to Cauchy sequences.
+2. Let $f:(0,1)\to\mathbb{R}$ send every Cauchy sequence to a Cauchy sequence. Prove that $f$ is uniformly continuous.
+3. Deduce: a continuous $f:(0,1)\to\mathbb{R}$ is uniformly continuous iff $\lim_{x\to0^+}f(x)$ and $\lim_{x\to1^-}f(x)$ exist in $\mathbb{R}$.
+4. Show that the converse of part 1 fails on $\mathbb{R}$.
+
+## Hint
+
+Part 2: if $f$ is not uniformly continuous, build two sequences $x_n,y_n$ with $|x_n-y_n|\to0$ but $|f(x_n)-f(y_n)|\ge\varepsilon$, then **interleave** them.
+
+## Solution
+
+**Idea.** Uniform continuity is exactly the property of mapping "sequences that come together" to sequences that come together. On a bounded domain every sequence has convergent subsequences, which lets us run the argument both ways.
+
+**1.** Let $(x_n)$ be Cauchy, $\varepsilon>0$, and $\delta>0$ from uniform continuity. There is $N$ with $|x_n-x_m|<\delta$ for $n,m\ge N$, hence $|f(x_n)-f(x_m)|<\varepsilon$: $(f(x_n))$ is Cauchy.
+
+**2.** Suppose $f$ is not uniformly continuous. Then there is $\varepsilon>0$ such that for every $n$ there exist $x_n,y_n\in(0,1)$ with $|x_n-y_n|<1/n$ and $|f(x_n)-f(y_n)|\ge\varepsilon$. The sequence $(x_n)$ is bounded, so a subsequence $x_{n_k}\to\ell\in[0,1]$, and then $y_{n_k}\to\ell$ too since $|x_{n_k}-y_{n_k}|<1/n_k$. The interleaved sequence
+$$x_{n_1},y_{n_1},x_{n_2},y_{n_2},\ldots$$
+converges to $\ell$ (it has the two sub-sequences converging to the same limit), hence is Cauchy as a sequence of real numbers (note: Cauchy-ness is a property of the sequence, not of the ambient space, so this sequence is Cauchy even if $\ell\in\{0,1\}\notin(0,1)$). Its image has consecutive differences $|f(x_{n_k})-f(y_{n_k})|\ge\varepsilon$, so it is not Cauchy. Contradiction.
+
+**3.** ($\Leftarrow$) If both limits exist, $f$ extends to a continuous function on the compact $[0,1]$, which is uniformly continuous (Heine), hence so is its restriction. ($\Rightarrow$) Let $x_n\to0^+$. Then $(x_n)$ is Cauchy, so $(f(x_n))$ is Cauchy by part 1, hence converges in $\mathbb{R}$. Two sequences $x_n,x_n'\to0$ give limits of $f(x_n)$ and $f(x_n')$ that coincide (interleave them: the image of the interleaved sequence is Cauchy, so converges, so both subsequential limits agree). So $\lim_{x\to0^+}f(x)$ exists; the same at $1$.
+
+**4. The converse fails on $\mathbb{R}$.** $f(x)=x^2$ is continuous, so it sends every Cauchy (= convergent) sequence to a convergent hence Cauchy sequence, but it is not uniformly continuous: $x_n=n$, $y_n=n+\frac1n$ give $|x_n-y_n|\to0$ and $|f(y_n)-f(x_n)|=2+\frac1{n^2}\ge2$.
+
+**Common mistake.** On $\mathbb{R}$, Cauchy sequences converge, so *every continuous function* sends Cauchy sequences to Cauchy sequences. The criterion of part 2 is only informative on **incomplete** domains such as $(0,1)$. On unbounded domains the proof breaks because $(x_n)$ need not have a convergent subsequence.
+
+**Remark.** The criterion generalises: a function on a totally bounded metric space $X$ is uniformly continuous iff it preserves Cauchy sequences, and then it extends to a continuous function on the completion of $X$. This is how real numbers, and many function spaces, are constructed as completions.
+
+@@@ rt-ct-19-extending-a-continuous-function-from-a-closed-set.md
+---
+title: Extending a continuous function from a closed set (Tietze in dimension one)
+category: real-analysis/topology-of-r/r-continuity
+level: m1
+difficulty: 5
+order: 19
+tags: extension, closed sets, Tietze, open sets as unions of intervals
+date: 2026-11-12
+---
+
+## Statement
+
+Let $F\subset\mathbb{R}$ be non-empty and closed and $f:F\to\mathbb{R}$ continuous. Prove that $f$ extends to a continuous function $\tilde f:\mathbb{R}\to\mathbb{R}$. Show also that one may take $\inf f\le\tilde f\le\sup f$ whenever $f$ is bounded.
+
+## Hint
+
+The open set $\mathbb{R}\setminus F$ is a disjoint union of open intervals ("gaps"). Interpolate linearly on gaps with two endpoints in $F$, and use a constant on unbounded gaps.
+
+## Solution
+
+**Idea.** Fill each hole of $F$ by the simplest continuous function that matches the values at the two ends of the hole. The only delicate point is continuity at points of $F$ that are limits of infinitely many holes.
+
+**Step 1: structure of the complement.** $U=\mathbb{R}\setminus F$ is open; it is the disjoint union of its connected components, which are open intervals $(a,b)$ with $-\infty\le a<b\le\infty$ whose finite endpoints belong to $F$ (an endpoint in $U$ would belong to a larger component).
+
+**Step 2: definition.** Put $\tilde f=f$ on $F$ and on each component $(a,b)$ of $U$:
+- if $a,b$ finite: $\tilde f(x)=f(a)+\dfrac{x-a}{b-a}\big(f(b)-f(a)\big)$ (linear interpolation);
+- if $a=-\infty$, $b$ finite: $\tilde f(x)=f(b)$;
+- if $b=+\infty$, $a$ finite: $\tilde f(x)=f(a)$;
+- if $(a,b)=\mathbb{R}$ (that is $F=\emptyset$): excluded by assumption.
+
+On every gap, $\tilde f$ is continuous (affine or constant), and its values lie between the values at the endpoints, hence between $\inf f$ and $\sup f$.
+
+**Step 3: continuity at points of the interior of $U$.** Immediate, since $U$ is open and $\tilde f$ is continuous on each component.
+
+**Step 4: continuity at $x_0\in F$.** Let $x_n\to x_0$. It suffices to show $\tilde f(x_n)\to f(x_0)$. We split $(x_n)$ into the terms in $F$ and those in $U$; by continuity of $f$ on $F$ the first group is fine. Consider the terms $x_n\in U$, lying in components $(a_n,b_n)$.
+
+- *Infinitely many $x_n$ in the same component $(a,b)$.* Then $x_0\in[a,b]\cap F$. Since $x_0\notin(a,b)$ (it is in $F$), $x_0\in\{a,b\}$, say $x_0=a$; along this subsequence $\tilde f(x_n)\to\tilde f(a)=f(x_0)$ by continuity of the affine (or constant) extension on $[a,b)$.
+- *Different components.* Since $x_0\in F$ is not in $(a_n,b_n)\ni x_n$, either $x_0\le a_n<x_n$ or $x_n<b_n\le x_0$. In the first case $|a_n-x_0|\le|x_n-x_0|$ so $a_n\to x_0$; in the second, $b_n\to x_0$. For the other endpoint: the components are pairwise disjoint open intervals all meeting the bounded set $[x_0-1,x_0+1]$ (for $n$ large), so they are contained in that bounded interval and are pairwise disjoint; consequently their total length is at most $2$. In particular the sum $\sum_n(b_n-a_n)$ over a subfamily of pairwise disjoint intervals is bounded, hence converges in $\mathbb{R}$, and therefore its terms tend to $0$: $b_n-a_n\to0$. So *both* endpoints tend to $x_0$ (for unbounded components the endpoint is the single finite one and the value is a constant $f(a_n)$ or $f(b_n)$). Then $\tilde f(x_n)$, a convex combination of $f(a_n)$ and $f(b_n)$, tends to $f(x_0)$, because $f$ is continuous on $F$ and $a_n,b_n\in F$ tend to $x_0$.
+
+Hence $\tilde f$ is continuous at every $x_0\in F$.
+
+**Common mistake.** Linear interpolation on each gap is not enough if one forgets the gaps that accumulate at a point of $F$ (for instance the Cantor set, with its gaps of lengths $\frac13,\frac19,\frac19,\dots$): continuity there uses that the lengths of the gaps tend to $0$, which follows from the finiteness of the total length of a family of pairwise disjoint intervals. Also, on an unbounded gap one cannot interpolate; the constant extension is needed.
+
+**Remark.** Tietze's extension theorem states the same for every closed subset of a normal topological space. Its proof is much longer since gaps are no longer available. In dimension one, applied to the Cantor set $K$ and $f=$ the Cantor function, the extension described here is the usual picture of the Devil's staircase (constant on each gap).
 @@@ mn-066-polynomial-maps.md
 ---
 title: Polynomial maps between matrix spaces are continuous
