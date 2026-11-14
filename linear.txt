@@ -34,6 +34,7 @@ title: Checking the vector space axioms
 category: linear/vector-spaces
 level: lycee
 difficulty: 1
+order: 1
 tags: vector space axioms, examples, counterexamples
 date: 2026-11-03
 ---
@@ -66,6 +67,7 @@ title: The subspace criterion
 category: linear/vector-spaces
 level: lycee
 difficulty: 2
+order: 2
 tags: subspace criterion, examples
 date: 2026-11-03
 ---
@@ -95,6 +97,7 @@ title: Which subsets are subspaces?
 category: linear/vector-spaces
 level: lycee
 difficulty: 2
+order: 3
 tags: subspace criterion, counterexamples
 date: 2026-11-03
 ---
@@ -130,6 +133,7 @@ title: Span of a set of vectors
 category: linear/vector-spaces
 level: lycee
 difficulty: 2
+order: 5
 tags: span, linear combinations, generating set
 date: 2026-11-03
 ---
@@ -165,6 +169,7 @@ title: Linear independence
 category: linear/vector-spaces
 level: lycee
 difficulty: 2
+order: 6
 tags: linear independence, definition, examples
 date: 2026-11-03
 ---
@@ -202,6 +207,7 @@ title: Independence depending on a parameter
 category: linear/vector-spaces
 level: l1
 difficulty: 3
+order: 7
 tags: linear independence, parameter, determinant
 date: 2026-11-03
 ---
@@ -212,15 +218,15 @@ For which values of $m$ is the family $(1,1,m), (1,m,1), (m,1,1)$ linearly indep
 
 ## Hint
 
-The family is independent iff the determinant of the matrix with these columns is nonzero.
+The family is independent iff the determinant of the matrix with these columns is nonzero (a square matrix is invertible iff its columns are independent).
 
 ## Solution
 
 **Determinant.**
 $$\Delta = \begin{vmatrix} 1 & 1 & m \\ 1 & m & 1 \\ m & 1 & 1 \end{vmatrix}.$$
-Adding all columns to the first:
+Replacing $C_1$ by $C_1 + C_2 + C_3$ (a column operation that preserves the determinant) gives
 $$\Delta = (m+2)\begin{vmatrix} 1 & 1 & m \\ 1 & m & 1 \\ 1 & 1 & 1 \end{vmatrix}.$$
-Subtracting the third row from the first two:
+Now $L_1\leftarrow L_1 - L_3$ and $L_2\leftarrow L_2 - L_3$ (row operations that preserve the determinant) give
 $$\Delta = (m+2)\begin{vmatrix} 0 & 0 & m-1 \\ 0 & m-1 & 0 \\ 1 & 1 & 1 \end{vmatrix} = (m+2)\cdot(-(m-1)^2).$$
 So $\Delta = -(m+2)(m-1)^2$.
 
@@ -232,6 +238,7 @@ title: Recognizing bases
 category: linear/vector-spaces
 level: lycee
 difficulty: 2
+order: 8
 tags: basis, dimension, canonical basis
 date: 2026-11-03
 ---
@@ -267,6 +274,7 @@ title: A basis of a polynomial space
 category: linear/vector-spaces
 level: l1
 difficulty: 3
+order: 9
 tags: polynomial spaces, basis, dimension
 date: 2026-11-03
 ---
@@ -298,6 +306,7 @@ title: Dimension of a subspace
 category: linear/vector-spaces
 level: l1
 difficulty: 3
+order: 10
 tags: dimension, subspace, equations
 date: 2026-11-03
 ---
@@ -326,116 +335,188 @@ Adding: $2x+2z=0$, so $z=-x$. Subtracting: $2y+2t=0$, so $t=-y$. The solutions a
 
 **Conclusion.** $\dim F=2$.
 
-@@@ vector-intersection-sum.md
+@@@ vector-kernel-basis.md
 ---
-title: Intersection and sum of subspaces
-category: linear/vector-spaces
-level: l1
-difficulty: 4
-tags: intersection, sum, dimension formula
-date: 2026-11-03
----
-
-## Statement
-
-In $\mathbb{R}^3$, let $F=\{(x,y,z): x+y+z=0\}$ and $G=\{(x,y,z): x-y=0\}$. Compute $\dim F$, $\dim G$, $\dim(F\cap G)$, and $\dim(F+G)$.
-
-## Hint
-
-Use the formula $\dim(F+G)=\dim F+\dim G-\dim(F\cap G)$, and find a basis of each subspace.
-
-## Solution
-
-**Dimensions.** $F$ is a plane through the origin, so $\dim F=2$. $G$ is a plane through the origin, so $\dim G=2$.
-
-**Intersection.** $F\cap G$ is given by the system $x+y+z=0$, $x=y$. Substituting $y=x$: $2x+z=0$, so $z=-2x$. A basis is $(1,1,-2)$. So $\dim(F\cap G)=1$.
-
-**Sum.** $\dim(F+G)=2+2-1=3$, so $F+G=\mathbb{R}^3$.
-
-**Conclusion.** $\dim F=2$, $\dim G=2$, $\dim(F\cap G)=1$, $\dim(F+G)=3$.
-
-@@@ vector-direct-sum.md
----
-title: Direct sum of subspaces
-category: linear/vector-spaces
-level: l1
-difficulty: 4
-tags: direct sum, supplementary subspaces, dimension
-date: 2026-11-03
----
-
-## Statement
-
-In $\mathbb{R}^3$, let $F=\{(x,y,z): x+y+z=0\}$ and $G=\operatorname{span}((1,1,1))$. Show that $F$ and $G$ are supplementary: $\mathbb{R}^3=F\oplus G$.
-
-## Hint
-
-Show that $F\cap G=\{0\}$ and $\dim F+\dim G=3$.
-
-## Solution
-
-**Dimension.** $\dim F=2$ (a plane through the origin) and $\dim G=1$ (a line). Their sum is $3=\dim\mathbb{R}^3$.
-
-**Intersection.** A vector in $G$ has the form $\lambda(1,1,1)$. If it is also in $F$, then $\lambda+\lambda+\lambda=3\lambda=0$, so $\lambda=0$. Thus $F\cap G=\{0\}$.
-
-**Conclusion.** By the direct sum criterion, $\mathbb{R}^3=F\oplus G$.
-
-**Interpretation.** Every vector $v\in\mathbb{R}^3$ decomposes uniquely as $v=v_F+v_G$ with $v_F\in F$ and $v_G\in G$.
-
-@@@ vector-direct-sum-decomposition.md
----
-title: Decomposing a vector in a direct sum
-category: linear/vector-spaces
-level: l1
-difficulty: 4
-tags: direct sum, decomposition, projection
-date: 2026-11-03
----
-
-## Statement
-
-With $F=\{(x,y,z): x+y+z=0\}$ and $G=\operatorname{span}((1,1,1))$, decompose $v=(3,1,2)$ as $v=v_F+v_G$ with $v_F\in F$ and $v_G\in G$.
-
-## Hint
-
-Write $v_G=\lambda(1,1,1)$ and impose $v-v_G\in F$.
-
-## Solution
-
-**Setup.** Let $v_G=\lambda(1,1,1)$. Then $v_F=v-v_G=(3-\lambda,1-\lambda,2-\lambda)$. We need $v_F\in F$:
-$$(3-\lambda)+(1-\lambda)+(2-\lambda)=0 \implies 6-3\lambda=0 \implies \lambda=2.$$
-
-**Decomposition.** $v_G=2(1,1,1)=(2,2,2)$ and $v_F=(3,1,2)-(2,2,2)=(1,-1,0)$.
-
-**Verification.** $(1,-1,0)\in F$ since $1-1+0=0$. And $v=v_F+v_G$.
-
-**Conclusion.** $v=(1,-1,0)+(2,2,2)$.
-
-@@@ vector-sum-direct-criterion.md
----
-title: The direct sum criterion
+title: Basis of a kernel
 category: linear/vector-spaces
 level: l1
 difficulty: 3
-tags: direct sum, criterion, proof
+order: 11
+tags: kernel, basis, linear map
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $F$ and $G$ be subspaces of a finite-dimensional vector space $E$. Show that $F+G$ is a direct sum if and only if $\dim(F+G)=\dim F+\dim G$.
+Let $f:\mathbb{R}^3\to\mathbb{R}$ be the linear form $f(x,y,z)=x+2y+3z$. Find a basis of $\ker f$.
 
 ## Hint
 
-Use the dimension formula $\dim(F+G)=\dim F+\dim G-\dim(F\cap G)$.
+The kernel is a plane. Solve $x+2y+3z=0$ and express the solutions in terms of two free parameters.
 
 ## Solution
 
-**If $F+G$ is direct.** Then $F\cap G=\{0\}$, so $\dim(F\cap G)=0$. The dimension formula gives $\dim(F+G)=\dim F+\dim G$.
+**Equation.** $x=-2y-3z$. The solutions are
+$$(x,y,z)=(-2y-3z,y,z)=y(-2,1,0)+z(-3,0,1).$$
 
-**Conversely.** If $\dim(F+G)=\dim F+\dim G$, the dimension formula gives $\dim(F\cap G)=0$, so $F\cap G=\{0\}$. This is exactly the definition of a direct sum.
+**Basis.** $((-2,1,0),(-3,0,1))$.
 
-**Conclusion.** $F+G$ is direct if and only if the dimensions add.
+**Dimension.** $\dim\ker f=2$.
+
+**Verification.** $f(-2,1,0)=-2+2+0=0$ and $f(-3,0,1)=-3+0+3=0$, and the two vectors are independent.
+
+@@@ vector-matrix-kernel-basis.md
+---
+title: Kernel of a 3×3 matrix and basis
+category: linear/vector-spaces
+level: l1
+difficulty: 3
+order: 12
+tags: kernel, basis, matrix, rank-nullity
+date: 2026-11-03
+---
+
+## Statement
+
+Find a basis of $\ker(A)$ for
+$$A = \begin{pmatrix} 1 & 2 & -1 \\ 2 & 1 & 1 \\ 1 & -1 & 2 \end{pmatrix}.$$
+
+## Hint
+
+Solve $Ax=0$ by row reduction.
+
+## Solution
+
+**Row reduction.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3-L_1$:
+$$\begin{pmatrix} 1 & 2 & -1 \\ 0 & -3 & 3 \\ 0 & -3 & 3 \end{pmatrix}.$$
+$L_3\leftarrow L_3-L_2$:
+$$\begin{pmatrix} 1 & 2 & -1 \\ 0 & -3 & 3 \\ 0 & 0 & 0 \end{pmatrix}.$$
+Rank is $2$, so $\dim\ker A=1$.
+
+**Solve.** From $-3y+3z=0$, $y=z$. From $x+2y-z=0$, $x=-2y+z=-z$. So $(x,y,z)=(-z,z,z)=z(-1,1,1)$.
+
+**Conclusion.** $\ker A=\operatorname{span}((-1,1,1))$, a line.
+
+@@@ vector-subspace-generated-family.md
+---
+title: Subspace generated by a family
+category: linear/vector-spaces
+level: l1
+difficulty: 3
+order: 13
+tags: span, generated subspace, dimension
+date: 2026-11-03
+---
+
+## Statement
+
+In $\mathbb{R}^4$, compute the dimension of the subspace generated by
+$$v_1=(1,2,3,4), \quad v_2=(2,3,4,5), \quad v_3=(3,5,7,9).$$
+
+## Hint
+
+Write the matrix with these vectors as rows and row-reduce.
+
+## Solution
+
+**Matrix.**
+$$\begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 4 & 5 \\ 3 & 5 & 7 & 9 \end{pmatrix}.$$
+
+**Row reduction.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3-3L_1$:
+$$\begin{pmatrix} 1 & 2 & 3 & 4 \\ 0 & -1 & -2 & -3 \\ 0 & -1 & -2 & -3 \end{pmatrix}.$$
+$L_3\leftarrow L_3-L_2$:
+$$\begin{pmatrix} 1 & 2 & 3 & 4 \\ 0 & -1 & -2 & -3 \\ 0 & 0 & 0 & 0 \end{pmatrix}.$$
+Rank is $2$.
+
+**Conclusion.** $\dim\operatorname{span}(v_1,v_2,v_3)=2$. Note that $v_3=v_1+v_2$, so the family is dependent.
+
+@@@ vector-basis-extension.md
+---
+title: Completing a family into a basis
+category: linear/vector-spaces
+level: l1
+difficulty: 4
+order: 14
+tags: basis, completion, incomplete basis theorem
+date: 2026-11-03
+---
+
+## Statement
+
+In $\mathbb{R}^3$, complete the independent family $((1,1,0),(0,1,1))$ into a basis.
+
+## Hint
+
+Find a vector not in the span of the two given vectors, and check that the three are independent.
+
+## Solution
+
+**Span of the given family.** Both generators $(1,1,0)$ and $(0,1,1)$ satisfy $x-y+z=0$: indeed $1-1+0=0$ and $0-1+1=0$. They are independent, so their span has dimension $2$; since it is contained in the plane $x-y+z=0$ (a subspace of dimension $2$), it *equals* that plane.
+
+**Choose a vector outside.** Take $e_3=(0,0,1)$: it does not satisfy $0-0+1=1\neq0$, so it is outside the span.
+
+**Independence.** Suppose $\lambda(1,1,0)+\mu(0,1,1)+\nu(0,0,1)=0$. The first coordinate gives $\lambda=0$; the second gives $\lambda+\mu=0$, so $\mu=0$; the third gives $\mu+\nu=0$, so $\nu=0$. Independent.
+
+**Conclusion.** $((1,1,0),(0,1,1),(0,0,1))$ is a basis of $\mathbb{R}^3$.
+
+@@@ vector-basis-four-dim.md
+---
+title: A basis of a hyperplane in $\mathbb{R}^4$
+category: linear/vector-spaces
+level: l1
+difficulty: 3
+order: 15
+tags: basis, hyperplane, dimension
+date: 2026-11-03
+---
+
+## Statement
+
+Find a basis of the hyperplane $H=\{(x,y,z,t)\in\mathbb{R}^4 : x+2y+3z+4t=0\}$.
+
+## Hint
+
+The hyperplane is the kernel of a nonzero linear form. Solve the equation with three free parameters.
+
+## Solution
+
+**Solve.** $x=-2y-3z-4t$. The solutions are
+$$(x,y,z,t)=(-2y-3z-4t, y, z, t) = y(-2,1,0,0)+z(-3,0,1,0)+t(-4,0,0,1).$$
+
+**Basis.** $((-2,1,0,0),(-3,0,1,0),(-4,0,0,1))$.
+
+**Independence.** The three vectors are independent (their second, third, fourth coordinates form the identity).
+
+**Conclusion.** $\dim H=3$ and the family above is a basis.
+
+@@@ vector-basis-image.md
+---
+title: Image of a basis under a linear map
+category: linear/vector-spaces
+level: l1
+difficulty: 3
+order: 16
+tags: basis, image, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}^3$ be the linear map defined by $f(1,0)=(1,2,3)$ and $f(0,1)=(0,1,1)$. Compute a basis and the dimension of $\operatorname{Im} f$.
+
+## Hint
+
+The image of a basis spans the image. Then reduce to a basis.
+
+## Solution
+
+**Generators.** $\operatorname{Im} f=\operatorname{span}((1,2,3),(0,1,1))$.
+
+**Independence.** The two vectors are not proportional, so they are independent.
+
+**Conclusion.** A basis of $\operatorname{Im} f$ is $((1,2,3),(0,1,1))$, and $\dim\operatorname{Im} f=2$.
+
+**Remark.** $\operatorname{Im} f$ is a plane in $\mathbb{R}^3$.
 
 @@@ vector-kernel-image-linear-map.md
 ---
@@ -443,6 +524,7 @@ title: Kernel and image of a linear map
 category: linear/vector-spaces
 level: l1
 difficulty: 3
+order: 17
 tags: kernel, image, linear map, rank-nullity
 date: 2026-11-03
 ---
@@ -482,6 +564,7 @@ title: Rank-nullity on a 3×4 matrix
 category: linear/vector-spaces
 level: l1
 difficulty: 4
+order: 18
 tags: rank-nullity, rank, matrix
 date: 2026-11-03
 ---
@@ -510,30 +593,129 @@ Rank is $2$.
 
 **Conclusion.** $\operatorname{rank}(A)=2$ and $\dim(\ker A)=2$.
 
+@@@ vector-kernel-matrix-polynomial.md
+---
+title: Kernel of a differentiation-like map
+category: linear/vector-spaces
+level: l1
+difficulty: 3
+order: 19
+tags: kernel, differentiation, polynomials
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}_3[X]\to\mathbb{R}_3[X]$ be defined by $f(P)=P'$. Compute $\ker f$ and $\operatorname{Im} f$.
+
+## Hint
+
+$P'=0$ iff $P$ is constant. For the image, every polynomial of degree $\le2$ is the derivative of some polynomial of degree $\le3$.
+
+## Solution
+
+**Kernel.** $P'=0$ iff $P$ is constant, so $\ker f=\mathbb{R}$ (the space of constant polynomials). Dimension $1$.
+
+**Image.** For any $Q\in\mathbb{R}_2[X]$, let $P$ be a primitive of $Q$; then $P\in\mathbb{R}_3[X]$ and $P'=Q$. So $\operatorname{Im} f=\mathbb{R}_2[X]$. Dimension $3$.
+
+**Rank-nullity check.** $1+3=4=\dim\mathbb{R}_3[X]$. Correct.
+
+**Conclusion.** $\ker f=\mathbb{R}$ and $\operatorname{Im} f=\mathbb{R}_2[X]$.
+
+@@@ vector-linear-map-matrix-basis.md
+---
+title: Matrix of a linear map in a given basis
+category: linear/vector-spaces
+level: l1
+difficulty: 4
+order: 20
+tags: matrix representation, basis, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}_2[X]\to\mathbb{R}_2[X]$ be defined by $f(P)=P'$. Write the matrix of $f$ in the canonical basis $(1,X,X^2)$.
+
+## Hint
+
+Compute the image of each basis vector and express it in the basis.
+
+## Solution
+
+**Images.** $f(1)=0$, $f(X)=1$, $f(X^2)=2X$.
+
+**Coordinates.**
+$$f(1)=(0,0,0), \quad f(X)=(1,0,0), \quad f(X^2)=(0,2,0).$$
+
+**Matrix.** The columns are the coordinate vectors:
+$$M = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 2 \\ 0 & 0 & 0 \end{pmatrix}.$$
+
+**Conclusion.** The matrix of $f$ in the canonical basis is $M$. It is nilpotent of index $3$: $M^3=0$.
+
+@@@ vector-canonical-basis-matrix.md
+---
+title: The canonical basis and matrix representation
+category: linear/vector-spaces
+level: l1
+difficulty: 3
+order: 21
+tags: canonical basis, matrix representation, linear map
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}^2$ be defined by $f(x,y)=(2x+y, x-y)$. Write the matrix of $f$ in the canonical basis, and in the basis $\mathcal{B}=((1,1),(1,-1))$.
+
+## Hint
+
+The columns of the matrix in the canonical basis are the images of the canonical basis vectors. For the new basis, compute $P^{-1}AP$, where $P$ is the transition matrix whose columns are the vectors of $\mathcal{B}$ in canonical coordinates.
+
+## Solution
+
+**Canonical matrix.**
+$$A = \begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix}.$$
+
+**Transition matrix.**
+$$P = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, \qquad P^{-1} = \frac12\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.$$
+
+**New matrix.**
+$$P^{-1}AP = \frac12\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.$$
+Compute:
+$$\begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \begin{pmatrix} 3 & 1 \\ 0 & 2 \end{pmatrix}.$$
+Then
+$$\frac12\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 3 & 1 \\ 0 & 2 \end{pmatrix} = \frac12\begin{pmatrix} 3 & 3 \\ 3 & -1 \end{pmatrix} = \begin{pmatrix} 3/2 & 3/2 \\ 3/2 & -1/2 \end{pmatrix}.$$
+
+**Conclusion.** In $\mathcal{B}$, the matrix of $f$ is $\begin{pmatrix} 3/2 & 3/2 \\ 3/2 & -1/2 \end{pmatrix}$.
+
 @@@ vector-change-of-basis.md
 ---
 title: Change of basis in a polynomial space
 category: linear/vector-spaces
 level: l1
 difficulty: 4
+order: 22
 tags: change of basis, transition matrix, polynomials
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $\mathcal{B}=(1,X,X^2)$ and $\mathcal{B}'=(1,X-1,(X-1)^2)$ be two bases of $\mathbb{R}_2[X]$. Compute the transition matrix from $\mathcal{B}$ to $\mathcal{B}'$, and the coordinates of $P(X)=2X^2-3X+1$ in $\mathcal{B}'$.
+Let $\mathcal{B}=(1,X,X^2)$ and $\mathcal{B}'=(1,X-1,(X-1)^2)$ be two bases of $\mathbb{R}_2[X]$. Compute the transition matrix from $\mathcal{B}'$ to $\mathcal{B}$ (i.e. the matrix whose columns are the $\mathcal{B}'$-vectors expressed in $\mathcal{B}$), and the coordinates of $P(X)=2X^2-3X+1$ in $\mathcal{B}'$.
+
+**Convention.** Throughout this collection, the matrix whose columns are the vectors of a basis $\mathcal{B}'$ expressed in a basis $\mathcal{B}$ is denoted $P_{\mathcal{B}\leftarrow\mathcal{B}'}$; it maps $\mathcal{B}'$-coordinates to $\mathcal{B}$-coordinates.
 
 ## Hint
 
-Express each vector of $\mathcal{B}'$ in terms of $\mathcal{B}$ to build $P_{\mathcal{B}\to\mathcal{B}'}$. Then use $[P]_{\mathcal{B}'} = P_{\mathcal{B}\to\mathcal{B}'}^{-1}[P]_{\mathcal{B}}$.
+Express each vector of $\mathcal{B}'$ in terms of $\mathcal{B}$ to build the transition matrix. Then use $[P]_{\mathcal{B}'} = P_{\mathcal{B}\leftarrow\mathcal{B}'}^{-1}[P]_{\mathcal{B}}$.
 
 ## Solution
 
 **Transition matrix.** In basis $\mathcal{B}$:
 $$1=(1,0,0), \quad X-1=(-1,1,0), \quad (X-1)^2=(1,-2,1).$$
 So
-$$P_{\mathcal{B}\to\mathcal{B}'} = \begin{pmatrix} 1 & -1 & 1 \\ 0 & 1 & -2 \\ 0 & 0 & 1 \end{pmatrix}.$$
+$$P_{\mathcal{B}\leftarrow\mathcal{B}'} = \begin{pmatrix} 1 & -1 & 1 \\ 0 & 1 & -2 \\ 0 & 0 & 1 \end{pmatrix}.$$
 
 **Inverse.** Since $P$ is triangular with diagonal $1$, its inverse is
 $$P^{-1} = \begin{pmatrix} 1 & 1 & 1 \\ 0 & 1 & 2 \\ 0 & 0 & 1 \end{pmatrix}.$$
@@ -543,91 +725,63 @@ $$[P]_{\mathcal{B}'} = P^{-1}\begin{pmatrix} 1 \\ -3 \\ 2 \end{pmatrix} = \begin
 
 **Verification.** $P=0\cdot 1+1\cdot(X-1)+2\cdot(X-1)^2 = X-1+2(X^2-2X+1) = 2X^2-3X+1$. Correct.
 
-@@@ vector-orthogonal-complement.md
+@@@ vector-linear-map-injective.md
 ---
-title: Orthogonal complement
+title: Injective linear map and kernel
 category: linear/vector-spaces
 level: l1
-difficulty: 4
-tags: orthogonal complement, dimension, inner product
+difficulty: 3
+order: 23
+tags: injectivity, kernel, linear map
 date: 2026-11-03
 ---
 
 ## Statement
 
-In $\mathbb{R}^3$ with the standard inner product, let $F=\operatorname{span}((1,1,0),(0,1,1))$. Compute $F^\perp$ and verify $\dim F+\dim F^\perp=3$.
+Let $f:E\to F$ be a linear map. Show that $f$ is injective if and only if $\ker f=\{0\}$.
 
 ## Hint
 
-$F^\perp$ is the set of vectors orthogonal to a generating set of $F$.
+For the forward direction, use $f(0)=0$. For the converse, assume $f(u)=f(v)$ and use linearity.
 
 ## Solution
 
-**Equations.** $v=(x,y,z)\in F^\perp$ iff $v\cdot(1,1,0)=0$ and $v\cdot(0,1,1)=0$:
-$$x+y=0, \qquad y+z=0.$$
-So $y=-x$ and $z=-y=x$. Thus $v=x(1,-1,1)$.
+**If $f$ is injective.** $f(0)=0$ because $f$ is linear. If $u\in\ker f$, then $f(u)=0=f(0)$, so $u=0$ by injectivity. Hence $\ker f=\{0\}$.
 
-**Conclusion.** $F^\perp=\operatorname{span}((1,-1,1))$, dimension $1$.
+**Conversely.** Suppose $\ker f=\{0\}$. If $f(u)=f(v)$, then $f(u-v)=0$, so $u-v\in\ker f=\{0\}$, i.e. $u=v$. So $f$ is injective.
 
-**Check.** $\dim F=2$ (the two generators are independent) and $\dim F^\perp=1$, so $2+1=3=\dim\mathbb{R}^3$. This confirms $\mathbb{R}^3=F\oplus F^\perp$.
+**Conclusion.** $f$ is injective iff $\ker f=\{0\}$.
 
-@@@ vector-gram-schmidt-subspace.md
+@@@ vector-surjective-linear-map.md
 ---
-title: Orthonormal basis of a subspace
+title: Surjective linear map and image
 category: linear/vector-spaces
 level: l1
-difficulty: 4
-tags: Gram-Schmidt, orthonormal basis, subspace
+difficulty: 3
+order: 24
+tags: surjectivity, image, linear map
 date: 2026-11-03
 ---
 
 ## Statement
 
-Find an orthonormal basis of $F=\operatorname{span}((1,1,0),(1,0,1))$ in $\mathbb{R}^3$.
+Let $f:\mathbb{R}^3\to\mathbb{R}^2$ be defined by $f(x,y,z)=(x+y, y+z)$. Show that $f$ is surjective.
 
 ## Hint
 
-Apply Gram-Schmidt to the two generators.
+Find preimages of $(1,0)$ and $(0,1)$.
 
 ## Solution
 
-**Step 1.** $u_1=(1,1,0)/\sqrt2$.
+**Preimages.** $f(1,0,0)=(1,0)$ and $f(0,0,1)=(0,1)$.
 
-**Step 2.** Projection of $(1,0,1)$ onto $u_1$: $\langle(1,0,1),u_1\rangle = 1/\sqrt2$. Orthogonal part:
-$$(1,0,1) - \frac{1}{\sqrt2}\cdot\frac{1}{\sqrt2}(1,1,0) = (1,0,1)-(1/2,1/2,0)=(1/2,-1/2,1).$$
-Norm: $\sqrt{1/4+1/4+1}=\sqrt{3/2}$. So
-$$u_2 = \sqrt{2/3}(1/2,-1/2,1) = (1/\sqrt6,-1/\sqrt6,\sqrt{2/3}).$$
+**Surjectivity.** For any $(a,b)\in\mathbb{R}^2$, $f(a,0,b)=(a,b)$. So every target is hit.
 
-**Conclusion.** An orthonormal basis of $F$ is
-$$u_1=\frac1{\sqrt2}(1,1,0), \qquad u_2=\frac1{\sqrt6}(1,-1,2).$$
+**Kernel.** $x+y=0$ and $y+z=0$ give $y=-x$, $z=x$, so $\ker f=\operatorname{span}((1,-1,1))$.
 
-@@@ vector-quotient-space.md
----
-title: Quotient vector space
-category: linear/vector-spaces
-level: l1
-difficulty: 4
-tags: quotient space, cosets, dimension
-date: 2026-11-03
----
+**Rank-nullity check.** $\dim\ker f+\dim\operatorname{Im} f=1+2=3$. Correct.
 
-## Statement
-
-Let $E=\mathbb{R}^3$ and $F=\operatorname{span}((1,1,1))$. Describe the quotient space $E/F$ and compute its dimension.
-
-## Hint
-
-Two vectors are equivalent mod $F$ iff their difference is a multiple of $(1,1,1)$.
-
-## Solution
-
-**Equivalence.** $u\sim v$ iff $u-v\in F$, i.e. $u-v=\lambda(1,1,1)$ for some $\lambda\in\mathbb{R}$. So $u$ and $v$ have the same "difference of coordinates": if $u=(x_1,y_1,z_1)$ and $v=(x_2,y_2,z_2)$, then $u\sim v$ iff $x_1-x_2=y_1-y_2=z_1-z_2$.
-
-**Classes.** Each class can be represented by a vector of the form $(a,b,0)$, where $a=x-z$ and $b=y-z$. The map $E/F\to\mathbb{R}^2$, $[x,y,z]\mapsto(x-z,y-z)$, is an isomorphism.
-
-**Dimension.** $\dim(E/F)=\dim E-\dim F=3-1=2$.
-
-**Conclusion.** $E/F\cong\mathbb{R}^2$.
+**Conclusion.** $f$ is surjective with kernel of dimension $1$.
 
 @@@ vector-isomorphism-criterion.md
 ---
@@ -635,6 +789,7 @@ title: Isomorphism criterion
 category: linear/vector-spaces
 level: l1
 difficulty: 3
+order: 25
 tags: isomorphism, dimension, injective linear map
 date: 2026-11-03
 ---
@@ -653,93 +808,63 @@ Use the rank-nullity theorem: $\dim\ker f+\dim\operatorname{Im} f=n$.
 
 **Conclusion.** For a linear map between spaces of the same finite dimension, injective $\Leftrightarrow$ surjective $\Leftrightarrow$ bijective $\Leftrightarrow$ isomorphism. This fails in infinite dimension (e.g. the shift operator on sequences).
 
-@@@ vector-basis-image.md
+@@@ vector-linear-map-addition.md
 ---
-title: Image of a basis under a linear map
+title: The space of linear maps
 category: linear/vector-spaces
 level: l1
 difficulty: 3
-tags: basis, image, linear map
+order: 26
+tags: linear maps, vector space structure, dimension
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $f:\mathbb{R}^2\to\mathbb{R}^3$ be the linear map defined by $f(1,0)=(1,2,3)$ and $f(0,1)=(0,1,1)$. Compute a basis and the dimension of $\operatorname{Im} f$.
+Let $E$ and $F$ be finite-dimensional vector spaces, with $\dim E=n$ and $\dim F=m$. Show that $\mathcal{L}(E,F)$ is a vector space of dimension $mn$.
 
 ## Hint
 
-The image of a basis spans the image. Then reduce to a basis.
+Fix bases of $E$ and $F$; the map $f\mapsto$ matrix of $f$ is a linear isomorphism onto $\mathcal{M}_{m,n}(\mathbb{R})$.
 
 ## Solution
 
-**Generators.** $\operatorname{Im} f=\operatorname{span}((1,2,3),(0,1,1))$.
+**Vector space structure.** For $f,g\in\mathcal{L}(E,F)$ and $\lambda\in\mathbb{R}$, define $(f+g)(x)=f(x)+g(x)$ and $(\lambda f)(x)=\lambda f(x)$. These are linear maps, and the axioms hold pointwise.
 
-**Independence.** The two vectors are not proportional, so they are independent.
+**Isomorphism.** Fix a basis $\mathcal{B}$ of $E$ and a basis $\mathcal{C}$ of $F$. The map $\Phi:f\mapsto[f]_{\mathcal{B}}^{\mathcal{C}}$ (matrix of $f$ in these bases) is linear and bijective, with inverse $M\mapsto$ the linear map with matrix $M$.
 
-**Conclusion.** A basis of $\operatorname{Im} f$ is $((1,2,3),(0,1,1))$, and $\dim\operatorname{Im} f=2$.
+**Dimension.** $\dim\mathcal{M}_{m,n}(\mathbb{R})=mn$, so $\dim\mathcal{L}(E,F)=mn$.
 
-**Remark.** $\operatorname{Im} f$ is a plane in $\mathbb{R}^3$.
+**Conclusion.** $\mathcal{L}(E,F)$ is a vector space of dimension $mn$.
 
-@@@ vector-kernel-basis.md
+@@@ vector-intersection-sum.md
 ---
-title: Basis of a kernel
-category: linear/vector-spaces
-level: l1
-difficulty: 3
-tags: kernel, basis, linear map
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:\mathbb{R}^3\to\mathbb{R}$ be the linear form $f(x,y,z)=x+2y+3z$. Find a basis of $\ker f$.
-
-## Hint
-
-The kernel is a plane. Solve $x+2y+3z=0$ and express the solutions in terms of two free parameters.
-
-## Solution
-
-**Equation.** $x=-2y-3z$. The solutions are
-$$(x,y,z)=(-2y-3z,y,z)=y(-2,1,0)+z(-3,0,1).$$
-
-**Basis.** $((-2,1,0),(-3,0,1))$.
-
-**Dimension.** $\dim\ker f=2$.
-
-**Verification.** $f(-2,1,0)=-2+2+0=0$ and $f(-3,0,1)=-3+0+3=0$, and the two vectors are independent.
-
-@@@ vector-subspace-parameter.md
----
-title: A subspace depending on a parameter
+title: Intersection and sum of subspaces
 category: linear/vector-spaces
 level: l1
 difficulty: 4
-tags: parameter, subspace, dimension
+order: 27
+tags: intersection, sum, dimension formula
 date: 2026-11-03
 ---
 
 ## Statement
 
-For $m\in\mathbb{R}$, let $F_m=\{(x,y,z)\in\mathbb{R}^3 : x+y+mz=0 \text{ and } x+my+z=0\}$. Determine $\dim F_m$ depending on $m$.
+In $\mathbb{R}^3$, let $F=\{(x,y,z): x+y+z=0\}$ and $G=\{(x,y,z): x-y=0\}$. Compute $\dim F$, $\dim G$, $\dim(F\cap G)$, and $\dim(F+G)$.
 
 ## Hint
 
-The dimension is $3-\operatorname{rank}$ of the coefficient matrix. Compute the determinant of the $2\times 2$ minors.
+Use the formula $\dim(F+G)=\dim F+\dim G-\dim(F\cap G)$, and find a basis of each subspace.
 
 ## Solution
 
-**Matrix.**
-$$A = \begin{pmatrix} 1 & 1 & m \\ 1 & m & 1 \end{pmatrix}.$$
+**Dimensions.** $F$ is a plane through the origin, so $\dim F=2$. $G$ is a plane through the origin, so $\dim G=2$.
 
-**Rank.** The two rows are proportional iff $m=1$ (both equal to $(1,1,1)$). So:
-- If $m=1$: rank $=1$, $\dim F_1 = 3-1=2$.
-- If $m\neq1$: rank $=2$, $\dim F_m = 3-2=1$.
+**Intersection.** $F\cap G$ is given by the system $x+y+z=0$, $x=y$. Substituting $y=x$: $2x+z=0$, so $z=-2x$. A basis is $(1,1,-2)$. So $\dim(F\cap G)=1$.
 
-**Explicit bases.** For $m=1$: $F_1=\{x+y+z=0\}$, a plane, with basis $(-1,1,0),(-1,0,1)$. For $m\neq1$: solve the system. Subtracting gives $(1-m)y+(m-1)z=(1-m)(y-z)=0$, so $y=z$. Then $x+(1+m)y=0$, so $x=-(1+m)y$. Basis $((-(1+m),1,1))$.
+**Sum.** $\dim(F+G)=2+2-1=3$, so $F+G=\mathbb{R}^3$.
 
-**Conclusion.** $\dim F_m=2$ if $m=1$, $1$ if $m\neq1$.
+**Conclusion.** $\dim F=2$, $\dim G=2$, $\dim(F\cap G)=1$, $\dim(F+G)=3$.
 
 @@@ vector-sum-two-planes.md
 ---
@@ -747,6 +872,7 @@ title: Sum of two planes in $\mathbb{R}^3$
 category: linear/vector-spaces
 level: l1
 difficulty: 4
+order: 28
 tags: sum, intersection, planes
 date: 2026-11-03
 ---
@@ -775,6 +901,7 @@ title: Subspace inclusion and dimension
 category: linear/vector-spaces
 level: l1
 difficulty: 3
+order: 29
 tags: inclusion, dimension, equality
 date: 2026-11-03
 ---
@@ -793,195 +920,13 @@ Take a basis of $F$; it is a family of $\dim F$ independent vectors in $G$. If $
 
 **Conclusion.** $F=G$. This is a standard shortcut: inclusion + equal dimension = equality.
 
-@@@ vector-canonical-basis-matrix.md
----
-title: The canonical basis and matrix representation
-category: linear/vector-spaces
-level: l1
-difficulty: 3
-tags: canonical basis, matrix representation, linear map
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:\mathbb{R}^2\to\mathbb{R}^2$ be defined by $f(x,y)=(2x+y, x-y)$. Write the matrix of $f$ in the canonical basis, and in the basis $\mathcal{B}=((1,1),(1,-1))$.
-
-## Hint
-
-The columns of the matrix in the canonical basis are the images of the canonical basis vectors. For the new basis, compute $P^{-1}AP$.
-
-## Solution
-
-**Canonical matrix.**
-$$A = \begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix}.$$
-
-**Transition matrix.**
-$$P = \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}, \qquad P^{-1} = \frac12\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.$$
-
-**New matrix.**
-$$P^{-1}AP = \frac12\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}.$$
-Compute:
-$$\begin{pmatrix} 2 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} = \begin{pmatrix} 3 & 1 \\ 0 & 2 \end{pmatrix}.$$
-Then
-$$\frac12\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 3 & 1 \\ 0 & 2 \end{pmatrix} = \frac12\begin{pmatrix} 3 & 3 \\ 3 & -1 \end{pmatrix} = \begin{pmatrix} 3/2 & 3/2 \\ 3/2 & -1/2 \end{pmatrix}.$$
-
-**Conclusion.** In $\mathcal{B}$, the matrix of $f$ is $\begin{pmatrix} 3/2 & 3/2 \\ 3/2 & -1/2 \end{pmatrix}$.
-
-@@@ vector-diagonalization-subspace.md
----
-title: Eigenspaces as subspaces
-category: linear/vector-spaces
-level: l1
-difficulty: 3
-tags: eigenspaces, subspaces, dimension
-date: 2026-11-03
----
-
-## Statement
-
-Let $A=\begin{pmatrix} 4 & 1 \\ 2 & 3 \end{pmatrix}$. Show that the eigenspace $E_2=\ker(A-2I)$ is a subspace of $\mathbb{R}^2$ and compute its dimension.
-
-## Hint
-
-The kernel of a linear map is always a subspace.
-
-## Solution
-
-**Subspace.** $E_2=\ker(A-2I)$ is the kernel of the linear map $x\mapsto(A-2I)x$, hence a subspace.
-
-**Computation.**
-$$A-2I = \begin{pmatrix} 2 & 1 \\ 2 & 1 \end{pmatrix}.$$
-The kernel is given by $2x+y=0$, i.e. $y=-2x$. So $E_2=\operatorname{span}((1,-2))$.
-
-**Dimension.** $\dim E_2=1$.
-
-**Conclusion.** $E_2$ is the line spanned by $(1,-2)$.
-
-@@@ vector-linear-map-matrix-basis.md
----
-title: Matrix of a linear map in a given basis
-category: linear/vector-spaces
-level: l1
-difficulty: 4
-tags: matrix representation, basis, linear map
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:\mathbb{R}_2[X]\to\mathbb{R}_2[X]$ be defined by $f(P)=P'$. Write the matrix of $f$ in the canonical basis $(1,X,X^2)$.
-
-## Hint
-
-Compute the image of each basis vector and express it in the basis.
-
-## Solution
-
-**Images.** $f(1)=0$, $f(X)=1$, $f(X^2)=2X$.
-
-**Coordinates.**
-$$f(1)=(0,0,0), \quad f(X)=(1,0,0), \quad f(X^2)=(0,2,0).$$
-
-**Matrix.** The columns are the coordinate vectors:
-$$M = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 2 \\ 0 & 0 & 0 \end{pmatrix}.$$
-
-**Conclusion.** The matrix of $f$ in the canonical basis is $M$. It is nilpotent of index $3$: $M^3=0$.
-
-@@@ vector-kernel-matrix-polynomial.md
----
-title: Kernel of a differentiation-like map
-category: linear/vector-spaces
-level: l1
-difficulty: 3
-tags: kernel, differentiation, polynomials
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:\mathbb{R}_3[X]\to\mathbb{R}_3[X]$ be defined by $f(P)=P'$. Compute $\ker f$ and $\operatorname{Im} f$.
-
-## Hint
-
-$P'=0$ iff $P$ is constant. For the image, every polynomial of degree $\le2$ is the derivative of some polynomial of degree $\le3$.
-
-## Solution
-
-**Kernel.** $P'=0$ iff $P$ is constant, so $\ker f=\mathbb{R}$ (the space of constant polynomials). Dimension $1$.
-
-**Image.** For any $Q\in\mathbb{R}_2[X]$, let $P$ be a primitive of $Q$; then $P\in\mathbb{R}_3[X]$ and $P'=Q$. So $\operatorname{Im} f=\mathbb{R}_2[X]$. Dimension $3$.
-
-**Rank-nullity check.** $1+3=4=\dim\mathbb{R}_3[X]$. Correct.
-
-**Conclusion.** $\ker f=\mathbb{R}$ and $\operatorname{Im} f=\mathbb{R}_2[X]$.
-
-@@@ vector-subspace-generated-family.md
----
-title: Subspace generated by a family
-category: linear/vector-spaces
-level: l1
-difficulty: 3
-tags: span, generated subspace, dimension
-date: 2026-11-03
----
-
-## Statement
-
-In $\mathbb{R}^4$, compute the dimension of the subspace generated by
-$$v_1=(1,2,3,4), \quad v_2=(2,3,4,5), \quad v_3=(3,5,7,9).$$
-
-## Hint
-
-Write the matrix with these vectors as rows and row-reduce.
-
-## Solution
-
-**Matrix.**
-$$\begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 4 & 5 \\ 3 & 5 & 7 & 9 \end{pmatrix}.$$
-
-**Row reduction.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3-3L_1$:
-$$\begin{pmatrix} 1 & 2 & 3 & 4 \\ 0 & -1 & -2 & -3 \\ 0 & -1 & -2 & -3 \end{pmatrix}.$$
-$L_3\leftarrow L_3-L_2$:
-$$\begin{pmatrix} 1 & 2 & 3 & 4 \\ 0 & -1 & -2 & -3 \\ 0 & 0 & 0 & 0 \end{pmatrix}.$$
-Rank is $2$.
-
-**Conclusion.** $\dim\operatorname{span}(v_1,v_2,v_3)=2$. Note that $v_3=v_1+v_2$, so the family is dependent.
-
-@@@ vector-basis-extension.md
----
-title: Completing a family into a basis
-category: linear/vector-spaces
-level: l1
-difficulty: 4
-tags: basis, completion, incomplete basis theorem
-date: 2026-11-03
----
-
-## Statement
-
-In $\mathbb{R}^3$, complete the independent family $((1,1,0),(0,1,1))$ into a basis.
-
-## Hint
-
-Find a vector not in the span of the two given vectors, and check that the three are independent.
-
-## Solution
-
-**Span of the given family.** $\operatorname{span}((1,1,0),(0,1,1))$ is the plane $x-y+z=0$ (check: a vector $(x,y,z)$ in the span satisfies $x-y+z=0$).
-
-**Choose a vector outside.** Take $e_3=(0,0,1)$: it does not satisfy $0-0+1=1\neq0$, so it is outside the span.
-
-**Independence.** Suppose $\lambda(1,1,0)+\mu(0,1,1)+\nu(0,0,1)=0$. The first coordinate gives $\lambda=0$; the second gives $\lambda+\mu=0$, so $\mu=0$; the third gives $\mu+\nu=0$, so $\nu=0$. Independent.
-
-**Conclusion.** $((1,1,0),(0,1,1),(0,0,1))$ is a basis of $\mathbb{R}^3$.
-
 @@@ vector-dimension-formula-proof.md
 ---
 title: Proving the dimension formula
 category: linear/vector-spaces
 level: l1
 difficulty: 5
+order: 30
 tags: dimension formula, proof, intersection and sum
 date: 2026-11-03
 ---
@@ -1001,214 +946,155 @@ Take a basis $(u_1,\ldots,u_k)$ of $F\cap G$, extend it to a basis of $F$ and to
 
 **Span.** The family $(u_1,\ldots,u_k,v_1,\ldots,v_p,w_1,\ldots,w_q)$ spans $F+G$, because every element of $F$ is a combination of the $u$'s and $v$'s, and every element of $G$ is a combination of the $u$'s and $w$'s.
 
-**Independence.** Suppose $\sum\alpha_i u_i+\sum\beta_j v_j+\sum\gamma_l w_l=0$. Then $\sum\gamma_l w_l=-\sum\alpha_i u_i-\sum\beta_j v_j\in F$, so it belongs to $F\cap G$, hence is a combination of the $u$'s. But the $w$'s are independent from the $u$'s, so $\gamma_l=0$ for all $l$. Then $\sum\alpha_i u_i+\sum\beta_j v_j=0$, which gives $\alpha_i=\beta_j=0$ by independence in $F$.
+**Independence.** Suppose $\sum\alpha_i u_i+\sum\beta_j v_j+\sum\gamma_l w_l=0$. Then $\sum\gamma_l w_l=-\sum\alpha_i u_i-\sum\beta_j v_j\in F$, so it belongs to $F\cap G$, hence is a combination of the $u$'s. But $(u_1,\ldots,u_k,w_1,\ldots,w_q)$ is a basis of $G$ (hence independent), so the expression of $\sum\gamma_l w_l$ as a combination of the $u$'s and $w$'s is unique; since it is also a combination of the $u$'s alone, all $\gamma_l=0$. Then $\sum\alpha_i u_i+\sum\beta_j v_j=0$, which gives $\alpha_i=\beta_j=0$ by independence in $F$.
 
 **Conclusion.** The family is a basis of $F+G$, with $k+p+q=\dim F+\dim G-\dim(F\cap G)$ vectors.
 
-@@@ vector-matrix-kernel-basis.md
+@@@ vector-sum-direct-criterion.md
 ---
-title: Kernel of a 3×3 matrix and basis
+title: The direct sum criterion
 category: linear/vector-spaces
 level: l1
 difficulty: 3
-tags: kernel, basis, matrix, rank-nullity
+order: 31
+tags: direct sum, criterion, proof
 date: 2026-11-03
 ---
 
 ## Statement
 
-Find a basis of $\ker(A)$ for
-$$A = \begin{pmatrix} 1 & 2 & -1 \\ 2 & 1 & 1 \\ 1 & -1 & 2 \end{pmatrix}.$$
+Let $F$ and $G$ be subspaces of a finite-dimensional vector space $E$. Show that $F+G$ is a direct sum if and only if $\dim(F+G)=\dim F+\dim G$.
 
 ## Hint
 
-Solve $Ax=0$ by row reduction.
+Use the dimension formula $\dim(F+G)=\dim F+\dim G-\dim(F\cap G)$ (proved in the problem "Proving the dimension formula").
 
 ## Solution
 
-**Row reduction.** $L_2\leftarrow L_2-2L_1$, $L_3\leftarrow L_3-L_1$:
-$$\begin{pmatrix} 1 & 2 & -1 \\ 0 & -3 & 3 \\ 0 & -3 & 3 \end{pmatrix}.$$
-$L_3\leftarrow L_3-L_2$:
-$$\begin{pmatrix} 1 & 2 & -1 \\ 0 & -3 & 3 \\ 0 & 0 & 0 \end{pmatrix}.$$
-Rank is $2$, so $\dim\ker A=1$.
+**If $F+G$ is direct.** Then $F\cap G=\{0\}$, so $\dim(F\cap G)=0$. The dimension formula gives $\dim(F+G)=\dim F+\dim G$.
 
-**Solve.** From $-3y+3z=0$, $y=z$. From $x+2y-z=0$, $x=-2y+z=-z$. So $(x,y,z)=(-z,z,z)=z(-1,1,1)$.
+**Conversely.** If $\dim(F+G)=\dim F+\dim G$, the dimension formula gives $\dim(F\cap G)=0$, so $F\cap G=\{0\}$. This is exactly the definition of a direct sum.
 
-**Conclusion.** $\ker A=\operatorname{span}((-1,1,1))$, a line.
+**Conclusion.** $F+G$ is direct if and only if the dimensions add.
 
-@@@ vector-trace-zero-subspace.md
+@@@ vector-direct-sum.md
 ---
-title: The subspace of traceless matrices
+title: Direct sum of subspaces
 category: linear/vector-spaces
 level: l1
 difficulty: 4
-tags: trace, subspace, dimension, matrices
+order: 32
+tags: direct sum, supplementary subspaces, dimension
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $F=\{M\in\mathcal{M}_3(\mathbb{R}) : \operatorname{tr}(M)=0\}$. Show that $F$ is a subspace of $\mathcal{M}_3(\mathbb{R})$ and compute its dimension.
+In $\mathbb{R}^3$, let $F=\{(x,y,z): x+y+z=0\}$ and $G=\operatorname{span}((1,1,1))$. Show that $F$ and $G$ are supplementary: $\mathbb{R}^3=F\oplus G$.
 
 ## Hint
 
-The trace is a linear form on $\mathcal{M}_3(\mathbb{R})$. Use rank-nullity.
+Show that $F\cap G=\{0\}$ and $\dim F+\dim G=3$.
 
 ## Solution
 
-**Linearity.** The trace is linear: $\operatorname{tr}(A+B)=\operatorname{tr}(A)+\operatorname{tr}(B)$ and $\operatorname{tr}(\lambda A)=\lambda\operatorname{tr}(A)$. So $F$ is the kernel of a linear form, hence a subspace.
+**Dimension.** $\dim F=2$ (a plane through the origin) and $\dim G=1$ (a line). Their sum is $3=\dim\mathbb{R}^3$.
 
-**Dimension.** The linear form $\operatorname{tr}:\mathcal{M}_3(\mathbb{R})\to\mathbb{R}$ is nonzero (e.g. $\operatorname{tr}(E_{11})=1$), so it is surjective. By rank-nullity, $\dim F=9-1=8$.
+**Intersection.** A vector in $G$ has the form $\lambda(1,1,1)$. If it is also in $F$, then $\lambda+\lambda+\lambda=3\lambda=0$, so $\lambda=0$. Thus $F\cap G=\{0\}$.
 
-**Conclusion.** $F$ is a hyperplane of $\mathcal{M}_3(\mathbb{R})$, of dimension $8$.
+**Conclusion.** By the direct sum criterion, $\mathbb{R}^3=F\oplus G$.
 
-@@@ vector-symmetric-skew.md
+**Interpretation.** Every vector $v\in\mathbb{R}^3$ decomposes uniquely as $v=v_F+v_G$ with $v_F\in F$ and $v_G\in G$.
+
+@@@ vector-direct-sum-decomposition.md
 ---
-title: Symmetric and skew-symmetric matrices
+title: Decomposing a vector in a direct sum
 category: linear/vector-spaces
 level: l1
 difficulty: 4
-tags: symmetric, skew-symmetric, direct sum
+order: 33
+tags: direct sum, decomposition, projection
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $S=\{M\in\mathcal{M}_n(\mathbb{R}) : M^T=M\}$ and $A=\{M\in\mathcal{M}_n(\mathbb{R}) : M^T=-M\}$. Show that $S$ and $A$ are subspaces and that $\mathcal{M}_n(\mathbb{R})=S\oplus A$.
+With $F=\{(x,y,z): x+y+z=0\}$ and $G=\operatorname{span}((1,1,1))$, decompose $v=(3,1,2)$ as $v=v_F+v_G$ with $v_F\in F$ and $v_G\in G$.
 
 ## Hint
 
-Show $S\cap A=\{0\}$ and every matrix decomposes as $M=\frac{M+M^T}{2}+\frac{M-M^T}{2}$.
+Write $v_G=\lambda(1,1,1)$ and impose $v-v_G\in F$.
 
 ## Solution
 
-**Subspaces.** $S$ and $A$ are defined by linear conditions ($M^T-M=0$ and $M^T+M=0$), hence are kernels of linear maps, hence subspaces.
+**Setup.** Let $v_G=\lambda(1,1,1)$. Then $v_F=v-v_G=(3-\lambda,1-\lambda,2-\lambda)$. We need $v_F\in F$:
+$$(3-\lambda)+(1-\lambda)+(2-\lambda)=0 \implies 6-3\lambda=0 \implies \lambda=2.$$
 
-**Intersection.** If $M\in S\cap A$, then $M^T=M$ and $M^T=-M$, so $M=-M$, i.e. $M=0$.
+**Decomposition.** $v_G=2(1,1,1)=(2,2,2)$ and $v_F=(3,1,2)-(2,2,2)=(1,-1,0)$.
 
-**Decomposition.** For any $M$:
-$$M = \underbrace{\frac{M+M^T}{2}}_{\in S} + \underbrace{\frac{M-M^T}{2}}_{\in A}.$$
-Indeed, the first term is symmetric and the second is skew-symmetric.
+**Verification.** $(1,-1,0)\in F$ since $1-1+0=0$. And $v=v_F+v_G$.
 
-**Conclusion.** $\mathcal{M}_n(\mathbb{R})=S\oplus A$. Their dimensions are $\frac{n(n+1)}{2}$ and $\frac{n(n-1)}{2}$, summing to $n^2$.
+**Conclusion.** $v=(1,-1,0)+(2,2,2)$.
 
-@@@ vector-polynomial-subspace.md
+@@@ vector-complement-existence.md
 ---
-title: A subspace of polynomials with a root condition
+title: Existence of a supplementary subspace
 category: linear/vector-spaces
 level: l1
 difficulty: 4
-tags: polynomial subspace, evaluation, dimension
+order: 34
+tags: supplementary subspace, basis extension, existence
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $F=\{P\in\mathbb{R}_3[X] : P(1)=0\}$. Show that $F$ is a subspace of $\mathbb{R}_3[X]$ and compute its dimension.
+Let $F$ be a subspace of a finite-dimensional vector space $E$. Show that there exists a subspace $G$ of $E$ such that $E=F\oplus G$.
 
 ## Hint
 
-The evaluation map $P\mapsto P(1)$ is a linear form. It is surjective. Use rank-nullity.
+Take a basis of $F$, extend it to a basis of $E$, and let $G$ be the span of the added vectors.
 
 ## Solution
 
-**Linearity.** The map $\varphi:P\mapsto P(1)$ is linear (evaluation is linear). So $F=\ker\varphi$ is a subspace.
+**Basis extension.** Let $(e_1,\ldots,e_k)$ be a basis of $F$. By the incomplete basis theorem, it extends to a basis $(e_1,\ldots,e_k,e_{k+1},\ldots,e_n)$ of $E$.
 
-**Surjectivity.** $\varphi$ is nonzero (e.g. $\varphi(1)=1$), hence surjective onto $\mathbb{R}$.
+**Define $G$.** Let $G=\operatorname{span}(e_{k+1},\ldots,e_n)$.
 
-**Dimension.** $\dim F=\dim\mathbb{R}_3[X]-1=4-1=3$.
+**Direct sum.** Any $v\in E$ is a combination of the full basis, hence $v=v_F+v_G$ with $v_F\in F$ and $v_G\in G$. If $v\in F\cap G$, then $v$ is a combination of the $e_i$ for $i\le k$ and of the $e_j$ for $j>k$; by uniqueness of coordinates in the basis, all coefficients are zero, so $v=0$.
 
-**Explicit basis.** $P\in F$ iff $P$ is divisible by $X-1$, i.e. $P=(X-1)Q$ with $Q\in\mathbb{R}_2[X]$. A basis is $(X-1, (X-1)X, (X-1)X^2)$.
+**Conclusion.** $E=F\oplus G$. Any subspace has at least one supplementary subspace.
 
-**Conclusion.** $F$ is a hyperplane of $\mathbb{R}_3[X]$, of dimension $3$.
-
-@@@ vector-linear-map-injective.md
+@@@ vector-quotient-space.md
 ---
-title: Injective linear map and kernel
+title: Quotient vector space
 category: linear/vector-spaces
 level: l1
-difficulty: 3
-tags: injectivity, kernel, linear map
+difficulty: 4
+order: 35
+tags: quotient space, cosets, dimension
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $f:E\to F$ be a linear map. Show that $f$ is injective if and only if $\ker f=\{0\}$.
+Let $E=\mathbb{R}^3$ and $F=\operatorname{span}((1,1,1))$. Describe the quotient space $E/F$ and compute its dimension.
 
 ## Hint
 
-For the forward direction, use $f(0)=0$. For the converse, assume $f(u)=f(v)$ and use linearity.
+Two vectors are equivalent mod $F$ iff their difference is a multiple of $(1,1,1)$.
 
 ## Solution
 
-**If $f$ is injective.** $f(0)=0$ because $f$ is linear. If $u\in\ker f$, then $f(u)=0=f(0)$, so $u=0$ by injectivity. Hence $\ker f=\{0\}$.
+**Equivalence.** $u\sim v$ iff $u-v\in F$, i.e. $u-v=\lambda(1,1,1)$ for some $\lambda\in\mathbb{R}$. So $u$ and $v$ have the same "difference of coordinates": if $u=(x_1,y_1,z_1)$ and $v=(x_2,y_2,z_2)$, then $u\sim v$ iff $x_1-x_2=y_1-y_2=z_1-z_2$.
 
-**Conversely.** Suppose $\ker f=\{0\}$. If $f(u)=f(v)$, then $f(u-v)=0$, so $u-v\in\ker f=\{0\}$, i.e. $u=v$. So $f$ is injective.
+**Well-defined map.** The map $E/F\to\mathbb{R}^2$, $[x,y,z]\mapsto(x-z,y-z)$, is well defined: if $u\sim v$ with $u-v=\lambda(1,1,1)$, then $(x_1-z_1)-(x_2-z_2)=\lambda-\lambda=0$ and similarly for the second coordinate.
 
-**Conclusion.** $f$ is injective iff $\ker f=\{0\}$.
+**Isomorphism.** The map is linear, injective (if $x-z=0$ and $y-z=0$ then $x=y=z$, so $u=(z,z,z)\in F$), and surjective (any $(a,b)$ is hit by $(a,b,0)$). So $E/F\cong\mathbb{R}^2$.
 
-@@@ vector-surjective-linear-map.md
----
-title: Surjective linear map and image
-category: linear/vector-spaces
-level: l1
-difficulty: 3
-tags: surjectivity, image, linear map
-date: 2026-11-03
----
+**Dimension.** $\dim(E/F)=\dim E-\dim F=3-1=2$.
 
-## Statement
-
-Let $f:\mathbb{R}^3\to\mathbb{R}^2$ be defined by $f(x,y,z)=(x+y, y+z)$. Show that $f$ is surjective.
-
-## Hint
-
-Find preimages of $(1,0)$ and $(0,1)$.
-
-## Solution
-
-**Preimages.** $f(1,0,0)=(1,0)$ and $f(0,0,1)=(0,1)$.
-
-**Surjectivity.** For any $(a,b)\in\mathbb{R}^2$, $f(a,0,b)=(a,b)$. So every target is hit.
-
-**Kernel.** $x+y=0$ and $y+z=0$ give $y=-x$, $z=x$, so $\ker f=\operatorname{span}((1,-1,1))$.
-
-**Rank-nullity check.** $\dim\ker f+\dim\operatorname{Im} f=1+2=3$. Correct.
-
-**Conclusion.** $f$ is surjective with kernel of dimension $1$.
-
-@@@ vector-matrix-column-space.md
----
-title: Column space and row space
-category: linear/vector-spaces
-level: l1
-difficulty: 3
-tags: column space, row space, rank
-date: 2026-11-03
----
-
-## Statement
-
-Let
-$$A = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 3 & 6 & 9 \end{pmatrix}.$$
-Describe the column space and row space of $A$.
-
-## Hint
-
-All rows are proportional. The column space is spanned by the columns.
-
-## Solution
-
-**Row space.** All rows are multiples of $(1,2,3)$, so the row space is $\operatorname{span}((1,2,3))$, dimension $1$.
-
-**Column space.** All columns are multiples of $(1,2,3)^T$, so the column space is $\operatorname{span}((1,2,3)^T)$, dimension $1$.
-
-**Rank.** $\operatorname{rank}(A)=1$.
-
-**Kernel.** $\dim\ker A=3-1=2$. Solve $x+2y+3z=0$: basis $(-2,1,0),(-3,0,1)$.
-
-**Conclusion.** Row and column spaces are both lines, and $\ker A$ is a plane.
+**Conclusion.** $E/F\cong\mathbb{R}^2$.
 
 @@@ vector-dimension-quotient.md
 ---
@@ -1216,6 +1102,7 @@ title: Dimension of a quotient space
 category: linear/vector-spaces
 level: l1
 difficulty: 4
+order: 36
 tags: quotient space, dimension, proof
 date: 2026-11-03
 ---
@@ -1238,12 +1125,105 @@ Choose a basis of $F$, extend it to a basis of $E$, and show the images of the a
 
 **Conclusion.** $([e_{k+1}],\ldots,[e_n])$ is a basis of $E/F$, so $\dim(E/F)=n-k=\dim E-\dim F$.
 
+@@@ vector-subspace-parameter.md
+---
+title: A subspace depending on a parameter
+category: linear/vector-spaces
+level: l1
+difficulty: 4
+order: 37
+tags: parameter, subspace, dimension
+date: 2026-11-03
+---
+
+## Statement
+
+For $m\in\mathbb{R}$, let $F_m=\{(x,y,z)\in\mathbb{R}^3 : x+y+mz=0 \text{ and } x+my+z=0\}$. Determine $\dim F_m$ depending on $m$.
+
+## Hint
+
+The dimension is $3-\operatorname{rank}$ of the coefficient matrix. Determine when the two rows are proportional.
+
+## Solution
+
+**Matrix.**
+$$A = \begin{pmatrix} 1 & 1 & m \\ 1 & m & 1 \end{pmatrix}.$$
+
+**Rank.** The two rows are proportional iff $m=1$ (both equal to $(1,1,1)$). So:
+- If $m=1$: rank $=1$, $\dim F_1 = 3-1=2$.
+- If $m\neq1$: rank $=2$, $\dim F_m = 3-2=1$.
+
+**Explicit bases.** For $m=1$: $F_1=\{x+y+z=0\}$, a plane, with basis $(-1,1,0),(-1,0,1)$. For $m\neq1$: solve the system. Subtracting gives $(1-m)y+(m-1)z=(1-m)(y-z)=0$, so $y=z$. Then $x+(1+m)y=0$, so $x=-(1+m)y$. Basis $((-(1+m),1,1))$.
+
+**Conclusion.** $\dim F_m=2$ if $m=1$, $1$ if $m\neq1$.
+
+@@@ vector-orthogonal-complement.md
+---
+title: Orthogonal complement
+category: linear/vector-spaces
+level: l1
+difficulty: 4
+order: 38
+tags: orthogonal complement, dimension, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+In $\mathbb{R}^3$ with the standard inner product, let $F=\operatorname{span}((1,1,0),(0,1,1))$. Compute $F^\perp$ and verify $\dim F+\dim F^\perp=3$.
+
+## Hint
+
+$F^\perp$ is the set of vectors orthogonal to a generating set of $F$.
+
+## Solution
+
+**Equations.** $v=(x,y,z)\in F^\perp$ iff $v\cdot(1,1,0)=0$ and $v\cdot(0,1,1)=0$:
+$$x+y=0, \qquad y+z=0.$$
+So $y=-x$ and $z=-y=x$. Thus $v=x(1,-1,1)$.
+
+**Conclusion.** $F^\perp=\operatorname{span}((1,-1,1))$, dimension $1$.
+
+**Check.** $\dim F=2$ (the two generators are independent) and $\dim F^\perp=1$, so $2+1=3=\dim\mathbb{R}^3$. Also $F\cap F^\perp=\{0\}$ (a vector orthogonal to itself is zero), so $\mathbb{R}^3=F\oplus F^\perp$.
+
+@@@ vector-gram-schmidt-subspace.md
+---
+title: Orthonormal basis of a subspace
+category: linear/vector-spaces
+level: l1
+difficulty: 4
+order: 39
+tags: Gram-Schmidt, orthonormal basis, subspace
+date: 2026-11-03
+---
+
+## Statement
+
+Find an orthonormal basis of $F=\operatorname{span}((1,1,0),(1,0,1))$ in $\mathbb{R}^3$.
+
+## Hint
+
+Apply Gram-Schmidt to the two generators.
+
+## Solution
+
+**Step 1.** $u_1=(1,1,0)/\sqrt2$.
+
+**Step 2.** Projection of $(1,0,1)$ onto $u_1$: $\langle(1,0,1),u_1\rangle = 1/\sqrt2$. Orthogonal part:
+$$(1,0,1) - \frac{1}{\sqrt2}\cdot\frac{1}{\sqrt2}(1,1,0) = (1,0,1)-(1/2,1/2,0)=(1/2,-1/2,1).$$
+Norm: $\sqrt{1/4+1/4+1}=\sqrt{3/2}$. So
+$$u_2 = \sqrt{2/3}(1/2,-1/2,1) = (1/\sqrt6,-1/\sqrt6,\sqrt{2/3}).$$
+
+**Conclusion.** An orthonormal basis of $F$ is
+$$u_1=\frac1{\sqrt2}(1,1,0), \qquad u_2=\frac1{\sqrt6}(1,-1,2).$$
+
 @@@ vector-dual-basis.md
 ---
 title: The dual basis
 category: linear/vector-spaces
 level: l1
 difficulty: 4
+order: 40
 tags: dual space, dual basis, linear forms
 date: 2026-11-03
 ---
@@ -1274,6 +1254,7 @@ title: Kernel of the transpose
 category: linear/vector-spaces
 level: l1
 difficulty: 4
+order: 41
 tags: transpose, kernel, orthogonal complement, rank
 date: 2026-11-03
 ---
@@ -1296,42 +1277,13 @@ But $(A^T y)\cdot x = y\cdot(Ax)$, so this is equivalent to $y\cdot(Ax)=0$ for a
 
 **Consequence.** $\operatorname{rank}(A^T)=m-\dim\ker(A^T)=m-\dim(\operatorname{Im} A)^\perp=m-(m-\operatorname{rank}A)=\operatorname{rank}A$. So row rank equals column rank.
 
-@@@ vector-subspace-generated-matrix.md
----
-title: Subspace generated by columns of a matrix
-category: linear/vector-spaces
-level: l1
-difficulty: 3
-tags: column space, generators, rank
-date: 2026-11-03
----
-
-## Statement
-
-Let
-$$A = \begin{pmatrix} 1 & 2 & 1 \\ 0 & 1 & 1 \\ 1 & 3 & 2 \end{pmatrix}.$$
-Find a basis of the column space of $A$.
-
-## Hint
-
-Column-reduce or transpose and row-reduce; the pivot columns of $A$ give a basis.
-
-## Solution
-
-**Observation.** Column 3 = column 1 + column 2, so column 3 is redundant.
-
-**Independence of columns 1 and 2.** The two columns $(1,0,1)$ and $(2,1,3)$ are not proportional, so they are independent.
-
-**Conclusion.** A basis of the column space is $((1,0,1),(2,1,3))$, and the rank is $2$.
-
-**Check.** Row reduction confirms rank $2$: $L_3\leftarrow L_3-L_1-L_2$ gives the zero row.
-
 @@@ vector-dimension-hyperplane.md
 ---
 title: Hyperplanes and linear forms
 category: linear/vector-spaces
 level: l1
 difficulty: 4
+order: 42
 tags: hyperplane, linear form, kernel, dimension
 date: 2026-11-03
 ---
@@ -1358,6 +1310,7 @@ title: Intersection of two kernels
 category: linear/vector-spaces
 level: l1
 difficulty: 4
+order: 43
 tags: intersection, kernel, dimension
 date: 2026-11-03
 ---
@@ -1384,34 +1337,63 @@ The two rows are not proportional, so the rank is $2$.
 
 **Conclusion.** $\ker f\cap\ker g$ is the line spanned by $(1,1,-2)$.
 
-@@@ vector-basis-four-dim.md
+@@@ vector-trace-zero-subspace.md
 ---
-title: A basis of a hyperplane in $\mathbb{R}^4$
+title: The subspace of traceless matrices
 category: linear/vector-spaces
 level: l1
-difficulty: 3
-tags: basis, hyperplane, dimension
+difficulty: 4
+order: 44
+tags: trace, subspace, dimension, matrices
 date: 2026-11-03
 ---
 
 ## Statement
 
-Find a basis of the hyperplane $H=\{(x,y,z,t)\in\mathbb{R}^4 : x+2y+3z+4t=0\}$.
+Let $F=\{M\in\mathcal{M}_3(\mathbb{R}) : \operatorname{tr}(M)=0\}$. Show that $F$ is a subspace of $\mathcal{M}_3(\mathbb{R})$ and compute its dimension.
 
 ## Hint
 
-The hyperplane is the kernel of a nonzero linear form. Solve the equation with three free parameters.
+The trace is a linear form on $\mathcal{M}_3(\mathbb{R})$. Use rank-nullity.
 
 ## Solution
 
-**Solve.** $x=-2y-3z-4t$. The solutions are
-$$(x,y,z,t)=(-2y-3z-4t, y, z, t) = y(-2,1,0,0)+z(-3,0,1,0)+t(-4,0,0,1).$$
+**Linearity.** The trace is linear: $\operatorname{tr}(A+B)=\operatorname{tr}(A)+\operatorname{tr}(B)$ and $\operatorname{tr}(\lambda A)=\lambda\operatorname{tr}(A)$. So $F$ is the kernel of a linear form, hence a subspace.
 
-**Basis.** $((-2,1,0,0),(-3,0,1,0),(-4,0,0,1))$.
+**Dimension.** The linear form $\operatorname{tr}:\mathcal{M}_3(\mathbb{R})\to\mathbb{R}$ is nonzero (e.g. $\operatorname{tr}(E_{11})=1$), so it is surjective. By rank-nullity, $\dim F=9-1=8$.
 
-**Independence.** The three vectors are independent (their second, third, fourth coordinates form the identity).
+**Conclusion.** $F$ is a hyperplane of $\mathcal{M}_3(\mathbb{R})$, of dimension $8$.
 
-**Conclusion.** $\dim H=3$ and the family above is a basis.
+@@@ vector-symmetric-skew.md
+---
+title: Symmetric and skew-symmetric matrices
+category: linear/vector-spaces
+level: l1
+difficulty: 4
+order: 45
+tags: symmetric, skew-symmetric, direct sum
+date: 2026-11-03
+---
+
+## Statement
+
+Let $S=\{M\in\mathcal{M}_n(\mathbb{R}) : M^T=M\}$ and $A=\{M\in\mathcal{M}_n(\mathbb{R}) : M^T=-M\}$. Show that $S$ and $A$ are subspaces and that $\mathcal{M}_n(\mathbb{R})=S\oplus A$.
+
+## Hint
+
+Show $S\cap A=\{0\}$ and every matrix decomposes as $M=\frac{M+M^T}{2}+\frac{M-M^T}{2}$.
+
+## Solution
+
+**Subspaces.** $S$ and $A$ are defined by linear conditions ($M^T-M=0$ and $M^T+M=0$), hence are kernels of linear maps, hence subspaces.
+
+**Intersection.** If $M\in S\cap A$, then $M^T=M$ and $M^T=-M$, so $M=-M$, i.e. $M=0$.
+
+**Decomposition.** For any $M$:
+$$M = \underbrace{\frac{M+M^T}{2}}_{\in S} + \underbrace{\frac{M-M^T}{2}}_{\in A}.$$
+Indeed, the first term is symmetric and the second is skew-symmetric.
+
+**Conclusion.** $\mathcal{M}_n(\mathbb{R})=S\oplus A$. Their dimensions are $\frac{n(n+1)}{2}$ and $\frac{n(n-1)}{2}$, summing to $n^2$.
 
 @@@ vector-eigenvectors-subspace.md
 ---
@@ -1419,6 +1401,7 @@ title: Eigenspaces sum to the whole space
 category: linear/vector-spaces
 level: l1
 difficulty: 4
+order: 46
 tags: eigenspaces, direct sum, diagonalization
 date: 2026-11-03
 ---
@@ -1437,65 +1420,9 @@ Show that a linear combination of eigenvectors for distinct eigenvalues that equ
 $$\sum_{i=1}^r \lambda_i v_i=0.$$
 Subtracting $\lambda_r$ times the first relation:
 $$\sum_{i=1}^{r-1}(\lambda_i-\lambda_r)v_i=0.$$
-By the induction hypothesis applied to $\lambda_1,\ldots,\lambda_{r-1}$, each $(\lambda_i-\lambda_r)v_i=0$. Since $\lambda_i\neq\lambda_r$, $v_i=0$ for $i<r$. Then $v_r=0$ as well.
+By the induction hypothesis applied to $\lambda_1,\ldots,\lambda_{r-1}$ (and using that $(\lambda_i-\lambda_r)v_i\in E_{\lambda_i}$), each $(\lambda_i-\lambda_r)v_i=0$. Since $\lambda_i\neq\lambda_r$, $v_i=0$ for $i<r$. Then $v_r=0$ as well.
 
 **Conclusion.** The eigenspaces are in direct sum, and $\sum_i\dim E_{\lambda_i}\le n$.
-
-@@@ vector-complement-existence.md
----
-title: Existence of a supplementary subspace
-category: linear/vector-spaces
-level: l1
-difficulty: 4
-tags: supplementary subspace, basis extension, existence
-date: 2026-11-03
----
-
-## Statement
-
-Let $F$ be a subspace of a finite-dimensional vector space $E$. Show that there exists a subspace $G$ of $E$ such that $E=F\oplus G$.
-
-## Hint
-
-Take a basis of $F$, extend it to a basis of $E$, and let $G$ be the span of the added vectors.
-
-## Solution
-
-**Basis extension.** Let $(e_1,\ldots,e_k)$ be a basis of $F$. By the incomplete basis theorem, it extends to a basis $(e_1,\ldots,e_k,e_{k+1},\ldots,e_n)$ of $E$.
-
-**Define $G$.** Let $G=\operatorname{span}(e_{k+1},\ldots,e_n)$.
-
-**Direct sum.** Any $v\in E$ is a combination of the full basis, hence $v=v_F+v_G$ with $v_F\in F$ and $v_G\in G$. If $v\in F\cap G$, then $v$ is a combination of the $e_i$ for $i\le k$ and of the $e_j$ for $j>k$; by uniqueness of coordinates in the basis, all coefficients are zero, so $v=0$.
-
-**Conclusion.** $E=F\oplus G$. Any subspace has at least one supplementary subspace.
-
-@@@ vector-linear-map-addition.md
----
-title: The space of linear maps
-category: linear/vector-spaces
-level: l1
-difficulty: 3
-tags: linear maps, vector space structure, dimension
-date: 2026-11-03
----
-
-## Statement
-
-Let $E$ and $F$ be finite-dimensional vector spaces, with $\dim E=n$ and $\dim F=m$. Show that $\mathcal{L}(E,F)$ is a vector space of dimension $mn$.
-
-## Hint
-
-Fix bases of $E$ and $F$; the map $f\mapsto$ matrix of $f$ is a linear isomorphism onto $\mathcal{M}_{m,n}(\mathbb{R})$.
-
-## Solution
-
-**Vector space structure.** For $f,g\in\mathcal{L}(E,F)$ and $\lambda\in\mathbb{R}$, define $(f+g)(x)=f(x)+g(x)$ and $(\lambda f)(x)=\lambda f(x)$. These are linear maps, and the axioms hold pointwise.
-
-**Isomorphism.** Fix a basis $\mathcal{B}$ of $E$ and a basis $\mathcal{C}$ of $F$. The map $\Phi:f\mapsto[f]_{\mathcal{B}}^{\mathcal{C}}$ (matrix of $f$ in these bases) is linear and bijective, with inverse $M\mapsto$ the linear map with matrix $M$.
-
-**Dimension.** $\dim\mathcal{M}_{m,n}(\mathbb{R})=mn$, so $\dim\mathcal{L}(E,F)=mn$.
-
-**Conclusion.** $\mathcal{L}(E,F)$ is a vector space of dimension $mn$.
 
 @@@ determinant-companion.md
 ---
