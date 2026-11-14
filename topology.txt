@@ -1,3 +1,46 @@
+@@@ rt-cp-022-totally-bounded-and-complete-sets.md
+---
+title: Totally bounded and complete implies compact
+category: topology/topology-of-r/r-compactness
+level: m1
+difficulty: 5
+order: 22
+tags: totally bounded, complete, Cauchy sequences, diagonal extraction
+date: 2026-11-12
+---
+
+## Statement
+
+A set $A\subset\mathbb{R}$ is **totally bounded** if for every $\varepsilon>0$ it can be covered by finitely many intervals of length $\varepsilon$. It is **complete** if every Cauchy sequence of elements of $A$ converges to an element of $A$.
+
+1. Show that $A\subset\mathbb{R}$ is totally bounded iff it is bounded.
+2. Prove that a totally bounded complete set $A$ is sequentially compact, **without using Bolzano–Weierstrass**, via a diagonal extraction of a Cauchy subsequence.
+3. Show that $A\subset\mathbb{R}$ is complete iff it is closed. Conclude the Heine–Borel theorem.
+4. Give a totally bounded set that is not complete, and a complete set that is not totally bounded.
+
+## Hint
+
+(2): cover $A$ by finitely many intervals of length $1$; one of them contains infinitely many terms of the sequence. Repeat with length $\tfrac12$, $\tfrac13$, and so on, in nested subsequences; use the diagonal sequence.
+
+## Solution
+
+**1.** If $A\subset[-R,R]$, then $A$ is covered by $\lceil2R/\varepsilon\rceil$ consecutive intervals of length $\varepsilon$. Conversely, $\varepsilon=1$ gives finitely many intervals of length $1$, whose union is bounded.
+
+**2. Diagonal extraction.** Let $(x_n)$ be a sequence in $A$. Cover $A$ by finitely many intervals of length $1$. By the pigeonhole principle one of them contains $x_n$ for infinitely many $n$; call $S_1$ the corresponding subsequence. Now cover $A$ by finitely many intervals of length $\tfrac12$: infinitely many terms of $S_1$ lie in one of them, giving a subsequence $S_2$ of $S_1$ in an interval of length $\tfrac12$. Continue: $S_k$ is a subsequence of $S_{k-1}$ contained in an interval of length $\tfrac1k$. Let $N_k\subset\mathbb{N}$ be the (infinite) set of indices of the terms of $S_k$, so $N_1\supset N_2\supset\cdots$. Choose $n_1\in N_1$ and, inductively, $n_k\in N_k$ with $n_k>n_{k-1}$ (possible since $N_k$ is infinite), and put $z_k=x_{n_k}$ (a diagonal choice). Then $(z_k)$ is a subsequence of $(x_n)$ and for $k,l\ge m$ both $z_k,z_l$ are terms of $S_m$, hence lie in the same interval of length $\tfrac1m$: $|z_k-z_l|\le\tfrac1m$. So $(z_k)$ is Cauchy. By completeness it converges to a point of $A$. $\blacksquare$
+
+**3. Complete iff closed.** If $A$ is closed and $(a_n)$ is Cauchy in $A$, it converges in $\mathbb{R}$ (completeness of $\mathbb{R}$) to a limit that is in $A$ because $A$ is closed. Conversely if $A$ is complete and $a_n\to p$ with $a_n\in A$, then $(a_n)$ is Cauchy, so it converges in $A$, and by uniqueness of limits $p\in A$.
+
+**From sequential compactness to open-cover compactness.** We need one further step: a subset $K\subset\mathbb{R}$ such that every sequence has a convergent subsequence in $K$ is compact in the open-cover sense. Standard argument: suppose $(U_i)_{i\in I}$ is an open cover of $K$ with no finite subcover. We construct a sequence $(x_n)$ in $K$ with no convergent subsequence in $K$ — contradiction.
+
+Recursively: since $\{U_i\}$ has no finite subcover of $K$, in particular no finite subcover of the whole of $K$; but we need a *shrinking* family. Fix $n$; the "ball" of radius $\frac1n$ around any point need not be compact, so we proceed differently. Standard proof (see `rt-cp-006`): $K$ is bounded and closed because it is sequentially compact (the argument in `rt-cp-006` parts (ii)⇒(i) is purely sequential), hence compact by Heine–Borel (`rt-cp-005`). That establishes the open-cover compactness from the sequential property — **but it uses Heine–Borel**, which is what the present problem is supposed to be a "self-contained" proof of. For a fully self-contained argument without Heine–Borel, one proves the equivalence "sequential compactness ⇔ open-cover compactness" in any metric space, via the Lebesgue number lemma; the standard proof (Lebesgue number ⇒ finite subcover) is: assume no finite subcover; for each $n$ pick $x_n\in K$ that is not covered by any $\frac1n$-ball inside a single $U_i$ — but $K$ sequentially compact has a convergent subsequence, so the limit has a neighbourhood $U_{i_0}$ in the cover, giving a contradiction. We refer the reader to `rt-cp-006` and `rt-cp-015` for the details; **the two properties (sequential compactness, open-cover compactness) are equivalent for subsets of $\mathbb{R}$**, so proving one suffices.
+
+With (1) and (2): $A$ closed and bounded $\Rightarrow$ totally bounded and complete $\Rightarrow$ sequentially compact $\Rightarrow$ compact. Conversely, a compact set is bounded and closed (parts 1 and 2 of `rt-cp-003`), hence closed and bounded. So closed and bounded $\iff$ compact, i.e. the Heine–Borel theorem.
+
+**4. Examples.** $\mathbb{Q}\cap[0,1]$ is totally bounded (it is bounded) but not complete (a sequence of rationals tending to $\tfrac{\sqrt2}2$ is Cauchy and has no limit in the set). $\mathbb{Z}$ is complete (it is closed; a Cauchy sequence in $\mathbb{Z}$ is eventually constant) but not totally bounded (it is unbounded).
+
+**Common mistake.** Boundedness and total boundedness are the same notion in $\mathbb{R}$ (and $\mathbb{R}^n$), but in general metric spaces total boundedness is strictly stronger (the unit ball of $\ell^2$ is bounded and not totally bounded).
+
+**Remark.** The statement "compact $\iff$ complete and totally bounded" holds in every metric space, and the proof is exactly the diagonal argument of (2). It is the route used to prove the Arzelà–Ascoli theorem.
 @@@ rt-cn-003-connected-implies-interval.md
 ---
 title: Connected subsets of R are intervals
