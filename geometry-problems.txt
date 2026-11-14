@@ -1816,8 +1816,6 @@ The area is half the absolute value of the determinant of $\overrightarrow{AB}$ 
 We have $\overrightarrow{AB}=(4,1)$ and $\overrightarrow{AC}=(1,5)$. Then
 $$\text{Area}=\frac12\left|\begin{vmatrix}4&1\\1&5\end{vmatrix}\right|=\frac12|20-1|=\frac{19}2.$$
 
-## Solution
-
 @@@ geo2-the-apollonius-circle.md
 ---
 title: The Apollonius circle
