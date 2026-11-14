@@ -1,3 +1,123 @@
+@@@ rt-sq-002-two-descriptions-of-adherent-values.md
+---
+title: Two descriptions of adherent values
+category: topology/topology-of-r/r-sequences
+level: l2
+difficulty: 2
+order: 2
+tags: adherent value, subsequence, epsilon characterisation
+date: 2026-11-12
+---
+
+## Statement
+
+Let $(u_n)$ be a real sequence and $x\in\mathbb{R}$. Prove that the following are equivalent.
+1. $x$ is the limit of some subsequence of $(u_n)$.
+2. For every $\varepsilon>0$ and every $N\in\mathbb{N}$, there is $n\ge N$ with $|u_n-x|<\varepsilon$.
+
+## Hint
+
+For $(1)\Rightarrow(2)$, use the definition of a limit for the subsequence and the fact that $n_k\ge k$.
+
+For $(2)\Rightarrow(1)$, build the indices $n_1<n_2<\cdots$ one at a time, using $\varepsilon=1/k$ at step $k$.
+
+## Solution
+
+**Idea.** Condition (2) says "every neighbourhood of $x$ contains terms of arbitrarily high index", i.e. infinitely many terms. This is the form that is easiest to check; condition (1) is the form that is easiest to use.
+
+**$(1)\Rightarrow(2)$.** Let $u_{n_k}\to x$ with $n_1<n_2<\cdots$. Fix $\varepsilon>0$ and $N$. By the definition of convergence there is $K$ such that $|u_{n_k}-x|<\varepsilon$ for all $k\ge K$. Since $n_k\ge k$ (strictly increasing integers), choosing $k=\max(K,N)$ gives $n_k\ge N$ and $|u_{n_k}-x|<\varepsilon$. So $n=n_k$ works.
+
+**$(2)\Rightarrow(1)$.** We construct the subsequence by induction.
+- Apply (2) with $\varepsilon=1$ and $N=0$: there is $n_1$ with $|u_{n_1}-x|<1$.
+- Suppose $n_1<\dots<n_{k-1}$ are built. Apply (2) with $\varepsilon=\frac1k$ and $N=n_{k-1}+1$: there is $n_k\ge n_{k-1}+1$ with $|u_{n_k}-x|<\frac1k$.
+
+The indices are strictly increasing, so $(u_{n_k})$ is a subsequence, and $|u_{n_k}-x|<\frac1k\to0$. Hence $u_{n_k}\to x$.
+
+**Remark.** The role of "$N$" in (2) is essential. If we only asked for *some* $n$ with $|u_n-x|<\varepsilon$, every term of the sequence would qualify (take $\varepsilon$ larger than $|u_n-x|$ and $x=u_n$), and the notion would be empty. A common mistake is to confuse "$x$ is an adherent value of the sequence" with "$x$ is an adherent point of the set $\{u_n\}$". These differ. For $u_n=1/n$, the set $\{u_n\}=\{1,1/2,1/3,\dots\}$ has adherent points $\{0\}\cup\{1,1/2,1/3,\dots\}$ (each term is trivially an adherent point of the set, and $0$ is a limit point), whereas the sequence $(u_n)$ has only the adherent value $0$. The two notions must be distinguished.
+
+@@@ rt-sq-014-a-contractive-condition-on-increments.md
+---
+title: Increments that decrease geometrically give a Cauchy sequence
+category: topology/topology-of-r/r-sequences
+level: l2
+difficulty: 3
+order: 14
+tags: Cauchy sequence, geometric bound, recurrence
+date: 2026-11-12
+---
+
+## Statement
+
+Let $(u_n)$ be a real sequence and $0\le k<1$ such that $|u_{n+2}-u_{n+1}|\le k\,|u_{n+1}-u_n|$ for all $n\ge0$.
+1. Prove that $(u_n)$ is Cauchy, hence convergent, and that $|u_n-\ell|\le\dfrac{k^n}{1-k}|u_1-u_0|$, where $\ell=\lim u_n$.
+2. Apply this to the recurrence $u_{n+1}=\dfrac{1}{2+u_n}$ with $u_0=0$, and find the limit.
+
+## Hint
+
+By induction, $|u_{n+1}-u_n|\le k^n|u_1-u_0|$. Then sum a geometric series to control $|u_m-u_n|$.
+
+For part 2, show $|u_{n+2}-u_{n+1}|\le\frac14|u_{n+1}-u_n|$ using $\frac1{2+a}-\frac1{2+b}=\frac{b-a}{(2+a)(2+b)}$.
+
+## Solution
+
+**Idea.** Controlling the *consecutive* differences by a geometric progression controls all differences, because the tail of a convergent geometric series is small.
+
+**1. Cauchy.** By induction, $|u_{n+1}-u_n|\le k^n|u_1-u_0|=:k^nd$. For $m>n$ the triangle inequality gives
+$$|u_m-u_n|\le\sum_{j=n}^{m-1}|u_{j+1}-u_j|\le d\sum_{j=n}^{m-1}k^j\le d\,\frac{k^n}{1-k}.$$
+Since $k^n\to0$, for every $\varepsilon>0$ we get $|u_m-u_n|<\varepsilon$ for $m>n\ge N$ with $N$ large. So $(u_n)$ is Cauchy, hence converges to some $\ell$. Letting $m\to\infty$ in the inequality gives $|\ell-u_n|\le d\frac{k^n}{1-k}$.
+
+**2. The recurrence $u_{n+1}=\frac1{2+u_n}$, $u_0=0$.** We have $u_1=\frac12$, and all terms lie in $[0,\frac12]$ (by induction: if $u_n\in[0,1]$ then $u_{n+1}=\frac1{2+u_n}\in[\frac13,\frac12]$). For $n\ge0$,
+$$u_{n+2}-u_{n+1}=\frac1{2+u_{n+1}}-\frac1{2+u_n}=\frac{u_n-u_{n+1}}{(2+u_{n+1})(2+u_n)},$$
+and since $u_n,u_{n+1}\ge0$, $(2+u_{n+1})(2+u_n)\ge4$. So $|u_{n+2}-u_{n+1}|\le\frac14|u_{n+1}-u_n|$. By part 1, $u_n\to\ell$. Passing to the limit in $u_{n+1}=\frac1{2+u_n}$:
+$$\ell=\frac1{2+\ell}\iff\ell^2+2\ell-1=0\iff\ell=-1+\sqrt2$$
+(taking the positive root since $\ell\ge0$). Numerically $\ell=0.41421\dots$
+
+**Error estimate.** $|u_n-\ell|\le\frac{(1/4)^n}{3/4}\cdot\frac12=\frac{2}{3\cdot4^n}$. For $n=5$ this is $\approx6.5\cdot10^{-4}$.
+
+**Remark.** This is the idea behind the contraction mapping theorem, in its simplest form: $\ell=\sqrt2-1$ is the continued fraction $\cfrac1{2+\cfrac1{2+\cdots}}$. Compare with the previous problem, where the condition $|u_{n+1}-u_n|\to0$ alone was *not* enough: here the *rate* $k^n$ is what gives convergence.
+
+@@@ rt-sq-022-completeness-in-an-ordered-field.md
+---
+title: Completeness in an ordered field: Cauchy sequences give the supremum property
+category: topology/topology-of-r/r-sequences
+level: m1
+difficulty: 5
+order: 22
+tags: completeness, supremum property, Archimedean property, Cauchy sequences, bisection
+date: 2026-11-12
+---
+
+## Statement
+
+Let $K$ be an ordered field which is
+- **Archimedean**: for every $x\in K$ there is $n\in\mathbb{N}$ with $n>x$;
+- **Cauchy-complete**: every Cauchy sequence of $K$ (with $\varepsilon\in K$, $\varepsilon>0$) converges in $K$.
+
+Prove that every non-empty subset $A\subset K$ which is bounded above has a least upper bound in $K$. Explain why $\mathbb{Q}$ is Archimedean but not Cauchy-complete.
+
+## Hint
+
+Take $a_0\in A$ and an upper bound $b_0$. Bisect $[a_0,b_0]$ keeping always a left end that is **not** an upper bound of $A$ and a right end that **is** an upper bound.
+
+## Solution
+
+**Idea.** The supremum is the "point where the upper bounds begin". We locate it by bisection and recognise it as the common limit of two Cauchy sequences.
+
+**Step 1: the bisection.** Let $a_0\in A$ and let $b_0$ be an upper bound of $A$. We may assume $a_0$ is not itself an upper bound (otherwise $a_0=\max A=\sup A$ and we are done). We define $a_n,b_n$ with: $a_n$ is **not** an upper bound of $A$, $b_n$ **is** an upper bound, $a_n\le b_n$, and $b_n-a_n=\frac{b_0-a_0}{2^n}$. Given $(a_n,b_n)$, let $m=\frac{a_n+b_n}2$.
+- If $m$ is an upper bound of $A$: set $a_{n+1}=a_n$, $b_{n+1}=m$.
+- Otherwise: set $a_{n+1}=m$, $b_{n+1}=b_n$.
+
+In both cases the properties are preserved and the length is halved. Also $(a_n)$ is non-decreasing and $(b_n)$ non-increasing.
+
+**Step 2: both sequences are Cauchy.** Let $\varepsilon>0$ in $K$. The Archimedean property gives $n_0$ with $n_0>\frac{b_0-a_0}\varepsilon$, and since $2^n\ge n$, for $n\ge n_0$: $b_n-a_n=\frac{b_0-a_0}{2^n}\le\frac{b_0-a_0}{n}<\varepsilon$. For $m\ge n\ge n_0$, monotonicity gives $0\le a_m-a_n\le b_n-a_n<\varepsilon$ and $0\le b_n-b_m\le b_n-a_n<\varepsilon$. So both sequences are Cauchy, hence converge in $K$ to limits $\alpha,\beta$, with $\beta-\alpha=\lim(b_n-a_n)=0$ (the difference tends to $0$ by the estimate above). So $\alpha=\beta=:s$.
+
+**Step 3: $s$ is an upper bound.** For $x\in A$, $x\le b_n$ for all $n$. Passing to the limit, $x\le s$.
+
+**Step 4: $s$ is the least upper bound.** Let $c<s$. Since $a_n\to s$, there is $n$ with $a_n>c$. As $a_n$ is not an upper bound of $A$, there is $x\in A$ with $x>a_n>c$, so $c$ is not an upper bound. Hence every upper bound is $\ge s$.
+
+**$\mathbb{Q}$.** $\mathbb{Q}$ is Archimedean. It is not Cauchy-complete: the decimal truncations $x_n=\frac{\lfloor10^n\sqrt2\rfloor}{10^n}$ form a Cauchy sequence of rationals ($|x_m-x_n|\le10^{-n}$ for $m>n$) which does not converge in $\mathbb{Q}$. Correspondingly, $A=\{x\in\mathbb{Q}:x^2<2\}$ is bounded above in $\mathbb{Q}$ with no least upper bound in $\mathbb{Q}$.
+
+**Remark.** The three properties (Archimedean + Cauchy completeness, supremum property, nested intervals + Archimedean) are equivalent characterisations of $\mathbb{R}$. The Archimedean hypothesis is essential in the proof (Step 2): in a non-Archimedean ordered field, the bisection lengths $\frac{b_0-a_0}{2^n}$ do not necessarily tend to $0$, and Cauchy completeness alone (with respect to sequences whose gaps tend to $0$ in the field) does not force the supremum property. Examples of non-Archimedean fields displaying various behaviours are best avoided at this level; the point is that the *combination* of the two properties is what characterises $\mathbb{R}$.
 @@@ rt-cp-022-totally-bounded-and-complete-sets.md
 ---
 title: Totally bounded and complete implies compact
