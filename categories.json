@@ -203,7 +203,44 @@
           "id": "topology-of-r",
           "name": "Topology of ℝ",
           "description": "Open and closed sets, compact sets and connectedness.",
-          "subcategories": []
+          "subcategories": [
+            {
+              "id": "r-open-closed",
+              "name": "Open and closed sets",
+              "description": "Interior, closure, boundary and accumulation points in the real line.",
+              "subcategories": []
+            },
+            {
+              "id": "r-sequences",
+              "name": "Sequences and limit points",
+              "description": "Adherent values, Bolzano-Weierstrass, Cauchy sequences and completeness.",
+              "subcategories": []
+            },
+            {
+              "id": "r-compactness",
+              "name": "Compactness",
+              "description": "Heine-Borel, compact sets and continuous functions on compact sets.",
+              "subcategories": []
+            },
+            {
+              "id": "r-connectedness",
+              "name": "Connectedness",
+              "description": "Intervals, the intermediate value theorem and connected subsets.",
+              "subcategories": []
+            },
+            {
+              "id": "r-density",
+              "name": "Density, countability and Baire",
+              "description": "Dense sets, countable sets, the Cantor set and Baire category.",
+              "subcategories": []
+            },
+            {
+              "id": "r-continuity",
+              "name": "Continuity and topology",
+              "description": "Preimages, homeomorphisms, uniform continuity and fixed points.",
+              "subcategories": []
+            }
+          ]
         },
         {
           "id": "topology-of-rn",
