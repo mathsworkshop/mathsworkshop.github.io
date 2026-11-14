@@ -737,4 +737,4 @@ if (dupSkipped.length) console.log(`Duplicates skipped (identical problem in two
   console.log('');
 }
 console.log(`Built ${problems.length} problems, ${urls.length + 3} pages to dist/`);
-if (SITE_URL.includes('example.com')) console.log('Note: "url" in site.config.json is still the placeholder. Set your real domain before going live.');
+if (SITE_URL.includes('maths-workshop.com')) console.log('Note: "url" in site.config.json is still the placeholder. Set your real domain before going live.');
