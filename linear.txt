@@ -3165,12 +3165,14 @@ For $m=n$, it equals $1$.
 **Conclusion.** These functions form an orthogonal family. The Fourier coefficients $a_n=\langle f,\cos nt\rangle$, $b_n=\langle f,\sin nt\rangle$ are the projections of $f$ onto these orthogonal functions.
 
 **Matrix form.** In matrix terms, a linear form $\varphi(v)=a^Tv$ is represented by the vector $u=a$ (in an orthonormal basis).
+
 @@@ quadratic-form-definition.md
 ---
 title: Definition and matrix of a quadratic form
 category: linear/quadratic-forms
 level: lycee
 difficulty: 1
+order: 1
 tags: quadratic form, symmetric matrix, definition
 date: 2026-11-03
 ---
@@ -3187,7 +3189,7 @@ The coefficient of $x_ix_j$ for $i\neq j$ is $2a_{ij}$ in $X^TAX$.
 
 ## Solution
 
-**Identification.** 
+**Identification.**
 $$Q(x,y) = a_{11}x^2 + 2a_{12}xy + a_{22}y^2.$$
 So $a_{11}=1$, $2a_{12}=4\Rightarrow a_{12}=2$, $a_{22}=3$.
 
@@ -3204,6 +3206,7 @@ title: Polar form of a quadratic form
 category: linear/quadratic-forms
 level: lycee
 difficulty: 2
+order: 2
 tags: polar form, symmetric bilinear form, quadratic form
 date: 2026-11-03
 ---
@@ -3242,6 +3245,7 @@ title: Reducing a quadratic form by completing the square
 category: linear/quadratic-forms
 level: l1
 difficulty: 3
+order: 3
 tags: reduction, completing square, quadratic form
 date: 2026-11-03
 ---
@@ -3267,134 +3271,35 @@ $$Q(x,y) = x^2 + 4xy + 5y^2 = (x+2y)^2 + y^2.$$
 
 **Conclusion.** $Q$ is positive definite (sum of two squares). Its signature is $(2,0,0)$.
 
-@@@ quadratic-form-signature-3x3.md
+@@@ quadratic-form-gram.md
 ---
-title: Signature of a quadratic form in 3 variables
+title: Gram matrix of a quadratic form
 category: linear/quadratic-forms
 level: l1
 difficulty: 4
-tags: signature, reduction, quadratic form
+order: 4
+tags: Gram matrix, quadratic form, polar form
 date: 2026-11-03
 ---
 
 ## Statement
 
-Determine the signature of the quadratic form
-$$Q(x,y,z) = x^2 + 2xy + 2xz + 2y^2 + 4yz + 3z^2.$$
+Let $\varphi$ be the symmetric bilinear form with matrix
+$$A=\begin{pmatrix}2&1\\1&3\end{pmatrix}.$$
+Compute the quadratic form $Q(u)=\varphi(u,u)$ and check that its matrix is $A$.
 
 ## Hint
 
-Complete the square in $x$ first, then in $y$, then in $z$.
+$Q(u)=u^TAu$.
 
 ## Solution
 
-**Square in $x$.** Consider $x^2+2x(y+z)$, which is $(x+y+z)^2-(y+z)^2$. So
-$$Q = (x+y+z)^2 - (y+z)^2 + 2y^2+4yz+3z^2.$$
+**Computation.**
+$$Q(x,y)=(x,y)\begin{pmatrix}2&1\\1&3\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=2x^2+2xy+3y^2.$$
 
-**Simplify.**
-$$-(y^2+2yz+z^2)+2y^2+4yz+3z^2 = y^2+2yz+2z^2.$$
+**Matrix.** The matrix of $Q$ in the canonical basis is $A$, since the coefficient of $x^2$ is $2$, of $y^2$ is $3$, and of $xy$ is $2\cdot1=2$.
 
-**Square in $y$.** $y^2+2yz+2z^2=(y+z)^2+z^2$.
-
-**Result.**
-$$Q = (x+y+z)^2 + (y+z)^2 + z^2.$$
-
-**Signature.** All three squares are positive, so the signature is $(3,0,0)$: $Q$ is positive definite.
-
-**Conclusion.** Signature $(3,0,0)$.
-
-@@@ quadratic-form-sylvester.md
----
-title: Sylvester's criterion for positive definiteness
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: Sylvester criterion, positive definite, minors
-date: 2026-11-03
----
-
-## Statement
-
-Show that the quadratic form
-$$Q(x,y,z) = 2x^2+2y^2+2z^2+2xy+2yz+2zx$$
-is positive definite using Sylvester's criterion.
-
-## Hint
-
-The matrix of $Q$ is $A = \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}$. Compute the leading principal minors.
-
-## Solution
-
-**Matrix.**
-$$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}.$$
-
-**Leading principal minors.**
-- $\Delta_1 = 2 > 0$.
-- $\Delta_2 = \begin{vmatrix}2&1\\1&2\end{vmatrix}=3>0$.
-- $\Delta_3 = \det A = 2(4-1)-1(2-1)+1(1-2)=6-1-1=4>0$.
-
-**Sylvester's criterion.** All leading principal minors are positive, so $A$ is positive definite.
-
-**Conclusion.** $Q$ is positive definite, i.e. $Q(x,y,z)>0$ for all $(x,y,z)\neq(0,0,0)$.
-
-@@@ quadratic-form-indefinite.md
----
-title: An indefinite quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 3
-tags: indefinite, signature, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Show that the quadratic form
-$$Q(x,y) = x^2 - y^2$$
-is indefinite (neither positive nor negative).
-
-## Hint
-
-Find vectors $u,v$ with $Q(u)>0$ and $Q(v)<0$.
-
-## Solution
-
-**Positive value.** $Q(1,0)=1>0$.
-
-**Negative value.** $Q(0,1)=-1<0$.
-
-**Conclusion.** $Q$ takes both positive and negative values, so it is indefinite. Its signature is $(1,1,0)$: one positive square and one negative square.
-
-**Matrix form.** $A=\begin{pmatrix}1&0\\0&-1\end{pmatrix}$, with eigenvalues $1$ and $-1$, of opposite signs.
-
-@@@ quadratic-form-degenerate.md
----
-title: A degenerate quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 3
-tags: degenerate, signature, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Determine the signature of the quadratic form
-$$Q(x,y,z) = x^2 + 2xy + y^2 = (x+y)^2.$$
-
-## Hint
-
-$Q$ is a square of a linear form; find the kernel.
-
-## Solution
-
-**Reduction.** $Q=(x+y)^2$. Let $u=x+y$. Then $Q=u^2$, with one positive square.
-
-**Kernel.** $Q(x,y,z)=0\iff x+y=0$. The kernel has dimension $2$ (a plane in $\mathbb{R}^3$).
-
-**Signature.** One positive square, zero negative squares, kernel dimension $2$. Signature: $(1,0,2)$.
-
-**Conclusion.** $Q$ is positive but degenerate (not positive definite). Its rank is $1$, its kernel has dimension $2$.
+**Conclusion.** $Q(x,y)=2x^2+2xy+3y^2$ with Gram matrix $A$.
 
 @@@ quadratic-form-change-of-variables.md
 ---
@@ -3402,6 +3307,7 @@ title: Change of variables in a quadratic form
 category: linear/quadratic-forms
 level: l1
 difficulty: 4
+order: 5
 tags: change of variables, quadratic form, matrix
 date: 2026-11-03
 ---
@@ -3412,7 +3318,7 @@ Let $Q(x,y)=x^2+4xy+3y^2$ and $P=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ (invertib
 
 ## Hint
 
-$Q=PX$ gives $X^T A X = U^T(P^TAP)U$.
+$X=PU$ gives $X^T A X = U^T(P^TAP)U$.
 
 ## Solution
 
@@ -3430,226 +3336,36 @@ $$\begin{pmatrix}1&0\\2&1\end{pmatrix}\begin{pmatrix}1&4\\2&7\end{pmatrix}=\begi
 
 **Conclusion.** In $(u,v)$, $Q=u^2+8uv+15v^2$.
 
-@@@ quadratic-form-eigenvalues.md
+@@@ quadratic-form-diagonalization-congruence.md
 ---
-title: Reduction of a quadratic form by eigenvalues
+title: Diagonalization by congruence
 category: linear/quadratic-forms
 level: l1
 difficulty: 4
-tags: eigenvalues, orthogonal diagonalization, quadratic form
+order: 6
+tags: congruence, diagonalization, quadratic form
 date: 2026-11-03
 ---
 
 ## Statement
 
-Reduce the quadratic form
-$$Q(x,y)=3x^2+2xy+3y^2$$
-using an orthogonal change of variables.
+Diagonalize the quadratic form $Q(x,y)=x^2+4xy+3y^2$ by congruence (find an invertible $P$ such that $P^TAP$ is diagonal).
 
 ## Hint
 
-The symmetric matrix $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$ has eigenvalues $2$ and $4$ with orthonormal eigenvectors.
+Use the substitution $x=u-2v$, $y=v$ that comes from completing the square.
 
 ## Solution
 
-**Matrix.** $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
+**Reduction.** $Q=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q=u^2-v^2$.
 
-**Eigenvalues.** $\det(A-\lambda I)=(3-\lambda)^2-1=\lambda^2-6\lambda+8=(\lambda-2)(\lambda-4)$. So $\lambda_1=2$, $\lambda_2=4$.
+**Transition matrix.** From $u=x+2y$, $v=y$: $x=u-2v$, $y=v$. So
+$$P=\begin{pmatrix}1&-2\\0&1\end{pmatrix}.$$
 
-**Orthonormal eigenvectors.** For $\lambda_1=2$: $u_1=(1,-1)/\sqrt2$. For $\lambda_2=4$: $u_2=(1,1)/\sqrt2$.
+**Congruence.** $A=\begin{pmatrix}1&2\\2&3\end{pmatrix}$, and
+$$P^TAP=\begin{pmatrix}1&0\\-2&1\end{pmatrix}\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&-2\\0&1\end{pmatrix}=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.$$
 
-**Orthogonal change of variables.** Let $X=QU$ with $Q=\frac{1}{\sqrt2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}$. Then
-$$Q(x,y)=2u^2+4v^2.$$
-
-**Conclusion.** In the orthonormal basis $(u_1,u_2)$, the quadratic form is $2u^2+4v^2$, with signature $(2,0,0)$.
-
-@@@ quadratic-form-inertia-law.md
----
-title: Sylvester's law of inertia
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: inertia law, signature, invariance
-date: 2026-11-03
----
-
-## Statement
-
-State Sylvester's law of inertia and illustrate it on the quadratic form $Q(x,y)=x^2-y^2$ reduced by two different changes of variables.
-
-## Hint
-
-The signature (number of positive, negative, and zero eigenvalues) is invariant under invertible linear changes of variables.
-
-## Solution
-
-**Law of inertia.** Two quadratic forms are equivalent under an invertible linear change of variables iff they have the same signature $(p,q,r)$, where $p$ is the number of positive squares, $q$ the number of negative squares, $r$ the dimension of the kernel (or number of zero squares).
-
-**Reduction 1.** $Q=x^2-y^2$ is already diagonal: $p=1$, $q=1$, $r=0$.
-
-**Reduction 2.** Let $x=u+v$, $y=u-v$. Then
-$$Q=(u+v)^2-(u-v)^2=4uv.$$
-This is not diagonal. To diagonalize, use $u=(s+t)/2$, $v=(s-t)/2$: $4uv=(s+t)(s-t)=s^2-t^2$. Signature $(1,1,0)$, same as before.
-
-**Conclusion.** The signature is invariant: $(1,1,0)$ in both reductions.
-
-@@@ quadratic-form-cone.md
----
-title: The cone $x^2+y^2-z^2=0$
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: cone, quadratic form, signature
-date: 2026-11-03
----
-
-## Statement
-
-Describe the zero set of the quadratic form $Q(x,y,z)=x^2+y^2-z^2$ and identify its signature.
-
-## Hint
-
-The equation $x^2+y^2=z^2$ describes a cone.
-
-## Solution
-
-**Signature.** $Q$ has two positive squares and one negative square: signature $(2,1,0)$.
-
-**Zero set.** $Q=0\iff x^2+y^2=z^2$. This is the (double) cone of revolution about the $z$-axis, with apex at the origin.
-
-**Geometric interpretation.** The signature $(2,1,0)$ indicates that the level set $Q=0$ is a cone (not a single point or the empty set).
-
-**Conclusion.** $Q$ is indefinite with signature $(2,1,0)$, and $Q=0$ is a double cone.
-
-@@@ quadratic-form-positivity-parameter.md
----
-title: Positive definiteness depending on a parameter
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: parameter, positive definite, Sylvester
-date: 2026-11-03
----
-
-## Statement
-
-For which real values of $a$ is the quadratic form
-$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz+zx)$$
-positive definite?
-
-## Hint
-
-Compute the leading principal minors of the matrix $A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}$.
-
-## Solution
-
-**Matrix.**
-$$A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}.$$
-
-**Leading minors.**
-- $\Delta_1=1>0$.
-- $\Delta_2=\begin{vmatrix}1&a\\a&1\end{vmatrix}=1-a^2>0\iff|a|<1$.
-- $\Delta_3=\det A$. Compute: add all rows to the first, factor $(1+2a)$, then $\Delta_3=(1+2a)(1-a)^2$. So $\Delta_3>0\iff a>-1/2$ and $a\neq1$.
-
-**Combining.** $|a|<1$ and $a>-1/2$ gives $-1/2<a<1$. At $a=1$, $\Delta_3=0$ (rank $1$), not positive definite. At $a=-1/2$, $\Delta_3=0$ (degenerate), not positive definite.
-
-**Conclusion.** $Q$ is positive definite iff $-1/2<a<1$.
-
-@@@ quadratic-form-reduction-cross.md
----
-title: Reduction of a quadratic form with cross terms
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: reduction, completing square, cross terms
-date: 2026-11-03
----
-
-## Statement
-
-Reduce the quadratic form
-$$Q(x,y,z)=xy+yz+zx$$
-by completing the square.
-
-## Hint
-
-Group the terms as $xy+yz+zx = \frac14[(x+y+z)^2-(x-y)^2-(y-z)^2-(z-x)^2]$, or use the substitution $u=x+y$, $v=x-y$.
-
-## Solution
-
-**Approach 1: direct grouping.** Use the identity
-$$xy+yz+zx=\frac12\left[(x+y+z)^2-(x^2+y^2+z^2)\right].$$
-This is not directly a sum of squares, but shows the signature.
-
-**Approach 2: substitution.** Let $u=x+y$, $v=x-y$, $z=z$ (this is invertible: $x=(u+v)/2$, $y=(u-v)/2$). Then
-$$xy=\frac{u^2-v^2}{4},\qquad yz=\frac{u-v}{2}z,\qquad zx=\frac{u+v}{2}z.$$
-So
-$$Q=\frac{u^2-v^2}{4}+uz.$$
-Complete the square in $u$:
-$$Q=\frac14(u+2z)^2-\frac14v^2-z^2.$$
-
-**Signature.** One positive square, two negative squares. Signature $(1,2,0)$.
-
-**Conclusion.** $Q=\frac14(u+2z)^2-\frac14v^2-z^2$, with signature $(1,2,0)$.
-
-@@@ quadratic-form-definite-negative.md
----
-title: Negative definite quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 3
-tags: negative definite, signature, Sylvester
-date: 2026-11-03
----
-
-## Statement
-
-Show that
-$$Q(x,y)=-x^2-2xy-3y^2$$
-is negative definite.
-
-## Hint
-
-Consider $-Q$ and show it is positive definite.
-
-## Solution
-
-**Reduce $-Q$.**
-$$-Q=x^2+2xy+3y^2=(x+y)^2+2y^2.$$
-
-**$-Q$ is positive definite.** It is a sum of positive squares, and vanishes only when $x+y=0$ and $y=0$, i.e. $(x,y)=(0,0)$.
-
-**Conclusion.** $Q=-[(x+y)^2+2y^2]$ is negative definite: $Q(x,y)<0$ for $(x,y)\neq(0,0)$, with signature $(0,2,0)$.
-
-@@@ quadratic-form-comparison.md
----
-title: Comparison of two quadratic forms
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: comparison, positive definite, inequalities
-date: 2026-11-03
----
-
-## Statement
-
-Let $Q(x,y)=x^2+2xy+2y^2$ and $R(x,y)=2x^2+2y^2$. Show that $Q(x,y)\le R(x,y)$ for all $(x,y)\in\mathbb{R}^2$.
-
-## Hint
-
-Compute $R-Q$ and show it is positive.
-
-## Solution
-
-**Difference.**
-$$R-Q = (2x^2+2y^2)-(x^2+2xy+2y^2)=x^2-2xy.$$
-Complete the square: $x^2-2xy=(x-y)^2-y^2$, which is not always $\ge0$. So the direct difference is not obviously positive. Instead:
-
-**Alternative.** Compare with eigenvalues. $Q$ has matrix $A_Q=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, eigenvalues $(3\pm\sqrt5)/2$. $R$ has matrix $2I$, eigenvalues $2$. The largest eigenvalue of $A_Q$ is $(3+\sqrt5)/2\approx2.618>2$, so $Q\le R$ is **false** in general.
-
-**Counterexample.** At $(x,y)=(1,-1)$: $Q=1-2+2=1$ and $R=2+2=4$, so $Q<R$. At $(x,y)=(1,1)$: $Q=1+2+2=5$ and $R=4$, so $Q>R$.
-
-**Conclusion.** The inequality $Q\le R$ is **false** in general. The largest eigenvalue of $Q$'s matrix exceeds $2$.
+**Conclusion.** $Q=u^2-v^2$, signature $(1,1,0)$.
 
 @@@ quadratic-form-canonical-form.md
 ---
@@ -3657,6 +3373,7 @@ title: Canonical form of a quadratic form
 category: linear/quadratic-forms
 level: l1
 difficulty: 4
+order: 7
 tags: canonical form, Gauss reduction, signature
 date: 2026-11-03
 ---
@@ -3688,64 +3405,133 @@ $$Q=u^2+v^2-5w^2.$$
 
 **Conclusion.** $Q=u^2+v^2-5w^2$ (or, after rescaling $w'=\sqrt5 w$, $Q=u^2+v^2-w'^2$).
 
-@@@ quadratic-form-gram.md
+@@@ quadratic-form-signature-3x3.md
 ---
-title: Gram matrix of a quadratic form
+title: Signature of a quadratic form in 3 variables
 category: linear/quadratic-forms
 level: l1
 difficulty: 4
-tags: Gram matrix, quadratic form, polar form
+order: 8
+tags: signature, reduction, quadratic form
 date: 2026-11-03
 ---
 
 ## Statement
 
-Let $\varphi$ be the symmetric bilinear form with matrix
-$$A=\begin{pmatrix}2&1\\1&3\end{pmatrix}.$$
-Compute the quadratic form $Q(u)=\varphi(u,u)$ and check that its matrix is $A$.
+Determine the signature of the quadratic form
+$$Q(x,y,z) = x^2 + 2xy + 2xz + 2y^2 + 4yz + 3z^2.$$
 
 ## Hint
 
-$Q(u)=u^TAu$.
+Complete the square in $x$ first, then in $y$, then in $z$.
 
 ## Solution
 
-**Computation.**
-$$Q(x,y)=(x,y)\begin{pmatrix}2&1\\1&3\end{pmatrix}\begin{pmatrix}x\\y\end{pmatrix}=2x^2+2xy+3y^2.$$
+**Square in $x$.** Consider $x^2+2x(y+z)$, which is $(x+y+z)^2-(y+z)^2$. So
+$$Q = (x+y+z)^2 - (y+z)^2 + 2y^2+4yz+3z^2.$$
 
-**Matrix.** The matrix of $Q$ in the canonical basis is $A$, since the coefficient of $x^2$ is $2$, of $y^2$ is $3$, and of $xy$ is $2\cdot1=2$.
+**Simplify.**
+$$-(y^2+2yz+z^2)+2y^2+4yz+3z^2 = y^2+2yz+2z^2.$$
 
-**Conclusion.** $Q(x,y)=2x^2+2xy+3y^2$ with Gram matrix $A$.
+**Square in $y$.** $y^2+2yz+2z^2=(y+z)^2+z^2$.
 
-@@@ quadratic-form-diagonalization-congruence.md
+**Result.**
+$$Q = (x+y+z)^2 + (y+z)^2 + z^2.$$
+
+**Signature.** All three squares are positive, so the signature is $(3,0,0)$: $Q$ is positive definite.
+
+**Conclusion.** Signature $(3,0,0)$.
+
+@@@ quadratic-form-indefinite.md
 ---
-title: Diagonalization by congruence
+title: An indefinite quadratic form
 category: linear/quadratic-forms
 level: l1
-difficulty: 4
-tags: congruence, diagonalization, quadratic form
+difficulty: 3
+order: 9
+tags: indefinite, signature, quadratic form
 date: 2026-11-03
 ---
 
 ## Statement
 
-Diagonalize the quadratic form $Q(x,y)=x^2+4xy+3y^2$ by congruence (find an invertible $P$ such that $P^TAP$ is diagonal).
+Show that the quadratic form
+$$Q(x,y) = x^2 - y^2$$
+is indefinite (neither positive nor negative).
 
 ## Hint
 
-Use the substitution $x=u-2v$, $y=v$ that comes from completing the square.
+Find vectors $u,v$ with $Q(u)>0$ and $Q(v)<0$.
 
 ## Solution
 
-**Reduction.** $Q=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q=u^2-v^2$.
+**Positive value.** $Q(1,0)=1>0$.
 
-**Transition matrix.** From $u=x+2y$, $v=y$: $x=u-2v$, $y=v$. So
-$$P=\begin{pmatrix}1&-2\\0&1\end{pmatrix}.$$
+**Negative value.** $Q(0,1)=-1<0$.
 
-**Congruence.** $A=\begin{pmatrix}1&2\\2&3\end{pmatrix}$, and
-$$P^TAP=\begin{pmatrix}1&0\\-2&1\end{pmatrix}\begin{pmatrix}1&2\\2&3\end{pmatrix}\begin{pmatrix}1&-2\\0&1\end{pmatrix}=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.$$
+**Conclusion.** $Q$ takes both positive and negative values, so it is indefinite. Its signature is $(1,1,0)$: one positive square and one negative square.
 
-**Conclusion.** $Q=u^2-v^2$, signature $(1,1,0)$.
+**Matrix form.** $A=\begin{pmatrix}1&0\\0&-1\end{pmatrix}$, with eigenvalues $1$ and $-1$, of opposite signs.
+
+@@@ quadratic-form-degenerate.md
+---
+title: A degenerate quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+order: 10
+tags: degenerate, signature, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Determine the signature of the quadratic form
+$$Q(x,y,z) = x^2 + 2xy + y^2 = (x+y)^2.$$
+
+## Hint
+
+$Q$ is a square of a linear form; find the kernel.
+
+## Solution
+
+**Reduction.** $Q=(x+y)^2$. Let $u=x+y$. Then $Q=u^2$, with one positive square.
+
+**Kernel.** $Q(x,y,z)=0\iff x+y=0$. The kernel has dimension $2$ (a plane in $\mathbb{R}^3$).
+
+**Signature.** One positive square, zero negative squares, kernel dimension $2$. Signature: $(1,0,2)$.
+
+**Conclusion.** $Q$ is positive but degenerate (not positive definite). Its rank is $1$, its kernel has dimension $2$.
+
+@@@ quadratic-form-definite-negative.md
+---
+title: Negative definite quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+order: 11
+tags: negative definite, signature, Sylvester
+date: 2026-11-03
+---
+
+## Statement
+
+Show that
+$$Q(x,y)=-x^2-2xy-3y^2$$
+is negative definite.
+
+## Hint
+
+Consider $-Q$ and show it is positive definite.
+
+## Solution
+
+**Reduce $-Q$.**
+$$-Q=x^2+2xy+3y^2=(x+y)^2+2y^2.$$
+
+**$-Q$ is positive definite.** It is a sum of positive squares, and vanishes only when $x+y=0$ and $y=0$, i.e. $(x,y)=(0,0)$.
+
+**Conclusion.** $Q=-[(x+y)^2+2y^2]$ is negative definite: $Q(x,y)<0$ for $(x,y)\neq(0,0)$, with signature $(0,2,0)$.
 
 @@@ quadratic-form-positivity-check.md
 ---
@@ -3753,6 +3539,7 @@ title: Checking positivity of a quadratic form
 category: linear/quadratic-forms
 level: l1
 difficulty: 4
+order: 12
 tags: positive definite, positivity, quadratic form
 date: 2026-11-03
 ---
@@ -3777,12 +3564,389 @@ Verify: RHS $=\frac12(2x^2+2y^2+2z^2+2xy+2yz+2zx)=x^2+y^2+z^2+xy+yz+zx=Q$.
 
 **Conclusion.** $Q\ge0$ with equality iff $(x,y,z)=(0,0,0)$, so $Q$ is positive definite.
 
+@@@ quadratic-form-sylvester.md
+---
+title: Sylvester's criterion for positive definiteness
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+order: 13
+tags: Sylvester criterion, positive definite, minors
+date: 2026-11-03
+---
+
+## Statement
+
+Show that the quadratic form
+$$Q(x,y,z) = 2x^2+2y^2+2z^2+2xy+2yz+2zx$$
+is positive definite using Sylvester's criterion.
+
+## Hint
+
+The matrix of $Q$ is $A = \begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}$. Compute the leading principal minors.
+
+## Solution
+
+**Matrix.**
+$$A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}.$$
+
+**Leading principal minors.**
+- $\Delta_1 = 2 > 0$.
+- $\Delta_2 = \begin{vmatrix}2&1\\1&2\end{vmatrix}=3>0$.
+- $\Delta_3 = \det A = 2(4-1)-1(2-1)+1(1-2)=6-1-1=4>0$.
+
+**Sylvester's criterion.** All leading principal minors are positive, so $A$ is positive definite.
+
+**Conclusion.** $Q$ is positive definite, i.e. $Q(x,y,z)>0$ for all $(x,y,z)\neq(0,0,0)$.
+
+@@@ quadratic-form-positivity-parameter-2.md
+---
+title: Positive definiteness of a 2×2 parameter family
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+order: 14
+tags: parameter, positive definite, minors
+date: 2026-11-03
+---
+
+## Statement
+
+For which $m\in\mathbb{R}$ is the quadratic form
+$$Q(x,y)=x^2+2mxy+4y^2$$
+positive definite?
+
+## Hint
+
+The matrix is $\begin{pmatrix}1&m\\m&4\end{pmatrix}$. Use Sylvester's criterion.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}1&m\\m&4\end{pmatrix}$.
+
+**Leading principal minors.**
+- $\Delta_1=1>0$.
+- $\Delta_2=4-m^2>0\iff|m|<2$.
+
+**Conclusion.** $Q$ is positive definite iff $|m|<2$, i.e. $-2<m<2$.
+
+@@@ quadratic-form-positivity-parameter.md
+---
+title: Positive definiteness depending on a parameter
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+order: 15
+tags: parameter, positive definite, Sylvester
+date: 2026-11-03
+---
+
+## Statement
+
+For which real values of $a$ is the quadratic form
+$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz+zx)$$
+positive definite?
+
+## Hint
+
+Compute the leading principal minors of the matrix $A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}$.
+
+## Solution
+
+**Matrix.**
+$$A=\begin{pmatrix}1&a&a\\a&1&a\\a&a&1\end{pmatrix}.$$
+
+**Leading minors.**
+- $\Delta_1=1>0$.
+- $\Delta_2=\begin{vmatrix}1&a\\a&1\end{vmatrix}=1-a^2>0\iff|a|<1$.
+- $\Delta_3=\det A$. Compute: add all rows to the first, factor $(1+2a)$, then $\Delta_3=(1+2a)(1-a)^2$. So $\Delta_3>0\iff a>-1/2$ and $a\neq1$.
+
+**Combining.** $|a|<1$ and $a>-1/2$ gives $-1/2<a<1$. At $a=1$, $\Delta_3=0$ (rank $1$), not positive definite. At $a=-1/2$, $\Delta_3=0$ (degenerate), not positive definite.
+
+**Conclusion.** $Q$ is positive definite iff $-1/2<a<1$.
+
+@@@ quadratic-form-signature-parameter.md
+---
+title: Signature depending on a parameter
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+order: 16
+tags: signature, parameter, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+For which $a\in\mathbb{R}$ is the quadratic form
+$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz)$$
+positive definite? Find the signature for all $a$.
+
+## Hint
+
+Complete the square in $x$ first, then in $z$.
+
+## Solution
+
+**Group in $x$.** $x^2+2axy=(x+ay)^2-a^2y^2$. So
+$$Q=(x+ay)^2+(1-a^2)y^2+z^2+2ayz.$$
+
+**Group in $z$.** $z^2+2ayz=(z+ay)^2-a^2y^2$. So
+$$Q=(x+ay)^2+(1-2a^2)y^2+(z+ay)^2.$$
+
+**Signature analysis.**
+- If $1-2a^2>0$, i.e. $|a|<1/\sqrt2$: signature $(3,0,0)$, positive definite.
+- If $a=\pm1/\sqrt2$: signature $(2,0,1)$, degenerate positive.
+- If $|a|>1/\sqrt2$: signature $(2,1,0)$, indefinite.
+
+**Conclusion.** $Q$ is positive definite iff $|a|<1/\sqrt2$.
+
+@@@ quadratic-form-inertia-law.md
+---
+title: Sylvester's law of inertia
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+order: 17
+tags: inertia law, signature, invariance
+date: 2026-11-03
+---
+
+## Statement
+
+State Sylvester's law of inertia and illustrate it on the quadratic form $Q(x,y)=x^2-y^2$ reduced by two different changes of variables.
+
+## Hint
+
+The signature (number of positive, negative, and zero eigenvalues) is invariant under invertible linear changes of variables.
+
+## Solution
+
+**Law of inertia.** Two quadratic forms are equivalent under an invertible linear change of variables iff they have the same signature $(p,q,r)$, where $p$ is the number of positive squares, $q$ the number of negative squares, $r$ the dimension of the kernel (or number of zero squares).
+
+**Reduction 1.** $Q=x^2-y^2$ is already diagonal: $p=1$, $q=1$, $r=0$.
+
+**Reduction 2.** Let $x=u+v$, $y=u-v$. Then
+$$Q=(u+v)^2-(u-v)^2=4uv.$$
+This is not diagonal. To diagonalize, use $u=(s+t)/2$, $v=(s-t)/2$: $4uv=(s+t)(s-t)=s^2-t^2$. Signature $(1,1,0)$, same as before.
+
+**Conclusion.** The signature is invariant: $(1,1,0)$ in both reductions.
+
+@@@ quadratic-form-two-forms-equivalent.md
+---
+title: When are two quadratic forms equivalent?
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+order: 18
+tags: equivalence, signature, congruence
+date: 2026-11-03
+---
+
+## Statement
+
+Are the quadratic forms $Q_1(x,y)=x^2+4xy+3y^2$ and $Q_2(x,y)=x^2-y^2$ equivalent under an invertible linear change of variables?
+
+## Hint
+
+Compute their signatures.
+
+## Solution
+
+**$Q_1$.** $Q_1=(x+2y)^2-y^2$, signature $(1,1,0)$.
+
+**$Q_2$.** $Q_2=x^2-y^2$, signature $(1,1,0)$.
+
+**Equivalence.** Two quadratic forms are equivalent iff they have the same signature (Sylvester's law of inertia). Both have signature $(1,1,0)$, so they are equivalent.
+
+**Explicit change.** $Q_1=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q_1=u^2-v^2$, which is $Q_2$ in the variables $(u,v)$.
+
+**Conclusion.** $Q_1$ and $Q_2$ are equivalent.
+
+@@@ quadratic-form-reduction-cross.md
+---
+title: Reduction of a quadratic form with cross terms
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+order: 19
+tags: reduction, completing square, cross terms
+date: 2026-11-03
+---
+
+## Statement
+
+Reduce the quadratic form
+$$Q(x,y,z)=xy+yz+zx$$
+by completing the square.
+
+## Hint
+
+Use the substitution $u=x+y$, $v=x-y$.
+
+## Solution
+
+**Substitution.** Let $u=x+y$, $v=x-y$, $z=z$ (this is invertible: $x=(u+v)/2$, $y=(u-v)/2$). Then
+$$xy=\frac{u^2-v^2}{4},\qquad yz=\frac{u-v}{2}z,\qquad zx=\frac{u+v}{2}z.$$
+So
+$$Q=\frac{u^2-v^2}{4}+uz.$$
+Complete the square in $u$:
+$$Q=\frac14(u+2z)^2-\frac14v^2-z^2.$$
+
+**Signature.** One positive square, two negative squares. Signature $(1,2,0)$.
+
+**Conclusion.** $Q=\frac14(u+2z)^2-\frac14v^2-z^2$, with signature $(1,2,0)$.
+
+@@@ quadratic-form-comparison.md
+---
+title: Comparison of two quadratic forms
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+order: 20
+tags: comparison, positive definite, inequalities
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q(x,y)=x^2+2xy+2y^2$ and $R(x,y)=2x^2+2y^2$. **Determine whether** $Q(x,y)\le R(x,y)$ for all $(x,y)\in\mathbb{R}^2$, and justify your answer.
+
+## Hint
+
+Compare the eigenvalues of the matrices of $Q$ and $R$, or compute $R-Q$ and examine its sign.
+
+## Solution
+
+**Difference.**
+$$R-Q = (2x^2+2y^2)-(x^2+2xy+2y^2)=x^2-2xy.$$
+Complete the square: $x^2-2xy=(x-y)^2-y^2$, which is not always $\ge0$.
+
+**Eigenvalue comparison.** $Q$ has matrix $A_Q=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, eigenvalues $(3\pm\sqrt5)/2$. $R$ has matrix $2I$, eigenvalues $2$. The largest eigenvalue of $A_Q$ is $(3+\sqrt5)/2\approx2.618>2$, so $Q\le R$ is **false** in general.
+
+**Counterexample.** At $(x,y)=(1,1)$: $Q=1+2+2=5$ and $R=4$, so $Q>R$.
+
+**Conclusion.** The inequality $Q\le R$ is **false** in general. The largest eigenvalue of $Q$'s matrix exceeds that of $R$.
+
+@@@ quadratic-form-eigenvalues.md
+---
+title: Reduction of a quadratic form by eigenvalues
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+order: 21
+tags: eigenvalues, orthogonal diagonalization, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Reduce the quadratic form
+$$Q(x,y)=3x^2+2xy+3y^2$$
+using an orthogonal change of variables.
+
+## Hint
+
+The symmetric matrix $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$ has eigenvalues $2$ and $4$ with orthonormal eigenvectors.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
+
+**Eigenvalues.** $\det(A-\lambda I)=(3-\lambda)^2-1=\lambda^2-6\lambda+8=(\lambda-2)(\lambda-4)$. So $\lambda_1=2$, $\lambda_2=4$.
+
+**Orthonormal eigenvectors.** For $\lambda_1=2$: $u_1=(1,-1)/\sqrt2$. For $\lambda_2=4$: $u_2=(1,1)/\sqrt2$.
+
+**Orthogonal change of variables.** Let $X=QU$ with $Q=\frac{1}{\sqrt2}\begin{pmatrix}1&1\\-1&1\end{pmatrix}$. Then
+$$Q(x,y)=2u^2+4v^2.$$
+
+**Conclusion.** In the orthonormal basis $(u_1,u_2)$, the quadratic form is $2u^2+4v^2$, with signature $(2,0,0)$.
+
+@@@ quadratic-form-orthogonal-diagonalization.md
+---
+title: Orthogonal diagonalization of a quadratic form
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+order: 22
+tags: orthogonal diagonalization, eigenvalues, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Orthogonally diagonalize the quadratic form
+$$Q(x,y,z)=2x^2+2y^2+2z^2+2xy-2xz-2yz,$$
+i.e. find an orthogonal matrix $Q$ and diagonal $D$ with $A=QDQ^T$.
+
+## Hint
+
+The matrix is $A=2I+N$ where $N$ is a symmetric matrix with zero diagonal. Compute the eigenvalues and orthonormal eigenvectors of $N$.
+
+## Solution
+
+**Matrix.**
+$$A=\begin{pmatrix}2&1&-1\\1&2&-1\\-1&-1&2\end{pmatrix}=2I+N,\qquad N=\begin{pmatrix}0&1&-1\\1&0&-1\\-1&-1&0\end{pmatrix}.$$
+
+**Eigenvalues of $N$.** $\operatorname{tr}(N)=0$ and $N(1,1,1)^T=0$, so $\lambda=0$ is an eigenvalue. For a symmetric matrix, $\operatorname{tr}(N^2)=\sum\lambda_i^2$; compute $\operatorname{tr}(N^2)=6$, so the two remaining eigenvalues satisfy $\mu^2+\nu^2=6$ and $\mu+\nu=0$, giving $\mu=\pm\sqrt3$. Thus $N$ has eigenvalues $0,\sqrt3,-\sqrt3$, and $A=2I+N$ has eigenvalues
+$$\lambda_1=2,\qquad \lambda_2=2+\sqrt3,\qquad \lambda_3=2-\sqrt3.$$
+
+**Eigenvectors of $N$.**
+- For $\lambda=0$: $N(1,1,1)^T=0$, so $v_1=(1,1,1)/\sqrt3$.
+- For $\lambda=\sqrt3$: solve $Nx=\sqrt3 x$. Take $x=(1,-1,0)$: $Nx=(0-1,\,-1-0,\,-1+1)^T=(-1,-1,0)^T$, which is **not** $\sqrt3 x$. Instead solve directly. The equations are $y-z=\sqrt3 x$, $x-z=\sqrt3 y$, $-x-y=\sqrt3 z$. Subtract the first two: $y-x=\sqrt3(x-y)$, so $(1+\sqrt3)(y-x)=0$, hence $y=x$. Then $x-z=\sqrt3 x$, so $z=(1-\sqrt3)x$. So an eigenvector is $v_2'=(1,\,1,\,1-\sqrt3)$. Norm: $\|v_2'\|^2=1+1+(1-\sqrt3)^2=2+1-2\sqrt3+3=6-2\sqrt3$. So $v_2=(1,1,1-\sqrt3)/\sqrt{6-2\sqrt3}$.
+- For $\lambda=-\sqrt3$: similarly, $y=x$ and $z=(1+\sqrt3)x$, so an eigenvector is $v_3'=(1,\,1,\,1+\sqrt3)$, normalized to $v_3=(1,1,1+\sqrt3)/\sqrt{6+2\sqrt3}$.
+
+**Check orthogonality.** $\langle v_2',v_3'\rangle=1+1+(1-\sqrt3)(1+\sqrt3)=2+(1-3)=2-2=0$. ✓
+
+**Orthogonal matrix and diagonal form.** Let $Q=(v_1\,|\,v_2\,|\,v_3)$ (columns), the orthogonal matrix whose columns are the above orthonormal eigenvectors. Then
+$$A=Q\,\operatorname{diag}(2,\,2+\sqrt3,\,2-\sqrt3)\,Q^T.$$
+
+**Conclusion.** The orthogonal diagonalization is
+$$Q^TAQ=\begin{pmatrix}2&0&0\\0&2+\sqrt3&0\\0&0&2-\sqrt3\end{pmatrix},$$
+with $Q$ the orthogonal matrix whose columns are the three orthonormal eigenvectors above. The quadratic form is positive definite, with signature $(3,0,0)$.
+
+@@@ quadratic-form-LDL-decomposition.md
+---
+title: LDL decomposition of a symmetric matrix
+category: linear/quadratic-forms
+level: l1
+difficulty: 5
+order: 23
+tags: LDL decomposition, Sylvester, quadratic form
+date: 2026-11-03
+---
+
+## Statement
+
+Write the matrix
+$$A=\begin{pmatrix}4&2\\2&5\end{pmatrix}$$
+in the form $A=LDL^T$ with $L$ unit lower triangular and $D$ diagonal.
+
+## Hint
+
+Use Gaussian elimination without pivoting, tracking the multipliers.
+
+## Solution
+
+**First step.** $L_2\leftarrow L_2-(1/2)L_1$: multiplier $\ell_{21}=1/2$. New matrix:
+$$\begin{pmatrix}4&2\\0&4\end{pmatrix}.$$
+
+**Decomposition.**
+$$L=\begin{pmatrix}1&0\\1/2&1\end{pmatrix},\qquad D=\begin{pmatrix}4&0\\0&4\end{pmatrix}.$$
+
+**Verify.**
+$$LDL^T=\begin{pmatrix}1&0\\1/2&1\end{pmatrix}\begin{pmatrix}4&0\\0&4\end{pmatrix}\begin{pmatrix}1&1/2\\0&1\end{pmatrix}=\begin{pmatrix}4&2\\2&5\end{pmatrix}.$$
+Correct.
+
+**Conclusion.** $A=LDL^T$ with the matrices above.
+
 @@@ quadratic-form-eigenvalue-inequality.md
 ---
 title: Bounding a quadratic form by eigenvalues
 category: linear/quadratic-forms
 level: l1
 difficulty: 5
+order: 24
 tags: eigenvalues, Rayleigh quotient, inequalities
 date: 2026-11-03
 ---
@@ -3808,194 +3972,39 @@ But $\sum_i y_i^2=\|Y\|^2=\|X\|^2$ (since $Q$ is orthogonal).
 
 **Conclusion.** $\lambda_1\|X\|^2\le X^TAX\le\lambda_n\|X\|^2$.
 
-@@@ quadratic-form-ellipse.md
+@@@ quadratic-form-rayleigh.md
 ---
-title: The ellipse $x^2+xy+y^2=1$
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: ellipse, quadratic form, geometry
-date: 2026-11-03
----
-
-## Statement
-
-Describe the set $E=\{(x,y): x^2+xy+y^2=1\}$.
-
-## Hint
-
-Diagonalize the quadratic form $Q(x,y)=x^2+xy+y^2$. The set $Q=1$ is an ellipse.
-
-## Solution
-
-**Matrix.** $A=\begin{pmatrix}1&1/2\\1/2&1\end{pmatrix}$.
-
-**Eigenvalues.** $\det(A-\lambda I)=(1-\lambda)^2-1/4=\lambda^2-2\lambda+3/4$. Roots: $\lambda=(2\pm1)/2$, so $\lambda_1=1/2$ and $\lambda_2=3/2$.
-
-**Diagonalization.** In the orthonormal eigenbasis, $Q=\frac12 u^2+\frac32 v^2$. The equation becomes
-$$\frac{u^2}{2}+\frac{v^2}{2/3}=1.$$
-
-**Geometry.** This is an ellipse centered at the origin, with semi-axes $\sqrt2$ (in the direction of the eigenvector for $\lambda_1=1/2$) and $\sqrt{2/3}$ (in the direction for $\lambda_2=3/2$).
-
-**Conclusion.** $E$ is an ellipse; its semi-axes are $\sqrt2$ and $\sqrt{2/3}$.
-
-@@@ quadratic-form-hyperbola.md
----
-title: The hyperbola $x^2-y^2=1$
-category: linear/quadratic-forms
-level: l1
-difficulty: 3
-tags: hyperbola, quadratic form, geometry
-date: 2026-11-03
----
-
-## Statement
-
-Describe the set $H=\{(x,y): x^2-y^2=1\}$.
-
-## Hint
-
-The quadratic form $Q(x,y)=x^2-y^2$ has signature $(1,1,0)$; the set $Q=1$ is a hyperbola.
-
-## Solution
-
-**Signature.** $Q$ is indefinite with signature $(1,1,0)$.
-
-**Geometry.** $x^2-y^2=1$ is a hyperbola centered at the origin, with asymptotes $y=\pm x$ (given by $x^2-y^2=0$). The vertices are at $(\pm1,0)$.
-
-**Conclusion.** $H$ is a hyperbola with vertices $(\pm1,0)$ and asymptotes $y=\pm x$.
-
-@@@ quadratic-form-positivity-parameter-2.md
----
-title: Positive definiteness of a 2×2 parameter family
-category: linear/quadratic-forms
-level: l1
-difficulty: 4
-tags: parameter, positive definite, minors
-date: 2026-11-03
----
-
-## Statement
-
-For which $m\in\mathbb{R}$ is the quadratic form
-$$Q(x,y)=x^2+2mxy+4y^2$$
-positive definite?
-
-## Hint
-
-The matrix is $\begin{pmatrix}1&m\\m&4\end{pmatrix}$. Use Sylvester's criterion.
-
-## Solution
-
-**Matrix.** $A=\begin{pmatrix}1&m\\m&4\end{pmatrix}$.
-
-**Leading principal minors.**
-- $\Delta_1=1>0$.
-- $\Delta_2=4-m^2>0\iff|m|<2$.
-
-**Conclusion.** $Q$ is positive definite iff $|m|<2$, i.e. $-2<m<2$.
-
-@@@ quadratic-form-signature-parameter.md
----
-title: Signature depending on a parameter
+title: The Rayleigh quotient
 category: linear/quadratic-forms
 level: l1
 difficulty: 5
-tags: signature, parameter, quadratic form
+order: 25
+tags: Rayleigh quotient, eigenvalues, optimization
 date: 2026-11-03
 ---
 
 ## Statement
 
-For which $a\in\mathbb{R}$ is the quadratic form
-$$Q(x,y,z)=x^2+y^2+z^2+2a(xy+yz)$$
-positive definite? Find the signature for all $a$.
+Let $A$ be a symmetric matrix. The Rayleigh quotient of $X\neq0$ is
+$$R(X)=\frac{X^TAX}{X^TX}.$$
+Show that the minimum and maximum of $R$ over $\mathbb{R}^n\setminus\{0\}$ are the smallest and largest eigenvalues of $A$.
 
 ## Hint
 
-Reduce by grouping $x^2+2axy+...$, completing the square in $x$ first.
+Use the orthogonal diagonalization $A=QDQ^T$.
 
 ## Solution
 
-**Group in $x$.** $x^2+2axy=(x+ay)^2-a^2y^2$. So
-$$Q=(x+ay)^2+(1-a^2)y^2+z^2+2ayz.$$
+**Diagonalization.** $A=QDQ^T$ with $Q$ orthogonal, $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
 
-**Group in $z$.** $z^2+2ayz=(z+ay)^2-a^2y^2$. So
-$$Q=(x+ay)^2+(1-2a^2)y^2+(z+ay)^2.$$
+**Change of variables.** Let $Y=Q^TX$. Then $X^TAX=Y^TDY=\sum_i\lambda_i y_i^2$ and $\|X\|^2=\|Y\|^2=\sum_i y_i^2$. So
+$$R(X)=\frac{\sum_i\lambda_i y_i^2}{\sum_i y_i^2}.$$
 
-**Signature analysis.**
-- If $1-2a^2>0$, i.e. $|a|<1/\sqrt2$: signature $(3,0,0)$, positive definite.
-- If $a=\pm1/\sqrt2$: signature $(2,0,1)$, degenerate positive.
-- If $|a|>1/\sqrt2$: signature $(2,1,0)$, indefinite.
+**Bounding.** Since $\lambda_1\le\lambda_i\le\lambda_n$, the quotient lies in $[\lambda_1,\lambda_n]$.
 
-**Conclusion.** $Q$ is positive definite iff $|a|<1/\sqrt2$.
+**Attainment.** Take $Y$ proportional to $e_1$ (for $\lambda_1$) or $e_n$ (for $\lambda_n$); then $X=QY$ is the corresponding eigenvector.
 
-@@@ quadratic-form-orthogonal-diagonalization.md
----
-title: Orthogonal diagonalization of a quadratic form
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: orthogonal diagonalization, eigenvalues, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Orthogonally diagonalize the quadratic form
-$$Q(x,y,z)=2x^2+2y^2+2z^2+2xy-2xz-2yz,$$
-i.e. find an orthogonal matrix $Q$ and diagonal $D$ with $A=QDQ^T$.
-
-## Hint
-
-Compute the matrix $A$, then its eigenvalues and eigenvectors.
-
-## Solution
-
-**Matrix.**
-$$A=\begin{pmatrix}2&1&-1\\1&2&-1\\-1&-1&2\end{pmatrix}.$$
-
-**Eigenvalues.** Characteristic polynomial: $\det(A-\lambda I)$. Row/column sums are $2$, so $\lambda=2$ is an eigenvalue with eigenvector $(1,1,0)$? Let's compute: $A(1,1,0)^T=(3,3,-2)^T\neq2(1,1,0)$. Try $(1,1,0)$: no. Try $(1,-1,0)$: $A(1,-1,0)=(1,-1,0)$? $A(1,-1,0)=(1,-1,0)$. Yes! $\lambda=1$ with eigenvector $(1,-1,0)$.
-
-Compute trace: $6$, so remaining eigenvalues sum to $5$. Compute $\det A$: expand. Using eigenvalues $1$ and $2$ (found by inspection) plus a third. Actually let me compute the characteristic polynomial directly.
-
-Hmm, this is getting long. A cleaner approach: the matrix has the form $2I+N$ where $N=\begin{pmatrix}0&1&-1\\1&0&-1\\-1&-1&0\end{pmatrix}$. Eigenvalues of $N$: trace $0$, $\det N=0$ (sum of rows is $0$ for row $1$? Row $1$: $0+1-1=0$, so $(1,1,1)$ is in kernel, $\lambda=0$). Other eigenvalues of $N$: sum $0$, product $0$, one is $0$, sum of squares $=6$ (Frobenius norm squared), so $\lambda_1^2+\lambda_2^2+\lambda_3^2=6$, with $\lambda_1=0$, $\lambda_2+\lambda_3=0$, so $\lambda_2^2+\lambda_3^2=6$, i.e. $\lambda_2=\pm\sqrt3$, $\lambda_3=\mp\sqrt3$. So eigenvalues of $N$: $0,\sqrt3,-\sqrt3$. Eigenvalues of $A=2I+N$: $2, 2+\sqrt3, 2-\sqrt3$.
-
-**Signature.** $(3,0,0)$, all positive, so $Q$ is positive definite.
-
-**Orthogonal diagonalization.** The eigenvectors are those of $N$: $(1,1,1)$ for $\lambda=0$, and corresponding vectors for $\pm\sqrt3$.
-
-**Conclusion.** $Q$ is positive definite with eigenvalues $2, 2+\sqrt3, 2-\sqrt3$. Orthogonal diagonalization gives $Q=2u^2+(2+\sqrt3)v^2+(2-\sqrt3)w^2$.
-
-@@@ quadratic-form-two-forms-equivalent.md
----
-title: When are two quadratic forms equivalent?
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: equivalence, signature, congruence
-date: 2026-11-03
----
-
-## Statement
-
-Are the quadratic forms $Q_1(x,y)=x^2+4xy+3y^2$ and $Q_2(x,y)=x^2-y^2$ equivalent under an invertible linear change of variables?
-
-## Hint
-
-Compute their signatures.
-
-## Solution
-
-**$Q_1$.** $Q_1=(x+2y)^2-y^2$, signature $(1,1,0)$.
-
-**$Q_2$.** $Q_2=x^2-y^2$, signature $(1,1,0)$.
-
-**Equivalence.** Two quadratic forms are equivalent iff they have the same signature (Sylvester's law of inertia). Both have signature $(1,1,0)$, so they are equivalent.
-
-**Explicit change.** $Q_1=(x+2y)^2-y^2$. Set $u=x+2y$, $v=y$. Then $Q_1=u^2-v^2$, which is $Q_2$ in the variables $(u,v)$.
-
-**Conclusion.** $Q_1$ and $Q_2$ are equivalent.
+**Conclusion.** $\min R=\lambda_{\min}$ and $\max R=\lambda_{\max}$.
 
 @@@ quadratic-form-minimize.md
 ---
@@ -4003,6 +4012,7 @@ title: Minimizing a quadratic form on the sphere
 category: linear/quadratic-forms
 level: l1
 difficulty: 5
+order: 26
 tags: minimum, sphere, eigenvalues
 date: 2026-11-03
 ---
@@ -4035,6 +4045,7 @@ title: Maximizing a quadratic form on the sphere
 category: linear/quadratic-forms
 level: l1
 difficulty: 5
+order: 27
 tags: maximum, sphere, eigenvalues
 date: 2026-11-03
 ---
@@ -4059,79 +4070,13 @@ Use the largest eigenvalue.
 
 **Conclusion.** $\max Q=4$ on the unit circle, attained at $\pm(1,1)/\sqrt2$.
 
-@@@ quadratic-form-rayleigh.md
----
-title: The Rayleigh quotient
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: Rayleigh quotient, eigenvalues, optimization
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be a symmetric matrix. The Rayleigh quotient of $X\neq0$ is
-$$R(X)=\frac{X^TAX}{X^TX}.$$
-Show that the minimum and maximum of $R$ over $\mathbb{R}^n\setminus\{0\}$ are the smallest and largest eigenvalues of $A$.
-
-## Hint
-
-Use the Lagrange multiplier method on the sphere, or the orthogonal diagonalization $A=QDQ^T$.
-
-## Solution
-
-**Diagonalization.** $A=QDQ^T$ with $Q$ orthogonal, $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$.
-
-**Change of variables.** Let $Y=Q^TX$. Then $X^TAX=Y^TDY=\sum_i\lambda_i y_i^2$ and $\|X\|^2=\|Y\|^2=\sum_i y_i^2$. So
-$$R(X)=\frac{\sum_i\lambda_i y_i^2}{\sum_i y_i^2}.$$
-
-**Bounding.** Since $\lambda_1\le\lambda_i\le\lambda_n$, the quotient lies in $[\lambda_1,\lambda_n]$.
-
-**Attainment.** Take $Y$ proportional to $e_1$ (for $\lambda_1$) or $e_n$ (for $\lambda_n$); then $X=QY$ is the corresponding eigenvector.
-
-**Conclusion.** $\min R=\lambda_{\min}$ and $\max R=\lambda_{\max}$.
-
-@@@ quadratic-form-LDL-decomposition.md
----
-title: LDL decomposition of a symmetric matrix
-category: linear/quadratic-forms
-level: l1
-difficulty: 5
-tags: LDL decomposition, Sylvester, quadratic form
-date: 2026-11-03
----
-
-## Statement
-
-Write the matrix
-$$A=\begin{pmatrix}4&2\\2&5\end{pmatrix}$$
-in the form $A=LDL^T$ with $L$ unit lower triangular and $D$ diagonal.
-
-## Hint
-
-Use Gaussian elimination without pivoting, tracking the multipliers.
-
-## Solution
-
-**First step.** $L_2\leftarrow L_2-(1/2)L_1$: multiplier $\ell_{21}=1/2$. New matrix:
-$$\begin{pmatrix}4&2\\0&4\end{pmatrix}.$$
-
-**Decomposition.**
-$$L=\begin{pmatrix}1&0\\1/2&1\end{pmatrix},\qquad D=\begin{pmatrix}4&0\\0&4\end{pmatrix}.$$
-
-**Verify.**
-$$LDL^T=\begin{pmatrix}1&0\\1/2&1\end{pmatrix}\begin{pmatrix}4&0\\0&4\end{pmatrix}\begin{pmatrix}1&1/2\\0&1\end{pmatrix}=\begin{pmatrix}4&2\\2&5\end{pmatrix}.$$
-Correct.
-
-**Conclusion.** $A=LDL^T$ with the matrices above.
-
 @@@ quadratic-form-inequality.md
 ---
 title: An inequality via a positive definite form
 category: linear/quadratic-forms
 level: l1
 difficulty: 5
+order: 28
 tags: inequality, positive definite, quadratic form
 date: 2026-11-03
 ---
@@ -4154,3 +4099,90 @@ $$Q=x^2+xy+y^2-\frac34(x^2+2xy+y^2)=\frac14x^2-\frac12xy+\frac14y^2=\frac14(x-y)
 
 **Remark.** This is a special case of the Cauchy-Schwarz-type inequalities involving quadratic forms.
 
+@@@ quadratic-form-ellipse.md
+---
+title: The ellipse $x^2+xy+y^2=1$
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+order: 29
+tags: ellipse, quadratic form, geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the set $E=\{(x,y): x^2+xy+y^2=1\}$.
+
+## Hint
+
+Diagonalize the quadratic form $Q(x,y)=x^2+xy+y^2$. The set $Q=1$ is an ellipse.
+
+## Solution
+
+**Matrix.** $A=\begin{pmatrix}1&1/2\\1/2&1\end{pmatrix}$.
+
+**Eigenvalues.** $\det(A-\lambda I)=(1-\lambda)^2-1/4=\lambda^2-2\lambda+3/4$. Roots: $\lambda=(2\pm1)/2$, so $\lambda_1=1/2$ and $\lambda_2=3/2$.
+
+**Diagonalization.** In the orthonormal eigenbasis, $Q=\frac12 u^2+\frac32 v^2$. The equation becomes
+$$\frac{u^2}{2}+\frac{v^2}{2/3}=1.$$
+
+**Geometry.** This is an ellipse centered at the origin, with semi-axes $\sqrt2$ (in the direction of the eigenvector for $\lambda_1=1/2$) and $\sqrt{2/3}$ (in the direction for $\lambda_2=3/2$).
+
+**Conclusion.** $E$ is an ellipse; its semi-axes are $\sqrt2$ and $\sqrt{2/3}$.
+
+@@@ quadratic-form-hyperbola.md
+---
+title: The hyperbola $x^2-y^2=1$
+category: linear/quadratic-forms
+level: l1
+difficulty: 3
+order: 30
+tags: hyperbola, quadratic form, geometry
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the set $H=\{(x,y): x^2-y^2=1\}$.
+
+## Hint
+
+The quadratic form $Q(x,y)=x^2-y^2$ has signature $(1,1,0)$; the set $Q=1$ is a hyperbola.
+
+## Solution
+
+**Signature.** $Q$ is indefinite with signature $(1,1,0)$.
+
+**Geometry.** $x^2-y^2=1$ is a hyperbola centered at the origin, with asymptotes $y=\pm x$ (given by $x^2-y^2=0$). The vertices are at $(\pm1,0)$.
+
+**Conclusion.** $H$ is a hyperbola with vertices $(\pm1,0)$ and asymptotes $y=\pm x$.
+
+@@@ quadratic-form-cone.md
+---
+title: The cone $x^2+y^2-z^2=0$
+category: linear/quadratic-forms
+level: l1
+difficulty: 4
+order: 31
+tags: cone, quadratic form, signature
+date: 2026-11-03
+---
+
+## Statement
+
+Describe the zero set of the quadratic form $Q(x,y,z)=x^2+y^2-z^2$ and identify its signature.
+
+## Hint
+
+The equation $x^2+y^2=z^2$ describes a cone.
+
+## Solution
+
+**Signature.** $Q$ has two positive squares and one negative square: signature $(2,1,0)$.
+
+**Zero set.** $Q=0\iff x^2+y^2=z^2$. This is the (double) cone of revolution about the $z$-axis, with apex at the origin.
+
+**Geometric interpretation.** The signature $(2,1,0)$ indicates that the level set $Q=0$ is a cone (not a single point or the empty set).
+
+**Conclusion.** $Q$ is indefinite with signature $(2,1,0)$, and $Q=0$ is a double cone.
