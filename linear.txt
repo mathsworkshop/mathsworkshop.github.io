@@ -2515,6 +2515,7 @@ title: Inner product axioms
 category: linear/inner-products
 level: lycee
 difficulty: 1
+order: 1
 tags: inner product, axioms, dot product
 date: 2026-11-03
 ---
@@ -2545,6 +2546,7 @@ title: Cauchy-Schwarz inequality
 category: linear/inner-products
 level: lycee
 difficulty: 2
+order: 2
 tags: Cauchy-Schwarz, inequality, inner product
 date: 2026-11-03
 ---
@@ -2578,6 +2580,7 @@ title: Triangle inequality
 category: linear/inner-products
 level: lycee
 difficulty: 3
+order: 3
 tags: triangle inequality, norm, inner product
 date: 2026-11-03
 ---
@@ -2607,6 +2610,7 @@ title: Orthogonal families are independent
 category: linear/inner-products
 level: lycee
 difficulty: 2
+order: 4
 tags: orthogonal family, linear independence, proof
 date: 2026-11-03
 ---
@@ -2629,12 +2633,71 @@ Since $v_j\neq0$, $\|v_j\|^2>0$, so $\alpha_j=0$.
 
 **Conclusion.** All coefficients are zero, so the family is linearly independent.
 
+@@@ inner-product-orthogonal-complement.md
+---
+title: Orthogonal complement
+category: linear/inner-products
+level: l1
+difficulty: 3
+order: 5
+tags: orthogonal complement, dimension, direct sum
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$. Compute $F^\perp$ and verify $\mathbb{R}^3=F\oplus F^\perp$.
+
+## Hint
+
+$F^\perp$ is the set of vectors orthogonal to the generators.
+
+## Solution
+
+**Equations.** $v=(x,y,z)\in F^\perp$ iff:
+$$v\cdot(1,1,0)=x+y=0,\qquad v\cdot(0,1,1)=y+z=0.$$
+So $y=-x$ and $z=x$, giving $v=x(1,-1,1)$.
+
+**Conclusion.** $F^\perp=\operatorname{span}((1,-1,1))$, dimension $1$.
+
+**Direct sum.** $\dim F=2$, $\dim F^\perp=1$, and $2+1=3=\dim\mathbb{R}^3$. Also $F\cap F^\perp=\{0\}$ (a vector in both would be orthogonal to itself, hence zero). So $\mathbb{R}^3=F\oplus F^\perp$.
+
+@@@ inner-product-orthogonal-matrix.md
+---
+title: Orthogonal matrices and isometries
+category: linear/inner-products
+level: l1
+difficulty: 3
+order: 6
+tags: orthogonal matrix, isometry, inner product preservation
+date: 2026-11-03
+---
+
+## Statement
+
+Let $Q$ be a real $n\times n$ matrix. Show that $Q$ is orthogonal ($Q^TQ=I$) iff $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$.
+
+## Hint
+
+Compute $\langle Qu,Qv\rangle=u^T Q^T Qv$.
+
+## Solution
+
+**If $Q^TQ=I$.** Then $\langle Qu,Qv\rangle=(Qu)^T(Qv)=u^TQ^TQv=u^Tv=\langle u,v\rangle$.
+
+**Conversely.** If $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$, then $u^T(Q^TQ-I)v=0$ for all $u,v$. Taking $u=e_i$, $v=e_j$, we get $(Q^TQ)_{ij}=\delta_{ij}$, so $Q^TQ=I$.
+
+**Conclusion.** Orthogonal matrices are exactly the linear isometries of $\mathbb{R}^n$.
+
+**Consequences.** $\det Q=\pm1$, and the columns of $Q$ form an orthonormal basis.
+
 @@@ inner-product-gram-schmidt.md
 ---
 title: Gram-Schmidt orthonormalization
 category: linear/inner-products
 level: l1
 difficulty: 3
+order: 7
 tags: Gram-Schmidt, orthonormal basis, algorithm
 date: 2026-11-03
 ---
@@ -2666,12 +2729,40 @@ $$w_3=(0,1,1)-(1/2,1/2,0)-(1/3,-1/3,2/3)=(-5/6,5/6,1/3).$$
 **Conclusion.** The orthonormal basis is
 $$u_1=\frac{1}{\sqrt2}(1,1,0),\quad u_2=\frac{1}{\sqrt6}(1,-1,2),\quad u_3=\frac{1}{\sqrt{54}}(-5,5,2).$$
 
+@@@ inner-product-orthonormal-completion.md
+---
+title: Completing an orthonormal family
+category: linear/inner-products
+level: l1
+difficulty: 4
+order: 8
+tags: orthonormal family, basis, completion
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(e_1,\ldots,e_k)$ be an orthonormal family in a finite-dimensional inner product space $E$. Show that it can be completed to an orthonormal basis of $E$.
+
+## Hint
+
+Extend to a basis, then apply Gram-Schmidt while keeping the first $k$ vectors.
+
+## Solution
+
+**Extension.** By the incomplete basis theorem, extend $(e_1,\ldots,e_k)$ to a basis $(e_1,\ldots,e_k,v_{k+1},\ldots,v_n)$ of $E$.
+
+**Gram-Schmidt, keeping the first $k$.** The vectors $e_1,\ldots,e_k$ are already orthonormal. Apply Gram-Schmidt to the whole basis: the first $k$ vectors don't change (they are already orthonormal), and the process produces orthonormal vectors $e_1,\ldots,e_k,e_{k+1},\ldots,e_n$.
+
+**Conclusion.** $(e_1,\ldots,e_n)$ is an orthonormal basis of $E$ completing the original family.
+
 @@@ inner-product-orthogonal-basis.md
 ---
 title: An orthogonal basis from the standard basis
 category: linear/inner-products
 level: l1
 difficulty: 3
+order: 9
 tags: orthogonal basis, Gram-Schmidt, polynomial space
 date: 2026-11-03
 ---
@@ -2698,346 +2789,13 @@ Norm: $\|w_3\|^2=\int_0^1(X^2-X+1/6)^2\,dt=1/180$. So $u_3=6\sqrt5(X^2-X+1/6)$.
 
 **Conclusion.** The orthonormal basis is $(1,\sqrt3(2X-1),6\sqrt5(X^2-X+1/6))$.
 
-@@@ inner-product-orthogonal-projection.md
----
-title: Orthogonal projection onto a subspace
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: orthogonal projection, subspace, orthonormal basis
-date: 2026-11-03
----
-
-## Statement
-
-Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$ with the standard inner product. Compute the orthogonal projection of $v=(1,2,3)$ onto $F$.
-
-## Hint
-
-Find an orthonormal basis of $F$, then $p_F(v)=\sum_i\langle v,u_i\rangle u_i$.
-
-## Solution
-
-**Orthonormal basis of $F$ by Gram–Schmidt.** Take $a_1=(1,1,0)$ and $a_2=(0,1,1)$.
-- $u_1=\dfrac{a_1}{\|a_1\|}=\dfrac{(1,1,0)}{\sqrt2}$.
-- $\langle a_2,u_1\rangle=\dfrac{1}{\sqrt2}$, so
-$$a_2-\langle a_2,u_1\rangle u_1=(0,1,1)-\frac12(1,1,0)=\left(-\frac12,\frac12,1\right),$$
-whose norm is $\sqrt{\tfrac14+\tfrac14+1}=\sqrt{\tfrac32}$. Hence
-$$u_2=\frac{\left(-1/2,\,1/2,\,1\right)}{\sqrt{3/2}}=\frac{(-1,1,2)}{\sqrt6}.$$
-
-**Projections.**
-$$\langle v,u_1\rangle=\frac{1+2+0}{\sqrt2}=\frac{3}{\sqrt2},\qquad
-\langle v,u_2\rangle=\frac{-1+2+6}{\sqrt6}=\frac{7}{\sqrt6}.$$
-
-**Projection.**
-$$p_F(v)=\frac{3}{\sqrt2}\,u_1+\frac{7}{\sqrt6}\,u_2
-=\frac32(1,1,0)+\frac76(-1,1,2).$$
-Componentwise:
-$$p_F(v)=\left(\frac32-\frac76,\ \frac32+\frac76,\ \frac{14}{6}\right)
-=\left(\frac13,\ \frac83,\ \frac73\right).$$
-@@@ inner-product-orthogonal-complement.md
----
-title: Orthogonal complement
-category: linear/inner-products
-level: l1
-difficulty: 3
-tags: orthogonal complement, dimension, direct sum
-date: 2026-11-03
----
-
-## Statement
-
-Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$. Compute $F^\perp$ and verify $\mathbb{R}^3=F\oplus F^\perp$.
-
-## Hint
-
-$F^\perp$ is the set of vectors orthogonal to the generators.
-
-## Solution
-
-**Equations.** $v=(x,y,z)\in F^\perp$ iff:
-$$v\cdot(1,1,0)=x+y=0,\qquad v\cdot(0,1,1)=y+z=0.$$
-So $y=-x$ and $z=x$, giving $v=x(1,-1,1)$.
-
-**Conclusion.** $F^\perp=\operatorname{span}((1,-1,1))$, dimension $1$.
-
-**Direct sum.** $\dim F=2$, $\dim F^\perp=1$, and $2+1=3=\dim\mathbb{R}^3$. Also $F\cap F^\perp=\{0\}$ (a vector in both would be orthogonal to itself, hence zero). So $\mathbb{R}^3=F\oplus F^\perp$.
-
-@@@ inner-product-distance-to-subspace.md
----
-title: Distance to a subspace
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: distance, orthogonal projection, minimization
-date: 2026-11-03
----
-
-## Statement
-
-Compute the distance from $v=(1,1,1)$ to the plane $F=\{x+y+z=0\}$ in $\mathbb{R}^3$.
-
-## Hint
-
-The distance is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$, we may compute $p_{F^\perp}(v)$ instead: the vector $v-p_F(v)$ equals the orthogonal projection of $v$ onto $F^\perp$.
-
-## Solution
-
-**Orthogonal complement.** $F^\perp = \operatorname{span}\bigl((1,1,1)\bigr)$, normalized to $u=(1,1,1)/\sqrt3$.
-
-**Projection onto $F^\perp$.** $\langle v,u\rangle = (1+1+1)/\sqrt3 = 3/\sqrt3 = \sqrt3$. Hence
-$$p_{F^\perp}(v) = \langle v,u\rangle\, u = \sqrt3\cdot\frac{(1,1,1)}{\sqrt3} = (1,1,1) = v.$$
-This is consistent: $v\in F^\perp$ because $(1,1,1)$ is exactly the normal of $F$ (and $v\notin F$ since $1+1+1=3\neq 0$).
-
-**Distance.** The distance to $F$ is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$ and $\mathbb{R}^3 = F\oplus F^\perp$, we have $v-p_F(v)=p_{F^\perp}(v)=v$. Therefore
-$$\operatorname{dist}(v,F) = \|v\| = \sqrt{1^2+1^2+1^2}=\sqrt3.$$
-
-**Conclusion.** The distance from $(1,1,1)$ to the plane $x+y+z=0$ is $\sqrt3$.
-
-@@@ inner-product-bessel.md
----
-title: Bessel's inequality
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: Bessel inequality, orthonormal family, projection
-date: 2026-11-03
----
-
-## Statement
-
-Let $(e_1,\ldots,e_k)$ be an orthonormal family in an inner product space $E$. Show that for every $v\in E$,
-$$\sum_{i=1}^k|\langle v,e_i\rangle|^2\le\|v\|^2.$$
-
-## Hint
-
-Consider $w=v-\sum_i\langle v,e_i\rangle e_i$ and expand $\|w\|^2\ge0$.
-
-## Solution
-
-**Decomposition.** Let $p=\sum_i\langle v,e_i\rangle e_i$. Then $\langle p,e_j\rangle=\langle v,e_j\rangle$ for each $j$, so $v-p\perp e_j$ for all $j$.
-
-**Norm expansion.**
-$$\|v\|^2=\|p+(v-p)\|^2=\|p\|^2+\|v-p\|^2$$
-because $p\perp(v-p)$.
-
-**Computation.** $\|p\|^2=\sum_i|\langle v,e_i\rangle|^2$ (by orthonormality) and $\|v-p\|^2\ge0$. Hence
-$$\|v\|^2\ge\|p\|^2=\sum_i|\langle v,e_i\rangle|^2.$$
-
-**Conclusion.** Bessel's inequality holds. Equality iff $v\in\operatorname{span}(e_1,\ldots,e_k)$.
-
-@@@ inner-product-parseval.md
----
-title: Parseval's identity
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: Parseval identity, orthonormal basis, norm
-date: 2026-11-03
----
-
-## Statement
-
-Let $(e_1,\ldots,e_n)$ be an orthonormal basis of a finite-dimensional inner product space $E$. Show that for every $v\in E$,
-$$\|v\|^2=\sum_{i=1}^n|\langle v,e_i\rangle|^2.$$
-
-## Hint
-
-Use Bessel's inequality and the fact that $v=\sum_i\langle v,e_i\rangle e_i$ (since the basis is complete).
-
-## Solution
-
-**Expansion.** Since $(e_i)$ is a basis, $v=\sum_i c_i e_i$ with $c_i=\langle v,e_i\rangle$ (because $\langle v,e_j\rangle=\sum_i c_i\langle e_i,e_j\rangle=c_j$).
-
-**Norm.** $\|v\|^2=\langle\sum_i c_i e_i,\sum_j c_j e_j\rangle=\sum_i|c_i|^2$ by orthonormality.
-
-**Conclusion.** $\|v\|^2=\sum_i|\langle v,e_i\rangle|^2$ = Parseval's identity.
-
-**Remark.** This is the equality case of Bessel's inequality when the orthonormal family is complete (a basis).
-
-@@@ inner-product-adjoint.md
----
-title: Adjoint of a linear map
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: adjoint, linear map, inner product
-date: 2026-11-03
----
-
-## Statement
-
-Let $f:\mathbb{R}^n\to\mathbb{R}^n$ be a linear map. Show that there exists a unique linear map $f^*:\mathbb{R}^n\to\mathbb{R}^n$ such that
-$$\langle f(u),v\rangle=\langle u,f^*(v)\rangle$$
-for all $u,v$. Identify $f^*$ in matrix terms.
-
-## Hint
-
-Fix an orthonormal basis; the map $v\mapsto\langle f(\cdot),v\rangle$ is a linear form, represented by a vector.
-
-## Solution
-
-**Existence.** Fix an orthonormal basis $(e_1,\ldots,e_n)$. For each $v$, the map $u\mapsto\langle f(u),v\rangle$ is linear in $u$, so there is a unique vector, call it $f^*(v)$, with $\langle f(u),v\rangle=\langle u,f^*(v)\rangle$ for all $u$.
-
-**Linearity of $f^*$.** For $\alpha,\beta\in\mathbb{R}$ and $v,w$:
-$$\langle u,f^*(\alpha v+\beta w)\rangle=\langle f(u),\alpha v+\beta w\rangle=\alpha\langle f(u),v\rangle+\beta\langle f(u),w\rangle.$$
-By uniqueness, $f^*(\alpha v+\beta w)=\alpha f^*(v)+\beta f^*(w)$.
-
-**Matrix form.** If $M$ is the matrix of $f$ in the orthonormal basis, then $f^*$ has matrix $M^T$ (transpose), because $\langle Mu,v\rangle=u^T M^T v=\langle u,M^T v\rangle$.
-
-**Conclusion.** $f^*$ exists and is unique, called the **adjoint** of $f$. In matrix terms, $f^*$ corresponds to the transpose.
-
-@@@ inner-product-self-adjoint.md
----
-title: Self-adjoint operators and symmetric matrices
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: self-adjoint, symmetric matrix, eigenvalues
-date: 2026-11-03
----
-
-## Statement
-
-Show that a linear map $f:\mathbb{R}^n\to\mathbb{R}^n$ is self-adjoint (i.e. $f=f^*$) iff its matrix in an orthonormal basis is symmetric.
-
-## Hint
-
-Use $f^*$ has matrix $M^T$.
-
-## Solution
-
-**If $M$ is symmetric.** Then the matrix of $f^*$ is $M^T=M$, so $f^*=f$.
-
-**If $f$ is self-adjoint.** Then the matrix of $f^*$ equals the matrix of $f$. But the matrix of $f^*$ is $M^T$, so $M=M^T$.
-
-**Conclusion.** In an orthonormal basis, $f$ is self-adjoint iff $M$ is symmetric.
-
-**Consequence.** Self-adjoint operators have real eigenvalues, and eigenvectors for distinct eigenvalues are orthogonal (spectral theorem for symmetric matrices).
-
-@@@ inner-product-orthogonal-matrix.md
----
-title: Orthogonal matrices and isometries
-category: linear/inner-products
-level: l1
-difficulty: 3
-tags: orthogonal matrix, isometry, inner product preservation
-date: 2026-11-03
----
-
-## Statement
-
-Let $Q$ be a real $n\times n$ matrix. Show that $Q$ is orthogonal ($Q^TQ=I$) iff $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$.
-
-## Hint
-
-Compute $\langle Qu,Qv\rangle=u^T Q^T Qv$.
-
-## Solution
-
-**If $Q^TQ=I$.** Then $\langle Qu,Qv\rangle=(Qu)^T(Qv)=u^TQ^TQv=u^Tv=\langle u,v\rangle$.
-
-**Conversely.** If $\langle Qu,Qv\rangle=\langle u,v\rangle$ for all $u,v$, then $u^T(Q^TQ-I)v=0$ for all $u,v$. Taking $u=e_i$, $v=e_j$, we get $(Q^TQ)_{ij}=\delta_{ij}$, so $Q^TQ=I$.
-
-**Conclusion.** Orthogonal matrices are exactly the linear isometries of $\mathbb{R}^n$.
-
-**Consequences.** $\det Q=\pm1$, and the columns of $Q$ form an orthonormal basis.
-
-@@@ inner-product-orthogonal-projection-formula.md
----
-title: Orthogonal projection onto a column space
-category: linear/inner-products
-level: l1
-difficulty: 5
-tags: orthogonal projection, column space, normal equations
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $m\times n$ matrix with full column rank ($\operatorname{rank}A=n$). Show that the matrix of orthogonal projection onto $\operatorname{Col}(A)$ is
-$$P=A(A^TA)^{-1}A^T.$$
-
-## Hint
-
-Show that $P$ is symmetric, idempotent, and fixes $\operatorname{Col}(A)$, and that its kernel is $\operatorname{Col}(A)^\perp$.
-
-## Solution
-
-**Symmetry.** $P^T=(A^TA)^{-1}$-part: $P^T=A((A^TA)^{-1})^T A^T=A(A^TA)^{-1}A^T=P$ since $A^TA$ is symmetric.
-
-**Idempotence.**
-$$P^2=A(A^TA)^{-1}A^T A(A^TA)^{-1}A^T=A(A^TA)^{-1}(A^TA)(A^TA)^{-1}A^T=P.$$
-
-**Fixes $\operatorname{Col}(A)$.** For $x=Ay$: $Px=A(A^TA)^{-1}A^TAy=Ay=x$.
-
-**Kernel.** If $Px=0$, then $A(A^TA)^{-1}A^T x=0$. Multiply by $(A^TA)^{-1}A^T$? Actually, $\langle Px,x\rangle=0\iff\|A^T x\|^2_{?}=0$. Note $x^T P x=x^TA(A^TA)^{-1}A^Tx=\|(A^TA)^{-1/2}A^Tx\|^2\ge0$. If $Px=0$, then $A^Tx=0$, so $x\perp\operatorname{Col}(A)$.
-
-**Conclusion.** $P$ is the orthogonal projection onto $\operatorname{Col}(A)$.
-
-@@@ inner-product-least-squares.md
----
-title: Least squares and normal equations
-category: linear/inner-products
-level: l1
-difficulty: 5
-tags: least squares, normal equations, orthogonal projection
-date: 2026-11-03
----
-
-## Statement
-
-Let $A$ be an $m\times n$ matrix with full column rank, $b\in\mathbb{R}^m$. Show that the vector $x^*$ minimizing $\|Ax-b\|$ satisfies the normal equations
-$$A^TAx^*=A^Tb.$$
-
-## Hint
-
-Interpret $Ax$ as a point in $\operatorname{Col}(A)$, and $x^*$ as the orthogonal projection of $b$.
-
-## Solution
-
-**Geometric interpretation.** Minimizing $\|Ax-b\|$ over $x$ is equivalent to finding the point of $\operatorname{Col}(A)$ closest to $b$. This is the orthogonal projection of $b$ onto $\operatorname{Col}(A)$.
-
-**Orthogonality.** For $x^*$ to be the projection, $b-Ax^*$ must be orthogonal to $\operatorname{Col}(A)$, i.e. to every column of $A$:
-$$A^T(b-Ax^*)=0.$$
-
-**Normal equations.** Rearranging:
-$$A^TAx^*=A^Tb.$$
-Since $A$ has full column rank, $A^TA$ is invertible, so $x^*=(A^TA)^{-1}A^Tb$.
-
-**Conclusion.** The least-squares solution satisfies the normal equations.
-
-@@@ inner-product-orthonormal-completion.md
----
-title: Completing an orthonormal family
-category: linear/inner-products
-level: l1
-difficulty: 4
-tags: orthonormal family, basis, completion
-date: 2026-11-03
----
-
-## Statement
-
-Let $(e_1,\ldots,e_k)$ be an orthonormal family in a finite-dimensional inner product space $E$. Show that it can be completed to an orthonormal basis of $E$.
-
-## Hint
-
-Extend to a basis, then apply Gram-Schmidt while keeping the first $k$ vectors.
-
-## Solution
-
-**Extension.** By the incomplete basis theorem, extend $(e_1,\ldots,e_k)$ to a basis $(e_1,\ldots,e_k,v_{k+1},\ldots,v_n)$ of $E$.
-
-**Gram-Schmidt, keeping the first $k$.** The vectors $e_1,\ldots,e_k$ are already orthonormal. Apply Gram-Schmidt to the whole basis: the first $k$ vectors don't change (they are already orthonormal), and the process produces orthonormal vectors $e_1,\ldots,e_k,e_{k+1},\ldots,e_n$.
-
-**Conclusion.** $(e_1,\ldots,e_n)$ is an orthonormal basis of $E$ completing the original family.
 @@@ inner-product-orthogonal-polynomials-legendre.md
 ---
 title: Legendre polynomials
 category: linear/inner-products
 level: l1
 difficulty: 5
+order: 10
 tags: Legendre polynomials, orthogonal polynomials, inner product
 date: 2026-11-03
 ---
@@ -3075,14 +2833,311 @@ They satisfy $\langle u_i,u_j\rangle=\delta_{ij}$.
 $$P_0=1,\qquad P_1=X,\qquad P_2=\frac{3X^2-1}{2}.$$
 These are proportional to $u_1,u_2,u_3$ and orthogonal for the integral inner product on $[-1,1]$.
 
-
 **Conclusion.** The first three Legendre polynomials (unnormalized) are $P_0=1$, $P_1=X$, $P_2=\dfrac{3X^2-1}{2}$; the corresponding orthonormal vectors are $u_1,u_2,u_3$ above.
+
+@@@ inner-product-orthogonal-projection.md
+---
+title: Orthogonal projection onto a subspace
+category: linear/inner-products
+level: l1
+difficulty: 4
+order: 11
+tags: orthogonal projection, subspace, orthonormal basis
+date: 2026-11-03
+---
+
+## Statement
+
+Let $F=\operatorname{span}((1,1,0),(0,1,1))$ in $\mathbb{R}^3$ with the standard inner product. Compute the orthogonal projection of $v=(1,2,3)$ onto $F$.
+
+## Hint
+
+Find an orthonormal basis of $F$, then $p_F(v)=\sum_i\langle v,u_i\rangle u_i$.
+
+## Solution
+
+**Orthonormal basis of $F$ by Gram–Schmidt.** Take $a_1=(1,1,0)$ and $a_2=(0,1,1)$.
+- $u_1=\dfrac{a_1}{\|a_1\|}=\dfrac{(1,1,0)}{\sqrt2}$.
+- $\langle a_2,u_1\rangle=\dfrac{1}{\sqrt2}$, so
+$$a_2-\langle a_2,u_1\rangle u_1=(0,1,1)-\frac12(1,1,0)=\left(-\frac12,\frac12,1\right),$$
+whose norm is $\sqrt{\tfrac14+\tfrac14+1}=\sqrt{\tfrac32}$. Hence
+$$u_2=\frac{\left(-1/2,\,1/2,\,1\right)}{\sqrt{3/2}}=\frac{(-1,1,2)}{\sqrt6}.$$
+
+**Projections.**
+$$\langle v,u_1\rangle=\frac{1+2+0}{\sqrt2}=\frac{3}{\sqrt2},\qquad
+\langle v,u_2\rangle=\frac{-1+2+6}{\sqrt6}=\frac{7}{\sqrt6}.$$
+
+**Projection.**
+$$p_F(v)=\frac{3}{\sqrt2}\,u_1+\frac{7}{\sqrt6}\,u_2
+=\frac32(1,1,0)+\frac76(-1,1,2).$$
+Componentwise:
+$$p_F(v)=\left(\frac32-\frac76,\ \frac32+\frac76,\ \frac{14}{6}\right)
+=\left(\frac13,\ \frac83,\ \frac73\right).$$
+
+**Verification.** $v-p_F(v)=(1-\tfrac13,\,2-\tfrac83,\,3-\tfrac73)=(\tfrac23,-\tfrac23,\tfrac23)$, which is orthogonal to both $(1,1,0)$ and $(0,1,1)$: indeed $(\tfrac23,-\tfrac23,\tfrac23)\cdot(1,1,0)=0$ and $\cdot(0,1,1)=0$. Consistent.
+
+@@@ inner-product-orthogonal-projection-formula.md
+---
+title: Orthogonal projection onto a column space
+category: linear/inner-products
+level: l1
+difficulty: 5
+order: 12
+tags: orthogonal projection, column space, normal equations
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $m\times n$ matrix with full column rank ($\operatorname{rank}A=n$). Show that the matrix of orthogonal projection onto $\operatorname{Col}(A)$ is
+$$P=A(A^TA)^{-1}A^T.$$
+
+## Hint
+
+Show that $P$ is symmetric, idempotent, and fixes $\operatorname{Col}(A)$, and that its kernel is $\operatorname{Col}(A)^\perp$.
+
+## Solution
+
+**Symmetry.** $P^T=(A(A^TA)^{-1}A^T)^T=A((A^TA)^{-1})^T A^T=A(A^TA)^{-1}A^T=P$, since $A^TA$ is symmetric.
+
+**Idempotence.**
+$$P^2=A(A^TA)^{-1}A^T A(A^TA)^{-1}A^T=A(A^TA)^{-1}(A^TA)(A^TA)^{-1}A^T=P.$$
+
+**Fixes $\operatorname{Col}(A)$.** For $x=Ay$: $Px=A(A^TA)^{-1}A^TAy=Ay=x$.
+
+**Kernel.** If $Px=0$, then $A^TA(A^TA)^{-1}A^Tx=0$, i.e. $A^Tx=0$, so $x\perp\operatorname{Col}(A)$. Conversely, if $A^Tx=0$ then $Px=0$.
+
+**Conclusion.** $P$ is the orthogonal projection onto $\operatorname{Col}(A)$.
+
+@@@ inner-product-distance-to-subspace.md
+---
+title: Distance to a subspace
+category: linear/inner-products
+level: l1
+difficulty: 4
+order: 13
+tags: distance, orthogonal projection, minimization
+date: 2026-11-03
+---
+
+## Statement
+
+Compute the distance from $v=(1,1,1)$ to the plane $F=\{x+y+z=0\}$ in $\mathbb{R}^3$.
+
+## Hint
+
+The distance is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$, we may compute $p_{F^\perp}(v)$ instead: the vector $v-p_F(v)$ equals the orthogonal projection of $v$ onto $F^\perp$.
+
+## Solution
+
+**Orthogonal complement.** $F^\perp = \operatorname{span}\bigl((1,1,1)\bigr)$, normalized to $u=(1,1,1)/\sqrt3$.
+
+**Projection onto $F^\perp$.** $\langle v,u\rangle = (1+1+1)/\sqrt3 = 3/\sqrt3 = \sqrt3$. Hence
+$$p_{F^\perp}(v) = \langle v,u\rangle\, u = \sqrt3\cdot\frac{(1,1,1)}{\sqrt3} = (1,1,1) = v.$$
+This is consistent: $v\in F^\perp$ because $(1,1,1)$ is exactly the normal of $F$ (and $v\notin F$ since $1+1+1=3\neq 0$).
+
+**Distance.** The distance to $F$ is $\|v-p_F(v)\|$. Since $v-p_F(v)\in F^\perp$ and $\mathbb{R}^3 = F\oplus F^\perp$, we have $v-p_F(v)=p_{F^\perp}(v)=v$. Therefore
+$$\operatorname{dist}(v,F) = \|v\| = \sqrt{1^2+1^2+1^2}=\sqrt3.$$
+
+**Conclusion.** The distance from $(1,1,1)$ to the plane $x+y+z=0$ is $\sqrt3$.
+
+@@@ inner-product-least-squares.md
+---
+title: Least squares and normal equations
+category: linear/inner-products
+level: l1
+difficulty: 5
+order: 14
+tags: least squares, normal equations, orthogonal projection
+date: 2026-11-03
+---
+
+## Statement
+
+Let $A$ be an $m\times n$ matrix with full column rank, $b\in\mathbb{R}^m$. Show that the vector $x^*$ minimizing $\|Ax-b\|$ satisfies the normal equations
+$$A^TAx^*=A^Tb.$$
+
+## Hint
+
+Interpret $Ax$ as a point in $\operatorname{Col}(A)$, and $x^*$ as the orthogonal projection of $b$.
+
+## Solution
+
+**Geometric interpretation.** Minimizing $\|Ax-b\|$ over $x$ is equivalent to finding the point of $\operatorname{Col}(A)$ closest to $b$. This is the orthogonal projection of $b$ onto $\operatorname{Col}(A)$.
+
+**Orthogonality.** For $x^*$ to be the projection, $b-Ax^*$ must be orthogonal to $\operatorname{Col}(A)$, i.e. to every column of $A$:
+$$A^T(b-Ax^*)=0.$$
+
+**Normal equations.** Rearranging:
+$$A^TAx^*=A^Tb.$$
+Since $A$ has full column rank, $A^TA$ is invertible, so $x^*=(A^TA)^{-1}A^Tb$.
+
+**Conclusion.** The least-squares solution satisfies the normal equations.
+
+@@@ inner-product-bessel.md
+---
+title: Bessel's inequality
+category: linear/inner-products
+level: l1
+difficulty: 4
+order: 15
+tags: Bessel inequality, orthonormal family, projection
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(e_1,\ldots,e_k)$ be an orthonormal family in an inner product space $E$. Show that for every $v\in E$,
+$$\sum_{i=1}^k|\langle v,e_i\rangle|^2\le\|v\|^2.$$
+
+## Hint
+
+Consider $w=v-\sum_i\langle v,e_i\rangle e_i$ and expand $\|w\|^2\ge0$.
+
+## Solution
+
+**Decomposition.** Let $p=\sum_i\langle v,e_i\rangle e_i$. Then $\langle p,e_j\rangle=\langle v,e_j\rangle$ for each $j$, so $v-p\perp e_j$ for all $j$.
+
+**Norm expansion.**
+$$\|v\|^2=\|p+(v-p)\|^2=\|p\|^2+\|v-p\|^2$$
+because $p\perp(v-p)$.
+
+**Computation.** $\|p\|^2=\sum_i|\langle v,e_i\rangle|^2$ (by orthonormality) and $\|v-p\|^2\ge0$. Hence
+$$\|v\|^2\ge\|p\|^2=\sum_i|\langle v,e_i\rangle|^2.$$
+
+**Conclusion.** Bessel's inequality holds. Equality iff $v\in\operatorname{span}(e_1,\ldots,e_k)$.
+
+@@@ inner-product-parseval.md
+---
+title: Parseval's identity
+category: linear/inner-products
+level: l1
+difficulty: 4
+order: 16
+tags: Parseval identity, orthonormal basis, norm
+date: 2026-11-03
+---
+
+## Statement
+
+Let $(e_1,\ldots,e_n)$ be an orthonormal basis of a finite-dimensional inner product space $E$. Show that for every $v\in E$,
+$$\|v\|^2=\sum_{i=1}^n|\langle v,e_i\rangle|^2.$$
+
+## Hint
+
+Use Bessel's inequality and the fact that $v=\sum_i\langle v,e_i\rangle e_i$ (since the basis is complete).
+
+## Solution
+
+**Expansion.** Since $(e_i)$ is a basis, $v=\sum_i c_i e_i$ with $c_i=\langle v,e_i\rangle$ (because $\langle v,e_j\rangle=\sum_i c_i\langle e_i,e_j\rangle=c_j$).
+
+**Norm.** $\|v\|^2=\langle\sum_i c_i e_i,\sum_j c_j e_j\rangle=\sum_i|c_i|^2$ by orthonormality.
+
+**Conclusion.** $\|v\|^2=\sum_i|\langle v,e_i\rangle|^2$ = Parseval's identity.
+
+**Remark.** This is the equality case of Bessel's inequality when the orthonormal family is complete (a basis).
+
+@@@ inner-product-adjoint.md
+---
+title: Adjoint of a linear map
+category: linear/inner-products
+level: l1
+difficulty: 4
+order: 17
+tags: adjoint, linear map, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^n\to\mathbb{R}^n$ be a linear map. Show that there exists a unique linear map $f^*:\mathbb{R}^n\to\mathbb{R}^n$ such that
+$$\langle f(u),v\rangle=\langle u,f^*(v)\rangle$$
+for all $u,v$. Identify $f^*$ in matrix terms.
+
+## Hint
+
+Fix an orthonormal basis; the map $v\mapsto\langle f(\cdot),v\rangle$ is a linear form, represented by a vector.
+
+## Solution
+
+**Existence.** Fix an orthonormal basis $(e_1,\ldots,e_n)$. For each $v$, the map $u\mapsto\langle f(u),v\rangle$ is linear in $u$, so there is a unique vector, call it $f^*(v)$, with $\langle f(u),v\rangle=\langle u,f^*(v)\rangle$ for all $u$.
+
+**Linearity of $f^*$.** For $\alpha,\beta\in\mathbb{R}$ and $v,w$:
+$$\langle u,f^*(\alpha v+\beta w)\rangle=\langle f(u),\alpha v+\beta w\rangle=\alpha\langle f(u),v\rangle+\beta\langle f(u),w\rangle.$$
+By uniqueness, $f^*(\alpha v+\beta w)=\alpha f^*(v)+\beta f^*(w)$.
+
+**Matrix form.** If $M$ is the matrix of $f$ in the orthonormal basis, then $f^*$ has matrix $M^T$ (transpose), because $\langle Mu,v\rangle=u^T M^T v=\langle u,M^T v\rangle$.
+
+**Conclusion.** $f^*$ exists and is unique, called the **adjoint** of $f$. In matrix terms, $f^*$ corresponds to the transpose.
+
+@@@ inner-product-self-adjoint.md
+---
+title: Self-adjoint operators and symmetric matrices
+category: linear/inner-products
+level: l1
+difficulty: 4
+order: 18
+tags: self-adjoint, symmetric matrix, eigenvalues
+date: 2026-11-03
+---
+
+## Statement
+
+Show that a linear map $f:\mathbb{R}^n\to\mathbb{R}^n$ is self-adjoint (i.e. $f=f^*$) iff its matrix in an orthonormal basis is symmetric.
+
+## Hint
+
+Use $f^*$ has matrix $M^T$.
+
+## Solution
+
+**If $M$ is symmetric.** Then the matrix of $f^*$ is $M^T=M$, so $f^*=f$.
+
+**If $f$ is self-adjoint.** Then the matrix of $f^*$ equals the matrix of $f$. But the matrix of $f^*$ is $M^T$, so $M=M^T$.
+
+**Conclusion.** In an orthonormal basis, $f$ is self-adjoint iff $M$ is symmetric.
+
+**Consequence.** Self-adjoint operators have real eigenvalues, and eigenvectors for distinct eigenvalues are orthogonal (spectral theorem for symmetric matrices).
+
+@@@ inner-product-riesz-representation.md
+---
+title: Riesz representation theorem (finite-dimensional)
+category: linear/inner-products
+level: l1
+difficulty: 5
+order: 19
+tags: Riesz representation, linear forms, inner product
+date: 2026-11-03
+---
+
+## Statement
+
+Let $E$ be a finite-dimensional inner product space, and $\varphi:E\to\mathbb{R}$ a linear form. Show that there exists a unique $u\in E$ such that
+$$\varphi(v)=\langle v,u\rangle$$
+for all $v\in E$.
+
+## Hint
+
+Choose an orthonormal basis $(e_i)$ and set $u=\sum_i\varphi(e_i)e_i$.
+
+## Solution
+
+**Existence.** Let $(e_1,\ldots,e_n)$ be an orthonormal basis of $E$. Define $u=\sum_i\varphi(e_i)e_i$. For any $v=\sum_j v_j e_j$:
+$$\langle v,u\rangle=\sum_j v_j\langle e_j,u\rangle=\sum_j v_j\varphi(e_j)=\varphi\left(\sum_j v_j e_j\right)=\varphi(v).$$
+
+**Uniqueness.** If $\langle v,u\rangle=\langle v,u'\rangle$ for all $v$, then $\langle v,u-u'\rangle=0$ for all $v$. Taking $v=u-u'$: $\|u-u'\|^2=0$, so $u=u'$.
+
+**Conclusion.** Every linear form on a finite-dimensional inner product space is represented by a unique vector.
+
+**Matrix form.** In matrix terms, a linear form $\varphi(v)=a^Tv$ is represented by the vector $u=a$ (in an orthonormal basis).
+
 @@@ inner-product-fourier-coefficients.md
 ---
 title: Fourier coefficients and orthogonal projection
 category: linear/inner-products
 level: l1
 difficulty: 5
+order: 20
 tags: Fourier coefficients, trigonometric basis, orthogonal projection
 date: 2026-11-03
 ---
@@ -3108,35 +3163,6 @@ For $m=n$, it equals $1$.
 **Orthogonality with constant.** $\langle 1,\cos mt\rangle=0$ and $\langle 1,\sin nt\rangle=0$ (integral of cosine/sine over a period).
 
 **Conclusion.** These functions form an orthogonal family. The Fourier coefficients $a_n=\langle f,\cos nt\rangle$, $b_n=\langle f,\sin nt\rangle$ are the projections of $f$ onto these orthogonal functions.
-
-@@@ inner-product-riesz-representation.md
----
-title: Riesz representation theorem (finite-dimensional)
-category: linear/inner-products
-level: l1
-difficulty: 5
-tags: Riesz representation, linear forms, inner product
-date: 2026-11-03
----
-
-## Statement
-
-Let $E$ be a finite-dimensional inner product space, and $\varphi:E\to\mathbb{R}$ a linear form. Show that there exists a unique $u\in E$ such that
-$$\varphi(v)=\langle v,u\rangle$$
-for all $v\in E$.
-
-## Hint
-
-Choose an orthonormal basis $(e_i)$ and set $u=\sum_i\varphi(e_i)e_i$.
-
-## Solution
-
-**Existence.** Let $(e_1,\ldots,e_n)$ be an orthonormal basis of $E$. Define $u=\sum_i\varphi(e_i)e_i$. For any $v=\sum_j v_j e_j$:
-$$\langle v,u\rangle=\sum_j v_j\langle e_j,u\rangle=\sum_j v_j\varphi(e_j)=\varphi\left(\sum_j v_j e_j\right)=\varphi(v).$$
-
-**Uniqueness.** If $\langle v,u\rangle=\langle v,u'\rangle$ for all $v$, then $\langle v,u-u'\rangle=0$ for all $v$. Taking $v=u-u'$: $\|u-u'\|^2=0$, so $u=u'$.
-
-**Conclusion.** Every linear form on a finite-dimensional inner product space is represented by a unique vector.
 
 **Matrix form.** In matrix terms, a linear form $\varphi(v)=a^Tv$ is represented by the vector $u=a$ (in an orthonormal basis).
 @@@ quadratic-form-definition.md
