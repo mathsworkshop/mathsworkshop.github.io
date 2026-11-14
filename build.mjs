@@ -201,14 +201,6 @@ function shell({ title, desc, urlPath, body, math = false, jsonld = null, noinde
   return `<!doctype html>
 <html lang="${esc(config.language)}">
 <head>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SXCXE6KN7H"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-SXCXE6KN7H');
-</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(urlPath === '/' ? `${config.name}: ${config.tagline}` : full)}</title>
