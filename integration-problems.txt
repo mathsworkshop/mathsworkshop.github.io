@@ -1,106 +1,500 @@
-
-@@@ riemann-mean-value-log.md
+@@@ riemann-step-basic-definition.md
 ---
-title: A limit via the mean value theorem for integrals
+title: Step functions and their integrals
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 1
+order: 1
+tags: step function, partition, integral
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[0,3]\to\mathbb{R}$ be defined by
+$$f(x)=\begin{cases}1&\text{if }0\le x<1,\\ 3&\text{if }1\le x<2,\\ -1&\text{if }2\le x\le3.\end{cases}$$
+Show that $f$ is a step function and compute $\int_0^3 f(x)\,dx$.
+
+## Hint
+
+A step function is constant on the intervals of a partition. Identify the subdivision and sum $\sum_k c_k(x_k-x_{k-1})$.
+
+## Solution
+
+**Step function.** Take the subdivision $\sigma=\{0,1,2,3\}$. On each open interval $]0,1[$, $]1,2[$, $]2,3[$, $f$ is constant ($1,3,-1$ respectively). The values at the subdivision points do not matter for the integral, so $f$ is a step function.
+
+**Integral.**
+$$\int_0^3 f=\sum_{k=1}^3 c_k(x_k-x_{k-1})=1\cdot1+3\cdot1+(-1)\cdot1=3.$$
+
+**Conclusion.** $f$ is a step function and $\int_0^3 f=3$.
+
+@@@ riemann-step-constant-integral.md
+---
+title: Integral of a constant step function
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 1
+order: 2
+tags: constant, step function, elementary
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f(x)=c$ for $x\in[a,b]$. Compute $\int_a^b f$ directly from the definition for step functions.
+
+## Hint
+
+Take the trivial subdivision $\{a,b\}$; the sum is $c\cdot(b-a)$.
+
+## Solution
+
+**Direct computation.** With subdivision $\{a,b\}$, the single interval $[a,b]$ has constant value $c$. So
+$$\int_a^b c\,dx=c\,(b-a).$$
+
+**Conclusion.** The integral of a constant equals the constant times the length of the interval.
+
+@@@ riemann-step-two-subdivisions.md
+---
+title: Two subdivisions for the same function
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 2
+order: 3
+tags: step function, subdivision, independence
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[0,2]\to\mathbb{R}$ be the step function associated with the subdivision $\sigma=\{0,1,2\}$ with values $c_1=2$, $c_2=5$ on the two subintervals. Show that the "integral" $\sum_k c_k(x_k-x_{k-1})$ does not depend on the subdivision.
+
+## Hint
+
+Refine the subdivision: replace $[0,1]$ by $[0,1/2]\cup[1/2,1]$, both with value $2$. Compare.
+
+## Solution
+
+**Original subdivision.** $\int f=2\cdot1+5\cdot1=7$.
+
+**Refined subdivision.** $\sigma'=\{0,1/2,1,2\}$ with values $(2,2,5)$:
+$$2\cdot\tfrac12+2\cdot\tfrac12+5\cdot1=1+1+5=7.$$
+
+**General principle.** If $\sigma'\supseteq\sigma$ refines $\sigma$, the subinterval $[x_{k-1},x_k]$ is split into $[x_{k-1},y]\cup[y,x_k]$ with the same value $c_k$, contributing $c_k(y-x_{k-1})+c_k(x_k-y)=c_k(x_k-x_{k-1})$: the sum is unchanged.
+
+**Conclusion.** The integral of a step function is well-defined.
+
+@@@ riemann-step-floor-sign.md
+---
+title: A step function built from the floor
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 2
+order: 4
+tags: step function, floor function, integral
+date: 2026-11-05
+---
+
+## Statement
+
+Let $\lfloor x\rfloor$ denote the integer part (floor) of $x$, and define $f:[0,4]\to\mathbb{R}$ by
+$$f(x)=(-1)^{\lfloor x\rfloor}\,\lfloor x\rfloor.$$
+Show that $f$ is a step function on $[0,4]$ and compute
+$$\int_0^4 f(x)\,dx.$$
+
+## Hint
+
+Identify the subdivision points $0,1,2,3,4$ and the constant value of $f$ on each open interval $]k,k+1[$; then sum $c_k\cdot 1$.
+
+## Solution
+
+**Step function.** On each open interval $]k,k+1[$ with $k\in\{0,1,2,3\}$, the integer part equals $k$, so $f$ is constant there with value
+$$c_k=(-1)^k\,k.$$
+Hence $f$ is a step function associated with the subdivision $\{0,1,2,3,4\}$. The values at the subdivision points do not affect the integral.
+
+**Values on each subinterval.**
+- $]0,1[$: $c_0=(-1)^0\cdot 0=0$,
+- $]1,2[$: $c_1=(-1)^1\cdot 1=-1$,
+- $]2,3[$: $c_2=(-1)^2\cdot 2=2$,
+- $]3,4[$: $c_3=(-1)^3\cdot 3=-3$.
+
+**Integral.**
+$$\int_0^4 f=\sum_{k=0}^{3}c_k\cdot 1=0+(-1)+2+(-3)=-2.$$
+
+**Conclusion.** $f$ is a step function on $[0,4]$ and
+$$\int_0^4(-1)^{\lfloor x\rfloor}\,\lfloor x\rfloor\,dx=-2.$$
+
+@@@ riemann-step-linear-combination.md
+---
+title: Linearity of the integral on step functions
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 2
+order: 5
+tags: linearity, step functions, sum
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f,g:[a,b]\to\mathbb{R}$ be step functions and $\lambda\in\mathbb{R}$. Show that $f+\lambda g$ is a step function and that
+$$\int_a^b(f+\lambda g)=\int_a^bf+\lambda\int_a^bg.$$
+
+## Hint
+
+Take the common refinement of the two subdivisions, then use linearity of finite sums.
+
+## Solution
+
+**Common refinement.** Let $\sigma_f$ and $\sigma_g$ be subdivisions adapted to $f$ and $g$. Take $\sigma=\sigma_f\cup\sigma_g$ (the union of all subdivision points). On each interval of $\sigma$, both $f$ and $g$ are constant, say $f=u_k$, $g=v_k$.
+
+**Compute.**
+$$\int_a^b(f+\lambda g)=\sum_k(u_k+\lambda v_k)(x_k-x_{k-1})=\sum_ku_k\Delta_k+\lambda\sum_kv_k\Delta_k.$$
+This is $\int f+\lambda\int g$.
+
+**Conclusion.** The integral is linear on the space of step functions.
+
+@@@ riemann-step-additivity.md
+---
+title: Additivity over adjacent intervals
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 2
+order: 6
+tags: additivity, step function, split
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[a,c]\to\mathbb{R}$ be a step function, and $b\in]a,c[$. Show that
+$$\int_a^cf=\int_a^bf+\int_b^cf.$$
+
+## Hint
+
+Add $b$ to the subdivision of $f$ and compare sums.
+
+## Solution
+
+**Refinement.** Let $\sigma$ be a subdivision of $[a,c]$ adapted to $f$. Set $\sigma'=\sigma\cup\{b\}$: still adapted to $f$. The sum over $\sigma'$ splits into the sum over the parts of $[a,b]$ and over the parts of $[b,c]$.
+
+**Sum.** $\sum_{k}\Delta_kc_k=\sum_{\Delta_k\subseteq[a,b]}c_k\Delta_k+\sum_{\Delta_k\subseteq[b,c]}c_k\Delta_k=\int_a^bf+\int_b^cf$.
+
+**Conclusion.** Chasles' relation holds for step functions.
+
+@@@ riemann-step-monotonicity.md
+---
+title: Monotonicity of the integral
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 2
+order: 7
+tags: monotonicity, step functions, comparison
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f,g$ be step functions on $[a,b]$ with $f\le g$. Show that $\int_a^bf\le\int_a^bg$.
+
+## Hint
+
+Compare the two sums on a common refinement.
+
+## Solution
+
+**Common refinement.** Choose a common subdivision $\sigma$ of $[a,b]$. On each $]x_{k-1},x_k[$, $f\le g$ implies $c_k\le d_k$.
+
+**Sum.** $\sum c_k\Delta_k\le\sum d_k\Delta_k$.
+
+**Conclusion.** The integral is monotone.
+
+@@@ riemann-step-absolute-value.md
+---
+title: Integral of $|f|$ for a step function
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 3
+order: 8
+tags: absolute value, step function, triangle inequality
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f$ be a step function on $[a,b]$. Show that $|f|$ is a step function and
+$$\left|\int_a^bf\right|\le\int_a^b|f|.$$
+
+## Hint
+
+$|f|$ has the same subdivisions as $f$; apply the triangle inequality to the sum.
+
+## Solution
+
+**$|f|$ is a step function.** On each interval where $f=c_k$, $|f|=|c_k|$, constant.
+
+**Inequality.**
+$$\left|\int_a^bf\right|=\left|\sum_kc_k\Delta_k\right|\le\sum_k|c_k|\Delta_k=\int_a^b|f|.$$
+
+**Conclusion.** The triangle inequality for integrals holds for step functions.
+
+@@@ riemann-step-null-function.md
+---
+title: A step function with zero integral
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 3
+order: 9
+tags: zero integral, step functions, nonnegative
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f\ge0$ be a step function on $[a,b]$ with $\int_a^bf=0$. Show that $f$ vanishes at every point of continuity of $f$.
+
+## Hint
+
+If $f$ were positive on some open interval, the integral would be positive.
+
+## Solution
+
+**Setup.** Suppose $f(x_0)>0$ at a continuity point $x_0$. By continuity, there is a neighbourhood $]x_0-\varepsilon,x_0+\varepsilon[$ on which $f\ge f(x_0)/2>0$.
+
+**Positive integral.** The integral of $f$ over $[a,b]$ is at least $(f(x_0)/2)\cdot2\varepsilon$ if the whole neighbourhood lies in $[a,b]$, contradicting $\int f=0$. (If $x_0$ is an endpoint, a similar half-neighbourhood argument applies.)
+
+**Conclusion.** $f$ vanishes at each continuity point.
+
+@@@ riemann-step-darboux.md
+---
+title: Darboux sums for a step function
 category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
-order: 2
-tags: mean value theorem for integrals, logarithm, limit
-date: 2026-11-06
+order: 10
+tags: Darboux sums, upper lower, step functions
+date: 2026-11-05
 ---
 
 ## Statement
 
-Compute
-$$\lim_{x\to0^+}\int_x^{3x}\frac{1}{te^t}\,dt.$$
+Let $f$ be a step function on $[a,b]$. Show that its lower and upper Darboux sums (over the subdivision adapted to $f$) coincide, and deduce that $f$ is Riemann integrable with $\int_a^bf$ defined as usual.
 
 ## Hint
 
-Apply the mean value theorem for integrals: for continuous $f$ and $g$ with $g\ge0$, there exists $c$ between the bounds with $\int_a^b f g=f(c)\int_a^b g$.
+On the intervals of the adapted subdivision, $\inf f=\sup f=c_k$.
 
 ## Solution
 
-**Mean value theorem.** Fix $x>0$. On $[x,3x]$, take $f(t)=\dfrac{1}{e^t}$ (continuous) and $g(t)=\dfrac{1}{t}$ (continuous, positive on $[x,3x]$). There exists $c_x\in[x,3x]$ such that
-$$\int_x^{3x}\frac{1}{te^t}\,dt=\frac{1}{e^{c_x}}\int_x^{3x}\frac{1}{t}\,dt=\frac{\ln 3}{e^{c_x}}.$$
+**Darboux sums.** Take a subdivision $\sigma$ adapted to $f$. On each $]x_{k-1},x_k[$, $f=c_k$, so $\inf=c_k=\sup$. Hence
+$$L(f,\sigma)=\sum_kc_k\Delta_k=U(f,\sigma).$$
 
-**Limit.** Since $c_x\in[x,3x]$ and $x\to0^+$, we have $c_x\to0^+$, hence $e^{c_x}\to1$. Therefore
-$$\lim_{x\to0^+}\int_x^{3x}\frac{1}{te^t}\,dt=\frac{\ln 3}{1}=\ln 3.$$
+**Riemann integrability.** Since $\inf_\sigma L(f,\sigma)=\sup_\sigma U(f,\sigma)$, $f$ is Riemann integrable with value $\int_a^bf$.
 
+**Conclusion.** Step functions are Riemann integrable with the expected integral.
 
-@@@ riemann-mean-value-arctan.md
+@@@ riemann-step-upper-lower-squeeze.md
 ---
-title: Limit of an integral with arctan
+title: Squeezing between step functions
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 3
+order: 11
+tags: Riemann integrability, step functions, squeeze
+date: 2026-11-05
+---
+
+## Statement
+
+Let $f:[a,b]\to\mathbb{R}$ be bounded. Suppose that for every $\varepsilon>0$ there exist step functions $\varphi\le f\le\psi$ with $\int_a^b(\psi-\varphi)<\varepsilon$. Show that $f$ is Riemann integrable.
+
+## Hint
+
+The lower and upper Darboux integrals of $f$ differ by at most $\int(\psi-\varphi)$.
+
+## Solution
+
+**Darboux integrals.** For every $\varepsilon>0$, choose $\varphi\le f\le\psi$ with $\int(\psi-\varphi)<\varepsilon$. Monotonicity gives
+$$\int_a^b\varphi\le\int_a^{\underline b}f\le\int_a^{\overline b}f\le\int_a^b\psi,$$
+so
+$$0\le\int_a^{\overline b}f-\int_a^{\underline b}f<\varepsilon.$$
+
+**Conclusion.** Since this holds for every $\varepsilon>0$, the lower and upper Darboux integrals coincide: $f$ is Riemann integrable.
+
+@@@ riemann-step-monotone-riemann.md
+---
+title: A monotone function on a fine grid
 category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
-order: 2
-tags: mean value theorem for integrals, arctan, limit
-date: 2026-11-06
+order: 12
+tags: monotone functions, Riemann integrability, step approximation
+date: 2026-11-05
 ---
 
 ## Statement
 
-Compute
-$$\lim_{n\to+\infty}\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt.$$
+Let $f:[a,b]\to\mathbb{R}$ be monotone (say nondecreasing). Show that for every $\varepsilon>0$ there exist step functions $\varphi\le f\le\psi$ with $\int(\psi-\varphi)<\varepsilon$.
 
 ## Hint
 
-Apply the mean value theorem for integrals with $f(t)=\arctan(t^2)$ and $g(t)=1/\sqrt t$; estimate $c_n\in[n^2+1,n^2+n+1]$ and use $\arctan(c_n^2)\to\pi/2$.
+Take a subdivision with small mesh $\eta$; define $\varphi$ and $\psi$ constant on each interval with values $f(x_{k-1})$ and $f(x_k)$.
 
 ## Solution
 
-**Mean value theorem.** On $[n^2+1,n^2+n+1]$, $f(t)=\arctan(t^2)$ is continuous and $g(t)=1/\sqrt t$ is continuous and positive. There exists $c_n\in[n^2+1,n^2+n+1]$ with
-$$\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt=\arctan(c_n^2)\int_{n^2+1}^{n^2+n+1}\frac{dt}{\sqrt t}.$$
+**Subdivision.** Since $f$ is bounded (being monotone on a compact interval), let $M=f(b)-f(a)$. Choose a subdivision $\sigma=\{a=x_0<\cdots<x_n=b\}$ with $\max_k\Delta_k<\varepsilon/M$ (if $M=0$, $f$ is constant and there is nothing to prove).
 
-**Compute the remaining integral.**
-$$\int_{n^2+1}^{n^2+n+1}\frac{dt}{\sqrt t}=\bigl[2\sqrt t\bigr]_{n^2+1}^{n^2+n+1}=2\sqrt{n^2+n+1}-2\sqrt{n^2+1}.$$
-Rationalize:
-$$2\sqrt{n^2+n+1}-2\sqrt{n^2+1}=\frac{2n}{\sqrt{n^2+n+1}+\sqrt{n^2+1}}.$$
-As $n\to+\infty$, the denominator is $\sim 2n$, so the quotient tends to $1$. More precisely, it equals
-$$\frac{2n}{n\sqrt{1+\frac1n+\frac1{n^2}}+n\sqrt{1+\frac1{n^2}}}=\frac{2}{\sqrt{1+\frac1n+\frac1{n^2}}+\sqrt{1+\frac1{n^2}}}\to\frac{2}{1+1}=1.$$
+**Step functions.** Define $\varphi(x)=f(x_{k-1})$ and $\psi(x)=f(x_k)$ on $]x_{k-1},x_k[$, with arbitrary values at the points $x_k$. Monotonicity ensures $\varphi\le f\le\psi$.
 
-**Limit of $\arctan(c_n^2)$.** Since $c_n\ge n^2+1\to+\infty$, we have $c_n^2\to+\infty$, so $\arctan(c_n^2)\to\pi/2$.
+**Integral difference.**
+$$\int_a^b(\psi-\varphi)=\sum_k(f(x_k)-f(x_{k-1}))\Delta_k<\eta\sum_k(f(x_k)-f(x_{k-1}))=\eta\cdot M<\varepsilon.$$
 
-**Conclusion.** The product of these two limits gives
-$$\lim_{n\to+\infty}\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt=\frac{\pi}{2}\cdot1=\frac{\pi}{2}.$$
+**Conclusion.** $f$ is Riemann integrable (by the squeeze criterion).
 
-@@@ riemann-mean-value-cos-log.md
+@@@ riemann-step-composition.md
 ---
-title: Limit of an integral with cosine and logarithm
+title: Composition with a continuous function
 category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
-order: 2
-tags: mean value theorem for integrals, cosine, logarithm
-date: 2026-11-06
+order: 13
+tags: composition, continuous, integrability preservation
+date: 2026-11-05
 ---
 
 ## Statement
 
-Compute
-$$\lim_{x\to1^+}\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt.$$
+Let $f:[a,b]\to\mathbb{R}$ be Riemann integrable and $\Phi:\mathbb{R}\to\mathbb{R}$ continuous. Show that $\Phi\circ f$ is Riemann integrable.
 
 ## Hint
 
-The integrand is singular at $t=1$, so rewrite the integral using the mean value theorem with $f(t)=t\cos(\pi t)$ and $g(t)=\frac{1}{t\ln t}$. Then estimate $c_x\in[x,x^2]$ and let $x\to1^+$.
+Approximate $f$ from above and below by step functions with close integrals. Use uniform continuity of $\Phi$ on a bounded interval, and split the domain into a region where the approximation of $f$ is good and a small region where it is not.
 
 ## Solution
 
-**Rewriting the integrand.** Note that for $t>1$,
-$$\frac{\cos(\pi t)}{\ln t}=t\cos(\pi t)\cdot\frac{1}{t\ln t}.$$
+**Setup.** Since $f$ is Riemann integrable, it is bounded: there is $M>0$ with $f([a,b])\subseteq[-M,M]$. Let $M'=\max_{|s|\le M}|\Phi(s)|$ (finite since $\Phi$ is continuous on $[-M,M]$).
 
-**Mean value theorem for integrals.** On $[x,x^2]$ (with $1<x$), the function $t\mapsto t\cos(\pi t)$ is continuous and $t\mapsto\frac{1}{t\ln t}$ is continuous and positive. There exists $c_x\in[x,x^2]$ with
-$$\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=c_x\cos(\pi c_x)\int_x^{x^2}\frac{dt}{t\ln t}.$$
+**Uniform continuity.** $\Phi$ is uniformly continuous on the compact interval $[-M,M]$: for every $\varepsilon>0$ there is $\delta>0$ such that for $s,t\in[-M,M]$, $|s-t|<\delta\Rightarrow|\Phi(s)-\Phi(t)|<\frac{\varepsilon}{2(b-a)}$.
 
-**Compute the remaining integral.**
-$$\int_x^{x^2}\frac{dt}{t\ln t}=\bigl[\ln(\ln t)\bigr]_x^{x^2}=\ln(\ln(x^2))-\ln(\ln x)=\ln 2.$$
-So
-$$\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=c_x\cos(\pi c_x)\ln 2.$$
+**Approximation.** Since $f$ is Riemann integrable, for any $\eta>0$ there exist step functions $\varphi\le f\le\psi$ on $[a,b]$ with $\int_a^b(\psi-\varphi)<\eta$. Take $\eta=\frac{\delta\varepsilon}{4M'}$ (or any positive value if $M'=0$; in that case $\Phi\equiv0$ on the relevant interval and there is nothing to prove).
 
-**Limit as $x\to1^+$.** Since $c_x\in[x,x^2]$ and $x\to1^+$, we have $c_x\to1$. Thus $c_x\cos(\pi c_x)\to1\cdot\cos(\pi)=-1$. Therefore
-$$\lim_{x\to1^+}\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=(-1)\cdot\ln 2=-\ln 2.$$
+**$\Phi\circ\varphi$ and $\Phi\circ\psi$ are step functions.** If $\varphi$ is constant $=c_k$ on $]x_{k-1},x_k[$, then $\Phi\circ\varphi$ is constant $=\Phi(c_k)$ there. Same for $\Phi\circ\psi$.
 
+**Controlling $\Phi\circ f-\Phi\circ\varphi$.** Let $E=\{x\in[a,b]:f(x)-\varphi(x)\ge\delta\}$ and $F=[a,b]\setminus E$.
+
+- On $F$, we have $0\le f(x)-\varphi(x)<\delta$, so $|\Phi(f(x))-\Phi(\varphi(x))|<\frac{\varepsilon}{2(b-a)}$.
+- The total length of $E$ satisfies $\delta\cdot|E|\le\int_E(f-\varphi)\le\int(\psi-\varphi)<\frac{\delta\varepsilon}{4M'}$, so $|E|<\frac{\varepsilon}{4M'}$.
+- On $E$, both $\Phi(f)$ and $\Phi(\varphi)$ are bounded by $M'$ in absolute value, so $|\Phi\circ f-\Phi\circ\varphi|\le2M'$ there.
+
+**Putting it together.**
+$$\int_a^b|\Phi\circ f-\Phi\circ\varphi|=\int_F+\int_E\le\frac{\varepsilon}{2(b-a)}\cdot(b-a)+2M'\cdot|E|<\frac\varepsilon2+\frac\varepsilon2=\varepsilon.$$
+Hence $\int_a^b\Phi\circ f$ differs from $\int_a^b\Phi\circ\varphi$ by less than $\varepsilon$.
+
+**Conclusion.** By the squeeze criterion (`riemann-step-upper-lower-squeeze`), $\Phi\circ f$ is Riemann integrable on $[a,b]$.
+
+**Remark.** The result is standard: composition of Riemann integrable with continuous preserves integrability. The monotonicity of $\Phi$ is not assumed (and not needed); uniform continuity on the bounded range of $f$ is the key.
+
+@@@ darboux-sums-and-the-dirichlet-function.md
+---
+title: Darboux sums of the Dirichlet function
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 3
+order: 14
+tags: Riemann integrability, Darboux sums, density
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f:[1,2]\to\mathbb{R}$ with $f(x)=0$ if $x$ is rational and $f(x)=1$ if $x$ is irrational. For a partition $\sigma$ compute the lower sum $s_\sigma(f)$ and the upper sum $S_\sigma(f)$. Determine $s(f)=\sup_\sigma s_\sigma(f)$ and $S(f)=\inf_\sigma S_\sigma(f)$, and decide whether $f$ is Riemann integrable.
+
+## Hint
+
+Both rationals and irrationals are dense. What are the infimum and the supremum of $f$ on any subinterval of positive length?
+
+## Solution
+
+**Definitions.** For a partition $1=x_0<x_1<\dots<x_n=2$, let $m_i=\inf_{[x_{i-1},x_i]}f$ and $M_i=\sup_{[x_{i-1},x_i]}f$. Then
+$$s_\sigma(f)=\sum m_i(x_i-x_{i-1}),\qquad S_\sigma(f)=\sum M_i(x_i-x_{i-1}).$$
+
+**Values.** Each subinterval has positive length and so contains a rational (where $f=0$) and an irrational (where $f=1$). Hence $m_i=0$ and $M_i=1$ for all $i$, and
+$$s_\sigma(f)=0,\qquad S_\sigma(f)=\sum(x_i-x_{i-1})=1.$$
+
+**Conclusion.** $s(f)=0$ and $S(f)=1$. They differ, so $f$ is **not Riemann integrable**.
+
+**Remark.** No refinement of the partition helps: the function oscillates fully on every tiny interval. This example motivated Lebesgue's theory, in which this function has integral $1$, since the rationals have measure zero.
+
+@@@ integrability-with-one-discontinuity.md
+---
+title: Integrability with one wild point
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 4
+order: 15
+tags: Riemann integrability, Darboux criterion, oscillation
+date: 2026-11-02
+---
+
+## Statement
+
+Let $f(x)=\sin\dfrac1x$ for $x\in(0,1]$ and $f(0)=0$. Prove that $f$ is Riemann integrable on $[0,1]$, even though it is discontinuous at $0$.
+
+## Hint
+
+Use the Darboux criterion: $f$ is integrable if for every $\eta>0$ there is a partition with $S_\sigma-s_\sigma<\eta$. Isolate a tiny interval $[0,\varepsilon]$ around the bad point.
+
+## Solution
+
+**Idea.** The oscillation of $f$ near $0$ is large, but it happens on a very short interval, so it costs little area.
+
+**Setup.** Fix $\eta>0$ and choose $\varepsilon\in(0,1)$ with $\varepsilon<\frac\eta4$.
+
+**On $[\varepsilon,1]$.** $f$ is continuous, hence integrable, so there is a partition $\sigma'$ of $[\varepsilon,1]$ with $S_{\sigma'}-s_{\sigma'}<\frac\eta2$.
+
+**On $[0,\varepsilon]$.** Since $-1\le f\le1$, on this single interval $M-m\le2$, contributing at most $2\varepsilon$ to $S-s$.
+
+**Total.** For the partition $\sigma=\{0\}\cup\sigma'$ of $[0,1]$,
+$$S_\sigma-s_\sigma<2\varepsilon+\frac\eta2<\frac\eta2+\frac\eta2=\eta,$$
+since $2\varepsilon<\frac\eta2$.
+By the Darboux criterion, $f$ is integrable on $[0,1]$.
+
+**Remark.** The same argument shows that any bounded function with finitely many discontinuities is Riemann integrable. (Compare with the Dirichlet function, discontinuous *everywhere*.)
+
+@@@ riemann-sums-and-limits-of-sums.md
+---
+title: Limits of sums as Riemann sums
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 3
+order: 16
+tags: Riemann sums, limits, pi, ln 2
+date: 2026-11-02
+---
+
+## Statement
+
+Compute the limits
+$$A=\lim_{n\to\infty}\sum_{k=1}^n\frac n{n^2+k^2},\qquad B=\lim_{n\to\infty}\sum_{k=1}^n\frac1{n+k}.$$
+
+## Hint
+
+Factor $\frac1n$ out so that the sum becomes $\frac1n\sum f\!\left(\frac kn\right)$ for a continuous function $f$.
+
+## Solution
+
+**Principle.** For $f$ continuous on $[0,1]$, the Riemann sums $\frac1n\sum_{k=1}^nf\!\left(\frac kn\right)$ converge to $\int_0^1f$.
+
+**$A$.** Dividing numerator and denominator by $n^2$,
+$$\frac n{n^2+k^2}=\frac1n\cdot\frac1{1+(k/n)^2}.$$
+So $A=\int_0^1\frac{dx}{1+x^2}=\arctan1=\dfrac\pi4$.
+
+**$B$.** Similarly $\dfrac1{n+k}=\dfrac1n\cdot\dfrac1{1+k/n}$, so
+$$B=\int_0^1\frac{dx}{1+x}=\ln2.$$
+
+**Numerical check.** For $n=100$: the first sum is $0.7829$ (close to $\frac\pi4=0.7854$) and the second is $0.6907$ (close to $\ln2=0.6931$).
+
+**Remark.** This is the standard way to evaluate limits of sums: spot the $\frac1n$ and the ratio $\frac kn$.
 
 @@@ riemann-sum-product-limit.md
 ---
@@ -108,7 +502,7 @@ title: A limit of a product via Riemann sums
 category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
-order: 4
+order: 17
 tags: Riemann sums, logarithm, limit, product
 date: 2026-11-06
 ---
@@ -150,13 +544,203 @@ $$\ln(u_n)\longrightarrow 2\ln 2-1=\ln 4-\ln e=\ln\!\left(\frac{4}{e}\right).$$
 **Step 4: exponentiate.** By continuity of $\exp$,
 $$u_n=\exp(\ln u_n)\longrightarrow\exp\!\left(\ln\frac{4}{e}\right)=\frac{4}{e}.$$
 
+@@@ basic-antiderivatives-and-definite-integrals.md
+---
+title: Recognising antiderivatives
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 1
+order: 18
+tags: antiderivatives, definite integrals, fundamental theorem
+date: 2026-11-02
+---
+
+## Statement
+
+Compute
+$$I_1=\int_1^2\frac1{t^2}\,dt,\qquad I_2=\int_e^3\frac{dx}{x\ln x},\qquad I_3=\int_1^2\frac{e^{\sqrt x}}{2\sqrt x}\,dx.$$
+
+## Hint
+
+Look for a function whose derivative is the integrand: $-\frac1t$, $\ln(\ln x)$ and $e^{\sqrt x}$ are good candidates.
+
+## Solution
+
+**Idea.** By the fundamental theorem of calculus, $\int_a^bf=F(b)-F(a)$ for any antiderivative $F$. The task is to *recognise* $F$, which is the reverse of differentiating a composition.
+
+**$I_1$.** $\left(-\frac1t\right)'=\frac1{t^2}$, so $I_1=\left[-\frac1t\right]_1^2=-\frac12+1=\frac12$.
+
+**$I_2$.** $(\ln(\ln x))'=\frac1{\ln x}\cdot\frac1x$, so $I_2=\bigl[\ln(\ln x)\bigr]_e^3=\ln(\ln3)-\ln(\ln e)=\ln(\ln3)$, because $\ln e=1$ and $\ln1=0$.
+
+**$I_3$.** $\left(e^{\sqrt x}\right)'=e^{\sqrt x}\cdot\frac1{2\sqrt x}$, so $I_3=\bigl[e^{\sqrt x}\bigr]_1^2=e^{\sqrt2}-e$.
+
+**Pattern.** In each case the integrand has the form $u'\,g(u)$: a chain rule read backwards.
+
+@@@ the-derivative-of-an-integral-with-variable-bounds.md
+---
+title: The derivative of an integral with variable bounds
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 2
+order: 19
+tags: fundamental theorem of calculus, chain rule, limits
+date: 2026-11-02
+---
+
+## Statement
+
+1. Let $F(x)=\displaystyle\int_x^{x^2}e^{-t^2}\,dt$. Compute $F'(x)$.
+2. Compute $\displaystyle\lim_{x\to0}\frac1x\int_0^x\cos(t^2)\,dt$.
+
+## Hint
+
+The function $e^{-t^2}$ has no elementary antiderivative, but you do not need one. Introduce $G(x)=\int_0^xe^{-t^2}dt$ and use $G'(x)=e^{-x^2}$.
+
+## Solution
+
+**1.** Let $G(u)=\int_0^ue^{-t^2}dt$. Then $G'(u)=e^{-u^2}$ (fundamental theorem), and
+$$F(x)=G(x^2)-G(x).$$
+By the chain rule,
+$$F'(x)=2x\,G'(x^2)-G'(x)=2x\,e^{-x^4}-e^{-x^2}.$$
+
+**2.** Let $H(x)=\int_0^x\cos(t^2)\,dt$. Then $H(0)=0$ and $H'(x)=\cos(x^2)$, so
+$$\frac{H(x)}x=\frac{H(x)-H(0)}{x-0}\longrightarrow H'(0)=\cos0=1.$$
+
+**Remark.** The fundamental theorem says that *differentiation undoes integration*: $\frac d{dx}\int_a^xf=f(x)$ for continuous $f$. The chain rule handles non-trivial bounds.
+
+@@@ an-integral-equation.md
+---
+title: Solving an integral equation
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 3
+order: 20
+tags: integral equations, fundamental theorem, differential equation
+date: 2026-11-02
+---
+
+## Statement
+
+1. Find all continuous functions $f:\mathbb{R}\to\mathbb{R}$ such that $f(x)=1+\displaystyle\int_0^xf(t)\,dt$ for all $x$.
+2. Find all continuous $f$ such that $f(x)=\displaystyle\int_0^xf(t)\,dt$ for all $x$.
+
+## Hint
+
+The right-hand side is differentiable because $f$ is continuous. Differentiate, and find $f(0)$ by setting $x=0$.
+
+## Solution
+
+**1.** Since $f$ is continuous, $x\mapsto\int_0^xf$ is differentiable with derivative $f(x)$. So $f$ is differentiable and $f'(x)=f(x)$. Setting $x=0$ in the equation gives $f(0)=1$. The function $g(x)=f(x)e^{-x}$ has $g'=0$, so $g=g(0)=1$ and
+$$f(x)=e^x.$$
+Conversely $\int_0^xe^t\,dt=e^x-1$, so $1+\int_0^xe^t\,dt=e^x$. The unique solution is $f(x)=e^x$.
+
+**2.** The same reasoning gives $f'=f$, but now $f(0)=0$. So $g=f e^{-x}$ is constant equal to $g(0)=0$, and $f=0$.
+
+**Remark.** This is the integral formulation of the differential equation $f'=f$. It makes the initial condition automatic, and it is the starting point of the *Picard iteration* $f_{k+1}(x)=1+\int_0^xf_k$, which produces the partial sums $1+x+\frac{x^2}2+\dots$ of the exponential series.
+
+@@@ area-with-an-absolute-value.md
+---
+title: An area with an absolute value
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 1
+order: 21
+tags: definite integrals, absolute value, sign of a function
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\displaystyle\int_0^2\left|x^2-3x+2\right|\,dx$.
+
+## Hint
+
+Factor $x^2-3x+2=(x-1)(x-2)$ and find where it is positive and negative.
+
+## Solution
+
+**Idea.** There is no antiderivative of $|u|$ that works in one piece. We split the interval where the sign changes.
+
+**Sign.** $(x-1)(x-2)\ge0$ on $[0,1]$ and $\le0$ on $[1,2]$. Hence
+$$\int_0^2|x^2-3x+2|\,dx=\int_0^1(x^2-3x+2)\,dx-\int_1^2(x^2-3x+2)\,dx.$$
+
+**Computation.** With $F(x)=\frac{x^3}3-\frac{3x^2}2+2x$:
+$$F(1)-F(0)=\frac13-\frac32+2=\frac56,\qquad F(2)-F(1)=\left(\frac83-6+4\right)-\frac56=-\frac16.$$
+So the integral equals $\frac56+\frac16=1$.
+
+**Remark.** Without the absolute value, the integral would be $\frac56-\frac16=\frac23$: the signed areas partially cancel. The absolute value counts the total area between the curve and the axis.
+
+@@@ area-between-a-parabola-and-a-line.md
+---
+title: Area between a parabola and a line
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 1
+order: 22
+tags: area, definite integrals, intersection points
+date: 2026-11-02
+---
+
+## Statement
+
+Compute the area of the region enclosed by the parabola $y=x^2$ and the line $y=x+2$.
+
+## Hint
+
+Find where the curves meet, and decide which one lies above the other between those points.
+
+## Solution
+
+**Intersections.** $x^2=x+2\iff x^2-x-2=0\iff(x-2)(x+1)=0$, so $x=-1$ or $x=2$.
+
+**Which is on top.** At $x=0$ the line has height $2$ and the parabola $0$, so the line is above on $[-1,2]$.
+
+**Area.**
+$$\int_{-1}^2\left(x+2-x^2\right)dx=\left[\frac{x^2}2+2x-\frac{x^3}3\right]_{-1}^2=\left(2+4-\frac83\right)-\left(\frac12-2+\frac13\right)=\frac{10}3+\frac76=\frac92.$$
+
+**Answer.** The area is $\dfrac92$.
+
+@@@ integrals-simplified-by-parity.md
+---
+title: Integrals that simplify by parity
+category: calculus/single-variable/integration/riemann
+level: lycee
+difficulty: 1
+order: 23
+tags: symmetry, odd and even functions
+date: 2026-11-02
+---
+
+## Statement
+
+Compute, without finding any antiderivative where possible:
+1. $\displaystyle\int_{-2}^2x^5e^{x^2}\,dx$
+2. $\displaystyle\int_{-1}^1(x^3+3x^2)\,dx$
+3. $\displaystyle\int_{-\pi}^{\pi}\bigl(x\cos x+\sin^2x\bigr)\,dx$
+
+## Hint
+
+If $f$ is odd, $\int_{-a}^af=0$. If $f$ is even, $\int_{-a}^af=2\int_0^af$.
+
+## Solution
+
+**Why the rule holds.** The substitution $x\mapsto-x$ gives $\int_{-a}^0f(x)\,dx=\int_0^af(-u)\,du$. For an odd function this is $-\int_0^af$, which cancels the other half. For an even function it equals $\int_0^af$, which doubles it.
+
+**1.** $x\mapsto x^5e^{x^2}$ is odd (odd power times even function), so the integral is $0$.
+
+**2.** $x^3$ is odd, so it contributes $0$. $3x^2$ is even: $2\int_0^13x^2\,dx=2$. The result is $2$.
+
+**3.** $x\cos x$ is odd, so it contributes $0$. For the other term, $\sin^2x=\frac{1-\cos2x}2$ gives $\int_{-\pi}^\pi\sin^2x\,dx=\pi$. The result is $\pi$.
+
+**Remark.** Recognising symmetry can turn an intimidating integral, like the first one, into zero in one line.
+
 @@@ riemann-integral-parameter-arctan.md
 ---
 title: A parameter integral equal to arctan
 category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
-order: 2
+order: 24
 tags: parameter integral, fundamental theorem, arctan
 date: 2026-11-05
 ---
@@ -217,388 +801,284 @@ $$\int_{1/x}^{x}\frac{t}{1+t+t^2+t^3}\,dt=\arctan(x)-\frac{\pi}{4},$$
 and in particular
 $$\int_{1/\sqrt3}^{\sqrt3}\frac{t}{1+t+t^2+t^3}\,dt=\frac{\pi}{12}.$$
 
-@@@ riemann-step-floor-sign.md
+@@@ riemann-mean-value-log.md
 ---
-title: A step function built from the floor
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 2
-order: 1
-tags: step function, floor function, integral
-date: 2026-11-05
----
-
-## Statement
-
-Let $\lfloor x\rfloor$ denote the integer part (floor) of $x$, and define $f:[0,4]\to\mathbb{R}$ by
-$$f(x)=(-1)^{\lfloor x\rfloor}\,\lfloor x\rfloor.$$
-Show that $f$ is a step function on $[0,4]$ and compute
-$$\int_0^4 f(x)\,dx.$$
-
-## Hint
-
-Identify the subdivision points $0,1,2,3,4$ and the constant value of $f$ on each open interval $]k,k+1[$; then sum $c_k\cdot 1$.
-
-## Solution
-
-**Step function.** On each open interval $]k,k+1[$ with $k\in\{0,1,2,3\}$, the integer part equals $k$, so $f$ is constant there with value
-$$c_k=(-1)^k\,k.$$
-Hence $f$ is a step function associated with the subdivision $\{0,1,2,3,4\}$. The values at the subdivision points do not affect the integral.
-
-**Values on each subinterval.**
-- $]0,1[$: $c_0=(-1)^0\cdot 0=0$,
-- $]1,2[$: $c_1=(-1)^1\cdot 1=-1$,
-- $]2,3[$: $c_2=(-1)^2\cdot 2=2$,
-- $]3,4[$: $c_3=(-1)^3\cdot 3=-3$.
-
-**Integral.**
-$$\int_0^4 f=\sum_{k=0}^{3}c_k\cdot 1=0+(-1)+2+(-3)=-2.$$
-
-**Conclusion.** $f$ is a step function on $[0,4]$ and
-$$\int_0^4(-1)^{\lfloor x\rfloor}\,\lfloor x\rfloor\,dx=-2.$$
-@@@ riemann-step-basic-definition.md
----
-title: Step functions and their integrals
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 1
-order: 1
-tags: step function, partition, integral
-date: 2026-11-05
----
-
-## Statement
-
-Let $f:[0,3]\to\mathbb{R}$ be defined by
-$$f(x)=\begin{cases}1&\text{if }0\le x<1,\\ 3&\text{if }1\le x<2,\\ -1&\text{if }2\le x\le3.\end{cases}$$
-Show that $f$ is a step function and compute $\int_0^3 f(x)\,dx$.
-
-## Hint
-
-A step function is constant on the intervals of a partition. Identify the subdivision and sum $\sum_k c_k(x_k-x_{k-1})$.
-
-## Solution
-
-**Step function.** Take the subdivision $\sigma=\{0,1,2,3\}$. On each open interval $]0,1[$, $]1,2[$, $]2,3[$, $f$ is constant ($1,3,-1$ respectively). The values at the subdivision points do not matter for the integral, so $f$ is a step function.
-
-**Integral.**
-$$\int_0^3 f=\sum_{k=1}^3 c_k(x_k-x_{k-1})=1\cdot1+3\cdot1+(-1)\cdot1=3.$$
-
-**Conclusion.** $f$ is a step function and $\int_0^3 f=3$.
-
-@@@ riemann-step-two-subdivisions.md
----
-title: Two subdivisions for the same function
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 2
-order: 1
-tags: step function, subdivision, independence
-date: 2026-11-05
----
-
-## Statement
-
-Let $f:[0,2]\to\mathbb{R}$ be the step function associated with the subdivision $\sigma=\{0,1,2\}$ with values $c_1=2$, $c_2=5$ on the two subintervals. Show that the "integral" $\sum_k c_k(x_k-x_{k-1})$ does not depend on the subdivision.
-
-## Hint
-
-Refine the subdivision: replace $[0,1]$ by $[0,1/2]\cup[1/2,1]$, both with value $2$. Compare.
-
-## Solution
-
-**Original subdivision.** $\int f=2\cdot1+5\cdot1=7$.
-
-**Refined subdivision.** $\sigma'=\{0,1/2,1,2\}$ with values $(2,2,5)$:
-$$2\cdot\tfrac12+2\cdot\tfrac12+5\cdot1=1+1+5=7.$$
-
-**General principle.** If $\sigma'\supseteq\sigma$ refines $\sigma$, the subinterval $[x_{k-1},x_k]$ is split into $[x_{k-1},y]\cup[y,x_k]$ with the same value $c_k$, contributing $c_k(y-x_{k-1})+c_k(x_k-y)=c_k(x_k-x_{k-1})$: the sum is unchanged.
-
-**Conclusion.** The integral of a step function is well-defined.
-
-@@@ riemann-step-linear-combination.md
----
-title: Linearity of the integral on step functions
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 2
-order: 1
-tags: linearity, step functions, sum
-date: 2026-11-05
----
-
-## Statement
-
-Let $f,g:[a,b]\to\mathbb{R}$ be step functions and $\lambda\in\mathbb{R}$. Show that $f+\lambda g$ is a step function and that
-$$\int_a^b(f+\lambda g)=\int_a^bf+\lambda\int_a^bg.$$
-
-## Hint
-
-Take the common refinement of the two subdivisions, then use linearity of finite sums.
-
-## Solution
-
-**Common refinement.** Let $\sigma_f$ and $\sigma_g$ be subdivisions adapted to $f$ and $g$. Take $\sigma=\sigma_f\cup\sigma_g$ (the union of all subdivision points). On each interval of $\sigma$, both $f$ and $g$ are constant, say $f=u_k$, $g=v_k$.
-
-**Compute.**
-$$\int_a^b(f+\lambda g)=\sum_k(u_k+\lambda v_k)(x_k-x_{k-1})=\sum_ku_k\Delta_k+\lambda\sum_kv_k\Delta_k.$$
-This is $\int f+\lambda\int g$.
-
-**Conclusion.** The integral is linear on the space of step functions.
-
-@@@ riemann-step-constant-integral.md
----
-title: Integral of a constant step function
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 1
-order: 1
-tags: constant, step function, elementary
-date: 2026-11-05
----
-
-## Statement
-
-Let $f(x)=c$ for $x\in[a,b]$. Compute $\int_a^b f$ directly from the definition for step functions.
-
-## Hint
-
-Take the trivial subdivision $\{a,b\}$; the sum is $c\cdot(b-a)$.
-
-## Solution
-
-**Direct computation.** With subdivision $\{a,b\}$, the single interval $[a,b]$ has constant value $c$. So
-$$\int_a^b c\,dx=c\,(b-a).$$
-
-**Conclusion.** The integral of a constant equals the constant times the length of the interval.
-
-@@@ riemann-step-additivity.md
----
-title: Additivity over adjacent intervals
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 2
-order: 1
-tags: additivity, step function, split
-date: 2026-11-05
----
-
-## Statement
-
-Let $f:[a,c]\to\mathbb{R}$ be a step function, and $b\in]a,c[$. Show that
-$$\int_a^cf=\int_a^bf+\int_b^cf.$$
-
-## Hint
-
-Add $b$ to the subdivision of $f$ and compare sums.
-
-## Solution
-
-**Refinement.** Let $\sigma$ be a subdivision of $[a,c]$ adapted to $f$. Set $\sigma'=\sigma\cup\{b\}$: still adapted to $f$. The sum over $\sigma'$ splits into the sum over the parts of $[a,b]$ and over the parts of $[b,c]$.
-
-**Sum.** $\sum_{k}\Delta_kc_k=\sum_{\Delta_k\subseteq[a,b]}c_k\Delta_k+\sum_{\Delta_k\subseteq[b,c]}c_k\Delta_k=\int_a^bf+\int_b^cf$.
-
-**Conclusion.** Chasles' relation holds for step functions.
-
-@@@ riemann-step-monotonicity.md
----
-title: Monotonicity of the integral
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 2
-order: 1
-tags: monotonicity, step functions, comparison
-date: 2026-11-05
----
-
-## Statement
-
-Let $f,g$ be step functions on $[a,b]$ with $f\le g$. Show that $\int_a^bf\le\int_a^bg$.
-
-## Hint
-
-Compare the two sums on a common refinement.
-
-## Solution
-
-**Common refinement.** Choose a common subdivision $\sigma$ of $[a,b]$. On each $]x_{k-1},x_k[$, $f\le g$ implies $c_k\le d_k$.
-
-**Sum.** $\sum c_k\Delta_k\le\sum d_k\Delta_k$.
-
-**Conclusion.** The integral is monotone.
-
-@@@ riemann-step-absolute-value.md
----
-title: Integral of $|f|$ for a step function
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 3
-order: 1
-tags: absolute value, step function, triangle inequality
-date: 2026-11-05
----
-
-## Statement
-
-Let $f$ be a step function on $[a,b]$. Show that $|f|$ is a step function and
-$$\left|\int_a^bf\right|\le\int_a^b|f|.$$
-
-## Hint
-
-$|f|$ has the same subdivisions as $f$; apply the triangle inequality to the sum.
-
-## Solution
-
-**$|f|$ is a step function.** On each interval where $f=c_k$, $|f|=|c_k|$, constant.
-
-**Inequality.**
-$$\left|\int_a^bf\right|=\left|\sum_kc_k\Delta_k\right|\le\sum_k|c_k|\Delta_k=\int_a^b|f|.$$
-
-**Conclusion.** The triangle inequality for integrals holds for step functions.
-
-@@@ riemann-step-null-function.md
----
-title: A step function with zero integral
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 3
-order: 1
-tags: zero integral, step functions, nonnegative
-date: 2026-11-05
----
-
-## Statement
-
-Let $f\ge0$ be a step function on $[a,b]$ with $\int_a^bf=0$. Show that $f$ vanishes at every point of continuity of $f$.
-
-## Hint
-
-If $f$ were positive on some open interval, the integral would be positive.
-
-## Solution
-
-**Setup.** Suppose $f(x_0)>0$ at a continuity point $x_0$. By continuity, there is a neighbourhood $]x_0-\varepsilon,x_0+\varepsilon[$ on which $f\ge f(x_0)/2>0$.
-
-**Positive integral.** The integral of $f$ over $[a,b]$ is at least $(f(x_0)/2)\cdot2\varepsilon$ if the whole neighbourhood lies in $[a,b]$, contradicting $\int f=0$. (If $x_0$ is an endpoint, a similar half-neighbourhood argument applies.)
-
-**Conclusion.** $f$ vanishes at each continuity point.
-
-@@@ riemann-step-darboux.md
----
-title: Darboux sums for a step function
+title: A limit via the mean value theorem for integrals
 category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 3
-order: 1
-tags: Darboux sums, upper lower, step functions
-date: 2026-11-05
+order: 25
+tags: mean value theorem for integrals, logarithm, limit
+date: 2026-11-06
 ---
 
 ## Statement
 
-Let $f$ be a step function on $[a,b]$. Show that its lower and upper Darboux sums (over the subdivision adapted to $f$) coincide, and deduce that $f$ is Riemann integrable with $\int_a^bf$ defined as usual.
+Compute
+$$\lim_{x\to0^+}\int_x^{3x}\frac{1}{te^t}\,dt.$$
 
 ## Hint
 
-On the intervals of the adapted subdivision, $\inf f=\sup f=c_k$.
+Apply the mean value theorem for integrals: for continuous $f$ and $g$ with $g\ge0$, there exists $c$ between the bounds with $\int_a^b f g=f(c)\int_a^b g$.
 
 ## Solution
 
-**Darboux sums.** Take a subdivision $\sigma$ adapted to $f$. On each $]x_{k-1},x_k[$, $f=c_k$, so $\inf=c_k=\sup$. Hence
-$$L(f,\sigma)=\sum_kc_k\Delta_k=U(f,\sigma).$$
+**Mean value theorem.** Fix $x>0$. On $[x,3x]$, take $f(t)=\dfrac{1}{e^t}$ (continuous) and $g(t)=\dfrac{1}{t}$ (continuous, positive on $[x,3x]$). There exists $c_x\in[x,3x]$ such that
+$$\int_x^{3x}\frac{1}{te^t}\,dt=\frac{1}{e^{c_x}}\int_x^{3x}\frac{1}{t}\,dt=\frac{\ln 3}{e^{c_x}}.$$
 
-**Riemann integrability.** Since $\inf_\sigma L(f,\sigma)=\sup_\sigma U(f,\sigma)$, $f$ is Riemann integrable with value $\int_a^bf$.
+**Limit.** Since $c_x\in[x,3x]$ and $x\to0^+$, we have $c_x\to0^+$, hence $e^{c_x}\to1$. Therefore
+$$\lim_{x\to0^+}\int_x^{3x}\frac{1}{te^t}\,dt=\frac{\ln 3}{1}=\ln 3.$$
 
-**Conclusion.** Step functions are Riemann integrable with the expected integral.
-
-@@@ riemann-step-upper-lower-squeeze.md
+@@@ riemann-mean-value-arctan.md
 ---
-title: Squeezing between step functions
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 3
-order: 1
-tags: Riemann integrability, step functions, squeeze
-date: 2026-11-05
----
-
-## Statement
-
-Let $f:[a,b]\to\mathbb{R}$ be bounded. Suppose that for every $\varepsilon>0$ there exist step functions $\varphi\le f\le\psi$ with $\int_a^b(\psi-\varphi)<\varepsilon$. Show that $f$ is Riemann integrable.
-
-## Hint
-
-The lower and upper Darboux integrals of $f$ differ by at most $\int(\psi-\varphi)$.
-
-## Solution
-
-**Darboux integrals.** For every $\varepsilon>0$, choose $\varphi\le f\le\psi$ with $\int(\psi-\varphi)<\varepsilon$. Monotonicity gives
-$$\int_a^b\varphi\le\int_a^{\underline b}f\le\int_a^{\overline b}f\le\int_a^b\psi,$$
-so
-$$0\le\int_a^{\overline b}f-\int_a^{\underline b}f<\varepsilon.$$
-
-**Conclusion.** Since this holds for every $\varepsilon>0$, the lower and upper Darboux integrals coincide: $f$ is Riemann integrable.
-
-@@@ riemann-step-monotone-riemann.md
----
-title: A monotone function on a fine grid
+title: Limit of an integral with arctan
 category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
-order: 1
-tags: monotone functions, Riemann integrability, step approximation
-date: 2026-11-05
+order: 26
+tags: mean value theorem for integrals, arctan, limit
+date: 2026-11-06
 ---
 
 ## Statement
 
-Let $f:[a,b]\to\mathbb{R}$ be monotone (say nondecreasing). Show that for every $\varepsilon>0$ there exist step functions $\varphi\le f\le\psi$ with $\int(\psi-\varphi)<\varepsilon$.
+Compute
+$$\lim_{n\to+\infty}\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt.$$
 
 ## Hint
 
-Take a subdivision with small mesh $\eta$; define $\varphi$ and $\psi$ constant on each interval with values $f(x_{k-1})$ and $f(x_k)$.
+Apply the mean value theorem for integrals with $f(t)=\arctan(t^2)$ and $g(t)=1/\sqrt t$; estimate $c_n\in[n^2+1,n^2+n+1]$ and use $\arctan(c_n^2)\to\pi/2$.
 
 ## Solution
 
-**Subdivision.** Since $f$ is bounded (being monotone on a compact interval), let $M=f(b)-f(a)$. Choose a subdivision $\sigma=\{a=x_0<\cdots<x_n=b\}$ with $\max_k\Delta_k<\varepsilon/M$.
+**Mean value theorem.** On $[n^2+1,n^2+n+1]$, $f(t)=\arctan(t^2)$ is continuous and $g(t)=1/\sqrt t$ is continuous and positive. There exists $c_n\in[n^2+1,n^2+n+1]$ with
+$$\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt=\arctan(c_n^2)\int_{n^2+1}^{n^2+n+1}\frac{dt}{\sqrt t}.$$
 
-**Step functions.** Define $\varphi(x)=f(x_{k-1})$ and $\psi(x)=f(x_k)$ on $]x_{k-1},x_k[$, with arbitrary values at the points $x_k$. Monotonicity ensures $\varphi\le f\le\psi$.
+**Compute the remaining integral.**
+$$\int_{n^2+1}^{n^2+n+1}\frac{dt}{\sqrt t}=\bigl[2\sqrt t\bigr]_{n^2+1}^{n^2+n+1}=2\sqrt{n^2+n+1}-2\sqrt{n^2+1}.$$
+Rationalize:
+$$2\sqrt{n^2+n+1}-2\sqrt{n^2+1}=\frac{2n}{\sqrt{n^2+n+1}+\sqrt{n^2+1}}.$$
+As $n\to+\infty$, the denominator is $\sim 2n$, so the quotient tends to $1$. More precisely, it equals
+$$\frac{2n}{n\sqrt{1+\frac1n+\frac1{n^2}}+n\sqrt{1+\frac1{n^2}}}=\frac{2}{\sqrt{1+\frac1n+\frac1{n^2}}+\sqrt{1+\frac1{n^2}}}\to\frac{2}{1+1}=1.$$
 
-**Integral difference.**
-$$\int_a^b(\psi-\varphi)=\sum_k(f(x_k)-f(x_{k-1}))\Delta_k<\eta\sum_k(f(x_k)-f(x_{k-1}))=\eta\cdot M<\varepsilon.$$
+**Limit of $\arctan(c_n^2)$.** Since $c_n\ge n^2+1\to+\infty$, we have $c_n^2\to+\infty$, so $\arctan(c_n^2)\to\pi/2$.
 
-**Conclusion.** $f$ is Riemann integrable (by the squeeze criterion).
+**Conclusion.** The product of these two limits gives
+$$\lim_{n\to+\infty}\int_{n^2+1}^{n^2+n+1}\frac{\arctan(t^2)}{\sqrt t}\,dt=\frac{\pi}{2}\cdot1=\frac{\pi}{2}.$$
 
-@@@ riemann-step-composition.md
+@@@ riemann-mean-value-cos-log.md
 ---
-title: Composition with a continuous function
+title: Limit of an integral with cosine and logarithm
 category: calculus/single-variable/integration/riemann
 level: l1
 difficulty: 4
-order: 1
-tags: composition, continuous, integrability preservation
-date: 2026-11-05
+order: 27
+tags: mean value theorem for integrals, cosine, logarithm
+date: 2026-11-06
 ---
 
 ## Statement
 
-Let $f:[a,b]\to\mathbb{R}$ be Riemann integrable and $\Phi:\mathbb{R}\to\mathbb{R}$ continuous. Show that $\Phi\circ f$ is Riemann integrable.
+Compute
+$$\lim_{x\to1^+}\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt.$$
 
 ## Hint
 
-Approximate $f$ by step functions and use uniform continuity of $\Phi$ on a bounded interval.
+The integrand is singular at $t=1$, so rewrite the integral using the mean value theorem with $f(t)=t\cos(\pi t)$ and $g(t)=\frac{1}{t\ln t}$. Then estimate $c_x\in[x,x^2]$ and let $x\to1^+$.
 
 ## Solution
 
-**Setup.** Since $f$ is bounded, $f([a,b])\subseteq[-M,M]$ for some $M>0$; $\Phi$ is uniformly continuous on $[-M,M]$.
+**Rewriting the integrand.** Note that for $t>1$,
+$$\frac{\cos(\pi t)}{\ln t}=t\cos(\pi t)\cdot\frac{1}{t\ln t}.$$
 
-**Approximation.** For $\varepsilon>0$, choose step functions $\varphi\le f\le\psi$ with $\int(\psi-\varphi)<\delta$, where $\delta$ is chosen so that $|\Phi(s)-\Phi(t)|<\varepsilon'$ whenever $|s-t|<\delta$ on $[-M,M]$.
+**Mean value theorem for integrals.** On $[x,x^2]$ (with $1<x$), the function $t\mapsto t\cos(\pi t)$ is continuous and $t\mapsto\frac{1}{t\ln t}$ is continuous and positive. There exists $c_x\in[x,x^2]$ with
+$$\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=c_x\cos(\pi c_x)\int_x^{x^2}\frac{dt}{t\ln t}.$$
 
-**Step functions.** Then $\Phi\circ\varphi\le\Phi\circ f\le\Phi\circ\psi$ (where $\Phi$ is increasing — WLOG, working with $\Phi$ is more subtle; but for uniformly continuous $\Phi$, one uses $\Phi\circ\varphi$ and $\Phi\circ\psi$ plus bounds). The integral difference is controlled by $\varepsilon'$ and the length of $[a,b]$.
+**Compute the remaining integral.**
+$$\int_x^{x^2}\frac{dt}{t\ln t}=\bigl[\ln(\ln t)\bigr]_x^{x^2}=\ln(\ln(x^2))-\ln(\ln x)=\ln 2.$$
+So
+$$\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=c_x\cos(\pi c_x)\ln 2.$$
 
-**Conclusion.** $\Phi\circ f$ is Riemann integrable.
+**Limit as $x\to1^+$.** Since $c_x\in[x,x^2]$ and $x\to1^+$, we have $c_x\to1$. Thus $c_x\cos(\pi c_x)\to1\cdot\cos(\pi)=-1$. Therefore
+$$\lim_{x\to1^+}\int_x^{x^2}\frac{\cos(\pi t)}{\ln t}\,dt=(-1)\cdot\ln 2=-\ln 2.$$
 
-**Remark.** The result is standard: composition of Riemann integrable with continuous preserves integrability.
+@@@ limits-of-integrals-depending-on-n.md
+---
+title: Limits of integrals depending on n
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 4
+order: 28
+tags: limits of integrals, squeeze theorem, integration by parts
+date: 2026-11-02
+---
+
+## Statement
+
+1. Let $I_n=\displaystyle\int_0^1\frac{x^n}{1+x}\,dx$. Show that $I_n\to0$.
+2. Show that $(n+1)I_n\to\dfrac12$.
+3. Show that $\displaystyle\int_0^1\frac{dx}{1+x^n}\to1$.
+
+## Hint
+
+For part 1, bound $\frac1{1+x}$ between $\frac12$ and $1$. For part 2, integrate by parts to isolate the main term. For part 3, look at $1-\frac1{1+x^n}$.
+
+## Solution
+
+**1.** For $x\in[0,1]$, $0\le\frac{x^n}{1+x}\le x^n$, so $0\le I_n\le\int_0^1x^n\,dx=\frac1{n+1}\to0$.
+
+**2.** Integrate by parts with $u=\frac1{1+x}$, $v'=x^n$:
+$$I_n=\left[\frac{x^{n+1}}{(n+1)(1+x)}\right]_0^1+\frac1{n+1}\int_0^1\frac{x^{n+1}}{(1+x)^2}\,dx=\frac1{2(n+1)}+\frac{J_n}{n+1},$$
+where $0\le J_n\le\int_0^1x^{n+1}dx=\frac1{n+2}\to0$. Hence $(n+1)I_n=\frac12+J_n\to\frac12$.
+
+**3.** $\displaystyle1-\frac1{1+x^n}=\frac{x^n}{1+x^n}\in[0,x^n]$, so
+$$0\le1-\int_0^1\frac{dx}{1+x^n}\le\frac1{n+1}\to0.$$
+
+**Remark.** Part 2 gives the *rate*: $I_n\sim\frac1{2n}$. Most of the integral's mass of $x^n$ sits near $x=1$, where $\frac1{1+x}\approx\frac12$.
+
+@@@ the-cauchy-schwarz-inequality-for-integrals.md
+---
+title: The Cauchy–Schwarz inequality for integrals
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 3
+order: 29
+tags: inequalities, Cauchy-Schwarz, quadratic polynomial
+date: 2026-11-02
+---
+
+## Statement
+
+1. Let $f,g$ be continuous on $[a,b]$. Prove that
+$$\left(\int_a^bfg\right)^2\le\int_a^bf^2\cdot\int_a^bg^2.$$
+2. Deduce a bound for $\displaystyle\int_0^{\pi/2}\sqrt{\sin x}\,dx$.
+
+## Hint
+
+For every real $\lambda$, $\int_a^b(f+\lambda g)^2\ge0$. This is a quadratic polynomial in $\lambda$ that is never negative.
+
+## Solution
+
+**1.** Expanding,
+$$0\le\int_a^b(f+\lambda g)^2=\lambda^2\int g^2+2\lambda\int fg+\int f^2\quad\text{for all }\lambda\in\mathbb{R}.$$
+A quadratic $A\lambda^2+B\lambda+C$ that is never negative has non-positive discriminant, $B^2-4AC\le0$ (if $A=\int g^2=0$, then $g=0$ and the inequality is trivial). Here $B=2\int fg$, so
+$$4\left(\int fg\right)^2-4\int g^2\int f^2\le0.$$
+
+**2.** Take $f=\sqrt{\sin x}$ and $g=1$ on $[0,\frac\pi2]$:
+$$\left(\int_0^{\pi/2}\sqrt{\sin x}\,dx\right)^2\le\int_0^{\pi/2}\sin x\,dx\cdot\int_0^{\pi/2}1\,dx=1\cdot\frac\pi2.$$
+So the integral is at most $\sqrt{\pi/2}\approx1.2533$.
+
+**Remark.** The true value is about $1.198$, so the bound is quite sharp. It is attained exactly when $f$ and $g$ are proportional.
+
+@@@ comparing-the-harmonic-sum-with-the-logarithm.md
+---
+title: Comparing the harmonic sum with the logarithm
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 3
+order: 30
+tags: integral comparison, harmonic series, monotonicity
+date: 2026-11-02
+---
+
+## Statement
+
+Let $H_n=\displaystyle\sum_{k=1}^n\frac1k$. Prove that for all $n\ge1$,
+$$\ln(n+1)\le H_n\le1+\ln n,$$
+and deduce that $H_n\to+\infty$ and $\dfrac{H_n}{\ln n}\to1$.
+
+## Hint
+
+Since $x\mapsto\frac1x$ is decreasing, on each interval $[k,k+1]$ it lies between $\frac1{k+1}$ and $\frac1k$.
+
+## Solution
+
+**Two comparisons.** For $k\ge1$ and $x\in[k,k+1]$, $\frac1{k+1}\le\frac1x\le\frac1k$. Integrating over $[k,k+1]$ (length $1$):
+$$\frac1{k+1}\le\int_k^{k+1}\frac{dx}x\le\frac1k.$$
+
+**Lower bound.** Using the right inequality and summing over $k=1,\dots,n$:
+$$H_n\ge\int_1^{n+1}\frac{dx}x=\ln(n+1).$$
+
+**Upper bound.** Using the left inequality, $\frac1k\le\int_{k-1}^k\frac{dx}x$ for $k\ge2$. Summing over $k=2,\dots,n$:
+$$H_n-1\le\int_1^n\frac{dx}x=\ln n.$$
+
+**Consequences.** Since $\ln(n+1)\to+\infty$, $H_n\to+\infty$. Dividing by $\ln n$,
+$$\frac{\ln(n+1)}{\ln n}\le\frac{H_n}{\ln n}\le\frac1{\ln n}+1,$$
+and both bounds tend to $1$.
+
+**Remark.** The difference $H_n-\ln n$ is decreasing and bounded below, so it converges to a constant, the Euler–Mascheroni constant $\gamma\approx0.5772$.
+
+@@@ bounds-for-the-factorial-by-integration.md
+---
+title: Bounds for n! by comparing with an integral
+category: calculus/single-variable/integration/riemann
+level: l1
+difficulty: 4
+order: 31
+tags: factorial, integral comparison, Stirling
+date: 2026-11-02
+---
+
+## Statement
+
+Prove that for every integer $n\ge1$,
+$$e\left(\frac ne\right)^n\le n!\le e\,n\left(\frac ne\right)^n.$$
+
+## Hint
+
+Write $\ln n!=\sum_{k=2}^n\ln k$ and compare with $\int_1^n\ln x\,dx=n\ln n-n+1$, using that $\ln$ is increasing.
+
+## Solution
+
+**Antiderivative.** $\int\ln x\,dx=x\ln x-x$, so $\int_1^n\ln x\,dx=n\ln n-n+1$.
+
+**Lower bound.** Since $\ln$ is increasing, $\ln k\ge\int_{k-1}^k\ln x\,dx$ for $k\ge2$. Summing from $k=2$ to $n$:
+$$\ln n!\ge\int_1^n\ln x\,dx=n\ln n-n+1.$$
+
+**Upper bound.** Since $\ln$ is increasing, $\ln k\le\int_k^{k+1}\ln x\,dx$. Summing from $k=1$ to $n-1$:
+$$\ln(n-1)!\le\int_1^n\ln x\,dx=n\ln n-n+1,$$
+so $\ln n!\le n\ln n-n+1+\ln n$.
+
+**Exponentiating.** $n\ln n-n=\ln\left(\frac ne\right)^n$, which gives exactly the two stated inequalities.
+
+**Check.** For $n=10$: $e\left(\frac{10}e\right)^{10}\approx1.23\cdot10^6\le10!=3\,628\,800\le1.23\cdot10^7$.
+
+**Remark.** Stirling's formula $n!\sim\sqrt{2\pi n}\,(n/e)^n$ refines this: the true size lies between the two bounds, around $\sqrt n$ times $(n/e)^n$.
+
+@@@ an-absolute-value-integral-with-a-parameter.md
+---
+title: An absolute value integral with a parameter
+category: calculus/single-variable/integration/riemann
+level: olympiad
+difficulty: 5
+order: 32
+tags: absolute value, parameters, trigonometry
+date: 2026-11-02
+---
+
+## Statement
+
+Find all real numbers $t$ such that
+$$\int_0^{\pi/2}\left|\sin x+t\cos x\right|\,dx=1.$$
+
+## Hint
+
+On $[0,\frac\pi2]$ both $\sin$ and $\cos$ are non-negative, so consider the sign of $t$. When $t<0$ the integrand changes sign at one point: split there.
+
+## Solution
+
+**Case $t\ge0$.** The integrand is non-negative, so
+$$\int_0^{\pi/2}(\sin x+t\cos x)\,dx=1+t.$$
+Setting $1+t=1$ gives $t=0$.
+
+**Case $t<0$.** Write $t=-k$ with $k>0$. The function $\sin x-k\cos x$ vanishes at $x_0=\arctan k$, is negative before and positive after. Using $\sin x_0=\frac k{\sqrt{1+k^2}}$ and $\cos x_0=\frac1{\sqrt{1+k^2}}$:
+$$\int_0^{x_0}(k\cos x-\sin x)\,dx=\bigl[k\sin x+\cos x\bigr]_0^{x_0}=\sqrt{1+k^2}-1,$$
+$$\int_{x_0}^{\pi/2}(\sin x-k\cos x)\,dx=\bigl[-\cos x-k\sin x\bigr]_{x_0}^{\pi/2}=\sqrt{1+k^2}-k.$$
+The total is $2\sqrt{1+k^2}-k-1$. Setting it equal to $1$:
+$$2\sqrt{1+k^2}=k+2\ \Longrightarrow\ 4+4k^2=k^2+4k+4\ \Longrightarrow\ 3k^2=4k.$$
+Since $k>0$, $k=\frac43$.
+
+**Answer.** $t=0$ or $t=-\dfrac43$.
 
 @@@ riemann-step-summary.md
 ---
@@ -606,7 +1086,7 @@ title: Summary of step functions and Riemann integration
 category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 2
-order: 1
+order: 33
 tags: summary, step functions, Riemann integrability
 date: 2026-11-05
 ---
@@ -641,456 +1121,13 @@ Review the definitions and key properties.
 **Composition.** $\Phi\circ f$ is Riemann integrable when $f$ is and $\Phi$ is continuous.
 
 **Conclusion.** Step functions are the elementary building blocks of the Riemann integral; integrability is captured by their approximation.
-
-@@@ basic-antiderivatives-and-definite-integrals.md
----
-title: Recognising antiderivatives
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 1
-tags: antiderivatives, definite integrals, fundamental theorem
-date: 2026-11-02
----
-
-## Statement
-
-Compute
-$$I_1=\int_1^2\frac1{t^2}\,dt,\qquad I_2=\int_e^3\frac{dx}{x\ln x},\qquad I_3=\int_1^2\frac{e^{\sqrt x}}{2\sqrt x}\,dx.$$
-
-## Hint
-
-Look for a function whose derivative is the integrand: $-\frac1t$, $\ln(\ln x)$ and $e^{\sqrt x}$ are good candidates.
-
-## Solution
-
-**Idea.** By the fundamental theorem of calculus, $\int_a^bf=F(b)-F(a)$ for any antiderivative $F$. The task is to *recognise* $F$, which is the reverse of differentiating a composition.
-
-**$I_1$.** $\left(-\frac1t\right)'=\frac1{t^2}$, so $I_1=\left[-\frac1t\right]_1^2=-\frac12+1=\frac12$.
-
-**$I_2$.** $(\ln(\ln x))'=\frac1{\ln x}\cdot\frac1x$, so $I_2=\bigl[\ln(\ln x)\bigr]_e^3=\ln(\ln3)-\ln(\ln e)=\ln(\ln3)$, because $\ln e=1$ and $\ln1=0$.
-
-**$I_3$.** $\left(e^{\sqrt x}\right)'=e^{\sqrt x}\cdot\frac1{2\sqrt x}$, so $I_3=\bigl[e^{\sqrt x}\bigr]_1^2=e^{\sqrt2}-e$.
-
-**Pattern.** In each case the integrand has the form $u'\,g(u)$: a chain rule read backwards.
-@@@ area-with-an-absolute-value.md
----
-title: An area with an absolute value
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 1
-tags: definite integrals, absolute value, sign of a function
-date: 2026-11-02
----
-
-## Statement
-
-Compute $\displaystyle\int_0^2\left|x^2-3x+2\right|\,dx$.
-
-## Hint
-
-Factor $x^2-3x+2=(x-1)(x-2)$ and find where it is positive and negative.
-
-## Solution
-
-**Idea.** There is no antiderivative of $|u|$ that works in one piece. We split the interval where the sign changes.
-
-**Sign.** $(x-1)(x-2)\ge0$ on $[0,1]$ and $\le0$ on $[1,2]$. Hence
-$$\int_0^2|x^2-3x+2|\,dx=\int_0^1(x^2-3x+2)\,dx-\int_1^2(x^2-3x+2)\,dx.$$
-
-**Computation.** With $F(x)=\frac{x^3}3-\frac{3x^2}2+2x$:
-$$F(1)-F(0)=\frac13-\frac32+2=\frac56,\qquad F(2)-F(1)=\left(\frac83-6+4\right)-\frac56=-\frac16.$$
-So the integral equals $\frac56+\frac16=1$.
-
-**Remark.** Without the absolute value, the integral would be $\frac56-\frac16=\frac23$: the signed areas partially cancel. The absolute value counts the total area between the curve and the axis.
-@@@ area-between-a-parabola-and-a-line.md
----
-title: Area between a parabola and a line
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 1
-tags: area, definite integrals, intersection points
-date: 2026-11-02
----
-
-## Statement
-
-Compute the area of the region enclosed by the parabola $y=x^2$ and the line $y=x+2$.
-
-## Hint
-
-Find where the curves meet, and decide which one lies above the other between those points.
-
-## Solution
-
-**Intersections.** $x^2=x+2\iff x^2-x-2=0\iff(x-2)(x+1)=0$, so $x=-1$ or $x=2$.
-
-**Which is on top.** At $x=0$ the line has height $2$ and the parabola $0$, so the line is above on $[-1,2]$.
-
-**Area.**
-$$\int_{-1}^2\left(x+2-x^2\right)dx=\left[\frac{x^2}2+2x-\frac{x^3}3\right]_{-1}^2=\left(2+4-\frac83\right)-\left(\frac12-2+\frac13\right)=\frac{10}3+\frac76=\frac92.$$
-
-**Answer.** The area is $\dfrac92$.
-@@@ integrals-simplified-by-parity.md
----
-title: Integrals that simplify by parity
-category: calculus/single-variable/integration/riemann
-level: lycee
-difficulty: 1
-tags: symmetry, odd and even functions
-date: 2026-11-02
----
-
-## Statement
-
-Compute, without finding any antiderivative where possible:
-1. $\displaystyle\int_{-2}^2x^5e^{x^2}\,dx$
-2. $\displaystyle\int_{-1}^1(x^3+3x^2)\,dx$
-3. $\displaystyle\int_{-\pi}^{\pi}\bigl(x\cos x+\sin^2x\bigr)\,dx$
-
-## Hint
-
-If $f$ is odd, $\int_{-a}^af=0$. If $f$ is even, $\int_{-a}^af=2\int_0^af$.
-
-## Solution
-
-**Why the rule holds.** The substitution $x\mapsto-x$ gives $\int_{-a}^0f(x)\,dx=\int_0^af(-u)\,du$. For an odd function this is $-\int_0^af$, which cancels the other half. For an even function it equals $\int_0^af$, which doubles it.
-
-**1.** $x\mapsto x^5e^{x^2}$ is odd (odd power times even function), so the integral is $0$.
-
-**2.** $x^3$ is odd, so it contributes $0$. $3x^2$ is even: $2\int_0^13x^2\,dx=2$. The result is $2$.
-
-**3.** $x\cos x$ is odd, so it contributes $0$. For the other term, $\sin^2x=\frac{1-\cos2x}2$ gives $\int_{-\pi}^\pi\sin^2x\,dx=\pi$. The result is $\pi$.
-
-**Remark.** Recognising symmetry can turn an intimidating integral, like the first one, into zero in one line.
-@@@ riemann-sums-and-limits-of-sums.md
----
-title: Limits of sums as Riemann sums
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 3
-order: 4
-tags: Riemann sums, limits, pi, ln 2
-date: 2026-11-02
----
-
-## Statement
-
-Compute the limits
-$$A=\lim_{n\to\infty}\sum_{k=1}^n\frac n{n^2+k^2},\qquad B=\lim_{n\to\infty}\sum_{k=1}^n\frac1{n+k}.$$
-
-## Hint
-
-Factor $\frac1n$ out so that the sum becomes $\frac1n\sum f\!\left(\frac kn\right)$ for a continuous function $f$.
-
-## Solution
-
-**Principle.** For $f$ continuous on $[0,1]$, the Riemann sums $\frac1n\sum_{k=1}^nf\!\left(\frac kn\right)$ converge to $\int_0^1f$.
-
-**$A$.** Dividing numerator and denominator by $n^2$,
-$$\frac n{n^2+k^2}=\frac1n\cdot\frac1{1+(k/n)^2}.$$
-So $A=\int_0^1\frac{dx}{1+x^2}=\arctan1=\dfrac\pi4$.
-
-**$B$.** Similarly $\dfrac1{n+k}=\dfrac1n\cdot\dfrac1{1+k/n}$, so
-$$B=\int_0^1\frac{dx}{1+x}=\ln2.$$
-
-**Numerical check.** For $n=100$: the first sum is $0.7829$ (close to $\frac\pi4=0.7854$) and the second is $0.6907$ (close to $\ln2=0.6931$).
-
-**Remark.** This is the standard way to evaluate limits of sums: spot the $\frac1n$ and the ratio $\frac kn$.
-@@@ darboux-sums-and-the-dirichlet-function.md
----
-title: Darboux sums of the Dirichlet function
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 3
-tags: Riemann integrability, Darboux sums, density
-date: 2026-11-02
----
-
-## Statement
-
-Let $f:[1,2]\to\mathbb{R}$ with $f(x)=0$ if $x$ is rational and $f(x)=1$ if $x$ is irrational. For a partition $\sigma$ compute the lower sum $s_\sigma(f)$ and the upper sum $S_\sigma(f)$. Determine $s(f)=\sup_\sigma s_\sigma(f)$ and $S(f)=\inf_\sigma S_\sigma(f)$, and decide whether $f$ is Riemann integrable.
-
-## Hint
-
-Both rationals and irrationals are dense. What are the infimum and the supremum of $f$ on any subinterval of positive length?
-
-## Solution
-
-**Definitions.** For a partition $1=x_0<x_1<\dots<x_n=2$, let $m_i=\inf_{[x_{i-1},x_i]}f$ and $M_i=\sup_{[x_{i-1},x_i]}f$. Then
-$$s_\sigma(f)=\sum m_i(x_i-x_{i-1}),\qquad S_\sigma(f)=\sum M_i(x_i-x_{i-1}).$$
-
-**Values.** Each subinterval has positive length and so contains a rational (where $f=0$) and an irrational (where $f=1$). Hence $m_i=0$ and $M_i=1$ for all $i$, and
-$$s_\sigma(f)=0,\qquad S_\sigma(f)=\sum(x_i-x_{i-1})=1.$$
-
-**Conclusion.** $s(f)=0$ and $S(f)=1$. They differ, so $f$ is **not Riemann integrable**.
-
-**Remark.** No refinement of the partition helps: the function oscillates fully on every tiny interval. This example motivated Lebesgue's theory, in which this function has integral $1$, since the rationals have measure zero.
-@@@ integrability-with-one-discontinuity.md
----
-title: Integrability with one wild point
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 4
-tags: Riemann integrability, Darboux criterion, oscillation
-date: 2026-11-02
----
-
-## Statement
-
-Let $f(x)=\sin\dfrac1x$ for $x\in(0,1]$ and $f(0)=0$. Prove that $f$ is Riemann integrable on $[0,1]$, even though it is discontinuous at $0$.
-
-## Hint
-
-Use the Darboux criterion: $f$ is integrable if for every $\eta>0$ there is a partition with $S_\sigma-s_\sigma<\eta$. Isolate a tiny interval $[0,\varepsilon]$ around the bad point.
-
-## Solution
-
-**Idea.** The oscillation of $f$ near $0$ is large, but it happens on a very short interval, so it costs little area.
-
-**Setup.** Fix $\eta>0$ and choose $\varepsilon\in(0,1)$ with $\varepsilon<\frac\eta4$.
-
-**On $[\varepsilon,1]$.** $f$ is continuous, hence integrable, so there is a partition $\sigma'$ of $[\varepsilon,1]$ with $S_{\sigma'}-s_{\sigma'}<\frac\eta2$.
-
-**On $[0,\varepsilon]$.** Since $-1\le f\le1$, on this single interval $M-m\le2$, contributing at most $2\varepsilon$ to $S-s$.
-
-**Total.** For the partition $\sigma=\{0\}\cup\sigma'$ of $[0,1]$,
-$$S_\sigma-s_\sigma<2\varepsilon+\frac\eta2<\frac\eta2+\frac\eta2=\eta,$$
-since $2\varepsilon<\frac\eta2$.
-By the Darboux criterion, $f$ is integrable on $[0,1]$.
-
-**Remark.** The same argument shows that any bounded function with finitely many discontinuities is Riemann integrable. (Compare with the Dirichlet function, discontinuous *everywhere*.)
-@@@ the-derivative-of-an-integral-with-variable-bounds.md
----
-title: The derivative of an integral with variable bounds
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 2
-tags: fundamental theorem of calculus, chain rule, limits
-date: 2026-11-02
----
-
-## Statement
-
-1. Let $F(x)=\displaystyle\int_x^{x^2}e^{-t^2}\,dt$. Compute $F'(x)$.
-2. Compute $\displaystyle\lim_{x\to0}\frac1x\int_0^x\cos(t^2)\,dt$.
-
-## Hint
-
-The function $e^{-t^2}$ has no elementary antiderivative, but you do not need one. Introduce $G(x)=\int_0^xe^{-t^2}dt$ and use $G'(x)=e^{-x^2}$.
-
-## Solution
-
-**1.** Let $G(u)=\int_0^ue^{-t^2}dt$. Then $G'(u)=e^{-u^2}$ (fundamental theorem), and
-$$F(x)=G(x^2)-G(x).$$
-By the chain rule,
-$$F'(x)=2x\,G'(x^2)-G'(x)=2x\,e^{-x^4}-e^{-x^2}.$$
-
-**2.** Let $H(x)=\int_0^x\cos(t^2)\,dt$. Then $H(0)=0$ and $H'(x)=\cos(x^2)$, so
-$$\frac{H(x)}x=\frac{H(x)-H(0)}{x-0}\longrightarrow H'(0)=\cos0=1.$$
-
-**Remark.** The fundamental theorem says that *differentiation undoes integration*: $\frac d{dx}\int_a^xf=f(x)$ for continuous $f$. The chain rule handles non-trivial bounds.
-@@@ limits-of-integrals-depending-on-n.md
----
-title: Limits of integrals depending on n
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 4
-tags: limits of integrals, squeeze theorem, integration by parts
-date: 2026-11-02
----
-
-## Statement
-
-1. Let $I_n=\displaystyle\int_0^1\frac{x^n}{1+x}\,dx$. Show that $I_n\to0$.
-2. Show that $(n+1)I_n\to\dfrac12$.
-3. Show that $\displaystyle\int_0^1\frac{dx}{1+x^n}\to1$.
-
-## Hint
-
-For part 1, bound $\frac1{1+x}$ between $\frac12$ and $1$. For part 2, integrate by parts to isolate the main term. For part 3, look at $1-\frac1{1+x^n}$.
-
-## Solution
-
-**1.** For $x\in[0,1]$, $0\le\frac{x^n}{1+x}\le x^n$, so $0\le I_n\le\int_0^1x^n\,dx=\frac1{n+1}\to0$.
-
-**2.** Integrate by parts with $u=\frac1{1+x}$, $v'=x^n$:
-$$I_n=\left[\frac{x^{n+1}}{(n+1)(1+x)}\right]_0^1+\frac1{n+1}\int_0^1\frac{x^{n+1}}{(1+x)^2}\,dx=\frac1{2(n+1)}+\frac{J_n}{n+1},$$
-where $0\le J_n\le\int_0^1x^{n+1}dx=\frac1{n+2}\to0$. Hence $(n+1)I_n=\frac12+J_n\to\frac12$.
-
-**3.** $\displaystyle1-\frac1{1+x^n}=\frac{x^n}{1+x^n}\in[0,x^n]$, so
-$$0\le1-\int_0^1\frac{dx}{1+x^n}\le\frac1{n+1}\to0.$$
-
-**Remark.** Part 2 gives the *rate*: $I_n\sim\frac1{2n}$. Most of the integral's mass of $x^n$ sits near $x=1$, where $\frac1{1+x}\approx\frac12$.
-@@@ the-cauchy-schwarz-inequality-for-integrals.md
----
-title: The Cauchy–Schwarz inequality for integrals
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 3
-tags: inequalities, Cauchy-Schwarz, quadratic polynomial
-date: 2026-11-02
----
-
-## Statement
-
-1. Let $f,g$ be continuous on $[a,b]$. Prove that
-$$\left(\int_a^bfg\right)^2\le\int_a^bf^2\cdot\int_a^bg^2.$$
-2. Deduce a bound for $\displaystyle\int_0^{\pi/2}\sqrt{\sin x}\,dx$.
-
-## Hint
-
-For every real $\lambda$, $\int_a^b(f+\lambda g)^2\ge0$. This is a quadratic polynomial in $\lambda$ that is never negative.
-
-## Solution
-
-**1.** Expanding,
-$$0\le\int_a^b(f+\lambda g)^2=\lambda^2\int g^2+2\lambda\int fg+\int f^2\quad\text{for all }\lambda\in\mathbb{R}.$$
-A quadratic $A\lambda^2+B\lambda+C$ that is never negative has non-positive discriminant, $B^2-4AC\le0$ (if $A=\int g^2=0$, then $g=0$ and the inequality is trivial). Here $B=2\int fg$, so
-$$4\left(\int fg\right)^2-4\int g^2\int f^2\le0.$$
-
-**2.** Take $f=\sqrt{\sin x}$ and $g=1$ on $[0,\frac\pi2]$:
-$$\left(\int_0^{\pi/2}\sqrt{\sin x}\,dx\right)^2\le\int_0^{\pi/2}\sin x\,dx\cdot\int_0^{\pi/2}1\,dx=1\cdot\frac\pi2.$$
-So the integral is at most $\sqrt{\pi/2}\approx1.2533$.
-
-**Remark.** The true value is about $1.198$, so the bound is quite sharp. It is attained exactly when $f$ and $g$ are proportional.
-@@@ comparing-the-harmonic-sum-with-the-logarithm.md
----
-title: Comparing the harmonic sum with the logarithm
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 3
-tags: integral comparison, harmonic series, monotonicity
-date: 2026-11-02
----
-
-## Statement
-
-Let $H_n=\displaystyle\sum_{k=1}^n\frac1k$. Prove that for all $n\ge1$,
-$$\ln(n+1)\le H_n\le1+\ln n,$$
-and deduce that $H_n\to+\infty$ and $\dfrac{H_n}{\ln n}\to1$.
-
-## Hint
-
-Since $x\mapsto\frac1x$ is decreasing, on each interval $[k,k+1]$ it lies between $\frac1{k+1}$ and $\frac1k$.
-
-## Solution
-
-**Two comparisons.** For $k\ge1$ and $x\in[k,k+1]$, $\frac1{k+1}\le\frac1x\le\frac1k$. Integrating over $[k,k+1]$ (length $1$):
-$$\frac1{k+1}\le\int_k^{k+1}\frac{dx}x\le\frac1k.$$
-
-**Lower bound.** Using the right inequality and summing over $k=1,\dots,n$:
-$$H_n\ge\int_1^{n+1}\frac{dx}x=\ln(n+1).$$
-
-**Upper bound.** Using the left inequality, $\frac1k\le\int_{k-1}^k\frac{dx}x$ for $k\ge2$. Summing over $k=2,\dots,n$:
-$$H_n-1\le\int_1^n\frac{dx}x=\ln n.$$
-
-**Consequences.** Since $\ln(n+1)\to+\infty$, $H_n\to+\infty$. Dividing by $\ln n$,
-$$\frac{\ln(n+1)}{\ln n}\le\frac{H_n}{\ln n}\le\frac1{\ln n}+1,$$
-and both bounds tend to $1$.
-
-**Remark.** The difference $H_n-\ln n$ is decreasing and bounded below, so it converges to a constant, the Euler–Mascheroni constant $\gamma\approx0.5772$.
-@@@ bounds-for-the-factorial-by-integration.md
----
-title: Bounds for n! by comparing with an integral
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 4
-tags: factorial, integral comparison, Stirling
-date: 2026-11-02
----
-
-## Statement
-
-Prove that for every integer $n\ge1$,
-$$e\left(\frac ne\right)^n\le n!\le e\,n\left(\frac ne\right)^n.$$
-
-## Hint
-
-Write $\ln n!=\sum_{k=2}^n\ln k$ and compare with $\int_1^n\ln x\,dx=n\ln n-n+1$, using that $\ln$ is increasing.
-
-## Solution
-
-**Antiderivative.** $\int\ln x\,dx=x\ln x-x$, so $\int_1^n\ln x\,dx=n\ln n-n+1$.
-
-**Lower bound.** Since $\ln$ is increasing, $\ln k\ge\int_{k-1}^k\ln x\,dx$ for $k\ge2$. Summing from $k=2$ to $n$:
-$$\ln n!\ge\int_1^n\ln x\,dx=n\ln n-n+1.$$
-
-**Upper bound.** Since $\ln$ is increasing, $\ln k\le\int_k^{k+1}\ln x\,dx$. Summing from $k=1$ to $n-1$:
-$$\ln(n-1)!\le\int_1^n\ln x\,dx=n\ln n-n+1,$$
-so $\ln n!\le n\ln n-n+1+\ln n$.
-
-**Exponentiating.** $n\ln n-n=\ln\left(\frac ne\right)^n$, which gives exactly the two stated inequalities.
-
-**Check.** For $n=10$: $e\left(\frac{10}e\right)^{10}\approx1.23\cdot10^6\le10!=3\,628\,800\le1.23\cdot10^7$.
-
-**Remark.** Stirling's formula $n!\sim\sqrt{2\pi n}\,(n/e)^n$ refines this: the true size lies between the two bounds, around $\sqrt n$ times $(n/e)^n$.
-@@@ an-integral-equation.md
----
-title: Solving an integral equation
-category: calculus/single-variable/integration/riemann
-level: l1
-difficulty: 3
-tags: integral equations, fundamental theorem, differential equation
-date: 2026-11-02
----
-
-## Statement
-
-1. Find all continuous functions $f:\mathbb{R}\to\mathbb{R}$ such that $f(x)=1+\displaystyle\int_0^xf(t)\,dt$ for all $x$.
-2. Find all continuous $f$ such that $f(x)=\displaystyle\int_0^xf(t)\,dt$ for all $x$.
-
-## Hint
-
-The right-hand side is differentiable because $f$ is continuous. Differentiate, and find $f(0)$ by setting $x=0$.
-
-## Solution
-
-**1.** Since $f$ is continuous, $x\mapsto\int_0^xf$ is differentiable with derivative $f(x)$. So $f$ is differentiable and $f'(x)=f(x)$. Setting $x=0$ in the equation gives $f(0)=1$. The function $g(x)=f(x)e^{-x}$ has $g'=0$, so $g=g(0)=1$ and
-$$f(x)=e^x.$$
-Conversely $\int_0^xe^t\,dt=e^x-1$, so $1+\int_0^xe^t\,dt=e^x$. The unique solution is $f(x)=e^x$.
-
-**2.** The same reasoning gives $f'=f$, but now $f(0)=0$. So $g=f e^{-x}$ is constant equal to $g(0)=0$, and $f=0$.
-
-**Remark.** This is the integral formulation of the differential equation $f'=f$. It makes the initial condition automatic, and it is the starting point of the *Picard iteration* $f_{k+1}(x)=1+\int_0^xf_k$, which produces the partial sums $1+x+\frac{x^2}2+\dots$ of the exponential series.
-@@@ an-absolute-value-integral-with-a-parameter.md
----
-title: An absolute value integral with a parameter
-category: calculus/single-variable/integration/riemann
-level: olympiad
-difficulty: 5
-tags: absolute value, parameters, trigonometry
-date: 2026-11-02
----
-
-## Statement
-
-Find all real numbers $t$ such that
-$$\int_0^{\pi/2}\left|\sin x+t\cos x\right|\,dx=1.$$
-
-## Hint
-
-On $[0,\frac\pi2]$ both $\sin$ and $\cos$ are non-negative, so consider the sign of $t$. When $t<0$ the integrand changes sign at one point: split there.
-
-## Solution
-
-**Case $t\ge0$.** The integrand is non-negative, so
-$$\int_0^{\pi/2}(\sin x+t\cos x)\,dx=1+t.$$
-Setting $1+t=1$ gives $t=0$.
-
-**Case $t<0$.** Write $t=-k$ with $k>0$. The function $\sin x-k\cos x$ vanishes at $x_0=\arctan k$, is negative before and positive after. Using $\sin x_0=\frac k{\sqrt{1+k^2}}$ and $\cos x_0=\frac1{\sqrt{1+k^2}}$:
-$$\int_0^{x_0}(k\cos x-\sin x)\,dx=\bigl[k\sin x+\cos x\bigr]_0^{x_0}=\sqrt{1+k^2}-1,$$
-$$\int_{x_0}^{\pi/2}(\sin x-k\cos x)\,dx=\bigl[-\cos x-k\sin x\bigr]_{x_0}^{\pi/2}=\sqrt{1+k^2}-k.$$
-The total is $2\sqrt{1+k^2}-k-1$. Setting it equal to $1$:
-$$2\sqrt{1+k^2}=k+2\ \Longrightarrow\ 4+4k^2=k^2+4k+4\ \Longrightarrow\ 3k^2=4k.$$
-Since $k>0$, $k=\frac43$.
-
-**Answer.** $t=0$ or $t=-\dfrac43$.
 @@@ integral-of-sine-squared.md
 ---
 title: Integral of sine squared
 category: calculus/single-variable/integration/techniques
 level: l1
 difficulty: 1
+order: 1
 tags: integrals, trigonometry
 date: 2026-10-31
 ---
@@ -1108,187 +1145,13 @@ Linearise using $\cos2x=1-2\sin^2x$.
 Since $\sin^2x=\dfrac{1-\cos2x}{2}$,
 $$\int_0^\pi\sin^2x\,dx=\left[\frac x2-\frac{\sin2x}{4}\right]_0^\pi=\frac\pi2.$$
 
-@@@ integration-by-parts-x-exp-x.md
----
-title: Integration by parts
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 1
-tags: integrals, by parts
-date: 2026-10-31
----
-
-## Statement
-
-Compute $\displaystyle\int_0^1 x\,e^x\,dx$.
-
-## Hint
-
-Differentiate $x$ and integrate $e^x$.
-
-## Solution
-
-Take $u=x$ and $v'=e^x$, so $u'=1$ and $v=e^x$. Then
-$$\int_0^1xe^x\,dx=\Big[xe^x\Big]_0^1-\int_0^1e^x\,dx=e-(e-1)=1.$$
-@@@ the-integral-of-ln-one-plus-tangent.md
----
-title: An integral that equals its own mirror image
-category: calculus/single-variable/integration/techniques
-level: olympiad
-difficulty: 5
-tags: symmetry, substitution, logarithm, tangent
-date: 2026-11-02
----
-
-## Statement
-
-Compute
-$$I=\int_0^1\frac{\ln(1+x)}{1+x^2}\,dx.$$
-
-## Hint
-
-The substitution $x=\tan\theta$ turns $\frac{dx}{1+x^2}$ into $d\theta$. Then use the symmetry $\theta\mapsto\frac\pi4-\theta$ and $\tan\left(\frac\pi4-\theta\right)=\frac{1-\tan\theta}{1+\tan\theta}$.
-
-## Solution
-
-**Step 1: substitute.** With $x=\tan\theta$, $dx=(1+\tan^2\theta)\,d\theta$ and $\theta$ runs from $0$ to $\frac\pi4$:
-$$I=\int_0^{\pi/4}\ln(1+\tan\theta)\,d\theta.$$
-
-**Step 2: the mirror.** Replace $\theta$ by $\frac\pi4-\theta$:
-$$I=\int_0^{\pi/4}\ln\!\left(1+\frac{1-\tan\theta}{1+\tan\theta}\right)d\theta=\int_0^{\pi/4}\ln\frac2{1+\tan\theta}\,d\theta=\frac\pi4\ln2-I.$$
-
-**Step 3: conclude.** $2I=\frac\pi4\ln2$, so
-$$I=\frac{\pi\ln2}8.$$
-
-**Numerical check.** $\frac{\pi\ln2}8\approx0.27220$, matching a direct numerical integration.
-
-**Remark.** The integral looks impossible to do by antiderivatives (it is not elementary). The trick is to add the integral to its own reflection and let the logarithms combine.
-@@@ the-king-property-of-definite-integrals.md
----
-title: Using the substitution x → a + b − x
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 3
-tags: symmetry, substitution, trigonometric integrals
-date: 2026-11-02
----
-
-## Statement
-
-Compute
-$$I=\int_0^{\pi/2}\frac{\sin x}{\sin x+\cos x}\,dx.$$
-Then show that for every real $p>0$, $\displaystyle\int_0^{\pi/2}\frac{\sin^px}{\sin^px+\cos^px}\,dx=\frac\pi4$.
-
-## Hint
-
-Substitute $x\mapsto\frac\pi2-x$ and add the two expressions you obtain.
-
-## Solution
-
-**Idea.** The integral looks hard because no antiderivative is obvious, but the integrand is paired with another one that has the same integral.
-
-**Computation.** The substitution $u=\frac\pi2-x$ turns $\sin x$ into $\cos u$ and vice versa, so
-$$I=\int_0^{\pi/2}\frac{\cos u}{\cos u+\sin u}\,du=:J.$$
-Adding,
-$$I+J=\int_0^{\pi/2}\frac{\sin x+\cos x}{\sin x+\cos x}\,dx=\frac\pi2.$$
-Since $I=J$, we get $I=\dfrac\pi4$.
-
-**General $p$.** The same substitution exchanges $\sin^p$ and $\cos^p$, so the integral $I_p$ equals $\int_0^{\pi/2}\frac{\cos^px}{\sin^px+\cos^px}dx$ and $2I_p=\frac\pi2$.
-
-**Remark.** The general principle is $\int_a^bf(x)\,dx=\int_a^bf(a+b-x)\,dx$. It is a recurrent trick in olympiad-style integrals.
-@@@ integration-by-parts-basics.md
----
-title: Integration by parts, two classics
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 2
-tags: integration by parts, definite integrals
-date: 2026-11-02
----
-
-## Statement
-
-Compute $\displaystyle\int_{\ln2}^1xe^x\,dx$ and $\displaystyle\int_0^\pi x\sin x\,dx$.
-
-## Hint
-
-Integration by parts: $\int uv'=[uv]-\int u'v$. In both cases differentiate $x$ and integrate the other factor.
-
-## Solution
-
-**Idea.** The factor $x$ becomes $1$ when differentiated, simplifying the integral. The other factor ($e^x$ or $\sin x$) is easy to integrate.
-
-**First integral.** With $u=x$ and $v'=e^x$ (so $u'=1$, $v=e^x$):
-$$\int_{\ln2}^1xe^x\,dx=\bigl[xe^x\bigr]_{\ln2}^1-\int_{\ln2}^1e^x\,dx=\bigl[xe^x-e^x\bigr]_{\ln2}^1=0-(2\ln2-2)=2-2\ln2.$$
-
-**Second integral.** With $u=x$ and $v'=\sin x$ (so $v=-\cos x$):
-$$\int_0^\pi x\sin x\,dx=\bigl[-x\cos x\bigr]_0^\pi+\int_0^\pi\cos x\,dx=\pi+0=\pi.$$
-
-**Remark.** The rule of thumb for which factor to differentiate is *LIATE*: logarithms and inverse functions first, then algebraic, then trigonometric, then exponential.
-@@@ substitution-basics.md
----
-title: Integration by substitution
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 2
-tags: substitution, change of variable
-date: 2026-11-02
----
-
-## Statement
-
-Compute $\displaystyle\int_0^1\frac t{1+t^4}\,dt$ and $\displaystyle\int_0^4te^{t^2}\,dt$.
-
-## Hint
-
-In both cases try $u=t^2$, so that $du=2t\,dt$.
-
-## Solution
-
-**Idea.** Spot an inner function $u(t)$ whose derivative appears (up to a constant) elsewhere in the integrand. Do not forget to change the bounds.
-
-**First integral.** With $u=t^2$, $du=2t\,dt$, and the bounds become $0$ and $1$:
-$$\int_0^1\frac t{1+t^4}\,dt=\frac12\int_0^1\frac{du}{1+u^2}=\frac12\bigl[\arctan u\bigr]_0^1=\frac\pi8.$$
-
-**Second integral.** With $u=t^2$ the bounds become $0$ and $16$:
-$$\int_0^4te^{t^2}\,dt=\frac12\int_0^{16}e^u\,du=\frac{e^{16}-1}2.$$
-
-**Remark.** The second answer is huge ($\approx4.4\cdot10^6$) because $e^{t^2}$ explodes: always sanity-check the order of magnitude.
-@@@ partial-fractions-basics.md
----
-title: Simplifying and decomposing rational integrands
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 2
-tags: partial fractions, rational functions
-date: 2026-11-02
----
-
-## Statement
-
-Compute
-$$\int\frac{x+1}x\,dx,\qquad\int\frac x{x+1}\,dx,\qquad\int\frac{dx}{x(2-3x)}.$$
-
-## Hint
-
-For the first two, divide. For the third, look for $\frac A x+\frac B{2-3x}$.
-
-## Solution
-
-**First.** $\frac{x+1}x=1+\frac1x$, so the integral is $x+\ln|x|+C$.
-
-**Second.** $\frac x{x+1}=1-\frac1{x+1}$, so the integral is $x-\ln|x+1|+C$.
-
-**Third.** We seek $\frac1{x(2-3x)}=\frac Ax+\frac B{2-3x}$, i.e. $1=A(2-3x)+Bx$. Taking $x=0$ gives $A=\frac12$; taking $x=\frac23$ gives $B\cdot\frac23=1$, so $B=\frac32$. Hence
-$$\int\frac{dx}{x(2-3x)}=\frac12\ln|x|+\frac32\cdot\left(-\frac13\right)\ln|2-3x|+C=\frac12\ln\left|\frac x{2-3x}\right|+C.$$
-
-**Remark.** Differentiate your answer to check: $\frac12\left(\frac1x+\frac3{2-3x}\right)=\frac12\cdot\frac{2}{x(2-3x)}$ ✓.
 @@@ trigonometric-integrals-by-linearisation.md
 ---
 title: Trigonometric integrals by linearisation
 category: calculus/single-variable/integration/techniques
 level: l1
 difficulty: 2
+order: 2
 tags: trigonometric integrals, linearisation
 date: 2026-11-02
 ---
@@ -1314,12 +1177,160 @@ $$\sin^4x=\frac38-\frac12\cos2x+\frac18\cos4x.$$
 The two cosine terms integrate to $0$ over $[0,\pi]$, hence $\int_0^\pi\sin^4x\,dx=\frac{3\pi}8$.
 
 **Remark.** The average value of $\sin^2$ is $\frac12$ and that of $\sin^4$ is $\frac38$: these are the first Wallis numbers.
+
+@@@ integration-by-parts-x-exp-x.md
+---
+title: Integration by parts
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 1
+order: 3
+tags: integrals, by parts
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\displaystyle\int_0^1 x\,e^x\,dx$.
+
+## Hint
+
+Differentiate $x$ and integrate $e^x$.
+
+## Solution
+
+Take $u=x$ and $v'=e^x$, so $u'=1$ and $v=e^x$. Then
+$$\int_0^1xe^x\,dx=\Big[xe^x\Big]_0^1-\int_0^1e^x\,dx=e-(e-1)=1.$$
+
+@@@ integration-by-parts-basics.md
+---
+title: Integration by parts, two classics
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 2
+order: 4
+tags: integration by parts, definite integrals
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\displaystyle\int_{\ln2}^1xe^x\,dx$ and $\displaystyle\int_0^\pi x\sin x\,dx$.
+
+## Hint
+
+Integration by parts: $\int uv'=[uv]-\int u'v$. In both cases differentiate $x$ and integrate the other factor.
+
+## Solution
+
+**Idea.** The factor $x$ becomes $1$ when differentiated, simplifying the integral. The other factor ($e^x$ or $\sin x$) is easy to integrate.
+
+**First integral.** With $u=x$ and $v'=e^x$ (so $u'=1$, $v=e^x$):
+$$\int_{\ln2}^1xe^x\,dx=\bigl[xe^x\bigr]_{\ln2}^1-\int_{\ln2}^1e^x\,dx=\bigl[xe^x-e^x\bigr]_{\ln2}^1=0-(2\ln2-2)=2-2\ln2.$$
+
+**Second integral.** With $u=x$ and $v'=\sin x$ (so $v=-\cos x$):
+$$\int_0^\pi x\sin x\,dx=\bigl[-x\cos x\bigr]_0^\pi+\int_0^\pi\cos x\,dx=\pi+0=\pi.$$
+
+**Remark.** The rule of thumb for which factor to differentiate is *LIATE*: logarithms and inverse functions first, then algebraic, then trigonometric, then exponential.
+
+@@@ substitution-basics.md
+---
+title: Integration by substitution
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 2
+order: 5
+tags: substitution, change of variable
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\displaystyle\int_0^1\frac t{1+t^4}\,dt$ and $\displaystyle\int_0^4te^{t^2}\,dt$.
+
+## Hint
+
+In both cases try $u=t^2$, so that $du=2t\,dt$.
+
+## Solution
+
+**Idea.** Spot an inner function $u(t)$ whose derivative appears (up to a constant) elsewhere in the integrand. Do not forget to change the bounds.
+
+**First integral.** With $u=t^2$, $du=2t\,dt$, and the bounds become $0$ and $1$:
+$$\int_0^1\frac t{1+t^4}\,dt=\frac12\int_0^1\frac{du}{1+u^2}=\frac12\bigl[\arctan u\bigr]_0^1=\frac\pi8.$$
+
+**Second integral.** With $u=t^2$ the bounds become $0$ and $16$:
+$$\int_0^4te^{t^2}\,dt=\frac12\int_0^{16}e^u\,du=\frac{e^{16}-1}2.$$
+
+**Remark.** The second answer is huge ($\approx4.4\cdot10^6$) because $e^{t^2}$ explodes: always sanity-check the order of magnitude.
+
+@@@ partial-fractions-basics.md
+---
+title: Simplifying and decomposing rational integrands
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 2
+order: 6
+tags: partial fractions, rational functions
+date: 2026-11-02
+---
+
+## Statement
+
+Compute
+$$\int\frac{x+1}x\,dx,\qquad\int\frac x{x+1}\,dx,\qquad\int\frac{dx}{x(2-3x)}.$$
+
+## Hint
+
+For the first two, divide. For the third, look for $\frac A x+\frac B{2-3x}$.
+
+## Solution
+
+**First.** $\frac{x+1}x=1+\frac1x$, so the integral is $x+\ln|x|+C$.
+
+**Second.** $\frac x{x+1}=1-\frac1{x+1}$, so the integral is $x-\ln|x+1|+C$.
+
+**Third.** We seek $\frac1{x(2-3x)}=\frac Ax+\frac B{2-3x}$, i.e. $1=A(2-3x)+Bx$. Taking $x=0$ gives $A=\frac12$; taking $x=\frac23$ gives $B\cdot\frac23=1$, so $B=\frac32$. Hence
+$$\int\frac{dx}{x(2-3x)}=\frac12\ln|x|+\frac32\cdot\left(-\frac13\right)\ln|2-3x|+C=\frac12\ln\left|\frac x{2-3x}\right|+C.$$
+
+**Remark.** Differentiate your answer to check: $\frac12\left(\frac1x+\frac3{2-3x}\right)=\frac12\cdot\frac{2}{x(2-3x)}$ ✓.
+
+@@@ an-integral-with-an-irreducible-quadratic.md
+---
+title: Completing the square before integrating
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 3
+order: 7
+tags: rational functions, completing the square, arctangent
+date: 2026-11-02
+---
+
+## Statement
+
+Compute $\displaystyle\int_0^1\frac{dx}{x^2+x+1}$.
+
+## Hint
+
+The denominator has no real root. Complete the square to get $\left(x+\frac12\right)^2+\frac34$ and aim for an $\arctan$.
+
+## Solution
+
+**Completing the square.** $x^2+x+1=\left(x+\frac12\right)^2+\frac34=\frac34\left[\left(\frac{2x+1}{\sqrt3}\right)^2+1\right]$.
+
+**Antiderivative.** With $u=\frac{2x+1}{\sqrt3}$, $du=\frac2{\sqrt3}dx$:
+$$\int\frac{dx}{x^2+x+1}=\frac43\cdot\frac{\sqrt3}2\int\frac{du}{u^2+1}=\frac2{\sqrt3}\arctan\frac{2x+1}{\sqrt3}+C.$$
+
+**Definite integral.**
+$$\frac2{\sqrt3}\left(\arctan\sqrt3-\arctan\frac1{\sqrt3}\right)=\frac2{\sqrt3}\left(\frac\pi3-\frac\pi6\right)=\frac\pi{3\sqrt3}\approx0.6046.$$
+
 @@@ integrating-logarithm-and-arctangent.md
 ---
 title: Integrating ln and arctan by parts
 category: calculus/single-variable/integration/techniques
 level: l1
 difficulty: 3
+order: 8
 tags: integration by parts, logarithm, arctangent
 date: 2026-11-02
 ---
@@ -1345,12 +1356,14 @@ $$\ln2-2+\frac\pi2\approx0.2639.$$
 $$\int_0^1\arctan x\,dx=\bigl[x\arctan x\bigr]_0^1-\int_0^1\frac x{1+x^2}\,dx=\frac\pi4-\frac12\ln2\approx0.4388.$$
 
 **Check.** Both are positive and smaller than the value of the integrand at $x=1$ ($\ln2\approx0.69$, $\frac\pi4\approx0.79$), as they should be for increasing integrands.
+
 @@@ cyclic-integration-by-parts.md
 ---
 title: Integrating by parts twice and coming back
 category: calculus/single-variable/integration/techniques
 level: l1
 difficulty: 3
+order: 9
 tags: integration by parts, exponential, trigonometric
 date: 2026-11-02
 ---
@@ -1375,12 +1388,14 @@ $$K=\bigl[e^x\cos x\bigr]_0^\pi+\int_0^\pi e^x\sin x\,dx=(-e^\pi-1)+J.$$
 $$J=\frac{e^\pi+1}2\approx12.07.$$
 
 **Remark.** An antiderivative is $\frac{e^x(\sin x-\cos x)}2$. The "cyclic" method also works for $\int e^{ax}\cos bx\,dx$ and is the real-variable counterpart of taking the imaginary part of $\int e^{(1+i)x}dx$.
+
 @@@ a-reduction-formula-for-x-to-the-n-exponential.md
 ---
 title: A reduction formula
 category: calculus/single-variable/integration/techniques
 level: l1
 difficulty: 3
+order: 10
 tags: reduction formula, integration by parts, recurrence
 date: 2026-11-02
 ---
@@ -1410,12 +1425,147 @@ $$I_n=\bigl[x^ne^x\bigr]_0^1-n\int_0^1x^{n-1}e^x\,dx=e-nI_{n-1}.$$
 **3.** On $[0,1]$, $0<e^x\le e$, so $0<I_n\le e\int_0^1x^n\,dx=\frac e{n+1}\to0$.
 
 **Remark.** The recurrence $I_n=e-nI_{n-1}$ is *numerically unstable* when run forward: any small error is multiplied by $n$ at each step. To compute $I_{20}$ one should run it backward, from a good estimate of $I_{30}$ for instance.
+
+@@@ the-area-of-an-ellipse.md
+---
+title: The area of an ellipse
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 3
+order: 11
+tags: trigonometric substitution, area, ellipse
+date: 2026-11-02
+---
+
+## Statement
+
+Prove that the ellipse $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$ (with $a,b>0$) has area $\pi ab$.
+
+## Hint
+
+The upper half is the graph of $y=b\sqrt{1-x^2/a^2}$. Use the substitution $x=a\sin\theta$.
+
+## Solution
+
+**Setup.** By symmetry, the area is $4$ times the area in the first quadrant:
+$$\mathcal A=4\int_0^ab\sqrt{1-\frac{x^2}{a^2}}\,dx.$$
+
+**Substitution.** Let $x=a\sin\theta$ with $\theta\in\left[0,\frac\pi2\right]$, so $dx=a\cos\theta\,d\theta$ and $\sqrt{1-\sin^2\theta}=\cos\theta$ (non-negative on this range):
+$$\mathcal A=4ab\int_0^{\pi/2}\cos^2\theta\,d\theta=4ab\cdot\frac\pi4=\pi ab.$$
+
+**Remark.** For $a=b=r$ this recovers the area $\pi r^2$ of a disc. In general the ellipse is the disc of radius $a$ compressed vertically by the factor $\frac ba$, so its area is multiplied by $\frac ba$.
+
+@@@ the-king-property-of-definite-integrals.md
+---
+title: Using the substitution x → a + b − x
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 3
+order: 12
+tags: symmetry, substitution, trigonometric integrals
+date: 2026-11-02
+---
+
+## Statement
+
+Compute
+$$I=\int_0^{\pi/2}\frac{\sin x}{\sin x+\cos x}\,dx.$$
+Then show that for every real $p>0$, $\displaystyle\int_0^{\pi/2}\frac{\sin^px}{\sin^px+\cos^px}\,dx=\frac\pi4$.
+
+## Hint
+
+Substitute $x\mapsto\frac\pi2-x$ and add the two expressions you obtain.
+
+## Solution
+
+**Idea.** The integral looks hard because no antiderivative is obvious, but the integrand is paired with another one that has the same integral.
+
+**Computation.** The substitution $u=\frac\pi2-x$ turns $\sin x$ into $\cos u$ and vice versa, so
+$$I=\int_0^{\pi/2}\frac{\cos u}{\cos u+\sin u}\,du=:J.$$
+Adding,
+$$I+J=\int_0^{\pi/2}\frac{\sin x+\cos x}{\sin x+\cos x}\,dx=\frac\pi2.$$
+Since $I=J$, we get $I=\dfrac\pi4$.
+
+**General $p$.** The same substitution exchanges $\sin^p$ and $\cos^p$, so the integral $I_p$ equals $\int_0^{\pi/2}\frac{\cos^px}{\sin^px+\cos^px}dx$ and $2I_p=\frac\pi2$.
+
+**Remark.** The general principle is $\int_a^bf(x)\,dx=\int_a^bf(a+b-x)\,dx$. It is a recurrent trick in olympiad-style integrals.
+
+@@@ the-weierstrass-substitution.md
+---
+title: The tangent half-angle substitution
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 4
+order: 13
+tags: Weierstrass substitution, trigonometric integrals, rational functions
+date: 2026-11-02
+---
+
+## Statement
+
+Compute
+$$\int_0^\pi\frac{dx}{2+\cos x}.$$
+
+## Hint
+
+Put $t=\tan\frac x2$. Then $\cos x=\frac{1-t^2}{1+t^2}$ and $dx=\frac{2\,dt}{1+t^2}$. Note that $t\to+\infty$ as $x\to\pi^-$.
+
+## Solution
+
+**Idea.** The substitution $t=\tan\frac x2$ turns any rational expression in $\sin x$ and $\cos x$ into a rational function of $t$.
+
+**Substitution on $[0,\pi-\varepsilon]$.** For $x\in[0,\pi-\varepsilon]$ with $\varepsilon>0$ small, $t=\tan(x/2)$ ranges over $[0,M_\varepsilon]$ where $M_\varepsilon=\tan((\pi-\varepsilon)/2)\to+\infty$ as $\varepsilon\to0^+$, and
+$$\frac1{2+\cos x}=\frac1{2+\frac{1-t^2}{1+t^2}}=\frac{1+t^2}{3+t^2},\qquad dx=\frac{2\,dt}{1+t^2}.$$
+So
+$$\int_0^{\pi-\varepsilon}\frac{dx}{2+\cos x}=\int_0^{M_\varepsilon}\frac{2\,dt}{3+t^2}=\frac2{\sqrt3}\arctan\frac{M_\varepsilon}{\sqrt3}.$$
+
+**Limit as $\varepsilon\to0^+$.** The integrand is continuous on $[0,\pi)$, bounded above by $1$ and below by $\frac13$, and has a finite limit at $\pi$ (namely $\frac{1}{2+\cos\pi}=1$), so the integral on $[0,\pi]$ is a proper Riemann integral equal to the limit:
+$$\int_0^\pi\frac{dx}{2+\cos x}=\lim_{\varepsilon\to0^+}\frac2{\sqrt3}\arctan\frac{M_\varepsilon}{\sqrt3}=\frac2{\sqrt3}\cdot\frac\pi2=\frac\pi{\sqrt3}.$$
+
+**Check.** The integrand lies between $\frac13$ and $1$, so the integral is between $\frac\pi3\approx1.05$ and $\pi\approx3.14$. The value $\frac\pi{\sqrt3}\approx1.81$ is plausible (the integrand is about $\frac12$ in the middle).
+
+@@@ the-integral-of-ln-one-plus-tangent.md
+---
+title: An integral that equals its own mirror image
+category: calculus/single-variable/integration/techniques
+level: olympiad
+difficulty: 5
+order: 14
+tags: symmetry, substitution, logarithm, tangent
+date: 2026-11-02
+---
+
+## Statement
+
+Compute
+$$I=\int_0^1\frac{\ln(1+x)}{1+x^2}\,dx.$$
+
+## Hint
+
+The substitution $x=\tan\theta$ turns $\frac{dx}{1+x^2}$ into $d\theta$. Then use the symmetry $\theta\mapsto\frac\pi4-\theta$ and $\tan\left(\frac\pi4-\theta\right)=\frac{1-\tan\theta}{1+\tan\theta}$.
+
+## Solution
+
+**Step 1: substitute.** With $x=\tan\theta$, $dx=(1+\tan^2\theta)\,d\theta$ and $\theta$ runs from $0$ to $\frac\pi4$:
+$$I=\int_0^{\pi/4}\ln(1+\tan\theta)\,d\theta.$$
+
+**Step 2: the mirror.** Replace $\theta$ by $\frac\pi4-\theta$:
+$$I=\int_0^{\pi/4}\ln\!\left(1+\frac{1-\tan\theta}{1+\tan\theta}\right)d\theta=\int_0^{\pi/4}\ln\frac2{1+\tan\theta}\,d\theta=\frac\pi4\ln2-I.$$
+
+**Step 3: conclude.** $2I=\frac\pi4\ln2$, so
+$$I=\frac{\pi\ln2}8.$$
+
+**Numerical check.** $\frac{\pi\ln2}8\approx0.27220$, matching a direct numerical integration.
+
+**Remark.** The integral looks impossible to do by antiderivatives (it is not elementary). The trick is to add the integral to its own reflection and let the logarithms combine.
+
 @@@ wallis-integrals.md
 ---
 title: Wallis integrals
 category: calculus/single-variable/integration/techniques
 level: l1
 difficulty: 4
+order: 15
 tags: Wallis integrals, recurrence, asymptotics, pi
 date: 2026-11-02
 ---
@@ -1440,494 +1590,7 @@ using $\cos^2=1-\sin^2$. Hence $nW_n=(n-1)W_{n-2}$.
 
 **2.** Let $u_n=(n+1)W_nW_{n+1}$. By part 1 (with index $n+1$), $(n+1)W_{n+1}=nW_{n-1}$, so $u_n=nW_{n-1}W_n=u_{n-1}$. The sequence is constant, equal to $u_0=W_0W_1=\frac\pi2\cdot1$.
 
-**3.** Since $0\le\sin x\le1$, $(W_n)$ is decreasing: $W_{n+1}\le W_n\le W_{n-1}$. Multiplying by $W_n>0$:
+**3.** Since $0\le\sin x\le1$ on $[0,\pi/2]$, $\sin^{n+1}x\le\sin^nx\le\sin^{n-1}x$, so $(W_n)$ is decreasing: $W_{n+1}\le W_n\le W_{n-1}$. Multiplying by $W_n>0$:
 $$W_nW_{n+1}\le W_n^2\le W_nW_{n-1}\ \Longrightarrow\ \frac\pi{2(n+1)}\le W_n^2\le\frac\pi{2n}.$$
 
 **Consequence.** $W_n\sim\sqrt{\frac\pi{2n}}$. Together with the closed formulas $W_{2p}=\frac{(2p)!}{4^p(p!)^2}\frac\pi2$, this gives the Wallis product for $\pi$ and the asymptotics of central binomial coefficients.
-@@@ the-weierstrass-substitution.md
----
-title: The tangent half-angle substitution
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 4
-tags: Weierstrass substitution, trigonometric integrals, rational functions
-date: 2026-11-02
----
-
-## Statement
-
-Compute
-$$\int_0^\pi\frac{dx}{2+\cos x}.$$
-
-## Hint
-
-Put $t=\tan\frac x2$. Then $\cos x=\frac{1-t^2}{1+t^2}$ and $dx=\frac{2\,dt}{1+t^2}$. Note that $t\to+\infty$ as $x\to\pi^-$.
-
-## Solution
-
-**Idea.** The substitution $t=\tan\frac x2$ turns any rational expression in $\sin x$ and $\cos x$ into a rational function of $t$.
-
-**Substitution.** For $x\in[0,\pi)$, $t$ ranges over $[0,+\infty)$ and
-$$\frac1{2+\cos x}=\frac1{2+\frac{1-t^2}{1+t^2}}=\frac{1+t^2}{3+t^2},\qquad dx=\frac{2\,dt}{1+t^2}.$$
-
-**Computation.**
-$$\int_0^\pi\frac{dx}{2+\cos x}=\int_0^{+\infty}\frac{2\,dt}{3+t^2}=\frac2{\sqrt3}\left[\arctan\frac t{\sqrt3}\right]_0^{+\infty}=\frac2{\sqrt3}\cdot\frac\pi2=\frac\pi{\sqrt3}.$$
-
-**Check.** The integrand lies between $\frac13$ and $1$, so the integral is between $\frac\pi3\approx1.05$ and $\pi$. The value $\frac\pi{\sqrt3}\approx1.81$ is plausible (the integrand is about $\frac12$ in the middle).
-@@@ the-area-of-an-ellipse.md
----
-title: The area of an ellipse
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 3
-tags: trigonometric substitution, area, ellipse
-date: 2026-11-02
----
-
-## Statement
-
-Prove that the ellipse $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$ (with $a,b>0$) has area $\pi ab$.
-
-## Hint
-
-The upper half is the graph of $y=b\sqrt{1-x^2/a^2}$. Use the substitution $x=a\sin\theta$.
-
-## Solution
-
-**Setup.** By symmetry, the area is $4$ times the area in the first quadrant:
-$$\mathcal A=4\int_0^ab\sqrt{1-\frac{x^2}{a^2}}\,dx.$$
-
-**Substitution.** Let $x=a\sin\theta$ with $\theta\in\left[0,\frac\pi2\right]$, so $dx=a\cos\theta\,d\theta$ and $\sqrt{1-\sin^2\theta}=\cos\theta$ (non-negative on this range):
-$$\mathcal A=4ab\int_0^{\pi/2}\cos^2\theta\,d\theta=4ab\cdot\frac\pi4=\pi ab.$$
-
-**Remark.** For $a=b=r$ this recovers the area $\pi r^2$ of a disc. In general the ellipse is the disc of radius $a$ compressed vertically by the factor $\frac ba$, so its area is multiplied by $\frac ba$.
-@@@ an-integral-with-an-irreducible-quadratic.md
----
-title: Completing the square before integrating
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 3
-tags: rational functions, completing the square, arctangent
-date: 2026-11-02
----
-
-## Statement
-
-Compute $\displaystyle\int_0^1\frac{dx}{x^2+x+1}$.
-
-## Hint
-
-The denominator has no real root. Complete the square to get $\left(x+\frac12\right)^2+\frac34$ and aim for an $\arctan$.
-
-## Solution
-
-**Completing the square.** $x^2+x+1=\left(x+\frac12\right)^2+\frac34=\frac34\left[\left(\frac{2x+1}{\sqrt3}\right)^2+1\right]$.
-
-**Antiderivative.** With $u=\frac{2x+1}{\sqrt3}$, $du=\frac2{\sqrt3}dx$:
-$$\int\frac{dx}{x^2+x+1}=\frac43\cdot\frac{\sqrt3}2\int\frac{du}{u^2+1}=\frac2{\sqrt3}\arctan\frac{2x+1}{\sqrt3}+C.$$
-
-**Definite integral.**
-$$\frac2{\sqrt3}\left(\arctan\sqrt3-\arctan\frac1{\sqrt3}\right)=\frac2{\sqrt3}\left(\frac\pi3-\frac\pi6\right)=\frac\pi{3\sqrt3}\approx0.6046.$$
-@@@ an-improper-integral.md
----
-title: An improper integral
-category: calculus/single-variable/integration/improper-integrals
-level: l2
-difficulty: 2
-tags: improper integrals, integration by parts
-date: 2026-10-31
----
-
-## Statement
-
-Show that $\displaystyle\int_0^{+\infty}x\,e^{-x}\,dx$ converges and compute its value.
-
-## Hint
-
-Find an antiderivative by parts, then let the upper bound go to infinity.
-
-## Solution
-
-An antiderivative of $xe^{-x}$ is $F(x)=-(x+1)e^{-x}$, because
-$$F'(x)=-e^{-x}+(x+1)e^{-x}=xe^{-x}.$$
-
-For $A>0$,
-$$\int_0^Axe^{-x}\,dx=F(A)-F(0)=1-(A+1)e^{-A}.$$
-
-As $A\to+\infty$, $(A+1)e^{-A}\to0$ (exponential beats polynomial). So the integral converges and equals $1$.
-@@@ improper-integral-cos-power.md
----
-title: When the equivalence rule for improper integrals fails
-category: calculus/single-variable/integration/improper-integrals
-level: l1
-difficulty: 4
-order: 2
-tags: improper integral, integration by parts, absolute convergence, conditional convergence
-date: 2026-11-06
----
-
-## Statement
-
-1. (a) For $\alpha>0$, study the convergence of $\displaystyle\int_1^{+\infty}\frac{\cos t}{t^\alpha}\,dt$.
-   (b) Study the convergence of $\displaystyle\int_1^{+\infty}\frac{\cos^2 t}{t}\,dt$.
-
-2. (a) Show that $\displaystyle\int_1^{+\infty}\frac{|\cos t|}{t}\,dt$ diverges, so $\displaystyle\int_1^{+\infty}\frac{\cos t}{t}\,dt$ is not absolutely convergent.
-   (b) Let $f(t)=\dfrac{\cos t}{\sqrt t}$ and $g(t)=\dfrac{\cos t}{\sqrt t}+\dfrac{\cos^2 t}{t}$. Show that $f\sim g$ at $+\infty$ but that $\int f$ converges while $\int g$ diverges.
-   (c) Explain why the equivalence rule for improper integrals fails here.
-
-## Hint
-
-For 1(a), integrate by parts with $u=1/t^\alpha$, $dv=\cos t\,dt$. For 1(b), linearize $\cos^2 t=\frac{1+\cos 2t}{2}$. For 2(a), use $|\cos t|\ge\cos^2 t$. For 2(c), recall that the equivalence rule requires functions of constant sign.
-
-## Solution
-
-**(a) Convergence of $\int_1^{+\infty}\frac{\cos t}{t^\alpha}\,dt$ for $\alpha>0$.** Integrate by parts on $[1,X]$:
-$$\int_1^X\frac{\cos t}{t^\alpha}\,dt=\left[\frac{\sin t}{t^\alpha}\right]_1^X+\alpha\int_1^X\frac{\sin t}{t^{\alpha+1}}\,dt=\frac{\sin X}{X^\alpha}-\sin 1+\alpha\int_1^X\frac{\sin t}{t^{\alpha+1}}\,dt.$$
-Since $\left|\frac{\sin t}{t^{\alpha+1}}\right|\le\frac{1}{t^{\alpha+1}}$ and $\alpha+1>1$, the integral on the right converges absolutely. The boundary term $\frac{\sin X}{X^\alpha}\to0$. Hence $\int_1^{+\infty}\frac{\cos t}{t^\alpha}\,dt$ converges.
-
-**(b) Divergence of $\int_1^{+\infty}\frac{\cos^2 t}{t}\,dt$.** Linearization:
-$$\frac{\cos^2 t}{t}=\frac{1}{2t}+\frac{\cos 2t}{2t}.$$
-By (a) with $\alpha=1$, $\int_1^{+\infty}\frac{\cos 2t}{2t}\,dt$ converges. But $\int_1^{+\infty}\frac{1}{2t}\,dt$ diverges (Riemann with $\alpha=1$). A sum of a convergent and a divergent integral diverges, so $\int_1^{+\infty}\frac{\cos^2 t}{t}\,dt$ diverges.
-
-**(2a) Non-absolute convergence.** Since $|\cos t|\ge\cos^2 t$,
-$$\frac{|\cos t|}{t}\ge\frac{\cos^2 t}{t}.$$
-By comparison with (1b), $\int_1^{+\infty}\frac{|\cos t|}{t}\,dt$ diverges. Hence $\int_1^{+\infty}\frac{\cos t}{t}\,dt$ converges (by (a) with $\alpha=1$) but not absolutely: it is conditionally convergent.
-
-**(2b) An equivalence that misleads.** Let $f(t)=\frac{\cos t}{\sqrt t}$ and $g(t)=f(t)+\frac{\cos^2 t}{t}$. Then
-$$\frac{g(t)}{f(t)}=1+\frac{\cos t}{\sqrt t}\xrightarrow[t\to+\infty]{}1,$$
-so $f\sim g$ at $+\infty$. However, by (a) with $\alpha=1/2$, $\int_1^{+\infty}f$ converges. But $\int_1^{+\infty}g=\int_1^{+\infty}f+\int_1^{+\infty}\frac{\cos^2 t}{t}$ diverges (sum of a convergent and a divergent integral by (1b)). So the equivalence of integrands does **not** preserve convergence.
-
-**(2c) Why the equivalence rule fails.** The rule "$f\sim g\Rightarrow\int f$ and $\int g$ have the same nature" requires that $f$ and $g$ have a **constant sign** near $+\infty$. Here, the oscillations of $\cos t$ change sign infinitely often, so the comparison fails: even though $f(t)/g(t)\to1$, the small "correction" $\frac{\cos^2 t}{t}$ accumulates a divergent contribution, since $\cos^2 t\ge0$ is not sign-changing.
-
-
-@@@ improper-integral-logistic.md
----
-title: An improper integral with exponentials
-category: calculus/single-variable/integration/improper-integrals
-level: l1
-difficulty: 1
-order: 1
-tags: improper integral, exponential, partial fraction
-date: 2026-11-06
----
-
-## Statement
-
-Compute
-$$\int_0^{+\infty}\frac{dx}{(1+e^x)(1+e^{-x})}.$$
-
-## Hint
-
-Simplify the integrand by multiplying numerator and denominator by $e^x$, then find an antiderivative of the form $\frac{-1}{1+e^x}$.
-
-## Solution
-
-**Simplification.** For every $x\in\mathbb{R}$,
-$$\frac{1}{(1+e^x)(1+e^{-x})}=\frac{e^x}{(1+e^x)(e^x+1)}=\frac{e^x}{(1+e^x)^2}.$$
-Indeed $1+e^{-x}=\frac{e^x+1}{e^x}$, so $(1+e^x)(1+e^{-x})=\frac{(1+e^x)^2}{e^x}$.
-
-**Antiderivative on $[0,a]$.** For $a>0$,
-$$\int_0^a\frac{e^x}{(1+e^x)^2}\,dx=\left[-\frac{1}{1+e^x}\right]_0^a=-\frac{1}{1+e^a}+\frac{1}{1+e^0}=\frac{1}{2}-\frac{1}{1+e^a}.$$
-
-
-**Improper integral.** The integrand is continuous and positive on $[0,+\infty[$, and
-$$\int_0^{+\infty}\frac{dx}{(1+e^x)(1+e^{-x})}=\lim_{a\to+\infty}\left(\frac12-\frac{1}{1+e^a}\right) = \frac12.$$
-
-@@@ improper-integral-log-over-square.md
----
-title: An improper integral of $\ln x/x^2$ by parts
-category: calculus/single-variable/integration/improper-integrals
-level: l1
-difficulty: 3
-order: 1
-tags: improper integral, integration by parts, logarithm
-date: 2026-11-06
----
-
-## Statement
-
-Compute
-$$\int_1^{+\infty}\frac{\ln x}{x^2}\,dx.$$
-
-## Hint
-
-Integrate by parts on $[1,a]$ with $u=\ln x$, $dv=\frac{dx}{x^2}$; then take the limit $a\to+\infty$ and use the growth comparison $\frac{\ln a}{a}\to0$.
-
-## Solution
-
-**Integration by parts on $[1,a]$.** For $a>1$, take $u(x)=\ln x$ and $v'(x)=\frac{1}{x^2}$, so $u'(x)=\frac1x$ and $v(x)=-\frac1x$. Then
-$$\int_1^a\frac{\ln x}{x^2}\,dx=\left[-\frac{\ln x}{x}\right]_1^a+\int_1^a\frac{dx}{x^2}.$$
-
-**Evaluate.**
-$$\left[-\frac{\ln x}{x}\right]_1^a=-\frac{\ln a}{a}+0=-\frac{\ln a}{a},\qquad \int_1^a\frac{dx}{x^2}=\left[-\frac1x\right]_1^a=-\frac1a+1.$$
-
-**Limit as $a\to+\infty$.** Since $\frac{\ln a}{a}\to0$ and $\frac1a\to0$,
-$$\int_1^{+\infty}\frac{\ln x}{x^2}\,dx=\lim_{a\to+\infty}\left(-\frac{\ln a}{a}-\frac1a+1\right)=1.$$
-
-@@@ improper-integral-log-over-oneplusx-squared.md
----
-title: A convergent improper integral of $\ln x/(1+x)^2$
-category: calculus/single-variable/integration/improper-integrals
-level: l1
-difficulty: 3
-order: 1 
-tags: improper integral, integration by parts, logarithm
-date: 2026-11-06
----
-
-## Statement
-
-Compute
-$$I=\int_0^1\frac{\ln x}{(1+x)^2}\,dx.$$
-
-## Hint
-
-The integrand has an integrable singularity at $0$: $\ln x/(1+x)^2\sim\ln x$, and $\int_0^1\ln x\,dx$ converges. Integrate by parts on $[X,1]$ with $u=\ln x$, $dv=\frac{dx}{(1+x)^2}$, then let $X\to0^+$ using $X\ln X\to0$.
-
-**Warning.** One must take $X>0$ and pass to the limit; do **not** write $[-\ln x/(1+x)]_0^1$ directly, since $\ln x$ is not defined at $0$.
-
-## Solution
-
-**Integration by parts on $[X,1]$.** For $0<X<1$, set $u(x)=\ln x$ and $v'(x)=\frac{1}{(1+x)^2}$, so $u'(x)=\frac1x$ and $v(x)=-\frac{1}{1+x}$. Then
-$$I(X):=\int_X^1\frac{\ln x}{(1+x)^2}\,dx=\left[-\frac{\ln x}{1+x}\right]_X^1+\int_X^1\frac{dx}{x(1+x)}.$$
-
-**First term.**
-$$\left[-\frac{\ln x}{1+x}\right]_X^1=-\frac{\ln 1}{2}-\left(-\frac{\ln X}{1+X}\right)=\frac{\ln X}{1+X}.$$
-
-**Second term.** Partial fractions: $\frac{1}{x(1+x)}=\frac1x-\frac1{1+x}$. So
-$$\int_X^1\frac{dx}{x(1+x)}=\bigl[\ln x-\ln(1+x)\bigr]_X^1=-\ln 2-\bigl(\ln X-\ln(1+X)\bigr).$$
-
-**Combine.**
-$$I(X)=\frac{\ln X}{1+X}-\ln X+\ln(1+X)-\ln 2=-\frac{X\ln X}{1+X}+\ln(1+X)-\ln 2.$$
-(The simplification uses $\frac{1}{1+X}-1=-\frac{X}{1+X}$.)
-
-**Limit as $X\to0^+$.** Since $X\ln X\to0$ and $\ln(1+X)\to0$, we get
-$$I=\lim_{X\to0^+}I(X)=0+0-\ln 2=-\ln 2.$$
-
-
-**Remark.** The naive computation
-$$\int_0^1\frac{\ln x}{(1+x)^2}\,dx\overset{?}{=}\left[-\frac{\ln x}{1+x}\right]_0^1+\int_0^1\frac{dx}{x(1+x)}$$
-is meaningless because $\ln x$ is not defined at $0$ and $\int_0^1\frac{dx}{x}$ diverges. The correct procedure is to integrate over $[X,1]$ with $X>0$ and let $X\to0^+$.
-
-@@@ the-improper-integral-of-one-over-one-plus-x-squared.md
----
-title: An improper integral of a rational function
-category: calculus/single-variable/integration/improper-integrals
-level: m1
-difficulty: 2
-order: 1
-tags: improper integrals, arctangent, convergence
-date: 2026-11-02
----
-
-## Statement
-
-Does $\displaystyle\int_0^{+\infty}\frac{dx}{1+x^2}$ converge? If so, compute it.
-
-## Hint
-
-An antiderivative is $\arctan x$. Integrate on $[0,R]$ and let $R\to+\infty$.
-
-## Solution
-
-**Definition.** An improper integral $\int_0^{+\infty}f$ converges if $\lim_{R\to+\infty}\int_0^Rf$ exists and is finite.
-
-**Computation.** For $R>0$, $\int_0^R\frac{dx}{1+x^2}=\arctan R-\arctan0=\arctan R\to\frac\pi2$ as $R\to+\infty$.
-
-**Answer.** It converges, and
-$$\int_0^{+\infty}\frac{dx}{1+x^2}=\frac\pi2.$$
-
-**Remark.** The region under $\frac1{1+x^2}$ is infinitely long but has finite area $\frac\pi2$, because the curve decays like $\frac1{x^2}$, fast enough.
-@@@ convergence-of-integrals-of-powers.md
----
-title: When do integrals of powers converge?
-category: calculus/single-variable/integration/improper-integrals
-level: l1
-difficulty: 1
-order: 1
-tags: improper integrals, p-test, Riemann integrals
-date: 2026-11-02
----
-
-## Statement
-
-For which real $p$ do the following improper integrals converge?
-$$\int_1^{+\infty}\frac{dx}{x^p},\qquad\int_0^1\frac{dx}{x^p}.$$
-
-## Hint
-
-Compute $\int\frac{dx}{x^p}$ separately for $p\ne1$ and $p=1$, then take limits.
-
-## Solution
-
-**At infinity.** For $p\ne1$ and $R>1$,
-$$\int_1^R\frac{dx}{x^p}=\frac{R^{1-p}-1}{1-p}.$$
-- If $p>1$, $R^{1-p}\to0$ and the integral converges to $\frac1{p-1}$.
-- If $p<1$, $R^{1-p}\to+\infty$: divergence.
-- If $p=1$: $\int_1^R\frac{dx}x=\ln R\to+\infty$: divergence.
-
-So $\int_1^{+\infty}x^{-p}dx$ converges **iff $p>1$**.
-
-**At zero.** For $p\ne1$ and $0<\varepsilon<1$,
-$$\int_\varepsilon^1\frac{dx}{x^p}=\frac{1-\varepsilon^{1-p}}{1-p}.$$
-- If $p<1$, $\varepsilon^{1-p}\to0$ and the integral converges to $\frac1{1-p}$.
-- If $p>1$, $\varepsilon^{1-p}\to+\infty$: divergence.
-- If $p=1$: $\int_\varepsilon^1\frac{dx}x=-\ln\varepsilon\to+\infty$: divergence.
-
-So $\int_0^1x^{-p}dx$ converges **iff $p<1$**.
-
-**Remark.** These two families are the benchmark for all comparison tests. Notice that no $p$ makes both converge: $\int_0^{+\infty}x^{-p}dx$ always diverges.
-@@@ integral-of-the-logarithm-at-zero.md
----
-title: An integral whose integrand blows up
-category: calculus/single-variable/integration/improper-integrals
-level: l1
-difficulty: 1
-order: 1
-tags: improper integrals, logarithm, limits
-date: 2026-11-02
----
-
-## Statement
-
-Show that $\displaystyle\int_0^1\ln x\,dx$ converges and compute it.
-
-## Hint
-
-An antiderivative of $\ln x$ is $x\ln x-x$. Integrate on $[\varepsilon,1]$ and let $\varepsilon\to0^+$, using $\varepsilon\ln\varepsilon\to0$.
-
-## Solution
-
-**Antiderivative.** $(x\ln x-x)'=\ln x+1-1=\ln x$.
-
-**Computation.** For $0<\varepsilon<1$,
-$$\int_\varepsilon^1\ln x\,dx=\bigl[x\ln x-x\bigr]_\varepsilon^1=-1-(\varepsilon\ln\varepsilon-\varepsilon).$$
-As $\varepsilon\to0^+$, $\varepsilon\ln\varepsilon\to0$ and $\varepsilon\to0$, so the limit is $-1$.
-
-**Answer.** The integral converges, and $\displaystyle\int_0^1\ln x\,dx=-1$.
-
-**Remark.** The integrand tends to $-\infty$ at $0$, yet the area is finite: $\ln x$ grows slower than any $x^{-p}$ with $p>0$, so the comparison with $\int_0^1x^{-1/2}dx<\infty$ already shows convergence.
-@@@ the-gamma-function-at-integers.md
----
-title: Differentiating under the integral sign
-category: calculus/single-variable/integration/improper-integrals
-level: m1
-difficulty: 3
-tags: parameter integrals, Gamma function, factorial
-date: 2026-11-02
----
-
-## Statement
-
-1. For $a>0$ compute $I(a)=\displaystyle\int_0^{+\infty}e^{-ax}\,dx$.
-2. By differentiating with respect to $a$, compute $\displaystyle\int_0^{+\infty}xe^{-ax}\,dx$ and guess $\displaystyle\int_0^{+\infty}x^ne^{-ax}\,dx$.
-3. Prove, by integration by parts, that $\displaystyle\int_0^{+\infty}x^ne^{-x}\,dx=n!$.
-
-## Hint
-
-Part 2 relies on swapping $\frac d{da}$ and $\int$, which is allowed here (the integrand and its $a$-derivative are dominated by integrable functions). For part 3, find a recurrence relation.
-
-## Solution
-
-**1.** $I(a)=\left[-\frac1ae^{-ax}\right]_0^{+\infty}=\frac1a$.
-
-**2.** Differentiating $I(a)=\int_0^\infty e^{-ax}dx$ in $a$ gives $I'(a)=-\int_0^\infty xe^{-ax}dx$, while $I'(a)=-\frac1{a^2}$. Hence
-$$\int_0^{+\infty}xe^{-ax}\,dx=\frac1{a^2}.$$
-Repeating $n$ times, $(-1)^nI^{(n)}(a)=\int_0^\infty x^ne^{-ax}dx$ and $I^{(n)}(a)=(-1)^n\frac{n!}{a^{n+1}}$, so
-$$\int_0^{+\infty}x^ne^{-ax}\,dx=\frac{n!}{a^{n+1}}.$$
-
-**3.** Let $G_n=\int_0^\infty x^ne^{-x}dx$. By parts with $u=x^n$, $v'=e^{-x}$:
-$$G_n=\bigl[-x^ne^{-x}\bigr]_0^{+\infty}+n\int_0^\infty x^{n-1}e^{-x}\,dx=nG_{n-1},$$
-since $x^ne^{-x}\to0$ at infinity. With $G_0=1$, $G_n=n!$.
-
-**Remark.** The function $\Gamma(s)=\int_0^\infty x^{s-1}e^{-x}dx$ extends the factorial to real numbers: $\Gamma(n+1)=n!$.
-@@@ convergence-by-comparison.md
----
-title: Proving convergence by comparison
-category: calculus/single-variable/integration/improper-integrals
-level: l1
-difficulty: 3
-order: 1
-tags: improper integrals, comparison test, divergence
-date: 2026-11-02
----
-
-## Statement
-
-Decide whether each integral converges.
-
-1. $\displaystyle\int_0^{+\infty}e^{-x^2}\,dx$
-2. $\displaystyle\int_1^{+\infty}\frac{dx}{\sqrt{x^3+x}}$
-3. $\displaystyle\int_2^{+\infty}\frac{dx}{\ln x}$
-
-## Hint
-
-For non-negative integrands, if $0\le f\le g$ and $\int g$ converges then $\int f$ converges; if $\int f$ diverges then $\int g$ diverges.
-
-## Solution
-
-**1.** The integrand is continuous on $[0,1]$, so only $[1,+\infty)$ matters. For $x\ge1$, $x^2\ge x$ so $e^{-x^2}\le e^{-x}$, and $\int_1^\infty e^{-x}dx=e^{-1}<\infty$. The integral **converges**.
-
-**2.** For $x\ge1$, $x^3+x\ge x^3$, hence $\frac1{\sqrt{x^3+x}}\le\frac1{x^{3/2}}$. Since $\frac32>1$, $\int_1^\infty x^{-3/2}dx$ converges. The integral **converges**.
-
-**3.** For $x\ge2$, $\ln x<x$, so $\frac1{\ln x}>\frac1x$. Since $\int_2^\infty\frac{dx}x=+\infty$, the integral **diverges**.
-
-**Remark.** In (1) the exact value is $\frac{\sqrt\pi}2$, but it cannot be found with an elementary antiderivative; the comparison test proves convergence without knowing the value.
-@@@ an-integral-with-two-singular-endpoints.md
----
-title: An integral singular at both endpoints
-category: calculus/single-variable/integration/improper-integrals
-level: l1
-difficulty: 3
-tags: improper integrals, substitution, arcsine
-date: 2026-11-02
----
-
-## Statement
-
-Show that $\displaystyle\int_0^1\frac{dx}{\sqrt{x(1-x)}}$ converges and compute it.
-
-## Hint
-
-The integrand blows up at $0$ and at $1$. Substitute $x=\sin^2\theta$.
-
-## Solution
-
-**Convergence.** Near $0$, $\frac1{\sqrt{x(1-x)}}\sim\frac1{\sqrt x}$ and $\int_0\frac{dx}{\sqrt x}$ converges ($p=\frac12<1$). Near $1$, the integrand behaves like $\frac1{\sqrt{1-x}}$, which also gives a convergent integral. So the integral converges.
-
-**Value.** Let $x=\sin^2\theta$ with $\theta\in\left(0,\frac\pi2\right)$. Then $dx=2\sin\theta\cos\theta\,d\theta$ and $\sqrt{x(1-x)}=\sin\theta\cos\theta$, so
-$$\int_0^1\frac{dx}{\sqrt{x(1-x)}}=\int_0^{\pi/2}2\,d\theta=\pi.$$
-
-**Remark.** Since the substitution is a bijection between the open intervals and the integrand becomes constant, the singularities disappear completely. This integral is the Beta function value $B\left(\frac12,\frac12\right)=\pi$.
-@@@ the-dirichlet-integral-converges.md
----
-title: The integral of sin x / x
-category: calculus/single-variable/integration/improper-integrals
-level: m1
-difficulty: 5
-tags: improper integrals, conditional convergence, integration by parts
-date: 2026-11-02
----
-
-## Statement
-
-1. Show that $\displaystyle\int_0^{+\infty}\frac{\sin x}x\,dx$ converges.
-2. Show that it is **not** absolutely convergent: $\displaystyle\int_0^{+\infty}\frac{|\sin x|}x\,dx=+\infty$.
-
-## Hint
-
-At $0$ the integrand extends continuously. At infinity, integrate by parts to gain a factor $\frac1x$. For part 2, bound $\int_{k\pi}^{(k+1)\pi}\frac{|\sin x|}x\,dx$ from below.
-
-## Solution
-
-**Near $0$.** Since $\frac{\sin x}x\to1$, the integrand extends to a continuous function on $[0,1]$: no problem there.
-
-**1. At infinity.** For $R>1$, integrate by parts with $u=\frac1x$, $v'=\sin x$:
-$$\int_1^R\frac{\sin x}x\,dx=\left[-\frac{\cos x}x\right]_1^R-\int_1^R\frac{\cos x}{x^2}\,dx=\cos1-\frac{\cos R}R-\int_1^R\frac{\cos x}{x^2}\,dx.$$
-As $R\to+\infty$, $\frac{\cos R}R\to0$, and $\int_1^\infty\frac{|\cos x|}{x^2}dx\le\int_1^\infty\frac{dx}{x^2}<\infty$, so $\int_1^R\frac{\cos x}{x^2}dx$ converges. Hence $\int_1^R\frac{\sin x}xdx$ has a limit: the integral converges.
-
-**2. Not absolutely.** On $[k\pi,(k+1)\pi]$, $x\le(k+1)\pi$ and $\int_{k\pi}^{(k+1)\pi}|\sin x|\,dx=2$, so
-$$\int_{k\pi}^{(k+1)\pi}\frac{|\sin x|}x\,dx\ge\frac2{(k+1)\pi}.$$
-Summing over $k=0,\dots,N-1$ gives at least $\frac2\pi\sum_{k=1}^N\frac1k=\frac2\pi H_N\to+\infty$ (harmonic series). So the absolute integral diverges.
-
-**Remark.** The integral converges only thanks to cancellations between positive and negative lobes. Its exact value is $\frac\pi2$ (the Dirichlet integral).
