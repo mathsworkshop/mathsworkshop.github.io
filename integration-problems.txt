@@ -1,75 +1,4 @@
-@@@ integral-of-sine-squared.md
----
-title: Integral of sine squared
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 1
-tags: integrals, trigonometry
-date: 2026-10-31
----
 
-## Statement
-
-Compute $\displaystyle\int_0^\pi\sin^2x\,dx$.
-
-## Hint
-
-Linearise using $\cos2x=1-2\sin^2x$.
-
-## Solution
-
-Since $\sin^2x=\dfrac{1-\cos2x}{2}$,
-$$\int_0^\pi\sin^2x\,dx=\left[\frac x2-\frac{\sin2x}{4}\right]_0^\pi=\frac\pi2.$$
-
-@@@ integration-by-parts-x-exp-x.md
----
-title: Integration by parts
-category: calculus/single-variable/integration/techniques
-level: l1
-difficulty: 1
-tags: integrals, by parts
-date: 2026-10-31
----
-
-## Statement
-
-Compute $\displaystyle\int_0^1 x\,e^x\,dx$.
-
-## Hint
-
-Differentiate $x$ and integrate $e^x$.
-
-## Solution
-
-Take $u=x$ and $v'=e^x$, so $u'=1$ and $v=e^x$. Then
-$$\int_0^1xe^x\,dx=\Big[xe^x\Big]_0^1-\int_0^1e^x\,dx=e-(e-1)=1.$$
-@@@ an-improper-integral.md
----
-title: An improper integral
-category: calculus/single-variable/integration/improper-integrals
-level: l2
-difficulty: 2
-tags: improper integrals, integration by parts
-date: 2026-10-31
----
-
-## Statement
-
-Show that $\displaystyle\int_0^{+\infty}x\,e^{-x}\,dx$ converges and compute its value.
-
-## Hint
-
-Find an antiderivative by parts, then let the upper bound go to infinity.
-
-## Solution
-
-An antiderivative of $xe^{-x}$ is $F(x)=-(x+1)e^{-x}$, because
-$$F'(x)=-e^{-x}+(x+1)e^{-x}=xe^{-x}.$$
-
-For $A>0$,
-$$\int_0^Axe^{-x}\,dx=F(A)-F(0)=1-(A+1)e^{-A}.$$
-
-As $A\to+\infty$, $(A+1)e^{-A}\to0$ (exponential beats polynomial). So the integral converges and equals $1$.
 @@@ riemann-mean-value-log.md
 ---
 title: A limit via the mean value theorem for integrals
@@ -1156,8 +1085,51 @@ $$2\sqrt{1+k^2}=k+2\ \Longrightarrow\ 4+4k^2=k^2+4k+4\ \Longrightarrow\ 3k^2=4k.
 Since $k>0$, $k=\frac43$.
 
 **Answer.** $t=0$ or $t=-\dfrac43$.
+@@@ integral-of-sine-squared.md
+---
+title: Integral of sine squared
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 1
+tags: integrals, trigonometry
+date: 2026-10-31
+---
 
+## Statement
 
+Compute $\displaystyle\int_0^\pi\sin^2x\,dx$.
+
+## Hint
+
+Linearise using $\cos2x=1-2\sin^2x$.
+
+## Solution
+
+Since $\sin^2x=\dfrac{1-\cos2x}{2}$,
+$$\int_0^\pi\sin^2x\,dx=\left[\frac x2-\frac{\sin2x}{4}\right]_0^\pi=\frac\pi2.$$
+
+@@@ integration-by-parts-x-exp-x.md
+---
+title: Integration by parts
+category: calculus/single-variable/integration/techniques
+level: l1
+difficulty: 1
+tags: integrals, by parts
+date: 2026-10-31
+---
+
+## Statement
+
+Compute $\displaystyle\int_0^1 x\,e^x\,dx$.
+
+## Hint
+
+Differentiate $x$ and integrate $e^x$.
+
+## Solution
+
+Take $u=x$ and $v'=e^x$, so $u'=1$ and $v=e^x$. Then
+$$\int_0^1xe^x\,dx=\Big[xe^x\Big]_0^1-\int_0^1e^x\,dx=e-(e-1)=1.$$
 @@@ the-integral-of-ln-one-plus-tangent.md
 ---
 title: An integral that equals its own mirror image
@@ -1556,7 +1528,33 @@ $$\int\frac{dx}{x^2+x+1}=\frac43\cdot\frac{\sqrt3}2\int\frac{du}{u^2+1}=\frac2{\
 
 **Definite integral.**
 $$\frac2{\sqrt3}\left(\arctan\sqrt3-\arctan\frac1{\sqrt3}\right)=\frac2{\sqrt3}\left(\frac\pi3-\frac\pi6\right)=\frac\pi{3\sqrt3}\approx0.6046.$$
+@@@ an-improper-integral.md
+---
+title: An improper integral
+category: calculus/single-variable/integration/improper-integrals
+level: l2
+difficulty: 2
+tags: improper integrals, integration by parts
+date: 2026-10-31
+---
 
+## Statement
+
+Show that $\displaystyle\int_0^{+\infty}x\,e^{-x}\,dx$ converges and compute its value.
+
+## Hint
+
+Find an antiderivative by parts, then let the upper bound go to infinity.
+
+## Solution
+
+An antiderivative of $xe^{-x}$ is $F(x)=-(x+1)e^{-x}$, because
+$$F'(x)=-e^{-x}+(x+1)e^{-x}=xe^{-x}.$$
+
+For $A>0$,
+$$\int_0^Axe^{-x}\,dx=F(A)-F(0)=1-(A+1)e^{-A}.$$
+
+As $A\to+\infty$, $(A+1)e^{-A}\to0$ (exponential beats polynomial). So the integral converges and equals $1$.
 @@@ improper-integral-cos-power.md
 ---
 title: When the equivalence rule for improper integrals fails
