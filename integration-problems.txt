@@ -1594,3 +1594,43 @@ using $\cos^2=1-\sin^2$. Hence $nW_n=(n-1)W_{n-2}$.
 $$W_nW_{n+1}\le W_n^2\le W_nW_{n-1}\ \Longrightarrow\ \frac\pi{2(n+1)}\le W_n^2\le\frac\pi{2n}.$$
 
 **Consequence.** $W_n\sim\sqrt{\frac\pi{2n}}$. Together with the closed formulas $W_{2p}=\frac{(2p)!}{4^p(p!)^2}\frac\pi2$, this gives the Wallis product for $\pi$ and the asymptotics of central binomial coefficients.
+
+@@@ the-gamma-function-at-integers.md
+---
+title: Differentiating under the integral sign
+category: calculus/single-variable/integration/improper-integrals
+level: m1
+difficulty: 3
+order: 10
+tags: parameter integrals, Gamma function, factorial
+date: 2026-11-02
+---
+
+## Statement
+
+1. For $a>0$ compute $I(a)=\displaystyle\int_0^{+\infty}e^{-ax}\,dx$.
+2. By differentiating with respect to $a$, compute $\displaystyle\int_0^{+\infty}xe^{-ax}\,dx$ and guess $\displaystyle\int_0^{+\infty}x^ne^{-ax}\,dx$.
+3. Prove, by integration by parts, that $\displaystyle\int_0^{+\infty}x^ne^{-x}\,dx=n!$.
+
+## Hint
+
+Part 2 relies on the Leibniz rule (differentiation under the integral sign), which is valid here because, on a neighbourhood $[a_0,a_1]$ of the differentiation point (with $0<a_0<a_1$), the partial derivative $\partial_a(e^{-ax})=-xe^{-ax}$ is dominated by the integrable function $x\mapsto xe^{-a_0x}$. For part 3, find a recurrence relation.
+
+## Solution
+
+**1.** $I(a)=\left[-\frac1ae^{-ax}\right]_0^{+\infty}=\frac1a$.
+
+**2. Differentiation under the integral sign.** Fix $a>0$ and choose $0<a_0<a<a_1$. For $a'\in[a_0,a_1]$ and $x\ge0$,
+$$|\partial_{a'}(e^{-a'x})|=|{-x}e^{-a'x}|\le xe^{-a_0x},$$
+and $x\mapsto xe^{-a_0x}$ is integrable on $[0,+\infty)$ since $\int_0^{+\infty}xe^{-a_0x}dx=1/a_0^2<\infty$. The Leibniz rule therefore applies: the function $I$ is differentiable and
+$$I'(a)=-\int_0^{+\infty}xe^{-ax}\,dx.$$
+Since $I'(a)=-\frac1{a^2}$, we get
+$$\int_0^{+\infty}xe^{-ax}\,dx=\frac1{a^2}.$$
+Repeating the same argument $n$ times (the dominating function at step $k$ being $x^ke^{-a_0x}$, integrable), $(-1)^nI^{(n)}(a)=\int_0^{+\infty}x^ne^{-ax}dx$, and $I^{(n)}(a)=(-1)^n\frac{n!}{a^{n+1}}$, so
+$$\int_0^{+\infty}x^ne^{-ax}\,dx=\frac{n!}{a^{n+1}}.$$
+
+**3.** Let $G_n=\int_0^{+\infty}x^ne^{-x}dx$. By parts with $u=x^n$, $v'=e^{-x}$:
+$$G_n=\bigl[-x^ne^{-x}\bigr]_0^{+\infty}+n\int_0^{+\infty}x^{n-1}e^{-x}\,dx=nG_{n-1},$$
+since $x^ne^{-x}\to0$ at infinity. With $G_0=1$, $G_n=n!$.
+
+**Remark.** The function $\Gamma(s)=\int_0^{+\infty}x^{s-1}e^{-x}dx$ extends the factorial to real numbers: $\Gamma(n+1)=n!$.
