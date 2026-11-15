@@ -2635,41 +2635,6 @@ Existence: apply the intermediate value theorem to $g(x)=f(x)-x$. Uniqueness: ap
 **Uniqueness.** Suppose $u<v$ are two fixed points. By the mean value theorem there exists $\xi\in(u,v)$ with $f(v)-f(u)=f'(\xi)(v-u)$. Since $f(u)=u$ and $f(v)=v$, this reads $v-u=f'(\xi)(v-u)$, so $f'(\xi)=1$, contradicting $|f'|<1$.
 
 **Remark.** The hypothesis can be weakened to "$|f'|\le k<1$": the map is then a *contraction*, and for any starting point $x_0$ the sequence $x_{n+1}=f(x_n)$ converges to the fixed point (Banach's fixed point theorem).
-@@@ taylor-lagrange-and-an-approximation-of-e.md
----
-title: Approximating e with a guaranteed error
-category: calculus/single-variable/differentiation/taylor-expansions
-level: l1
-difficulty: 3
-tags: Taylor-Lagrange, error bound, number e
-date: 2026-11-02
----
-
-## Statement
-
-1. Write the Taylor–Lagrange formula for $e^x$ at $0$ and $x=1$, at order $n$.
-2. Find the smallest $n$ such that $\sum_{k=0}^n\frac1{k!}$ approximates $e$ with an error below $10^{-6}$. Use $e<3$.
-3. Compute this approximation.
-
-## Hint
-
-The remainder is $\dfrac{e^\theta}{(n+1)!}$ for some $\theta\in(0,1)$.
-
-## Solution
-
-**1.** For some $\theta\in(0,1)$,
-$$e=\sum_{k=0}^n\frac1{k!}+\frac{e^\theta}{(n+1)!}.$$
-
-**2. Error bound.** Since $0<\theta<1$, $e^\theta<e<3$, so the error satisfies
-$$0<e-\sum_{k=0}^n\frac1{k!}<\frac3{(n+1)!}.$$
-- For $n=8$: $\frac3{9!}\approx8.3\cdot10^{-6}$, not small enough.
-- For $n=9$: $\frac3{10!}\approx8.3\cdot10^{-7}<10^{-6}$.
-
-So $n=9$ guarantees the precision (and it is the first $n$ for which this *bound* does).
-
-**3.** $\sum_{k=0}^9\frac1{k!}=2.7182815255\dots$, while $e=2.7182818284\dots$; the actual error is $3.0\cdot10^{-7}$, indeed below the bound.
-
-**Remark.** The factorials in the denominator make this series converge extremely fast: ten terms give six correct digits. The same reasoning is how calculators compute $e^x$.
 @@@ polynomial-inequalities-for-sine-and-cosine.md
 ---
 title: Polynomial bounds for sine and cosine
@@ -2700,36 +2665,3 @@ Chain the three inequalities: each one is obtained by studying the sign of the d
 
 
 **Application.** Together they give $1-\frac{x^2}6\le\frac{\sin x}x\le1$ for $x>0$, which re-proves $\frac{\sin x}x\to1$ by squeezing.
-@@@ classifying-critical-points-with-taylor-expansions.md
----
-title: Classifying a critical point when f″(0) = 0
-category: calculus/single-variable/differentiation/taylor-expansions
-level: l1
-difficulty: 3
-tags: local extrema, Taylor expansion, second derivative test
-date: 2026-11-02
----
-
-## Statement
-
-Each function below has a critical point at $0$ where the second derivative also vanishes. Decide, with Taylor expansions, whether $0$ is a local minimum, a local maximum, or neither.
-
-1. $f_1(x)=\cos x-1+\dfrac{x^2}2$
-2. $f_2(x)=\sin x-x+\dfrac{x^3}6$
-3. $f_3(x)=x\sin x-x^2$
-
-## Hint
-
-Find the first non-zero term in the expansion at $0$. If it is $c\,x^m$ with $m$ even, the sign of $c$ decides; if $m$ is odd, there is no extremum.
-
-## Solution
-
-**Rule.** If $f(x)=c\,x^m+o(x^m)$ with $c\ne0$, then near $0$ the function $f$ has the sign of $cx^m$.
-
-**1.** $\cos x=1-\frac{x^2}2+\frac{x^4}{24}-\dots$, so $f_1(x)=\dfrac{x^4}{24}+o(x^4)$. The exponent $4$ is even and the coefficient is positive: $f_1\ge0$ near $0=f_1(0)$. **Local minimum.**
-
-**2.** $\sin x=x-\frac{x^3}6+\frac{x^5}{120}-\dots$, so $f_2(x)=\dfrac{x^5}{120}+o(x^5)$. The exponent $5$ is odd: $f_2$ changes sign at $0$. **No extremum** (an inflection point).
-
-**3.** $x\sin x=x^2-\frac{x^4}6+\dots$, so $f_3(x)=-\dfrac{x^4}6+o(x^4)$. The exponent is even and the coefficient is negative: **local maximum.**
-
-**Remark.** The second derivative test ($f''(0)>0$ or $<0$) is silent in these three cases because $f''(0)=0$. Taylor expansions give the complete picture.
