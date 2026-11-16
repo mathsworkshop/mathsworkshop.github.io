@@ -1,6 +1,6 @@
 @@@ dc-mvi-001-the-differential-of-the-complex-square.md
 ---
-title: The differential of (x, y) |-> (x^2 - y^2, 2xy), from the definition
+title: The differential of (x, y) |--> (x² - y², 2xy), from the definition
 category: calculus/multivariable/diff-calculus/dc-mean-value-inequality
 level: l2
 difficulty: 1
@@ -10,10 +10,6 @@ date: 2026-11-15
 ---
 
 ## Statement
-
-**Definition.** Let $U\subset\mathbb{R}^n$ be open and $f:U\to\mathbb{R}^p$. We say that $f$ is *(Frechet) differentiable* at $a\in U$ if there is a linear map $L:\mathbb{R}^n\to\mathbb{R}^p$ such that
-$$f(a+h)=f(a)+L(h)+o(\lVert h\rVert)\qquad(h\to0),$$
-that is, $\dfrac{\lVert f(a+h)-f(a)-L(h)\rVert}{\lVert h\rVert}\to0$. The map $L=Df(a)$ is then unique, and its matrix in the canonical bases is the *Jacobian matrix* $\left(\dfrac{\partial f_i}{\partial x_j}(a)\right)$.
 
 Let $f:\mathbb{R}^2\to\mathbb{R}^2$ be given by $f(x,y)=(x^2-y^2,\;2xy)$.
 
@@ -26,15 +22,24 @@ Write $a+h=(a_1+h_1,a_2+h_2)$, expand $f(a+h)-f(a)$, and separate the terms that
 
 ## Solution
 
-**Idea.** Differentiability means that, near $a$, the map $f$ is *affine up to an error that is small compared with $\lVert h\rVert$*. For a polynomial map we just expand: the part linear in $h$ is the differential, and everything of degree $\ge2$ in $h$ is automatically $o(\lVert h\rVert)$.
 
-**Step 1: expansion.**
-$$f_1(a+h)-f_1(a)=(a_1+h_1)^2-(a_2+h_2)^2-a_1^2+a_2^2=2a_1h_1-2a_2h_2+(h_1^2-h_2^2),$$
-$$f_2(a+h)-f_2(a)=2(a_1+h_1)(a_2+h_2)-2a_1a_2=2a_2h_1+2a_1h_2+2h_1h_2.$$
+**Step 1: expansion.** Define $f_1(x,y) = x^2 - y^2$ and $f_2(x,y) = 2 xy$ so that $f = (f_1,f_2)$. Let $h =(h_1,h_2) \in \mathbb{R}^2$. 
+We have 
+$$
+\begin{aligned} 
+f_1(a+h)-f_1(a)&=(a_1+h_1)^2-(a_2+h_2)^2-a_1^2+a_2^2\\ &=2a_1h_1-2a_2h_2+(h_1^2-h_2^2),
+\end{aligned}
+$$
+$$
+\begin{aligned} 
+f_2(a+h)-f_2(a)&=2(a_1+h_1)(a_2+h_2)-2a_1a_2\\ &=2a_2h_1+2a_1h_2+2h_1h_2.
+\end{aligned}
+$$
 
-**Step 2: the candidate $L$.** Define
-$$L(h)=\bigl(2a_1h_1-2a_2h_2,\;2a_2h_1+2a_1h_2\bigr),\qquad\text{i.e. }L=\begin{pmatrix}2a_1&-2a_2\\2a_2&2a_1\end{pmatrix}.$$
-It is linear in $h$.
+**Step 2: the candidate $L$.** Define the linear map $h$ by
+$$L(h)=\bigl(2a_1h_1-2a_2h_2,\;2a_2h_1+2a_1h_2\bigr),$$ 
+i.e. 
+$$ L=\begin{pmatrix}2a_1&-2a_2\\2a_2&2a_1\end{pmatrix}.$$
 
 **Step 3: the remainder.** What is left is $r(h)=f(a+h)-f(a)-L(h)=(h_1^2-h_2^2,\;2h_1h_2)$. Its Euclidean norm is
 $$\lVert r(h)\rVert=\sqrt{(h_1^2-h_2^2)^2+4h_1^2h_2^2}=\sqrt{(h_1^2+h_2^2)^2}=\lVert h\rVert^2.$$
