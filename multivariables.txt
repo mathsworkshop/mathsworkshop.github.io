@@ -1,3 +1,4 @@
+@@@ dc-inv-001-the-polar-map-and-the-inverse-function-theorem.md
 ---
 title: The polar map: where is it locally invertible?
 category: calculus/multivariable/diff-calculus/dc-inverse-function
