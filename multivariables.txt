@@ -1,3 +1,1271 @@
+---
+title: The circle: when can one solve for y?
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 1
+tags: implicit function theorem, circle, local graph, hypothesis
+order: 1
+date: 2026-11-14
+---
+
+# Problem 1 — The circle: when can one solve for y?
+
+## Statement
+
+**Implicit function theorem (one equation, one unknown).** Let $U\subset\mathbb{R}^2$ be open, $F:U\to\mathbb{R}$ of class $C^k$ ($k\ge1$), and $(a,b)\in U$ with $F(a,b)=0$ and $\dfrac{\partial F}{\partial y}(a,b)\ne0$. Then there exist open intervals $V\ni a$ and $W\ni b$ with $V\times W\subset U$ and a unique function $\varphi:V\to W$ such that
+$$\text{for }(x,y)\in V\times W:\qquad F(x,y)=0\iff y=\varphi(x).$$
+Moreover $\varphi$ is of class $C^k$ and $\varphi'(x)=-\dfrac{F_x(x,\varphi(x))}{F_y(x,\varphi(x))}$.
+
+Apply this to $F(x,y)=x^2+y^2-1$.
+
+1. At which points $(a,b)$ of the unit circle does the theorem allow us to write the circle locally as a graph $y=\varphi(x)$? Identify $\varphi$, $V$, $W$ and compute $\varphi'$ and $\varphi''$.
+2. At the points where the hypothesis fails, show that the circle really is **not** a graph over the $x$-axis near that point, but that it is a graph over the $y$-axis.
+
+## Hint
+
+Compute $F_y=2y$. For part 2, look at the two points $(x,\pm\sqrt{1-x^2})$ for $x$ slightly smaller than $1$.
+
+## Solution
+
+**Idea.** The theorem says: *wherever the derivative with respect to the unknown does not vanish, the zero set of $F$ is locally the graph of a function of the other variable*. The hypothesis is a condition at one point only; the conclusion is a statement in a whole neighbourhood.
+
+**Step 1: where the hypothesis holds.** $F_y(a,b)=2b$, which is nonzero exactly when $b\ne0$, that is at every point of the circle except $(\pm1,0)$.
+- If $b>0$, take $V=(-1,1)$ and $W=(0,+\infty)$. For $(x,y)\in V\times W$ the equation $x^2+y^2=1$ gives $y^2=1-x^2$ and, since $y>0$, $y=\sqrt{1-x^2}$. So $\varphi(x)=\sqrt{1-x^2}$ (and $V\times W$ contains $(a,b)$ whenever $|a|<1$, $b>0$).
+- If $b<0$, take $W=(-\infty,0)$: then $\varphi(x)=-\sqrt{1-x^2}$.
+
+The theorem guarantees that $\varphi$ is $C^\infty$ (here $F$ is a polynomial). We can compute its derivatives without the explicit formula: differentiating $x^2+\varphi(x)^2=1$ gives $2x+2\varphi\varphi'=0$, so
+$$\varphi'(x)=-\frac{x}{\varphi(x)}.$$
+Differentiating again,
+$$\varphi''(x)=-\frac{\varphi-x\varphi'}{\varphi^2}=-\frac{\varphi+x^2/\varphi}{\varphi^2}=-\frac{\varphi^2+x^2}{\varphi^3}=-\frac1{\varphi(x)^3}.$$
+For the upper half circle ($\varphi>0$), $\varphi''<0$: the graph is concave, as expected.
+
+**Step 2: where the hypothesis fails.** At $(1,0)$ we have $F_y=0$, but $F_x(1,0)=2\ne0$. Suppose some open intervals $V\ni1$, $W\ni0$ and a function $\varphi$ had the property of the theorem. Pick $x\in V$ with $x<1$ and $x$ so close to $1$ that $\sqrt{1-x^2}\in W$ (possible since $\sqrt{1-x^2}\to0$ as $x\to1^-$). Then both $(x,\sqrt{1-x^2})$ and $(x,-\sqrt{1-x^2})$ belong to $V\times W$ and to the circle, so $\varphi(x)$ would have to equal two different numbers. Contradiction: **the circle is not a graph over the $x$-axis near $(1,0)$.**
+
+However, applying the theorem with the roles of $x$ and $y$ exchanged (the hypothesis is now $F_x(1,0)=2\ne0$) gives $x=\psi(y)=\sqrt{1-y^2}$ near $(1,0)$.
+
+**Common mistake.** The condition $F_y\ne0$ is *sufficient*, not necessary: at $(1,0)$ one cannot solve for $y$ because of the vertical tangent, but this is a property of the *circle*, not a failure of the theorem. For other equations the hypothesis can fail while a differentiable local solution still exists (see the cusp problem later in this category).
+
+**Remark.** The theorem is local: the explicit graph $\varphi(x)=\sqrt{1-x^2}$ exists for $x\in(-1,1)$, but the theorem as stated only provides a neighbourhood. The size of that neighbourhood is not given by the qualitative statement; a quantitative version appears in the problems on the contraction proof.
+
+---
+
+---
+title: The folium of Descartes: first and second derivatives of an implicit function
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 2
+tags: implicit differentiation, second derivative, folium, horizontal tangents
+order: 2
+date: 2026-11-14
+---
+
+# Problem 2 — The folium of Descartes
+
+## Statement
+
+Let $F(x,y)=x^3+y^3-6xy$. The point $(3,3)$ lies on the curve $F=0$.
+
+1. Show that the curve is locally the graph of a $C^\infty$ function $y=\varphi(x)$ near $(3,3)$.
+2. Compute $\varphi'(3)$ and $\varphi''(3)$.
+3. Find the point of the curve (in the first quadrant, other than the origin) where the tangent is horizontal.
+
+## Hint
+
+Compute $F_x=3x^2-6y$ and $F_y=3y^2-6x$. For $\varphi''$, differentiate the formula for $\varphi'$ once more, remembering that $y$ depends on $x$. For part 3 you need $F_x=0$ together with $F=0$.
+
+## Solution
+
+**Recall.** If $F(x,\varphi(x))=0$ and $F_y\ne0$, then $\varphi'=-F_x/F_y$.
+
+**Step 1: the hypothesis.** $F(3,3)=27+27-54=0$ and $F_y(3,3)=27-18=9\ne0$. By the implicit function theorem there are neighbourhoods $V\ni3$, $W\ni3$ and a $C^\infty$ function $\varphi:V\to W$ such that on $V\times W$ the curve is exactly the graph of $\varphi$.
+
+**Step 2: first derivative.**
+$$\varphi'(x)=-\frac{3x^2-6y}{3y^2-6x}=\frac{2y-x^2}{y^2-2x}\qquad(y=\varphi(x)).$$
+At $(3,3)$: $\varphi'(3)=\dfrac{6-9}{9-6}=-1$.
+
+**Step 3: second derivative.** Write $N=2y-x^2$ and $D=y^2-2x$, so $\varphi'=N/D$ with $y=\varphi(x)$. Then
+$$N'=2y'-2x,\qquad D'=2yy'-2.$$
+At $(3,3)$ with $y'=-1$: $N'=-2-6=-8$, $D'=-6-2=-8$, $N=-3$, $D=3$. Hence
+$$\varphi''(3)=\frac{N'D-ND'}{D^2}=\frac{(-8)(3)-(-3)(-8)}{9}=\frac{-24-24}{9}=-\frac{16}{3}.$$
+
+**Check.** Near $(3,3)$ the curve is concave ($\varphi''<0$) and decreasing: the loop of the folium bends over there. The second-order approximation is $y\approx3-(x-3)-\frac83(x-3)^2$.
+
+**Step 4: horizontal tangents.** The tangent is horizontal when $\varphi'=0$, that is $F_x=0$ (provided $F_y\ne0$): $y=\frac{x^2}2$. Substituting in $F=0$:
+$$x^3+\frac{x^6}8-3x^3=0\iff x^3\left(\frac{x^3}8-2\right)=0\iff x=0\ \text{or}\ x^3=16.$$
+So $x=16^{1/3}=2^{4/3}\approx2.52$ and $y=\frac{x^2}2=2^{5/3}\approx3.17$. At this point $F_y=3y^2-6x=3\cdot2^{10/3}-6\cdot2^{4/3}=2^{4/3}\cdot(3\cdot4-6)=6\cdot2^{4/3}\ne0$, so the point is a legitimate implicit-function point, where $\varphi'=0$.
+
+**Common mistake.** Forgetting the chain rule when differentiating $y'$: since $y$ depends on $x$, $\dfrac d{dx}(y^2)=2yy'$ and not $2y$. Equally common: replacing $y'$ by its numerical value *before* differentiating the quotient (this loses the dependence on $x$ and gives a wrong $\varphi''$).
+
+**Remark.** At the origin, $F_x=F_y=0$: the curve has a node there (two branches cross), and no choice of variable gives a graph; compare with the later problem on singular points. The formula for $\varphi''$ in general is $\varphi''=-\dfrac{F_{xx}+2F_{xy}\varphi'+F_{yy}\varphi'^2}{F_y}$, which you can check on this example: $F_{xx}=6x=18$, $F_{xy}=-6$, $F_{yy}=6y=18$, $F_y=9$: $-\dfrac{18+12+18}{9}=-\dfrac{48}9=-\dfrac{16}3$ ✓.
+
+---
+
+---
+title: The equation y + sin y = x: a global solution that is not everywhere differentiable
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 2
+tags: implicit function theorem, inverse function, series expansion, vertical tangent
+order: 3
+date: 2026-11-14
+---
+
+# Problem 3 — The equation $y+\sin y=x$
+
+## Statement
+
+Consider the equation $y+\sin y=x$.
+
+1. Show that it defines, near $(0,0)$, a $C^\infty$ function $y=\varphi(x)$, and find $\varphi'(0)$, $\varphi''(0)$ and the expansion $\varphi(x)=\frac x2+\frac{x^3}{96}+\frac{x^5}{1920}+o(x^5)$.
+2. Show that the equation defines a **continuous, strictly increasing** function $\varphi:\mathbb{R}\to\mathbb{R}$ globally.
+3. Show that $\varphi$ is $C^\infty$ except at the points $x=\pi+2k\pi$, and that at $x=\pi$ it is not differentiable: the graph has a vertical tangent. Find the equivalent of $\varphi(x)-\pi$ as $x\to\pi$.
+
+## Hint
+
+Put $F(x,y)=y+\sin y-x$, so that $F_y=1+\cos y$. For part 3, write $y=\pi+t$ and recall $t-\sin t\sim t^3/6$.
+
+## Solution
+
+**Idea.** The theorem applies exactly where $F_y\ne0$. Here $F_y=1+\cos y$ vanishes at $y=\pi+2k\pi$, and those are precisely the points where the implicit function is not differentiable.
+
+**Step 1: local solution at the origin.** $F(0,0)=0$ and $F_y(0,0)=2\ne0$. So $\varphi$ exists near $0$, is $C^\infty$, and
+$$\varphi'=\frac1{1+\cos\varphi},\qquad\varphi'(0)=\frac12.$$
+Differentiating $\varphi'(1+\cos\varphi)=1$: $\varphi''(1+\cos\varphi)-\varphi'\sin\varphi\,\varphi'=0$, so
+$$\varphi''=\frac{\sin\varphi}{(1+\cos\varphi)^3},\qquad\varphi''(0)=0.$$
+(In fact $\varphi$ is odd, because $h(y)=y+\sin y$ is odd.)
+
+**Expansion.** Since $\varphi$ is odd, write $\varphi(x)=\frac x2+ax^3+bx^5+o(x^5)$. Using $\sin y=y-\frac{y^3}6+\frac{y^5}{120}-\cdots$,
+$$y+\sin y=2y-\frac{y^3}6+\frac{y^5}{120}+o(y^5).$$
+With $y=\frac x2+ax^3+bx^5$: $y^3=\frac{x^3}8+\frac34ax^5+o(x^5)$ and $y^5=\frac{x^5}{32}+o(x^5)$. Collecting:
+- coefficient of $x$: $2\cdot\frac12=1$ ✓,
+- coefficient of $x^3$: $2a-\frac1{48}=0$, so $a=\frac1{96}$,
+- coefficient of $x^5$: $2b-\frac16\cdot\frac34a+\frac1{120}\cdot\frac1{32}=0$, so $2b=\frac{a}{8}-\frac1{3840}=\frac1{768}-\frac1{3840}=\frac{5-1}{3840}=\frac1{960}$, hence $b=\frac1{1920}$.
+
+**Step 2: a global solution.** The function $h(y)=y+\sin y$ is continuous with $h'(y)=1+\cos y\ge0$, and $h'$ vanishes only at isolated points $y=\pi+2k\pi$. Hence $h$ is strictly increasing on $\mathbb{R}$: indeed, for $y_1<y_2$,
+$$h(y_2)-h(y_1)=\int_{y_1}^{y_2}(1+\cos y)\,dy>0,$$
+since the integrand is continuous, nonnegative, and not identically zero on $[y_1,y_2]$. Moreover $h(y)\to\pm\infty$ as $y\to\pm\infty$ (because $|\sin y|\le1$). By the intermediate value theorem $h$ is a bijection $\mathbb{R}\to\mathbb{R}$, and $\varphi=h^{-1}$ is continuous and strictly increasing. For each $x$ the equation $y+\sin y=x$ has exactly one solution $y=\varphi(x)$.
+
+**Step 3: smoothness and the exceptional points.** At every $x_0$ with $\varphi(x_0)\notin\pi+2\pi\mathbb{Z}$ we have $F_y\ne0$, so the implicit function theorem gives a $C^\infty$ local solution; by uniqueness of the global solution it coincides with $\varphi$. So $\varphi\in C^\infty$ away from the points $x=h(\pi+2k\pi)=\pi+2k\pi$.
+
+At $x=\pi$ (where $\varphi(\pi)=\pi$): put $y=\pi+t$. Then $\sin y=-\sin t$ and the equation reads $x-\pi=t-\sin t$. Since $t-\sin t=\frac{t^3}6(1+o(1))$ as $t\to0$,
+$$\varphi(x)-\pi=t\sim\bigl(6(x-\pi)\bigr)^{1/3}\qquad(x\to\pi).$$
+The difference quotient $\dfrac{\varphi(x)-\pi}{x-\pi}\sim6^{1/3}(x-\pi)^{-2/3}\to+\infty$, so $\varphi$ is not differentiable at $\pi$ (vertical tangent).
+
+**Common mistake.** The failure of the hypothesis at the point $(\pi,\pi)$ does not prevent the existence of the implicit function there (it exists and is even continuous and increasing); it only prevents it from being differentiable. Always separate **existence** from **differentiability**.
+
+**Remark.** This is the picture of an inverse function at a critical point of $h$: the graph of $\varphi$ is the graph of $h$ reflected in the line $y=x$, and $h$ has horizontal tangents at $y=\pi+2k\pi$, which become vertical tangents for $\varphi$.
+
+---
+
+---
+title: The curve e^{xy} + x + y = 2 near (0, 1)
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 2
+tags: implicit differentiation, second derivative, inverse function, exponential
+order: 4
+date: 2026-11-14
+---
+
+# Problem 4 — The curve $e^{xy}+x+y=2$ near $(0,1)$
+
+## Statement
+
+Let $F(x,y)=e^{xy}+x+y-2$.
+
+1. Check that $F(0,1)=0$ and that $F=0$ defines $y=\varphi(x)$ near $0$, with $\varphi(0)=1$. Compute $\varphi'(0)$ and $\varphi''(0)$.
+2. Show that the curve is also, near $(0,1)$, the graph of a function $x=\psi(y)$, and compute $\psi'(1)$ and $\psi''(1)$. Verify that they are compatible with the answers of part 1.
+
+## Hint
+
+For part 1 differentiate the identity $e^{x\varphi}+x+\varphi=2$ twice. For part 2 apply the theorem with the roles of $x$ and $y$ exchanged.
+
+## Solution
+
+**Step 1: the hypothesis.** $F(0,1)=e^0+0+1-2=0$. The partial derivatives are
+$$F_x=ye^{xy}+1,\qquad F_y=xe^{xy}+1,$$
+so $F_x(0,1)=2$ and $F_y(0,1)=1$. Since $F_y(0,1)\ne0$, there is a $C^\infty$ function $\varphi$ near $0$ with $\varphi(0)=1$ and $F(x,\varphi(x))=0$.
+
+**Step 2: $\varphi'(0)$.** Differentiate $G(x)=e^{x\varphi(x)}+x+\varphi(x)-2=0$:
+$$G'(x)=e^{x\varphi}\,(\varphi+x\varphi')+1+\varphi'=0.$$
+At $x=0$: $1\cdot(1+0)+1+\varphi'(0)=0$, so $\varphi'(0)=-2$. (Equivalently $-F_x/F_y=-2/1$.)
+
+**Step 3: $\varphi''(0)$.** Differentiate again, with $u=\varphi+x\varphi'$ (so $u'=2\varphi'+x\varphi''$):
+$$G''(x)=e^{x\varphi}u^2+e^{x\varphi}u'+\varphi''=0.$$
+At $x=0$: $u=\varphi(0)=1$, $u'=2\varphi'(0)=-4$. So $1\cdot1+1\cdot(-4)+\varphi''(0)=0$, whence $\varphi''(0)=3$.
+
+**Step 4: solving for $x$.** Since $F_x(0,1)=2\ne0$, the theorem (with the variables exchanged) gives a $C^\infty$ function $\psi$ with $\psi(1)=0$ and $F(\psi(y),y)=0$ near $y=1$. Then
+$$\psi'(1)=-\frac{F_y}{F_x}\Big|_{(0,1)}=-\frac12.$$
+For $\psi''(1)$ use the same method: differentiate $K(y)=e^{\psi y}+\psi+y-2=0$ twice. $K'=e^{\psi y}(\psi+y\psi')+\psi'+1$; at $y=1$: $(0+\psi')+\psi'+1=0$ gives $\psi'=-\frac12$ ✓. Then
+$$K''=e^{\psi y}(\psi+y\psi')^2+e^{\psi y}(2\psi'+y\psi'')+\psi''.$$
+At $y=1$: $\psi+y\psi'=-\frac12$, so $(\psi+y\psi')^2=\frac14$; $2\psi'+y\psi''=-1+\psi''$. Hence $\frac14-1+\psi''+\psi''=0$ and $\psi''(1)=\frac38$.
+
+**Step 5: consistency.** The functions $\varphi$ and $\psi$ are inverse to each other near $0$ and $1$, so $\psi'(1)=\dfrac1{\varphi'(0)}=-\dfrac12$ ✓, and the formula for the second derivative of an inverse gives
+$$\psi''(1)=-\frac{\varphi''(0)}{\varphi'(0)^3}=-\frac{3}{(-2)^3}=\frac38\ ✓.$$
+
+**Common mistake.** In $\dfrac d{dx}e^{x\varphi(x)}$ the exponent is $x\varphi(x)$, whose derivative is $\varphi+x\varphi'$, **not** $\varphi'$ or $\varphi$ alone.
+
+**Remark.** The two descriptions ($y$ as a function of $x$, and $x$ as a function of $y$) are both available because both partial derivatives are nonzero at the point. Tangent line: $y-1=-2x$, or $x=-\frac12(y-1)$: the same line seen from the two sides.
+
+---
+
+---
+title: A surface z = z(x, y) defined implicitly: partial derivatives and tangent plane
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 2
+tags: implicit function theorem, surface, tangent plane, partial derivatives, ellipsoid
+order: 5
+date: 2026-11-14
+---
+
+# Problem 5 — The ellipsoid and its tangent plane
+
+## Statement
+
+The surface $S$ is defined by $G(x,y,z)=x^2+2y^2+3z^2-6=0$. The point $P=(1,1,1)$ lies on $S$.
+
+1. Show that near $P$ the surface is the graph of a $C^\infty$ function $z=\varphi(x,y)$.
+2. Compute $\varphi_x$, $\varphi_y$ at $(1,1)$ and the tangent plane to $S$ at $P$.
+3. Compute the second partial derivatives $\varphi_{xx}$, $\varphi_{xy}$, $\varphi_{yy}$ at $(1,1)$.
+
+## Hint
+
+Differentiate $G(x,y,\varphi(x,y))=0$ with respect to $x$ and to $y$, using the chain rule: $G_x+G_z\,\varphi_x=0$.
+
+## Solution
+
+**Recall (several variables).** If $G(x,y,z)=0$ and $G_z\ne0$ at a point, then $z=\varphi(x,y)$ locally and $\varphi_x=-G_x/G_z$, $\varphi_y=-G_y/G_z$.
+
+**Step 1.** $G(1,1,1)=1+2+3-6=0$ and $G_z=6z=6\ne0$ at $P$. So the theorem applies with the unknown $z$ and the parameters $(x,y)$.
+
+**Step 2: first derivatives.** $G_x=2x$, $G_y=4y$, $G_z=6z$, so
+$$\varphi_x=-\frac{2x}{6z}=-\frac x{3z},\qquad\varphi_y=-\frac{4y}{6z}=-\frac{2y}{3z}.$$
+At $(1,1)$ (with $z=1$): $\varphi_x=-\frac13$ and $\varphi_y=-\frac23$.
+
+**Tangent plane.** The graph of the linear approximation is
+$$z=1-\tfrac13(x-1)-\tfrac23(y-1)\iff x+2y+3z=6.$$
+This is the same as $\nabla G(P)\cdot(X-P)=0$ with $\nabla G(P)=(2,4,6)$: **the gradient is normal to the level surface.**
+
+**Step 3: second derivatives.** Differentiate $\varphi_x=-\dfrac x{3\varphi}$ with respect to $x$:
+$$\varphi_{xx}=-\frac1{3\varphi}+\frac{x\varphi_x}{3\varphi^2}=-\frac13+\frac{1\cdot(-\frac13)}{3}=-\frac13-\frac19=-\frac49.$$
+With respect to $y$:
+$$\varphi_{xy}=\frac{x\varphi_y}{3\varphi^2}=\frac{1\cdot(-\frac23)}3=-\frac29.$$
+Differentiate $\varphi_y=-\dfrac{2y}{3\varphi}$ with respect to $y$:
+$$\varphi_{yy}=-\frac2{3\varphi}+\frac{2y\varphi_y}{3\varphi^2}=-\frac23+\frac{2\cdot(-\frac23)}3=-\frac23-\frac49=-\frac{10}9.$$
+
+**Check.** The matrix of second derivatives is $\begin{pmatrix}-4/9&-2/9\\-2/9&-10/9\end{pmatrix}$, negative definite (determinant $\frac{36}{81}>0$, trace negative): the upper part of the ellipsoid is concave, as it must be. Also $\varphi_{xy}$ computed from $\varphi_y$ gives the same value: $\partial_x\left(-\frac{2y}{3\varphi}\right)=\frac{2y\varphi_x}{3\varphi^2}=\frac{2\cdot(-1/3)}{3}=-\frac29$ ✓ (Schwarz's theorem).
+
+**Common mistake.** When differentiating $\varphi_x=-x/(3\varphi)$ with respect to $x$, the denominator $\varphi$ also depends on $x$. Forgetting that gives $\varphi_{xx}=-\frac1{3\varphi}$ only, which is wrong.
+
+**Remark.** At the points of the ellipsoid with $z=0$ the hypothesis $G_z\ne0$ fails (vertical tangent plane); there one has to solve for $x$ or for $y$ instead.
+
+---
+
+---
+title: The gradient is orthogonal to the level curves
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 1
+tags: gradient, level curve, tangent line, normal line
+order: 6
+date: 2026-11-14
+---
+
+# Problem 6 — The gradient is normal to level curves
+
+## Statement
+
+Let $F:\mathbb{R}^2\to\mathbb{R}$ be $C^1$ and $c\in\mathbb{R}$. Let $(a,b)$ be a point with $F(a,b)=c$ and $\nabla F(a,b)\ne0$.
+
+1. Show that if $\gamma:(-\varepsilon,\varepsilon)\to\mathbb{R}^2$ is a differentiable curve in the level set $\{F=c\}$ with $\gamma(0)=(a,b)$, then $\gamma'(0)\perp\nabla F(a,b)$.
+2. Deduce that the tangent line to the level curve at $(a,b)$ is $F_x(a,b)(x-a)+F_y(a,b)(y-b)=0$.
+3. Apply this to $x^4+y^4=17$ at $(1,2)$: give the equations of the tangent line and the normal line, and find the points where the tangent is horizontal.
+
+## Hint
+
+For part 1, differentiate the identity $F(\gamma(t))=c$ by the chain rule. For part 2, use the implicit function theorem to know that the level set really is a curve.
+
+## Solution
+
+**Step 1: orthogonality.** The function $t\mapsto F(\gamma(t))$ is constant, equal to $c$. By the chain rule its derivative is
+$$0=\frac d{dt}F(\gamma(t))=\nabla F(\gamma(t))\cdot\gamma'(t).$$
+At $t=0$: $\nabla F(a,b)\cdot\gamma'(0)=0$.
+
+**Step 2: tangent line.** Because $\nabla F(a,b)\ne0$, one of the two partial derivatives is nonzero. Say $F_y(a,b)\ne0$. By the implicit function theorem the level set is, near $(a,b)$, the graph of a $C^1$ function $y=\varphi(x)$ with $\varphi'(a)=-F_x/F_y$. The tangent line to this graph is
+$$y-b=-\frac{F_x(a,b)}{F_y(a,b)}(x-a)\iff F_x(a,b)(x-a)+F_y(a,b)(y-b)=0.$$
+This is the line through $(a,b)$ orthogonal to $\nabla F(a,b)$, which agrees with part 1. (If $F_x\ne0$, use $x=\psi(y)$ instead; the formula is the same.) Without the hypothesis $\nabla F\ne0$ the level set need not be a curve at all: for $F=x^2+y^2$ and $c=0$ it is a single point.
+
+**Step 3: the quartic.** $F=x^4+y^4$, $\nabla F=(4x^3,4y^3)$, so $\nabla F(1,2)=(4,32)$, nonzero, and $F(1,2)=1+16=17$ ✓.
+- *Tangent line:* $4(x-1)+32(y-2)=0\iff x+8y=17$ (slope $-\frac18$).
+- *Normal line:* direction $(4,32)\parallel(1,8)$: $y-2=8(x-1)$, i.e. $y=8x-6$.
+- *Horizontal tangents:* the tangent is horizontal when $\nabla F$ is vertical, i.e. $F_x=4x^3=0$, so $x=0$, $y^4=17$. The points are $(0,\pm17^{1/4})$ (where $F_y=4y^3\ne0$, so these are legitimate implicit-function points).
+
+**Common mistake.** Confusing the tangent direction with the gradient direction. The vector $(F_x,F_y)$ is **normal**; the tangent direction is $(-F_y,F_x)$ (rotate by $90^\circ$). A good check: slope of the tangent $=-F_x/F_y$, here $-\frac4{32}=-\frac18$.
+
+**Remark.** The gradient also points in the direction of steepest increase of $F$, and it is orthogonal to the level curves: that is why water flows perpendicularly to contour lines on a topographic map.
+
+---
+
+---
+title: The cusp y² = x³: when the theorem does not apply, and what can still be true
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l3
+difficulty: 3
+tags: singular point, cusp, implicit function theorem, necessary conditions
+order: 7
+date: 2026-11-14
+---
+
+# Problem 7 — The cusp $y^2=x^3$
+
+## Statement
+
+Let $F(x,y)=y^2-x^3$ and $Z=\{F=0\}$.
+
+1. Show that both partial derivatives of $F$ vanish at the origin.
+2. Show that near the origin, $Z$ is **not** the graph of any function $y=\varphi(x)$.
+3. Show that $Z$ **is** the graph of a continuous function $x=\psi(y)$ near the origin, but that $\psi$ is not differentiable at $0$. In particular there is no $C^1$ function (of either variable) describing $Z$ near $0$.
+
+## Hint
+
+Solve explicitly: $y=\pm x^{3/2}$ for $x\ge0$. For part 3 note that $x^3=y^2$ forces $x\ge0$ and $x=|y|^{2/3}$.
+
+## Solution
+
+**Idea.** The implicit function theorem gives a sufficient condition for $Z$ to be locally a $C^1$ graph. At a singular point, where $\nabla F=0$, it says nothing; here we check by hand that the conclusion really fails.
+
+**Step 1.** $F_x=-3x^2$ and $F_y=2y$, both $0$ at $(0,0)$. So the hypothesis fails for both variables.
+
+**Step 2: not a graph over the $x$-axis.** If $(x,y)\in Z$ then $y^2=x^3\ge0$ requires $x\ge0$, and $y=\pm x^{3/2}$. For every $x>0$ there are two points $(x,x^{3/2})$ and $(x,-x^{3/2})$ of $Z$, as close to $(0,0)$ as we wish (let $x\to0^+$). So in no neighbourhood of the origin is $Z$ the graph of a function of $x$.
+
+**Step 3: graph over the $y$-axis.** From $x^3=y^2$ we get $x=y^{2/3}=|y|^{2/3}$ (the real cube root), uniquely. So $Z=\{(\psi(y),y)\}$ with $\psi(y)=|y|^{2/3}$, a continuous function defined for all $y$. This is a genuine graph over the $y$-axis, even though the hypothesis $F_x\ne0$ fails. However
+$$\frac{\psi(y)-\psi(0)}y=\frac{|y|^{2/3}}y,\qquad\text{which tends to }\pm\infty\text{ as }y\to0^\pm,$$
+so $\psi$ is not differentiable at $0$ (the graph has a vertical tangent and a cusp: both branches $y=\pm x^{3/2}$ are tangent to the $x$-axis).
+
+**Conclusion.** The set $Z$ is a graph over the $y$-axis of a continuous function, but there is no neighbourhood of $0$ in which it is the graph of a $C^1$ function of one variable. So the conclusion of the implicit function theorem genuinely fails at the singular point.
+
+**Common mistake.** The theorem's hypothesis is a **sufficient** condition. When it fails, the conclusion may fail (as for the node or the cusp), but it may also hold: for $F(x,y)=y^3-x$ one has $F_y(0,0)=0$ yet $Z=\{x=y^3\}$ is a perfectly smooth graph over the $y$-axis (and the graph $y=x^{1/3}$ over the $x$-axis, differentiable except at $0$).
+
+**Remark.** The curve $t\mapsto(t^2,t^3)$ is a smooth **parametrisation** of $Z$, but its velocity $(2t,3t^2)$ vanishes at $t=0$. A smoothly parametrised curve can have a corner or a cusp only at parameter values where its velocity vanishes; the implicit function theorem shows that this cannot happen at a point of $\{F=0\}$ where $\nabla F\ne0$, since there the set is locally a $C^1$ graph.
+
+---
+
+---
+title: A node: y² = x²(1 + x) is not a graph near the origin
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l3
+difficulty: 3
+tags: singular point, node, implicit function theorem, branches
+order: 8
+date: 2026-11-14
+---
+
+# Problem 8 — The node $y^2=x^2(1+x)$
+
+## Statement
+
+Let $F(x,y)=y^2-x^2(1+x)$ and $Z=\{F=0\}$.
+
+1. Check that $\nabla F(0,0)=0$.
+2. Prove that near the origin $Z$ is neither a graph $y=\varphi(x)$ nor a graph $x=\psi(y)$.
+3. Show nevertheless that $Z$ is, near the origin, the union of two smooth curves crossing at $0$, with tangent lines $y=x$ and $y=-x$.
+
+## Hint
+
+For $|x|<1$, $F=0\iff y=\pm h(x)$ with $h(x)=x\sqrt{1+x}$. Show $h$ is strictly increasing near $0$ with $h'(0)=1$.
+
+## Solution
+
+**Step 1.** $F_x=-2x-3x^2$ and $F_y=2y$, so $\nabla F(0,0)=(0,0)$: the theorem gives no information.
+
+**Step 2: explicit description.** For $x>-1$, $x^2(1+x)=\bigl(x\sqrt{1+x}\bigr)^2$, so
+$$F(x,y)=0\iff y=h(x)\ \text{or}\ y=-h(x),\qquad h(x)=x\sqrt{1+x}.$$
+Now $h'(x)=\sqrt{1+x}+\dfrac x{2\sqrt{1+x}}$, with $h'(0)=1>0$, and $h'$ is continuous, so $h'>0$ on some interval $(-\delta,\delta)$: $h$ is strictly increasing there and $h(0)=0$. In particular $h>0$ on $(0,\delta)$ and $h<0$ on $(-\delta,0)$.
+
+*Not a graph over $x$.* For $0<x<\delta$, $h(x)>0$, so $(x,h(x))$ and $(x,-h(x))$ are two distinct points of $Z$ with the same abscissa, arbitrarily close to the origin. So no function $\varphi$ works on any neighbourhood.
+
+*Not a graph over $y$.* Let $0<y<\min\bigl(h(\delta/2),\,-h(-\delta/2)\bigr)$ (both numbers are positive). Since $h$ is continuous and strictly increasing on $[-\delta/2,\delta/2]$, the intermediate value theorem gives a solution $x_1\in(0,\delta/2)$ of $h(x)=y$ and a solution $x_2\in(-\delta/2,0)$ of $h(x)=-y$. Both $(x_1,y)$ and $(x_2,y)$ lie in $Z$ (for $x_2$: $y=-h(x_2)$) with the same ordinate and $x_1>0>x_2$: again two points over one $y$, arbitrarily close to the origin as $y\to0^+$.
+
+**Step 3: the two branches.** The curves $\Gamma_\pm=\{y=\pm h(x)\}$ are graphs of $C^\infty$ functions, with $\Gamma_+\cap\Gamma_-=\{(0,0)\}$ (since $h(x)=-h(x)$ only when $h=0$, i.e. $x=0$ near the origin). Their slopes at $0$ are $h'(0)=1$ and $-h'(0)=-1$. So $Z$ is a cross of two smooth curves, and the implicit function theorem has nothing to say at the crossing because the tangent "direction" is not unique.
+
+**Common mistake.** A level curve through a point where $\nabla F=0$ can be *anything* locally: a cross (node), a cusp, an isolated point ($y^2+x^2=0$), or even a smooth curve (see $y^3=x$). The only safe approach is to examine the equation directly.
+
+**Remark.** Compare with the folium of Descartes $x^3+y^3=6xy$, which has the same kind of node at the origin (the two branches are tangent to the axes). A node is a *transversal* self-crossing; the Hessian of $F$ at the node is indefinite (here $F\approx y^2-x^2$), which explains the two real tangent lines. If the Hessian were definite we would get an isolated point.
+
+---
+
+---
+title: Deriving the implicit function theorem from the inverse function theorem
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: m1
+difficulty: 4
+tags: implicit function theorem, inverse function theorem, proof, Jacobian
+order: 9
+date: 2026-11-14
+---
+
+# Problem 9 — Deriving the IFT from the inverse function theorem
+
+## Statement
+
+**Inverse function theorem.** Let $\Omega\subset\mathbb{R}^N$ be open, $G:\Omega\to\mathbb{R}^N$ of class $C^k$ ($k\ge1$), $p\in\Omega$ with $DG(p)$ invertible. Then there are open sets $A\ni p$ and $B\ni G(p)$ such that $G:A\to B$ is a bijection and $G^{-1}:B\to A$ is $C^k$.
+
+Using it, prove the **implicit function theorem**: let $U\subset\mathbb{R}^n\times\mathbb{R}^m$ be open, $F:U\to\mathbb{R}^m$ of class $C^k$, $(a,b)\in U$ with $F(a,b)=0$ and $D_yF(a,b)$ (an $m\times m$ matrix) invertible. Then there exist open neighbourhoods $V$ of $a$, $W$ of $b$ and a $C^k$ map $\varphi:V\to W$ such that for $(x,y)\in V\times W$: $F(x,y)=0\iff y=\varphi(x)$. Moreover $D\varphi(x)=-\bigl[D_yF(x,\varphi(x))\bigr]^{-1}D_xF(x,\varphi(x))$.
+
+## Hint
+
+Consider the map $G(x,y)=(x,F(x,y))$ from $U\subset\mathbb{R}^{n+m}$ to $\mathbb{R}^{n+m}$. Compute its Jacobian matrix as a block triangular matrix.
+
+## Solution
+
+**Idea.** We "straighten" the zero set of $F$: the map $G$ keeps $x$ fixed and replaces $y$ by $F(x,y)$, so it sends $\{F=0\}$ to the flat set $\{v=0\}$. An inverse of $G$ then brings the flat set back as a graph.
+
+**Step 1: $G$ is a local diffeomorphism.** $G:U\to\mathbb{R}^{n+m}$ is $C^k$, and
+$$DG(x,y)=\begin{pmatrix}I_n&0\\D_xF(x,y)&D_yF(x,y)\end{pmatrix}.$$
+This is block lower triangular, so $\det DG(x,y)=\det D_yF(x,y)$. At $(a,b)$ this is nonzero. By the inverse function theorem there are open sets $A\ni(a,b)$, $B\ni G(a,b)=(a,0)$ such that $G:A\to B$ is a bijection with $C^k$ inverse $H:B\to A$.
+
+**Step 2: the form of the inverse.** The first component of $G$ is $x$. Hence the first component of $H(u,v)$ is $u$: indeed $\pi_1=\pi_1\circ G\circ H=\pi_1\circ H$, so
+$$H(u,v)=(u,K(u,v))\quad\text{for some }C^k\text{ map }K:B\to\mathbb{R}^m.$$
+
+**Step 3: definition of $\varphi$.** $B$ is open and contains $(a,0)$, so there is an open $V_0\ni a$ with $(x,0)\in B$ for $x\in V_0$. Define $\varphi(x)=K(x,0)$ on $V_0$; it is $C^k$. Since $G$ is injective on $A$ and $G(a,b)=(a,0)$, we have $H(a,0)=(a,b)$, so $\varphi(a)=b$. Since $G(H(x,0))=(x,0)$:
+$$G\bigl(x,\varphi(x)\bigr)=(x,0)\ \Longrightarrow\ F\bigl(x,\varphi(x)\bigr)=0,\quad\text{and }(x,\varphi(x))\in A.$$
+
+**Step 4: uniqueness and product neighbourhoods.** If $(x,y)\in A$ and $F(x,y)=0$, then $G(x,y)=(x,0)=G(x,\varphi(x))$, and $G$ is injective on $A$, so $y=\varphi(x)$. Now choose an open ball $W\ni b$ and an open $V\subset V_0\ni a$ with $V\times W\subset A$ (possible since $A$ is open) and $\varphi(V)\subset W$ (possible by continuity of $\varphi$ at $a$, with $\varphi(a)=b$, shrinking $V$). Then for $(x,y)\in V\times W$: $F(x,y)=0\iff y=\varphi(x)$. (For "$\Leftarrow$": $x\in V\subset V_0$ gives $(x,\varphi(x))\in A$, and $F(x,\varphi(x))=0$; moreover $\varphi(x)\in W$ by construction.)
+
+**Step 5: derivative.** Differentiate $F(x,\varphi(x))=0$ by the chain rule:
+$$D_xF+D_yF\cdot D\varphi=0.$$
+Since $D_yF(x,\varphi(x))$ is invertible near $a$ (its determinant is continuous and nonzero at $a$, shrink $V$ if necessary), $D\varphi=-D_yF^{-1}D_xF$. $\blacksquare$
+
+**Common mistake.** The map $G$ must be defined on the *product* space and must keep $x$ unchanged; trying to apply the inverse function theorem to $F$ alone fails since $F:\mathbb{R}^{n+m}\to\mathbb{R}^m$ is not a map between spaces of the same dimension.
+
+**Remark.** The two theorems are *equivalent*: the inverse function theorem is the special case of the implicit one applied to $F(x,y)=x-g(y)$ (with unknown $y$ and parameter $x$), whose $y$-derivative is $-Dg(y)$. So one can take either as the foundation of differential calculus.
+
+---
+
+---
+title: A system of two equations: the complex square root in real form
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 3
+tags: implicit function theorem, system of equations, Jacobian, complex numbers
+order: 10
+date: 2026-11-14
+---
+
+# Problem 10 — A system: the complex square root
+
+## Statement
+
+Consider the system
+$$u^2-v^2=x,\qquad2uv=y.$$
+
+1. Check that $(x,y,u,v)=(0,2,1,1)$ is a solution, and show that near it the system defines $C^\infty$ functions $u=u(x,y)$, $v=v(x,y)$ with $u(0,2)=v(0,2)=1$.
+2. Compute the partial derivatives $u_x$, $u_y$, $v_x$, $v_y$ at $(0,2)$.
+3. Explain what is behind this: interpret the system with complex numbers, and check the answer of part 2.
+
+## Hint
+
+Write $F(x,y,u,v)=(u^2-v^2-x,\;2uv-y)$ and use the Jacobian with respect to the unknowns $(u,v)$: $\dfrac{\partial(F_1,F_2)}{\partial(u,v)}$.
+
+## Solution
+
+**Recall (systems).** If $F(x;w)=0$ with $w=(u,v)$ the unknowns and $D_wF$ invertible at the point, then $w=\varphi(x)$ locally and $D\varphi=-(D_wF)^{-1}D_xF$.
+
+**Step 1: the hypothesis.** At $(x,y,u,v)=(0,2,1,1)$: $u^2-v^2=1-1=0=x$ ✓ and $2uv=2=y$ ✓. The Jacobian with respect to the unknowns is
+$$D_{(u,v)}F=\begin{pmatrix}2u&-2v\\2v&2u\end{pmatrix},\qquad\det=4u^2+4v^2=8\ne0\ \text{at}\ (1,1).$$
+So $u(x,y)$, $v(x,y)$ exist locally and are $C^\infty$. (The determinant $4(u^2+v^2)$ vanishes only at $u=v=0$, i.e. at $(x,y)=(0,0)$.)
+
+**Step 2: the partial derivatives.** Differentiate the two equations with respect to $x$ (with $y$ fixed):
+$$2uu_x-2vv_x=1,\qquad2vu_x+2uv_x=0.$$
+At $(u,v)=(1,1)$: $2u_x-2v_x=1$ and $2u_x+2v_x=0$. Adding: $4u_x=1$, so $u_x=\frac14$; then $v_x=-\frac14$.
+
+Differentiate with respect to $y$:
+$$2uu_y-2vv_y=0,\qquad2vu_y+2uv_y=1.$$
+At $(1,1)$: $u_y-v_y=0$ and $u_y+v_y=\frac12$, so $u_y=v_y=\frac14$.
+
+**Step 3: the complex interpretation.** With $w=u+iv$ and $\zeta=x+iy$, the system says exactly $w^2=\zeta$: indeed $w^2=u^2-v^2+2iuv$. The point $(0,2,1,1)$ is $\zeta=2i$, $w=1+i$ (and $(1+i)^2=2i$ ✓). The implicit function is the branch $w=\sqrt\zeta$ near $2i$ with $w(2i)=1+i$. Its complex derivative is
+$$\frac{dw}{d\zeta}=\frac1{2w}=\frac1{2(1+i)}=\frac{1-i}4.$$
+Moving $\zeta$ in the real direction ($\partial_x$) multiplies by $1$: $u_x+iv_x=\frac{1-i}4$, giving $u_x=\frac14$, $v_x=-\frac14$ ✓. Moving in the imaginary direction ($\partial_y$) multiplies by $i$: $u_y+iv_y=i\cdot\frac{1-i}4=\frac{1+i}4$, so $u_y=v_y=\frac14$ ✓.
+
+**Common mistake.** Treating the system as two separate equations and solving each one for "its own" variable. The unknowns $u,v$ are coupled; one has to invert the **matrix** $D_{(u,v)}F$, not its entries separately. (The determinant, not the individual entries, decides solvability.)
+
+**Remark.** The Cauchy–Riemann equations $u_x=v_y$, $u_y=-v_x$ hold here: $\frac14=\frac14$ and $\frac14=-(-\frac14)$ ✓. Holomorphic functions are exactly those whose real Jacobian has this structure, with determinant $|f'|^2$; that is why the determinant $4(u^2+v^2)=4|w|^2$ vanishes only at the branch point $w=0$.
+
+---
+
+---
+title: Two equations, three unknowns: a circle in space
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 3
+tags: implicit function theorem, curve in space, system of equations, tangent vector
+order: 11
+date: 2026-11-14
+---
+
+# Problem 11 — Two equations, three unknowns: a circle in space
+
+## Statement
+
+Consider the system
+$$x^2+y^2+z^2=6,\qquad x+y+z=0.$$
+
+1. Check that $P=(1,1,-2)$ is a solution, and show that near $P$ the system defines $y=y(x)$ and $z=z(x)$ as $C^\infty$ functions with $y(1)=1$, $z(1)=-2$.
+2. Compute $y'(1)$ and $z'(1)$ and the tangent vector to the curve at $P$.
+3. Determine the points where the hypothesis fails when we try to solve for $(y,z)$ in terms of $x$, and explain geometrically what happens. (Show that at these points the curve is still smooth, but that a *different* choice of unknowns is needed.)
+
+## Hint
+
+With the unknowns $(y,z)$ and the parameter $x$, the Jacobian is $\begin{pmatrix}2y&2z\\1&1\end{pmatrix}$.
+
+## Solution
+
+**Step 1: the hypothesis.** $1+1+4=6$ ✓ and $1+1-2=0$ ✓. Put $F=(x^2+y^2+z^2-6,\;x+y+z)$. The derivative with respect to $(y,z)$ is
+$$D_{(y,z)}F=\begin{pmatrix}2y&2z\\1&1\end{pmatrix},\qquad\det=2y-2z,$$
+which equals $2+4=6\ne0$ at $P$. By the implicit function theorem, $(y,z)=(y(x),z(x))$ near $x=1$.
+
+**Step 2: derivatives.** Differentiating both equations with respect to $x$:
+$$2x+2yy'+2zz'=0,\qquad1+y'+z'=0.$$
+At $P$: $2+2y'-4z'=0$ and $y'+z'=-1$. From the second, $z'=-1-y'$, so $2+2y'+4+4y'=0$, i.e. $6y'=-6$: $y'=-1$, $z'=0$.
+
+The tangent vector is $(1,y',z')=(1,-1,0)$. Check: it is orthogonal to $\nabla(x^2+y^2+z^2)=(2,2,-4)$ since $2-2+0=0$ ✓, and to $(1,1,1)$ since $1-1+0=0$ ✓. (The tangent to the curve is orthogonal to both gradients, i.e. proportional to their cross product: $(2,2,-4)\times(1,1,1)=(6,-6,0)$ ✓.)
+
+**Explicit check.** Eliminating gives $y+z=-x$ and $y^2+z^2=6-x^2$, so $yz=\frac{x^2-(6-x^2)}2=x^2-3$ and $y,z$ are the roots of $T^2+xT+x^2-3=0$: $T=\dfrac{-x\pm\sqrt{x^2-4(x^2-3)}}2=\dfrac{-x\pm\sqrt{12-3x^2}}2$. The branch through $P$ is $y=\dfrac{-x+\sqrt3\sqrt{4-x^2}}2$, with $y'(1)=-\frac12-\frac{\sqrt3}2\cdot\frac1{\sqrt3}=-1$ ✓ and $z=\dfrac{-x-\sqrt3\sqrt{4-x^2}}2$, with $z'(1)=-\frac12+\frac12=0$ ✓.
+
+**Step 3: failure of the hypothesis for the choice $(y,z)$.** $\det=2(y-z)=0\iff y=z$. Together with the equations: $x=-2y$ and $x^2+2y^2=6$ gives $6y^2=6$, so $y=\pm1$ and the points are $(\mp2,\pm1,\pm1)$, i.e. $(2,-1,-1)$ and $(-2,1,1)$. These are exactly the extreme values of $x$ on the circle: the curve there is tangent to the plane $x=\text{const}$, so $x$ cannot be used as a parameter ($x$ reaches its maximum $2$ and minimum $-2$ on the circle, as seen in the formulas $y,z=\frac{-x\pm\sqrt{12-3x^2}}2$, defined only for $|x|\le2$).
+
+*The curve remains smooth at these points.* At $Q=(2,-1,-1)$, the full $2\times3$ Jacobian is $\begin{pmatrix}4&-2&-2\\1&1&1\end{pmatrix}$, which has rank $2$ (the two rows are not proportional). Hence the implicit function theorem applies with a *different* choice of unknowns: for instance, solving for $(x,y)$ in terms of $z$ requires $\det\begin{pmatrix}2x&2y\\1&1\end{pmatrix}=2x-2y=2(2-(-1))=6\ne0$ at $Q$. So the curve is a smooth graph over the $z$-axis near $Q$. The failure in Step 3 is only for the specific choice $(y,z)$ as functions of $x$.
+
+**Common mistake.** Counting equations and unknowns incorrectly: with $3$ unknowns and $2$ equations we can solve for **two** of them in terms of the third, and which pair to choose depends on the point (the rank condition). Confusing "the theorem fails for one choice of unknowns" with "the curve is singular" is a related error.
+
+**Remark.** The solution set is the circle of radius $\sqrt6$ in the plane $x+y+z=0$ (a great circle of the sphere). The theorem shows it is a smooth curve at every point where the $2\times3$ Jacobian matrix has rank $2$, i.e. where $(2x,2y,2z)$ and $(1,1,1)$ are not parallel, which here holds at every point of the circle.
+
+---
+
+---
+title: The roots of x³ − x + t as functions of t
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 3
+tags: roots of polynomials, simple roots, double root, square root singularity
+order: 12
+date: 2026-11-14
+---
+
+# Problem 12 — Roots of $x^3-x+t$
+
+## Statement
+
+Let $p(x,t)=x^3-x+t$.
+
+1. Show that for $t$ near $0$ the roots near $0$, $1$ and $-1$ are $C^\infty$ functions of $t$, and compute their expansions $x_0(t)=t+t^3+3t^5+o(t^5)$ and $x_1(t)=1-\frac t2-\frac38t^2+\cdots$.
+2. Let $t_0=\dfrac2{3\sqrt3}$. Show that at $t=t_0$ the polynomial has a double root at $x=\frac1{\sqrt3}$, that the implicit function theorem fails there, and find the behaviour of the two roots for $t$ slightly below $t_0$.
+
+## Hint
+
+$p_x=3x^2-1$. At a simple root $p_x\ne0$. For part 2, factor $p(x,t_0)$ and expand $p$ near the double root.
+
+## Solution
+
+**Recall.** If $p(x_0,t_0)=0$ and $p_x(x_0,t_0)\ne0$ (a *simple* root), the root persists and depends smoothly on $t$: $x(t)$ is $C^\infty$ with $x'=-p_t/p_x=-\dfrac1{3x^2-1}$.
+
+**Step 1: three simple roots at $t=0$.** $p(x,0)=x(x-1)(x+1)$, and $p_x(0,0)=-1$, $p_x(\pm1,0)=2$, all nonzero. So there are three smooth branches $x_0(t)\approx0$, $x_{\pm1}(t)\approx\pm1$ for $|t|$ small.
+
+*Expansion of $x_0$.* Write $x=t+c_3t^3+c_5t^5$ (the root is odd in $t$ since $p(-x,-t)=-p(x,t)$) and solve $x=x^3+t$, i.e. $x=t+x^3$: $x=t+t^3+3t^5+\cdots$ by iteration (indeed $x^3=t^3+3t^5+\cdots$).
+
+*Expansion of $x_1$.* Put $x=1+\xi$: $p=(1+\xi)^3-(1+\xi)+t=2\xi+3\xi^2+\xi^3+t=0$. So $\xi=-\frac t2-\frac32\xi^2-\frac12\xi^3$. First order $\xi\approx-\frac t2$; then $\xi\approx-\frac t2-\frac32\cdot\frac{t^2}4=-\frac t2-\frac38t^2$ at order $2$. (The next terms are $-\frac12t^3$ and $-\frac{105}{128}t^4$.) So $x_1(t)=1-\frac t2-\frac38t^2-\frac12t^3+\cdots$ and, by the symmetry $x_{-1}(t)=-x_1(-t)$.
+
+**Step 2: the double root.** At $t_0=\frac2{3\sqrt3}$:
+$$x^3-x+\frac2{3\sqrt3}=\left(x-\frac1{\sqrt3}\right)^2\left(x+\frac2{\sqrt3}\right).$$
+(Expand to check: $\bigl(x^2-\frac{2x}{\sqrt3}+\frac13\bigr)\bigl(x+\frac2{\sqrt3}\bigr)=x^3-x+\frac2{3\sqrt3}$ ✓.) The root $x=\frac1{\sqrt3}$ is double: $p_x=3x^2-1=0$ there, so the hypothesis fails. The other root $-\frac2{\sqrt3}$ is simple ($p_x=3$).
+
+*What happens near the double root.* Put $x=\frac1{\sqrt3}+h$ and $t=t_0+\varepsilon$. Since $p(\frac1{\sqrt3},t_0)=0$, $p_x=0$, $p_{xx}=6x=2\sqrt3$, $p_t=1$:
+$$p=\sqrt3\,h^2+h^3+\varepsilon.$$
+For small $h$ and $\varepsilon$ the dominant balance is $\sqrt3h^2+\varepsilon=0$:
+$$h\approx\pm\sqrt{-\varepsilon/\sqrt3}.$$
+So for $\varepsilon<0$ (that is $t<t_0$) there are two real roots near $\frac1{\sqrt3}$, at distance $\sim|\varepsilon|^{1/2}$; for $\varepsilon>0$ there are no real roots near $\frac1{\sqrt3}$ (they become complex). The root is **not** a differentiable function of $t$ at $t_0$: its derivative would blow up like $|\varepsilon|^{-1/2}$.
+
+**Common mistake.** The hypothesis "$p(x_0,t_0)=0$" is not enough: a *double* root is exactly the case in which $p_x=0$ and the root can disappear or split into two. Simplicity of the root is what makes it "stable".
+
+**Remark.** The number of real roots of $x^3-x+t$ is $3$ for $|t|<t_0$, $2$ at $|t|=t_0$ and $1$ for $|t|>t_0$: the values $\pm t_0$ are the values where the discriminant $4-27t^2$ vanishes. The transition at $t_0$ is a *fold* (saddle-node) bifurcation, the simplest way in which solutions of an equation can appear or disappear.
+
+---
+
+---
+title: Roots as smooth functions of the coefficients: the Vandermonde Jacobian
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: m1
+difficulty: 4
+tags: roots of polynomials, Vieta, Jacobian, inverse function theorem, discriminant
+order: 13
+date: 2026-11-14
+---
+
+# Problem 13 — Roots as functions of the coefficients
+
+## Statement
+
+Consider the map $\Phi:\mathbb{R}^3\to\mathbb{R}^3$ sending the roots to the elementary symmetric functions (the coefficients of the monic cubic $X^3-e_1X^2+e_2X-e_3$):
+$$\Phi(r_1,r_2,r_3)=(e_1,e_2,e_3)=\bigl(r_1+r_2+r_3,\;r_1r_2+r_1r_3+r_2r_3,\;r_1r_2r_3\bigr).$$
+
+1. Compute the Jacobian determinant of $\Phi$ and show that it equals $(r_1-r_2)(r_1-r_3)(r_2-r_3)$.
+2. Deduce: if a real monic cubic $P_0$ has three distinct real roots $\rho_1,\rho_2,\rho_3$, then every cubic with coefficients close to those of $P_0$ has three real roots, which are $C^\infty$ functions of the coefficients.
+3. Show by an example that the conclusion fails at a polynomial with a double root.
+
+## Hint
+
+The Jacobian matrix has rows $(1,1,1)$, $(r_2+r_3,\;r_1+r_3,\;r_1+r_2)$, $(r_2r_3,\;r_1r_3,\;r_1r_2)$. Subtract columns to factor out the differences.
+
+## Solution
+
+**Step 1: the Jacobian.**
+$$J=\begin{pmatrix}1&1&1\\r_2+r_3&r_1+r_3&r_1+r_2\\r_2r_3&r_1r_3&r_1r_2\end{pmatrix}.$$
+Subtract column $2$ from column $1$: the new first column is $(0,\;r_2-r_1,\;r_3(r_2-r_1))^T$, so $r_2-r_1$ can be factored out. Subtract column $3$ from column $2$: the new second column is $(0,\;r_3-r_2,\;r_1(r_3-r_2))^T$, factor $r_3-r_2$. We get
+$$\det J=(r_2-r_1)(r_3-r_2)\det\begin{pmatrix}0&0&1\\1&1&r_1+r_2\\r_3&r_1&r_1r_2\end{pmatrix}.$$
+Expanding along the first row: $\det=1\cdot(r_1-r_3)$. Hence
+$$\det J=(r_2-r_1)(r_3-r_2)(r_1-r_3)=(r_1-r_2)(r_1-r_3)(r_2-r_3)$$
+(two sign changes: $(r_2-r_1)(r_3-r_2)=(r_1-r_2)(r_2-r_3)$, and $(r_1-r_3)$ is as is). This is the Vandermonde determinant; it is nonzero iff the roots are pairwise distinct. (A sympy check confirms $\det J=(r_1-r_2)(r_1-r_3)(r_2-r_3)$.)
+
+**Step 2: applying the inverse function theorem.** Let $\rho=(\rho_1,\rho_2,\rho_3)$ be the roots of $P_0$ (distinct). Then $\det D\Phi(\rho)\ne0$. By the inverse function theorem $\Phi$ is a $C^\infty$ diffeomorphism from a neighbourhood $A$ of $\rho$ onto a neighbourhood $B$ of $\Phi(\rho)$ = coefficients of $P_0$. For a cubic with coefficients $e\in B$, $r=\Phi^{-1}(e)$ gives three real numbers whose elementary symmetric functions are $e$, i.e. the three real roots of the cubic, depending smoothly on $e$.
+
+**Step 3: a double root.** For $\rho_1=\rho_2$ the Jacobian vanishes. Concretely take $P_t(X)=X^2-t$ (degree $2$; the same phenomenon): the roots are $\pm\sqrt t$, not differentiable at $t=0$ and non-real for $t<0$. For the cubic: $(X-1)^2(X-2)=X^3-4X^2+5X-2$. The local maximum of this cubic is at $X=1$, with value $0$; perturb to
+$$P_\delta(X)=X^3-4X^2+5X-2+\delta.$$
+- For $\delta>0$: the local maximum at $X\approx1$ has value $\delta>0$, so the graph crosses the axis twice near $X=1$; the double root splits into **two real roots** $X\approx1\pm\sqrt\delta$.
+- For $\delta<0$: the local maximum is below the axis, and the two roots near $X=1$ become **complex** (non-real); only the root near $X=2$ remains real.
+
+In both cases the roots behave like $1\pm c\sqrt{|\delta|}$, a square-root singularity.
+
+**Common mistake.** Applying the inverse function theorem to the map "coefficients $\mapsto$ roots" directly: this map is only defined locally and only as a *branch*, since the roots are unordered. The correct approach is to invert the (well-defined, polynomial) map "ordered roots $\mapsto$ coefficients".
+
+**Remark.** The discriminant of the cubic is $\Delta=\prod_{i<j}(r_i-r_j)^2=(\det J)^2$. So the locus where roots stop being smooth functions of the coefficients is exactly $\Delta=0$ (a surface in coefficient space). The same Vandermonde argument works for any degree $n$.
+
+---
+
+---
+title: Perturbing a simple eigenvalue
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: m1
+difficulty: 4
+tags: eigenvalue, perturbation, characteristic polynomial, left and right eigenvectors
+order: 14
+date: 2026-11-14
+---
+
+# Problem 14 — Perturbing a simple eigenvalue
+
+## Statement
+
+Let $A_0\in M_n(\mathbb{R})$ and $B\in M_n(\mathbb{R})$, and put $A(t)=A_0+tB$. Let $\lambda_0$ be a **simple** real eigenvalue of $A_0$, with right eigenvector $v$ ($A_0v=\lambda_0v$) and left eigenvector $u$ ($u^TA_0=\lambda_0u^T$).
+
+1. Show that there is a $C^\infty$ function $\lambda(t)$ near $0$ with $\lambda(0)=\lambda_0$ and $\lambda(t)$ an eigenvalue of $A(t)$.
+2. Prove that
+$$\lambda'(0)=\frac{u^TBv}{u^Tv}.$$
+3. Apply to $A_0=\begin{pmatrix}2&1\\0&3\end{pmatrix}$, $B=\begin{pmatrix}0&0\\1&0\end{pmatrix}$, $\lambda_0=2$, and check with the exact eigenvalues.
+4. Show that for $A(t)=\begin{pmatrix}0&1\\t&0\end{pmatrix}$ and the **double** eigenvalue $0$ at $t=0$, the eigenvalues are not differentiable at $t=0$.
+
+## Hint
+
+Let $F(\lambda,t)=\det(A(t)-\lambda I)$. A simple eigenvalue means $\partial_\lambda F\ne0$. For part 2, either differentiate $A(t)v(t)=\lambda(t)v(t)$ (assuming a smooth eigenvector, which must be justified) and multiply on the left by $u^T$, or use the adjugate/characteristic-polynomial approach described below.
+
+## Solution
+
+**Step 1: existence.** Let $F(\lambda,t)=\det(A_0+tB-\lambda I)$, a polynomial in $(\lambda,t)$. We have $F(\lambda_0,0)=0$, and $\partial_\lambda F(\lambda_0,0)=\chi_{A_0}'(\lambda_0)\ne0$ because $\lambda_0$ is a *simple root* of the characteristic polynomial $\chi_{A_0}(\lambda)=F(\lambda,0)$ (up to sign). By the implicit function theorem there is a $C^\infty$ function $\lambda(t)$ with $\lambda(0)=\lambda_0$ and $F(\lambda(t),t)=0$.
+
+**Step 2: the derivative.**
+
+*Approach via the characteristic polynomial (avoids assuming smooth eigenvectors).* Differentiate $F(\lambda(t),t)=0$ at $t=0$:
+$$\partial_\lambda F(\lambda_0,0)\,\lambda'(0)+\partial_tF(\lambda_0,0)=0,\qquad\text{so}\quad \lambda'(0)=-\frac{\partial_tF(\lambda_0,0)}{\partial_\lambda F(\lambda_0,0)}.$$
+Now $F(\lambda,t)=\det(A_0+tB-\lambda I)$. By Jacobi's formula for the derivative of a determinant,
+$$\partial_tF(\lambda_0,0)=\operatorname{tr}\!\bigl(\operatorname{adj}(A_0-\lambda_0I)\,B\bigr),\qquad \partial_\lambda F(\lambda_0,0)=-\operatorname{tr}\!\bigl(\operatorname{adj}(A_0-\lambda_0I)\bigr).$$
+Since $\lambda_0$ is a simple eigenvalue, $\operatorname{adj}(A_0-\lambda_0I)=c\,vu^T$ for some $c\ne0$ (the adjugate has rank one, with image $\ker(A_0-\lambda_0I)=\mathbb{R}v$ and kernel the left eigenspace, i.e. the orthogonal complement of $u$). Hence
+$$\partial_tF(\lambda_0,0)=c\,u^TBv,\qquad \partial_\lambda F(\lambda_0,0)=-c\,u^Tv,$$
+and therefore
+$$\lambda'(0)=-\frac{c\,u^TBv}{-c\,u^Tv}=\frac{u^TBv}{u^Tv}.$$
+Finally $u^Tv\ne0$: if $u^Tv=0$, then $v$ would be orthogonal to the left eigenspace, and the algebraic multiplicity of $\lambda_0$ would be $\ge2$, contradicting simplicity.
+
+*Equivalent approach via a smooth eigenvector (standard, but requires justification).* Since $\lambda_0$ is simple, $A(t)-\lambda(t)I$ has a one-dimensional kernel for small $t$, and the eigenvector $v(t)$ can be chosen smoothly in $t$ (for instance by normalising a fixed coordinate to $1$; this follows from the IFT applied to $(A(t)-\lambda I)v=0$ together with the normalisation, or from the simple-eigenvalue theory). Differentiate $A(t)v(t)=\lambda(t)v(t)$ at $t=0$:
+$$Bv+A_0v'=\lambda'v+\lambda_0v'.$$
+Multiply on the left by $u^T$ and use $u^TA_0=\lambda_0u^T$: the terms $u^TA_0v'=\lambda_0u^Tv'$ and $\lambda_0u^Tv'$ cancel, leaving
+$$u^TBv=\lambda'(0)\,u^Tv.$$
+Since $u^Tv\ne0$, $\lambda'(0)=\dfrac{u^TBv}{u^Tv}$.
+
+**Step 3: the example.** $A_0$ is upper triangular with eigenvalues $2$ and $3$ (both simple).
+- Right eigenvector for $2$: $A_0v=2v$ gives $v=(1,0)^T$.
+- Left eigenvector for $2$: $u^TA_0=(2u_1,\;u_1+3u_2)=2(u_1,u_2)$, so $u_1+3u_2=2u_2$, $u_1=-u_2$: $u=(1,-1)^T$.
+- $u^Tv=1$ and $Bv=(0,1)^T$, $u^TBv=-1$.
+So $\lambda'(0)=-1$.
+
+*Exact check.* $A(t)=\begin{pmatrix}2&1\\t&3\end{pmatrix}$, with characteristic polynomial $\lambda^2-5\lambda+6-t$ and eigenvalues $\lambda=\dfrac{5\pm\sqrt{1+4t}}2$. The branch through $2$ is $\lambda(t)=\dfrac{5-\sqrt{1+4t}}2=2-t+t^2-2t^3+\cdots$, with $\lambda'(0)=-1$ ✓.
+
+**Step 4: a double eigenvalue.** $A(t)=\begin{pmatrix}0&1\\t&0\end{pmatrix}$ has characteristic polynomial $\lambda^2-t$ and eigenvalues $\pm\sqrt t$. At $t=0$ the eigenvalue $0$ is double ($\partial_\lambda F=0$), and $\lambda(t)=\pm\sqrt t$ is not differentiable at $0$ (and not even real for $t<0$).
+
+**Common mistake.** Using $u=v$ (the same vector) in the formula. This is correct only for *symmetric* matrices $A_0$, where left and right eigenvectors coincide; for a general matrix one needs the left eigenvector, which can be quite different (here $u=(1,-1)$ and $v=(1,0)$).
+
+**Remark.** For a symmetric $A_0$ and $B$, with unit eigenvector $v$, the formula reads $\lambda'(0)=v^TBv$, the "expectation" of $B$ in the eigenstate: first-order perturbation theory in quantum mechanics. The failure at multiple eigenvalues explains why degenerate perturbation theory is a separate (harder) subject.
+
+---
+
+---
+title: Kepler's equation: E = M + ε sin E, expansion in ε
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 3
+tags: Kepler equation, implicit function theorem, parameter dependence, Taylor expansion
+order: 15
+date: 2026-11-14
+---
+
+# Problem 15 — Kepler's equation
+
+## Statement
+
+For $0\le\varepsilon<1$ and $M\in\mathbb{R}$, Kepler's equation is
+$$E-\varepsilon\sin E=M.$$
+
+1. Show that for every $(M,\varepsilon)\in\mathbb{R}\times(-1,1)$ there is a unique solution $E=E(M,\varepsilon)$, and that $E$ is a $C^\infty$ function of $(M,\varepsilon)$.
+2. Compute $E(M,0)$ and the derivatives $\dfrac{\partial E}{\partial\varepsilon}$, $\dfrac{\partial^2E}{\partial\varepsilon^2}$, $\dfrac{\partial^3E}{\partial\varepsilon^3}$ at $\varepsilon=0$.
+3. Deduce the expansion
+$$E=M+\varepsilon\sin M+\frac{\varepsilon^2}2\sin2M+\frac{\varepsilon^3}8\bigl(3\sin3M-\sin M\bigr)+O(\varepsilon^4).$$
+
+## Hint
+
+Let $F(E,M,\varepsilon)=E-\varepsilon\sin E-M$. Then $F_E=1-\varepsilon\cos E\ge1-|\varepsilon|>0$. For the derivatives, differentiate $F(E(\varepsilon),M,\varepsilon)=0$ in $\varepsilon$.
+
+## Solution
+
+**Step 1: existence and smoothness.** For fixed $M$ and $\varepsilon$, the function $E\mapsto E-\varepsilon\sin E$ has derivative $1-\varepsilon\cos E\ge1-|\varepsilon|>0$, so it is strictly increasing, and tends to $\pm\infty$ at $\pm\infty$: it is a bijection of $\mathbb{R}$ and the equation has exactly one solution. At every solution $F_E>0$, so the implicit function theorem (with the unknown $E$ and the parameters $(M,\varepsilon)$) shows that $E$ is $C^\infty$ in $(M,\varepsilon)$ near any point, hence everywhere.
+
+**Step 2: derivatives at $\varepsilon=0$.** For $\varepsilon=0$: $E=M$.
+
+Differentiating $E-\varepsilon\sin E=M$ with respect to $\varepsilon$ (writing $E'=\partial_\varepsilon E$):
+$$E'-\sin E-\varepsilon\cos E\,E'=0\ \Longrightarrow\ E'(1-\varepsilon\cos E)=\sin E.$$
+At $\varepsilon=0$: $E'=\sin M$.
+
+Differentiate $E'(1-\varepsilon\cos E)=\sin E$ again: with $u=1-\varepsilon\cos E$, $u'=-\cos E+\varepsilon\sin E\,E'$,
+$$E''u+E'u'=\cos E\,E'.$$
+At $\varepsilon=0$: $u=1$, $u'=-\cos M$, $E'=\sin M$. So $E''-\sin M\cos M=\cos M\sin M$, giving $E''(0)=2\sin M\cos M=\sin2M$.
+
+Differentiate once more: $E'''u+2E''u'+E'u''=-\sin E\,E'^2+\cos E\,E''$, where $u''=2\sin E\,E'+\varepsilon(\cos E\,E'^2+\sin E\,E'')$. At $\varepsilon=0$: $u''=2\sin^2M$. Then
+$$E'''+2\sin2M(-\cos M)+\sin M\cdot2\sin^2M=-\sin^3M+\cos M\sin2M,$$
+so $E'''=-3\sin^3M+3\cos M\sin2M=-3\sin^3M+6\sin M\cos^2M=6\sin M-9\sin^3M$.
+
+**Step 3: the expansion.** By Taylor's formula in $\varepsilon$:
+$$E=M+\varepsilon\sin M+\frac{\varepsilon^2}2\sin2M+\frac{\varepsilon^3}6\bigl(6\sin M-9\sin^3M\bigr)+O(\varepsilon^4).$$
+Since $\sin3M=3\sin M-4\sin^3M$, we have $\frac18(3\sin3M-\sin M)=\frac18(8\sin M-12\sin^3M)=\sin M-\frac32\sin^3M$, which is exactly $\frac16(6\sin M-9\sin^3M)$ ✓. So the coefficient of $\varepsilon^3$ is $\frac18(3\sin3M-\sin M)$.
+
+**Numerical check.** For $M=1$ and $\varepsilon=0.1$, the expansion gives
+$$E\approx1+0.0841471+0.0045465-0.0000523=1.0886413,$$
+where the cubic term is $0.001\cdot\frac18(3\sin3-\sin1)=-0.0000523$. The exact solution of $E-0.1\sin E=1$ is $E\approx1.08861$. The agreement is to about $3\times10^{-5}$, as expected from the $O(\varepsilon^4)$ remainder.
+
+**Common mistake.** Solving for $E$ by "iteration" without checking the contraction: $E\mapsto M+\varepsilon\sin E$ is a contraction of constant $|\varepsilon|<1$, which is why the iteration $E_{n+1}=M+\varepsilon\sin E_n$ converges for $|\varepsilon|<1$ (this is Kepler's classical method and Banach's fixed point theorem).
+
+**Remark.** The coefficients are of the form $\sin kM$ with Bessel function coefficients: $E=M+2\sum_{k\ge1}\frac{J_k(k\varepsilon)}k\sin kM$ (Lagrange, Bessel). The series converges for $\varepsilon<0.6627\ldots$ (the Laplace limit), even though the equation has a smooth solution for all $|\varepsilon|<1$: smooth dependence does not imply analyticity on the whole interval.
+
+---
+
+---
+title: The equation y⁵ + y + x = 0 has a global smooth solution
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 2
+tags: implicit function theorem, global solution, monotonicity, asymptotics
+order: 16
+date: 2026-11-14
+---
+
+# Problem 16 — The equation $y^5+y+x=0$
+
+## Statement
+
+1. Show that for every real $x$ the equation $y^5+y+x=0$ has a unique real solution $y=\varphi(x)$.
+2. Show that $\varphi$ is $C^\infty$ on $\mathbb{R}$, odd and strictly decreasing, and compute $\varphi'(0)$ and the expansion $\varphi(x)=-x+x^5+o(x^5)$ (in fact $-x+x^5-5x^9+\cdots$).
+3. Find the behaviour of $\varphi$ at infinity.
+
+## Hint
+
+The function $h(y)=y^5+y$ is strictly increasing with $h'(y)=5y^4+1\ge1$. For part 3 compare $y^5$ and $y$ when $|y|$ is large.
+
+## Solution
+
+**Idea.** No explicit formula exists for the root of a quintic in general, but the implicit function theorem gives smoothness with no formula at all.
+
+**Step 1: existence and uniqueness.** $h(y)=y^5+y$ is continuous, $h'(y)=5y^4+1>0$, so $h$ is strictly increasing; $h(y)\to\pm\infty$ as $y\to\pm\infty$. By the intermediate value theorem $h:\mathbb{R}\to\mathbb{R}$ is a bijection. The equation $h(y)=-x$ has the unique solution $y=\varphi(x)=h^{-1}(-x)$.
+
+**Step 2: regularity.** Let $F(x,y)=y^5+y+x$. At any solution, $F_y=5y^4+1\ge1\ne0$. By the implicit function theorem there is, near each $x_0$, a $C^\infty$ solution $y(x)$ with $y(x_0)=\varphi(x_0)$; by uniqueness (Step 1) it coincides with $\varphi$. So $\varphi\in C^\infty(\mathbb{R})$. Moreover
+$$\varphi'(x)=-\frac{F_x}{F_y}=-\frac1{5\varphi(x)^4+1}<0,$$
+so $\varphi$ is strictly decreasing, with $\varphi'(0)=-1$ (since $\varphi(0)=0$). It is odd: $h$ is odd, hence so is $h^{-1}$.
+
+**Expansion.** From $y=-x-y^5$: first $y=-x+o(x)$; then $y^5=-x^5+o(x^5)$, so $y=-x+x^5+o(x^5)$. One more iteration: $y^5=(-x+x^5)^5=-x^5+5x^9+\cdots$, so $y=-x+x^5-5x^9+o(x^9)$.
+
+**Step 3: behaviour at infinity.** As $x\to-\infty$ we have $y\to+\infty$ and $y^5+y=-x$ gives $y^5\sim-x$ (since $y=o(y^5)$), i.e.
+$$\varphi(x)\sim(-x)^{1/5}\qquad(x\to-\infty),\qquad\varphi(x)\sim-x^{1/5}\qquad(x\to+\infty).$$
+In particular $\varphi'(x)=-\dfrac1{5\varphi^4+1}\to0$: the graph flattens.
+
+**Common mistake.** The implicit function theorem is *local*, so by itself it only gives a solution near a given point. Here it is the combination "local smoothness + global uniqueness" (the strict monotonicity of $h$) that turns it into a global statement: one cannot conclude global existence from the theorem alone.
+
+**Remark.** The same argument shows that any equation $y=g(x)+\ldots$ with $F_y>0$ everywhere and $F\to\pm\infty$ in $y$ has a global smooth solution. A function $F$ with $F_y>0$ is *strictly monotone in $y$*, which is the cleanest sufficient condition.
+
+---
+
+---
+title: O(2) as a level set of a matrix equation
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: m1
+difficulty: 4
+tags: orthogonal group, matrix equation, submanifold, tangent space, implicit function theorem
+order: 17
+date: 2026-11-14
+---
+
+# Problem 17 — $O(2)$ as a level set
+
+## Statement
+
+Let $F:M_2(\mathbb{R})\to\mathrm{Sym}_2(\mathbb{R})$, $F(A)=A^TA-I$, so that $O(2)=F^{-1}(0)$. Identify $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ with $(a,b,c,d)\in\mathbb{R}^4$ and $F$ with $(a^2+c^2-1,\;ab+cd,\;b^2+d^2-1)$.
+
+1. Compute the differential $DF(A)X$ and show that for $A\in O(2)$ it is surjective onto $\mathrm{Sym}_2(\mathbb{R})$ ($\dim3$).
+2. Show, using the implicit function theorem, that near $A=I$ the set $O(2)$ is a $C^\infty$ curve, parametrised by $c$: $a,b,d$ are smooth functions of $c$.
+3. Find the tangent space of $O(2)$ at $I$ and compare with the explicit description of rotations.
+
+## Hint
+
+For part 2, choose $(a,b,d)$ as the unknowns and $c$ as the parameter. Compute the $3\times3$ Jacobian of $F$ with respect to $(a,b,d)$ at $I$.
+
+## Solution
+
+**Step 1: the differential.** $F(A+X)=(A+X)^T(A+X)-I=A^TA-I+A^TX+X^TA+X^TX$, so
+$$DF(A)X=A^TX+X^TA.$$
+This is symmetric. *Surjectivity at $A\in O(2)$:* given a symmetric $S$, take $X=\frac12AS$. Then $A^TX=\frac12A^TAS=\frac12S$ and $X^TA=\frac12SA^TA=\frac12S$ (using $A^TA=I$ and $S^T=S$), so $DF(A)X=S$.
+
+**Step 2: solving for $(a,b,d)$.** With $F=(F_1,F_2,F_3)=(a^2+c^2-1,\;ab+cd,\;b^2+d^2-1)$,
+$$\frac{\partial(F_1,F_2,F_3)}{\partial(a,b,d)}=\begin{pmatrix}2a&0&0\\b&a&c\\0&2b&2d\end{pmatrix}.$$
+(Careful: $F_2=ab+cd$ has $\partial_a=b$, $\partial_b=a$, $\partial_d=c$; $F_3=b^2+d^2-1$ has $\partial_a=0$, $\partial_b=2b$, $\partial_d=2d$.) At $A=I$ ($a=d=1$, $b=c=0$):
+$$\begin{pmatrix}2&0&0\\0&1&0\\0&0&2\end{pmatrix},\qquad\det=4\ne0.$$
+So the implicit function theorem applies: there are $C^\infty$ functions $a(c),b(c),d(c)$ near $c=0$, with $(a,b,d)(0)=(1,0,1)$, such that $F=0$ near $I$ iff $(a,b,d)=(a(c),b(c),d(c))$. In particular $O(2)$ is, near $I$, a smooth curve parametrised by $c$.
+
+(Here one can solve explicitly: $A=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$ with $c=\sin\theta$, $a=d=\sqrt{1-c^2}$, $b=-c$.)
+
+**Step 3: the tangent space at $I$.** $DF(I)X=X+X^T=0$ iff $X$ is skew-symmetric: $X=\begin{pmatrix}0&-s\\s&0\end{pmatrix}$, a $1$-dimensional space ($=\ker$, of dimension $4-3=1$ ✓). It is the derivative at $\theta=0$ of the rotation $R_\theta=\exp(\theta J)$, $J=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$: $\frac d{d\theta}R_\theta|_0=J$ ✓.
+
+**Common mistake.** Choosing the wrong unknowns. If we took $(a,c,\ldots)$ as the unknowns and $b$ as the parameter, the corresponding $3\times3$ Jacobian could be singular, even though the full $3\times4$ Jacobian has rank $3$. The theorem requires an invertible $m\times m$ block; one must choose the $m$ unknowns accordingly.
+
+**Remark.** The same argument shows that $O(n)$ is a smooth submanifold of $M_n(\mathbb{R})$ of dimension $n^2-\frac{n(n+1)}2=\frac{n(n-1)}2$, with tangent space $\{X:X^T=-X\}$ at $I$ (the Lie algebra $\mathfrak{o}(n)$). Note that $O(2)$ has two connected components, $\det=\pm1$; the identity lies in the component $SO(2)$.
+
+---
+
+---
+title: The torus is a smooth surface: checking ∇F ≠ 0
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 3
+tags: torus, regular value, level surface, tangent plane, implicit function theorem
+order: 18
+date: 2026-11-14
+---
+
+# Problem 18 — The torus is a smooth surface
+
+## Statement
+
+The torus obtained by rotating the circle of radius $1$ centred at distance $2$ from the axis is the set $T=\{F=0\}$ with
+$$F(x,y,z)=\bigl(x^2+y^2+z^2+3\bigr)^2-16(x^2+y^2).$$
+
+1. Show that $T$ is the set of points with $\bigl(\sqrt{x^2+y^2}-2\bigr)^2+z^2=1$.
+2. Show that $\nabla F\ne0$ at every point of $T$, hence that $T$ is a smooth surface.
+3. At which points of $T$ can one solve $z=\varphi(x,y)$? At which points can one *not*? Interpret geometrically.
+
+## Hint
+
+Put $\rho^2=x^2+y^2$ and $s=\rho^2+z^2$. Then $F=(s+3)^2-16\rho^2$. For part 3 look at $F_z=4z(s+3)$.
+
+## Solution
+
+**Step 1: the equation.** With $\rho=\sqrt{x^2+y^2}$,
+$$\bigl(\rho-2\bigr)^2+z^2=1\iff\rho^2+z^2+3=4\rho\iff(\rho^2+z^2+3)^2=16\rho^2$$
+(both sides of $\rho^2+z^2+3=4\rho$ are positive, so squaring is reversible: if $(s+3)^2=16\rho^2$ then $s+3=\pm4\rho$, and $s+3>0$ forces $s+3=4\rho$). So $T=\{F=0\}$.
+
+**Step 2: the gradient does not vanish.** We compute
+$$F_x=4x(s+3)-32x=4x(s-5),\qquad F_y=4y(s-5),\qquad F_z=4z(s+3).$$
+(Here $F_x=2(s+3)\cdot2x-32x=4x(s+3)-32x=4x(s-5)$ ✓.) Suppose $\nabla F=0$. Since $s+3>0$, $F_z=0$ forces $z=0$ and then $s=\rho^2$. $F_x=F_y=0$ then forces either $x=y=0$ (the origin) or $\rho^2=s=5$.
+- At the origin, $F=9\ne0$: not on $T$.
+- If $\rho^2=5$ and $z=0$: $F=(5+3)^2-80=-16\ne0$: not on $T$.
+
+So $\nabla F\ne0$ on $T$. (Direct check: $T$ meets the plane $z=0$ in the circles $\rho=1$ and $\rho=3$, where $(\rho^2+3)^2=16\rho^2$; at $\rho=1$: $16=16$ ✓, at $\rho=3$: $144=144$ ✓; neither has $\rho^2=5$.) At every point of $T$ one partial derivative is nonzero, so by the implicit function theorem $T$ is locally a graph over a coordinate plane: it is a smooth surface.
+
+**Step 3: solving for $z$.** The theorem lets us write $z=\varphi(x,y)$ near a point of $T$ exactly when $F_z=4z(s+3)\ne0$, i.e. $z\ne0$. On the torus, $z=0$ means the points of the two horizontal circles $\rho=1$ (inner equator) and $\rho=3$ (outer equator): there the tangent plane is vertical, and $T$ near such a point is not a graph over the $xy$-plane. There, $F_x$ or $F_y$ is nonzero instead ($s=\rho^2\ne5$, and $(x,y)\ne0$), so one can solve for $x$ or $y$: indeed on the outer equator at $(3,0,0)$, $F_x=4\cdot3\cdot(9-5)=48\ne0$ and $T$ is locally $x=\psi(y,z)$.
+
+**Common mistake.** Concluding from "$F_z=0$ at some points" that the surface is singular there. The surface is smooth everywhere (Step 2); what fails is only the choice of the variable to solve for. Smoothness is about $\nabla F\ne0$ (at least one partial derivative nonzero), not about a specific partial.
+
+**Remark.** The surface $F=0$ is smooth, yet the function $F$ has critical points (the origin and the circle $z=0$, $\rho^2=5$) at *other* levels: the values $F(0)=9$ and $F=-16$ on the circle $\rho^2=5$. The level sets $\{F=9\}$ and $\{F=-16\}$ are singular or degenerate; the level $\{F=0\}$ sits between them and is a regular surface.
+
+---
+
+---
+title: Lagrange multipliers via the implicit function theorem
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 3
+tags: Lagrange multipliers, constrained extrema, implicit function theorem, proof
+order: 19
+date: 2026-11-14
+---
+
+# Problem 19 — Lagrange multipliers via the IFT
+
+## Statement
+
+Let $f,g:\mathbb{R}^2\to\mathbb{R}$ be $C^1$. Suppose $f$ restricted to the curve $\{g=0\}$ has a local extremum at $p=(a,b)$ and $\nabla g(p)\ne0$.
+
+1. Prove that there is $\lambda\in\mathbb{R}$ with $\nabla f(p)=\lambda\nabla g(p)$.
+2. Find the maximum and the minimum of $f(x,y)=xy$ on the ellipse $x^2+2y^2=1$.
+
+## Hint
+
+Suppose $g_y(p)\ne0$. Write the curve as $y=\varphi(x)$ and study the one-variable function $h(x)=f(x,\varphi(x))$.
+
+## Solution
+
+**Part 1: proof.** Since $\nabla g(p)\ne0$, one of $g_x(p),g_y(p)$ is nonzero; say $g_y(p)\ne0$ (the other case is symmetric). By the implicit function theorem there is a $C^1$ function $\varphi$ with $\varphi(a)=b$ and $g(x,\varphi(x))=0$ near $a$, with $\varphi'=-g_x/g_y$. The curve is locally the graph of $\varphi$, so the function
+$$h(x)=f\bigl(x,\varphi(x)\bigr)$$
+has a local extremum at $x=a$. Hence $h'(a)=0$:
+$$0=f_x(p)+f_y(p)\varphi'(a)=f_x(p)-f_y(p)\frac{g_x(p)}{g_y(p)}.$$
+Put $\lambda=f_y(p)/g_y(p)$. Then $f_y(p)=\lambda g_y(p)$ and $f_x(p)=\lambda g_x(p)$. $\blacksquare$
+
+**Part 2: the example.** $f=xy$, $g=x^2+2y^2-1$; $\nabla g=(2x,4y)$ vanishes only at the origin, not on the ellipse. The ellipse is compact, so $f$ has a maximum and a minimum on it, and both satisfy $\nabla f=\lambda\nabla g$:
+$$y=2\lambda x,\qquad x=4\lambda y,\qquad x^2+2y^2=1.$$
+Substituting: $x=4\lambda\cdot2\lambda x=8\lambda^2x$. If $x=0$ then $y=0$, impossible on the ellipse. So $\lambda^2=\frac18$, $\lambda=\pm\frac1{2\sqrt2}$ and $y=2\lambda x=\pm\frac{x}{\sqrt2}$. The constraint: $x^2+2\cdot\frac{x^2}2=2x^2=1$, so $x=\pm\frac1{\sqrt2}$ and $y=\pm\frac12$ (same sign as $\lambda x$). The four candidates:
+- $\left(\frac1{\sqrt2},\frac12\right)$ and $\left(-\frac1{\sqrt2},-\frac12\right)$: $f=\frac1{2\sqrt2}=\frac{\sqrt2}4$ (maximum),
+- $\left(\frac1{\sqrt2},-\frac12\right)$ and $\left(-\frac1{\sqrt2},\frac12\right)$: $f=-\frac{\sqrt2}4$ (minimum).
+
+**Check.** Parametrise $x=\cos t$, $y=\frac{\sin t}{\sqrt2}$: $f=\frac{\sin t\cos t}{\sqrt2}=\frac{\sin2t}{2\sqrt2}$, with extreme values $\pm\frac1{2\sqrt2}=\pm\frac{\sqrt2}4$ ✓.
+
+**Common mistake.** Forgetting the hypothesis $\nabla g\ne0$: at a point where $\nabla g=0$ the curve may have a singular point and the multiplier rule can fail. Example: minimise $f=x$ on $g=x^2-y^3=0$: the minimum of $x$ on this cusp is at the origin, where $\nabla g=0$ and $\nabla f=(1,0)\ne\lambda\cdot0$.
+
+**Remark.** Geometrically, $\nabla f=\lambda\nabla g$ says that the level curves of $f$ and the constraint curve are tangent at the extremum. The multiplier $\lambda$ measures how fast the optimal value changes when the constraint is relaxed.
+
+---
+
+---
+title: The cyclic rule (∂x/∂y)(∂y/∂z)(∂z/∂x) = −1
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 3
+tags: implicit differentiation, partial derivatives, thermodynamics, ideal gas
+order: 20
+date: 2026-11-14
+---
+
+# Problem 20 — The cyclic rule
+
+## Statement
+
+Let $F(x,y,z)=0$ be a $C^1$ relation with $F_x,F_y,F_z$ all nonzero at the point of interest, so that, locally, each variable is a function of the other two.
+
+1. Prove that
+$$\left(\frac{\partial x}{\partial y}\right)_z\left(\frac{\partial y}{\partial z}\right)_x\left(\frac{\partial z}{\partial x}\right)_y=-1.$$
+2. Verify it for the ideal gas law $PV=nRT$ (with $x=P$, $y=V$, $z=T$).
+3. Verify it for $xy+yz+zx=3$ at $(1,1,1)$.
+
+## Hint
+
+For each of the three derivatives use the formula $\partial u/\partial v=-F_v/F_u$ from the implicit function theorem.
+
+## Solution
+
+**Notation.** $\left(\frac{\partial x}{\partial y}\right)_z$ means: $x$ regarded as a function of $(y,z)$, differentiated with respect to $y$ with $z$ fixed. Warning: this is *not* the reciprocal of $\left(\frac{\partial y}{\partial x}\right)_z$ in the same sense as ordinary derivatives (here it is, but only when the *same* variable is held fixed).
+
+**Step 1: the proof.** Since $F_x\ne0$, $x=x(y,z)$ locally and $x_y=-\dfrac{F_y}{F_x}$. Since $F_y\ne0$, $y=y(x,z)$ and, differentiating with respect to $z$ at fixed $x$, $y_z=-\dfrac{F_z}{F_y}$. Since $F_z\ne0$, $z=z(x,y)$ and $z_x=-\dfrac{F_x}{F_z}$. Multiplying,
+$$\left(-\frac{F_y}{F_x}\right)\left(-\frac{F_z}{F_y}\right)\left(-\frac{F_x}{F_z}\right)=-\frac{F_yF_zF_x}{F_xF_yF_z}=-1.\ \blacksquare$$
+
+**Step 2: ideal gas.** Take $F=PV-nRT$. Then:
+- $P=\dfrac{nRT}V$: $\left(\dfrac{\partial P}{\partial V}\right)_T=-\dfrac{nRT}{V^2}$,
+- $V=\dfrac{nRT}P$: $\left(\dfrac{\partial V}{\partial T}\right)_P=\dfrac{nR}P$,
+- $T=\dfrac{PV}{nR}$: $\left(\dfrac{\partial T}{\partial P}\right)_V=\dfrac V{nR}$.
+
+Product: $-\dfrac{nRT}{V^2}\cdot\dfrac{nR}P\cdot\dfrac V{nR}=-\dfrac{nRT}{PV}=-1$ (using $PV=nRT$) ✓.
+
+**Step 3: $xy+yz+zx=3$ at $(1,1,1)$.** $F=xy+yz+zx-3$, with $F_x=y+z$, $F_y=x+z$, $F_z=x+y$, all equal to $2$ at $(1,1,1)$. Hence each of the three derivatives is $-\frac22=-1$, and the product is $(-1)^3=-1$ ✓.
+
+**Common mistake.** Believing the "cancelling fractions" heuristic: $\frac{\partial x}{\partial y}\cdot\frac{\partial y}{\partial z}\cdot\frac{\partial z}{\partial x}=1$ by "cancelling" the differentials. This is **false**: the three derivatives hold *different* variables fixed ($z$, $x$, $y$ respectively), and the correct value is $-1$. Only for two variables (with the same variable fixed) does $\frac{\partial x}{\partial y}=\left(\frac{\partial y}{\partial x}\right)^{-1}$.
+
+**Remark.** In thermodynamics this identity is combined with the chain rule to derive relations between the heat capacities $C_p$, $C_V$ and the compressibilities. It is one of the most frequently used consequences of the implicit function theorem outside mathematics.
+
+---
+
+---
+title: The equation y = ½ sin(x + y): contraction and a global implicit function
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: m1
+difficulty: 4
+tags: contraction mapping, Banach fixed point, global implicit function, periodicity
+order: 21
+date: 2026-11-14
+---
+
+# Problem 21 — The equation $y=\frac12\sin(x+y)$
+
+## Statement
+
+Consider the equation $y=\frac12\sin(x+y)$.
+
+1. Show that for every $x\in\mathbb{R}$ it has exactly one solution $y=\varphi(x)$ (use the Banach fixed point theorem).
+2. Show that $\varphi$ is $C^\infty$, odd and $2\pi$-periodic, with $|\varphi|\le\frac12$.
+3. Compute $\varphi'$ in terms of $\varphi$ and show $-\frac13\le\varphi'\le1$, with $\varphi(0)=0$ and $\varphi'(0)=1$.
+
+## Hint
+
+For fixed $x$, $T_x(y)=\frac12\sin(x+y)$ has $|T_x'|\le\frac12$. For smoothness apply the implicit function theorem to $F(x,y)=y-\frac12\sin(x+y)$, where $F_y=1-\frac12\cos(x+y)\ge\frac12$.
+
+## Solution
+
+**Step 1: existence and uniqueness.** For fixed $x$, the map $T_x:\mathbb{R}\to\mathbb{R}$ satisfies $|T_x(y)-T_x(y')|\le\frac12|y-y'|$ (mean value theorem, $|T_x'|=\frac12|\cos(x+y)|\le\frac12$). So $T_x$ is a contraction of the complete space $\mathbb{R}$, and by Banach's fixed point theorem it has exactly one fixed point $\varphi(x)$.
+
+**Step 2: regularity and symmetries.**
+- *Smoothness.* $F(x,y)=y-\frac12\sin(x+y)$ is $C^\infty$ with $F_y=1-\frac12\cos(x+y)\ge\frac12>0$ everywhere. By the implicit function theorem, near each $x_0$ there is a $C^\infty$ local solution through $(x_0,\varphi(x_0))$; by uniqueness it equals $\varphi$. Hence $\varphi\in C^\infty(\mathbb{R})$.
+- *Bound.* $|\varphi(x)|=\frac12|\sin(x+\varphi)|\le\frac12$.
+- *Periodicity.* $\varphi(x+2\pi)$ solves $y=\frac12\sin(x+2\pi+y)=\frac12\sin(x+y)$, the same equation as for $x$; by uniqueness $\varphi(x+2\pi)=\varphi(x)$.
+- *Oddness.* If $y=\varphi(x)$ then $-y$ satisfies $\frac12\sin(-x+(-y))=-\frac12\sin(x+y)=-y$, so $-y$ solves the equation for $-x$; hence $\varphi(-x)=-\varphi(x)$. In particular $\varphi(0)=0$.
+
+**Step 3: derivative.** Differentiating $\varphi=\frac12\sin(x+\varphi)$:
+$$\varphi'=\tfrac12\cos(x+\varphi)(1+\varphi')\ \Longrightarrow\ \varphi'\left(1-\tfrac12\cos(x+\varphi)\right)=\tfrac12\cos(x+\varphi),$$
+$$\varphi'=\frac{\cos(x+\varphi)}{2-\cos(x+\varphi)}.$$
+With $c=\cos(x+\varphi)\in[-1,1]$, the function $c\mapsto\dfrac c{2-c}$ is increasing ($\frac{2}{(2-c)^2}>0$), taking the values $-\frac13$ at $c=-1$ and $1$ at $c=1$. So $-\frac13\le\varphi'\le1$. At $x=0$: $\varphi(0)=0$, $c=1$, $\varphi'(0)=1$.
+
+**Common mistake.** Concluding $\varphi'=0$ because "$\varphi$ is bounded and periodic": a bounded periodic function can have a nonzero derivative (it oscillates). The derivative is bounded by $1$ and averages to zero over a period.
+
+**Remark.** The constant $\frac12<1$ is what makes this a contraction. If we replaced it by a number $k>1$, uniqueness would fail for some $x$ (the equation $y=k\sin(x+y)$ has several solutions when $k>1$, because $y\mapsto k\sin(x+y)-y$ has several zeros) and the implicit function would only be local. This is the typical way a global implicit function theorem appears: via a global contraction.
+
+---
+
+---
+title: The equation y = x eʸ: an explicit domain for the implicit function
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: m1
+difficulty: 5
+tags: quantitative implicit function theorem, contraction, radius, tree function, Lambert W
+order: 22
+date: 2026-11-14
+---
+
+# Problem 22 — The equation $y=xe^y$
+
+## Statement
+
+Consider $F(x,y)=y-xe^y$. The point $(0,0)$ satisfies $F=0$ and $F_y(0,0)=1$.
+
+1. Show that for every $x$ with $|x|<\frac1e$ the equation $y=xe^y$ has exactly one solution $\varphi(x)$ in $[-1,1]$, and that $\varphi\in C^\infty(-\frac1e,\frac1e)$.
+2. Show that $\varphi(x)=x+x^2+\frac32x^3+\frac83x^4+\cdots$.
+3. Show that the radius $\frac1e$ cannot be improved: $\varphi(x)\to1$ and $\varphi'(x)\to+\infty$ as $x\to\frac1e^-$.
+
+## Hint
+
+Show that $T_x(y)=xe^y$ maps $[-1,1]$ into itself and is a contraction when $|x|<\frac1e$. For part 2 solve $y=x+xy+\frac{xy^2}2+\cdots$ iteratively, or use $\varphi'=\dfrac{\varphi}{x(1-\varphi)}$.
+
+## Solution
+
+**Idea.** The implicit function theorem only says that *some* neighbourhood of $0$ works. Writing the equation as a fixed-point problem $y=T_x(y)$ and using the contraction principle gives an **explicit** neighbourhood, and here it turns out to be optimal.
+
+**Step 1: contraction on $[-1,1]$.** Let $|x|<\frac1e$ and $y\in[-1,1]$. Then
+$$|T_x(y)|=|x|e^y\le|x|e<1,\qquad|T_x'(y)|=|x|e^y\le|x|e=:q<1.$$
+So $T_x$ maps $[-1,1]$ into itself and is a contraction of constant $q$. By Banach's theorem there is exactly one fixed point $\varphi(x)\in[-1,1]$. Smoothness: $F_y=1-xe^y\ge1-e|x|>0$ at all points $(x,y)$ with $|x|<\frac1e$, $|y|\le1$; the implicit function theorem plus uniqueness in $[-1,1]$ gives $\varphi\in C^\infty$.
+
+*Optimality of the choice $\rho=1$.* On $[-\rho,\rho]$ one needs $|x|e^\rho\le\rho$ for the invariance, i.e. $|x|\le\rho e^{-\rho}$, whose maximum over $\rho>0$ is $\frac1e$, attained at $\rho=1$.
+
+**Step 2: the expansion.** From $\varphi=xe^\varphi$ we get $\varphi'=e^\varphi+x\varphi'e^\varphi=\dfrac\varphi x+\varphi\varphi'$, i.e. $\varphi'(1-\varphi)=\dfrac\varphi x$, so
+$$\varphi'=\frac{\varphi}{x(1-\varphi)}.$$
+Write $\varphi=\sum_{n\ge1}c_nx^n$. Iterating $\varphi=x\,e^\varphi$: $\varphi=x+O(x^2)$; $e^\varphi=1+x+\ldots$, so $\varphi=x+x^2+O(x^3)$; $e^\varphi=1+(x+x^2)+\frac{x^2}2+\cdots=1+x+\frac32x^2+\cdots$, so $\varphi=x+x^2+\frac32x^3+O(x^4)$, and one more step gives $\frac83x^4$. In general (Lagrange inversion) $c_n=\dfrac{n^{n-1}}{n!}$: $1,1,\frac32,\frac83,\frac{125}{24},\ldots$ ✓ (a sympy computation of $-W(-x)$ confirms these values).
+
+By Stirling, $c_n\sim\dfrac{e^n}{\sqrt{2\pi}\,n^{3/2}}$, so the radius of convergence is exactly $\frac1e$.
+
+**Step 3: sharpness.** Since $\varphi$ is increasing on $(0,\frac1e)$ (all $c_n>0$) and bounded by $1$, it has a limit $L\le1$ as $x\to\frac1e^-$ and $L=\frac1ee^L$, i.e. $Le^{1-L}=1$. The function $L\mapsto Le^{1-L}$ is increasing on $(0,1)$ with value $1$ at $L=1$, hence $L=1$. Then $\varphi'=\dfrac{\varphi}{x(1-\varphi)}\to+\infty$ as $x\to\frac1e^-$ (the numerator tends to $1$ and $1-\varphi\to0^+$). At $(x,y)=(\frac1e,1)$: $F_y=1-\frac1ee=0$: the hypothesis of the implicit function theorem fails exactly at the endpoint.
+
+**Common mistake.** Believing the contraction argument gives only a crude estimate. Here it yields the *exact* maximal domain of the principal branch, because the contraction constant reaches $1$ at the same point where $F_y$ vanishes.
+
+**Remark.** $\varphi(x)=-W(-x)$, where $W$ is the Lambert function, and $T(x)=\varphi$ is the *tree function* (it counts rooted labelled trees: the coefficient $n^{n-1}$ is Cayley's formula). The radius $\frac1e$ is the branch point of $W$. This example shows how the geometry of $F=0$ (a fold at $(\frac1e,1)$) controls the size of the domain of the implicit function.
+
+---
+
+---
+title: The hypothesis "C¹" cannot be weakened to "differentiable"
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: m1
+difficulty: 4
+tags: counterexample, differentiability, continuity of the derivative, local invertibility
+order: 23
+date: 2026-11-14
+---
+
+# Problem 23 — Differentiable is not enough
+
+## Statement
+
+Let $f(x)=x+2x^2\sin\frac1x$ for $x\ne0$ and $f(0)=0$.
+
+1. Show that $f$ is differentiable everywhere, with $f'(0)=1$, but that $f'$ is not continuous at $0$.
+2. Show that $f$ is **not injective** on any interval $(-\delta,\delta)$.
+3. Deduce that the implicit function theorem (equivalently the inverse function theorem) fails for the function $F(x,y)=f(x)-y$, which is differentiable with $F_x(0,0)=1\ne0$ but not $C^1$.
+
+## Hint
+
+For $x\ne0$, $f'(x)=1+4x\sin\frac1x-2\cos\frac1x$. Evaluate it at $x_n=\frac1{2\pi n}$. For part 2: an injective continuous function on an interval is strictly monotone.
+
+## Solution
+
+**Idea.** The proof of the theorem needs $D_yF$ to be invertible not only at the point but in a whole *neighbourhood*, with a uniform bound on its inverse. Continuity of the derivative provides exactly that. A function with $f'(0)=1$ can still have derivatives of both signs arbitrarily close to $0$.
+
+**Step 1: derivative.**
+$$\frac{f(x)-f(0)}x=1+2x\sin\frac1x\longrightarrow1,$$
+so $f'(0)=1$. For $x\ne0$: $\dfrac d{dx}\bigl(2x^2\sin\frac1x\bigr)=4x\sin\frac1x+2x^2\cos\frac1x\cdot\left(-\frac1{x^2}\right)=4x\sin\frac1x-2\cos\frac1x$, hence
+$$f'(x)=1+4x\sin\frac1x-2\cos\frac1x.$$
+At $x_n=\frac1{2\pi n}$: $\sin\frac1{x_n}=\sin2\pi n=0$ and $\cos\frac1{x_n}=1$, so $f'(x_n)=1-2=-1$. Since $x_n\to0$ but $f'(x_n)\to-1\ne f'(0)=1$, $f'$ is not continuous at $0$. (The oscillation of $\cos\frac1x$ never dies out.)
+
+**Step 2: not injective near $0$.** Suppose $f$ were injective on $(-\delta,\delta)$. Being continuous, it would be strictly monotone there (an injective continuous function on an interval is strictly monotone, by the intermediate value theorem). Since $f'(0)=1>0$, it would be strictly increasing (if it were strictly decreasing, the difference quotient $(f(x)-f(0))/x$ would be $\le0$ for all $x\ne0$, contradicting $f'(0)=1>0$). For a strictly increasing differentiable function, every derivative that exists is $\ge0$: indeed, for $h>0$, $(f(x+h)-f(x))/h\ge0$, so the right derivative is $\ge0$; for $h<0$, the numerator and denominator are both $\le0$, so the quotient is $\ge0$, and the left derivative is $\ge0$. Hence $f'\ge0$ on $(-\delta,\delta)$. But $f'(x_n)=-1<0$ for all large $n$ with $x_n<\delta$. Contradiction.
+
+**Step 3: failure of the theorem.** For $F(x,y)=f(x)-y$, we have $F(0,0)=0$ and $F_x(0,0)=f'(0)=1\ne0$, and $F$ is differentiable everywhere (but $F_x=f'$ is discontinuous at $0$). If the theorem held we would get neighbourhoods $U\ni0$ (for $x$), $V\ni0$ (for $y$) and a function $\psi:V\to U$ such that for $(x,y)\in U\times V$: $f(x)=y\iff x=\psi(y)$. That would make $f$ injective on $U$ (two points of $U$ with the same image $y$ would both equal $\psi(y)$) once $f(U)\subset V$ after shrinking: contradicting Step 2.
+
+**Common mistake.** Thinking "$f'(0)\ne0$ implies $f$ is invertible near $0$". This is a one-variable myth that is *true* for $C^1$ functions (the derivative stays positive near $0$) and *false* for merely differentiable ones, as this example shows.
+
+**Remark.** The same $f$ is a classical example showing that a function with $f'(0)>0$ need not be increasing on any neighbourhood of $0$. The correct sufficient condition in all dimensions is $C^1$; one can weaken it to "$Df$ continuous at the point, or Lipschitz inverse bounds nearby", but never to mere differentiability at the point.
+
+---
+
+---
+title: A relation f(x/z, y/z) = 0 and the identity x z_x + y z_y = z
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 3
+tags: implicit differentiation, homogeneous functions, chain rule, cone
+order: 24
+date: 2026-11-14
+---
+
+# Problem 24 — Homogeneous relations and Euler
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}$ be $C^1$ and suppose that $z=z(x,y)$ is defined implicitly by $f\left(\frac xz,\frac yz\right)=0$.
+
+1. Show that $x\,z_x+y\,z_y=z$ (under a suitable hypothesis that you should state).
+2. Check on $f(u,v)=u^2+v^2-1$, for which the relation is the cone $x^2+y^2=z^2$.
+3. Interpret the identity geometrically.
+
+## Hint
+
+Let $F(x,y,z)=f(x/z,y/z)$. Use the chain rule to compute $F_x$, $F_y$, $F_z$; the combination $xF_x+yF_y+zF_z$ simplifies a lot.
+
+## Solution
+
+**Step 1: derivatives of $F$.** Write $f_1,f_2$ for the partial derivatives of $f$, evaluated at $(u,v)=(x/z,y/z)$. By the chain rule
+$$F_x=\frac{f_1}z,\qquad F_y=\frac{f_2}z,\qquad F_z=-\frac{x}{z^2}f_1-\frac{y}{z^2}f_2=-\frac{xf_1+yf_2}{z^2}.$$
+
+**Hypothesis.** To apply the implicit function theorem we need $F_z\ne0$, i.e. $xf_1+yf_2\ne0$ (and $z\ne0$). Then
+$$z_x=-\frac{F_x}{F_z}=\frac{zf_1}{xf_1+yf_2},\qquad z_y=-\frac{F_y}{F_z}=\frac{zf_2}{xf_1+yf_2}.$$
+
+**Step 2: the identity.**
+$$xz_x+yz_y=\frac{z(xf_1+yf_2)}{xf_1+yf_2}=z.\ \blacksquare$$
+
+**Step 3: the cone.** $f(u,v)=u^2+v^2-1$ gives $x^2+y^2=z^2$, i.e. $z=\sqrt{x^2+y^2}$ on the upper nappe, with $z_x=\dfrac xz$, $z_y=\dfrac yz$. Then $xz_x+yz_y=\dfrac{x^2+y^2}z=\dfrac{z^2}z=z$ ✓. The hypothesis: here $f_1=2u=2x/z$, $f_2=2v=2y/z$, so
+$$xf_1+yf_2=\frac{2x^2}z+\frac{2y^2}z=\frac{2(x^2+y^2)}z=2z\ne0$$
+for $z\ne0$ ✓.
+
+**Geometric meaning.** The relation $f(x/z,y/z)=0$ is invariant under $(x,y,z)\mapsto(\lambda x,\lambda y,\lambda z)$: the surface is a **cone with vertex at the origin** (a union of lines through $0$). Hence $z(x,y)$ is homogeneous of degree $1$: $z(\lambda x,\lambda y)=\lambda z(x,y)$, and Euler's identity for homogeneous functions of degree $1$ reads precisely $xz_x+yz_y=z$.
+
+**Common mistake.** Writing $F_z=-\frac xz f_1-\frac yzf_2$ (forgetting the factor $\frac1z$ from the derivative of $\frac1z$). The derivative of $x/z$ with respect to $z$ is $-x/z^2$, not $-x/z$.
+
+**Remark.** This identity is a statement about the tangent plane: it says that the tangent plane at a point $P$ of a cone passes through the vertex. Indeed the tangent plane at $(x,y,z)$ is $Z-z=z_x(X-x)+z_y(Y-y)$, and at $(X,Y,Z)=(0,0,0)$ this reads $-z=-xz_x-yz_y$, which is exactly the identity.
+
+---
+
+---
+title: Maximum and minimum of y on the ellipse x² − xy + y² = 3
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: l2
+difficulty: 2
+tags: implicit function, critical points, second derivative test, conic
+order: 25
+date: 2026-11-14
+---
+
+# Problem 25 — Extrema of an implicit function
+
+## Statement
+
+Let $F(x,y)=x^2-xy+y^2-3$.
+
+1. Show that wherever $F_y\ne0$ the curve $F=0$ defines $y=\varphi(x)$ locally, and that a critical point of $\varphi$ ($\varphi'=0$) must satisfy $F_x=0$, i.e. $y=2x$.
+2. Find the critical points of $\varphi$ on the curve.
+3. Using the second derivative of $\varphi$, determine their nature, and find the maximum and minimum of $y$ on the curve.
+
+## Hint
+
+Differentiate $F(x,\varphi(x))=0$ twice: $F_{xx}+2F_{xy}\varphi'+F_{yy}\varphi'^2+F_y\varphi''=0$. At a critical point ($\varphi'=0$) this simplifies.
+
+## Solution
+
+**Step 1: the critical-point condition.** $F_y=-x+2y$. Where $F_y\ne0$, $\varphi'=-\dfrac{F_x}{F_y}$, with $F_x=2x-y$. So $\varphi'=0\iff F_x=0\iff y=2x$.
+
+**Step 2: the points.** Substitute $y=2x$ in $F=0$: $x^2-2x^2+4x^2=3x^2=3$, so $x=\pm1$ and $y=\pm2$: the points $(1,2)$ and $(-1,-2)$. At these points $F_y=-x+2y=-1+4=3$ and $=-3$ respectively: nonzero, so $\varphi$ exists near them and the points are indeed critical points of $\varphi$.
+
+**Step 3: second derivative.** Differentiate $F(x,\varphi(x))=0$ twice. First $F_x+F_y\varphi'=0$; then
+$$F_{xx}+2F_{xy}\varphi'+F_{yy}\varphi'^2+F_y\varphi''=0.$$
+At a critical point $\varphi'=0$ this gives $\varphi''=-\dfrac{F_{xx}}{F_y}$. Here $F_{xx}=2$.
+- At $(1,2)$: $F_y=3$, so $\varphi''=-\frac23<0$: a local **maximum** of $y$, equal to $2$.
+- At $(-1,-2)$: $F_y=-3$, so $\varphi''=+\frac23>0$: a local **minimum** of $y$, equal to $-2$.
+
+**Conclusion.** The curve is an ellipse (compact), so the global extrema of $y$ exist and are attained at critical points of $\varphi$ (or at points where $F_y=0$, which are the extreme points in $x$, where $y$ is not extreme as a function of $x$; here those points are $(2,1)$ and $(-2,-1)$, with $y=\pm1$, not extremal). Hence $y_{\max}=2$ and $y_{\min}=-2$.
+
+**Check.** Complete the square: $x^2-xy+y^2=\left(x-\frac y2\right)^2+\frac34y^2=3$ gives $\frac34y^2\le3$, i.e. $|y|\le2$, with equality iff $x=\frac y2$: at $(1,2)$ and $(-1,-2)$ ✓.
+
+**Common mistake.** Using $\varphi''=-F_{xx}/F_y$ at a point where $\varphi'\ne0$: the full formula with the terms $F_{xy}\varphi'$ and $F_{yy}\varphi'^2$ is needed in general.
+
+**Remark.** This is the one-constraint case of Lagrange multipliers: maximise $y$ on $F=0$ means $\nabla y=(0,1)\parallel\nabla F=(2x-y,\,2y-x)$, i.e. $2x-y=0$: the same equation $F_x=0$.
+
+---
+
+---
+title: Solving X + X³ = A for small matrices A
+category: calculus/multivariable/diff-calculus/dc-implicit-function
+level: m1
+difficulty: 5
+tags: matrix equation, implicit function theorem, Banach space, power series, uniqueness
+order: 26
+date: 2026-11-14
+---
+
+# Problem 26 — Solving $X+X^3=A$
+
+## Statement
+
+Let $\|\cdot\|$ be a submultiplicative norm on $M_n(\mathbb{R})$ and $F(X,A)=X+X^3-A$.
+
+1. Show that there exist neighbourhoods $V$ of $0$ (for $A$) and $W$ of $0$ (for $X$) and a $C^\infty$ map $\varphi:V\to W$ with: for $(A,X)\in V\times W$, $X+X^3=A\iff X=\varphi(A)$.
+2. Show that $\varphi(A)=A-A^3+3A^5-12A^7+\cdots$ as a convergent series for $\|A\|<\frac{2}{3\sqrt3}$, and that this is the unique small solution.
+3. Deduce that $\varphi(A)$ commutes with $A$ and that if $\lambda$ is an eigenvalue of $A$ then $\psi(\lambda)$ is an eigenvalue of $\varphi(A)$, where $\psi$ is the scalar solution of $\psi+\psi^3=\lambda$.
+
+## Hint
+
+The differential of $X\mapsto X+X^3$ at $0$ is the identity: $H\mapsto H+(H\cdot0\cdot0+\ldots)=H$. For part 2 use the scalar series $\psi(t)=\sum_{k\ge0}(-1)^k\dfrac1{2k+1}\dbinom{3k}k\,t^{2k+1}$ of the solution of $\psi+\psi^3=t$.
+
+## Solution
+
+**Step 1: the implicit function theorem in a Banach space.** The space $E=M_n(\mathbb{R})$ is finite-dimensional ($\cong\mathbb{R}^{n^2}$), and $F:E\times E\to E$ is polynomial hence $C^\infty$. We have $F(0,0)=0$ and
+$$D_XF(X,A)H=H+HX^2+XHX+X^2H,\qquad D_XF(0,0)=\mathrm{Id}_E,$$
+invertible. By the implicit function theorem (the version for maps between finite-dimensional spaces, $m=n^2$ unknowns) there are neighbourhoods $V,W$ and a $C^\infty$ map $\varphi:V\to W$ as claimed.
+
+**Step 2: the explicit solution.** The scalar equation $\psi+\psi^3=t$ near $t=0$ has the analytic solution
+$$\psi(t)=t-t^3+3t^5-12t^7+55t^9-\cdots=\sum_{k\ge0}\frac{(-1)^k}{2k+1}\binom{3k}kt^{2k+1}$$
+(Lagrange inversion: the coefficients $\frac1{2k+1}\binom{3k}k=1,1,3,12,55,\ldots$). Its radius of convergence is the distance to the nearest complex singularity, where $\frac{dt}{d\psi}=1+3\psi^2=0$, i.e. $\psi=\pm\frac i{\sqrt3}$, giving $t=\psi+\psi^3=\psi(1+\psi^2)=\pm\frac i{\sqrt3}\cdot\frac23=\pm\frac{2i}{3\sqrt3}$. So the radius is $\frac2{3\sqrt3}\approx0.385$ (the same number $\frac2{3\sqrt3}$ as in the cubic $x^3-x+t$ problem, up to the sign change $x\to ix$).
+
+For $\|A\|<\frac2{3\sqrt3}$ the series $\psi(A):=\sum c_kA^{2k+1}$ converges absolutely in the Banach algebra $M_n(\mathbb{R})$. The identity $\psi(t)+\psi(t)^3=t$ holds as an identity of power series in one variable, and products of series in the *single* matrix $A$ behave exactly like products of scalar series (powers of $A$ commute), so $\psi(A)+\psi(A)^3=A$. Moreover $\psi$ is continuous with $\psi(0)=0$, so $\psi(A)\in W$ for $\|A\|$ small enough. By the uniqueness in Step 1, $\varphi(A)=\psi(A)$ for small $\|A\|$.
+
+(Numerical check: for $A=\begin{pmatrix}0.1&0.2\\-0.1&0.15\end{pmatrix}$, the partial sum $A-A^3+3A^5-12A^7$ satisfies $X+X^3-A$ with an error of order $10^{-5}$, consistent with the neglected term $55A^9$.)
+
+**Step 3: consequences.** Since $\varphi(A)$ is a limit of polynomials in $A$, it commutes with $A$, and the eigenvalues of $\varphi(A)=\psi(A)$ are $\psi(\lambda)$ for the eigenvalues $\lambda$ of $A$ (the spectral mapping theorem for convergent power series, e.g. by triangularising $A$ over $\mathbb{C}$).
+
+**Common mistake.** Concluding that every solution of $X+X^3=A$ commutes with $A$. Uniqueness only holds among *small* $X$ (in $W$). For $A=0$, the equation $X(I+X^2)=0$ has, for $n=2$, the non-small solution $X=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ (a rotation by $90°$, with $X^2=-I$), which also gives $X+X^3=X-X=0$. So uniqueness is genuinely local.
+
+**Remark.** The same method produces matrix versions of inverse functions: $\varphi$ is the "functional calculus" of the scalar inverse of $x\mapsto x+x^3$. The restriction to small $A$ is the matrix analogue of the restriction $|t|<\frac2{3\sqrt3}$, where the implicit function theorem for scalar $\psi$ gives an analytic solution; beyond this radius the scalar solution still exists on the real line (the cubic is monotone), but is no longer given by this series.
 @@@ constrained-critical-points-poly.md
 ---
 title: Critical points of a polynomial
