@@ -143,19 +143,19 @@
             },
             {
               "id": "partial-derivatives",
-              "name": "Partial derivatives",
-              "description": "Partial derivatives, gradients and the chain rule.",
+              "name": "Differentiability and Partial derivatives",
+              "description": "Differentiability, Partial derivatives, gradients and the chain rule.",
               "subcategories": []
             },
             {
               "id": "diff-calculus",
-              "name": "Differential calculus in several variables",
-              "description": "Differentiability, the mean value inequality, the inverse function theorem and the implicit function theorem.",
+              "name": "Fundamental theorems of differential calculus",
+              "description": "Mean value inequality, the inverse function theorem and the implicit function theorem.",
               "subcategories": [
                 {
                   "id": "dc-mean-value-inequality",
                   "name": "Mean value inequality",
-                  "description": "Differentiability, Lipschitz estimates, convexity of domains and the mean value inequality.",
+                  "description": "Lipschitz estimates, convexity of domains and the mean value inequality.",
                   "subcategories": []
                 },
                 {
@@ -173,6 +173,12 @@
               ]
             },
             {
+              "id": "constrained-optimisation",
+              "name": "Optimisation in several variables",
+              "description": "Extrema and Lagrange multipliers.",
+              "subcategories": []
+            },
+            {
               "id": "multiple-integrals",
               "name": "Multiple integrals",
               "description": "Double and triple integrals and changes of variables.",
@@ -182,12 +188,6 @@
               "id": "vector-calculus",
               "name": "Vector calculus",
               "description": "Line integrals, surface integrals and the classical theorems.",
-              "subcategories": []
-            },
-            {
-              "id": "constrained-optimisation",
-              "name": "Optimisation in several variables",
-              "description": "Extrema and Lagrange multipliers.",
               "subcategories": []
             }
           ]
