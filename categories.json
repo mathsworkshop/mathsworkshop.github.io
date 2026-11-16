@@ -505,6 +505,24 @@
           "name": "Graph theory",
           "description": "Graph terminology, trees, paths, connectivity and planar graphs.",
           "subcategories": []
+        },
+        {
+          "id": "invariants-tilings-games",
+          "name": "Invariants-tilings-games",
+          "description": "Invariants, colouring, tilings, recursion, games, symmetry, strategy-stealing.",
+          "subcategories": []
+        },
+        {
+          "id": "extremal",
+          "name": "Extremal combinatorics",
+          "description": "Extremes (largest, smallest, closest), min/max proofs, tight bounds (kings, coin-weighing), Sylvester-Gallai.",
+          "subcategories": []
+        },
+        {
+          "id": "probabilistic-algebraic",
+          "name": "Algebraic & Probabilistic Methods",
+          "description": "Probabilistic method, F₂ linear algebra, double counting, Oddtown, EKR.",
+          "subcategories": []
         }
       ]
     },
