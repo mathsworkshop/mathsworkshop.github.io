@@ -148,6 +148,31 @@
               "subcategories": []
             },
             {
+              "id": "diff-calculus",
+              "name": "Differential calculus in several variables",
+              "description": "Differentiability, the mean value inequality, the inverse function theorem and the implicit function theorem.",
+              "subcategories": [
+                {
+                  "id": "dc-mean-value-inequality",
+                  "name": "Mean value inequality",
+                  "description": "Differentiability, Lipschitz estimates, convexity of domains and the mean value inequality.",
+                  "subcategories": []
+                },
+                {
+                  "id": "dc-inverse-function",
+                  "name": "Inverse function theorem",
+                  "description": "Local diffeomorphisms, injectivity, change of coordinates and global inversion.",
+                  "subcategories": []
+                },
+                {
+                  "id": "dc-implicit-function",
+                  "name": "Implicit function theorem",
+                  "description": "Implicit functions, tangent spaces, level sets and applications.",
+                  "subcategories": []
+                }
+              ]
+            },
+            {
               "id": "multiple-integrals",
               "name": "Multiple integrals",
               "description": "Double and triple integrals and changes of variables.",
