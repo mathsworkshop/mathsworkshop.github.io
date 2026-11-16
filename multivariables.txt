@@ -1,4 +1,1108 @@
 ---
+title: The polar map: where is it locally invertible?
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 1
+tags: inverse function theorem, polar coordinates, Jacobian, local diffeomorphism
+order: 1
+date: 2026-11-15
+---
+
+# Problem 1 — The polar map: where is it locally invertible?
+
+## Statement
+
+**Inverse function theorem.** Let $U\subset\mathbb{R}^n$ be open, $f:U\to\mathbb{R}^n$ of class $C^k$ ($k\ge1$) and $a\in U$ such that the differential $Df(a)$ is invertible. Then there exist open sets $V\ni a$ and $W\ni f(a)$ such that $f:V\to W$ is a bijection, and its inverse $g=(f|_V)^{-1}:W\to V$ is of class $C^k$, with
+$$Dg(y)=\bigl(Df(g(y))\bigr)^{-1}\qquad(y\in W).$$
+
+Let $F:\mathbb{R}^2\to\mathbb{R}^2$ be the polar map $F(r,\theta)=(r\cos\theta,\ r\sin\theta)$.
+
+1. Compute the Jacobian determinant of $F$ and decide at which points the theorem applies.
+2. Show that $F$ is not injective on any neighbourhood of a point $(0,\theta_0)$.
+3. Show that $F$ is a $C^\infty$ diffeomorphism from $(0,+\infty)\times(-\pi,\pi)$ onto $\mathbb{R}^2\setminus\{(x,0):x\le0\}$, and compute the derivative of the inverse at the point $(x,y)=(1,0)$.
+
+## Hint
+
+The Jacobian matrix has columns $\partial_rF$ and $\partial_\theta F$. For part 2, evaluate $F$ at two points $(r,\theta_0)$ and $(r,\theta_0')$ with $\theta_0'\ne\theta_0$.
+
+## Solution
+
+**Idea.** The theorem turns a *pointwise* linear-algebra condition ("the differential is invertible at $a$") into a *neighbourhood* statement ("$f$ is a diffeomorphism near $a$"). Everything below is an application of that single transfer.
+
+**Part 1: the Jacobian.** The differential of $F$ at $(r,\theta)$ is represented by
+$$DF(r,\theta)=\begin{pmatrix}\cos\theta&-r\sin\theta\\ \sin\theta&r\cos\theta\end{pmatrix},\qquad\det DF(r,\theta)=r\cos^2\theta+r\sin^2\theta=r.$$
+So $DF(r,\theta)$ is invertible if and only if $r\ne0$. Since $F$ is $C^\infty$, the theorem applies at every point with $r\ne0$: near each such point, $F$ is a $C^\infty$ diffeomorphism onto an open set.
+
+**Part 2: failure at $r=0$.** All the points $(0,\theta)$ are sent to the origin: $F(0,\theta)=(0,0)$. Any neighbourhood of $(0,\theta_0)$ contains $(0,\theta_0)$ and $(0,\theta_0+\varepsilon)$ for small $\varepsilon\ne0$, which have the same image. So $F$ is not injective near these points, and no local inverse can exist. This is consistent with the theorem, because $\det DF=0$ there.
+
+**Part 3: a global domain.** Let $D=(0,+\infty)\times(-\pi,\pi)$ and $E=\mathbb{R}^2\setminus\{(x,0):x\le0\}$.
+- *$F(D)\subset E$.* If $r>0$ and $\theta\in(-\pi,\pi)$, then $(r\cos\theta,r\sin\theta)$ has $y=0$ only for $\theta=0$, where $x=r>0$. So the image avoids the closed negative half-axis.
+- *$F$ is injective on $D$.* If $F(r,\theta)=F(r',\theta')$, taking norms gives $r=r'$, hence $(\cos\theta,\sin\theta)=(\cos\theta',\sin\theta')$, so $\theta-\theta'\in2\pi\mathbb{Z}$, and since both lie in $(-\pi,\pi)$, $\theta=\theta'$.
+- *$F(D)=E$.* Every point of $E$ can be written $(r\cos\theta,r\sin\theta)$ with $r>0$ and $\theta\in(-\pi,\pi]$, and $\theta=\pi$ is excluded exactly because the point would lie on the negative axis.
+
+Since $\det DF=r>0$ on $D$, the theorem (and its global version, see the next problems) shows that $F:D\to E$ is a $C^\infty$ diffeomorphism. The inverse is $g(x,y)=\bigl(\sqrt{x^2+y^2},\,\theta(x,y)\bigr)$ with $\theta=2\arctan\dfrac{y}{x+\sqrt{x^2+y^2}}$.
+
+*Derivative at $(1,0)=F(1,0)$.* Here $DF(1,0)=\begin{pmatrix}1&0\\0&1\end{pmatrix}$, so $Dg(1,0)=I$. Concretely, near $(1,0)$ we have $r\approx x$ and $\theta\approx y$. At $(1,\tfrac\pi2)$: $F=(0,1)$ and
+$$DF=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad Dg(0,1)=\begin{pmatrix}0&1\\-1&0\end{pmatrix},$$
+that is $dr=dy$ and $d\theta=-dx$ near $(0,1)$ (moving right along the top of the circle decreases the angle).
+
+**Common mistake.** "$F$ is a diffeomorphism of $\mathbb{R}^2$." No: the theorem gives a *local* statement. The periodicity $F(r,\theta+2\pi)=F(r,\theta)$ shows that no global inverse exists on $\mathbb{R}^2$, and the explicit domain $D$ in part 3 must be chosen to remove it.
+
+**Remark.** The determinant $r$ is exactly the factor appearing in $dx\,dy=r\,dr\,d\theta$: the same Jacobian controls invertibility *and* the change of variables in integrals (see the problem on $xy$ and $y/x$ below).
+
+---
+
+---
+title: Roots as functions of the coefficients: the map (x,y) → (x+y, xy)
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 2
+tags: inverse function theorem, symmetric functions, fold, quadratic equation
+order: 2
+date: 2026-11-15
+---
+
+# Problem 2 — Roots and coefficients: the sum and product map
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}^2$ be $f(x,y)=(x+y,\ xy)$. It sends a pair of numbers to the sum and the product, which are the coefficients of the quadratic with roots $x,y$.
+
+1. Compute $\det Df(x,y)$ and determine where $f$ is a local diffeomorphism.
+2. Near the point $(1,2)$, find the local inverse $g$ explicitly and compute $Dg(3,2)$ in two ways.
+3. Show that $f$ is not injective on any neighbourhood of a point $(a,a)$ of the diagonal.
+
+## Hint
+
+The solutions of $t^2-st+p=0$ are $t=\dfrac{s\pm\sqrt{s^2-4p}}2$. For part 3, compare $f(x,y)$ and $f(y,x)$.
+
+## Solution
+
+**Part 1.**
+$$Df(x,y)=\begin{pmatrix}1&1\\y&x\end{pmatrix},\qquad\det Df(x,y)=x-y.$$
+The differential is invertible exactly when $x\ne y$. By the inverse function theorem, $f$ is a local diffeomorphism at every point off the diagonal.
+
+**Part 2: the explicit inverse.** If $(s,p)=f(x,y)$ then $x$ and $y$ are the two roots of $t^2-st+p=0$. Near $(1,2)$ we have $x<y$, so
+$$g(s,p)=\left(\frac{s-\sqrt{s^2-4p}}2,\ \frac{s+\sqrt{s^2-4p}}2\right),$$
+defined and $C^\infty$ near $(s,p)=(3,2)$ because there $s^2-4p=1>0$. Check: $g(3,2)=\left(\frac{3-1}2,\frac{3+1}2\right)=(1,2)$ ✓.
+
+*First way (theorem).* $Df(1,2)=\begin{pmatrix}1&1\\2&1\end{pmatrix}$ has determinant $-1$, and
+$$Dg(3,2)=Df(1,2)^{-1}=\frac1{-1}\begin{pmatrix}1&-1\\-2&1\end{pmatrix}=\begin{pmatrix}-1&1\\2&-1\end{pmatrix}.$$
+*Second way (formula).* Let $D=s^2-4p$. Then $\partial_s\frac{s-\sqrt D}2=\frac12\left(1-\frac s{\sqrt D}\right)=\frac12(1-3)=-1$ and $\partial_p\frac{s-\sqrt D}2=\frac12\cdot\frac{2}{\sqrt D}=1$. Similarly $\partial_s\frac{s+\sqrt D}2=\frac12(1+3)=2$ and $\partial_p\frac{s+\sqrt D}2=-1$. This is the same matrix ✓.
+
+**Part 3: the fold.** For every $(x,y)$, $f(x,y)=f(y,x)$. Near $(a,a)$ take $(a+\varepsilon,a)$ and $(a,a+\varepsilon)$ with $\varepsilon\ne0$ small: they are distinct points of any neighbourhood with the same image. So $f$ is not injective there, in agreement with $\det Df(a,a)=0$.
+
+**Interpretation.** The roots of a quadratic depend *smoothly* on its coefficients as long as they are distinct. At a double root the square root $\sqrt{s^2-4p}$ is not differentiable, and the map from coefficients to (ordered) roots breaks down.
+
+**Common mistake.** Concluding that "$\det Df=0$ at $(a,a)$ implies no local inverse" in general. The determinant condition is only sufficient for the theorem; here the non-injectivity is shown directly in part 3, which is the real reason.
+
+**Remark.** The same phenomenon holds for polynomials of any degree: the map (roots) $\mapsto$ (elementary symmetric functions) has Jacobian equal to the Vandermonde determinant $\prod_{i<j}(x_i-x_j)$ up to sign.
+
+---
+
+---
+title: The map (eˣ cos y, eˣ sin y): local diffeomorphism, not injective
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 2
+tags: inverse function theorem, complex exponential, local vs global, logarithm
+order: 3
+date: 2026-11-15
+---
+
+# Problem 3 — The complex exponential as a planar map
+
+## Statement
+
+Let $E:\mathbb{R}^2\to\mathbb{R}^2$ be $E(x,y)=(e^x\cos y,\ e^x\sin y)$ (this is the complex exponential $z\mapsto e^z$ written in real coordinates).
+
+1. Show that $\det DE(x,y)>0$ everywhere, so $E$ is a local diffeomorphism at every point.
+2. Show that $E$ is nevertheless not injective, and find $E(\mathbb{R}^2)$.
+3. Find an explicit local inverse near $(0,0)$ and near $(0,\pi)$, and compare the derivative of the inverse with the formula $Dg=(DE)^{-1}$.
+
+## Hint
+
+Part 1: compute the $2\times2$ Jacobian matrix. Part 2: look at $E(x,y+2\pi)$. Part 3: write the target as $(u,v)=(r\cos\theta,r\sin\theta)$.
+
+## Solution
+
+**Part 1.**
+$$DE(x,y)=e^x\begin{pmatrix}\cos y&-\sin y\\ \sin y&\cos y\end{pmatrix},\qquad\det DE(x,y)=e^{2x}(\cos^2y+\sin^2y)=e^{2x}>0.$$
+The matrix is $e^x$ times a rotation, so it is invertible: the inverse function theorem gives a local $C^\infty$ inverse near every point.
+
+**Part 2.** $E(x,y+2\pi)=E(x,y)$, so $E$ is $2\pi$-periodic in $y$ and certainly not injective. Its image: $\lVert E(x,y)\rVert=e^x>0$, so $0$ is never attained; conversely any $(u,v)\ne(0,0)$ can be written $(r\cos\theta,r\sin\theta)$ with $r>0$, and $(x,y)=(\ln r,\theta)$ works. Hence
+$$E(\mathbb{R}^2)=\mathbb{R}^2\setminus\{(0,0)\}.$$
+The image is open (as the theorem predicts: a map with invertible differential everywhere is open).
+
+**Part 3: explicit local inverses.** For $(u,v)\ne0$, put $r=\sqrt{u^2+v^2}$. A local inverse must satisfy $x=\ln r$ and $y=$ an argument of $(u,v)$.
+- Near $E(0,0)=(1,0)$: $g_0(u,v)=\bigl(\tfrac12\ln(u^2+v^2),\ \arctan\tfrac vu\bigr)$ (valid for $u>0$).
+- Near $E(0,\pi)=(-1,0)$: $g_\pi(u,v)=\bigl(\tfrac12\ln(u^2+v^2),\ \pi+\arctan\tfrac vu\bigr)$ (valid for $u<0$).
+
+Derivatives: $\partial_u\frac12\ln(u^2+v^2)=\frac u{u^2+v^2}$, $\partial_v\frac12\ln(u^2+v^2)=\frac v{u^2+v^2}$, $\partial_u\arctan\frac vu=\frac{-v}{u^2+v^2}$, $\partial_v\arctan\frac vu=\frac u{u^2+v^2}$. So
+$$Dg(u,v)=\frac1{u^2+v^2}\begin{pmatrix}u&v\\-v&u\end{pmatrix}.$$
+At $(1,0)$ this is $I$, and $DE(0,0)=I$ ✓. At $(-1,0)$ it is $-I$, and $DE(0,\pi)=\begin{pmatrix}-1&0\\0&-1\end{pmatrix}$ whose inverse is $-I$ ✓. Both local inverses have the *same* derivative formula (because they differ by the constant $\pi$), as they must: they differ by a translation of the $y$-coordinate by $2\pi k$ in general.
+
+**Common mistake.** Believing that "$\det DE\ne0$ everywhere" gives a global inverse. In one variable it does (a $C^1$ function with $f'\ne0$ on an interval is strictly monotone), but in dimension $\ge2$ the exponential shows it does not: the inverse is the *multivalued* logarithm.
+
+**Remark.** $E$ is a covering map $\mathbb{R}^2\to\mathbb{R}^2\setminus\{0\}$, with deck group $2\pi\mathbb{Z}$. Restricting to a strip $\mathbb{R}\times(y_0,y_0+2\pi)$ gives a diffeomorphism onto the plane minus a ray: this is the choice of a *branch* of the logarithm.
+
+---
+
+---
+title: The map (x² − y², 2xy): a local diffeomorphism except at the origin
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 2
+tags: inverse function theorem, complex squaring, critical point, branches of the square root
+order: 4
+date: 2026-11-15
+---
+
+# Problem 4 — The squaring map in the plane
+
+## Statement
+
+Let $S:\mathbb{R}^2\to\mathbb{R}^2$ be $S(x,y)=(x^2-y^2,\ 2xy)$ (this is $z\mapsto z^2$ in real coordinates).
+
+1. Compute $\det DS$ and find the set of points where the inverse function theorem applies.
+2. Find the local inverse $g$ of $S$ near the point $(1,0)$, with $g(1,0)=(1,0)$, and verify $Dg(1,0)=\frac12I$.
+3. Show that $S$ is not injective near the origin even though $S$ is a homeomorphism-like map locally everywhere else, and count the preimages of a nonzero point.
+
+## Hint
+
+For part 2, if $S(x,y)=(u,v)$ then $x^2+y^2=\sqrt{u^2+v^2}$ (take norms) and $x^2-y^2=u$.
+
+## Solution
+
+**Part 1.**
+$$DS(x,y)=\begin{pmatrix}2x&-2y\\2y&2x\end{pmatrix},\qquad\det DS=4x^2+4y^2=4(x^2+y^2).$$
+It vanishes only at the origin. At every point $(x,y)\ne(0,0)$ the theorem applies, so $S$ is a local $C^\infty$ diffeomorphism there.
+
+**Part 2: explicit branch.** Put $\rho=\sqrt{u^2+v^2}$. From $S(x,y)=(u,v)$: $x^2+y^2=\rho$ (since $(x^2-y^2)^2+(2xy)^2=(x^2+y^2)^2$) and $x^2-y^2=u$, so
+$$x^2=\frac{\rho+u}2,\qquad y^2=\frac{\rho-u}2.$$
+Near $(1,0)$ we have $x>0$ and $y$ has the sign of $v$ (since $2xy=v$). So
+$$g(u,v)=\left(\sqrt{\tfrac{\rho+u}2},\ \operatorname{sign}(v)\sqrt{\tfrac{\rho-u}2}\right).$$
+A cleaner formula for $u>0$: $x=\sqrt{\frac{\rho+u}2}$ and $y=\dfrac v{2x}$. Then
+$$Dg(1,0)=DS(1,0)^{-1}=\begin{pmatrix}2&0\\0&2\end{pmatrix}^{-1}=\frac12I.$$
+Direct check with the formula $x=\sqrt{(\rho+u)/2}$, $y=v/(2x)$: at $(1,0)$, $\rho\approx u+\frac{v^2}{2u}$, so $x\approx\sqrt u$ and $\partial_ux=\frac1{2\sqrt u}=\frac12$, $\partial_vy=\frac1{2x}=\frac12$ ✓.
+
+**Part 3: preimages.** $S(-x,-y)=S(x,y)$, so each nonzero value has (at least) two preimages $\pm(x,y)$ (these are the two square roots of the complex number $u+iv$). There are exactly two: $x+iy$ must satisfy $(x+iy)^2=u+iv$, a quadratic equation with two roots. Near the origin the map is also 2-to-1 on every punctured neighbourhood, hence not injective on any neighbourhood of $(0,0)$. It also *doubles angles*: a half-plane through $0$ is sent onto the whole plane minus a ray, so near $0$ the map is not a local homeomorphism either.
+
+**Common mistake.** Saying "$\det DS=0$ at the origin, so $S$ is not locally invertible at $0$, but fine elsewhere" and then stopping: the failure at $0$ is stronger than non-invertibility of $DS$; $S$ is **not even locally injective** there.
+
+**Remark.** Compare with $x\mapsto x^3$ on $\mathbb{R}$: there $f'(0)=0$ but $f$ is still a homeomorphism (see a later problem). For $z\mapsto z^2$ at $0$, local injectivity really fails.
+
+---
+
+---
+title: Taylor expansion of a local inverse to order 3
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: inverse function theorem, Taylor expansion, fixed point iteration, power series
+order: 5
+date: 2026-11-15
+---
+
+# Problem 5 — The Taylor expansion of a planar inverse
+
+## Statement
+
+Let $f(x,y)=(x+y^2,\ y+x^2)$. We have $f(0,0)=(0,0)$.
+
+1. Show that $f$ has a local inverse $g=(g_1,g_2)$ near $(0,0)$.
+2. Compute the Taylor expansion of $g_1$ and $g_2$ at $(0,0)$ up to order $3$.
+3. Check the result numerically at the point $(u,v)=(0.1,\,0.05)$.
+
+## Hint
+
+If $g(u,v)=(x,y)$ then $x=u-y^2$ and $y=v-x^2$. Start from $g(u,v)=(u,v)+o(1)$ and substitute repeatedly.
+
+## Solution
+
+**Part 1.** $Df(0,0)=\begin{pmatrix}1&2y\\2x&1\end{pmatrix}_{(0,0)}=I$ is invertible, so the theorem gives a $C^\infty$ local inverse $g$ with $g(0,0)=(0,0)$ and $Dg(0,0)=I$. In particular $g(u,v)=(u,v)+o(\lVert(u,v)\rVert)$.
+
+**Part 2: successive substitution.** From $f(x,y)=(u,v)$, i.e. $(x,y)=g(u,v)$:
+$$g_1=u-g_2^2,\qquad g_2=v-g_1^2.$$
+*Order 1.* $g_1=u+O(2)$, $g_2=v+O(2)$ (this is $Dg(0)=I$).
+
+*Order 2.* Insert order 1 into the right sides: $g_1^2=u^2+O(3)$ and $g_2^2=v^2+O(3)$. Hence
+$$g_1=u-v^2+O(3),\qquad g_2=v-u^2+O(3).$$
+*Order 3.* Now $g_2^2=(v-u^2+O(3))^2=v^2-2u^2v+O(4)$ and $g_1^2=(u-v^2+O(3))^2=u^2-2uv^2+O(4)$. Therefore
+$$g_1(u,v)=u-v^2+2u^2v+O(4),\qquad g_2(u,v)=v-u^2+2uv^2+O(4).$$
+(A computer algebra system confirms these terms and gives the degree-4 terms $-u^4-4uv^3$ in $g_1$ and $-v^4-4u^3v$ in $g_2$.)
+
+**Part 3: numerical check.** For $(u,v)=(0.1,0.05)$: $g_1\approx0.1-0.0025+2(0.01)(0.05)=0.0985$ and $g_2\approx0.05-0.01+2(0.1)(0.0025)=0.0405$. Apply $f$: $x+y^2=0.0985+0.00164025=0.10014$ and $y+x^2=0.0405+0.00970225=0.05020$. The errors are $1.4\cdot10^{-4}$ and $2\cdot10^{-4}$, of the size expected from a degree-$4$ remainder ($\lVert(u,v)\rVert^4\approx1.2\cdot10^{-4}$).
+
+**Common mistake.** Differentiating $g=f^{-1}$ "by inverting term by term". The inverse of $x+y^2$ is *not* $u-v^2$ in any simple sense: one must substitute the *inverse* variables, as above. Also remember that the second-order terms of $g$ are *minus* those of $f$ (because $Df(0)=I$): $g=\mathrm{id}-(f-\mathrm{id})+O(3)$.
+
+**Remark.** The scheme $x=u-h(x)$ is a fixed-point iteration (a contraction near $0$), and each step gains one order of accuracy. This is exactly how the inverse function theorem is proved (see the proof problem below).
+
+---
+
+---
+title: Inverting y = x eˣ: the series of the Lambert function
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: inverse function theorem, Lagrange inversion, power series, radius of convergence
+order: 6
+date: 2026-11-15
+---
+
+# Problem 6 — Lagrange inversion for $y=xe^x$
+
+## Statement
+
+Let $f(x)=xe^x$ on $\mathbb{R}$.
+
+1. Show that $f$ has a $C^\infty$ local inverse $W$ near $0$ and compute $W'(0)$.
+2. Find the Taylor expansion of $W$ at $0$ up to order $4$.
+3. Verify that the coefficient of $y^n$ in $W(y)$ is $\dfrac{(-n)^{n-1}}{n!}$ for $n\le5$.
+4. Where does the inverse function theorem fail for $f$, and what does this say about the radius of convergence of the series?
+
+## Hint
+
+$W(y)$ satisfies $W e^{W}=y$, that is $W=ye^{-W}$. Iterate this relation.
+
+## Solution
+
+**Part 1.** $f'(x)=(1+x)e^x$ and $f'(0)=1\ne0$. In dimension one the theorem says: $f$ is a $C^\infty$ diffeomorphism near $0$, with $W'(f(x))=\dfrac1{f'(x)}$. In particular $W'(0)=1$.
+
+**Part 2: iteration.** Use $W=ye^{-W}$ and $e^{-t}=1-t+\frac{t^2}2-\frac{t^3}6+\cdots$.
+- Order 1: $W=y+O(y^2)$.
+- Order 2: $W=y(1-W+\dots)=y(1-y)+O(y^3)=y-y^2+O(y^3)$.
+- Order 3: $e^{-W}=1-W+\frac{W^2}2+O(y^3)$ with $W=y-y^2$: $1-y+y^2+\frac{y^2}2=1-y+\frac32y^2$. So $W=y-y^2+\frac32y^3+O(y^4)$.
+- Order 4: $e^{-W}=1-W+\frac{W^2}2-\frac{W^3}6$ with $W=y-y^2+\frac32y^3$: $W^2=y^2-2y^3+\dots$, $W^3=y^3+\dots$, so $e^{-W}=1-y+y^2-\frac32y^3+\frac{y^2}2-y^3-\frac{y^3}6+O(y^4)=1-y+\frac32y^2-\frac{8}{3}y^3$. Hence
+$$W(y)=y-y^2+\frac32y^3-\frac83y^4+O(y^5).$$
+
+**Part 3: the general coefficient.** *Lagrange's inversion formula*: if $W=y\varphi(W)$ with $\varphi(0)\ne0$ analytic, then
+$$[y^n]\,W=\frac1n[w^{n-1}]\varphi(w)^n.$$
+Here $\varphi(w)=e^{-w}$, so $\varphi^n=e^{-nw}$ and $[w^{n-1}]e^{-nw}=\dfrac{(-n)^{n-1}}{(n-1)!}$. Therefore $[y^n]W=\dfrac{(-n)^{n-1}}{n!}$. Check: $n=1:1$; $n=2:\frac{-2}2=-1$; $n=3:\frac9{6}=\frac32$; $n=4:\frac{-64}{24}=-\frac83$; $n=5:\frac{625}{120}=\frac{125}{24}$ ✓ (the first four match part 2).
+
+**Part 4: where the theorem fails.** $f'(x)=0$ exactly at $x=-1$, with $f(-1)=-\frac1e$. At that point the inverse has a vertical tangent, and $W$ cannot be extended analytically through $y=-\frac1e$ as a single-valued function. By Stirling, $\left|\frac{(-n)^{n-1}}{n!}\right|\approx\frac{e^n}{n^{3/2}\sqrt{2\pi}}$, so the series has radius of convergence exactly $\frac1e$: it is the distance from $0$ to the nearest critical value.
+
+**Common mistake.** Differentiating $We^W=y$ and solving for $W'$ gives $W'=\dfrac{W}{y(1+W)}$, which looks singular at $y=0$ (it is $\frac00$): one must use $W'=\dfrac1{(1+W)e^W}$ instead, which is regular and equals $1$ at $0$.
+
+**Remark.** Setting $\varphi(w)=e^{-w}$ in Lagrange's formula also counts trees: $W(-y)\cdot(-1)=\sum_{n\ge1}\frac{n^{n-1}}{n!}y^n$ is the exponential generating function of rooted labelled trees (Cayley).
+
+---
+
+---
+title: Spherical coordinates: invertibility in dimension 3
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 2
+tags: inverse function theorem, spherical coordinates, Jacobian, 3D
+order: 7
+date: 2026-11-15
+---
+
+# Problem 7 — Spherical coordinates and their Jacobian
+
+## Statement
+
+Let $\Sigma(r,\varphi,\theta)=(r\sin\varphi\cos\theta,\ r\sin\varphi\sin\theta,\ r\cos\varphi)$.
+
+1. Compute $\det D\Sigma$ and find where $\Sigma$ is a local diffeomorphism.
+2. Give a domain on which $\Sigma$ is a diffeomorphism onto an open subset of $\mathbb{R}^3$, and describe the image.
+3. At the point $(r,\varphi,\theta)=(1,\frac\pi2,0)$, compute $D\Sigma$ and the derivative of the inverse. Interpret the entries.
+
+## Hint
+
+Expand the $3\times3$ determinant along the third row (or along the column of $\partial_r\Sigma$).
+
+## Solution
+
+**Part 1: the Jacobian matrix.** Columns are $\partial_r\Sigma$, $\partial_\varphi\Sigma$, $\partial_\theta\Sigma$:
+$$D\Sigma=\begin{pmatrix}\sin\varphi\cos\theta&r\cos\varphi\cos\theta&-r\sin\varphi\sin\theta\\ \sin\varphi\sin\theta&r\cos\varphi\sin\theta&r\sin\varphi\cos\theta\\ \cos\varphi&-r\sin\varphi&0\end{pmatrix}.$$
+Expanding along the third row:
+$$\det D\Sigma=\cos\varphi\bigl(r^2\sin\varphi\cos\varphi\bigr)+r\sin\varphi\bigl(r\sin^2\varphi\bigr)=r^2\sin\varphi\,(\cos^2\varphi+\sin^2\varphi)=r^2\sin\varphi.$$
+(The two $2\times2$ minors are $r^2\sin\varphi\cos\varphi\,(\cos^2\theta+\sin^2\theta)$ and $r\sin^2\varphi\,r(\ldots)$ — computer algebra confirms the final value $r^2\sin\varphi$.) The theorem applies at every point with $r\ne0$ and $\sin\varphi\ne0$, i.e. $\varphi\notin\pi\mathbb{Z}$.
+
+**Part 2: a domain.** On $D=(0,\infty)\times(0,\pi)\times(-\pi,\pi)$, $\Sigma$ is injective: $r=\lVert\Sigma\rVert$, then $\cos\varphi=z/r$ determines $\varphi\in(0,\pi)$, then $(\cos\theta,\sin\theta)=(x,y)/(r\sin\varphi)$ determines $\theta\in(-\pi,\pi)$ (here $\sin\varphi>0$). The image is $\mathbb{R}^3$ minus the closed half-plane $\{(x,0,z):x\le0\}$: this half-plane contains the whole $z$-axis (where $\sin\varphi=0$) and the points with $\theta=\pi$. Since $\det D\Sigma=r^2\sin\varphi>0$ on $D$, $\Sigma:D\to$ image is a diffeomorphism.
+
+**Part 3: the point $(1,\frac\pi2,0)\mapsto(1,0,0)$.** With $r=1$, $\varphi=\frac\pi2$, $\theta=0$:
+$$D\Sigma=\begin{pmatrix}1&0&0\\0&0&1\\0&-1&0\end{pmatrix},\qquad\det=1=r^2\sin\varphi.$$
+This matrix is orthogonal, so its inverse is its transpose:
+$$D(\Sigma^{-1})(1,0,0)=\begin{pmatrix}1&0&0\\0&0&-1\\0&1&0\end{pmatrix}.$$
+Interpretation: near the point $(1,0,0)$ on the equator, $dr=dx$; $d\varphi=-dz$ (going up decreases the colatitude); $d\theta=dy$ (going in the $y$ direction increases the longitude).
+
+**Common mistake.** Forgetting that $\sin\varphi$ vanishes on the $z$-axis. There $\Sigma$ collapses a whole circle of values of $\theta$ onto one point, exactly like the polar map at $r=0$: the "coordinate singularity" at the poles.
+
+**Remark.** The factor $r^2\sin\varphi$ is the volume element of spherical coordinates: $dx\,dy\,dz=r^2\sin\varphi\,dr\,d\varphi\,d\theta$.
+
+---
+
+---
+title: Injective with invertible differential: a global diffeomorphism onto an open set
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: inverse function theorem, global inverse, open image, proof
+order: 8
+date: 2026-11-15
+---
+
+# Problem 8 — Injective with invertible differential is a diffeomorphism
+
+## Statement
+
+Let $U\subset\mathbb{R}^n$ be open and $f:U\to\mathbb{R}^n$ be a $C^1$ map such that $f$ is **injective** and $Df(x)$ is **invertible for every** $x\in U$.
+
+1. Prove that $f(U)$ is open and that $f^{-1}:f(U)\to U$ is $C^1$.
+2. Show with the example $f(x,y)=(x+y^3,\ y)$ how to compute the inverse and check the formula $D(f^{-1})=(Df)^{-1}\circ f^{-1}$.
+3. Show with the example $E(x,y)=(e^x\cos y,e^x\sin y)$ on the strip $\mathbb{R}\times(0,2\pi)$ that the image is $\mathbb{R}^2$ minus a ray.
+
+## Hint
+
+Apply the local theorem at every point and compare the local inverses with the global inverse of the injective map $f$.
+
+## Solution
+
+**Part 1.**
+
+*The image is open.* Let $y_0=f(x_0)$. By the inverse function theorem, there are open sets $V\ni x_0$ (with $V\subset U$) and $W\ni y_0$ such that $f:V\to W$ is a bijection. Then $W=f(V)\subset f(U)$ is an open neighbourhood of $y_0$ inside $f(U)$. Since $y_0$ was arbitrary, $f(U)$ is open.
+
+*The inverse is $C^1$.* Let $y_0=f(x_0)$ and $V,W,g$ as above, where $g:W\to V$ is the $C^1$ local inverse. For $y\in W$ we have $f(g(y))=y$ with $g(y)\in U$. Since $f$ is injective on all of $U$, this means $f^{-1}(y)=g(y)$. So $f^{-1}$ coincides with the $C^1$ map $g$ on the open set $W\ni y_0$; hence $f^{-1}$ is $C^1$ near every point.
+
+**Common mistake.** Injectivity alone is *not* enough. $f(x)=x^3$ is injective on $\mathbb{R}$ with $C^\infty$ graph, but $f^{-1}(y)=y^{1/3}$ is not differentiable at $0$, where $f'(0)=0$. Likewise invertible differential alone is not enough (the complex exponential). Both hypotheses are needed.
+
+**Part 2: example.** $f(x,y)=(x+y^3,y)$ has $Df=\begin{pmatrix}1&3y^2\\0&1\end{pmatrix}$, $\det=1$. It is injective: from $(u,v)=f(x,y)$ we get $y=v$, $x=u-v^3$. So $f^{-1}(u,v)=(u-v^3,v)$ and
+$$D(f^{-1})=\begin{pmatrix}1&-3v^2\\0&1\end{pmatrix}.$$
+Check with the formula: $(Df)^{-1}=\begin{pmatrix}1&-3y^2\\0&1\end{pmatrix}$ evaluated at $y=v$ ✓.
+
+**Part 3: the exponential on a strip.** On $\mathbb{R}\times(0,2\pi)$, $E$ is injective (two points with the same image have the same $x$, and $y$ differing by a multiple of $2\pi$, impossible in an open interval of length $2\pi$) and $\det DE=e^{2x}>0$. By part 1, $E$ is a diffeomorphism onto an open set. Its image is the set of $(r\cos\theta,r\sin\theta)$ with $r>0$ and $\theta\in(0,2\pi)$, that is $\mathbb{R}^2\setminus\{(u,0):u\ge0\}$: the plane minus the nonnegative real axis. The inverse is the corresponding branch of the logarithm $\left(\tfrac12\ln(u^2+v^2),\ \text{argument in }(0,2\pi)\right)$.
+
+**Remark.** The domain really matters: replacing the strip by $(0,2\pi]$ in $y$ loses openness of the domain, and replacing it by an interval of length $>2\pi$ loses injectivity. The theorem is a tool for *choosing* good domains.
+
+---
+
+---
+title: A map with invertible differential is open
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: open map, inverse function theorem, counterexample
+order: 9
+date: 2026-11-15
+---
+
+# Problem 9 — Maps with invertible differential are open
+
+## Statement
+
+A map is **open** if it sends open sets to open sets.
+
+1. Prove: if $U\subset\mathbb{R}^n$ is open and $f:U\to\mathbb{R}^n$ is $C^1$ with $Df(x)$ invertible for all $x\in U$, then $f$ is open.
+2. Show that $f(x,y)=(x^2,y)$ is not open on $\mathbb{R}^2$, and explain which hypothesis fails.
+3. Show that the converse of part 1 is false: $f(x)=x^3$ is open but $f'(0)=0$; and the complex square $S(x,y)=(x^2-y^2,2xy)$ is open on $\mathbb{R}^2$ although $DS(0,0)=0$.
+
+## Hint
+
+For part 1, take an open $O\subset U$, a point $y_0=f(x_0)\in f(O)$, and use a local inverse near $x_0$. For part 3, consider $S$ as a complex function.
+
+## Solution
+
+**Part 1.** Let $O\subset U$ be open and $x_0\in O$. Apply the inverse function theorem at $x_0$: there exist open sets $V\ni x_0$, $W\ni f(x_0)$ with $f:V\to W$ bijective and a continuous inverse $g:W\to V$. Set $V'=V\cap O$, an open neighbourhood of $x_0$. Then
+$$f(V')=g^{-1}(V')=\{y\in W:\ g(y)\in V'\}$$
+(because $f(V')=\{y\in W:\ g(y)\in V'\}$ when $f|_V$ is a bijection onto $W$). This set is open, since $g$ is continuous and $W$, $V'$ are open. So $f(V')$ is an open neighbourhood of $f(x_0)$ contained in $f(O)$. As $x_0\in O$ was arbitrary, $f(O)=\bigcup_{x_0\in O}f(V'_{x_0})$ is open.
+
+**Part 2.** $f(x,y)=(x^2,y)$. Take $O=(-1,1)^2$. Then $f(O)=[0,1)\times(-1,1)$, which contains $(0,0)$ but no point $(-\varepsilon,0)$: not open. The hypothesis that fails is the invertibility of $Df(0,y)=\begin{pmatrix}0&0\\0&1\end{pmatrix}$ along the axis $x=0$ (the "fold" line).
+
+**Part 3: the converse is false.**
+- $f(x)=x^3$ is a homeomorphism of $\mathbb{R}$, hence open, yet $f'(0)=0$.
+- $S$ is $z\mapsto z^2$. It is open on all of $\mathbb{R}^2$: away from $0$ part 1 applies; and the image of a disc $B(0,\rho)$ is $B(0,\rho^2)$ (every $w$ with $|w|<\rho^2$ has a square root of modulus $<\rho$). So $S$ maps neighbourhoods of $0$ onto neighbourhoods of $0$, even though $DS(0)=0$ and $S$ is 2-to-1.
+
+**Common mistake.** Using "open" as a synonym of "locally invertible". Openness is much weaker: it only says the image of every small ball contains a ball around the image point. Local injectivity can fail (as for $S$ at $0$).
+
+**Remark.** This is the real-variable version of the *open mapping theorem* of complex analysis: a non-constant holomorphic function is open, even at points where its derivative vanishes (where it behaves like $z\mapsto z^k$).
+
+---
+
+---
+title: id + g with g a small Lipschitz perturbation is injective
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: mean value inequality, injectivity, Lipschitz, perturbation of identity
+order: 10
+date: 2026-11-15
+---
+
+# Problem 10 — A perturbation of the identity is injective
+
+## Statement
+
+Let $U\subset\mathbb{R}^n$ be open and **convex**, and let $f=\mathrm{id}+g:U\to\mathbb{R}^n$ be $C^1$ with $\lVert Dg(x)\rVert\le k<1$ for all $x\in U$ (operator norm).
+
+1. Prove that for all $x,x'\in U$: $\ \lVert f(x)-f(x')\rVert\ \ge\ (1-k)\lVert x-x'\rVert$. Deduce that $f$ is injective, and that $Df(x)$ is invertible.
+2. Apply this to $f(x,y)=\bigl(x+\tfrac13\sin y,\ y+\tfrac13\sin x\bigr)$ on $\mathbb{R}^2$ with the Euclidean norm.
+
+## Hint
+
+Write $f(x)-f(x')=(x-x')+(g(x)-g(x'))$ and use the mean value inequality for $g$ on the segment $[x',x]$.
+
+## Solution
+
+**Recall (mean value inequality).** If $U$ is convex, $g$ is $C^1$ and $\lVert Dg\rVert\le k$ on $U$, then $\lVert g(x)-g(x')\rVert\le k\lVert x-x'\rVert$ for all $x,x'\in U$. (Proof sketch: apply the scalar mean value theorem to $t\mapsto\langle w,g(x'+t(x-x'))\rangle$ with $w$ a unit vector in the direction of $g(x)-g(x')$.)
+
+**Part 1.** By the reverse triangle inequality,
+$$\lVert f(x)-f(x')\rVert=\lVert(x-x')+(g(x)-g(x'))\rVert\ge\lVert x-x'\rVert-\lVert g(x)-g(x')\rVert\ge(1-k)\lVert x-x'\rVert.$$
+If $f(x)=f(x')$ then $(1-k)\lVert x-x'\rVert\le0$, so $x=x'$: $f$ is injective. For the differential, if $Df(x)h=0$ then $h=-Dg(x)h$, so $\lVert h\rVert\le k\lVert h\rVert$, forcing $h=0$: $Df(x)$ is injective, hence invertible.
+
+**Part 2.** Here $g(x,y)=\frac13(\sin y,\sin x)$ and
+$$Dg(x,y)=\frac13\begin{pmatrix}0&\cos y\\ \cos x&0\end{pmatrix}.$$
+For a vector $h=(h_1,h_2)$, $\lVert Dg\,h\rVert^2=\frac19\bigl(\cos^2y\,h_2^2+\cos^2x\,h_1^2\bigr)\le\frac19\lVert h\rVert^2$, so $\lVert Dg\rVert\le\frac13=k$ everywhere. Since $\mathbb{R}^2$ is convex:
+$$\lVert f(p)-f(q)\rVert\ge\tfrac23\lVert p-q\rVert\qquad\text{for all }p,q\in\mathbb{R}^2.$$
+So $f$ is injective, $Df$ is invertible everywhere, and by the previous problems $f$ is a diffeomorphism of $\mathbb{R}^2$ onto an open set.
+
+**Common mistake.** Forgetting convexity. The mean value *equality* fails for vector-valued maps and the *inequality* requires a path along which the bound on $\lVert Dg\rVert$ holds; on a non-convex domain the segment between $x$ and $x'$ may leave $U$.
+
+**Remark.** The constant $1-k$ is optimal in general (take $g=-kx$ in one dimension). The inequality $\lVert f(x)-f(x')\rVert\ge c\lVert x-x'\rVert$ is a *quantitative* injectivity, and it is exactly what makes the inverse Lipschitz with constant $\frac1{1-k}$.
+
+---
+
+---
+title: id + g is a bijection of ℝⁿ when g is a contraction
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: Banach fixed point, global diffeomorphism, iteration, error bound
+order: 11
+date: 2026-11-15
+---
+
+# Problem 11 — Solving a system by contraction and global inversion
+
+## Statement
+
+Let $g:\mathbb{R}^n\to\mathbb{R}^n$ be $C^1$ with $\lVert Dg(x)\rVert\le k<1$ for all $x$, and $f=\mathrm{id}+g$.
+
+1. Prove that $f$ is a $C^1$ diffeomorphism of $\mathbb{R}^n$ **onto** $\mathbb{R}^n$.
+2. For $f(x,y)=\bigl(x+\frac13\sin y,\ y+\frac13\sin x\bigr)$, solve $f(x,y)=(1,2)$ by the iteration $p_{m+1}=(1,2)-g(p_m)$ starting from $p_0=(1,2)$, and bound the error.
+
+## Hint
+
+The equation $f(p)=q$ is the fixed point equation $p=q-g(p)$. The map $T_q(p)=q-g(p)$ is a contraction of the complete space $\mathbb{R}^n$.
+
+## Solution
+
+**Part 1.**
+
+*Surjectivity.* Fix $q\in\mathbb{R}^n$. By the mean value inequality (valid on the convex set $\mathbb{R}^n$), $T_q(p)=q-g(p)$ satisfies $\lVert T_q(p)-T_q(p')\rVert\le k\lVert p-p'\rVert$. By the Banach fixed point theorem on the complete space $\mathbb{R}^n$, $T_q$ has a unique fixed point $p^*$, and $p^*=q-g(p^*)$ means $f(p^*)=q$.
+
+*Injectivity and invertible differential.* This follows from the previous problem, or directly from the uniqueness of the fixed point: $f(p)=f(p')=q$ would make both $p$ and $p'$ fixed points of $T_q$.
+
+*Smooth inverse.* $Df(p)=I+Dg(p)$ is invertible because $\lVert Dg(p)\rVert<1$ (Neumann series). So $f$ is injective, $C^1$, with invertible differential everywhere on $\mathbb{R}^n$; by the previous problem $f^{-1}$ is $C^1$ and defined on $f(\mathbb{R}^n)=\mathbb{R}^n$.
+
+**Part 2: the iteration.** Here $k=\frac13$ (previous problem). With $T(p)=(1-\frac13\sin p_2,\ 2-\frac13\sin p_1)$ and $p_0=(1,2)$:
+$$\begin{array}{c} p_1\approx(0.69690,\,1.71951),\quad p_2\approx(0.67035,\,1.78605),\quad p_3\approx(0.67436,\,1.79291),\\ p_4\approx(0.67486,\,1.79187),\quad p_5\approx(0.67478,\,1.79174),\quad p_8\approx(0.674771,\,1.791760).\end{array}$$
+The limit is $p^*\approx(0.674771,\ 1.791760)$. Check: $0.674771+\frac13\sin1.791760=0.674771+0.325229=1.000000$ ✓ and $1.791760+\frac13\sin0.674771=1.791760+0.208240=2.000000$ ✓.
+
+*Error bound.* For a contraction with constant $k$: $\lVert p_m-p^*\rVert\le\dfrac{k^m}{1-k}\lVert p_1-p_0\rVert$. Here $\lVert p_1-p_0\rVert\approx\sqrt{0.3031^2+0.2805^2}\approx0.413$, so after $m=8$ steps the error is at most $\dfrac{3^{-8}}{2/3}\cdot0.413\approx9\cdot10^{-5}$ (the actual error is much smaller, about $10^{-6}$).
+
+**Common mistake.** Using the iteration without checking the contraction constant: with $\frac13$ replaced by $2$, $T$ would diverge. The hypothesis $\lVert Dg\rVert\le k<1$ is what guarantees both existence (completeness) and speed.
+
+**Remark.** The same iteration with $q$ replaced by points near $f(a)$ is the heart of the proof of the local inverse function theorem (next problems): locally, any $C^1$ map looks like $\mathrm{id}+g$ with $g$ small.
+
+---
+
+---
+title: Proof of the inverse function theorem by the contraction principle
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: m1
+difficulty: 4
+tags: inverse function theorem, Banach fixed point, proof, mean value inequality
+order: 12
+date: 2026-11-15
+---
+
+# Problem 12 — A complete proof of the inverse function theorem
+
+## Statement
+
+Let $U\subset\mathbb{R}^n$ be open, $f:U\to\mathbb{R}^n$ be $C^1$, $a\in U$ with $Df(a)$ invertible. Prove that there are open sets $V\ni a$ and $W\ni f(a)$ such that $f:V\to W$ is a bijection and $g=(f|_V)^{-1}$ is $C^1$ with $Dg(y)=Df(g(y))^{-1}$.
+
+You may use: the Banach fixed point theorem in $\mathbb{R}^n$, the mean value inequality on convex sets, and the fact that an operator $A$ with $\lVert A-I\rVert<1$ is invertible.
+
+## Hint
+
+First reduce to $a=0$, $f(0)=0$, $Df(0)=I$. Then study $\rho(x)=f(x)-x$ and the map $x\mapsto y-\rho(x)$.
+
+## Solution
+
+**Idea.** Near $a$, $f$ is a small perturbation of an invertible affine map, so the equation $f(x)=y$ can be rewritten as a fixed-point equation which is a contraction.
+
+**Step 0: reduction.** Let $A=Df(a)$ and define $\tilde f(x)=A^{-1}\bigl(f(a+x)-f(a)\bigr)$ near $0$. Then $\tilde f(0)=0$, $D\tilde f(0)=I$, and $\tilde f$ is a local diffeomorphism near $0$ if and only if $f$ is near $a$ (we compose with affine isomorphisms). So assume $a=0$, $f(0)=0$, $Df(0)=I$.
+
+**Step 1: injectivity with a quantitative bound.** Let $\rho(x)=f(x)-x$, so $D\rho=Df-I$ is continuous and $D\rho(0)=0$. Choose $r>0$ such that the closed ball $\bar B=\bar B(0,2r)\subset U$ and $\lVert D\rho(x)\rVert\le\frac12$ on $\bar B$. By the mean value inequality ($\bar B$ is convex), $\rho$ is $\frac12$-Lipschitz on $\bar B$. Hence for $x,x'\in\bar B$:
+$$\lVert f(x)-f(x')\rVert\ge\lVert x-x'\rVert-\lVert\rho(x)-\rho(x')\rVert\ge\tfrac12\lVert x-x'\rVert.\tag{1}$$
+In particular $f$ is injective on $\bar B$.
+
+**Step 2: solving $f(x)=y$ for $\lVert y\rVert<r$.** Fix $y$ with $\lVert y\rVert<r$ and let $T_y(x)=y-\rho(x)$. Then $f(x)=y\iff T_y(x)=x$. We check that $T_y$ is a contraction of $\bar B$:
+- $T_y(\bar B)\subset\bar B$: $\lVert T_y(x)\rVert\le\lVert y\rVert+\lVert\rho(x)-\rho(0)\rVert\le r+\frac12\cdot2r=2r$ (using $\rho(0)=0$).
+- $\lVert T_y(x)-T_y(x')\rVert=\lVert\rho(x)-\rho(x')\rVert\le\frac12\lVert x-x'\rVert$.
+
+$\bar B$ is closed in $\mathbb{R}^n$, hence complete, so $T_y$ has a unique fixed point $x\in\bar B$, i.e. there is a unique $x\in\bar B$ with $f(x)=y$. Moreover $\lVert x\rVert\le\lVert y\rVert+\frac12\lVert x\rVert$ gives $\lVert x\rVert\le2\lVert y\rVert<2r$, so $x$ is in the **open** ball $B(0,2r)$.
+
+**Step 3: the sets $V$, $W$ and the inverse.** Let $W=B(0,r)$ and $V=B(0,2r)\cap f^{-1}(W)$, which is open (as $f$ is continuous). By Step 2, every $y\in W$ has exactly one preimage in $\bar B$, and it lies in $B(0,2r)$ and maps into $W$, i.e. it lies in $V$. So $f:V\to W$ is a bijection. Let $g:W\to V$ be its inverse.
+
+**Step 4: $g$ is Lipschitz.** By (1), $\lVert g(y)-g(y')\rVert\le2\lVert y-y'\rVert$. In particular $g$ is continuous.
+
+**Step 5: $g$ is differentiable.** For $x\in\bar B$, $\lVert Df(x)-I\rVert\le\frac12<1$, so $Df(x)$ is invertible. Fix $y\in W$, $x=g(y)$, and let $k$ be small with $y+k\in W$, $h=g(y+k)-x$. Then $k=f(x+h)-f(x)=Df(x)h+\varepsilon(h)\lVert h\rVert$ with $\varepsilon(h)\to0$ as $h\to0$. By Step 4, $\lVert h\rVert\le2\lVert k\rVert$, and $h\to0$ as $k\to0$, so
+$$h=Df(x)^{-1}k-Df(x)^{-1}\varepsilon(h)\lVert h\rVert=Df(x)^{-1}k+o(\lVert k\rVert).$$
+Thus $g$ is differentiable at $y$ with $Dg(y)=Df(g(y))^{-1}$.
+
+**Step 6: $g$ is $C^1$.** $Dg=\mathrm{Inv}\circ Df\circ g$ where $\mathrm{Inv}(A)=A^{-1}$ is continuous on invertible matrices (Cramer's formula) and $Df$, $g$ are continuous. Hence $Dg$ is continuous.
+
+**Common mistake.** Applying the Banach theorem on an *open* ball (not complete) or forgetting to show $T_y$ maps the ball into itself. The two-radius trick ($\lVert y\rVert<r$, ball of radius $2r$) is exactly what makes both work.
+
+**Remark.** If $f$ is $C^k$, then $Dg=\mathrm{Inv}\circ Df\circ g$ shows by induction that $g$ is $C^k$ (the right side is a composition of $C^{k-1}$ maps, and $\mathrm{Inv}$ is $C^\infty$).
+
+---
+
+---
+title: The inverse of x + εg(x) as a series in ε
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: perturbation, fixed point iteration, Catalan numbers, series in a parameter
+order: 13
+date: 2026-11-15
+---
+
+# Problem 13 — Inverting $x+\varepsilon g(x)$
+
+## Statement
+
+Let $g:\mathbb{R}\to\mathbb{R}$ be $C^3$ and consider $y=x+\varepsilon g(x)$.
+
+1. Show that for small $\varepsilon$ and in any bounded interval of $y$, there is a unique solution $x=x_\varepsilon(y)$ near $y$.
+2. Show that
+$$x_\varepsilon(y)=y-\varepsilon g(y)+\varepsilon^2g'(y)g(y)-\varepsilon^3\Bigl(g'(y)^2g(y)+\tfrac12g''(y)g(y)^2\Bigr)+O(\varepsilon^4).$$
+3. Test with $g(x)=x^2$: solve exactly and compare.
+
+## Hint
+
+Write $x=y-\varepsilon g(x)$ and substitute $x=y-\varepsilon g(y)+\varepsilon^2c_2+\varepsilon^3c_3+\cdots$ into the right-hand side, expanding $g$ by Taylor's formula around $y$.
+
+## Solution
+
+**Part 1.** On a bounded interval $I=[-R,R]$, $g'$ is bounded by $M$. For $|\varepsilon|M<\frac12$, the map $T(x)=y-\varepsilon g(x)$ is a contraction with constant $\frac12$ on $\mathbb{R}$; its unique fixed point is the solution. Alternatively: $\partial_x(x+\varepsilon g(x))=1+\varepsilon g'(x)\ne0$ and the previous problems apply.
+
+**Part 2: expansion.** Let $x=y+\delta$ with $\delta=-\varepsilon g(y+\delta)$. Expand $g(y+\delta)=g+g'\delta+\frac12g''\delta^2+O(\delta^3)$ (everything evaluated at $y$) and $\delta=\varepsilon\delta_1+\varepsilon^2\delta_2+\varepsilon^3\delta_3+\cdots$:
+$$\delta=-\varepsilon\Bigl[g+g'(\varepsilon\delta_1+\varepsilon^2\delta_2)+\tfrac12g''\varepsilon^2\delta_1^2\Bigr]+O(\varepsilon^4).$$
+- Order $\varepsilon$: $\delta_1=-g$.
+- Order $\varepsilon^2$: $\delta_2=-g'\delta_1=g'g$.
+- Order $\varepsilon^3$: $\delta_3=-\bigl[g'\delta_2+\tfrac12g''\delta_1^2\bigr]=-g'^2g-\tfrac12g''g^2$.
+
+This is the claimed formula.
+
+**Part 3: $g(x)=x^2$.** The equation $\varepsilon x^2+x-y=0$ has the solution near $y$ (the root that tends to $y$ as $\varepsilon\to0$)
+$$x_\varepsilon(y)=\frac{-1+\sqrt{1+4\varepsilon y}}{2\varepsilon}=y-\varepsilon y^2+2\varepsilon^2y^3-5\varepsilon^3y^4+14\varepsilon^4y^5-\cdots.$$
+Compare with the formula: $g=y^2$, $g'=2y$, $g''=2$. Then $-\varepsilon g=-\varepsilon y^2$ ✓; $\varepsilon^2g'g=2\varepsilon^2y^3$ ✓; $-\varepsilon^3(g'^2g+\frac12g''g^2)=-\varepsilon^3(4y^4+y^4)=-5\varepsilon^3y^4$ ✓.
+
+**Common mistake.** Dropping the term $\frac12g''(y)g(y)^2$ at order $3$: it comes from the *second-order* Taylor term of $g$, and is easy to forget.
+
+**Remark.** The coefficients $1,-1,2,-5,14$ are signed Catalan numbers: $\frac{-1+\sqrt{1+4t}}{2}=\sum_{n\ge1}(-1)^{n-1}C_{n-1}t^n$ with $t=\varepsilon y\cdot y$... precisely $x_\varepsilon(y)=y\sum_{n\ge0}(-1)^nC_n(\varepsilon y)^n$. This is one more face of Lagrange inversion.
+
+---
+
+---
+title: Area between hyperbolas and lines through the origin
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: change of variables, Jacobian, diffeomorphism, area
+order: 14
+date: 2026-11-15
+---
+
+# Problem 14 — A change of variables with $xy$ and $y/x$
+
+## Statement
+
+Let $Q=(0,\infty)^2$ and $\Psi:Q\to Q$, $\Psi(x,y)=\bigl(xy,\ \tfrac yx\bigr)$.
+
+1. Show that $\Psi$ is a $C^\infty$ diffeomorphism of $Q$ onto $Q$ and compute the Jacobian of $\Psi$ and of $\Psi^{-1}$.
+2. Compute the area of the region
+$$E=\{(x,y)\in Q:\ 1\le xy\le2,\ \ 1\le y/x\le4\}.$$
+
+## Hint
+
+Solve $u=xy$, $v=y/x$ for $(x,y)$. The change of variables formula says: if $\Phi:D\to\Omega$ is a diffeomorphism, then $\iint_\Omega h(x,y)\,dx\,dy=\iint_Dh(\Phi(u,v))\,\lvert\det D\Phi(u,v)\rvert\,du\,dv$.
+
+## Solution
+
+**Part 1.** If $u=xy$ and $v=y/x$ with $x,y>0$, then $uv=y^2$ and $u/v=x^2$, so
+$$x=\sqrt{u/v},\qquad y=\sqrt{uv}.$$
+Conversely, for any $u,v>0$ these formulas define a point of $Q$ with $xy=u$ and $y/x=v$. So $\Psi$ is a bijection of $Q$ with $C^\infty$ inverse $\Phi(u,v)=\bigl(\sqrt{u/v},\sqrt{uv}\bigr)$.
+
+*Jacobian of $\Psi$.* $D\Psi=\begin{pmatrix}y&x\\-y/x^2&1/x\end{pmatrix}$, so $\det D\Psi=\dfrac yx+\dfrac y x=\dfrac{2y}x=2v$.
+
+*Jacobian of $\Phi$.* By the inverse function theorem, $\det D\Phi=\dfrac1{\det D\Psi}=\dfrac1{2v}$. Direct check: $\partial_ux=\frac1{2\sqrt{uv}}$, $\partial_vx=-\frac{\sqrt u}{2v^{3/2}}$, $\partial_uy=\frac{\sqrt v}{2\sqrt u}$, $\partial_vy=\frac{\sqrt u}{2\sqrt v}$, and
+$$\det D\Phi=\frac1{2\sqrt{uv}}\cdot\frac{\sqrt u}{2\sqrt v}+\frac{\sqrt u}{2v^{3/2}}\cdot\frac{\sqrt v}{2\sqrt u}=\frac1{4v}+\frac1{4v}=\frac1{2v}\ ✓.$$
+
+**Part 2.** $E=\Phi\bigl([1,2]\times[1,4]\bigr)$. By the change of variables formula,
+$$\operatorname{Area}(E)=\iint_{[1,2]\times[1,4]}\lvert\det D\Phi\rvert\,du\,dv=\int_1^2du\int_1^4\frac{dv}{2v}=1\cdot\frac{\ln4}2=\ln2\approx0.693.$$
+
+**Sanity check.** Integrating in the original variables: for fixed $x$, the conditions are $1/x\le y\le2/x$ and $x\le y\le4x$. This region is a curvilinear quadrilateral with vertices at the intersections of $y=1/x$, $y=2/x$, $y=x$, $y=4x$: $(1,1)$, $(\sqrt2,\sqrt2)$, $(\tfrac12,2)$, $(\tfrac1{\sqrt2},2\sqrt2)$. It lies in the strip $x\in[\tfrac12,\sqrt2]$ of width $\approx0.9$ and height $\approx1.6$, so an area of $0.69$ is plausible.
+
+**Common mistake.** Using $\det D\Psi=2v$ instead of $\det D\Phi=\frac1{2v}$ in the integral. The integrand must be the Jacobian of the map **from the new variables to the old**, i.e. of $\Phi$.
+
+**Remark.** The inverse function theorem is what lets you compute the Jacobian of $\Phi$ without ever differentiating the square roots: $\det D\Phi=1/\det D\Psi$ evaluated at $\Phi(u,v)$, and here $\det D\Psi=2y/x=2v$ depends only on $v$.
+
+---
+
+---
+title: The squaring map on matrices: where it is locally invertible
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: inverse function theorem, matrices, square root, Sylvester equation
+order: 15
+date: 2026-11-15
+---
+
+# Problem 15 — Square roots of matrices and a degenerate derivative
+
+## Statement
+
+Let $\sigma:M_2(\mathbb{R})\to M_2(\mathbb{R})$, $\sigma(X)=X^2$.
+
+1. Show that $D\sigma(X)H=XH+HX$.
+2. Show that $\sigma$ is a local diffeomorphism near $I$: every matrix near $I$ has a unique square root near $I$.
+3. Show that $D\sigma(X_0)$ is *not* invertible for $X_0=\operatorname{diag}(1,-1)$, and that $\sigma$ is not locally injective there.
+
+## Hint
+
+Part 1: expand $(X+H)^2$. Part 3: compute the matrices $\begin{pmatrix}1&b\\0&-1\end{pmatrix}^2$.
+
+## Solution
+
+**Part 1.** $(X+H)^2=X^2+(XH+HX)+H^2$ and $H^2=o(\lVert H\rVert)$. So $D\sigma(X)$ is the linear map $H\mapsto XH+HX$ of $M_2(\mathbb{R})\cong\mathbb{R}^4$.
+
+**Part 2.** At $X=I$: $D\sigma(I)H=2H$, i.e. $D\sigma(I)=2\,\mathrm{id}$, invertible. By the inverse function theorem there are neighbourhoods $V$ of $I$ and $W$ of $I$ such that $\sigma:V\to W$ is a $C^\infty$ diffeomorphism. So each $A\in W$ has exactly one square root in $V$ (the "principal" one), depending smoothly on $A$.
+
+**Part 3.** At $X_0=\operatorname{diag}(1,-1)$: for $H=(h_{ij})$, $(X_0H+HX_0)_{ij}=(x_i+x_j)h_{ij}$ with $x_1=1$, $x_2=-1$:
+$$D\sigma(X_0)H=\begin{pmatrix}2h_{11}&0\\0&-2h_{22}\end{pmatrix}.$$
+The entries $h_{12}$ and $h_{21}$ are killed, because $x_1+x_2=0$. So $D\sigma(X_0)$ has a 2-dimensional kernel (all matrices $\begin{pmatrix}0&*\\ *&0\end{pmatrix}$) and is not invertible.
+
+This is reflected in the geometry: for every $b\in\mathbb{R}$,
+$$\begin{pmatrix}1&b\\0&-1\end{pmatrix}^2=\begin{pmatrix}1&-b+b\\0&1\end{pmatrix}=I.$$
+So $I$ has infinitely many square roots $\begin{pmatrix}1&b\\0&-1\end{pmatrix}$, and they accumulate at $X_0$ (take $b\to0$). Hence $\sigma$ is not injective on any neighbourhood of $X_0$.
+
+**General rule.** For a diagonalisable $X$ with eigenvalues $\lambda_1,\dots,\lambda_n$, the map $H\mapsto XH+HX$ has eigenvalues $\lambda_i+\lambda_j$. Thus $D\sigma(X)$ is invertible if and only if **no two eigenvalues (including $i=j$) sum to $0$**. In particular $0$ must not be an eigenvalue and $X$ must not have two eigenvalues $\lambda,-\lambda$.
+
+**Common mistake.** Thinking that every invertible matrix has isolated square roots. Matrices like $I$ have continuous families of square roots (all matrices with $X^2=I$, i.e. reflections, form a manifold of positive dimension).
+
+**Remark.** The equation $XH+HX=K$ is a Sylvester equation; it is uniquely solvable iff the spectra of $X$ and $-X$ are disjoint.
+
+---
+
+---
+title: The Taylor expansion of the square root near the identity matrix
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: inverse function theorem, matrix square root, binomial series, noncommutative
+order: 16
+date: 2026-11-15
+---
+
+# Problem 16 — The square root of a matrix near the identity
+
+## Statement
+
+Let $g$ be the local inverse of $X\mapsto X^2$ near $I$, with $g(I)=I$.
+
+1. Show that $g(I+H)=I+\frac12H-\frac18H^2+\frac1{16}H^3+O(\lVert H\rVert^4)$ for $H$ small, **even though $H$ is a general (non-commuting-with-anything) matrix**.
+2. Test numerically on $A=\begin{pmatrix}1&0.1\\0.05&0.9\end{pmatrix}$.
+
+## Hint
+
+Write $g(I+H)=I+L+Q+C+\cdots$ where $L,Q,C$ are homogeneous of degree $1,2,3$ in $H$ and expand $\bigl(g(I+H)\bigr)^2=I+H$.
+
+## Solution
+
+**Existence.** By the previous problem, $g$ exists and is $C^\infty$ near $I$. Hence $g(I+H)$ has a Taylor expansion in $H$; each homogeneous part is a polynomial map in the entries of $H$. We determine them by the identity $g(I+H)^2=I+H$.
+
+**Key point.** All the terms are *polynomials in $H$ alone* (products $H^k$), because the unknown homogeneous parts $L,Q,C$ can be proved to be of the form $\alpha H$, $\beta H^2$, $\gamma H^3$: indeed they are determined recursively by equations involving only $H$ and previously found terms, which commute with $H$. Let us do the computation.
+
+$$(I+L+Q+C+\cdots)^2=I+2L+(L^2+2Q)+(LQ+QL+2C)+O(4).$$
+Matching with $I+H$ order by order:
+- Order 1: $2L=H$, so $L=\frac H2$.
+- Order 2: $L^2+2Q=0$, so $Q=-\frac12L^2=-\frac{H^2}8$.
+- Order 3: $LQ+QL+2C=0$. Since $L$ and $Q$ are polynomials in $H$, they commute: $2LQ+2C=0$, so $C=-LQ=\frac H2\cdot\frac{H^2}8=\frac{H^3}{16}$.
+
+So $g(I+H)=I+\frac12H-\frac18H^2+\frac1{16}H^3+O(\lVert H\rVert^4)$, the binomial series of $\sqrt{1+t}$ with $t$ replaced by the matrix $H$.
+
+**Numerical test.** $H=\begin{pmatrix}0&0.1\\0.05&-0.1\end{pmatrix}$, so $A=I+H$. Then $H^2=\begin{pmatrix}0.005&-0.01\\-0.005&0.015\end{pmatrix}$ and $H^3=\begin{pmatrix}-0.0005&0.0015\\0.00075&-0.0025\end{pmatrix}$, hence
+$$I+\tfrac H2-\tfrac{H^2}8+\tfrac{H^3}{16}\approx\begin{pmatrix}0.99934&0.05134\\0.02567&0.94800\end{pmatrix}.$$
+The true principal square root (computed numerically) is $\begin{pmatrix}0.99934&0.05135\\0.02568&0.94799\end{pmatrix}$: they agree to $10^{-5}$, consistent with a degree-4 remainder ($\lVert H\rVert^4\approx2\cdot10^{-4}$ times a coefficient $\frac5{128}$).
+
+**Common mistake.** Using the expansion for "$\sqrt{A}$ of an arbitrary matrix $A$": it is valid only for the square root *near $I$* (for example when $\lVert A-I\rVert<1$). Other square roots of $A$ (like $-g(A)$) are also square roots, but they are far from $I$.
+
+**Remark.** The symmetric treatment works because $I+H$ is a function of $H$ only. For a general base point $X_0\ne I$, the differential $H\mapsto X_0H+HX_0$ does not commute with multiplication, and the expansion involves non-commutative products.
+
+---
+
+---
+title: exp and log on matrices: local inverses, and where exp fails
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: m1
+difficulty: 4
+tags: matrix exponential, inverse function theorem, logarithm series, critical points
+order: 17
+date: 2026-11-15
+---
+
+# Problem 17 — The matrix exponential and logarithm as local inverses
+
+## Statement
+
+Let $\exp:M_n(\mathbb{R})\to M_n(\mathbb{R})$ be the matrix exponential.
+
+1. Show that $D\exp(0)=\mathrm{id}$ and deduce that $\exp$ is a diffeomorphism from a neighbourhood of $0$ onto a neighbourhood of $I$. Give its inverse as a series.
+2. Show that for $\lVert H\rVert<\ln2$ (operator norm), $\log(\exp H)=H$ where $\log(I+K)=\sum_{m\ge1}\frac{(-1)^{m-1}}{m}K^m$.
+3. For $n=2$ and $J=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$, show $\exp(2\pi J)=I=\exp(0)$ and that $D\exp(2\pi J)$ is **not** invertible.
+
+## Hint
+
+Part 1: $\exp(H)=I+H+\frac{H^2}2+\cdots$. Part 3: in a basis where $X$ is diagonal with eigenvalues $\lambda_i$, $D\exp(X)H$ has entries $h_{ij}\dfrac{e^{\lambda_i}-e^{\lambda_j}}{\lambda_i-\lambda_j}$.
+
+## Solution
+
+**Part 1.** $\exp(H)=I+H+R(H)$ with $\lVert R(H)\rVert\le\sum_{m\ge2}\frac{\lVert H\rVert^m}{m!}=O(\lVert H\rVert^2)$. So $\exp$ is differentiable at $0$ with $D\exp(0)=\mathrm{id}$, which is invertible. (It is $C^\infty$, since it is given by a power series.) The inverse function theorem gives open sets $V\ni0$, $W\ni I$ with $\exp:V\to W$ a diffeomorphism. Its inverse is the logarithm: $\log(I+K)=K-\frac{K^2}2+\frac{K^3}3-\cdots$ (the series converges for $\lVert K\rVert<1$).
+
+**Part 2.** For $\lVert H\rVert<\ln2$: $\lVert\exp H-I\rVert\le e^{\lVert H\rVert}-1<1$, so the series $\log(\exp H)$ converges. The identity $\log(\exp H)=H$ holds as an identity of formal power series in $H$ (it is the composition of the one-variable series $\log(1+t)$ and $e^t-1$, which is $t$), and it holds numerically when both series converge absolutely, which is the case here. In particular $\exp$ is injective on $\{\lVert H\rVert<\ln2\}$.
+
+**Part 3.** $\exp(2\pi J)=\cos2\pi\,I+\sin2\pi\,J=I$ (since $\exp(\theta J)=\cos\theta\,I+\sin\theta\,J$). So $\exp$ is **not injective** on $M_2(\mathbb{R})$.
+
+*The differential.* $D\exp(X)H=\int_0^1e^{sX}He^{(1-s)X}\,ds$. Over $\mathbb{C}$, diagonalise $X=P\Lambda P^{-1}$ and set $\tilde H=P^{-1}HP$. Then the entries are $\tilde h_{ij}\int_0^1e^{s\lambda_i}e^{(1-s)\lambda_j}ds=\tilde h_{ij}\dfrac{e^{\lambda_i}-e^{\lambda_j}}{\lambda_i-\lambda_j}$ for $\lambda_i\ne\lambda_j$, and $\tilde h_{ii}e^{\lambda_i}$ otherwise. For $X=2\pi J$, the eigenvalues are $\lambda_{1,2}=\pm2\pi i$: $e^{\lambda_1}=e^{\lambda_2}=1$ and $\lambda_1-\lambda_2=4\pi i\ne0$, so the factor is $0$: the entries $\tilde h_{12},\tilde h_{21}$ are killed. Hence $D\exp(2\pi J)$ has a two-dimensional kernel (over $\mathbb{C}$, and its real counterpart is two-dimensional too) and is not invertible. A numerical computation confirms: the determinant of the $4\times4$ matrix of $D\exp(2\pi J)$ is $0$ up to rounding, with eigenvalues $1,1,0,0$.
+
+**General statement.** $D\exp(X)$ is invertible iff $X$ has no two eigenvalues $\lambda\ne\mu$ with $\lambda-\mu\in2\pi i\mathbb{Z}$. This is *exactly* where $\exp$ fails to be a local diffeomorphism.
+
+**Common mistake.** Assuming that $\exp$ restricted to a neighbourhood of $0$ extends to a global diffeomorphism. It does not, even onto its image, for $n\ge2$: the failure comes from the periodicity $e^{2\pi i}=1$ of the eigenvalues, as in the scalar complex exponential.
+
+**Remark.** Over $\mathbb{R}$ for $n=1$, $\exp:\mathbb{R}\to(0,\infty)$ is a global diffeomorphism. The new phenomenon in dimension $\ge2$ is the existence of non-real eigenvalues.
+
+---
+
+---
+title: The map A ↦ A⁻¹ and the chain rule for inverses
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 2
+tags: matrix inversion, differential, involution, Neumann series
+order: 18
+date: 2026-11-15
+---
+
+# Problem 18 — Inversion of matrices as its own local inverse
+
+## Statement
+
+Let $GL_n$ be the set of invertible real $n\times n$ matrices and $\iota:GL_n\to GL_n$, $\iota(A)=A^{-1}$.
+
+1. Show that $GL_n$ is open in $M_n(\mathbb{R})$ and that $\iota$ is $C^\infty$.
+2. Show that $D\iota(A)H=-A^{-1}HA^{-1}$.
+3. Using $\iota\circ\iota=\mathrm{id}$, recover $D\iota(A^{-1})=D\iota(A)^{-1}$ and check it by direct computation.
+4. Give the expansion of $(I+H)^{-1}$ up to order $3$.
+
+## Hint
+
+Part 1: $\det$ is continuous and $GL_n=\det^{-1}(\mathbb{R}\setminus\{0\})$; Cramer's formula $A^{-1}=\frac1{\det A}\operatorname{adj}(A)$. Part 2: differentiate $AA^{-1}=I$.
+
+## Solution
+
+**Part 1.** $\det$ is a polynomial in the entries, hence continuous, so $GL_n=\det^{-1}(\mathbb{R}^*)$ is open. By Cramer's formula, the entries of $A^{-1}$ are rational functions of the entries of $A$ with nonvanishing denominator $\det A$, so $\iota$ is $C^\infty$.
+
+**Part 2.** Differentiate $A\,\iota(A)=I$ in the direction $H$ (product rule, which holds for the bilinear multiplication of matrices):
+$$H\,\iota(A)+A\,D\iota(A)H=0\quad\Longrightarrow\quad D\iota(A)H=-A^{-1}HA^{-1}.$$
+(Be careful about the order of the factors: matrices do not commute.)
+
+**Part 3.** From $\iota\circ\iota=\mathrm{id}$ and the chain rule at $A$: $D\iota(\iota(A))\circ D\iota(A)=\mathrm{id}$, so $D\iota(A^{-1})=D\iota(A)^{-1}$. Direct check: $D\iota(A^{-1})K=-(A^{-1})^{-1}K(A^{-1})^{-1}=-AKA$. Compose with $D\iota(A)$:
+$$D\iota(A^{-1})\bigl(D\iota(A)H\bigr)=-A\bigl(-A^{-1}HA^{-1}\bigr)A=H\ ✓.$$
+This is also the inverse function theorem's formula $Dg=(Df)^{-1}\circ g$ for $f=g=\iota$.
+
+**Part 4.** For $\lVert H\rVert<1$ the Neumann series gives $(I+H)^{-1}=I-H+H^2-H^3+O(\lVert H\rVert^4)$. This is consistent with part 2: the first-order term is $D\iota(I)H=-H$ ✓. Quick numerical check: $H=\begin{pmatrix}0.1&0\\0&-0.1\end{pmatrix}$: $(I+H)^{-1}=\operatorname{diag}(\frac1{1.1},\frac1{0.9})=\operatorname{diag}(0.90909,1.11111)$ and the series gives $\operatorname{diag}(1-0.1+0.01-0.001,\ 1+0.1+0.01+0.001)=\operatorname{diag}(0.909,1.111)$ ✓.
+
+**Common mistake.** Writing $D\iota(A)H=-A^{-2}H$ (the one-variable formula $-\frac1{a^2}h$). In the matrix case the factors sit on both sides of $H$ and cannot be combined.
+
+**Remark.** The group $GL_n$ is a smooth manifold in which multiplication and inversion are smooth maps: a *Lie group*. Part 2 is the first computation one does on this structure.
+
+---
+
+---
+title: The constant rank theorem: straightening a map of rank one
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l3
+difficulty: 4
+tags: rank theorem, constant rank, normal form, diffeomorphism
+order: 19
+date: 2026-11-15
+---
+
+# Problem 19 — The constant rank theorem in an example
+
+## Statement
+
+**Constant rank theorem.** Let $f:U\to\mathbb{R}^m$ be $C^k$ ($k\ge1$) on an open set $U\subset\mathbb{R}^n$ with $\operatorname{rank}Df(x)=r$ for all $x$ near $a$. Then there exist $C^k$ diffeomorphisms $\varphi$ (near $a$) and $\psi$ (near $f(a)$) such that
+$$\psi\circ f\circ\varphi^{-1}(x_1,\dots,x_n)=(x_1,\dots,x_r,0,\dots,0).$$
+
+1. For $f(x,y)=\bigl(x+y,\ (x+y)^2\bigr)$, show that the rank is constant and find $\varphi$, $\psi$ explicitly.
+2. Show that for $h(x)=x^2$ (from $\mathbb{R}$ to $\mathbb{R}$) no such normal form exists near $0$, and explain why.
+
+## Hint
+
+Part 1: $f$ depends on $(x,y)$ only through $s=x+y$, so choose $s$ as the first coordinate. For part 2, check the possible values of $r$.
+
+## Solution
+
+**Part 1: constant rank.** $Df(x,y)=\begin{pmatrix}1&1\\2(x+y)&2(x+y)\end{pmatrix}$. Its second row is $2(x+y)$ times the first row, so the rank is exactly $1$ at every point (the first row is nonzero). The theorem applies with $r=1$, $n=m=2$.
+
+*Straightening in the source.* Let $\varphi(x,y)=(x+y,\ x-y)=(s,t)$. This is a linear isomorphism, with inverse $\varphi^{-1}(s,t)=\bigl(\frac{s+t}2,\frac{s-t}2\bigr)$. Then
+$$f\circ\varphi^{-1}(s,t)=(s,\ s^2).$$
+*Straightening in the target.* Let $\psi(u,v)=(u,\ v-u^2)$, a diffeomorphism of $\mathbb{R}^2$ (with inverse $(u,w)\mapsto(u,w+u^2)$). Then
+$$\psi\circ f\circ\varphi^{-1}(s,t)=\psi(s,s^2)=(s,\,0).$$
+This is the normal form $(x_1,x_2)\mapsto(x_1,0)$ with $r=1$: the map is, up to changes of coordinates, the projection onto the first axis. Geometrically, the image of $f$ is the parabola $v=u^2$ (a curve), and $\psi$ flattens that parabola to the $u$-axis.
+
+**Part 2.** For $h(x)=x^2$ we have $Dh(x)=2x$, with rank $1$ for $x\ne0$ and rank $0$ at $x=0$. The rank is **not constant** near $0$, so the theorem does not apply. Moreover no normal form can exist:
+- $r=1$ would give $\psi\circ h\circ\varphi^{-1}(x)=x$, so $h$ would be locally injective near $0$ — false, $h(-x)=h(x)$.
+- $r=0$ would give $\psi\circ h\circ\varphi^{-1}=0$, so $h$ would be locally constant — false.
+
+**Common mistake.** "The rank at the point $a$ is $r$ so the normal form holds." The theorem needs the rank to be $r$ in a *whole neighbourhood*. Rank can only go up under small perturbation, so the condition "constant" is a genuine restriction (which holds, for example, when $r=n$ — immersions — or $r=m$ — submersions, where it is automatic by lower semicontinuity of the rank).
+
+**Remark.** The two extreme cases: if $r=n=m$ the normal form is the identity, which is exactly the inverse function theorem; if $r=n<m$ (immersion) the image is locally a submanifold; if $r=m<n$ (submersion) the fibres $f^{-1}(c)$ are locally submanifolds, which is the implicit function theorem.
+
+---
+
+---
+title: A quantitative inverse function theorem for z + z²
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 3
+tags: quantitative inverse function theorem, mean value inequality, sharp radius
+order: 20
+date: 2026-11-15
+---
+
+# Problem 20 — How large is the neighbourhood of invertibility?
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}^2$ be $f(x,y)=\bigl(x+x^2-y^2,\ y+2xy\bigr)$ (that is, $z\mapsto z+z^2$ with $z=x+iy$). We have $f(0)=0$, $Df(0)=I$.
+
+1. Show that $\lVert Df(p)-I\rVert=2\lVert p\rVert$ (Euclidean norms) and deduce that $f$ is injective on the disc $B(0,\frac14)$, with $\lVert f(p)-f(q)\rVert\ge\frac12\lVert p-q\rVert$.
+2. Compare with the true largest disc on which $f$ is injective.
+3. Show that $f(B(0,\tfrac12))\supset B(0,\tfrac14)$.
+
+## Hint
+
+Part 2: $f(z_1)=f(z_2)\iff(z_1-z_2)(1+z_1+z_2)=0$. Part 3: minimise $\lvert z+z^2\rvert=\lvert z\rvert\lvert1+z\rvert$ on $\lvert z\rvert=\frac12$.
+
+## Solution
+
+**Part 1.**
+$$Df(x,y)-I=\begin{pmatrix}2x&-2y\\2y&2x\end{pmatrix}=2\begin{pmatrix}x&-y\\y&x\end{pmatrix},$$
+and $\begin{pmatrix}x&-y\\y&x\end{pmatrix}=\lVert p\rVert\cdot(\text{rotation})$, whose operator norm is $\lVert p\rVert$. So $\lVert Df(p)-I\rVert=2\lVert p\rVert$. On $B(0,\frac14)$ this is $<\frac12$. The disc is convex, so by the previous problem on perturbations of the identity (with $k=\frac12$),
+$$\lVert f(p)-f(q)\rVert\ge(1-\tfrac12)\lVert p-q\rVert=\tfrac12\lVert p-q\rVert,$$
+and $f$ is injective on $B(0,\frac14)$.
+
+**Part 2: the sharp radius.** With $z=x+iy$: $f(z_1)-f(z_2)=(z_1-z_2)(1+z_1+z_2)$. If $\lvert z_1\rvert,\lvert z_2\rvert<\frac12$ then $\lvert z_1+z_2\rvert<1$, so $1+z_1+z_2\ne0$, and $f(z_1)=f(z_2)$ forces $z_1=z_2$: $f$ is injective on $B(0,\frac12)$. It is not injective on any larger disc: take $z_1=-\frac12+\varepsilon$ and $z_2=-\frac12-\varepsilon$ (real, close to $-\frac12$): $z_1+z_2=-1$, so $f(z_1)=f(z_2)$, with $\lvert z_i\rvert\approx\frac12+\varepsilon$. Hence the largest disc is exactly $B(0,\frac12)$, twice the radius found in part 1. Also $Df$ is singular at $z=-\frac12$, i.e. $\det Df=\lvert1+2z\rvert^2=0$ there, so the inverse function theorem cannot hold on a disc containing $-\frac12$ in its interior... the boundary point $-\frac12$ is where it breaks down.
+
+**Part 3.** For $\lvert z\rvert=\frac12$: $\lvert f(z)\rvert=\lvert z\rvert\lvert1+z\rvert=\frac12\lvert1+z\rvert\ge\frac12\cdot\frac12=\frac14$, with equality at $z=-\frac12$ (where $\lvert1+z\rvert$ is smallest). A numerical scan gives the minimum $0.25000$ ✓. Since $f$ is injective on $B(0,\frac12)$ and $f$ is open, the image of the closed disc has boundary $f(\{\lvert z\rvert=\frac12\})$ lying outside $B(0,\frac14)$ (all its points have modulus $\ge\frac14$); as $f(0)=0$ and $f$ is continuous and open, the image of the open disc contains $B(0,\frac14)$ (a connected set containing $0$ and not meeting the circle $\lvert w\rvert=\frac14$ from the outside... more precisely, $f(B)$ is open, and $f(\bar B)\setminus f(B)\subset f(\partial B)\subset\{\lvert w\rvert\ge\frac14\}$, so $f(B)\cap B(0,\frac14)$ is both open and relatively closed in $B(0,\frac14)$, hence equal to it).
+
+**Common mistake.** Believing the radius from the contraction proof is optimal. The proof gives *some* explicit radius ($\frac14$ here, with image radius $\frac18$ by the Banach argument); the true radius is controlled by the nearest critical point ($-\frac12$).
+
+**Remark.** The mean value inequality argument loses a factor $2$ because it only uses the *size* of $Df-I$, not its algebraic structure. For holomorphic maps one gets the sharp result from the zeros of $f'$.
+
+---
+
+---
+title: A homeomorphism with a vanishing derivative: the converse fails
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 2
+tags: inverse function theorem, converse, cube root, chain rule
+order: 21
+date: 2026-11-15
+---
+
+# Problem 21 — The converse of the inverse function theorem is false
+
+## Statement
+
+1. Let $f(x)=x^3$. Show that $f$ is a $C^\infty$ homeomorphism of $\mathbb{R}$ onto $\mathbb{R}$ with $f'(0)=0$, whose inverse $g(y)=y^{1/3}$ is not differentiable at $0$.
+2. Prove the **correct partial converse**: if $f$ is differentiable at $a$ and has a local inverse $g$ differentiable at $f(a)$, then $Df(a)$ is invertible.
+3. Deduce: "the differential at $a$ is invertible" is *necessary and sufficient* for $f$ to have a local $C^1$ (or differentiable) inverse, but not for a continuous inverse.
+
+## Hint
+
+Part 2: differentiate $g\circ f=\mathrm{id}$ at $a$ with the chain rule.
+
+## Solution
+
+**Part 1.** $f(x)=x^3$ is continuous, strictly increasing, $f(\mathbb{R})=\mathbb{R}$, with inverse $g(y)=y^{1/3}$ continuous. So $f$ is a homeomorphism. But $f'(0)=0$ and
+$$\frac{g(h)-g(0)}h=\frac{h^{1/3}}h=h^{-2/3}\to+\infty\quad(h\to0),$$
+so $g$ has a vertical tangent at $0$ and is not differentiable there.
+
+**Part 2.** Suppose $g\circ f=\mathrm{id}$ near $a$, $f$ differentiable at $a$ and $g$ differentiable at $f(a)$. By the chain rule,
+$$Dg(f(a))\circ Df(a)=\mathrm{id},$$
+so $Df(a)$ has a left inverse. In finite dimension with $f:\mathbb{R}^n\to\mathbb{R}^n$ this means $Df(a)$ is invertible. (In part 1, the hypothesis "$g$ differentiable at $0$" fails.)
+
+**Part 3.** Summing up, for $f:\mathbb{R}^n\to\mathbb{R}^n$ of class $C^1$ near $a$:
+- $Df(a)$ invertible $\Longrightarrow$ $f$ has a local $C^1$ inverse (the theorem),
+- $f$ has a local differentiable inverse $\Longrightarrow$ $Df(a)$ invertible (part 2),
+- $f$ has a local *continuous* inverse $\not\Longrightarrow$ $Df(a)$ invertible ($x^3$).
+
+**Common mistake.** Concluding from "$f'(0)=0$" that "$f$ is not locally invertible at $0$". The correct statement is: *a differentiable inverse does not exist*. A topological inverse may still exist.
+
+**Remark.** In dimension $n\ge2$ the situation is much richer: $z\mapsto z^2$ is not locally injective at $0$ and $(x,y)\mapsto(x^3,y)$ is a homeomorphism with singular differential along $x=0$.
+
+---
+
+---
+title: Newton's method for a system of two equations
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l2
+difficulty: 2
+tags: Newton's method, system of equations, Jacobian, quadratic convergence
+order: 22
+date: 2026-11-15
+---
+
+# Problem 22 — Newton's method in two variables
+
+## Statement
+
+Solve the system
+$$x^2+y^2=4,\qquad xy=1$$
+(for the solution near $(2,\,0.5)$).
+
+1. Write Newton's iteration $p_{m+1}=p_m-DF(p_m)^{-1}F(p_m)$ for $F(x,y)=(x^2+y^2-4,\ xy-1)$ and explain why it is well defined near the solution.
+2. Compute the first iterates starting from $p_0=(2,0.5)$.
+3. Find the exact solution and check the quadratic convergence.
+
+## Hint
+
+$(x+y)^2=x^2+y^2+2xy$ and $(x-y)^2=x^2+y^2-2xy$.
+
+## Solution
+
+**Part 1: why it is defined.** $DF(x,y)=\begin{pmatrix}2x&2y\\y&x\end{pmatrix}$ with $\det DF=2x^2-2y^2=2(x-y)(x+y)$. The singular set is $y=\pm x$. On the curve $xy=1$ this gives $x=y=\pm1$, where $x^2+y^2=2\ne4$. So the solutions of the system are *regular* points: $DF$ is invertible there and, by the inverse function theorem, $F$ is a local diffeomorphism near each of them. Newton's step is the solution of the *linearised* problem $F(p)+DF(p)(p'-p)=0$; the theorem guarantees that this linear problem approximates the true local inverse.
+
+**Part 2: iterates.** At $p_0=(2,0.5)$: $F=(0.25,\,0)$, $DF=\begin{pmatrix}4&1\\0.5&2\end{pmatrix}$ with determinant $7.5$. Solve $DF\,d=-F=(-0.25,0)$: $d=\bigl(-\tfrac{0.25\cdot2}{7.5},\ \tfrac{0.25\cdot0.5}{7.5}\bigr)=(-0.066667,\ 0.016667)$. So
+$$p_1=\left(\tfrac{29}{15},\ \tfrac{31}{60}\right)\approx(1.933333,\ 0.516667).$$
+Continuing numerically:
+$$p_2\approx(1.931853,\ 0.517638),\qquad p_3\approx(1.9318517,\ 0.5176381)\ \text{(stable to 7 digits)}.$$
+
+**Part 3: exact solution.** $(x+y)^2=4+2=6$ and $(x-y)^2=4-2=2$. With $x>y>0$: $x+y=\sqrt6$, $x-y=\sqrt2$, so
+$$x=\frac{\sqrt6+\sqrt2}2\approx1.9318517,\qquad y=\frac{\sqrt6-\sqrt2}2\approx0.5176381.$$
+The errors are $\approx1.5\cdot10^{-3}$ for $p_2$ and $\approx10^{-6}$ for $p_3$ (before the 7th digit): each error is about the square of the previous one times a constant, the signature of quadratic convergence.
+
+**Common mistake.** Starting from a point with $x\approx y$ (near the singular set). For instance $p_0=(1,1)$ gives a singular $DF$ and the iteration breaks down.
+
+**Remark.** The convergence of Newton's method near a regular root is itself a consequence of the contraction argument in the proof of the inverse function theorem: the map $p\mapsto p-DF(p)^{-1}F(p)$ has derivative $0$ at the solution.
+
+---
+
+---
+title: Why C¹ is essential: f(x) = x + 2x² sin(1/x)
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: l3
+difficulty: 4
+tags: counterexample, C^1 hypothesis, inverse function theorem, oscillation
+order: 23
+date: 2026-11-15
+---
+
+# Problem 23 — A differentiable function with nonzero derivative that is not locally injective
+
+## Statement
+
+Let $f(x)=x+2x^2\sin\frac1x$ for $x\ne0$ and $f(0)=0$.
+
+1. Show that $f$ is differentiable everywhere with $f'(0)=1$.
+2. Show that $f'$ takes both positive and negative values in every neighbourhood of $0$.
+3. Deduce that $f$ is not injective on any neighbourhood of $0$. Which hypothesis of the inverse function theorem fails?
+
+## Hint
+
+Compute $f'(x)$ for $x\ne0$ and evaluate it at $x_k=\frac1{2k\pi}$ and $x_k'=\frac1{(2k+1)\pi}$.
+
+## Solution
+
+**Part 1.** $\dfrac{f(h)-f(0)}h=1+2h\sin\dfrac1h\to1$ as $h\to0$ (since $\lvert2h\sin\frac1h\rvert\le2\lvert h\rvert$). So $f'(0)=1$. For $x\ne0$, $f$ is differentiable as a composition of elementary functions.
+
+**Part 2.** For $x\ne0$:
+$$f'(x)=1+4x\sin\frac1x-2\cos\frac1x.$$
+- At $x_k=\dfrac1{2k\pi}$: $\sin\frac1{x_k}=0$ and $\cos\frac1{x_k}=1$, so $f'(x_k)=1-2=-1<0$.
+- At $x_k'=\dfrac1{(2k+1)\pi}$: $\sin=0$ and $\cos=-1$, so $f'(x_k')=1+2=3>0$.
+
+Both sequences tend to $0$. So in every neighbourhood of $0$, $f'$ takes the values $-1$ and $3$.
+
+**Part 3.** Suppose $f$ were injective on an interval $I\ni0$. Since $f$ is continuous, injectivity forces strict monotonicity on $I$, hence $f'$ of constant sign ($\ge0$ or $\le0$) on $I$. But $f'$ takes both signs by part 2. Contradiction: $f$ is not injective on any neighbourhood of $0$.
+
+**Which hypothesis fails?** $f'(0)=1\ne0$ and $f$ is differentiable everywhere, but $f'$ is **not continuous at $0$**: $f'(x)$ oscillates between about $-1$ and $3$ near $0$ while $f'(0)=1$. So $f$ is not $C^1$. The theorem requires continuity of the derivative (at least near $a$), and this is not a technicality.
+
+**Common mistake.** "In one variable, $f'(0)\ne0$ implies $f$ is locally monotone." This is false without continuity of $f'$ at $0$. It is true that $f$ is *strictly increasing at the single point* $0$ (in the sense $f(x)<f(0)<f(y)$ for $x<0<y$ close to $0$) but not monotone on an interval.
+
+**Remark.** This is the standard example showing the difference between "differentiable with nonzero derivative at a point" and "$C^1$ with nonzero derivative". Darboux's theorem guarantees $f'$ has the intermediate value property, which is why it cannot jump, but it can oscillate.
+
+---
+
+---
+title: A C¹ map with ‖f(x) − f(y)‖ ≥ c‖x − y‖ is a diffeomorphism of ℝⁿ
+category: calculus/multivariable/diff-calculus/dc-inverse-function
+level: m1
+difficulty: 5
+tags: global inverse function theorem, expansive map, open and closed image, connectedness
+order: 24
+date: 2026-11-15
+---
+
+# Problem 24 — An expansive $C^1$ map is a global diffeomorphism
+
+## Statement
+
+Let $f:\mathbb{R}^n\to\mathbb{R}^n$ be of class $C^1$ and suppose there is $c>0$ with
+$$\lVert f(x)-f(y)\rVert\ge c\lVert x-y\rVert\qquad\text{for all }x,y\in\mathbb{R}^n.$$
+Prove that $f$ is a $C^1$ diffeomorphism of $\mathbb{R}^n$ onto $\mathbb{R}^n$, and that $f^{-1}$ is Lipschitz with constant $\frac1c$.
+
+## Hint
+
+Show in turn: $f$ is injective, $Df(x)$ is invertible, $f(\mathbb{R}^n)$ is open, $f(\mathbb{R}^n)$ is closed, and conclude by connectedness.
+
+## Solution
+
+**Idea.** The inverse function theorem gives *local* information; to globalise we use the quantitative injectivity (which gives uniform control) and the connectedness of $\mathbb{R}^n$: a nonempty subset that is both open and closed is everything.
+
+**Step 1: injectivity.** If $f(x)=f(y)$ then $0\ge c\lVert x-y\rVert$, so $x=y$.
+
+**Step 2: $Df(x)$ is invertible for all $x$.** For $h\in\mathbb{R}^n$ and $t>0$ small,
+$$\frac{\lVert f(x+th)-f(x)\rVert}t\ge c\lVert h\rVert.$$
+Letting $t\to0$ the left side tends to $\lVert Df(x)h\rVert$, so $\lVert Df(x)h\rVert\ge c\lVert h\rVert$. Thus $Df(x)$ is injective, hence invertible.
+
+**Step 3: the image is open.** By Step 2 and the inverse function theorem (as in the earlier problem on open maps), $f$ is an open map. In particular $f(\mathbb{R}^n)$ is open and nonempty.
+
+**Step 4: the image is closed.** Let $y_k=f(x_k)\to y$. The sequence $(y_k)$ is Cauchy, and
+$$\lVert x_k-x_l\rVert\le\frac1c\lVert y_k-y_l\rVert,$$
+so $(x_k)$ is Cauchy in $\mathbb{R}^n$, hence converges to some $x$. By continuity of $f$, $f(x)=\lim f(x_k)=y$. So $y\in f(\mathbb{R}^n)$.
+
+**Step 5: surjectivity.** $\mathbb{R}^n$ is connected and $f(\mathbb{R}^n)$ is nonempty, open and closed. Therefore $f(\mathbb{R}^n)=\mathbb{R}^n$.
+
+**Step 6: conclusion.** $f$ is a bijection of $\mathbb{R}^n$, $C^1$, with invertible differential everywhere. By the earlier problem ("injective with invertible differential is a diffeomorphism onto an open set"), $f^{-1}$ is $C^1$. The inequality with $x=f^{-1}(a)$, $y=f^{-1}(b)$ reads $\lVert f^{-1}(a)-f^{-1}(b)\rVert\le\frac1c\lVert a-b\rVert$.
+
+**Examples.** (i) $f=\mathrm{id}+g$ with $g$ $k$-Lipschitz, $k<1$ (here $c=1-k$): recovers the earlier problem. (ii) $f(x)=2x+\sin x$ on $\mathbb{R}$: $f'(x)=2+\cos x\ge1$, so $\lvert f(x)-f(y)\rvert\ge\lvert x-y\rvert$ by the mean value theorem, and $f$ is a diffeomorphism of $\mathbb{R}$.
+
+**Common mistake.** Skipping Step 4. An injective local diffeomorphism has an open image, but the image can be a *proper* open subset (the exponential map on a strip). Completeness of $\mathbb{R}^n$ is exactly what the lower bound transfers to the image.
+
+**Remark.** The hypothesis can be weakened to properness (the preimage of a compact set is compact): a proper local diffeomorphism $\mathbb{R}^n\to\mathbb{R}^n$ is a covering map, hence a diffeomorphism since $\mathbb{R}^n$ is simply connected. This is the Hadamard–Lévy theorem.
+@@@ dc-imp-001-the-circle-and-the-hypothesis.md
+---
 title: The circle: when can one solve for y?
 category: calculus/multivariable/diff-calculus/dc-implicit-function
 level: l2
