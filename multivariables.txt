@@ -1,6 +1,6 @@
 @@@ dc-mvi-001-the-differential-of-the-complex-square.md
 ---
-title: The differential of (x, y) |--> (x² - y², 2xy), from the definition
+title: The differential of f(x, y) = (x² - y², 2xy), from the definition
 category: calculus/multivariable/diff-calculus/dc-mean-value-inequality
 level: l2
 difficulty: 1
