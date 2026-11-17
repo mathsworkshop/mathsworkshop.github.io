@@ -375,7 +375,44 @@
           "id": "metric",
           "name": "Metric and normed spaces",
           "description": "Topological Properties, Convergence, Compactness and Completeness.",
-          "subcategories": []
+          "subcategories": [
+    {
+      "id": "mt-basics",
+      "name": "Metrics and balls",
+      "description": "Metric axioms, examples, balls, diameter and equivalent metrics.",
+      "subcategories": []
+    },
+    {
+      "id": "mt-topology",
+      "name": "Open and closed sets",
+      "description": "Interior, closure, boundary, density and separability in metric spaces.",
+      "subcategories": []
+    },
+    {
+      "id": "mt-sequences",
+      "name": "Sequences and completeness",
+      "description": "Convergence, Cauchy sequences, complete spaces and the Banach fixed point theorem.",
+      "subcategories": []
+    },
+    {
+      "id": "mt-compactness",
+      "name": "Compactness",
+      "description": "Compact and totally bounded spaces, extreme values and uniform continuity.",
+      "subcategories": []
+    },
+    {
+      "id": "mt-continuity",
+      "name": "Continuity",
+      "description": "Continuous, Lipschitz and uniformly continuous maps, homeomorphisms and connectedness.",
+      "subcategories": []
+    },
+    {
+      "id": "mt-normed-spaces",
+      "name": "Normed spaces",
+      "description": "Norms, Banach spaces, bounded operators and inner product spaces.",
+      "subcategories": []
+    }
+  ]
         }
       ]
     },
