@@ -267,6 +267,46 @@ Test the path $(x,0)$ and analyze the oscillation.
 **Along $(x,0)$.** $f(x,0)=\sin(1/x^2)$ oscillates in $[-1,1]$ with no limit ($\lim_{l \rightarrow +\infty} \sin l$ does not exist).
 
 **Conclusion.** $f$ has no limit at $(0,0)$; not continuous there.
+@@@ continuity-trigonometric-limit.md
+---
+title: Existence of a Limit at the Origin Involving Trigonometric Functions
+category: calculus/multivariable/continuity
+level: l2
+difficulty: 2
+order: 7
+tags: limit, multivariable, trigonometric functions, standard limit, continuity
+date: 2026-11-03
+---
+
+## Statement
+
+Evaluate the following limit:
+\[
+\lim_{(x,y)\to(0,0)} \frac{\sin(xy)}{y}.
+\]
+
+## Hint
+
+Multiply the numerator and denominator by $x$ to create the standard limit form $\frac{\sin(\theta)}{\theta}$ as $\theta\to 0$.
+
+## Solution
+
+We can rewrite the expression as follows:
+\[
+\frac{\sin(xy)}{y}=x\cdot\frac{\sin(xy)}{xy}.
+\]
+Let $u=xy$. As $(x,y)\to(0,0)$, we have $u\to 0$. We know the standard single-variable limit:
+\[
+\lim_{u\to 0}\frac{\sin(u)}{u}=1.
+\]
+Using the product rule for limits (provided both limits exist):
+\[
+\lim_{(x,y)\to(0,0)}\left(x\cdot\frac{\sin(xy)}{xy}\right)=\left(\lim_{(x,y)\to(0,0)}x\right)\cdot\left(\lim_{(x,y)\to(0,0)}\frac{\sin(xy)}{xy}\right).
+\]
+\[
+=0\cdot 1=0.
+\]
+Therefore, the limit is $0$.
 
 @@@ continuity-polar-trick.md
 ---
@@ -329,6 +369,48 @@ we find that
 for all $(x,y)\in\mathbb{R}^2$ with $x\neq 0$ and $y\neq 0$. Since $f(x,0)=0$ for all $x\in\mathbb{R}^*$ and $f(0,y)=0$ for all $y\in\mathbb{R}^*$, we conclude that $|f(x,y)|\leq |x|$ on $\mathbb{R}^2\setminus\{(0,0)\}$. Therefore
 \[
 \lim_{(x,y)\to(0,0)} f(x,y)=0.
+\]
+@@@ continuity-squeeze-theorem.md
+---
+title: Existence of a Limit at the Origin via the Squeeze Theorem
+category: calculus/multivariable/continuity
+level: l2
+difficulty: 2
+order: 8
+tags: limit, multivariable, squeeze theorem, inequality, epsilon-delta, continuity
+date: 2026-11-03
+---
+
+## Statement
+
+Prove that
+\[
+\lim_{(x,y)\to(0,0)} \frac{2x^2y}{x^2+y^2}=0.
+\]
+
+## Hint
+
+Use the fact that $x^2\leq x^2+y^2$ for all real $x,y$. This allows you to bound the fraction $\frac{x^2}{x^2+y^2}$.
+
+## Solution
+
+Note that
+\[
+\left|\frac{2x^2y}{x^2+y^2}\right|=\left|\frac{2x^2}{x^2+y^2}\right||y|.
+\]
+Since $x^2\leq x^2+y^2$, we have $\frac{x^2}{x^2+y^2}\leq 1$. Therefore,
+\[
+\left|\frac{2x^2y}{x^2+y^2}\right|\leq 2|y|.
+\]
+By the Squeeze Theorem, since $0\leq\left|\frac{2x^2y}{x^2+y^2}\right|\leq 2|y|$ and $\lim_{(x,y)\to(0,0)}2|y|=0$, the desired limit is $0$.
+
+**Remark : ** we can use the $(\varepsilon,\delta)$-definition of the limit to prove  
+\[
+\lim_{(x,y)\to(0,0)} \frac{2x^2y}{x^2+y^2}=0.
+\]
+Indeed, given $\varepsilon>0$, choose $\delta=\varepsilon/2$; then the condition $0<\|(x,y)-(0,0)\|=\sqrt{x^2+y^2}<\delta$ implies $|y|<\delta$, and thus
+\[
+\left|\frac{2x^2y}{x^2+y^2}-0\right|\leq 2|y|<2\delta=\varepsilon.
 \]
 @@@ continuity-radial-dependence.md
 ---
