@@ -1,9 +1,118 @@
+@@@ topology-R-open-interval.md
+---
+title: Open intervals are open sets
+category: topology/topology-of-r/r-open-closed
+level: l1
+difficulty: 1
+order: 1
+tags: open sets, open intervals, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Show that any open interval $]a,b[$ (with $a<b$) is an open set of $\mathbb{R}$.
+
+## Hint
+
+For any $x\in]a,b[$, take $r=\min(x-a,b-x)>0$; then $]x-r,x+r[\subseteq]a,b[$.
+
+## Solution
+
+**Radius.** Let $x\in]a,b[$ and $r=\min(x-a,b-x)>0$. Then for any $y\in]x-r,x+r[$: $y<x+r\le b$ and $y>x-r\ge a$. So $y\in]a,b[$.
+
+**Conclusion.** Every $x\in]a,b[$ has a neighbourhood inside $]a,b[$; the interval is open.
+
+@@@ topology-R-open-ball.md
+---
+title: Open balls in $\mathbb{R}$
+category: topology/topology-of-r/r-open-closed
+level: l1
+difficulty: 1
+order: 1
+tags: open ball, interval, topology
+date: 2026-11-03
+---
+
+## Statement
+
+For $a\in\mathbb{R}$ and $r>0$, describe the open ball $B(a,r)$ and show it is an open set.
+
+## Hint
+
+$B(a,r)=\{x:|x-a|<r\}=]a-r,a+r[$.
+
+## Solution
+
+**Identification.** $B(a,r)$ is the open interval $]a-r,a+r[$.
+
+**Openness.** Every point of $]a-r,a+r[$ has a small ball around it contained in $]a-r,a+r[$ (previous exercise).
+
+**Conclusion.** Open balls are open sets; they are the building blocks of the topology of $\mathbb{R}$.
+
+@@@ topology-R-closed-definition.md
+---
+title: Closed sets
+category: topology/topology-of-r/r-open-closed
+level: l1
+difficulty: 1
+order: 1
+tags: closed sets, complement, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Define a closed set in $\mathbb{R}$ and give two examples and one counterexample.
+
+## Hint
+
+Closed = complement is open.
+
+## Solution
+
+**Definition.** $F\subseteq\mathbb{R}$ is closed iff $\mathbb{R}\setminus F$ is open.
+
+**Examples.** $\emptyset$, $\mathbb{R}$, $[0,1]$, singletons $\{a\}$.
+
+**Counterexample.** $]0,1]$ is neither open nor closed: it is not open (0 is a boundary point) and its complement $]-\infty,0]\cup]1,+\infty[$ is not open.
+
+**Conclusion.** Some sets are neither open nor closed.
+
+@@@ topology-R-boundary.md
+---
+title: Interior, closure, boundary
+category: topology/topology-of-r/r-open-closed
+level: l1
+difficulty: 1
+order: 2
+tags: interior, closure, boundary
+date: 2026-11-03
+---
+
+## Statement
+
+For $A=]0,1]\cup\{2\}$, compute the interior, closure, and boundary of $A$.
+
+## Hint
+
+$\mathring A$ = union of open subsets of $A$; $\overline A$ = smallest closed set containing $A$; $\partial A=\overline A\setminus\mathring A$.
+
+## Solution
+
+**Interior.** $\mathring A=]0,1[$: $1$ is not interior (every ball around $1$ hits the complement), $2$ is not interior (isolated).
+
+**Closure.** $\overline A=[0,1]\cup\{2\}$: the limit points of $]0,1]$ are in $[0,1]$; $2$ is already in $A$.
+
+**Boundary.** $\partial A=\{0,1,2\}$.
+
+**Conclusion.** Interior $]0,1[$, closure $[0,1]\cup\{2\}$, boundary $\{0,1,2\}$.
 @@@ rt-oc-001-intervals-are-open-or-closed.md
 ---
 title: Open intervals are open and closed intervals are closed
 category: topology/topology-of-r/r-open-closed
 level: l2
-difficulty: 1
+difficulty: 2
 order: 1
 tags: open set, closed set, epsilon definition, intervals
 date: 2026-11-12
@@ -16289,475 +16398,3 @@ In $\ell^2$, the closed unit ball is closed and bounded but not compact.
 **Conclusion.** In infinite dimension, closed bounded $\not\Rightarrow$ compact.
 
 **Note.** Riesz's theorem: the closed unit ball of a normed space is compact iff the space is finite-dimensional.
-
-@@@ topology-R-open-interval.md
----
-title: Open intervals are open sets
-category: topology/topology-of-r
-level: l1
-difficulty: 1
-tags: open sets, open intervals, definition
-date: 2026-11-03
----
-
-## Statement
-
-Show that any open interval $]a,b[$ (with $a<b$) is an open set of $\mathbb{R}$.
-
-## Hint
-
-For any $x\in]a,b[$, take $r=\min(x-a,b-x)>0$; then $]x-r,x+r[\subseteq]a,b[$.
-
-## Solution
-
-**Radius.** Let $x\in]a,b[$ and $r=\min(x-a,b-x)>0$. Then for any $y\in]x-r,x+r[$: $y<x+r\le b$ and $y>x-r\ge a$. So $y\in]a,b[$.
-
-**Conclusion.** Every $x\in]a,b[$ has a neighbourhood inside $]a,b[$; the interval is open.
-
-@@@ topology-R-open-ball.md
----
-title: Open balls in $\mathbb{R}$
-category: topology/topology-of-r
-level: l1
-difficulty: 1
-tags: open ball, interval, topology
-date: 2026-11-03
----
-
-## Statement
-
-For $a\in\mathbb{R}$ and $r>0$, describe the open ball $B(a,r)$ and show it is an open set.
-
-## Hint
-
-$B(a,r)=\{x:|x-a|<r\}=]a-r,a+r[$.
-
-## Solution
-
-**Identification.** $B(a,r)$ is the open interval $]a-r,a+r[$.
-
-**Openness.** Every point of $]a-r,a+r[$ has a small ball around it contained in $]a-r,a+r[$ (previous exercise).
-
-**Conclusion.** Open balls are open sets; they are the building blocks of the topology of $\mathbb{R}$.
-
-@@@ topology-R-union-open.md
----
-title: Arbitrary unions of open sets
-category: topology/topology-of-r
-level: l1
-difficulty: 2
-tags: unions, open sets, arbitrary
-date: 2026-11-03
----
-
-## Statement
-
-Show that an arbitrary union of open sets of $\mathbb{R}$ is open.
-
-## Hint
-
-For $x$ in the union, it belongs to at least one open set $U_i$; use the open ball around $x$ inside $U_i$.
-
-## Solution
-
-**Proof.** Let $(U_i)_{i\in I}$ be open and $x\in\bigcup_i U_i$. Pick $i_0$ with $x\in U_{i_0}$. Since $U_{i_0}$ is open, there is $r>0$ with $B(x,r)\subseteq U_{i_0}\subseteq\bigcup_i U_i$.
-
-**Conclusion.** $\bigcup_i U_i$ is open.
-
-**Remark.** Finite intersections of open sets are open, but infinite intersections may fail: $\bigcap_{n\ge1}]-\frac1n,\frac1n[=\{0\}$, not open.
-
-@@@ topology-R-intersection-open.md
----
-title: Finite intersections of open sets
-category: topology/topology-of-r
-level: l1
-difficulty: 2
-tags: intersections, open sets, finite
-date: 2026-11-03
----
-
-## Statement
-
-Show that the intersection of finitely many open sets of $\mathbb{R}$ is open.
-
-## Hint
-
-For $x\in U_1\cap\cdots\cap U_n$, take the minimum of the radii from each $U_i$.
-
-## Solution
-
-**Proof.** Let $U_1,\ldots,U_n$ be open and $x\in\bigcap U_i$. For each $i$, there is $r_i>0$ with $B(x,r_i)\subseteq U_i$. Let $r=\min(r_1,\ldots,r_n)>0$. Then $B(x,r)\subseteq\bigcap U_i$.
-
-**Conclusion.** The intersection is open.
-
-@@@ topology-R-closed-interval.md
----
-title: Closed intervals are closed
-category: topology/topology-of-r
-level: l1
-difficulty: 2
-tags: closed sets, closed intervals, complement
-date: 2026-11-03
----
-
-## Statement
-
-Show that $[a,b]$ is closed in $\mathbb{R}$.
-
-## Hint
-
-Its complement $]-\infty,a[\cup]b,+\infty[$ is a union of open sets.
-
-## Solution
-
-**Complement.** $\mathbb{R}\setminus[a,b]=]-\infty,a[\cup]b,+\infty[$, a union of open sets, hence open.
-
-**Conclusion.** $[a,b]$ is closed.
-
-@@@ topology-R-closed-definition.md
----
-title: Closed sets
-category: topology/topology-of-r
-level: l1
-difficulty: 2
-tags: closed sets, complement, definition
-date: 2026-11-03
----
-
-## Statement
-
-Define a closed set in $\mathbb{R}$ and give two examples and one counterexample.
-
-## Hint
-
-Closed = complement is open.
-
-## Solution
-
-**Definition.** $F\subseteq\mathbb{R}$ is closed iff $\mathbb{R}\setminus F$ is open.
-
-**Examples.** $\emptyset$, $\mathbb{R}$, $[0,1]$, singletons $\{a\}$.
-
-**Counterexample.** $]0,1]$ is neither open nor closed: it is not open (0 is a boundary point) and its complement $]-\infty,0]\cup]1,+\infty[$ is not open.
-
-**Conclusion.** Some sets are neither open nor closed.
-
-@@@ topology-R-boundary.md
----
-title: Interior, closure, boundary
-category: topology/topology-of-r
-level: l1
-difficulty: 3
-tags: interior, closure, boundary
-date: 2026-11-03
----
-
-## Statement
-
-For $A=]0,1]\cup\{2\}$, compute the interior, closure, and boundary of $A$.
-
-## Hint
-
-$\mathring A$ = union of open subsets of $A$; $\overline A$ = smallest closed set containing $A$; $\partial A=\overline A\setminus\mathring A$.
-
-## Solution
-
-**Interior.** $\mathring A=]0,1[$: $1$ is not interior (every ball around $1$ hits the complement), $2$ is not interior (isolated).
-
-**Closure.** $\overline A=[0,1]\cup\{2\}$: the limit points of $]0,1]$ are in $[0,1]$; $2$ is already in $A$.
-
-**Boundary.** $\partial A=\{0,1,2\}$.
-
-**Conclusion.** Interior $]0,1[$, closure $[0,1]\cup\{2\}$, boundary $\{0,1,2\}$.
-
-@@@ topology-R-limits.md
----
-title: Limit points
-category: topology/topology-of-r
-level: l1
-difficulty: 3
-tags: limit points, accumulation, closure
-date: 2026-11-03
----
-
-## Statement
-
-Define a limit point of a set $A\subseteq\mathbb{R}$ and describe the limit points of $A=\{1/n:n\ge1\}$.
-
-## Hint
-
-$x$ is a limit point if every neighbourhood of $x$ meets $A\setminus\{x\}$.
-
-## Solution
-
-**Definition.** $x$ is a limit point of $A$ if $\forall\varepsilon>0$, $(x-\varepsilon,x+\varepsilon)\cap(A\setminus\{x\})\neq\emptyset$.
-
-**Limit points of $A$.** Only $0$: any $\varepsilon$-neighbourhood of $0$ contains infinitely many $1/n$; other points are isolated.
-
-**Conclusion.** $A'=\{0\}$; the closure is $\overline A=A\cup\{0\}$.
-
-@@@ topology-R-compact.md
----
-title: Compact sets in $\mathbb{R}$
-category: topology/topology-of-r
-level: l1
-difficulty: 4
-tags: compact sets, Heine-Borel, closed bounded
-date: 2026-11-03
----
-
-## Statement
-
-State the Heine–Borel theorem and give two examples of compact and two non-compact sets.
-
-## Hint
-
-A subset of $\mathbb{R}$ is compact iff it is closed and bounded.
-
-## Solution
-
-**Theorem (Heine–Borel).** $K\subseteq\mathbb{R}$ is compact iff $K$ is closed and bounded.
-
-**Compact.** $[0,1]$, $\{0\}\cup\{1/n:n\ge1\}$.
-
-**Non-compact.** $]0,1[$ (not closed), $[0,+\infty[$ (not bounded).
-
-**Conclusion.** Compactness = closed + bounded in $\mathbb{R}$.
-
-@@@ topology-R-open-cover.md
----
-title: The Borel–Lebesgue property
-category: topology/topology-of-r
-level: l1
-difficulty: 4
-tags: compactness, open cover, finite subcover
-date: 2026-11-03
----
-
-## Statement
-
-Recall the definition of compactness by open covers and show that $[0,1]$ has the Borel–Lebesgue property.
-
-## Hint
-
-Standard proof: assume a cover with no finite subcover, bisect, iterate, get contradiction.
-
-## Solution
-
-**Definition.** $K$ is compact if every open cover of $K$ admits a finite subcover.
-
-**Proof sketch for $[0,1]$.** Suppose $(U_i)$ is an open cover with no finite subcover. Bisect $[0,1]$: one half also has no finite subcover. Iterate to get nested intervals $I_n$ of length $2^{-n}$, each requiring infinitely many $U_i$. Their intersection is a single point $x\in[0,1]$, which lies in some $U_{i_0}$. For $n$ large, $I_n\subseteq U_{i_0}$ — contradiction.
-
-**Conclusion.** $[0,1]$ is compact.
-
-@@@ topology-R-connected.md
----
-title: Connected subsets of $\mathbb{R}$
-category: topology/topology-of-r
-level: l1
-difficulty: 3
-tags: connectedness, intervals, IVT
-date: 2026-11-03
----
-
-## Statement
-
-Show that the connected subsets of $\mathbb{R}$ are exactly the intervals.
-
-## Hint
-
-If $A$ has a gap, split $A\cap]-\infty,c[$ and $A\cap]c,+\infty[$. Conversely, if $A$ is an interval, any separation would contradict the IVT for the identity.
-
-## Solution
-
-**Interval connected.** If $A$ is an interval and $A=U\cup V$ with $U,V$ disjoint nonempty open in $A$, take $u\in U$, $v\in V$, WLOG $u<v$. Since $A$ is an interval, $[u,v]\subseteq A$. The sets $U\cap[u,v]$ and $V\cap[u,v]$ give a separation of $[u,v]$, contradiction with connectedness of intervals.
-
-**Non-interval disconnected.** If $a<b<c$ with $a,c\in A$, $b\notin A$, then $A\cap]-\infty,b[$ and $A\cap]b,+\infty[$ separate $A$.
-
-**Conclusion.** Connected subsets of $\mathbb{R}$ = intervals.
-
-@@@ topology-R-continuity-characterisation.md
----
-title: Continuity via open preimages
-category: topology/topology-of-r
-level: l1
-difficulty: 4
-tags: continuity, open preimages, topological definition
-date: 2026-11-03
----
-
-## Statement
-
-Show that $f:\mathbb{R}\to\mathbb{R}$ is continuous iff $f^{-1}(U)$ is open for every open $U$.
-
-## Hint
-
-$(\Leftarrow)$: apply to $U=]f(x_0)-\varepsilon,f(x_0)+\varepsilon[$. $(\Rightarrow)$: use the $\varepsilon$-$\delta$ definition.
-
-## Solution
-
-**$\Leftarrow$.** Given $x_0$ and $\varepsilon>0$, the ball $U=]f(x_0)-\varepsilon,f(x_0)+\varepsilon[$ is open, so $f^{-1}(U)$ is open. It contains $x_0$, hence contains $B(x_0,\delta)\subseteq f^{-1}(U)$. So $|f(x)-f(x_0)|<\varepsilon$ for $|x-x_0|<\delta$.
-
-**$\Rightarrow$.** Given open $U$ and $x_0\in f^{-1}(U)$, $f(x_0)\in U$ gives $\varepsilon>0$ with $B(f(x_0),\varepsilon)\subseteq U$. Continuity provides $\delta>0$ with $B(x_0,\delta)\subseteq f^{-1}(U)$.
-
-**Conclusion.** Continuity is topological.
-
-@@@ topology-R-cantor-set.md
----
-title: The Cantor set is compact
-category: topology/topology-of-r
-level: l1
-difficulty: 4
-tags: Cantor set, compactness, closed
-date: 2026-11-03
----
-
-## Statement
-
-Show that the Cantor set $K$ (intersection of nested triadic sets) is compact.
-
-## Hint
-
-$K$ is the intersection of closed bounded sets.
-
-## Solution
-
-**Construction.** $K=\bigcap_n K_n$ with $K_0=[0,1]$, $K_{n+1}$ removing the middle thirds of each interval of $K_n$.
-
-**Closed.** Each $K_n$ is a union of closed intervals, hence closed; the intersection is closed.
-
-**Bounded.** $K\subseteq[0,1]$.
-
-**Conclusion.** $K$ is closed and bounded, hence compact (Heine–Borel).
-
-**Remark.** $K$ is also uncountable, perfect, and has empty interior.
-
-@@@ topology-R-open-dense.md
----
-title: Dense sets
-category: topology/topology-of-r
-level: l1
-difficulty: 3
-tags: dense, rationals, irrationals
-date: 2026-11-03
----
-
-## Statement
-
-Show that $\mathbb{Q}$ and $\mathbb{R}\setminus\mathbb{Q}$ are both dense in $\mathbb{R}$.
-
-## Hint
-
-Between any two reals there is a rational, and between any two reals there is an irrational.
-
-## Solution
-
-**$\mathbb{Q}$ dense.** For $a<b$ reals, pick $n$ with $1/n<b-a$; some $k/n\in]a,b[$.
-
-**$\mathbb{R}\setminus\mathbb{Q}$ dense.** Given $a<b$, take a rational $q\in]a,b[$; then $q+\frac{\sqrt2}{n}\in]a,b[$ for large $n$ is irrational.
-
-**Conclusion.** Both $\mathbb{Q}$ and $\mathbb{R}\setminus\mathbb{Q}$ are dense in $\mathbb{R}$.
-
-@@@ topology-R-baire.md
----
-title: Baire category theorem for $\mathbb{R}$
-category: topology/topology-of-r
-level: m1
-difficulty: 5
-tags: Baire, category, dense G-delta
-date: 2026-11-03
----
-
-## Statement
-
-State and prove that $\mathbb{R}$ is not a countable union of nowhere dense sets.
-
-## Hint
-
-Assume $\mathbb{R}=\bigcup F_n$; construct nested intervals avoiding each $F_n$.
-
-## Solution
-
-**Statement (Baire).** $\mathbb{R}$ is not a countable union of nowhere dense sets.
-
-**Proof.** Suppose $\mathbb{R}=\bigcup_n F_n$ with each $F_n$ nowhere dense. Construct nested closed intervals $I_n$ with $I_n\cap F_n=\emptyset$ and $\mathrm{diam}(I_n)\le2^{-n}$. Their intersection is a point $x\notin\bigcup F_n$ — contradiction.
-
-**Conclusion.** $\mathbb{R}$ is of second Baire category, in particular uncountable.
-
-**Remark.** A dense $G_\delta$ (e.g. irrationals) is residual; its complement is meager.
-
-@@@ topology-R-limit-superior.md
----
-title: Limit superior and limit inferior
-category: topology/topology-of-r
-level: l1
-difficulty: 4
-tags: limit superior, limit inferior, sequences
-date: 2026-11-03
----
-
-## Statement
-
-Compute $\limsup$ and $\liminf$ of $u_n=(-1)^n\left(1+\frac1n\right)$.
-
-## Hint
-
-Consider even and odd subsequences.
-
-## Solution
-
-**Even.** $u_{2k}=1+\frac{1}{2k}\to1$.
-
-**Odd.** $u_{2k+1}=-(1+\frac{1}{2k+1})\to-1$.
-
-**Conclusion.** $\limsup u_n=1$, $\liminf u_n=-1$; the sequence has no limit.
-
-@@@ topology-R-compact-char.md
----
-title: Sequential compactness in $\mathbb{R}$
-category: topology/topology-of-r
-level: l1
-difficulty: 4
-tags: sequential compactness, Bolzano-Weierstrass
-date: 2026-11-03
----
-
-## Statement
-
-State the Bolzano–Weierstrass theorem and explain its link with compactness of $[0,1]$.
-
-## Hint
-
-Every bounded sequence has a convergent subsequence.
-
-## Solution
-
-**Theorem (Bolzano–Weierstrass).** Every bounded sequence of reals has a convergent subsequence.
-
-**Link.** If $K\subseteq\mathbb{R}$ is compact (closed and bounded), every sequence in $K$ is bounded, so has a convergent subsequence; its limit lies in $K$ since $K$ is closed.
-
-**Conclusion.** Compactness implies sequential compactness in $\mathbb{R}$; the converse also holds.
-
-@@@ topology-R-accumulation.md
----
-title: Accumulation points of $\mathbb{Q}$
-category: topology/topology-of-r
-level: l1
-difficulty: 4
-tags: accumulation, rationals, density
-date: 2026-11-03
----
-
-## Statement
-
-Show that every real number is an accumulation point of $\mathbb{Q}$.
-
-## Hint
-
-Use density of $\mathbb{Q}$ in $\mathbb{R}$.
-
-## Solution
-
-**Proof.** Let $x\in\mathbb{R}$ and $\varepsilon>0$. Since $\mathbb{Q}$ is dense, there is $q\in\mathbb{Q}\cap(x-\varepsilon,x+\varepsilon)$. If $q\neq x$, done; if $q=x$, take another rational in the smaller ball $(x-\varepsilon,x+\varepsilon)\setminus\{x\}$.
-
-**Conclusion.** Every real number is an accumulation point of $\mathbb{Q}$; $\overline{\mathbb{Q}}=\mathbb{R}$.
