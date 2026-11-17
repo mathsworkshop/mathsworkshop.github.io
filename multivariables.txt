@@ -370,6 +370,9 @@ We conclude:
 \[
 f(x,y)\xrightarrow[(x,y)\to(0,0)]{}0.
 \]
+**Remark: ** we can also use the inequality 
+$$ x^4+y^6 = (x^2)^2+ (y^3)^2 \geq 2|x^2 y^3| $$
+to prove $|f(x,y)| \leq |xy|$ and deduce $\lim_{(x,y) \rightarrow (0,0)} f(x,y) = 0$. 
 @@@ continuity-radial-dependence-dif.md
 ---
 title: A function that is not continuous despite radial limits
