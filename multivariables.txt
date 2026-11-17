@@ -55,7 +55,7 @@ Polynomials in several variables are continuous (sums and products of continuous
 ---
 title: Coordinate projections are continuous
 category: calculus/multivariable/continuity
-level: l1
+level: l2
 difficulty: 2
 order: 3
 tags: projection, continuity, coordinates
@@ -79,7 +79,7 @@ $|\pi_1(x)-\pi_1(y)|=|x_1-y_1|\le\|x-y\|_1$.
 ---
 title: Norm and distance are continuous
 category: calculus/multivariable/continuity
-level: l1
+level: l2
 difficulty: 3
 order: 4
 tags: norm, distance, continuity
@@ -129,7 +129,7 @@ A quotient of continuous functions is continuous wherever the denominator is non
 ---
 title: Continuous extension
 category: calculus/multivariable/continuity
-level: lycee
+level: l2
 difficulty: 3
 order: 6
 tags: continuous extension, removable singularity
@@ -156,7 +156,7 @@ Use $\sin t/t\to1$.
 ---
 title: A discontinuous function with bounded values
 category: calculus/multivariable/continuity
-level: l1
+level: l2
 difficulty: 3
 order: 7
 tags: discontinuity, bounded, counterexample
@@ -183,7 +183,7 @@ Test the path $(x,0)$ and analyze the oscillation.
 ---
 title: Continuity via polar coordinates
 category: calculus/multivariable/continuity
-level: l1
+level: l2
 difficulty: 3
 order: 8
 tags: polar, continuity, bound
@@ -210,7 +210,7 @@ as $(x,y) \rightarrow (0,0)$.
 ---
 title: Discontinuity via two paths
 category: calculus/multivariable/continuity
-level: l1
+level: l2
 difficulty: 3
 order: 9
 tags: discontinuity, paths, limits
@@ -245,7 +245,7 @@ as $x \rightarrow 0$. Limits differ along different paths; $g$ is not continuous
 ---
 title: Continuity of a piecewise function
 category: calculus/multivariable/continuity
-level: l1
+level: l2
 difficulty: 3
 order: 10
 tags: piecewise, continuity, xy
@@ -269,7 +269,7 @@ $|xy|\le\frac12(x^2+y^2)$.
 ---
 title: A function that is not continuous despite radial limits
 category: calculus/multivariable/continuity
-level: l1
+level: l2
 difficulty: 4
 order: 11
 tags: continuity, radial limit, counterexample
@@ -297,7 +297,7 @@ Test the path $y=x^2$.
 ---
 title: Partial derivatives and the gradient
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 2
 tags: partial derivatives, gradient, chain rule
 date: 2026-11-02
@@ -330,7 +330,7 @@ $$\nabla f(1,0) = (0, 2).$$
 ---
 title: Critical points of a polynomial
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 2
 tags: critical points, polynomial, Hessian
 date: 2026-11-03
@@ -358,7 +358,7 @@ Set $\nabla f=0$; classify via the Hessian.
 ---
 title: Two critical points and their nature
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 3
 tags: critical points, saddle, maximum
 date: 2026-11-03
@@ -388,7 +388,7 @@ Solve $f_x=4-2x-6x^2=0$, $f_y=2-2y=0$; then use the Hessian at each point.
 ---
 title: A unique critical point that is a saddle
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 3
 tags: saddle, unique critical, Hessian
 date: 2026-11-03
@@ -416,7 +416,7 @@ $f_x=y(1+3x^2y)$, $f_y=x(1+2x^2y)$.
 ---
 title: Three-variable saddle point
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 4
 tags: three variables, saddle, Hessian
 date: 2026-11-03
@@ -445,7 +445,7 @@ $$H=\begin{pmatrix}0&-1&1\\-1&0&1\\1&1&0\end{pmatrix}.$$
 ---
 title: Lagrange multipliers on a circle
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 3
 tags: Lagrange, circle, extrema
 date: 2026-11-03
@@ -476,7 +476,7 @@ $$3=2\lambda x,\quad -1=2\lambda y,\quad x^2+y^2=5.$$
 ---
 title: Optimization under a linear constraint
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 3
 tags: Lagrange, linear constraint, minimum
 date: 2026-11-03
@@ -502,7 +502,7 @@ Substitute $y=(5-x)/2$ or use Lagrange.
 ---
 title: Maximizing a product
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 3
 tags: Lagrange, product, constraint
 date: 2026-11-03
@@ -528,7 +528,7 @@ Lagrange on the interior $x,y>0$; check the boundary separately.
 ---
 title: Lagrange with exponential objective
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 4
 tags: Lagrange, exponential, constrained maximum
 date: 2026-11-03
@@ -552,7 +552,7 @@ Maximize $xy$ under $x+y=1$ via AM-GM.
 ---
 title: Maximizing a volume with fixed perimeter
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 4
 tags: Lagrange, geometric optimization, volume
 date: 2026-11-03
@@ -579,7 +579,7 @@ $$yz=2\lambda(y+z),\quad xz=2\lambda(x+z),\quad xy=2\lambda(x+y).$$
 ---
 title: Distance from origin to an ellipsoid
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 4
 tags: Lagrange, ellipsoid, distance
 date: 2026-11-03
@@ -605,7 +605,7 @@ Maximize $x^2+y^2+z^2$ under the constraint; use Lagrange.
 ---
 title: Optimization under inequality constraints
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 4
 tags: inequality constraint, KKT, boundary
 date: 2026-11-03
@@ -661,7 +661,7 @@ Substitute $y=x$ first, then Lagrange on two variables.
 ---
 title: Shortest distance from a point to a line
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 4
 tags: Lagrange, distance, line
 date: 2026-11-03
@@ -687,7 +687,7 @@ Minimize $x^2+y^2$ under $2x+y=5$.
 ---
 title: Global extrema on a compact set
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 4
 tags: compactness, global extrema, boundary
 date: 2026-11-03
@@ -741,7 +741,7 @@ Hessian is diagonal with entries $(2,-2,2)$.
 ---
 title: Distance from point to plane
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 3
 tags: Lagrange, distance, plane
 date: 2026-11-03
@@ -767,7 +767,7 @@ Minimize $d^2=(x-1)^2+(y-1)^2+(z-1)^2$ under $x+y+z=0$.
 ---
 title: Boundary classification
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 3
 tags: boundary, classification, circle
 date: 2026-11-03
@@ -821,7 +821,7 @@ The maximum is the largest eigenvalue of $\begin{pmatrix}3&1\\1&3\end{pmatrix}$.
 ---
 title: Cauchy–Schwarz via optimization
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 4
 tags: Cauchy-Schwarz, optimization, inequality
 date: 2026-11-03
@@ -847,7 +847,7 @@ Maximize $x+y$ under $x^2+y^2=1$; multiply by the radius.
 ---
 title: Summary of constrained optimization
 category: calculus/multivariable/constrained-optimisation
-level: lycee
+level: l2
 difficulty: 2
 tags: summary, constrained optimization
 date: 2026-11-03
@@ -883,7 +883,7 @@ Review critical points, Hessian, Lagrange, boundary.
 ---
 title: Line integral of a scalar field
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 2
 tags: line integral, scalar field, parametrization
 date: 2026-11-03
@@ -910,7 +910,7 @@ $$\int_0^1(t+t)\sqrt2\,dt=2\sqrt2\int_0^1 t\,dt=\sqrt2.$$
 ---
 title: Work done by a force field
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: work, line integral, vector field
 date: 2026-11-03
@@ -938,7 +938,7 @@ Work $=\int_C\vec F\cdot d\vec r$. Parametrize $\gamma(t)=(t,2t)$.
 ---
 title: Line integral along a circle
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: line integral, circle, parametrization
 date: 2026-11-03
@@ -966,7 +966,7 @@ $\gamma(t)=(\cos t,\sin t)$, $t\in[0,2\pi]$.
 ---
 title: Line integral on a piecewise path
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: piecewise path, line integral, work
 date: 2026-11-03
@@ -994,7 +994,7 @@ Split into two segments; sum the contributions.
 ---
 title: Conservative vector field
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: conservative, gradient, path independence
 date: 2026-11-03
@@ -1020,7 +1020,7 @@ Find a potential $\phi$ with $\nabla\phi=\vec F$.
 ---
 title: Testing whether a field is conservative
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: conservative, curl, test
 date: 2026-11-03
@@ -1046,7 +1046,7 @@ For a field $(P,Q)$ in $\mathbb{R}^2$: check $P_y=Q_x$.
 ---
 title: Finding a potential function
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 4
 tags: potential, conservative, integration
 date: 2026-11-03
@@ -1074,7 +1074,7 @@ Integrate $P=e^x\cos y$ in $x$, then use the condition on $Q$.
 ---
 title: Fundamental theorem for line integrals
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: fundamental theorem, line integral, potential
 date: 2026-11-03
@@ -1099,7 +1099,7 @@ $$\int_C\vec F\cdot d\vec r=\int_a^b\nabla\phi(\gamma(t))\cdot\gamma'(t)\,dt=\in
 ---
 title: Closed paths in conservative fields
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 2
 tags: closed path, conservative, zero integral
 date: 2026-11-03
@@ -1123,7 +1123,7 @@ Use the fundamental theorem: $\phi(B)-\phi(A)$ with $A=B$.
 ---
 title: Green's theorem
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 4
 tags: Green theorem, curl, region
 date: 2026-11-03
@@ -1149,7 +1149,7 @@ $\oint_C(P\,dx+Q\,dy)=\iint_D(Q_x-P_y)\,dx\,dy$.
 ---
 title: Green's theorem with a general field
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 4
 tags: Green, general field, region
 date: 2026-11-03
@@ -1177,7 +1177,7 @@ $Q_x-P_y=3x^2+3y^2$.
 ---
 title: Area using Green's theorem
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: area, Green, closed curve
 date: 2026-11-03
@@ -1205,7 +1205,7 @@ Area $=\frac12\oint_C(x\,dy-y\,dx)$.
 ---
 title: The divergence
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 2
 tags: divergence, vector field, computation
 date: 2026-11-03
@@ -1231,7 +1231,7 @@ $\operatorname{div}\vec F=\partial_xP+\partial_yQ+\partial_zR$.
 ---
 title: The curl
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: curl, vector field, rotation
 date: 2026-11-03
@@ -1258,7 +1258,7 @@ $\nabla\times\vec F=(R_y-Q_z,\,P_z-R_x,\,Q_x-P_y)$.
 ---
 title: The divergence theorem
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 4
 tags: divergence theorem, flux, surface
 date: 2026-11-03
@@ -1284,7 +1284,7 @@ $\iint_S\vec F\cdot\vec n\,dS=\iiint_V\operatorname{div}\vec F\,dV$.
 ---
 title: Flux through a cube
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 4
 tags: divergence, cube, flux
 date: 2026-11-03
@@ -1310,7 +1310,7 @@ $\operatorname{div}\vec F=2x$; integrate over the cube.
 ---
 title: Stokes' theorem
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 4
 tags: Stokes theorem, curl, surface
 date: 2026-11-03
@@ -1338,7 +1338,7 @@ $\oint=\iint_S(\nabla\times\vec F)\cdot\vec n\,dS$; $\nabla\times\vec F=(0,0,2)$
 ---
 title: Stokes with a hemisphere
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 4
 tags: Stokes, hemisphere, closed curve
 date: 2026-11-03
@@ -1364,7 +1364,7 @@ $\nabla\times\vec F=(0,0,-1)$ if $P=z$, $Q=0$, $R=0$: $\nabla\times\vec F=(0,-P_
 ---
 title: Area of a region using line integral
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 4
 tags: line integral, area, polar
 date: 2026-11-03
@@ -1394,7 +1394,7 @@ $x\,dy-y\,dx=r^2\,d\theta$ for polar curves.
 ---
 title: Green's theorem on an annulus
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 4
 tags: Green, annulus, inner boundary
 date: 2026-11-03
@@ -1532,7 +1532,7 @@ $\operatorname{div}\vec F=3(x^2+y^2+z^2)$; integrate in spherical.
 ---
 title: Green with symmetry
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: Green, symmetry, shortcut
 date: 2026-11-03
@@ -1613,7 +1613,7 @@ Apply the divergence theorem to $\vec F=u\nabla v-v\nabla u$.
 ---
 title: An application of Green's theorem
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: Green, application, area
 date: 2026-11-03
@@ -1671,7 +1671,7 @@ $\nabla\times\vec F=0$; find $\phi$ with $\nabla\phi=\vec F$.
 ---
 title: Flux through a flat surface
 category: calculus/multivariable/vector-calculus
-level: l1
+level: l2
 difficulty: 3
 tags: flux, plane surface, dot product
 date: 2026-11-03
@@ -1697,7 +1697,7 @@ Flux $=\vec F\cdot\vec n\cdot\text{area}$.
 ---
 title: Double integral over a rectangle
 category: calculus/multivariable/multiple-integrals
-level: lycee
+level: l2
 difficulty: 1
 tags: double integral, rectangle, iterated
 date: 2026-11-03
@@ -1726,7 +1726,7 @@ $$I=\int_0^{\pi}\int_0^1 2y\sin x\,dy\,dx.$$
 ---
 title: Double integral under a parabola
 category: calculus/multivariable/multiple-integrals
-level: lycee
+level: l2
 difficulty: 2
 tags: double integral, type-I domain, parabola
 date: 2026-11-03
@@ -1754,7 +1754,7 @@ For $x\in[0,1]$, $y$ ranges from $0$ to $\sqrt x$.
 ---
 title: Double integral over a triangular domain
 category: calculus/multivariable/multiple-integrals
-level: lycee
+level: l2
 difficulty: 2
 tags: triangle, double integral, bounds
 date: 2026-11-03
@@ -1782,7 +1782,7 @@ For $x\in[0,\pi]$, $y$ ranges from $0$ to $\pi-x$.
 ---
 title: Separable integrand on a square
 category: calculus/multivariable/multiple-integrals
-level: lycee
+level: l2
 difficulty: 2
 tags: separability, product of integrals, square
 date: 2026-11-03
@@ -1807,7 +1807,7 @@ $$I=\left(\int_0^1 x^2\,dx\right)\left(\int_0^1\frac{dy}{1+y^2}\right)=\frac13\c
 ---
 title: A symmetric triangle integral
 category: calculus/multivariable/multiple-integrals
-level: lycee
+level: l2
 difficulty: 2
 tags: symmetry, triangle, double integral
 date: 2026-11-03
@@ -1836,7 +1836,7 @@ $$\int_0^2\int_0^{2-x}x\,dy\,dx=\int_0^2 x(2-x)\,dx=\left[x^2-\frac{x^3}{3}\righ
 ---
 title: Double integral over a disk in polar coordinates
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 3
 tags: polar coordinates, disk, Jacobian
 date: 2026-11-03
@@ -1865,7 +1865,7 @@ $$I=\int_0^{2\pi}\int_0^1\frac{r}{\sqrt{1+r^2}}\,dr\,d\theta.$$
 ---
 title: Double integral over an annulus
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 3
 tags: polar coordinates, annulus, angular integral
 date: 2026-11-03
@@ -1896,7 +1896,7 @@ $$J=\int_0^{2\pi}\frac{d\theta}{1+\frac12\sin2\theta}=2\int_{-\pi/2}^{\pi/2}\fra
 ---
 title: Double integral over a disk tangent at origin
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 3
 tags: polar coordinates, circle offset, integral
 date: 2026-11-03
@@ -1920,7 +1920,7 @@ The disk $(x-1)^2+y^2\le1$ has polar equation $0\le r\le2\cos\theta$ with $\thet
 ---
 title: Linear change of variables
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: change of variables, Jacobian, triangle
 date: 2026-11-03
@@ -1949,7 +1949,7 @@ $$I=\frac12\int_0^2\int_{-2}^{-u}v\,dv\,du=\frac12\int_0^2\left(\frac{u^2}{2}-2\
 ---
 title: Change of variables to simplify the integrand
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: change of variables, Jacobian, triangular
 date: 2026-11-03
@@ -1980,7 +1980,7 @@ $$J=\int_0^1\int_0^u\int_0^v\frac{w^3}{uv}\,dw\,dv\,du=\int_0^1\int_0^u\frac{v^3
 ---
 title: Triple integral over a simplex
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 3
 tags: triple integral, simplex, iterated
 date: 2026-11-03
@@ -2009,7 +2009,7 @@ $$I=\int_0^1\int_0^{1-x}\int_0^{1-x-y}x\,dz\,dy\,dx=\int_0^1\int_0^{1-x}x(1-x-y)
 ---
 title: Mass of a cube with variable density
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 3
 tags: triple integral, density, cube
 date: 2026-11-03
@@ -2040,7 +2040,7 @@ $$M=\int_0^1\int_0^1\int_0^1(x^2y+xz^2)\,dz\,dy\,dx.$$
 ---
 title: Centre of gravity of a planar region
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: centroid, parabola, uniform density
 date: 2026-11-03
@@ -2073,7 +2073,7 @@ so $\bar y=\frac{625/3}{125/6}=10$... wait, careful: $\bar y=625/(3\cdot125/6)=1
 ---
 title: The Fubini trick
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: Fubini, double integral, iterated
 date: 2026-11-03
@@ -2105,7 +2105,7 @@ Both equal $\frac12\ln2\cdot\frac{\pi}{4}=\frac{\pi\ln2}{8}$. So $2I=\frac{\pi\l
 ---
 title: Polar region between two circles
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: polar, circle, region between circles
 date: 2026-11-03
@@ -2136,7 +2136,7 @@ In polar: $x^2+y^2\le1$ gives $r\le1$; $x^2+y^2\ge2y$ gives $r\ge2\sin\theta$. D
 ---
 title: Triple integral with sine
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: triple integral, sine, simplex
 date: 2026-11-03
@@ -2167,7 +2167,7 @@ $$I=\int_0^\pi\int_0^{\pi-x}\int_0^{\pi-x-y}\frac{\sin x}{\pi-x-y}\,dz\,dy\,dx.$
 ---
 title: Triple integral over a cube
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: cube, triple integral, iterated
 date: 2026-11-03
@@ -2195,7 +2195,7 @@ Integrate in $x$ first: $\int_0^1\frac{dx}{(x+c)^3}=\frac{1}{2}\left(\frac{1}{c^
 ---
 title: Triple integral over a simplex with cube
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: simplex, triple integral, iterated
 date: 2026-11-03
@@ -2227,7 +2227,7 @@ $$I=\frac12\int_0^1\left(\frac{1}{x+1}-\frac12\right)dx-\frac18\cdot\frac12=\fra
 ---
 title: Polar integral over a half-disk
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 3
 tags: polar, half-disk, integral
 date: 2026-11-03
@@ -2252,7 +2252,7 @@ $$I=\int_0^\pi\int_0^1 r\cdot r\,dr\,d\theta=\pi\cdot\frac{1}{3}=\frac{\pi}{3}.$
 ---
 title: 3D change of variables
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: change of variables, 3D, Jacobian
 date: 2026-11-03
@@ -2279,7 +2279,7 @@ $$\det\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix}=1.$$
 ---
 title: Volume of a sphere by triple integral
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: spherical coordinates, volume, sphere
 date: 2026-11-03
@@ -2308,7 +2308,7 @@ $$V=\int_0^{2\pi}\int_0^\pi\int_0^R r^2\sin\varphi\,dr\,d\varphi\,d\theta=2\pi\c
 ---
 title: Spherical coordinates with a radial integrand
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: spherical coordinates, radial, integration
 date: 2026-11-03
@@ -2337,7 +2337,7 @@ $$I=\int_0^{2\pi}\int_0^\pi\int_0^R e^{-r}r^2\sin\varphi\,dr\,d\varphi\,d\theta=
 ---
 title: Volume using cylindrical coordinates
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 4
 tags: cylindrical coordinates, volume, cone
 date: 2026-11-03
@@ -2363,7 +2363,7 @@ Cylindrical: $x=r\cos\theta$, $y=r\sin\theta$, $z=z$; Jacobian $r$.
 ---
 title: Cartesian vs polar computation
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 3
 tags: polar vs cartesian, comparison, disk
 date: 2026-11-03
@@ -2389,7 +2389,7 @@ Cartesian: use $y=\pm\sqrt{1-x^2}$. Polar: integrand $r^2$, Jacobian $r$.
 ---
 title: Boundary effects
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 3
 tags: boundary, integration bounds, evaluation
 date: 2026-11-03
@@ -2463,7 +2463,7 @@ Compute the $2\times 2$ determinant of partials.
 ---
 title: Summary of multiple integrals
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 2
 tags: summary, multiple integrals
 date: 2026-11-03
@@ -2497,7 +2497,7 @@ Review Fubini, change of variables, polar, spherical, cylindrical.
 ---
 title: First partial derivatives
 category: calculus/multivariable/partial-derivatives
-level: lycee
+level: l2
 difficulty: 1
 tags: partial derivatives, definition, computation
 date: 2026-11-03
@@ -2525,7 +2525,7 @@ $$\frac{\partial f}{\partial y}=x^2+6xy.$$
 ---
 title: Evaluating partial derivatives at a point
 category: calculus/multivariable/partial-derivatives
-level: lycee
+level: l2
 difficulty: 1
 tags: partial derivatives, evaluation, point
 date: 2026-11-03
@@ -2552,7 +2552,7 @@ $$\frac{\partial f}{\partial x}=ye^{xy}+\frac{2x}{1+x^2},\qquad \frac{\partial f
 ---
 title: The gradient
 category: calculus/multivariable/partial-derivatives
-level: lycee
+level: l2
 difficulty: 2
 tags: gradient, vector, direction
 date: 2026-11-03
@@ -2580,7 +2580,7 @@ $\nabla f=(\partial_x f,\partial_y f,\partial_z f)$.
 ---
 title: Directional derivative
 category: calculus/multivariable/partial-derivatives
-level: lycee
+level: l2
 difficulty: 2
 tags: directional derivative, gradient, direction
 date: 2026-11-03
@@ -2606,7 +2606,7 @@ $D_{\vec u}f=\nabla f\cdot\vec u$.
 ---
 title: General chain rule
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 3
 tags: chain rule, composition, multivariable
 date: 2026-11-03
@@ -2637,7 +2637,7 @@ $$\frac{\partial f}{\partial y}=2uv\cdot1+u^2\cdot x=2(x+y)(xy)+x(x+y)^2=(x+y)(2
 ---
 title: Second-order partial derivatives
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 3
 tags: higher order, Schwarz, second derivatives
 date: 2026-11-03
@@ -2663,7 +2663,7 @@ Differentiate $f_x$ and $f_y$ once more; compare $f_{xy}$ and $f_{yx}$.
 ---
 title: Schwarz's theorem and a counterexample
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 3
 tags: Schwarz theorem, mixed partials, symmetry
 date: 2026-11-03
@@ -2698,7 +2698,7 @@ A direct computation gives $f_{xy}(0,0)=-1$ and $f_{yx}(0,0)=1$.
 ---
 title: Tangent plane to a graph
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 3
 tags: tangent plane, differentiability, graph
 date: 2026-11-03
@@ -2724,7 +2724,7 @@ The tangent plane is $z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$.
 ---
 title: Differentiability of a piecewise function
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 4
 tags: differentiability, continuity, piecewise
 date: 2026-11-03
@@ -2752,7 +2752,7 @@ Bound $|xy|\le(x^2+y^2)/2$ and use the definition of partials.
 ---
 title: The differential
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 3
 tags: differential, linearization, approximation
 date: 2026-11-03
@@ -2782,7 +2782,7 @@ $df=f_x(a,b)\,dx+f_y(a,b)\,dy$ with $dx=0.01$, $dy=-0.01$.
 ---
 title: Level curves and gradients
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 4
 tags: level curves, gradient, orthogonality
 date: 2026-11-03
@@ -2811,7 +2811,7 @@ $$(2\sqrt c\cos t,2\sqrt c\sin t)\cdot(-\sqrt c\sin t,\sqrt c\cos t)=0.$$
 ---
 title: Implicit differentiation
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 4
 tags: implicit differentiation, Implicit Function Theorem
 date: 2026-11-03
@@ -2865,7 +2865,7 @@ Jacobian columns: derivatives with respect to $x$ and $y$.
 ---
 title: Jacobian of a composition
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 4
 tags: Jacobian, composition, chain rule
 date: 2026-11-03
@@ -2892,7 +2892,7 @@ $$J_{F\circ G}(x)=J_F(G(x))\cdot J_G(x).$$
 ---
 title: Clairaut's theorem
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 3
 tags: Clairaut, Schwarz, mixed partials
 date: 2026-11-03
@@ -2918,7 +2918,7 @@ Continuity of second partials is sufficient.
 ---
 title: Finding critical points
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 3
 tags: critical points, stationary, gradient
 date: 2026-11-03
@@ -2946,7 +2946,7 @@ Set both partial derivatives to zero.
 ---
 title: The Hessian matrix
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 4
 tags: Hessian, second derivatives, quadratic form
 date: 2026-11-03
@@ -2974,7 +2974,7 @@ The Hessian is the matrix of second partials; classify via its eigenvalues.
 ---
 title: Taylor expansion of order 2
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 4
 tags: Taylor expansion, multivariable, approximation
 date: 2026-11-03
@@ -3001,7 +3001,7 @@ $$f(h,k)=f(0,0)+ \nabla f(0,0) \cdot (h,k)+\frac{1}{2}(h,k) \cdot H(0,0) \cdot (
 ---
 title: Partial derivatives exist but function is not differentiable
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 5
 tags: differentiability, counterexample, partial derivatives
 date: 2026-11-03
@@ -3027,7 +3027,7 @@ Compute partial derivatives along the axes; check continuity along $y=x$.
 ---
 title: Saddle point
 category: calculus/multivariable/constrained-optimisation
-level: l1
+level: l2
 difficulty: 3
 tags: saddle point, Hessian, classification
 date: 2026-11-03
@@ -3055,7 +3055,7 @@ Compute the Hessian: one positive and one negative eigenvalue.
 ---
 title: Euler's theorem for homogeneous functions
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 2
 tags: homogeneous functions, Euler, partial derivatives
 date: 2026-11-03
@@ -3082,7 +3082,7 @@ Differentiate the homogeneity identity with respect to $t$ and evaluate at $t=1$
 ---
 title: The Laplacian
 category: calculus/multivariable/partial-derivatives
-level: l1
+level: l2
 difficulty: 3
 tags: Laplacian, harmonic functions, second derivatives
 date: 2026-11-03
@@ -3234,7 +3234,7 @@ So $\frac{\partial f}{\partial x}$ is continuous at $(0,0)$, and similarly for $
 ---
 title: Double integral over a triangular domain
 category: calculus/multivariable/multiple-integrals
-level: l1
+level: l2
 difficulty: 2
 tags: double integral, iterated integration, triangular domain
 date: 2026-11-02
