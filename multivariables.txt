@@ -370,7 +370,7 @@ We conclude:
 \[
 f(x,y)\xrightarrow[(x,y)\to(0,0)]{}0.
 \]
-@@@ continuity-radial-dependence.md
+@@@ continuity-radial-dependence-dif.md
 ---
 title: A function that is not continuous despite radial limits
 category: calculus/multivariable/continuity
