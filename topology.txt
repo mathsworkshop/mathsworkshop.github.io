@@ -1,112 +1,3 @@
-@@@ topology-R-open-interval.md
----
-title: Open intervals are open sets
-category: topology/topology-of-r/r-open-closed
-level: l1
-difficulty: 1
-order: 1
-tags: open sets, open intervals, definition
-date: 2026-11-03
----
-
-## Statement
-
-Show that any open interval $]a,b[$ (with $a<b$) is an open set of $\mathbb{R}$.
-
-## Hint
-
-For any $x\in]a,b[$, take $r=\min(x-a,b-x)>0$; then $]x-r,x+r[\subseteq]a,b[$.
-
-## Solution
-
-**Radius.** Let $x\in]a,b[$ and $r=\min(x-a,b-x)>0$. Then for any $y\in]x-r,x+r[$: $y<x+r\le b$ and $y>x-r\ge a$. So $y\in]a,b[$.
-
-**Conclusion.** Every $x\in]a,b[$ has a neighbourhood inside $]a,b[$; the interval is open.
-
-@@@ topology-R-open-ball.md
----
-title: Open balls in $\mathbb{R}$
-category: topology/topology-of-r/r-open-closed
-level: l1
-difficulty: 1
-order: 1
-tags: open ball, interval, topology
-date: 2026-11-03
----
-
-## Statement
-
-For $a\in\mathbb{R}$ and $r>0$, describe the open ball $B(a,r)$ and show it is an open set.
-
-## Hint
-
-$B(a,r)=\{x:|x-a|<r\}=]a-r,a+r[$.
-
-## Solution
-
-**Identification.** $B(a,r)$ is the open interval $]a-r,a+r[$.
-
-**Openness.** Every point of $]a-r,a+r[$ has a small ball around it contained in $]a-r,a+r[$ (previous exercise).
-
-**Conclusion.** Open balls are open sets; they are the building blocks of the topology of $\mathbb{R}$.
-
-@@@ topology-R-closed-definition.md
----
-title: Closed sets
-category: topology/topology-of-r/r-open-closed
-level: l1
-difficulty: 1
-order: 1
-tags: closed sets, complement, definition
-date: 2026-11-03
----
-
-## Statement
-
-Define a closed set in $\mathbb{R}$ and give two examples and one counterexample.
-
-## Hint
-
-Closed = complement is open.
-
-## Solution
-
-**Definition.** $F\subseteq\mathbb{R}$ is closed iff $\mathbb{R}\setminus F$ is open.
-
-**Examples.** $\emptyset$, $\mathbb{R}$, $[0,1]$, singletons $\{a\}$.
-
-**Counterexample.** $]0,1]$ is neither open nor closed: it is not open (0 is a boundary point) and its complement $]-\infty,0]\cup]1,+\infty[$ is not open.
-
-**Conclusion.** Some sets are neither open nor closed.
-
-@@@ topology-R-boundary.md
----
-title: Interior, closure, boundary
-category: topology/topology-of-r/r-open-closed
-level: l1
-difficulty: 1
-order: 2
-tags: interior, closure, boundary
-date: 2026-11-03
----
-
-## Statement
-
-For $A=]0,1]\cup\{2\}$, compute the interior, closure, and boundary of $A$.
-
-## Hint
-
-$\mathring A$ = union of open subsets of $A$; $\overline A$ = smallest closed set containing $A$; $\partial A=\overline A\setminus\mathring A$.
-
-## Solution
-
-**Interior.** $\mathring A=]0,1[$: $1$ is not interior (every ball around $1$ hits the complement), $2$ is not interior (isolated).
-
-**Closure.** $\overline A=[0,1]\cup\{2\}$: the limit points of $]0,1]$ are in $[0,1]$; $2$ is already in $A$.
-
-**Boundary.** $\partial A=\{0,1,2\}$.
-
-**Conclusion.** Interior $]0,1[$, closure $[0,1]\cup\{2\}$, boundary $\{0,1,2\}$.
 @@@ rt-oc-001-intervals-are-open-or-closed.md
 ---
 title: Open intervals are open and closed intervals are closed
@@ -151,13 +42,98 @@ so $y\in(a,b)$. Hence $(x-\varepsilon,x+\varepsilon)\subset(a,b)$.
 
 **Remark.** The same $\varepsilon$ cannot be chosen uniformly: for $(0,1)$ the admissible $\varepsilon$ at the point $x$ tends to $0$ as $x\to0$ or $x\to1$. That is why an open set can fail to be "uniformly" open, and why the distinction between open and closed intervals matters in analysis.
 
+@@@ topology-R-open-ball.md
+---
+title: Open balls in ℝ
+category: topology/topology-of-r/r-open-closed
+level: l1
+difficulty: 1
+order: 2
+tags: open ball, interval, topology
+date: 2026-11-03
+---
+
+## Statement
+
+For $a\in\mathbb{R}$ and $r>0$, describe the open ball $B(a,r)$ and show it is an open set.
+
+## Hint
+
+$B(a,r)=\{x:|x-a|<r\}=]a-r,a+r[$.
+
+## Solution
+
+**Identification.** $B(a,r)$ is the open interval $]a-r,a+r[$.
+
+**Openness.** Every point of $]a-r,a+r[$ has a small ball around it contained in $]a-r,a+r[$ (previous exercise).
+
+**Conclusion.** Open balls are open sets; they are the building blocks of the topology of $\mathbb{R}$.
+
+@@@ topology-R-closed-definition.md
+---
+title: Closed sets
+category: topology/topology-of-r/r-open-closed
+level: l1
+difficulty: 1
+order: 3
+tags: closed sets, complement, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Define a closed set in $\mathbb{R}$ and give two examples and one counterexample.
+
+## Hint
+
+Closed = complement is open.
+
+## Solution
+
+**Definition.** $F\subseteq\mathbb{R}$ is closed iff $\mathbb{R}\setminus F$ is open.
+
+**Examples.** $\emptyset$, $\mathbb{R}$, $[0,1]$, singletons $\{a\}$.
+
+**Counterexample.** $]0,1]$ is neither open nor closed: it is not open (0 is a boundary point) and its complement $]-\infty,0]\cup]1,+\infty[$ is not open.
+
+**Conclusion.** Some sets are neither open nor closed.
+
+@@@ topology-R-boundary.md
+---
+title: Interior, closure, boundary
+category: topology/topology-of-r/r-open-closed
+level: l1
+difficulty: 1
+order: 4
+tags: interior, closure, boundary
+date: 2026-11-03
+---
+
+## Statement
+
+For $A=]0,1]\cup\{2\}$, compute the interior, closure, and boundary of $A$.
+
+## Hint
+
+$\mathring A$ = union of open subsets of $A$; $\overline A$ = smallest closed set containing $A$; $\partial A=\overline A\setminus\mathring A$.
+
+## Solution
+
+**Interior.** $\mathring A=]0,1[$: $1$ is not interior (every ball around $1$ hits the complement), $2$ is not interior (isolated).
+
+**Closure.** $\overline A=[0,1]\cup\{2\}$: the limit points of $]0,1]$ are in $[0,1]$; $2$ is already in $A$.
+
+**Boundary.** $\partial A=\{0,1,2\}$.
+
+**Conclusion.** Interior $]0,1[$, closure $[0,1]\cup\{2\}$, boundary $\{0,1,2\}$.
+
 @@@ rt-oc-002-unions-and-intersections.md
 ---
 title: Finite intersections, infinite unions: what is allowed
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 1
-order: 2
+order: 7
 tags: open sets, closed sets, unions, intersections, counterexamples
 date: 2026-11-12
 ---
@@ -196,7 +172,7 @@ title: Closed sets are the sets that contain their limits
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 2
-order: 3
+order: 8
 tags: closed set, sequences, characterisation
 date: 2026-11-12
 ---
@@ -229,7 +205,7 @@ title: Interior, closure and boundary of five classical sets
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 1
-order: 5
+order: 10
 tags: interior, closure, boundary, rationals, integers
 date: 2026-11-12
 ---
@@ -273,7 +249,7 @@ title: Accumulation points, isolated points and the derived set
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 2
-order: 11
+order: 17
 tags: accumulation point, isolated point, derived set
 date: 2026-11-12
 ---
@@ -318,7 +294,7 @@ title: Four equivalent descriptions of the closure
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 2
-order: 6
+order: 11
 tags: closure, adherent point, sequences, distance to a set
 date: 2026-11-12
 ---
@@ -361,7 +337,7 @@ title: The interior as the largest open subset
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 2
-order: 7
+order: 12
 tags: interior, complement, duality
 date: 2026-11-12
 ---
@@ -399,7 +375,7 @@ title: Closure of a union, closure of an intersection
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 2
-order: 8
+order: 13
 tags: closure, union, intersection, counterexample
 date: 2026-11-12
 ---
@@ -432,7 +408,7 @@ title: Interior of an intersection, interior of a union
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 2
-order: 9
+order: 14
 tags: interior, union, intersection, counterexample
 date: 2026-11-12
 ---
@@ -463,7 +439,7 @@ title: The only subsets of ℝ that are both open and closed
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 3
-order: 17
+order: 22
 tags: clopen, connectedness, supremum
 date: 2026-11-12
 ---
@@ -500,7 +476,7 @@ title: Every open subset of ℝ is a countable union of disjoint open intervals
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 4
-order: 18
+order: 23
 tags: structure of open sets, connected components, countability
 date: 2026-11-12
 ---
@@ -541,7 +517,7 @@ title: A dense open set of arbitrarily small total length
 category: topology/topology-of-r/r-open-closed
 level: l3
 difficulty: 4
-order: 19
+order: 24
 tags: dense open set, countable cover, compactness, nowhere dense
 date: 2026-11-12
 ---
@@ -583,7 +559,7 @@ title: The sum A + B of two subsets of ℝ
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 3
-order: 22
+order: 27
 tags: sum of sets, closed sets, compact sets, counterexample
 date: 2026-11-12
 ---
@@ -621,7 +597,7 @@ title: Open, closed or neither? A classification exercise
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 1
-order: 15
+order: 20
 tags: open set, closed set, classification, continuity
 date: 2026-11-12
 ---
@@ -666,7 +642,7 @@ title: Countable unions of closed sets and countable intersections of open sets
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 3
-order: 24
+order: 29
 tags: F-sigma, G-delta, distance function, rationals
 date: 2026-11-12
 ---
@@ -703,7 +679,7 @@ title: Open and closed relative to a subset
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 3
-order: 23
+order: 28
 tags: relative topology, subspace, clopen, rationals
 date: 2026-11-12
 ---
@@ -745,7 +721,7 @@ title: A sequential characterisation of open sets
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 2
-order: 4
+order: 9
 tags: open set, sequences, characterisation
 date: 2026-11-12
 ---
@@ -778,7 +754,7 @@ title: The distance function d(x, A)
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 3
-order: 20
+order: 25
 tags: distance to a set, Lipschitz, closure, Bolzano-Weierstrass
 date: 2026-11-12
 ---
@@ -815,7 +791,7 @@ title: Disjoint closed sets can be arbitrarily close
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 3
-order: 21
+order: 26
 tags: distance between sets, closed sets, compact sets, separation
 date: 2026-11-12
 ---
@@ -852,7 +828,7 @@ title: Properties of the boundary
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 3
-order: 10
+order: 15
 tags: boundary, closure, interior, clopen sets
 date: 2026-11-12
 ---
@@ -890,7 +866,7 @@ title: Iterating the derived set
 category: topology/topology-of-r/r-open-closed
 level: l3
 difficulty: 4
-order: 12
+order: 17
 tags: derived set, accumulation points, iteration
 date: 2026-11-12
 ---
@@ -928,7 +904,7 @@ title: A set has at most countably many isolated points
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 3
-order: 13
+order: 18
 tags: isolated points, countability, rational intervals
 date: 2026-11-12
 ---
@@ -963,7 +939,7 @@ title: A non-empty closed set without isolated points is uncountable
 category: topology/topology-of-r/r-open-closed
 level: l3
 difficulty: 4
-order: 14
+order: 19
 tags: perfect set, nested intervals, uncountability, Cantor
 date: 2026-11-12
 ---
@@ -1001,7 +977,7 @@ title: Closed sets are zero sets of continuous functions
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 2
-order: 25
+order: 30
 tags: closed set, zero set, continuous function, distance to a set
 date: 2026-11-12
 ---
@@ -1034,7 +1010,7 @@ title: When is an infinite union of closed sets closed?
 category: topology/topology-of-r/r-open-closed
 level: l3
 difficulty: 4
-order: 26
+order: 31
 tags: locally finite family, union of closed sets, counterexamples
 date: 2026-11-12
 ---
@@ -1071,7 +1047,7 @@ title: True or false? Ten statements on open and closed sets
 category: topology/topology-of-r/r-open-closed
 level: l2
 difficulty: 2
-order: 16
+order: 21
 tags: true or false, counterexamples, open sets, closed sets
 date: 2026-11-12
 ---
@@ -2101,7 +2077,7 @@ For (1): the member of the cover containing $0$ also contains all but finitely m
 
 @@@ rt-cp-003-compact-sets-are-closed-and-bounded.md
 ---
-title: Compact subsets of R are closed and bounded
+title: Compact subsets of ℝ are closed and bounded
 category: topology/topology-of-r/r-compactness
 level: l2
 difficulty: 2
@@ -3498,7 +3474,7 @@ Look at the two points $p<q$ where the maximum $M$ is attained. Show that the va
 
 @@@ rt-cn-014-components-of-open-sets.md
 ---
-title: An open set of R is a countable union of disjoint open intervals
+title: An open set of ℝ is a countable union of disjoint open intervals
 category: topology/topology-of-r/r-connectedness
 level: l3
 difficulty: 4
@@ -3535,7 +3511,7 @@ For $x\in U$ let $C_x$ be the union of all intervals contained in $U$ that conta
 
 @@@ rt-cn-015-the-line-is-not-the-plane.md
 ---
-title: R is not homeomorphic to R²
+title: ℝ is not homeomorphic to ℝ²
 category: topology/topology-of-r/r-connectedness
 level: l3
 difficulty: 4
@@ -3567,7 +3543,7 @@ For part 2: remove a point on each side and compare the connectedness of what re
 
 @@@ rt-cn-016-connected-equals-path-connected-in-r.md
 ---
-title: In R, connected, path-connected and interval all mean the same
+title: In ℝ, connected, path-connected and interval all mean the same
 category: topology/topology-of-r/r-connectedness
 level: l2
 difficulty: 3
@@ -4062,7 +4038,7 @@ Applying this to the dense set $A=V$ shows that $U\cap V$ is dense; it is open a
 
 @@@ rt-dn-005-subgroups-of-the-real-line.md
 ---
-title: Every subgroup of R is dense or of the form aZ
+title: Every subgroup of ℝ is dense or of the form aℤ
 category: topology/topology-of-r/r-density
 level: l2
 difficulty: 3
@@ -4099,7 +4075,7 @@ Since $H\ne\{0\}$ and $x\in H\Rightarrow-x\in H$, the set $H\cap(0,\infty)$ is n
 
 @@@ rt-dn-006-z-plus-alpha-z.md
 ---
-title: The group Z + αZ is dense exactly when α is irrational
+title: The group ℤ + αℤ is dense exactly when α is irrational
 category: topology/topology-of-r/r-density
 level: l2
 difficulty: 3
@@ -4151,7 +4127,7 @@ Prove that the set $\{\cos n:n\in\mathbb{N}\}$ is dense in $[-1,1]$. (You may us
 
 ## Hint
 
-Apply problem 6 to $\alpha=2\pi$: elements of $\mathbb{Z}+2\pi\mathbb{Z}$ approximate any $x$, and the cosine does not see the multiples of $2\pi$.
+Apply the previous problem to $\alpha=2\pi$: elements of $\mathbb{Z}+2\pi\mathbb{Z}$ approximate any $x$, and the cosine does not see the multiples of $2\pi$.
 
 ## Solution
 
@@ -4653,7 +4629,7 @@ A subset of a nowhere dense set is nowhere dense. A single point is closed with 
 
 @@@ rt-dn-020-the-baire-category-theorem.md
 ---
-title: The Baire category theorem for R
+title: The Baire category theorem for ℝ
 category: topology/topology-of-r/r-density
 level: m1
 difficulty: 4
@@ -6129,7 +6105,7 @@ $$\|A'B'-AB\|\le(\|B\|+1)\|A'-A\|+\|A\|\,\|B'-B\|\xrightarrow[(A',B')\to(A,B)]{}
 **Remark.** The map is *not* uniformly continuous on $M_n\times M_n$: take $A=B=tI$ and $A'=B'=(t+\frac1t)I$; the distance is $\frac{2\sqrt n}{t}\to0$ but $\|A'B'-AB\|=\|(2+t^{-2})I\|\ge2$. This is the same phenomenon as for $(x,y)\mapsto xy$ on $\mathbb{R}^2$. Together with the next problems it shows that $GL_n(\mathbb{R})$ is a topological group.
 @@@ mn-068-inverse.md
 ---
-title: Inversion is a homeomorphism of GL_n
+title: Inversion is a homeomorphism of GL(n,ℝ)
 category: topology/topology-of-mnr/mn-continuity
 level: l2
 difficulty: 1
@@ -6201,7 +6177,7 @@ Its characteristic polynomial is $t^2+\varepsilon^2$, with no real root for $\va
 **Remark.** Counting eigenvalues *with multiplicity in $\mathbb{C}$* gives the constant $n$, and the multiset of complex eigenvalues does depend continuously on $A$ (Problem 81).
 @@@ mn-070-topological-group.md
 ---
-title: GL_n is a topological group
+title: GL(n,ℝ) is a topological group
 category: topology/topology-of-mnr/mn-continuity
 level: l2
 difficulty: 1
@@ -6980,7 +6956,7 @@ so $U\in O(n)$ and $A=UP$.
 **Remark.** The analogue for $n=1$ is $\mathbb{R}^\times=\{\pm1\}\times(0,\infty)$, the polar form $x=\operatorname{sgn}(x)|x|$ of a real number; for complex numbers it is $z=e^{i\theta}r$.
 @@@ mn-091-qr-decomposition-and-the-iwasawa-homeomorphism.md
 ---
-title: GL_n is homeomorphic to O(n) × upper triangular
+title: GL(n,ℝ) is homeomorphic to O(n) × upper triangular
 category: topology/topology-of-mnr/mn-continuity
 level: m1
 difficulty: 4
@@ -7018,7 +6994,7 @@ where $u_j\ne0$ because $a_j\notin\operatorname{span}(a_1,\dots,a_{j-1})$. Then 
 - Numerically, `numpy.linalg.qr` does not enforce $R_{jj}>0$; one must multiply by the signs of the diagonal (checked).
 @@@ mn-092-cholesky-decomposition-homeomorphism.md
 ---
-title: Cholesky: a homeomorphism from T_+ onto PD
+title: Cholesky: a homeomorphism from T+ onto PD
 category: topology/topology-of-mnr/mn-continuity
 level: m1
 difficulty: 4
@@ -7229,7 +7205,7 @@ $$\varphi(2\pi)-\varphi(0)=\pi.$$
 
 @@@ mn-035-basic-sets.md
 ---
-title: The groups GL_n and SL_n: open and closed
+title: The groups GL(n,ℝ) and SL(n,ℝ): open and closed
 category: topology/topology-of-mnr/mn-open-closed
 level: l2
 difficulty: 1
@@ -7451,7 +7427,7 @@ So $\lambda_{\min}$ is $1$-Lipschitz.
 
 @@@ mn-041-cones.md
 ---
-title: PSD matrices have empty interior in all of M_n
+title: PSD matrices have empty interior in all of Mn(ℝ)
 category: topology/topology-of-mnr/mn-open-closed
 level: l2
 difficulty: 2
@@ -7520,7 +7496,7 @@ is closed.
 
 @@@ mn-043-density.md
 ---
-title: GL_n is dense and its boundary is the singular set
+title: GL(n,ℝ) is dense and its boundary is the singular set
 category: topology/topology-of-mnr/mn-open-closed
 level: l2
 difficulty: 2
@@ -8133,7 +8109,7 @@ a non-empty open interval.
 
 @@@ mn-060-baire.md
 ---
-title: Countably many proper subspaces never cover M_n
+title: Countably many proper subspaces never cover Mn(ℝ)
 category: topology/topology-of-mnr/mn-open-closed
 level: l3
 difficulty: 3
@@ -8168,7 +8144,7 @@ Each proper subspace is closed with empty interior. Use the Baire category theor
 
 @@@ mn-061-spectral-radius.md
 ---
-title: The set {Ï(A) < 1}: open, with boundary {Ï = 1}
+title: The set {ρ(A) < 1}: open, with boundary {ρ = 1}
 category: topology/topology-of-mnr/mn-open-closed
 level: m1
 difficulty: 4
@@ -8448,7 +8424,7 @@ $$\|A\|_F^2\le n^2m^2,\qquad\|A\|_F\le nm.$$
 **Remark.** These inequalities show directly that the Frobenius norm and the max-entry norm are equivalent. They are the simplest instance of the fact (proved later) that all norms on $M_n(\mathbb{R})$ are equivalent. In particular a sequence of matrices converges iff each entry converges.
 @@@ mn-004-completeness.md
 ---
-title: Every norm on M_n(R) is complete
+title: Every norm on Mn(ℝ) is complete
 category: topology/topology-of-mnr/mn-norms
 level: l2
 difficulty: 1
@@ -9092,7 +9068,7 @@ For the continuity questions, find a sequence converging for the norm but not fo
 **Remark.** The rank is only *lower* semi-continuous for the norm topology: the set $\{\operatorname{rank}\ge r\}$ is open. This is why rank "can only jump down" in the limit, as in $A_k\to0$. The discrete topology is strictly finer than the norm topology, which is why only one of the two identity maps is continuous.
 @@@ mn-023-linear-functionals.md
 ---
-title: Linear functionals on M_n(R) are traces against a matrix
+title: Linear functionals on Mn(ℝ) are traces against a matrix
 category: topology/topology-of-mnr/mn-norms
 level: l3
 difficulty: 3
@@ -9128,7 +9104,7 @@ so $\varphi$ is Lipschitz with constant $\|B\|_F$, hence continuous (for $\|\cdo
 **Remark.** The same argument shows that every linear map between finite-dimensional normed spaces is continuous. The kernel of a non-zero functional is a hyperplane, which is therefore closed (and has empty interior), a fact we use in the topology of subspaces.
 @@@ mn-024-banach-algebra.md
 ---
-title: Induced operator norms make M_n(R) a Banach algebra
+title: Induced operator norms make Mn(ℝ) a Banach algebra
 category: topology/topology-of-mnr/mn-norms
 level: l3
 difficulty: 3
@@ -9168,7 +9144,7 @@ For part 3, compare $|x|'$ with $|x|$ using constants $c,C$.
 **Remark.** Part 3 says that every norm on $\mathbb{R}^n$ gives an operator norm equivalent to the Euclidean one. The same proof shows that in a Banach algebra the Neumann series and the openness of the group of invertible elements hold for any induced norm.
 @@@ mn-025-equivalence-of-norms.md
 ---
-title: All norms on M_n(R) are equivalent
+title: All norms on Mn(ℝ) are equivalent
 category: topology/topology-of-mnr/mn-norms
 level: l3
 difficulty: 3
@@ -10601,7 +10577,7 @@ $$|\det A|=|\det U|\,\det\Sigma\,|\det V|=\sigma_1\sigma_2\cdots\sigma_n\le\sigm
 **Remark.** Both bounds are attained by $A=I$ (trace) and by any orthogonal matrix times a scalar (determinant). The inequality $|\det A|\le\|A\|^n$ says that $\det$ is a polynomial map of degree $n$ with a controlled growth, which is useful to prove its continuity and to estimate the distance of a matrix to the singular matrices.
 @@@ mnspec-all-norm-spheres-are-homeomorphic.md
 ---
-title: Every norm sphere of M_n(R) is a sphere
+title: Every norm sphere of Mn(ℝ) is a sphere
 category: topology/topology-of-mnr/mn-rank-spectrum
 level: l2
 difficulty: 1
@@ -11815,7 +11791,7 @@ $$e^{\theta J}=\cos\theta\,I+\sin\theta\,J=\begin{pmatrix}\cos\theta&-\sin\theta
 **Remark.** This is the matrix version of $e^{i\theta}=\cos\theta+i\sin\theta$: the subalgebra $\{aI+bJ\}$ of $M_2(\mathbb{R})$ is isomorphic to $\mathbb{C}$, with $J\leftrightarrow i$. Non-injectivity of $\exp$ on the real matrices is the same phenomenon as the multivaluedness of the complex logarithm.
 @@@ mnexp-determinant-of-an-exponential.md
 ---
-title: The determinant of an exponential: det e^A = e^(tr A)
+title: The determinant of an exponential: det exp(A) = exp(tr A)
 category: topology/topology-of-mnr/mn-exp-log
 level: l3
 difficulty: 3
@@ -12061,7 +12037,7 @@ $$B_n\to\mathcal{D}\times U_n,\qquad T\mapsto\bigl(D,\ D^{-1}T\bigr)$$
 **Remark.** The signs of the diagonal entries are the only topological invariants of $B_n$: there are $2^n$ components, while $GL_n$ has only $2$ (connected by rotations, which are not triangular).
 @@@ mnexp-polar-decomposition-via-the-exponential.md
 ---
-title: The polar-exponential decomposition of GL_n
+title: The polar-exponential decomposition of GL(n,ℝ)
 category: topology/topology-of-mnr/mn-exp-log
 level: l3
 difficulty: 3
@@ -12090,7 +12066,7 @@ Polar decomposition: every $A\in GL_n$ is uniquely $A=UP$ with $U$ orthogonal an
 **Remark.** Topologically, $GL_n^+(\mathbb{R})$ "is" $SO(n)$ times a contractible space: it **deformation retracts** onto $SO(n)$ (shrink $S\to0$). All the interesting topology of $GL_n^+$ is that of $SO(n)$.
 @@@ mnexp-homogeneous-spaces-gl-n-over-o-n.md
 ---
-title: The quotients GL_n/O(n) and SL_n/SO(n)
+title: The quotients GL(n,ℝ)/O(n) and SL(n,ℝ)/SO(n)
 category: topology/topology-of-mnr/mn-exp-log
 level: l3
 difficulty: 3
@@ -12357,7 +12333,7 @@ By the Lie product formula applied to $A=tX$, $B=tY$, $g_k\to e^{t(X+Y)}$ as $k\
 **Remark.** The hypothesis "closed" is used in the last step. For the non-closed subgroup $\varphi(\mathbb{R})$ of the torus in $SO(4)$ the limit $e^{t(X+Y)}$ need not stay in the subgroup: its closure is the whole torus, whose Lie algebra is two-dimensional, larger than the line generated by the winding direction.
 @@@ mnexp-continuous-one-parameter-subgroups-are-exponentials.md
 ---
-title: Every continuous one-parameter subgroup is e^(tA)
+title: Every continuous one-parameter subgroup is exp(tA)
 category: topology/topology-of-mnr/mn-exp-log
 level: m1
 difficulty: 4
@@ -12580,7 +12556,7 @@ $$\pi_1(SO(3))\cong\{\pm1\}\cong\mathbb{Z}/2\mathbb{Z}.$$
 **Remark.** Consequence: the group $SU(2)\cong S^3$, the *spin group* $\mathrm{Spin}(3)$, is the universal cover of $SO(3)$. This is why electrons (spinors) change sign under a $2\pi$ rotation but not under a $4\pi$ rotation (next problem).
 @@@ mnexp-the-dirac-belt-trick.md
 ---
-title: The Dirac belt trick: a 2Ï€ rotation is non-trivial, a 4Ï€ rotation is trivial
+title: The Dirac belt trick
 category: topology/topology-of-mnr/mn-exp-log
 level: m1
 difficulty: 5
@@ -13420,7 +13396,7 @@ Thus a neighbourhood of $\operatorname{diag}(1,2,3)$ misses $\mathcal{N}_3$, so 
 **Remark.** For $n=2$, scalar matrices $aI$ are on the boundary. In odd dimension the characteristic polynomial always has a real root, but that is not what we use. **Lesson.** Open conditions (distinct real eigenvalues) show a set is not dense.
 @@@ mnden-an-algebraic-subset-has-measure-zero.md
 ---
-title: Proper algebraic subsets of M_n(R) have measure zero
+title: Proper algebraic subsets of Mn(ℝ) have measure zero
 category: topology/topology-of-mnr/mn-density
 level: l3
 difficulty: 3
@@ -13456,7 +13432,7 @@ because $Z'$ is null.
 
 @@@ mnappb2-the-idempotents-of-rank-one-and-the-involutions-of-m2-are-cylinders.md
 ---
-title: Rank-one idempotents and involutions of M_2(R) are cylinders
+title: Rank-one idempotents and involutions of M_2(ℝ) are cylinders
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -13505,7 +13481,7 @@ $\Phi$ is continuous (coordinates are linear in $A$ and $w\neq0$). Its inverse s
 **Lesson.** In $M_2$, conjugacy classes with prescribed trace and determinant are surfaces, and the coordinates $(z,w)$ turn the two equations into explicit formulas.
 @@@ mnappb2-the-square-roots-of-minus-the-identity-in-m2-form-two-planes.md
 ---
-title: The square roots of A in M_2(R) form two disjoint planes
+title: The square roots of A in M_2(ℝ) form two disjoint planes
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -13546,7 +13522,7 @@ $$S_\pm=\{(z,w):z=\pm i\sqrt{1+|w|^2}\}.$$
 **Lesson.** Slice the coordinate space by the equations given by trace and determinant, solve for one coordinate, and read the topology from the resulting graphs.
 @@@ mnappb2-the-nonzero-nilpotents-of-m2-form-two-components.md
 ---
-title: The nonzero nilpotents of M_2(R) form two components
+title: The nonzero nilpotents of M_2(ℝ) form two components
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -13878,7 +13854,7 @@ Note first that $|\tau|<1+\delta$ is equivalent to $p(1)=1-\tau+\delta>0$ and $p
 **Lesson.** "Roots of a real quadratic inside an interval" reduces to sign conditions on $p$ at the endpoints plus the position of the vertex.
 @@@ mnappb2-the-operator-norm-unit-sphere-of-m2-is-a-3-sphere.md
 ---
-title: The operator-norm unit sphere of M_2(R) is a 3-sphere
+title: The operator-norm unit sphere of M_2(ℝ) is a 3-sphere
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -14203,7 +14179,7 @@ So the midpoint of $A$ and $B$ is not in $\mathcal N_2$ and $\mathcal N_2$ is no
 **Lesson.** A cone, i.e. a set stable under $A\mapsto tA$ for $t\in[0,1]$, is automatically contractible to its vertex, hence path connected.
 @@@ mnappb-complex-coordinates-on-m2-r.md
 ---
-title: Complex coordinates (z, w) on M_2(R): determinant and singular values
+title: Complex coordinates (z, w) on M2(ℝ): determinant and singular values
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -14252,7 +14228,7 @@ Now $|Ax|^2=x^TA^TAx$ on the unit circle ranges exactly between the smallest and
 **Lesson.** In $M_2(\mathbb{R})$, choose coordinates adapted to the action of $SO(2)\times SO(2)$ (rotations on both sides): $z$ and $w$ are the natural ones.
 @@@ mnappb-the-topology-of-gl2-sl2-and-negative-determinant.md
 ---
-title: The shapes of GL(2,R), SL(2,R) and {det < 0}
+title: The shapes of GL(2,R), SL(2,ℝ) and {det < 0}
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -14294,7 +14270,7 @@ a homeomorphism onto the set, and the factor is again $\cong\mathbb{R}^3$.
 **Lesson.** Choosing coordinates in which a defining condition becomes $|z|\gtrless|w|$ or $|z|^2=1+|w|^2$ makes the topology of matrix groups visible.
 @@@ mnappb-the-singular-matrices-of-m2-r-form-a-cone-over-a-torus.md
 ---
-title: The singular matrices of M_2(R) form a cone over a torus
+title: The singular matrices of M_2(ℝ) form a cone over a torus
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -14377,7 +14353,7 @@ So the extreme points are exactly $\{|z|=1,w=0\}\cup\{z=0,|w|=1\}=O(2)$.
 **Lesson.** In explicit coordinates, extreme points can be found by splitting non-extreme points as convex combinations and testing the equality cases of the triangle inequality for the rest.
 @@@ mnappb-the-distance-to-the-singular-matrices-in-m2-r.md
 ---
-title: The distance to the singular matrices in M_2(R)
+title: The distance to the singular matrices in M_2(ℝ)
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -14416,11 +14392,11 @@ $$|z-z'|=|z|-r=\frac{|z|-|w|}2,\qquad|w-w'|=\bigl|\,|w|-r\bigr|=\frac{|z|-|w|}2.
 **Lesson.** In the right coordinates, an "abstract" distance formula becomes a one-line triangle-inequality argument.
 @@@ mnappb-conjugation-by-rotations-in-complex-coordinates.md
 ---
-title: Conjugation by rotations acts on w by e^{2iÎ²}
+title: Conjugation by rotations acts on w by e^{iβ}
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
-tags: M_2, conjugation, rotations, complex coordinates, invariants
+tags: M2, conjugation, rotations, complex coordinates, invariants
 date: 2026-11-10
 ---
 
@@ -14638,7 +14614,7 @@ $$(A^2+B^2)v=(A^2+B^2)(A-B)e_j=0.$$
 **Lesson.** To prove a matrix is singular, look for a nonzero matrix that it kills on one side.
 @@@ mnappa-the-characteristic-polynomials-of-aat-and-ata.md
 ---
-title: AAáµ€ and Aáµ€A have the same characteristic polynomial
+title: XY and YX have the same characteristic polynomial
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
@@ -14709,7 +14685,7 @@ $$\operatorname{adj}(\operatorname{adj}A)=(\det A)^{n-1}\bigl((\det A)A^{-1}\big
 **Lesson.** Polynomial identities with a non-negative exponent extend from $GL_n$ to all of $M_n$ for free.
 @@@ mnappa-convexity-of-the-largest-eigenvalue-and-the-spectral-norm.md
 ---
-title: Convexity of Î»_max and the spectral norm on symmetric matrices
+title: Convexity and the spectral norm on symmetric matrices
 category: topology/topology-of-mnr/mn-applications
 level: l2
 difficulty: 2
@@ -14931,7 +14907,7 @@ $$U\sim\begin{pmatrix}1&0\\0&R_\varphi\end{pmatrix},\qquad R_\varphi=\begin{pmat
 **Lesson.** Conjugation invariants such as the trace give continuous invariants of the conjugacy class.
 @@@ mnappa-rotations-by-pi-form-a-projective-plane.md
 ---
-title: Rotations by Ï€ form a projective plane; the Cayley transform covers the rest
+title: Rotations by π form a projective plane; the Cayley transform covers the rest
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -15014,7 +14990,7 @@ and similarly with $w$. Since $\sin r>0$ on $(0,\pi)$, $\hat v=\hat w$, i.e. $v=
 **Lesson.** Exponential coordinates are a chart; the injectivity radius is $\pi$, exactly the distance to the cut locus.
 @@@ mnappa-no-continuous-square-root-on-gl2-plus.md
 ---
-title: No continuous square root on GL(2,R)
+title: No continuous square root on GL(2,ℝ)
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 5
@@ -15115,7 +15091,7 @@ Every nondegenerate skew matrix has the form $K=PJP^T$ with $P\in GL_n(\mathbb{R
 **Lesson.** The Pfaffian is the "square root of the determinant" that remembers an orientation; it detects the extra component.
 @@@ mnappa-continuous-multiplicative-functions-on-gl-n.md
 ---
-title: Continuous homomorphisms from GL(n,R) to R
+title: Continuous homomorphisms from GL(n,ℝ) to ℝ
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 5
@@ -15125,7 +15101,7 @@ date: 2026-11-06
 
 ## Statement
 
-Let $n\ge2$ and let $f:GL_n(\mathbb{R})\to\mathbb{R}^\times$ be a continuous group homomorphism. Show that there is a real number $c$ such that either $f(A)=|\det A|^c$ for all $A$, or $f(A)=\operatorname{sgn}(\det A)\,|\det A|^c$ for all $A$.
+Let $n\ge2$ and let $f:GL_n(\mathbb{R})\to\mathbb{R}^*$ be a continuous group homomorphism. Show that there is a real number $c$ such that either $f(A)=|\det A|^c$ for all $A$, or $f(A)=\operatorname{sgn}(\det A)\,|\det A|^c$ for all $A$.
 
 ## Hint
 
@@ -15152,7 +15128,7 @@ Since $\Delta(d)\Delta(d')=\Delta(dd')$, $g:\mathbb{R}^\times\to\mathbb{R}^\time
 **Lesson.** Homomorphisms into abelian groups factor through the abelianisation; $GL_n(\mathbb{R})^{ab}\cong\mathbb{R}^\times$ via $\det$.
 @@@ mnappa-the-quotient-of-matrices-by-orthogonal-left-multiplication.md
 ---
-title: M_n(R)/O(n) is the cone of positive semidefinite matrices
+title: Mn(ℝ)/O(n) is the cone of positive semidefinite matrices
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -15224,7 +15200,7 @@ If $\|S-T\|\le\delta$ (operator norm), then $|x^TSx-x^TTx|\le\delta$ for unit $x
 **Lesson.** "Eigenvalues are a complete conjugacy invariant" is a topological statement once properness is checked.
 @@@ mnappa-the-orbit-space-of-matrices-under-orthogonal-bi-multiplication.md
 ---
-title: M_n(R)/(O(n) . O(n)) is the space of singular values
+title: Mn(ℝ)/(O(n) × O(n)) is the space of singular values
 category: topology/topology-of-mnr/mn-applications
 level: m1
 difficulty: 4
@@ -15321,7 +15297,7 @@ Show that it is the orbit of $E_k=\operatorname{diag}(I_k,0)$ under conjugation 
 **Lesson.** An orbit of a connected group is connected; always check whether you need $SO(n)$ or $O(n)$.
 @@@ mnappa-the-adjoint-quotient-is-not-hausdorff.md
 ---
-title: The quotient of M_n(R) by conjugation is not Hausdorff
+title: The quotient of Mn(ℝ) by conjugation is not Hausdorff
 category: topology/topology-of-mnr/mn-applications
 level: l3
 difficulty: 3
