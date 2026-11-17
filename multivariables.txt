@@ -125,7 +125,7 @@ Check the paths $y=ax$ and $y = ax + b x^2$.
 ## Solution
 
 **Continuity of $f$.** On $y=ax$, $f(x,ax)=\frac{1}{1+a}$. As $x\to0$, this tends to $\frac{1}{1+a}$ for each $a \neq -1$. Hence $f$ is not continuous at the origin. 
-
+<p></p>
 
 **Continuity of $g$.** On $y=ax$, $g(x,ax)=\frac{ax}{1+a} \rightarrow 0$ as $x\to0$ for any $a \neq -1$ (this does not mean $g$ is continuous!). Along $y=ax+bx^2$ with $a=-1$, $b\neq0$: 
 $$ g(x,-x+bx^2)=\frac{x(-x+bx^2)}{bx^2}=\frac{-x+bx^2}{bx}=\frac{-1}{b}+x \rightarrow \frac{-1}{b} $$ 
