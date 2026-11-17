@@ -16101,12 +16101,15 @@ date: 2026-11-17
 
 ## Statement
 
-For $n\in\mathbb{Z}\setminus\{0\}$ let $v(n)$ be the exponent of $2$ in $n$ (so $v(12)=2$). Define $d(m,n)=2^{-v(m-n)}$ if $m\ne n$ and $d(m,m)=0$.
+For $n\in\mathbb{Z}\setminus\{0\}$ let $v(n)$ be the exponent of $2$ in $n$ (so $v(12)=2$). Define 
+$$ d(m,n)=2^{-v(m-n)} \, \text{if } m\ne n \, \text{ and} \, d(m,m)=0. $$
 
 1. Prove that $d$ is an ultrametric on $\mathbb{Z}$.
 2. Describe the ball $B(0,2^{-k})$ for $k\ge0$.
 3. Show that $2^k\to0$ and $n!\to0$ for $d$.
-4. Show that $s_k=1+2+4+\dots+2^k$ converges to $-1$ for $d$. In what sense is "$1+2+4+\dots=-1$" true?
+4. Show that $s_k=1+2+4+\dots+2^k$ converges to $-1$ for $d$. In what sense is 
+$$ 1+2+4+\dots=-1 $$ 
+true?
 
 ## Hint
 
