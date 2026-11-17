@@ -271,7 +271,44 @@
           "id": "topology-of-rn",
           "name": "Topology of ℝⁿ",
           "description": "Open and closed sets, compact sets and connectedness.",
-          "subcategories": []
+          "subcategories": [
+    {
+      "id": "rn-norms",
+      "name": "Norms and balls",
+      "description": "Euclidean, sup and l1 norms, equivalence of norms, balls, distances and convexity.",
+      "subcategories": []
+    },
+    {
+      "id": "rn-open-closed",
+      "name": "Open and closed sets",
+      "description": "Interior, closure, boundary and accumulation points in R^n.",
+      "subcategories": []
+    },
+    {
+      "id": "rn-sequences",
+      "name": "Sequences and completeness",
+      "description": "Convergence, Cauchy sequences, Bolzano-Weierstrass and series in R^n.",
+      "subcategories": []
+    },
+    {
+      "id": "rn-compactness",
+      "name": "Compactness",
+      "description": "Heine-Borel in R^n, products, extreme values and distances between sets.",
+      "subcategories": []
+    },
+    {
+      "id": "rn-connectedness",
+      "name": "Connectedness",
+      "description": "Connected and path-connected sets, convexity and components.",
+      "subcategories": []
+    },
+    {
+      "id": "rn-continuity",
+      "name": "Continuity and limits",
+      "description": "Limits of functions of several variables, continuous maps and homeomorphisms.",
+      "subcategories": []
+    }
+  ]
         },
         {
           "id": "topology-of-mnr",
