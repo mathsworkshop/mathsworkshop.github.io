@@ -187,7 +187,7 @@ Use $\sin t/t\to1$.
 ---
 title: Nonexistence of a Limit at the Origin via Path Dependence
 category: calculus/multivariable/continuity
-level: 2
+level: l2
 difficulty: 2
 order: 6
 tags: limit, multivariable, path dependence, continuity
