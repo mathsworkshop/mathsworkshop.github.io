@@ -51,6 +51,38 @@ Polynomials in several variables are continuous (sums and products of continuous
 **Continuity of polynomials.** The functions $(x,y)\mapsto x$ and $(x,y)\mapsto y$ are continuous, and sums/products of continuous functions are continuous.
 
 **Conclusion.** $f$ is continuous on $\mathbb{R}^2$ by the composition rules.
+@@@ continuity-limit-vs-value.md
+---
+title: Limit Versus Function Value at a Point
+category: calculus/multivariable/continuity
+level: l2
+difficulty: 1
+order: 2
+tags: limit, multivariable, continuity, function value, definition
+date: 2026-11-03
+---
+
+## Statement
+
+Let $f:\mathbb{R}^2\to\mathbb{R}$. Suppose that
+\[
+\lim_{(x,y)\to(1,3)} f(x,y)=5.
+\]
+What can you say about the value $f(1,3)$ in the following two scenarios?
+
+(a) Generally, without any additional assumptions.
+
+(b) Suppose $f$ is continuous.
+
+## Hint
+
+Recall the definition of continuity at a point. A function $f$ is continuous at $(a,b)$ if and only if $\lim_{(x,y)\to(a,b)} f(x,y)=f(a,b)$.
+
+## Solution
+
+**(a)** Without additional information, you can say **nothing** about the value of $f(1,3)$. The limit of a function as it approaches a point depends only on the values of the function *near* the point, not *at* the point. The function could be undefined at $(1,3)$, or it could be defined to be any other real number (e.g., $f(1,3)=100$).
+
+**(b)** If $f$ is continuous, then by definition, the limit of the function as $(x,y)$ approaches $(1,3)$ must equal the function's value at that point. Therefore, we can definitively say that **$f(1,3)=5$**.
 @@@ continuity-projection.md
 ---
 title: Coordinate projections are continuous
@@ -151,7 +183,64 @@ Use $\sin t/t\to1$.
 **Extension.** Define $f(0,0)=1$; $f$ becomes continuous.
 
 **Conclusion.** Yes, extension by $f(0,0)=1$ exists.
+@@@ continuity-path-dependence-quadratic.md
+---
+title: Nonexistence of a Limit at the Origin via Path Dependence
+category: calculus/multivariable/continuity
+level: 2
+difficulty: 2
+order: 6
+tags: limit, multivariable, path dependence, continuity
+date: 2026-11-03
+---
 
+## Statement
+
+Does the following limit exist?
+\[
+\lim_{(x,y)\to(0,0)} \frac{x^2}{x^2+y^2}.
+\]
+
+## Hint
+
+If the limit exists, it must be the same regardless of the path taken to approach $(0,0)$. Try approaching the origin along the path $y = ax$ for a fixed $a \in \mathbb{R}^*$.
+
+## Solution
+
+Fix $a \in \mathbb{R}^*$. For $y = ax$ ($x \neq 0$), we have 
+$$ \frac{x^2}{x^2+y^2} = \frac{x^2}{(a^2+1)x^2} = \frac{1}{a^2+1} \rightarrow  \frac{1}{a^2+1}  $$
+as $x \rightarrow 0$. Hence, $\lim_{(x,y)\to(0,0)} x^2/(x^2+y^2)$ does not exist.
+@@@ continuity-path-dependence-square.md
+---
+title: Nonexistence of a Limit at the Origin via Path Dependence
+category: calculus/multivariable/continuity
+level: l2
+difficulty: 3
+order: 6
+tags: limit, multivariable, path dependence, continuity
+date: 2026-11-03
+---
+
+## Statement
+
+Evaluate the following limit, or show that it does not exist:
+\[
+\lim_{(x,y)\to(0,0)} \frac{(x-y)^2}{x^2+y^2}.
+\]
+
+## Hint
+
+Similar to the previous problem, test the paths $y = ax$ where $a \in \mathbb{R}^*$ is fixed.
+
+## Solution
+
+Fix $a \in \mathbb{R}^*$. For $y = ax$ ($x \neq 0$), we have
+
+\[
+ \frac{(x-y)^2}{x^2+y^2} =  \frac{(1-a^2) x^2}{(1+a^2)x^2} = \frac{(1-a^2)}{(1+a^2)} \rightarrow  \frac{(1-a^2)}{(1+a^2)}
+
+\]
+as $x\to 0$. The limit depends on the chosen path : as $a$ changes the limits differ. Therefore, the limit **does not exist**.
 @@@ continuity-discontinuous-bounded.md
 ---
 title: A discontinuous function with bounded values
