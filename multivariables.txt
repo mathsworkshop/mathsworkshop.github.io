@@ -27,9 +27,6 @@ Review methods and theorems.
 
 **Notable counterexamples.** $f(x,y)=\frac{x}{x+y}$ at origin, $f(x,y) = \sin(1/(x^2+y^2))$ at origin.
 
-
-**Key theorems.** Continuous image of compact is compact; continuous on compact is uniformly continuous (Heine–Cantor); norm and projections are continuous.
-
 @@@ continuity-simple-poly.md
 ---
 title: Continuity of a polynomial
@@ -128,7 +125,7 @@ Check the paths $y=ax$ and $y = ax + b x^2$.
 ## Solution
 
 **Continuity of $f$.** On $y=ax$, $f(x,ax)=\frac{1}{1+a}$. As $x\to0$, this tends to $\frac{1}{1+a}$ for each $a \neq -1$. Hence $f$ is not continuous at the origin. 
-\par
+\n 
 **Continuity of $g$.** On $y=ax$, $g(x,ax)=\frac{ax}{1+a} \rightarrow 0$ as $x\to0$ for any $a \neq -1$ (this does not mean $g$ is continuous!). Along $y=ax+bx^2$ with $a=-1$, $b\neq0$: 
 $$ g(x,-x+bx^2)=\frac{x(-x+bx^2)}{bx^2}=\frac{-x+bx^2}{bx}=\frac{-1}{b}+x \rightarrow \frac{-1}{b} $$ 
 as $x \rightarrow 0$. Limits differ along different paths; $g$ is not continuous at the origin.
