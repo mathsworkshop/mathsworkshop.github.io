@@ -209,7 +209,7 @@ as $(x,y) \rightarrow (0,0)$.
 ---
 title: Existence of a Limit at the Origin via a Squeeze Inequality
 category: calculus/multivariable/continuity
-level: 2
+level: l2
 difficulty: 3
 order: 8
 tags: limit, multivariable, squeeze theorem, inequality, continuity
@@ -334,7 +334,7 @@ $|xy|\le\frac12(x^2+y^2)$.
 ---
 title: Existence of a Limit at the Origin via Power Bounds
 category: calculus/multivariable/continuity
-level: 2
+level: l2
 difficulty: 4
 order: 10
 tags: limit, multivariable, squeeze theorem, homogeneous bound, continuity
@@ -401,7 +401,7 @@ Test the path $y=x^2$.
 ---
 title: Nonexistence of a Limit at the Origin via Path Dependence
 category: calculus/multivariable/continuity
-level: 2
+level: l2
 difficulty: 3
 order: 12
 tags: limit, multivariable, path dependence, radial limits, continuity
