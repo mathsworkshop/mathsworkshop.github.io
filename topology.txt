@@ -15831,7 +15831,7 @@ For the triangle inequality $d(x,z)\le d(x,y)+d(y,z)$ it is enough to treat the 
 **1. Metric.** 
 - Positivity: for every $x$, $y \in X$, we have $d(x,y) = 0$ or $d(x,y) = 1$, hence 
 $$ d(x,y) \geq 0, \, \, \forall x, y \in X. $$ 
-- Separation: By the definition of $d$, for every $x$, $y \in X$, $d(x,y)=0\iff x=y$.
+- Definiteness: By the definition of $d$, for every $x$, $y \in X$, $d(x,y)=0\iff x=y$.
 - Symmetry: Let $x$, $y \in X$. If $x = y$ then 
 $$ d(x,y)=0=d(y,x).$$
 Otherwise 
@@ -15854,7 +15854,7 @@ because $d(x,y)=1\ge r$ for $y\ne x$. If $r>1$ then $B(x,r)=X$.
 
 @@@ mt-bs-002-uniform-and-integral-metrics-on-continuous-functions.md
 ---
-title: Two metrics on $C([0,1])$
+title: Two metrics on C([0,1])
 category: metric/mt-basics
 level: l2
 difficulty: 2
@@ -15881,7 +15881,19 @@ For the definiteness of $d_1$ you need continuity: a continuous non-negative fun
 
 **Idea.** Uniform distance looks at the worst point, the integral distance looks at the average; a function can be large on a tiny set without having a large average.
 
-**1. Metrics.** Symmetry and the triangle inequality follow from $|f-h|\le|f-g|+|g-h|$ pointwise: for the max, take the max of both sides and use $\max(a+b)\le\max a+\max b$; for $d_1$, integrate. Definiteness: $d_\infty(f,g)=0$ forces $f=g$ everywhere. If $d_1(f,g)=0$, the function $\varphi=|f-g|$ is continuous, non-negative, with $\int_0^1\varphi=0$. If $\varphi(t_0)>0$, then $\varphi>\varphi(t_0)/2$ on an interval around $t_0$ of positive length $\eta$ inside $[0,1]$, giving $\int\varphi\ge\eta\varphi(t_0)/2>0$, a contradiction. So $\varphi\equiv0$.
+**1. Metrics.** 
+- Positivity and Symmetry: clear! 
+- The triangle inequality: Let $f$, $g$, $h \in E$.  The triangle inequality in $\mathbb{R}$ yields 
+$$ |f-h|\le|f-g|+|g-h| \, \, (*) $$ 
+pointwise. For the max, we take the max of both sides and use $\max(a+b)\le\max a+\max b$: 
+$$ \max_{t\in[0,1]} |f-h|\le \max_{t\in[0,1]} (|f-g|+|g-h|) \leq \max_{t\in[0,1]}|f-h| + \max_{t\in[0,1]} |g-h|, $$
+i.e. 
+$$ d_\infty(f,h) \leq d_\infty(f,g) + d_\infty(g,h). $$
+For $d_1$, integrate $(*)$: 
+$$ \int_0^1|f(t)-h(t)|\,dt \leq \int_0^1|f(t)-g(t)|\,dt + \int_0^1|g(t)-h(t)|\,dt, $$
+i.e. 
+$$ d_1(f,h) \leq d_1(f,g) + d_1(g,h). $$
+- Definiteness: $d_\infty(f,g)=0$ forces $f=g$ everywhere. If $d_1(f,g)=0$, the function $\varphi=|f-g|$ is continuous, non-negative, with $\int_0^1\varphi=0$. If $\varphi(t_0)>0$, then $\varphi>\varphi(t_0)/2$ on an interval around $t_0$ of positive length $\eta$ inside $[0,1]$, giving $\int\varphi\ge\eta\varphi(t_0)/2>0$, a contradiction. So $\varphi\equiv0$.
 
 **2. Comparison.** $|f(t)-g(t)|\le d_\infty(f,g)$ for all $t$; integrating over $[0,1]$ gives $d_1(f,g)\le d_\infty(f,g)$.
 
@@ -16521,7 +16533,7 @@ The metric takes only two values, so a ball is either very small or everything. 
 **1. Metric.** 
 - Positivity: for every $x$, $y \in X$, we have $d(x,y) = 0$ or $d(x,y) = 1$, hence 
 $$ d(x,y) \geq 0, \, \, \forall x, y \in X. $$ 
-- Separation: By the definition of $d$, for every $x$, $y \in X$, $d(x,y)=0\iff x=y$.
+- Definiteness: By the definition of $d$, for every $x$, $y \in X$, $d(x,y)=0\iff x=y$.
 - Symmetry: Let $x$, $y \in X$. If $x = y$ then 
 $$ d(x,y)=0=d(y,x).$$
 Otherwise 
