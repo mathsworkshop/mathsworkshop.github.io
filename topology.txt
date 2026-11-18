@@ -16516,17 +16516,32 @@ The metric takes only two values, so a ball is either very small or everything. 
 
 ## Solution
 
-**Idea.** Since distances are $0$ or $1$, radii below $1$ isolate points and radii above $1$ see the whole space.
+**Idea.** Distances only take the values $0$ and $1$, so "close" means "equal".
 
-**1. Metric.** Positivity and symmetry are clear, and $d(x,y)=0$ iff $x=y$. For the triangle inequality $d(x,z)\le d(x,y)+d(y,z)$: if $x=z$ the left side is $0$. If $x\ne z$ the left side is $1$, and $y$ cannot be equal to both $x$ and $z$, so at least one term on the right equals $1$.
+**1. Metric.** 
+- Positivity: for every $x$, $y \in X$, we have $d(x,y) = 0$ or $d(x,y) = 1$, hence 
+$$ d(x,y) \geq 0, \, \, \forall x, y \in X. $$ 
+- Separation: By the definition of $d$, for every $x$, $y \in X$, $d(x,y)=0\iff x=y$.
+- Symmetry: Let $x$, $y \in X$. If $x = y$ then 
+$$ d(x,y)=0=d(y,x).$$
+Otherwise 
+$$d(x,y)=1=d(y,x). $$
+Therefore 
+$$ d(x,y) = d(y,x), \, \, \forall x, y \in X. $$
+- Triangle inequality: Let $x$, $y$ $z \in X$. We want to prove 
+$$ d(x,z) \leq d(x,y) + d(y,z).  $$ 
+If $x=z$ the left side is $0$ and there is nothing to prove. If $x\ne z$ then $d(x,z)=1$, and $y$ cannot be equal to both $x$ and $z$; so at least one of $d(x,y),d(y,z)$ equals $1$, and the right side is at least $1$.
 
-**2. Balls.** If $0<r\le1$ then $B(x,r)=\{x\}$ (a point $y\ne x$ has $d(x,y)=1\ge r$). If $r>1$ then $B(x,r)=X$.
+**2. Balls.** If $0<r\le1$ then 
+$$ B(x,r)=\{y: d(x,y)<r\}=\{x\}, $$ 
+because $d(x,y)=1\ge r$ for $y\ne x$. If $r>1$ then $B(x,r)=X$.
 
-**3. Open and closed.** Let $A\subset X$ and $a\in A$. Then $B(a,1)=\{a\}\subset A$, so $A$ is open. The complement $X\setminus A$ is also a subset, hence open, so $A$ is closed.
+**3. Open and closed sets.** Let $A\subset X$. For $a\in A$ the ball $B(a,1)=\{a\}$ lies in $A$, so $A$ is open. The complement $X\setminus A$ is also a subset, hence open, so $A$ is closed.
 
-**4. Sequences.** If $x_n\to x$, take $\varepsilon=\tfrac12$: for $n\ge N$, $d(x_n,x)<\tfrac12$ forces $x_n=x$. So convergent sequences are exactly the eventually constant ones. If $(x_n)$ is Cauchy, take $\varepsilon=\tfrac12$: there is $N$ with $d(x_n,x_m)<\tfrac12$, hence $x_n=x_m$, for $n,m\ge N$; the sequence is eventually constant, hence convergent. So $(X,d)$ is complete.
+**4. Sequences.** If $x_n\to\ell$, apply the definition with $\varepsilon=\tfrac12$: there is $N \geq 0$ such that for $n\ge N$, $d(x_n,\ell)<\tfrac12$, i.e. $x_n=\ell$. So convergent sequences are exactly the sequences that are eventually constant. If $(x_n)$ is Cauchy, taking $\varepsilon=\tfrac12$ gives $N$ with $d(x_n,x_m)<\tfrac12$, i.e. $x_n=x_m$, for all $n,m\ge N$: the sequence is eventually constant. So every Cauchy sequence converges: $(X,d)$ is complete.
 
-**Remark.** The discrete metric is the standard source of counterexamples: a ball of radius $1$ is a single point while the closed ball $\{d\le1\}$ is all of $X$ (see the problem on closed balls), and a set which is open and closed need not be $\emptyset$ or $X$ (the space is totally disconnected).
+**Remark.** Every set carries this metric, so every set is a metric space. It is the extreme example where all subsets are open: a convergent sequence does not "approach" its limit, it reaches it. Compact subsets are exactly the finite ones (an open cover by singletons has a finite subcover only for finite sets).
+
 
 @@@ mt-tp-002-distance-to-a-set.md
 ---
