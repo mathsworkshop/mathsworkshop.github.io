@@ -15932,7 +15932,9 @@ Always $|x-y|\le d(x,y)\le|x|+|y|$. For the triangle inequality $d(x,z)\le d(x,y
 
 **Idea.** To go from $x$ to $z$ you stay on your line if $z$ is on it, and otherwise you must pass through the origin.
 
-**1. Metric.** Symmetry and $d(x,y)=0\iff x=y$ are clear (if $x\ne y$ then $d\ge|x-y|>0$). We prove $d(x,z)\le d(x,y)+d(y,z)$. Write "$x\sim z$" when $x,z,0$ are collinear.
+**1. Metric.** Symmetry and $d(x,y)=0\iff x=y$ are clear:
+ $$ x\ne y \implies d(x,y) \ge|x-y|>0. $$ 
+We prove $d(x,z)\le d(x,y)+d(y,z)$. Write "$x\sim z$" when $x,z,0$ are collinear.
 
 *Case A: $x\sim z$.* Then $d(x,z)=|x-z|$. Whatever $d(x,y)$ and $d(y,z)$ are, $d(x,y)\ge|x-y|$ and $d(y,z)\ge|y-z|$, so the Euclidean triangle inequality gives $d(x,z)=|x-z|\le|x-y|+|y-z|\le d(x,y)+d(y,z)$.
 
