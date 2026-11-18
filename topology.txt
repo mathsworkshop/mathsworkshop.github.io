@@ -15829,18 +15829,26 @@ For the triangle inequality $d(x,z)\le d(x,y)+d(y,z)$ it is enough to treat the 
 **Idea.** Distances only take the values $0$ and $1$, so "close" means "equal".
 
 **1. Metric.** 
-- Positivity: for every $x$, $y \in X$, we have $d(x,y) = 0$ or $d(x,y) = 1$, hence $d(x,y) \geq 0$. 
-- Separation: By the definition od $d$, for every $x$, $y \in X$, $d(x,y)=0\iff x=y$.
-- Symmetry: Let $x$, $y \in X$. If $x = y$ then $d(x,y)=0=d(y,x)$. Otherwise $d(x,y)=1=d(y,x)$. Therefore $d(x,y) = d(y,x)$ for every $x$, $y \in X$. 
+- Positivity: for every $x$, $y \in X$, we have $d(x,y) = 0$ or $d(x,y) = 1$, hence 
+$$ d(x,y) \geq 0, \, \, \forall x, y \in X. $$ 
+- Separation: By the definition of $d$, for every $x$, $y \in X$, $d(x,y)=0\iff x=y$.
+- Symmetry: Let $x$, $y \in X$. If $x = y$ then 
+$$ d(x,y)=0=d(y,x).$$
+Otherwise 
+$$d(x,y)=1=d(y,x). $$
+Therefore 
+$$ d(x,y) = d(y,x), \, \, \forall x, y \in X. $$
 - Triangle inequality: Let $x$, $y$ $z \in X$. We want to prove 
 $$ d(x,z) \leq d(x,y) + d(y,z).  $$ 
 If $x=z$ the left side is $0$ and there is nothing to prove. If $x\ne z$ then $d(x,z)=1$, and $y$ cannot be equal to both $x$ and $z$; so at least one of $d(x,y),d(y,z)$ equals $1$, and the right side is at least $1$.
 
-**2. Balls.** If $0<r\le1$ then $B(x,r)=\{y: d(x,y)<r\}=\{x\}$, because $d(x,y)=1\ge r$ for $y\ne x$. If $r>1$ then $B(x,r)=X$.
+**2. Balls.** If $0<r\le1$ then 
+$$ B(x,r)=\{y: d(x,y)<r\}=\{x\}, $$ 
+because $d(x,y)=1\ge r$ for $y\ne x$. If $r>1$ then $B(x,r)=X$.
 
 **3. Open and closed sets.** Let $A\subset X$. For $a\in A$ the ball $B(a,1)=\{a\}$ lies in $A$, so $A$ is open. The complement $X\setminus A$ is also a subset, hence open, so $A$ is closed.
 
-**4. Sequences.** If $x_n\to\ell$, apply the definition with $\varepsilon=\tfrac12$: for $n\ge N$, $d(x_n,\ell)<\tfrac12$, i.e. $x_n=\ell$. So convergent sequences are exactly the sequences that are eventually constant. If $(x_n)$ is Cauchy, taking $\varepsilon=\tfrac12$ gives $N$ with $d(x_n,x_m)<\tfrac12$, i.e. $x_n=x_m$, for all $n,m\ge N$: the sequence is eventually constant. So every Cauchy sequence converges: $(X,d)$ is complete.
+**4. Sequences.** If $x_n\to\ell$, apply the definition with $\varepsilon=\tfrac12$: there is $N \geq 0$ such that for $n\ge N$, $d(x_n,\ell)<\tfrac12$, i.e. $x_n=\ell$. So convergent sequences are exactly the sequences that are eventually constant. If $(x_n)$ is Cauchy, taking $\varepsilon=\tfrac12$ gives $N$ with $d(x_n,x_m)<\tfrac12$, i.e. $x_n=x_m$, for all $n,m\ge N$: the sequence is eventually constant. So every Cauchy sequence converges: $(X,d)$ is complete.
 
 **Remark.** Every set carries this metric, so every set is a metric space. It is the extreme example where all subsets are open: a convergent sequence does not "approach" its limit, it reaches it. Compact subsets are exactly the finite ones (an open cover by singletons has a finite subcover only for finite sets).
 
