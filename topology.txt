@@ -15828,7 +15828,13 @@ For the triangle inequality $d(x,z)\le d(x,y)+d(y,z)$ it is enough to treat the 
 
 **Idea.** Distances only take the values $0$ and $1$, so "close" means "equal".
 
-**1. Metric.** Positivity, symmetry and $d(x,y)=0\iff x=y$ are immediate. Triangle inequality: if $x=z$ the left side is $0$ and there is nothing to prove. If $x\ne z$ then $d(x,z)=1$, and $y$ cannot be equal to both $x$ and $z$; so at least one of $d(x,y),d(y,z)$ equals $1$, and the right side is at least $1$.
+**1. Metric.** 
+- Positivity: for every $x$, $y \in X$, we have $d(x,y) = 0$ or $d(x,y) = 1$, hence $d(x,y) \geq 0$. 
+- Separation: By the definition od $d$, for every $x$, $y \in X$, $d(x,y)=0\iff x=y$.
+- Symmetry: Let $x$, $y \in X$. If $x = y$ then $d(x,y)=0=d(y,x)$. Otherwise $d(x,y)=1=d(y,x)$. Therefore $d(x,y) = d(y,x)$ for every $x$, $y \in X$. 
+- Triangle inequality: Let $x$, $y$ $z \in X$. We want to prove 
+$$ d(x,z) \leq d(x,y) + d(y,z).  $$ 
+If $x=z$ the left side is $0$ and there is nothing to prove. If $x\ne z$ then $d(x,z)=1$, and $y$ cannot be equal to both $x$ and $z$; so at least one of $d(x,y),d(y,z)$ equals $1$, and the right side is at least $1$.
 
 **2. Balls.** If $0<r\le1$ then $B(x,r)=\{y: d(x,y)<r\}=\{x\}$, because $d(x,y)=1\ge r$ for $y\ne x$. If $r>1$ then $B(x,r)=X$.
 
