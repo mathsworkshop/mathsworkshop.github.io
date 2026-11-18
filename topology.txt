@@ -15936,15 +15936,25 @@ Always $|x-y|\le d(x,y)\le|x|+|y|$. For the triangle inequality $d(x,z)\le d(x,y
  $$ x\ne y \implies d(x,y) \ge|x-y|>0. $$ 
 We prove $d(x,z)\le d(x,y)+d(y,z)$. Write "$x\sim z$" when $x,z,0$ are collinear.
 
-*Case A: $x\sim z$.* Then $d(x,z)=|x-z|$. Whatever $d(x,y)$ and $d(y,z)$ are, $d(x,y)\ge|x-y|$ and $d(y,z)\ge|y-z|$, so the Euclidean triangle inequality gives $d(x,z)=|x-z|\le|x-y|+|y-z|\le d(x,y)+d(y,z)$.
+*Case A: $x\sim z$.* Then $d(x,z)=|x-z|$. Whatever $d(x,y)$ and $d(y,z)$ are,
+$$ d(x,y)\ge|x-y| \, \text{and} \, d(y,z)\ge|y-z|, $$ 
+so the Euclidean triangle inequality gives 
+$$d(x,z)=|x-z|\le|x-y|+|y-z|\le d(x,y)+d(y,z).$$
 
 *Case B: $x\not\sim z$.* Then $d(x,z)=|x|+|z|$ and both $x,z\ne0$. If $y=0$, then $d(x,0)+d(0,z)=|x|+|z|$: equality. If $y\ne0$, then $y$ cannot be collinear with $0$ and both $x$ and $z$ (otherwise $x,z$ would lie on the line $\mathbb{R}y$). Say $y\not\sim x$ (the other case is symmetric). Then $d(x,y)=|x|+|y|$ and $d(y,z)\ge|y-z|\ge\big||z|-|y|\big|$, so
 $$d(x,y)+d(y,z)\ge|x|+|y|+\big||z|-|y|\big|\ge|x|+|z|=d(x,z).$$
 
-**2. Balls.** Let $a\ne0$ and $L=\mathbb{R}a$. A point $y\notin L$ satisfies $d(a,y)=|a|+|y|$; a point $y\in L$ satisfies $d(a,y)=|a-y|$.
+**2. Balls.** Let $a\ne0$ and $L=\mathbb{R}a$. Any point $y$  satisfies 
+$$ y\notin L \implies  d(a,y)=|a|+|y|, $$
+and 
+$$y \in L \implies d(a,y)=|a-y|. $$
 
-- If $r\le|a|$: for $y\notin L$, $d(a,y)\ge|a|\ge r$, so $y\notin B(a,r)$. Hence $B(a,r)=\{y\in L:|y-a|<r\}$, an open Euclidean segment of length $2r$ centred at $a$ which does not contain $0$.
-- If $r>|a|$: $B(a,r)=\{y\in L:|y-a|<r\}\ \cup\ \{y\notin L: |y|<r-|a|\}$, a segment of $L$ (now containing $0$) together with the Euclidean disc of radius $r-|a|$ around the origin (minus $L$, but those points of $L$ are already in the segment).
+- If $r\le|a|$: for $y\notin L$, $d(a,y)\ge|a|\ge r$, so $y\notin B(a,r)$. Hence 
+$$ B(a,r)=\{y\in L:|y-a|<r\} $$
+is an open Euclidean segment of length $2r$ centred at $a$ which does not contain $0$.
+- If $r>|a|$, then 
+$$ B(a,r)=\{y\in L:|y-a|<r\}\ \cup\ \{y\notin L: |y|<r-|a|\}$$
+is a segment of $L$ (now containing $0$) together with the Euclidean disc of radius $r-|a|$ around the origin (minus $L$, but those points of $L$ are already in the segment).
 
 **3. Non-convergence.** Put $a=(1,0)$, $x_n=(1,\tfrac1n)$. For every $n$, $x_n\notin\mathbb{R}a$, so $d(x_n,a)=|x_n|+|a|\ge2$. The sequence does not tend to $a$, although it does in the Euclidean sense.
 
