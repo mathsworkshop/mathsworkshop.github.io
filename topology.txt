@@ -15962,7 +15962,7 @@ is a segment of $L$ (now containing $0$) together with the Euclidean disc of rad
 
 @@@ mt-bs-004-the-arctan-metric-on-the-real-line.md
 ---
-title: The arctan metric on $\mathbb{R}$
+title: The arctan metric on ℝ
 category: metric/mt-basics
 level: l2
 difficulty: 2
@@ -15990,12 +15990,17 @@ A metric transported by an injective map is a metric: $\delta(x,y)=|\varphi(x)-\
 
 **1. Metric.** Symmetry and the triangle inequality come from those of $|\cdot|$. Also $\delta(x,y)=0\Rightarrow\arctan x=\arctan y\Rightarrow x=y$ since $\arctan$ is injective. Boundedness: $\delta(x,y)<\pi$.
 
-**2. Balls.** Since $\arctan$ is an increasing bijection $\mathbb{R}\to(-\tfrac\pi2,\tfrac\pi2)$: if $r\le\tfrac\pi2$, $B_\delta(0,r)=\{x:|\arctan x|<r\}=(-\tan r,\tan r)$ for $r<\tfrac\pi2$, and it equals $\mathbb{R}$ for $r\ge\tfrac\pi2$. Hence for $r\ge\tfrac\pi2$ the ball is the whole line, although we may use the value $r=\tfrac\pi2$ without trouble.
+**2. Balls.** Since $\arctan$ is an increasing bijection $\mathbb{R}\to(-\tfrac\pi2,\tfrac\pi2)$, we have  for $r<\tfrac\pi2$, 
+$$ B_\delta(0,r)=\{x:|\arctan x|<r\}=(-\tan r,\tan r). $$ 
+For $r<\tfrac\pi2$, $B_\delta(0,r) = \mathbb{R}$. 
 
 **3. Same topology.** Let $a\in\mathbb{R}$ and $\varepsilon>0$.
 
 - By continuity of $\arctan$ at $a$ there is $\eta>0$ with $|x-a|<\eta\Rightarrow\delta(x,a)<\varepsilon$.
-- By continuity of $\tan$ at $\arctan a\in(-\tfrac\pi2,\tfrac\pi2)$ there is $\eta'>0$ such that $|\theta-\arctan a|<\eta'$ and $\theta\in(-\tfrac\pi2,\tfrac\pi2)$ give $|\tan\theta-a|<\varepsilon$. Taking $\theta=\arctan x$: $\delta(x,a)<\eta'\Rightarrow|x-a|<\varepsilon$.
+- By continuity of $\tan$ at $\arctan a\in(-\tfrac\pi2,\tfrac\pi2)$ there is $\eta'>0$ such that
+$$ |\theta-\arctan a|<\eta' \, \text{and} \, \theta\in(-\tfrac\pi2,\tfrac\pi2) \implies |\tan\theta-a|<\varepsilon. $$ 
+Taking $\theta=\arctan x$ we get 
+$$ \delta(x,a)<\eta'\Rightarrow|x-a|<\varepsilon. $$
 
 So every $|\cdot|$-ball around $a$ contains a $\delta$-ball around $a$ and vice versa. Hence a set is open for one metric iff it is open for the other.
 
