@@ -19832,7 +19832,8 @@ $d_2$ comes from the injective map $x\mapsto1/x$. For (2) compare at points $\fr
 
 **2.** With $x_n=\frac1n$ and $y_n=\frac2n$, we have 
 $$ \frac{d_2(x_n,y_n)}{d_1(x_n,y_n)} =n^2/2 $$ 
-is unbounded, so no $C$. With $x=n,y=n+1$: $ \frac{d_2(x_n,y_n)}{d_1(x_n,y_n)} =\frac1{n(n+1)}\to0$, so no $c>0$.
+is unbounded, so no $C$. With $x_n=n,y_n=n+1$: 
+$$ \frac{d_2(x_n,y_n)}{d_1(x_n,y_n)} =\frac1{n(n+1)}\to0, $$ so no $c>0$.
 
 **3.** - The sequence $x_n=\frac1n$ satisfies $d_1(x_n,x_m)\to0$, so it is $d_1$-Cauchy. But $d_2(x_n,x_m)=|n-m|\ge1$, not Cauchy.
 - The sequence $y_n=n$ satisfies $d_2(y_n,y_m)=|\frac1n-\frac1m|\to0$, so $y_n$ is $d_2$-Cauchy. But $d_1(y_n,y_m)=|n-m| \geq 1$, not $d_1$-Cauchy.
