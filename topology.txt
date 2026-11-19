@@ -19042,7 +19042,7 @@ Each is the preimage of a closed set under a continuous map.
 
 @@@ topology-MnR-open-GLn.md
 ---
-title: $GL(n,ℝ) is open in Mn(ℝ)
+title: GL(n,ℝ) is open in Mn(ℝ)
 category: topology/topology-of-mnr
 level: l1
 difficulty: 4
