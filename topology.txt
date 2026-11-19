@@ -7320,7 +7320,7 @@ $$|x^{(k)}_i-a_i|\le\|x^{(k)}-a\|\le\sum_{j=1}^n|x^{(k)}_j-a_j|.$$
 
 @@@ rn-sq-002-limits-of-vector-sequences.md
 ---
-title: Computing limits of sequences in $\mathbb{R}^n$
+title: Computing limits of sequences in ℝⁿ
 category: topology/topology-of-rn/rn-sequences
 level: l2
 difficulty: 1
@@ -9332,7 +9332,7 @@ For $f:\mathbb{R}^n\to\mathbb{R}^m$ let $\Gamma_f=\{(x,f(x)):x\in\mathbb{R}^n\}\
 
 @@@ rn-ct-010-the-product-is-not-uniformly-continuous.md
 ---
-title: $xy$ is not uniformly continuous on ℝ²
+title: xy is not uniformly continuous on ℝ²
 category: topology/topology-of-rn/rn-continuity
 level: l2
 difficulty: 2
