@@ -6033,7 +6033,7 @@ $$f\big(\mathbb{R}\setminus(a,b)\big)\cap(0,M)=\emptyset.$$
 **Remark.** The proof only used that $0$ is taken exactly twice, that every value is taken at most twice, and that $M+1$ is taken at least once. For comparison, the identity takes every value exactly once, and $x^3-3x$ takes the value $0$ three times. The problem is a nice illustration of how the intermediate value theorem produces *many* solutions from a single comparison of values.
 @@@ rn-nm-001-l1-and-sup-norms.md
 ---
-title: The l1 and sup norms on $\mathbb{R}^n$
+title: The l¹ and sup norms on ℝⁿ
 category: topology/topology-of-rn/rn-norms
 level: l2
 difficulty: 1
@@ -6185,7 +6185,7 @@ Since each inequality is an equality for some nonzero vector, no smaller constan
 
 @@@ rn-nm-005-from-p-norms-to-the-sup-norm.md
 ---
-title: From the $p$-norms to the sup norm
+title: From the p-norms to the sup norm
 category: topology/topology-of-rn/rn-norms
 level: l2
 difficulty: 2
@@ -6434,7 +6434,7 @@ Each time prove an upper bound by an inequality and a lower bound by choosing a 
 
 @@@ rn-nm-012-distance-to-a-line-in-space.md
 ---
-title: Distance from a point to a line in $\mathbb{R}^3$
+title: Distance from a point to a line in ℝ³
 category: topology/topology-of-rn/rn-norms
 level: l1
 difficulty: 1
@@ -6567,7 +6567,7 @@ and in each case the supremum is a maximum (attained at opposite vertices).
 
 @@@ rn-nm-016-all-norms-on-rn-are-equivalent.md
 ---
-title: All norms on $\mathbb{R}^n$ are equivalent
+title: All norms on ℝⁿ are equivalent
 category: topology/topology-of-rn/rn-norms
 level: m1
 difficulty: 3
