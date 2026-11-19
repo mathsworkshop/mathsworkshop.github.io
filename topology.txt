@@ -19923,7 +19923,10 @@ For (2, $\Leftarrow$): choose $N$ with $2^{-N}<\varepsilon/2$ so that the tail o
 
 **Idea.** Weights $2^{-n}$ make the first coordinates count much more than the later ones, and truncating by $\min(1,\cdot)$ keeps the series bounded.
 
-**1.** Each term is between $0$ and $2^{-n}$, so the series converges with $d\le\sum2^{-n}=1$. Symmetry is clear. $d(x,y)=0$ forces all $\min(1,|x_n-y_n|)=0$, so $x=y$. Triangle: by Problem 5, $e_n(s,t)=\min(1,|s-t|)$ is a metric on $\mathbb{R}$, so $e_n(x_n,z_n)\le e_n(x_n,y_n)+e_n(y_n,z_n)$. Multiply by $2^{-n}$ and sum.
+**1.** - Each term is between $0$ and $2^{-n}$, so the series converges with $d\le\sum2^{-n}=1$. 
+-$d(x,y)=0$ forces all $\min(1,|x_n-y_n|)=0$, so $x=y$.
+-Symmetry is clear. 
+-Triangle: It is easy to see that $e(s,t)=\min(1,|s-t|)$ is a metric on $\mathbb{R}$, so $e(x_n,z_n)\le e(x_n,y_n)+e(y_n,z_n)$. Multiply by $2^{-n}$ and sum. 
 
 **2.** ($\Rightarrow$) For each $n$: $2^{-n}\min(1,|x^{(k)}_n-x_n|)\le d(x^{(k)},x)\to0$, so $\min(1,|x^{(k)}_n-x_n|)\to0$, hence $|x^{(k)}_n-x_n|\to0$.
 
