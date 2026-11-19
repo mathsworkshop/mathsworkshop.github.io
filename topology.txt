@@ -18929,7 +18929,7 @@ This tends to $+\infty$ as $\varepsilon\to0^+$, contradicting $\|F(\varepsilon I
 
 @@@ topology-MnR-convergence-entries.md
 ---
-title: Convergence in $M_n(\mathbb{R})$ via entries
+title: Convergence in Mn(ℝ) via entries
 category: topology/topology-of-mnr
 level: l1
 difficulty: 2
@@ -18957,7 +18957,7 @@ $$d(A^{(k)},A)=\max_{i,j}|a^{(k)}_{ij}-a_{ij}|\to0.$$
 
 @@@ topology-MnR-metrics-equivalent.md
 ---
-title: Equivalent metrics on $M_n(\mathbb{R})$
+title: Equivalent metrics on Mn(ℝ)
 category: topology/topology-of-mnr
 level: l1
 difficulty: 3
@@ -18987,7 +18987,7 @@ $$\|A\|_\infty\le\|A\|_F\le\|A\|_1\le n^2\|A\|_\infty.$$
 
 @@@ topology-MnR-complete.md
 ---
-title: Completeness of $M_n(\mathbb{R})$
+title: Completeness of Mn(ℝ)
 category: topology/topology-of-mnr
 level: l1
 difficulty: 3
@@ -19013,7 +19013,7 @@ Identify $M_n(\mathbb{R})$ with $\mathbb{R}^{n^2}$; use completeness of $\mathbb
 
 @@@ topology-MnR-closed-subgroups.md
 ---
-title: Classical closed subgroups of $GL_n(\mathbb{R})$
+title: Classical closed subgroups of GL(n,ℝ)
 category: topology/topology-of-mnr
 level: l1
 difficulty: 4
@@ -19042,7 +19042,7 @@ Each is the preimage of a closed set under a continuous map.
 
 @@@ topology-MnR-open-GLn.md
 ---
-title: $GL_n(\mathbb{R})$ is open in $M_n(\mathbb{R})$
+title: $GL(n,ℝ) is open in Mn(ℝ)
 category: topology/topology-of-mnr
 level: l1
 difficulty: 4
@@ -19118,7 +19118,7 @@ $H$ is the kernel of the trace functional; show it is unbounded.
 
 @@@ topology-MnR-interior.md
 ---
-title: Interior and boundary of $GL_n(\mathbb{R})$
+title: Interior and boundary of GL(n,ℝ)
 category: topology/topology-of-mnr
 level: l1
 difficulty: 3
@@ -19146,7 +19146,7 @@ $GL_n$ is open; its boundary is the set of singular matrices.
 
 @@@ topology-MnR-distance-to-groups.md
 ---
-title: Distance to $O_n$ and polar decomposition (statement)
+title: Distance to O(n,ℝ) and polar decomposition (statement)
 category: topology/topology-of-mnr
 level: m1
 difficulty: 5
@@ -19228,7 +19228,7 @@ Eigenvalues are roots of the characteristic polynomial $\chi_A(\lambda)=\det(\la
 
 @@@ topology-MnR-separability.md
 ---
-title: Separability of $M_n(\mathbb{R})$
+title: Separability of Mn(ℝ)
 category: topology/topology-of-mnr
 level: l1
 difficulty: 3
@@ -19306,7 +19306,7 @@ Each term is a product of continuous coordinate functions; the sum is continuous
 
 @@@ topology-MnR-homeomorphism-quadratic.md
 ---
-title: A homeomorphism of $M_n(\mathbb{R})$
+title: A homeomorphism of Mn(ℝ)
 category: topology/topology-of-mnr
 level: l1
 difficulty: 4
@@ -19332,7 +19332,7 @@ Explicitly find the inverse; both maps are polynomial.
 
 @@@ topology-MnR-summary.md
 ---
-title: Summary of the topology of $M_n(\mathbb{R})$
+title: Summary of the topology of Mn(ℝ)
 category: topology/topology-of-mnr
 level: lycee
 difficulty: 2
