@@ -19966,13 +19966,18 @@ For (2, $\Rightarrow$) take $V=\bigcup_{a\in U}B_X(a,r_a)$ where $B_A(a,r_a)\sub
 
 **Idea.** An open set of the subspace is the trace of an open set of the ambient space.
 
-**1.** For $a\in A$: $B_A(a,r)=\{y\in A:d(a,y)<r\}=B_X(a,r)\cap A$.
+**1.** For any $a\in A$, 
+$$ B_A(a,r)=\{y\in A:d(a,y)<r\}=B_X(a,r)\cap A. $$
 
-**2.** ($\Leftarrow$) Let $U=V\cap A$ with $V$ open, and $a\in U$. There is $r$ with $B_X(a,r)\subset V$, so $B_A(a,r)=B_X(a,r)\cap A\subset V\cap A=U$.
+**2.** ($\Leftarrow$) Let $U=V\cap A$ with $V$ open, and $a\in U$. There is $r>0$ such that $B_X(a,r)\subset V$. Therefore $$B_A(a,r)=B_X(a,r)\cap A\subset V\cap A=U. $$
 
-($\Rightarrow$) Let $U$ be open in $A$. For $a\in U$ choose $r_a$ with $B_A(a,r_a)\subset U$, and set $V=\bigcup_{a\in U}B_X(a,r_a)$, open in $X$. Then $V\cap A=\bigcup_a(B_X(a,r_a)\cap A)=\bigcup_aB_A(a,r_a)\subset U$, and $U\subset V\cap A$ since $a\in B_X(a,r_a)$. So $U=V\cap A$.
+($\Rightarrow$) Let $U$ be open in $A$. For $a\in U$ choose $r_a$ with $B_A(a,r_a)\subset U$. Consider $V=\bigcup_{a\in U}B_X(a,r_a)$. Then $V$ is open in $X$ and 
+$$ V\cap A=\bigcup_a(B_X(a,r_a)\cap A)=\bigcup_aB_A(a,r_a)\subset U, $$
+and $U\subset V\cap A$ since $a\in B_X(a,r_a)$. So $U=V\cap A$.
 
-**3.** $[0,1)=(-1,1)\cap[0,1]$ is open in $[0,1]$. It is not open in $\mathbb{R}$ (no ball around $0$ is contained in it). The set $S=\{\frac1n\}$ is discrete: $\{\frac1n\}=S\cap(\frac1{n+1},\frac1{n-1})$ (with the convention $\frac10=\infty$) is open in $S$, since the interval contains no other point of $S$. The set $\{0\}\cup S$ is not discrete: any interval around $0$ contains points $\frac1n$, so $\{0\}$ is not open.
+**3.** - $[0,1)=(-1,1)\cap[0,1]$ is open in $[0,1]$. It is not open in $\mathbb{R}$ (no ball around $0$ is contained in it). 
+- The set $S=\{\frac1n\}$ is discrete: $\{\frac1n\}=S\cap(\frac1{n+1},\frac1{n-1})$ (with the convention $\frac10=\infty$) is open in $S$, since the interval contains no other point of $S$. 
+- The set $\{0\}\cup S$ is not discrete: any interval around $0$ contains points $\frac1n$, so $\{0\}$ is not open.
 
 **4.** If $U$ is open in $X$ then $U=U\cap A$ is open in $A$. Conversely, if $U=V\cap A$ with $V$ open and $A$ open, then $U$ is an intersection of two open sets of $X$, hence open.
 
@@ -20290,44 +20295,6 @@ an intersection of two closed sets, hence closed.
 *Strict example.* $A=[0,1)$, $B=[1,2]$ in $\mathbb{R}$: $\partial A=\{0,1\}$, $\partial B=\{1,2\}$, but $A\cup B=[0,2]$ has boundary $\{0,2\}$.
 
 **Remark.** For the boundary of a sum, intersection or product of sets, always start from $\partial A=\overline{A}\cap\overline{X\setminus A}$.
-
-@@@ mt-tp-005-open-sets-of-a-subspace.md
----
-title: Open sets of a subspace
-category: metric/mt-topology
-level: l2
-difficulty: 2
-order: 22
-tags: subspace, relative topology, open sets, closed sets
-date: 2026-11-17
----
-
-## Statement
-
-Let $(X,d)$ be a metric space and $Y\subset X$ with the induced metric.
-
-1. Show that $V\subset Y$ is open in $Y$ iff $V=U\cap Y$ for some open $U\subset X$, and closed in $Y$ iff $V=F\cap Y$ with $F$ closed in $X$.
-2. Show that if $Y$ is open in $X$, a subset of $Y$ is open in $Y$ iff it is open in $X$.
-3. For $X=\mathbb{R}$ give: (a) a set open in $Y=[0,1]$ but not in $\mathbb{R}$; (b) a set open and closed in $Y=\mathbb{Q}$, neither empty nor $\mathbb{Q}$; (c) the topology of $Y=\mathbb{Z}$.
-
-## Hint
-
-The ball of $Y$ around $y$ is $B_X(y,r)\cap Y$. For (3b) cut $\mathbb{Q}$ at an irrational number.
-
-## Solution
-
-**Idea.** Intersecting with $Y$ transports every statement about $X$ down to $Y$.
-
-**1.** Balls in $Y$ are $B_Y(y,r)=B_X(y,r)\cap Y$. If $V=U\cap Y$ with $U$ open and $y\in V$, choose $r$ with $B_X(y,r)\subset U$; then $B_Y(y,r)\subset V$, so $V$ is open in $Y$. Conversely, if $V$ is open in $Y$, for each $y\in V$ pick $r_y$ with $B_Y(y,r_y)\subset V$ and put $U=\bigcup_{y\in V}B_X(y,r_y)$, which is open with $U\cap Y=V$. For closed sets take complements in $Y$: $Y\setminus V=U\cap Y$ gives $V=(X\setminus U)\cap Y$, and conversely.
-
-**2.** If $V\subset Y$ is open in $X$, then $V=V\cap Y$ is open in $Y$. Conversely if $V=U\cap Y$ with $U,Y$ open in $X$, then $V$ is open in $X$.
-
-**3.** (a) $[0,\tfrac12)=(-1,\tfrac12)\cap[0,1]$ is open in $[0,1]$ but not in $\mathbb{R}$ (it contains $0$ without a neighbourhood).
-(b) Let $V=\{q\in\mathbb{Q}:q<\sqrt2\}=(-\infty,\sqrt2)\cap\mathbb{Q}$. It is open in $\mathbb{Q}$. Its complement in $\mathbb{Q}$ is $(\sqrt2,\infty)\cap\mathbb{Q}$, also open, so $V$ is closed too. Both are non-empty. (So $\mathbb{Q}$ is not connected.)
-(c) $B_{\mathbb{Z}}(n,\tfrac12)=\{n\}$, so every singleton, hence every subset, is open: $\mathbb{Z}$ has the discrete topology although it is not open in $\mathbb{R}$.
-
-**Remark.** "Open" and "closed" are never absolute notions: they always refer to an ambient space. The hypothesis "$Y$ open in $X$" in (2) cannot be dropped, by (3a).
-
 @@@ mt-tp-006-density-of-piecewise-linear-functions.md
 ---
 title: Piecewise linear functions are dense in C[0,1]
