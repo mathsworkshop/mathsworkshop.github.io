@@ -7140,7 +7140,7 @@ The points $(0,1/k)$ belong to $A+K$ and converge to $(0,0)\notin A+K$, so $A+K$
 
 @@@ rn-oc-016-accumulation-points-of-a-double-sequence-set.md
 ---
-title: Accumulation points of $\{(1/n,1/m)\}$
+title: Accumulation points of {(1/n,1/m)}
 category: topology/topology-of-rn/rn-open-closed
 level: l2
 difficulty: 3
@@ -7181,7 +7181,7 @@ $$A'=(K\times K)\setminus A=\{(1/n,0)\}\cup\{(0,1/m)\}\cup\{(0,0)\},\qquad\overl
 
 @@@ rn-oc-017-closure-of-the-graph-of-sin-1-over-x.md
 ---
-title: The closure of the graph of $\sin(1/x)$
+title: The closure of the graph of sin(1/x)
 category: topology/topology-of-rn/rn-open-closed
 level: l2
 difficulty: 3
@@ -7246,7 +7246,7 @@ Given $x\in U$ with $B(x,\varepsilon)\subset U$, choose a rational $\rho<\vareps
 
 @@@ rn-oc-019-baire-category-theorem.md
 ---
-title: Baire's theorem in $\mathbb{R}^n$
+title: Baire's theorem in ℝⁿ
 category: topology/topology-of-rn/rn-open-closed
 level: m1
 difficulty: 4
@@ -7279,7 +7279,7 @@ date: 2026-11-16
 
 @@@ rn-sq-001-coordinatewise-convergence.md
 ---
-title: Convergence in $\mathbb{R}^n$ is coordinatewise convergence
+title: Convergence in ℝⁿ is coordinatewise convergence
 category: topology/topology-of-rn/rn-sequences
 level: l2
 difficulty: 1
@@ -7438,7 +7438,7 @@ Conversely, suppose a subsequence $x_{k_j}\to b=(b_1,b_2)$. Then $b_2=\lim\frac1
 
 @@@ rn-sq-005-completeness-of-rn.md
 ---
-title: $\mathbb{R}^n$ is complete
+title: ℝⁿ is complete
 category: topology/topology-of-rn/rn-sequences
 level: l2
 difficulty: 2
@@ -7473,7 +7473,7 @@ For part 1 prove that each coordinate sequence is a Cauchy sequence of real numb
 
 @@@ rn-sq-006-bolzano-weierstrass-in-rn.md
 ---
-title: The Bolzano-Weierstrass theorem in $\mathbb{R}^n$
+title: The Bolzano-Weierstrass theorem in ℝⁿ
 category: topology/topology-of-rn/rn-sequences
 level: l2
 difficulty: 2
@@ -7683,7 +7683,7 @@ $$a_{k+1}-b_{k+1}\le\frac{a_k+b_k}2-b_k=\frac{a_k-b_k}2.$$
 
 @@@ rn-sq-012-contraction-principle-in-rn.md
 ---
-title: The contraction principle in $\mathbb{R}^n$ with an application
+title: The contraction principle in ℝⁿ with an application
 category: topology/topology-of-rn/rn-sequences
 level: m1
 difficulty: 3
@@ -7722,7 +7722,7 @@ Therefore $\|F(p)-F(p')\|_\infty\le\max\big(\frac13,\frac14\big)\|p-p'\|_\infty=
 
 @@@ rn-sq-013-series-in-rn.md
 ---
-title: Absolutely convergent series in $\mathbb{R}^n$
+title: Absolutely convergent series in ℝⁿ
 category: topology/topology-of-rn/rn-sequences
 level: l2
 difficulty: 2
@@ -7795,7 +7795,7 @@ $$\sum_{k\ge0}x_k=\Big(\frac{1-r\cos\theta}{1-2r\cos\theta+r^2},\ \frac{r\sin\th
 
 @@@ rn-sq-015-enumeration-of-rational-points.md
 ---
-title: Every point is a limit point of an enumeration of $\mathbb{Q}^n$
+title: Every point is a limit point of an enumeration of ℚⁿ
 category: topology/topology-of-rn/rn-sequences
 level: m1
 difficulty: 3
@@ -8983,7 +8983,7 @@ Thus the sets $P_z\setminus\{x,y\}$, $z\in H$, are pairwise disjoint. Each point
 
 @@@ rn-ct-001-lines-do-not-detect-limits.md
 ---
-title: Limits along lines do not detect limits in $\mathbb{R}^2$
+title: Limits along lines do not detect limits in ℝ²
 category: topology/topology-of-rn/rn-continuity
 level: l2
 difficulty: 1
@@ -9066,7 +9066,7 @@ which does not depend on $r$ at all (the numerator and the denominator are both 
 
 @@@ rn-ct-003-limits-in-three-variables.md
 ---
-title: Limits at the origin of $\mathbb{R}^3$
+title: Limits at the origin of ℝ³
 category: topology/topology-of-rn/rn-continuity
 level: l2
 difficulty: 2
@@ -9332,7 +9332,7 @@ For $f:\mathbb{R}^n\to\mathbb{R}^m$ let $\Gamma_f=\{(x,f(x)):x\in\mathbb{R}^n\}\
 
 @@@ rn-ct-010-the-product-is-not-uniformly-continuous.md
 ---
-title: $xy$ is not uniformly continuous on $\mathbb{R}^2$
+title: $xy$ is not uniformly continuous on ℝ²
 category: topology/topology-of-rn/rn-continuity
 level: l2
 difficulty: 2
@@ -9410,7 +9410,7 @@ is well defined and continuous, equals $0$ exactly on $A$ and $1$ exactly on $B$
 
 @@@ rn-ct-012-the-open-ball-is-homeomorphic-to-rn.md
 ---
-title: The open unit ball is homeomorphic to $\mathbb{R}^n$
+title: The open unit ball is homeomorphic to ℝⁿ
 category: topology/topology-of-rn/rn-continuity
 level: m1
 difficulty: 2
@@ -9447,7 +9447,7 @@ Thus $\varphi$ is a continuous bijection with continuous inverse $\psi$: a homeo
 
 @@@ rn-ct-013-balls-and-cubes-and-rn.md
 ---
-title: Balls, cubes and $\mathbb{R}^n$ up to homeomorphism
+title: Balls, cubes and ℝⁿ up to homeomorphism
 category: topology/topology-of-rn/rn-continuity
 level: m1
 difficulty: 3
@@ -9556,7 +9556,7 @@ For $g(x)=\frac1x$ on $(0,1]$ the sequence $a_k=\frac1k$ is Cauchy but $g(a_k)=k
 
 @@@ rn-ct-016-isometries-of-rn-are-affine.md
 ---
-title: Isometries of $\mathbb{R}^n$ are orthogonal maps plus translations
+title: Isometries of ℝⁿ are orthogonal maps plus translations
 category: topology/topology-of-rn/rn-continuity
 level: m1
 difficulty: 4
