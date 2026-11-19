@@ -20011,9 +20011,17 @@ Let $(X,d)$ be a metric space and $A\subset X$ non-empty. Put $d(x,A)=\inf_{a\in
 
 **Idea.** $d(\cdot,A)$ is a continuous function which detects $A$; it turns topological questions into questions about real-valued functions.
 
-**1.** For $a\in A$: $d(x,A)\le d(x,a)\le d(x,y)+d(y,a)$. Taking the infimum over $a\in A$ gives $d(x,A)\le d(x,y)+d(y,A)$. By symmetry, $|d(x,A)-d(y,A)|\le d(x,y)$: the function is $1$-Lipschitz, hence continuous.
+**1.** Fix $a\in A$. We have  
+$$ d(x,A)\le d(x,a)\le d(x,y)+d(y,a)$$ 
+Taking the infimum over $a\in A$ gives 
+$$ d(x,A)\le d(x,y)+d(y,A). $$ 
+By symmetry, 
+$$ |d(x,A)-d(y,A)|\le d(x,y). $$ 
+The function $d(.,A)$ is $1$-Lipschitz, hence continuous.
 
-**2.** If $x\in\overline A$ there are $a_n\in A$ with $a_n\to x$ so $d(x,A)\le d(x,a_n)\to0$. Conversely if $d(x,A)=0$, for each $n$ there is $a_n\in A$ with $d(x,a_n)<\frac1n$, so $a_n\to x$ and $x\in\overline A$. If $A$ is closed, $\overline A=A$.
+**2.** If $x\in\overline A$ there are $a_n\in A$ with $a_n\to x$ so 
+$$ d(x,A)\le d(x,a_n)\to0. $$ 
+Conversely if $d(x,A)=0$, for each $n$ there is $a_n\in A$ with $d(x,a_n)<\frac1n$, so $a_n\to x$ and $x\in\overline A$. If $A$ is closed, $\overline A=A$ and the first part of the question yields $A = \{x : d(x,A) = 0\}. 
 
 **3.** If $d(x,A)+d(x,B)=0$ then $x\in A\cap B$ by (2), impossible since $A\cap B=\emptyset$. So the denominator never vanishes and $f$ is continuous as a quotient of continuous functions. On $A$, $d(x,A)=0$ so $f=0$; on $B$, $d(x,B)=0$ so $f=1$. The sets $\{f<\frac12\}\supset A$ and $\{f>\frac12\}\supset B$ are open (preimages of open sets) and disjoint.
 
@@ -20034,7 +20042,8 @@ date: 2026-11-17
 
 ## Statement
 
-A map $f:X\to Y$ between metric spaces is an **isometry** if $d_Y(f(x),f(y))=d_X(x,y)$ for all $x,y$.
+A map $f:X\to Y$ between metric spaces is an **isometry** if 
+$$ d_Y(f(x),f(y))=d_X(x,y) \, \, \forall x, y \in X. $$
 
 1. Show that an isometry is injective and continuous, and that the composition of isometries is an isometry.
 2. Let $f:\mathbb{R}\to\mathbb{R}$ be an isometry for $|\cdot|$. Prove that $f(x)=x+b$ or $f(x)=-x+b$ for some $b\in\mathbb{R}$. In particular $f$ is onto.
@@ -20048,7 +20057,10 @@ Subtract $f(0)$ and reduce to the case $f(0)=0$, $f(1)=1$. Then $f(x)$ must be a
 
 **Idea.** Knowing the images of the two points $0$ and $1$ determines the image of every point.
 
-**1.** If $f(x)=f(y)$ then $d(x,y)=d(f(x),f(y))=0$, so $x=y$. Isometries are $1$-Lipschitz, hence continuous. Composition: $d(g(f(x)),g(f(y)))=d(f(x),f(y))=d(x,y)$.
+**1.** - If $f(x)=f(y)$ then $d(x,y)=d(f(x),f(y))=0$, so $x=y$. 
+- Isometries are $1$-Lipschitz, hence continuous.
+- Composition: If $g : Y \rightarrow Z$ is an isometry then 
+$$ d(g(f(x)),g(f(y)))=d(f(x),f(y))=d(x,y). $$
 
 **2.** Put $g(x)=f(x)-f(0)$, an isometry with $g(0)=0$. Then $|g(x)|=|x|$ for all $x$; so $g(1)=\pm1$. Let $\varepsilon=g(1)\in\{\pm1\}$ and $h=\varepsilon g$: $h$ is an isometry with $h(0)=0,h(1)=1$. For $x\in\mathbb{R}$, $|h(x)|=|x|$ gives $h(x)=\pm x$, and $|h(x)-1|=|x-1|$. If $h(x)=-x$, then $|x+1|=|x-1|$, which forces $x=0$ and $h(0)=0=x$ anyway. So $h(x)=x$ for all $x$. Hence $g(x)=\varepsilon x$ and $f(x)=\varepsilon x+f(0)$.
 
