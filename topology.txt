@@ -22716,7 +22716,7 @@ because $f^{m-n}(x)\in f(X)$ when $m-n\ge1$. Thus any two distinct terms of the 
 **Remark.** Compactness is used twice: to make $f(X)$ closed (so $r>0$) and to extract a convergent subsequence. In (3) the orbit of $0$, namely $0,1,2,\dots$, is exactly the kind of sequence with all mutual distances $\ge1$ that (2) rules out in a compact space.
 @@@ mt-nm-001-sup-norm-versus-integral-norm.md
 ---
-title: The sup norm and the integral norm on $C([0,1])$
+title: The sup norm and the integral norm on C([0,1])
 category: metric/mt-normed-spaces
 level: l2
 difficulty: 1
