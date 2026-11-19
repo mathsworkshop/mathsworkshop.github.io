@@ -19779,7 +19779,11 @@ For (3), take sequences in $A$ converging to two points of the closure and use t
 
 **Idea.** The triangle inequality lets us pass from a point of the ball to its centre and back.
 
-**1.** For $x,y\in B(a,r)$: $d(x,y)\le d(x,a)+d(a,y)<2r$. So $\operatorname{diam}B(a,r)\le2r$. Strict case: in the discrete metric, $B(a,1)=\{a\}$ has diameter $0<2$. Non-attained case: in $\mathbb{R}$, $B(0,1)=(-1,1)$ has diameter $2$, but no pair $x,y$ in the ball has $|x-y|=2$.
+**1.** - For $x,y\in B(a,r)$,  
+$$ d(x,y)\le d(x,a)+d(a,y)<2r.$$ 
+So $\operatorname{diam}B(a,r)\le2r$. 
+- Strict case: in the discrete metric, $B(a,1)=\{a\}$ has diameter $0<2$. 
+- Non-attained case: in $\mathbb{R}$, $B(0,1)=(-1,1)$ has diameter $2$, but no pair $x,y$ in the ball has $|x-y|=2$.
 
 **2.** If $A\subset B(a,r)$, $A$ is bounded by (1). Conversely, if $\operatorname{diam}A=D<\infty$ and $a\in A$ (assume $A\ne\emptyset$), then for all $x\in A$, $d(a,x)\le D<D+1$, so $A\subset B(a,D+1)$.
 
@@ -19787,7 +19791,11 @@ For (3), take sequences in $A$ converging to two points of the closure and use t
 $$d(x,y)\le d(x,x')+d(x',y')+d(y',y)<2\varepsilon+\operatorname{diam}A.$$
 Letting $\varepsilon\to0$ and taking the sup over $x,y$ gives $\operatorname{diam}\overline A\le\operatorname{diam}A$.
 
-**4.** Let $A,B$ be bounded, non-empty, fix $a_0\in A$, $b_0\in B$. For $a\in A,b\in B$: $d(a,b)\le d(a,a_0)+d(a_0,b_0)+d(b_0,b)\le\operatorname{diam}A+d(a_0,b_0)+\operatorname{diam}B$. Hence $\operatorname{diam}(A\cup B)\le\max(\operatorname{diam}A,\operatorname{diam}B,\operatorname{diam}A+d(a_0,b_0)+\operatorname{diam}B)<\infty$. Induction gives finite unions.
+**4.** Let $A,B$ be bounded, non-empty, and fix $a_0\in A$, $b_0\in B$. For $a\in A,b\in B$: 
+$$ \begin{aligned}  d(a,b)&\le d(a,a_0)+d(a_0,b_0)+d(b_0,b) \\ &\le\operatorname{diam}A+d(a_0,b_0)+\operatorname{diam}B. \end{aligned} $$ 
+Hence 
+$$ \operatorname{diam}(A\cup B)\le \operatorname{diam}A+d(a_0,b_0)+\operatorname{diam}B)<\infty. $$ 
+Induction gives finite unions.
 
 **Remark.** Boundedness depends on the metric, not on the topology: $\mathbb{R}$ is unbounded for $|\cdot|$ and bounded for $\min(1,|x-y|)$. In a normed space with Euclidean norm one has $\operatorname{diam}B(a,r)=2r$ exactly.
 
