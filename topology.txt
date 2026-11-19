@@ -19657,7 +19657,7 @@ $$f(d(x,z))\le f\big(d(x,y)+d(y,z)\big)\le f(d(x,y))+f(d(y,z)).$$
 $$f(s)=f\Big(\tfrac s{s+t}(s+t)+\tfrac t{s+t}\cdot0\Big)\ge\tfrac s{s+t}f(s+t).$$
 Similarly 
 $$ f(t)\ge\tfrac t{s+t}f(s+t). $$
-Adding gives $f(s)+f(t)\ge f(s+t)$ (the case $s=0$ or $t=0$ is trivial). A concave function with $f(0)=0$ and $f>0$ on $(0,\infty)$ is automatically non-decreasing (concave and positive on $(0,\infty)$ with $f(0)=0$ cannot decrease: if $f(a)>f(b)$ with $a<b$, concavity would force $f$ to become negative further on). Hence $\sqrt t$, $t^\alpha$ ($0<\alpha\le1$) and $\ln(1+t)$ (all concave, vanishing at $0$, positive and increasing) are admissible, and give metrics $\sqrt d$, $d^\alpha$, $\ln(1+d)$. Also $\min(1,t)$ and $\frac t{1+t}$ are admissible.
+Adding gives $f(s)+f(t)\ge f(s+t)$ (the case $s=0$ or $t=0$ is trivial). Hence $\sqrt t$, $t^\alpha$ ($0<\alpha\le1$) and $\ln(1+t)$ (all concave, vanishing at $0$, positive and increasing) are admissible, and give metrics $\sqrt d$, $d^\alpha$, $\ln(1+d)$. Also $\min(1,t)$ and $\frac t{1+t}$ are admissible.
 
 **3. Failure for $t^2$.** On $\mathbb{R}$ with $x=0,y=1,z=2$: $|x-z|^2=4>1+1=|x-y|^2+|y-z|^2$. The function $t^2$ is not subadditive: $(1+1)^2=4>2$.
 
