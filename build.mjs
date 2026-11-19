@@ -188,7 +188,11 @@ else {
 }
 if (problems.some(p => p.order !== null)) newestFirst = [...newestFirst].sort((a, b) => (a.order === null && b.order === null) ? 0 : (a.order === null ? 1 : b.order === null ? -1 : a.order - b.order));
 if (SORT !== 'newest' || problems.some(p => p.order !== null)) newestFirst.forEach((p, i) => { p.num = i + 1; });
-
+const CAT_ORDER = Object.keys(NODES);
+const NEWEST_POS = new Map(newestFirst.map((p, i) => [p.slug, i]));
+const READING = [...problems].sort((a, b) => CAT_ORDER.indexOf(a.path) - CAT_ORDER.indexOf(b.path)
+  || (a.order === null && b.order === null ? 0 : a.order === null ? 1 : b.order === null ? -1 : a.order - b.order)
+  || NEWEST_POS.get(a.slug) - NEWEST_POS.get(b.slug));
 /* ---------- page shell ---------- */
 const adsHead = config.adsenseClient
   ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${esc(config.adsenseClient)}" crossorigin="anonymous"></script>\n`
