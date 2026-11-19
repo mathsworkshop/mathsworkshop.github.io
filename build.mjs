@@ -299,8 +299,9 @@ function problemPage(p) {
   const chain = chainOf(p.path);
   const catName = chain[chain.length - 1].name;
   const scope = NODES[p.path].parent || p.path;
-  const related = newestFirst.filter(q => q.slug !== p.slug && (q.path === scope || q.path.startsWith(scope + '/')))
-    .sort((x, y) => (x.path === p.path ? 0 : 1) - (y.path === p.path ? 0 : 1)).slice(0, 4);
+    const i0 = READING.indexOf(p);
+  const related = [];
+  for (let k = 1; k < READING.length && related.length < 4; k++) related.push(READING[(i0 + k) % READING.length]);
   const idx = problems.findIndex(q => q.slug === p.slug);
   const prev = problems[idx - 1], next = problems[idx + 1];
   const desc = `${catName} problem (${LEVELS[p.level]}): ${p.title}. Read the statement, take a hint and check the full solution.`;
