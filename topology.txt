@@ -19861,7 +19861,7 @@ $$d_2(p,p')=\sqrt{d_X(x,x')^2+d_Y(y,y')^2}.$$
 
 1. Prove that $d_\infty,d_1,d_2$ are metrics.
 2. Prove $d_\infty\le d_2\le d_1\le2d_\infty$.
-3. Describe the $d_\infty$-ball $B((x,y),r)$ and deduce that a product of open sets is open.
+3. Describe the $d_\infty$-ball $B_\infty((x,y),r)$ and deduce that a product of open sets is open.
 4. Show that $(x_n,y_n)\to(x,y)$ iff $x_n\to x$ and $y_n\to y$.
 
 ## Hint
@@ -19872,11 +19872,24 @@ The triangle inequality for $d_2$ comes from the Euclidean triangle inequality i
 
 **Idea.** Each $d$ is the Euclidean-type norm of the vector of coordinate distances; the three norms on $\mathbb{R}^2$ are equivalent.
 
-**1.** Definiteness and symmetry are clear. For the triangle inequality, put $u=(d_X(x,x''),d_Y(y,y''))$, $v=(d_X(x,x'),d_Y(y,y'))$, $w=(d_X(x',x''),d_Y(y',y''))$. By the triangle inequalities in $X$ and $Y$, $0\le u\le v+w$ coordinatewise. Each norm $N\in\{\|\cdot\|_\infty,\|\cdot\|_1,\|\cdot\|_2\}$ is monotone on vectors with non-negative entries, so $N(u)\le N(v+w)\le N(v)+N(w)$, which is the triangle inequality for $d_\infty,d_1,d_2$.
+**1.** Definiteness and symmetry are clear. For the triangle inequality, put 
+$$ u=(d_X(x,x''),d_Y(y,y'')), \, v=(d_X(x,x'),d_Y(y,y')),$$
+and $w=(d_X(x',x''),d_Y(y',y''))$. By the triangle inequalities in $X$ and $Y$, $0\le u\le v+w$ coordinatewise. Each norm $N\in\{\|\cdot\|_\infty,\|\cdot\|_1,\|\cdot\|_2\}$ is monotone on vectors with non-negative entries, so $N(u)\le N(v+w)\le N(v)+N(w)$, which is the triangle inequality for $d_\infty,d_1,d_2$.
 
-**2.** With $a,b\ge0$: $\max(a,b)\le\sqrt{a^2+b^2}\le a+b\le2\max(a,b)$ (the middle one by squaring: $a^2+b^2\le a^2+2ab+b^2$).
+**2.** For every $a,b\ge0$, we have  
+$$\max(a,b)\le\sqrt{a^2+b^2}\le a+b\le2\max(a,b)$$ 
+where the second inequality follows by squaring: $a^2+b^2\le a^2+2ab+b^2$.
 
-**3.** $B_\infty((x,y),r)=B_X(x,r)\times B_Y(y,r)$. If $U\subset X$ and $V\subset Y$ are open and $(x,y)\in U\times V$, pick $r_1,r_2$ with $B(x,r_1)\subset U$, $B(y,r_2)\subset V$ and $r=\min(r_1,r_2)$: then $B_\infty((x,y),r)\subset U\times V$. So $U\times V$ is open for $d_\infty$, hence for $d_1,d_2$ by (2).
+**3.** - We have $B_\infty((x,y),r)=B_X(x,r)\times B_Y(y,r)$. Indeed
+$$ \begin{aligned} 
+(a,b) \in B_\infty((x,y),r) &\iff d_\infty ((a,b),(x,y)) < r \\
+&\iff d_X(a,x) < r, \, \text{and} \, d_Y(b,y) < r \\
+&\iff a \in B_X(x,r) , \, \text{and} \, b \in B_Y(y,r).
+\end{aligned}$$ 
+
+- Assume $U\subset X$ and $V\subset Y$ are open and let $(x,y)\in U\times V$. Pick $r_1,r_2>0$ with $B(x,r_1)\subset U$, $B(y,r_2)\subset V$ and $r=\min(r_1,r_2)$: then 
+$$ B_\infty((x,y),r) = B_X(x,r)\times B_Y(y,r) \subset B_X(x,r_1)\times B_Y(y,r_2) \subset U\times V. $$
+So $U\times V$ is open for $d_\infty$, hence for $d_1,d_2$ by (2).
 
 **4.** By (2), the three metrics have the same convergent sequences. For $d_\infty$: $d_\infty\big((x_n,y_n),(x,y)\big)\to0$ iff both $d_X(x_n,x)\to0$ and $d_Y(y_n,y)\to0$.
 
