@@ -22758,7 +22758,7 @@ If $\|f\|_\infty\le c\|f\|_1$ held for all $f$, we would get $1\le \frac{c}{n+1}
 
 @@@ mt-nm-002-inclusions-between-sequence-spaces.md
 ---
-title: Inclusions $\ell^1\subset\ell^2\subset\ell^\infty$
+title: Inclusions ℓ¹ ⊂ ℓ² ⊂ ℓ∞
 category: metric/mt-normed-spaces
 level: l2
 difficulty: 2
@@ -22802,7 +22802,7 @@ Let $N\to\infty$: $\|x\|_1^2\ge\|x\|_2^2$.
 
 @@@ mt-nm-003-all-norms-on-r-n-are-equivalent.md
 ---
-title: All norms on $\mathbb{R}^n$ are equivalent
+title: All norms on ℝⁿ are equivalent
 category: metric/mt-normed-spaces
 level: l2
 difficulty: 3
@@ -22876,7 +22876,7 @@ In each case a family of vectors with the same "small" norm and an unboundedly "
 
 @@@ mt-nm-005-l1-is-complete.md
 ---
-title: The space $\ell^1$ is a Banach space
+title: The space ℓ¹ is a Banach space
 category: metric/mt-normed-spaces
 level: m1
 difficulty: 3
@@ -22913,7 +22913,7 @@ Let $J\to\infty$: $\sum_{n=1}^\infty|x^{(k)}_n-x_n|\le\varepsilon$ for all $k\ge
 
 @@@ mt-nm-006-c-0-1-with-the-integral-norm-is-not-complete.md
 ---
-title: $C([0,1])$ with the $L^1$ norm is not complete
+title: C([0,1]) with the L¹ norm is not complete
 category: metric/mt-normed-spaces
 level: m1
 difficulty: 3
@@ -22951,7 +22951,7 @@ Then $f(\tfrac12)=0$ but $\lim_{x\to1/2^+}f(x)=1$: $f$ is not continuous at $\tf
 
 @@@ mt-nm-007-operator-norm-of-a-matrix.md
 ---
-title: Operator norm of a matrix for the $\ell^\infty$ and $\ell^1$ norms
+title: Operator norm of a matrix for the ℓ¹ and ℓ∞ norms
 category: metric/mt-normed-spaces
 level: l2
 difficulty: 2
@@ -23028,7 +23028,7 @@ So $T$ is bounded, thus Lipschitz: $\|Tx-Ty\|\le K\|x-y\|$.
 
 @@@ mt-nm-009-norm-of-a-linear-form-and-duality.md
 ---
-title: Norm of a linear form and duality of $\ell^1$, $\ell^2$, $\ell^\infty$ on $\mathbb{R}^n$
+title: Norm of a linear form and duality of ℓ¹, ℓ², ℓ∞ on ℝⁿ
 category: metric/mt-normed-spaces
 level: m1
 difficulty: 3
@@ -23102,7 +23102,7 @@ A Cauchy sequence with a convergent subsequence converges to the same limit: giv
 
 @@@ mt-nm-011-neumann-series.md
 ---
-title: The Neumann series and invertibility of $I-T$
+title: The Neumann series and invertibility of I-T
 category: metric/mt-normed-spaces
 level: m1
 difficulty: 3
@@ -23140,7 +23140,7 @@ The operator norm is submultiplicative: $\|ST\|\le\|S\|\|T\|$. Apply the absolut
 
 @@@ mt-nm-012-closed-subspaces-and-dense-subspaces.md
 ---
-title: Finite-dimensional subspaces are closed; $c_{00}$ is not closed in $\ell^1$
+title: Finite-dimensional subspaces are closed
 category: metric/mt-normed-spaces
 level: m1
 difficulty: 3
@@ -23290,7 +23290,7 @@ This is a continuous tent function of height $1$ at $c_n$, supported in $[a_n,b_
 
 @@@ mt-nm-016-operator-norm-of-an-integral-functional.md
 ---
-title: The same linear form has different norms for different norms on $C([0,1])$
+title: The same linear form has different norms for different norms on C([0,1])
 category: metric/mt-normed-spaces
 level: m1
 difficulty: 4
