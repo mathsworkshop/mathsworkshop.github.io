@@ -303,7 +303,7 @@ function problemPage(p) {
   const body = `<div class="wrap page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/problems/">Problems</a>${chain.map(n => ` › <a href="/category/${n.path}/">${esc(n.name)}</a>`).join('')}</nav>
 <article>
-<div class="eyebrow"><span class="ex-n">Exercise ${p.num}</span><span>${chain.map(n => esc(n.name)).join(' › ')}</span><span>${esc(LEVELS[p.level])}</span>${dots(p.diff)}<span>Added ${fmtDate(p.date)}</span></div>
+<div class="eyebrow"><span class="ex-n">Exercise ${p.num}</span><span>${chain.map(n => esc(n.name)).join(' › ')}</span><span>${esc(LEVELS[p.level])}</span>${config.showDates ? `<span>Added ${fmtDate(p.date)}</span>` : ''}</div>
 <h1>${esc(p.title)}</h1>
 ${p.tags.length ? `<div class="tagline">${p.tags.map(t => `<span class="chip">#${esc(t)}</span>`).join('')}</div>` : ''}
 <section class="sheet"><h2 class="label">Statement</h2><div class="body">${rich(p.statement)}</div></section>
