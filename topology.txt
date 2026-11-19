@@ -19794,7 +19794,7 @@ Letting $\varepsilon\to0$ and taking the sup over $x,y$ gives $\operatorname{dia
 **4.** Let $A,B$ be bounded, non-empty, and fix $a_0\in A$, $b_0\in B$. For $a\in A,b\in B$: 
 $$ \begin{aligned}  d(a,b)&\le d(a,a_0)+d(a_0,b_0)+d(b_0,b) \\ &\le\operatorname{diam}A+d(a_0,b_0)+\operatorname{diam}B. \end{aligned} $$ 
 Hence 
-$$ \operatorname{diam}(A\cup B)\le \operatorname{diam}A+d(a_0,b_0)+\operatorname{diam}B)<\infty. $$ 
+$$ \operatorname{diam}(A\cup B)\le \operatorname{diam}A+d(a_0,b_0)+\operatorname{diam}B<\infty. $$ 
 Induction gives finite unions.
 
 **Remark.** Boundedness depends on the metric, not on the topology: $\mathbb{R}$ is unbounded for $|\cdot|$ and bounded for $\min(1,|x-y|)$. In a normed space with Euclidean norm one has $\operatorname{diam}B(a,r)=2r$ exactly.
