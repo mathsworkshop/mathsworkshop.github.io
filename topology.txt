@@ -19608,7 +19608,11 @@ For $e$: if $d(x,z)\ge1$ show $e(x,y)+e(y,z)\ge1$. For $d'$ use $\frac{a}{1+a}\l
 *Triangle inequality for $e$.* Let $x,y,z\in X$. If $e(x,y)=1$ or $e(y,z)=1$, then $e(x,y)+e(y,z)\ge1\ge e(x,z)$. Otherwise $d(x,y)<1$ and $d(y,z)<1$, so $e(x,y)+e(y,z)=d(x,y)+d(y,z)\ge d(x,z)\ge e(x,z)$.
 
 *Triangle inequality for $d'$.* If $a=d(x,z)$, $b=d(x,y)$, $c=d(y,z)$ then $a\le b+c$. Since $t\mapsto\frac t{1+t}$ is increasing,
-$$d'(x,z)\le\frac{b+c}{1+b+c}=\frac b{1+b+c}+\frac c{1+b+c}\le\frac b{1+b}+\frac c{1+c}=d'(x,y)+d'(y,z).$$
+$$
+\begin{aligned} 
+d'(x,z)&\le\frac{b+c}{1+b+c} =\frac b{1+b+c}+\frac c{1+b+c} \\ &\le\frac b{1+b}+\frac c{1+c}=d'(x,y)+d'(y,z).
+\end{aligned}
+$$
 Both are bounded by $1$.
 
 **2. Open sets.** For $0<r<1$:
