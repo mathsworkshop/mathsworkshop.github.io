@@ -19762,7 +19762,9 @@ date: 2026-11-17
 
 ## Statement
 
-In a metric space $(X,d)$ the diameter of a non-empty set $A$ is $\operatorname{diam}A=\sup\{d(x,y):x,y\in A\}\in[0,+\infty]$; $A$ is *bounded* if its diameter is finite.
+In a metric space $(X,d)$ the diameter of a non-empty set $A$ is 
+$$ \operatorname{diam}A=\sup\{d(x,y):x,y\in A\}\in[0,+\infty].$$ 
+$A$ is *bounded* if its diameter is finite.
 
 1. Show that $\operatorname{diam}B(a,r)\le2r$, and give examples where the inequality is strict and where it is an equality which is not attained.
 2. Show that $A$ is bounded iff $A$ is contained in some ball.
