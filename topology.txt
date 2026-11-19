@@ -19700,7 +19700,11 @@ For (1) say $d(x,y)<d(y,z)$ and apply the ultrametric inequality twice. For (4) 
 
 **4.** Let $y\notin B(x,r)$. We claim $B(y,r)\cap B(x,r)=\emptyset$. If $z$ belonged to both, (2) would give $B(x,r)=B(z,r)=B(y,r)\ni y$, a contradiction. So the complement is open and the ball is closed.
 
-**5.** ($\Rightarrow$) is clear. ($\Leftarrow$) By induction, for $n<m$: $d(x_n,x_m)\le\max(d(x_n,x_{m-1}),d(x_{m-1},x_m))\le\max_{n\le k<m}d(x_k,x_{k+1})$. Given $\varepsilon$, choose $N$ with $d(x_k,x_{k+1})<\varepsilon$ for $k\ge N$; then $d(x_n,x_m)<\varepsilon$ for $m>n\ge N$.
+**5.** ($\Rightarrow$) is clear. ($\Leftarrow$) By induction, for $n<m$: 
+$$ d(x_n,x_m)\le\max(d(x_n,x_{m-1}),d(x_{m-1},x_m))\le\max_{n\le k<m}d(x_k,x_{k+1}). $$
+Given $\varepsilon$, choose $N$ with 
+$$ d(x_k,x_{k+1})<\varepsilon, \forall k\ge N, $$ 
+then $d(x_n,x_m)<\varepsilon$ for $m>n\ge N$.
 
 **Remark.** Statement (5) is false in $\mathbb{R}$: $x_n=\sum_{k\le n}\frac1k$ has $|x_{n+1}-x_n|\to0$ but diverges. In an ultrametric world the condition "terms tend to $0$" alone ensures convergence of series, in complete spaces such as the $p$-adic numbers.
 
