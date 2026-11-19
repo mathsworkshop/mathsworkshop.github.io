@@ -19827,11 +19827,15 @@ $d_2$ comes from the injective map $x\mapsto1/x$. For (2) compare at points $\fr
 
 **Idea.** The map $x\mapsto1/x$ is a homeomorphism of $(0,\infty)$ which stretches the neighbourhood of $0$ and compresses the neighbourhood of infinity.
 
-**1.** $d_2(x,y)=|\varphi(x)-\varphi(y)|$ with $\varphi(x)=1/x$ injective, so $d_2$ is a metric. Both $\varphi$ and $\varphi^{-1}=\varphi$ are continuous on $(0,\infty)$. As in the arctan problem, continuity of $\varphi$ at $a$ gives, for each $\varepsilon$, a $\delta$ with $|x-a|<\delta\Rightarrow d_2(x,a)<\varepsilon$, and continuity of $\varphi^{-1}=\varphi$ gives the converse. So the open sets coincide.
+**1.** - $d_2(x,y)=|\varphi(x)-\varphi(y)|$ with $\varphi(x)=1/x$ is injective, so $d_2$ is a metric. Both $\varphi$ and $\varphi^{-1}=\varphi$ are continuous on $(0,\infty)$. 
+- As in the arctan problem, continuity of $\varphi$ at $a$ gives, for each $\varepsilon$, a $\delta$ with $|x-a|<\delta\Rightarrow d_2(x,a)<\varepsilon$. This means any ball $B_2(a,\varepsilon)$ contains a ball $B_1(a,\delta)$ for some small $\delta$. Hence any $d_2$-open set is also $d_1$-open. The continuity of $\varphi^{-1}=\varphi$ gives the converse. So the open sets coincide.
 
-**2.** $d_2(x,y)=\frac{|x-y|}{xy}$. With $x=\frac1n,y=\frac2n$: $d_2/d_1=n^2/2$ is unbounded, so no $C$. With $x=n,y=n+1$: $d_2/d_1=\frac1{n(n+1)}\to0$, so no $c>0$.
+**2.** With $x_n=\frac1n$ and $y_n=\frac2n$, we have 
+$$ \frac{d_2(x_n,y_n)}{d_1(x_n,y_n)} =n^2/2 $$ 
+is unbounded, so no $C$. With $x=n,y=n+1$: $ \frac{d_2(x_n,y_n)}{d_1(x_n,y_n)} =\frac1{n(n+1)}\to0$, so no $c>0$.
 
-**3.** $x_n=\frac1n$: $d_1(x_n,x_m)\to0$, so it is $d_1$-Cauchy. But $d_2(x_n,x_m)=|n-m|\ge1$, not Cauchy. $y_n=n$: $d_2(y_n,y_m)=|\frac1n-\frac1m|\to0$, $d_2$-Cauchy; $d_1(y_n,y_m)=|n-m|$, not $d_1$-Cauchy.
+**3.** - The sequence $x_n=\frac1n$ satisfies $d_1(x_n,x_m)\to0$, so it is $d_1$-Cauchy. But $d_2(x_n,x_m)=|n-m|\ge1$, not Cauchy.
+- The sequence $y_n=n$ satisfies $d_2(y_n,y_m)=|\frac1n-\frac1m|\to0$, so $y_n$ is $d_2$-Cauchy. But $d_1(y_n,y_m)=|n-m| \geq 1$, not $d_1$-Cauchy.
 
 **4.** Neither is complete. The $d_1$-Cauchy sequence $\frac1n$ has no limit in $(0,\infty)$ (the only candidate is $0$). The $d_2$-Cauchy sequence $n$ has no limit either: a limit $\ell$ would satisfy $\frac1n\to\frac1\ell>0$.
 
