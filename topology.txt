@@ -20142,11 +20142,16 @@ For the triangle inequality, prove the inclusion $A\Delta C\subset(A\Delta B)\cu
 
 **Idea.** The distance between two finite sets counts the number of elements on which they differ.
 
-**1.** Symmetry is clear, and $d(A,B)=0\iff A\Delta B=\emptyset\iff A=B$. For the triangle inequality, take $x\in A\Delta C$, say $x\in A$, $x\notin C$. If $x\in B$ then $x\in B\setminus C\subset B\Delta C$; if $x\notin B$ then $x\in A\setminus B\subset A\Delta B$. The case $x\in C\setminus A$ is symmetric. So $A\Delta C\subset(A\Delta B)\cup(B\Delta C)$, and taking cardinals, $|A\Delta C|\le|A\Delta B|+|B\Delta C|$.
+**1.** Symmetry is clear, and 
+$$d(A,B)=0\iff A\Delta B=\emptyset\iff A=B. $$ For the triangle inequality, take $x\in A\Delta C$, say $x\in A$, $x\notin C$. We have 
+$$ x\in B \implies x\in B\setminus C\subset B\Delta C$$ 
+and 
+$$ x\notin B \implies  x\in A\setminus B\subset A\Delta B. $$
+The case $x\in C\setminus A$ is symmetric. So $A\Delta C\subset(A\Delta B)\cup(B\Delta C)$, and taking cardinals, $|A\Delta C|\le|A\Delta B|+|B\Delta C|$.
 
 **2.** The distance is an integer, so for $r\le1$, $B(A,r)=\{B:|A\Delta B|<r\}=\{A\}$ (for $r\le1$ we need $|A\Delta B|=0$). Hence each singleton is open, and every subset is open: $\mathcal F$ is discrete.
 
-**3.** The sets $\{n\}$ for $n\in\mathbb{N}$ satisfy $d(\emptyset,\{n\})=1<2$, so $B(\emptyset,2)$ contains infinitely many points; being discrete and infinite, it is not compact (the cover by singletons has no finite subcover). So a closed bounded set can be non-compact in a metric space.
+**3.** The sets $\{n\}$ for $n\in\mathbb{N}$ satisfy $d(\emptyset,\{n\})=1<2$, so $B(\emptyset,2)$ contains infinitely many points.
 
 **4.** $\sum_n|\mathbf 1_A(n)-\mathbf 1_B(n)|=|\{n:\mathbf 1_A(n)\ne\mathbf 1_B(n)\}|=|A\Delta B|$.
 
