@@ -7370,7 +7370,7 @@ Define $\varphi:\mathbb{Z}/mn\mathbb{Z}\to\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}
 @@@ groups-general-linear.md
 ---
 title: The general linear group GL(n,ℝ)
-GL(n,ℝ)
+category: algebra/groups
 level: l1
 difficulty: 3
 tags: general linear group, matrices, invertibility
