@@ -734,7 +734,7 @@ Rewrite the equation as $h(x)=a$ with $h(x)=\dfrac{\ln x}{x}$, and study $h$.
 title: cos x = 1/x has infinitely many solutions
 category: calculus/single-variable/continuity/intermediate-value-theorem
 level: l1
-difficulty: 3
+difficulty: 4
 tags: intermediate value theorem, infinitely many solutions
 date: 2026-11-02
 ---
@@ -1045,7 +1045,7 @@ Its derivative $f'(x)=3x^2+1$ is positive everywhere, so $f$ is strictly increas
 
 @@@ continuity-commuting-maps-shared-point.md
 ---
-title: Commuting maps on $[0,1]$ share a fixed point
+title: Commuting maps on [0,1] share a fixed point
 category: calculus/single-variable/continuity/intermediate-value-theorem
 level: l1
 difficulty: 5
