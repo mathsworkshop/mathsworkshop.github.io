@@ -211,7 +211,7 @@ Compare the two sums on a common refinement.
 
 @@@ riemann-step-absolute-value.md
 ---
-title: Integral of $|f|$ for a step function
+title: Integral of |f| for a step function
 category: calculus/single-variable/integration/riemann
 level: lycee
 difficulty: 3
