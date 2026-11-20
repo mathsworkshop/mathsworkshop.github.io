@@ -20102,11 +20102,10 @@ $$ \begin{aligned}
 Comparing with $\|x-y\|^2=\|x\|^2-2\langle x,y\rangle+\|y\|^2$ gives $\langle f(x),f(y)\rangle=\langle x,y\rangle$.
 
 **2.** - Let $w=f(x+y)-f(x)-f(y)$. Expand $\|w\|^2$ as a sum of squared norms and inner products of $f(x+y),f(x),f(y)$: 
-$$ \begin{aligned}
-$$\|w\|^2&= \|f(x+y)-f(x)-f(y) \|^2 \\
+$$ \begin{aligned} \|w\|^2&= \|f(x+y)-f(x)-f(y) \|^2 \\
 &= \|f(x+y)\|^2 - 2\langle f(x+y),f(x)+f(y)\rangle + \|f(x)+f(y)\|^2 \\
 &= \|x+y\|^2 - 2\langle x+y,x+y\rangle + \|f(x)+f(y)\|^2 \\
-&= - \|x+y\|^2 + \|f(x)+f(y)\|^2. $$
+&= - \|x+y\|^2 + \|f(x)+f(y)\|^2.
 \end{aligned}$$
 The same argument shows $\|f(x)+f(y)\|^2 = \|x+y\|^2$, hence $w= 0$ as desired.
 - Likewise $\|f(\lambda x)-\lambda f(x)\|^2=\|\lambda x-\lambda x\|^2=0$, computed in the same way. So $f$ is linear and preserves the inner product, i.e. its matrix $U$ satisfies $U^TU=I$.
