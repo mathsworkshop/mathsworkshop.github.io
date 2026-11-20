@@ -1,6 +1,6 @@
 @@@ proof-two-implications-imply-not-p.md
 ---
-title: Two implications imply the negation of $p$
+title: Two implications imply the negation of p
 category: logic/proof-techniques
 level: l1
 difficulty: 3
@@ -538,7 +538,7 @@ So the statement holds for $n+1$, and by induction for all $n\ge0$.
 
 @@@ logic-proof-induction-sum.md
 ---
-title: Proof by induction: sum of first $n$ integers
+title: Proof by induction: sum of first n integers
 category: logic/proof-techniques/induction
 level: lycee
 difficulty: 1
@@ -734,7 +734,7 @@ $$\sum_{k=0}^{n}r^k=\frac{1-r^n}{1-r}+r^n=\frac{1-r^n+r^n(1-r)}{1-r}=\frac{1-r^n
 
 @@@ logic-induction-n-factorial.md
 ---
-title: $n!$ vs $2^n$
+title: n! vs 2ⁿ
 category: logic/proof-techniques/induction
 level: l1
 difficulty: 3
