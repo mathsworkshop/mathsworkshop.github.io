@@ -1671,7 +1671,7 @@ For the first: if not all satisfy $P$, some fails $P$. For the second: if no $x$
 
 @@@ quantifiers-epsilon-delta.md
 ---
-title: The $\varepsilon$-$\delta$ definition of limit
+title: The ε-δ definition of limit
 category: logic/quantifiers
 level: l1
 difficulty: 3
@@ -1937,7 +1937,7 @@ $\neg\forall\to\exists$, $\neg\exists\to\forall$, negate the predicate.
 
 @@@ quantifiers-double-quantifier-proof.md
 ---
-title: Proving a quantified statement with $\exists\forall$
+title: Proving a quantified statement with ∃ ∀
 category: logic/quantifiers
 level: olympiad
 difficulty: 4
@@ -1989,7 +1989,7 @@ Take $\delta=\varepsilon^2$.
 
 @@@ quantifiers-exists-forall-eps.md
 ---
-title: A false $\exists\forall$ statement
+title: A false ∃ ∀ statement
 category: logic/quantifiers
 level: l1
 difficulty: 3
@@ -2825,9 +2825,6 @@ Reflexive, antisymmetric, transitive.
 
 **Conclusion.** Partial orders allow "incomparable" elements; total orders are a special case.
 
-
-
-
 @@@ congruence-is-an-equivalence-relation.md
 ---
 title: Congruence is an equivalence relation
@@ -3367,7 +3364,7 @@ Countable: bijection with a subset of $\mathbb{N}$ (or finite).
 
 @@@ cardinality-naturals.md
 ---
-title: $\mathbb{N}$ is countably infinite
+title: ℕ is countably infinite
 category: logic/cardinality
 level: lycee
 difficulty: 1
@@ -3391,7 +3388,7 @@ The identity map is a bijection $\mathbb{N}\to\mathbb{N}$.
 
 @@@ cardinality-integers.md
 ---
-title: $\mathbb{Z}$ is countable
+title: ℤ is countable
 category: logic/cardinality
 level: l1
 difficulty: 2
@@ -3418,7 +3415,7 @@ $$f(n)=\begin{cases}n/2&\text{if }n\text{ even},\\ -(n+1)/2&\text{if }n\text{ od
 
 @@@ cardinality-naturals-pairs.md
 ---
-title: $\mathbb{N}^2$ is countable
+title: ℕ² is countable
 category: logic/cardinality
 level: l1
 difficulty: 3
@@ -3444,7 +3441,7 @@ Use Cantor's pairing function.
 
 @@@ cardinality-rationals.md
 ---
-title: $\mathbb{Q}$ is countable
+title: ℚ is countable
 category: logic/cardinality
 level: l1
 difficulty: 3
@@ -3472,7 +3469,7 @@ $\mathbb{Q}$ is the image of $\mathbb{Z}\times\mathbb{N}^*$ under $(p,q)\mapsto 
 
 @@@ cardinality-uncountable-r.md
 ---
-title: $\mathbb{R}$ is uncountable
+title: ℝ is uncountable
 category: logic/cardinality
 level: l1
 difficulty: 4
@@ -3581,7 +3578,7 @@ Suppose $f:A\to\mathcal{P}(A)$ is a surjection, consider $S=\{x\in A:x\notin f(x
 
 @@@ cardinality-aleph-zero.md
 ---
-title: The cardinal $\aleph_0$
+title: The cardinal ℵ₀
 category: logic/cardinality
 level: l1
 difficulty: 3
@@ -3659,7 +3656,7 @@ If $f:A\to\mathbb{N}$ and $g:B\to\mathbb{N}$ are injections, then $(a,b)\mapsto\
 
 @@@ cardinality-power-set-naturals.md
 ---
-title: $|\mathcal{P}(\mathbb{N})|=|\mathbb{R}|$
+title: $|P(ℕ)|=|ℝ|$
 category: logic/cardinality
 level: l1
 difficulty: 4
@@ -3714,7 +3711,7 @@ $2^{\aleph_0}=|\mathcal{P}(\mathbb{N})|$.
 
 @@@ cardinality-countable-subsets-n.md
 ---
-title: Finite subsets of $\mathbb{N}$
+title: Finite subsets of ℕ
 category: logic/cardinality
 level: m1
 difficulty: 4
@@ -3740,7 +3737,7 @@ Each finite subset is contained in some $\{0,1,\ldots,n-1\}$.
 
 @@@ cardinality-infinite-subsets-n.md
 ---
-title: Infinite subsets of $\mathbb{N}$
+title: Infinite subsets of ℕ
 category: logic/cardinality
 level: m1
 difficulty: 5
@@ -3794,7 +3791,7 @@ Shift existing guests from room $n$ to room $2n$, put new guests in odd rooms.
 
 @@@ cardinality-countable-dense.md
 ---
-title: $\mathbb{Q}$ is dense but countable
+title:  ℚ is dense but countable
 category: logic/cardinality
 level: l1
 difficulty: 3
