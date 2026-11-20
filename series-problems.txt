@@ -610,7 +610,7 @@ So the terms are positive for large $n$ and equivalent to $\frac1{6n^3}$.
 
 @@@ series-log-1-plus-u.md
 ---
-title: Equivalence between ∑ un and ∑ ln(1+un)
+title: Equivalence between ∑ u<sub>n</sub> and ∑ ln(1+u<sub>n</sub>)
 category: calculus/single-variable/series/convergence-tests
 level: l1
 difficulty: 2
