@@ -755,7 +755,7 @@ Solve $f'(c)=\frac{f(2)-f(0)}{2-0}$.
 
 @@@ mvt-lagrange-general.md
 ---
-title: Mean value theorem for $f(x)=x^3$
+title: Mean value theorem for f(x)=x³
 category: calculus/single-variable/differentiation/mean-value-theorem
 level: lycee
 difficulty: 2
@@ -915,7 +915,7 @@ Since $|\cos c|\le1$, we get $|\sin b-\sin a|=|\cos c|\,|b-a|\le|b-a|$.
 
 @@@ mvt-lagrange-derivative-bounded.md
 ---
-title: Bounding $f(b)-f(a)$
+title: Bounding f(b)-f(a)
 category: calculus/single-variable/differentiation/mean-value-theorem
 level: l1
 difficulty: 3
@@ -1139,7 +1139,7 @@ Apply Rolle between consecutive roots.
 
 @@@ mvt-rolle-sign-change.md
 ---
-title: Rolle and the sign of $f'$
+title: Rolle and the sign of f'
 category: calculus/single-variable/differentiation/mean-value-theorem
 level: l1
 difficulty: 3
