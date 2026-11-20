@@ -6996,7 +6996,7 @@ Define $\bar f:G/\ker f\to\operatorname{Im} f$ by $\bar f(gK)=f(g)$ where $K=\ke
 
 @@@ groups-symmetric-group-s3.md
 ---
-title: The symmetric group $S_3$
+title: The symmetric group S3
 category: algebra/groups
 level: l1
 difficulty: 3
@@ -7027,7 +7027,7 @@ $|S_n|=n!$. Permutations of $\{1,2,3\}$: $6$ in total, three even and three odd.
 
 @@@ groups-symmetric-transpositions.md
 ---
-title: Transpositions generate $S_n$
+title: Transpositions generate Sn
 category: algebra/groups
 level: l1
 difficulty: 3
@@ -7115,7 +7115,7 @@ where the sum is over non-central conjugacy classes.
 
 @@@ groups-cauchy-application.md
 ---
-title: Cauchy's theorem applied to $A_4$
+title: Cauchy's theorem applied to the alternating group
 category: algebra/groups
 level: olympiad
 difficulty: 4
@@ -7257,7 +7257,7 @@ There are only two left cosets: $H$ and $G\setminus H$. The same holds for right
 
 @@@ groups-dihedral.md
 ---
-title: The dihedral group $D_n$
+title: The dihedral group
 category: algebra/groups
 level: l1
 difficulty: 4
@@ -7369,8 +7369,8 @@ Define $\varphi:\mathbb{Z}/mn\mathbb{Z}\to\mathbb{Z}/m\mathbb{Z}\times\mathbb{Z}
 
 @@@ groups-general-linear.md
 ---
-title: The general linear group $GL_n(\mathbb{R})$
-category: algebra/groups
+title: The general linear group GL(n,ℝ)
+GL(n,ℝ)
 level: l1
 difficulty: 3
 tags: general linear group, matrices, invertibility
@@ -7401,7 +7401,7 @@ The product of invertible matrices is invertible, and the identity is $I_n$.
 
 @@@ groups-special-linear.md
 ---
-title: The special linear group $SL_n(\mathbb{R})$
+title: The special linear group SL(n,ℝ)
 category: algebra/groups
 level: l1
 difficulty: 4
@@ -7461,7 +7461,7 @@ $12=2^2\cdot3$. Decompose into Sylow subgroups: $G\cong G_2\times G_3$ with $|G_
 
 @@@ groups-p-group.md
 ---
-title: Groups of order $p^2$
+title: Groups of order p²
 category: algebra/groups
 level: m1
 difficulty: 5
@@ -7754,7 +7754,7 @@ The subgroups of orders $2$ and $3$ are incomparable.
 
 @@@ groups-general-linear-finite.md
 ---
-title: The order of $GL_n(\mathbb{F}_p)$
+title: The order of GL(n,𝔽p)
 category: algebra/groups
 level: m1
 difficulty: 4
