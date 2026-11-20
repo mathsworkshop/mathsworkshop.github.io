@@ -5330,7 +5330,7 @@ $$=\frac18[(e^{3i\theta}+e^{-3i\theta})+3(e^{i\theta}+e^{-i\theta})]=\frac18[2\c
 
 @@@ complex-sin-linearization.md
 ---
-title: Linearizing $\sin^4\theta$
+title: Linearizing sin⁴θ
 category: algebra/complex-numbers
 level: l1
 difficulty: 3
@@ -5359,7 +5359,7 @@ $$=\frac{\cos4\theta-4\cos2\theta+3}{8}.$$
 
 @@@ complex-nth-roots-unity.md
 ---
-title: The $n$-th roots of unity
+title: The n-th roots of unity
 category: algebra/complex-numbers
 level: l1
 difficulty: 3
@@ -5389,7 +5389,7 @@ Other values of $k$ give the same roots modulo $n$.
 
 @@@ complex-roots-unity-sum.md
 ---
-title: Sum of the $n$-th roots of unity
+title: Sum of the n-th roots of unity
 category: algebra/complex-numbers
 level: l1
 difficulty: 3
@@ -5810,7 +5810,7 @@ $$z'=\frac12+i\frac{\sqrt3}{2}+\frac i2-\frac{\sqrt3}{2}=\frac{1-\sqrt3}{2}+i\fr
 
 @@@ complex-modulus-equation-two-points.md
 ---
-title: The modulus equation $|z-a|=|z-b|$
+title: The modulus equation |z-a|=|z-b|
 category: algebra/complex-numbers
 level: l1
 difficulty: 3
@@ -5984,7 +5984,7 @@ Write $z=8e^{i\pi/2}$ and use De Moivre with argument $(\pi/2+2k\pi)/3$.
 
 @@@ complex-fractal-julia.md
 ---
-title: The Julia set of $z\mapsto z^2$
+title: The Julia set of z²
 category: algebra/complex-numbers
 level: olympiad
 difficulty: 5
@@ -6282,7 +6282,7 @@ Write $-1=e^{i\pi}$ and use the formula $w_k=e^{i(\pi+2k\pi)/4}$.
 
 @@@ complex-equation-z-conj.md
 ---
-title: The equation $z=\bar z$
+title: The equation z=z̄
 category: algebra/complex-numbers
 level: lycee
 difficulty: 1
@@ -6362,7 +6362,7 @@ Compare distances to $A(1,0)$ and $B(0,-1)$.
 
 @@@ complex-z3-equals-1.md
 ---
-title: Solving $z^3=1$
+title: Solving z³=1
 category: algebra/complex-numbers
 level: lycee
 difficulty: 2
