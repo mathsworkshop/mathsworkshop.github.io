@@ -3656,7 +3656,7 @@ If $f:A\to\mathbb{N}$ and $g:B\to\mathbb{N}$ are injections, then $(a,b)\mapsto\
 
 @@@ cardinality-power-set-naturals.md
 ---
-title: $|P(ℕ)|=|ℝ|$
+title: |P(ℕ)|=|ℝ|
 category: logic/cardinality
 level: l1
 difficulty: 4
