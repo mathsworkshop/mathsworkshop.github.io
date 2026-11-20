@@ -20096,12 +20096,20 @@ To prove $f(x+y)=f(x)+f(y)$, show that $\|f(x+y)-f(x)-f(y)\|^2=0$ by expanding t
 **Idea.** The Euclidean distance determines the inner product (polarization), and a map preserving the inner product is automatically linear.
 
 **1.** Taking $y=0$: $\|f(x)\|=\|f(x)-f(0)\|=\|x\|$. Now expand
-$$\|f(x)-f(y)\|^2=\|f(x)\|^2-2\langle f(x),f(y)\rangle+\|f(y)\|^2=\|x\|^2-2\langle f(x),f(y)\rangle+\|y\|^2.$$
+$$ \begin{aligned}
+\|f(x)-f(y)\|^2&=\|f(x)\|^2-2\langle f(x),f(y)\rangle+\|f(y)\|^2\\ &=\|x\|^2-2\langle f(x),f(y)\rangle+\|y\|^2.
+\end{aligned}$$
 Comparing with $\|x-y\|^2=\|x\|^2-2\langle x,y\rangle+\|y\|^2$ gives $\langle f(x),f(y)\rangle=\langle x,y\rangle$.
 
-**2.** Let $w=f(x+y)-f(x)-f(y)$. Expand $\|w\|^2$ as a sum of squared norms and inner products of $f(x+y),f(x),f(y)$; by (1) each term equals the corresponding term with $f$ removed, so
-$$\|w\|^2=\|(x+y)-x-y\|^2=0.$$
-Likewise $\|f(\lambda x)-\lambda f(x)\|^2=\|\lambda x-\lambda x\|^2=0$, computed in the same way. So $f$ is linear and preserves the inner product, i.e. its matrix $U$ satisfies $U^TU=I$.
+**2.** - Let $w=f(x+y)-f(x)-f(y)$. Expand $\|w\|^2$ as a sum of squared norms and inner products of $f(x+y),f(x),f(y)$: 
+$$ \begin{aligned}
+$$\|w\|^2&= \|f(x+y)-f(x)-f(y) \|^2 \\
+&= \|f(x+y)\|^2 - 2\langle f(x+y),f(x)+f(y)\rangle + \|f(x)+f(y)\|^2 \\
+&= \|x+y\|^2 - 2\langle x+y,x+y\rangle + \|f(x)+f(y)\|^2 \\
+&= - \|x+y\|^2 + \|f(x)+f(y)\|^2. $$
+\end{aligned}$$
+The same argument shows $\|f(x)+f(y)\|^2 = \|x+y\|^2$, hence $w= 0$ as desired.
+- Likewise $\|f(\lambda x)-\lambda f(x)\|^2=\|\lambda x-\lambda x\|^2=0$, computed in the same way. So $f$ is linear and preserves the inner product, i.e. its matrix $U$ satisfies $U^TU=I$.
 
 **3.** For a general isometry $g$, put $f(x)=g(x)-g(0)$, which is an isometry fixing $0$. By (2), $f=U$ is orthogonal and $g(x)=Ux+g(0)$.
 
