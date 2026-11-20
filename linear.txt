@@ -1923,7 +1923,7 @@ Find a vector not in the span of the two given vectors, and check that the three
 
 @@@ vector-basis-four-dim.md
 ---
-title: A basis of a hyperplane in $\mathbb{R}^4$
+title: A basis of a hyperplane in ℝ⁴
 category: linear/vector-spaces
 level: l1
 difficulty: 3
@@ -2330,7 +2330,7 @@ Use the formula $\dim(F+G)=\dim F+\dim G-\dim(F\cap G)$, and find a basis of eac
 
 @@@ vector-sum-two-planes.md
 ---
-title: Sum of two planes in $\mathbb{R}^3$
+title: Sum of two planes in ℝ³
 category: linear/vector-spaces
 level: l1
 difficulty: 4
@@ -7681,7 +7681,7 @@ $$Q=x^2+xy+y^2-\frac34(x^2+2xy+y^2)=\frac14x^2-\frac12xy+\frac14y^2=\frac14(x-y)
 
 @@@ quadratic-form-ellipse.md
 ---
-title: The ellipse $x^2+xy+y^2=1$
+title: The ellipse x²+xy+y²=1
 category: linear/quadratic-forms
 level: l1
 difficulty: 4
@@ -7713,7 +7713,7 @@ $$\frac{u^2}{2}+\frac{v^2}{2/3}=1.$$
 
 @@@ quadratic-form-hyperbola.md
 ---
-title: The hyperbola $x^2-y^2=1$
+title: The hyperbola x²-y²=1
 category: linear/quadratic-forms
 level: l1
 difficulty: 3
@@ -7740,7 +7740,7 @@ The quadratic form $Q(x,y)=x^2-y^2$ has signature $(1,1,0)$; the set $Q=1$ is a 
 
 @@@ quadratic-form-cone.md
 ---
-title: The cone $x^2+y^2-z^2=0$
+title: The cone x²+y²-z²=0
 category: linear/quadratic-forms
 level: l1
 difficulty: 4
