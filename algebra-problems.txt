@@ -4195,7 +4195,7 @@ $$X^4+4=(X^2+2X+2)(X^2-2X+2).$$
 
 @@@ polynomials-real-factorization.md
 ---
-title: Factorization over $\mathbb{R}$
+title: Factorization over ℝ
 category: algebra/polynomials
 level: l1
 difficulty: 3
@@ -8009,7 +8009,7 @@ Use the correspondence between ideals of $R$ containing $I$ and ideals of $R/I$.
 
 @@@ rings-polynomial-field.md
 ---
-title: The field $\mathbb{R}[X]/(X^2+1)$
+title: The field ℝ[X]/(X^2+1)
 category: algebra/rings-and-fields
 level: l1
 difficulty: 4
@@ -8037,7 +8037,7 @@ Define $\varphi:\mathbb{R}[X]\to\mathbb{C}$ by $\varphi(P)=P(i)$, and show its k
 
 @@@ rings-euclidean-division.md
 ---
-title: Euclidean division in $\mathbb{R}[X]$
+title: Euclidean division in ℝ[X]
 category: algebra/rings-and-fields
 level: l1
 difficulty: 3
@@ -8067,7 +8067,7 @@ So $Q=X^2+1$.
 
 @@@ rings-gcd-polynomials.md
 ---
-title: GCD in $\mathbb{R}[X]$
+title: GCD in ℝ[X]
 category: algebra/rings-and-fields
 level: l1
 difficulty: 4
@@ -8097,7 +8097,7 @@ Euclidean algorithm: divide $X^3-1$ by $X^2-1$.
 
 @@@ rings-irreducibility.md
 ---
-title: Irreducibility in $\mathbb{R}[X]$ and $\mathbb{C}[X]$
+title: Irreducibility in ℝ[X] and ℂ[X]
 category: algebra/rings-and-fields
 level: l1
 difficulty: 4
@@ -8350,7 +8350,7 @@ Use Eisenstein's criterion on $\Phi_p(X+1)=\frac{(X+1)^p-1}{X}$.
 
 @@@ rings-maximal-ideal-polynomial.md
 ---
-title: Maximal ideals in $\mathbb{R}[X]$
+title: Maximal ideals in ℝ[X]
 category: algebra/rings-and-fields
 level: m1
 difficulty: 4
@@ -8660,7 +8660,7 @@ The characteristic is a prime $p$, so $\mathbb{F}_p\subseteq F$. Then $F$ is a f
 
 @@@ rings-polynomial-ring-property.md
 ---
-title: The polynomial ring $R[X]$
+title: The polynomial ring ℝ[X]
 category: algebra/rings-and-fields
 level: l1
 difficulty: 3
