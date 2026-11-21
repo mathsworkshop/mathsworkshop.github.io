@@ -5553,13 +5553,12 @@ $\sqrt2$ is a root of $X^2-2=0$, which is irreducible by the rational root test.
 
 **Conclusion.** The minimal polynomial of $\sqrt2$ is $X^2-2$, and $[\mathbb{Q}(\sqrt2):\mathbb{Q}]=2$.
 
-@@@ irrationality-e-not-algebraic.md
 ---
-title: $e$ is not a quadratic irrational
+title: e is not a quadratic irrational
 category: number/irrationality
 level: l1
 difficulty: 4
-tags: e, quadratic irrational, contradiction
+tags: e, quadratic irrational, Taylor serie, contradiction
 date: 2026-11-03
 ---
 
@@ -5573,15 +5572,17 @@ Suppose $ae^2+be+c=0$ with $a,b,c\in\mathbb{Q}$, not all zero. Use the series ex
 
 ## Solution
 
-**Assume.** $ae^2+be+c=0$ with $a,b,c\in\mathbb{Z}$, not all zero.
+The proof is in some sense a generalization of the demonstration of the irrationality of $e$ from its expression as a series. Suppose $ae^2 + be + c = 0$, where $a, b, c$ are three integers not all zero. Denoting by $f$ the function $f : x \mapsto ae^x + ce^{-x}$, this implies that $f(1)$ is an integer. We shall prove that this last assertion is absurd.
 
-**Multiply by $q!$.** For suitable $q$, $q!(ae^2+be+c)$ is an integer.
+Taylor's theorem with Lagrange remainder applied to $f$ gives
+$$\forall n \in \mathbb{N}^*, \exists \theta_n \in \,]0, 1[, \quad f(1) = f(0) + \frac{f'(0)}{1!} + \dots + \frac{f^{(n-1)}(0)}{(n-1)!} + \frac{f^{(n)}(\theta_n)}{n!}.$$
+Now for every natural number $k$, $f^{(k)}(x) = ae^x + (-1)^k ce^{-x}$; in particular $f^{(k)}(0) = a + (-1)^k c$ is an integer. We deduce
+$$\forall n \in \mathbb{N}^*, \quad \frac{f^{(n)}(\theta_n)}{n} = (n-1)!f(1) - (n-1)!f(0) - \frac{(n-1)!}{1!}f'(0) - \dots - \frac{(n-1)!}{(n-1)!}f^{(n-1)}(0) \in \mathbb{Z}. \tag{*}$$
+The bound $|f^{(n)}(\theta_n)| = |ae^{\theta_n} + (-1)^n ce^{-\theta_n}| \le |a|e + |c|$ shows that $f^{(n)}(\theta_n)$ is bounded, hence $f^{(n)}(\theta_n)/n$ tends to $0$ as $n$ tends to $+\infty$. By (*), this term is always an integer, so it must be zero from some point onward, that is,
+$$\exists N \in \mathbb{N}^*, \forall n \ge N, \quad f^{(n)}(\theta_n) = ae^{\theta_n} + (-1)^n ce^{-\theta_n} = 0.$$
+We conclude that for every $n \ge N$, $a$ and $(-1)^n c$ have opposite signs, which is possible only if $a = c = 0$, and hence $b = 0$. This contradicts the hypotheses of the statement, whence the result.
 
-**Series.** Expand $e^2=\sum 2^n/n!$ and $e=\sum 1/n!$. The sum $a\sum 2^nq!/n!+b\sum q!/n!+c$ is an integer.
-
-**Tail bound.** The tail involves $\sum_{n>q}\frac{(a2^n+b)q!}{n!}$, which is bounded by a constant times $2^{q+1}/(q+1)$ — but $c$ is a fixed integer, so for large $q$, the total is strictly between $0$ and $1$, contradicting integrality.
-
-**Conclusion.** $e$ is not quadratic irrational. (In fact, $e$ is transcendental.)
+*Remark.* In particular, one deduces that $e$ is irrational. In fact, $e$ is even a transcendental number.
 
 @@@ irrationality-sqrt2-plus-rational.md
 ---
@@ -5997,35 +5998,6 @@ Minimal polynomial is $X^2-2$; basis $\{1,\sqrt2\}$.
 **Basis.** Every element of $\mathbb{Q}(\sqrt2)$ is of the form $a+b\sqrt2$ with $a,b\in\mathbb{Q}$ (from arithmetic of $a+b\sqrt2$ and the inverse formula). So $\{1,\sqrt2\}$ spans; it is also independent (since $\sqrt2\notin\mathbb{Q}$).
 
 **Conclusion.** Degree $2$, basis $\{1,\sqrt2\}$.
-
-@@@ irrationality-e-pi-algebraic.md
----
-title: Algebraic independence of $e$ and $\pi$
-category: number/irrationality
-level: m1
-difficulty: 5
-tags: algebraic independence, e, pi
-date: 2026-11-03
----
-
-## Statement
-
-State what is known about algebraic independence of $e$ and $\pi$.
-
-## Hint
-
-Both are transcendental individually, but algebraic independence means neither is algebraic over $\mathbb{Q}$ adjoined the other.
-
-## Solution
-
-**Individual transcendence.** $e$ (Hermite) and $\pi$ (Lindemann) are both transcendental.
-
-**Algebraic independence.** Unknown whether $e$ and $\pi$ are algebraically independent over $\mathbb{Q}$. This would require showing no nonzero polynomial $P\in\mathbb{Q}[X,Y]$ satisfies $P(e,\pi)=0$.
-
-**Known.** At most one of $e+\pi$ and $e\pi$ can be rational (since if both were, $e,\pi$ would be algebraic of degree $\le2$). But even this is unknown.
-
-**Conclusion.** Algebraic independence of $e,\pi$ is a major open problem.
-
 @@@ irrationality-schanuel.md
 ---
 title: Schanuel's conjecture (statement)
