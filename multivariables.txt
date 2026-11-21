@@ -2721,7 +2721,7 @@ Triangle: $0\le x\le y\le1$, so for $y\in[0,1]$, $x$ runs from $0$ to $y$; or fo
 
 @@@ multint-exponential-gaussian.md
 ---
-title: Gaussian integral over $\mathbb{R}^2$
+title: Gaussian integral over ℝ²
 category: calculus/multivariable/multiple-integrals
 level: m1
 difficulty: 5
@@ -3504,7 +3504,7 @@ $$\frac{d}{dt}f(\gamma(t)) = 2\cos t \sin t \cdot (-\sin t) + \cos^2 t \cdot \co
 
 @@@ partial-derivatives-c1-check.md
 ---
-title: Is a function $C^1$ on $\mathbb{R}^2$?
+title: Is a function C¹ on ℝ²?
 category: calculus/multivariable/partial-derivatives
 level: l2
 difficulty: 4
