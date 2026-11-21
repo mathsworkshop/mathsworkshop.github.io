@@ -5577,9 +5577,10 @@ The proof is in some sense a generalization of the demonstration of the irration
 
 Taylor's theorem with Lagrange remainder applied to $f$ gives
 $$\forall n \in \mathbb{N}^*, \exists \theta_n \in \,]0, 1[, \quad f(1) = f(0) + \frac{f'(0)}{1!} + \dots + \frac{f^{(n-1)}(0)}{(n-1)!} + \frac{f^{(n)}(\theta_n)}{n!}.$$
-Now for every natural number $k$, $f^{(k)}(x) = ae^x + (-1)^k ce^{-x}$; in particular $f^{(k)}(0) = a + (-1)^k c$ is an integer. We deduce
-$$\forall n \in \mathbb{N}^*, \quad \frac{f^{(n)}(\theta_n)}{n} = (n-1)!f(1) - (n-1)!f(0) - \frac{(n-1)!}{1!}f'(0) - \dots - \frac{(n-1)!}{(n-1)!}f^{(n-1)}(0) \in \mathbb{Z}. \tag{*}$$
-The bound $|f^{(n)}(\theta_n)| = |ae^{\theta_n} + (-1)^n ce^{-\theta_n}| \le |a|e + |c|$ shows that $f^{(n)}(\theta_n)$ is bounded, hence $f^{(n)}(\theta_n)/n$ tends to $0$ as $n$ tends to $+\infty$. By (*), this term is always an integer, so it must be zero from some point onward, that is,
+Now for every natural number $k$, $f^{(k)}(x) = ae^x + (-1)^k ce^{-x}$; in particular $f^{(k)}(0) = a + (-1)^k c$ is an integer. We deduce that for every $n \in \mathbb{N}^*$, 
+$$ \frac{f^{(n)}(\theta_n)}{n} = (n-1)!f(1) - (n-1)!f(0) - \frac{(n-1)!}{1!}f'(0) - \dots - \frac{(n-1)!}{(n-1)!}f^{(n-1)}(0) $$
+is an iteger. 
+The bound $|f^{(n)}(\theta_n)| = |ae^{\theta_n} + (-1)^n ce^{-\theta_n}| \le |a|e + |c|$ shows that $f^{(n)}(\theta_n)$ is bounded, hence $f^{(n)}(\theta_n)/n$ tends to $0$ as $n$ tends to $+\infty$. Since this term is always an integer, it must be zero from some point onward, that is,
 $$\exists N \in \mathbb{N}^*, \forall n \ge N, \quad f^{(n)}(\theta_n) = ae^{\theta_n} + (-1)^n ce^{-\theta_n} = 0.$$
 We conclude that for every $n \ge N$, $a$ and $(-1)^n c$ have opposite signs, which is possible only if $a = c = 0$, and hence $b = 0$. This contradicts the hypotheses of the statement, whence the result.
 
