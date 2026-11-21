@@ -5553,6 +5553,7 @@ $\sqrt2$ is a root of $X^2-2=0$, which is irreducible by the rational root test.
 
 **Conclusion.** The minimal polynomial of $\sqrt2$ is $X^2-2$, and $[\mathbb{Q}(\sqrt2):\mathbb{Q}]=2$.
 
+@@@ irrationality-e-not-algebraic.md
 ---
 title: e is not a quadratic irrational
 category: number/irrationality
